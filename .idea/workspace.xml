@@ -3,20 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fa1a256c-8e7d-4987-ba04-520512efbcaf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Tender.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Tender.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TenderType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TenderType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TenderFormCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TenderFormCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/links.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/links.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_router_6.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_router_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/132a630.js" afterPath="$PROJECT_DIR$/web/js/132a630.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/132a630_part_18.js" afterPath="$PROJECT_DIR$/web/js/132a630_part_18.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/en.json" afterPath="$PROJECT_DIR$/web/assets/i18n/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/fr.json" afterPath="$PROJECT_DIR$/web/assets/i18n/fr.json" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,54 +27,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/views/app.html">
+      <file leaf-file-name="en.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/en.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.6363635">
+              <caret line="416" column="50" selection-start-line="416" selection-start-column="50" selection-end-line="416" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="top-navbar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/views/partials/top-navbar.html">
+      <file leaf-file-name="fr.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/fr.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4545455">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.27272728">
+              <caret line="411" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="en.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/i18n/en.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.916666">
+              <caret line="988" column="0" selection-start-line="988" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fr.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/assets/i18n/fr.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.94871795">
+              <caret line="988" column="0" selection-start-line="988" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
               <folding>
-                <element signature="n#ul#0;n#div#1;n#!!top" expanded="false" />
+                <marker date="1473970429728" expanded="true" signature="2860:3374" placeholder="{...}" />
+                <marker date="1473970429728" expanded="true" signature="2882:2998" placeholder="{&quot;MAIN&quot;: &quot;Messages&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="3022:3151" placeholder="{&quot;MAIN&quot;: &quot;Activities&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="3169:3368" placeholder="{&quot;PROFILE&quot;: &quot;My Profile&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="3391:3593" placeholder="{&quot;MAIN&quot;: &quot;Style Selector&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="3832:4004" placeholder="{&quot;ONLINE&quot;: &quot;On-Line&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4027:4070" placeholder="{&quot;MAIN&quot;: &quot;Favorites&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4092:4404" placeholder="{&quot;MAIN&quot;: &quot;General Settings&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4448:4590" placeholder="{&quot;NAVIGATION&quot;: &quot;Main Navigation&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4610:4660" placeholder="{&quot;PLACEHOLDER&quot;: &quot;Search...&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4677:5290" placeholder="{...}" />
+                <marker date="1473970429728" expanded="true" signature="4704:4755" placeholder="{&quot;MAIN&quot;: &quot;Dashboard&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4779:4828" placeholder="{&quot;MAIN&quot;: &quot;Lougout&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4853:4902" placeholder="{&quot;MAIN&quot;: &quot;Tenders&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="4928:4978" placeholder="{&quot;MAIN&quot;: &quot;Settings&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="5002:5050" placeholder="{&quot;MAIN&quot;: &quot;Access&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="5078:5130" placeholder="{&quot;MAIN&quot;: &quot;Statistics&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="5152:5198" placeholder="{&quot;MAIN&quot;: &quot;News&quot;...}" />
+                <marker date="1473970429728" expanded="true" signature="5227:5280" placeholder="{&quot;MAIN&quot;: &quot;Marketplace&quot;...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0234375">
-              <caret line="401" column="33" selection-start-line="401" selection-start-column="29" selection-end-line="401" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="41" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameters.yml.dist" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,13 +135,15 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/links.html" />
         <option value="$PROJECT_DIR$/web/assets/views/partials/nav.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" />
-        <option value="$PROJECT_DIR$/web/assets/i18n/en.json" />
-        <option value="$PROJECT_DIR$/web/assets/i18n/fr.json" />
         <option value="$PROJECT_DIR$/web/assets/views/partials/settings.html" />
         <option value="$PROJECT_DIR$/web/assets/js/main.js" />
         <option value="$PROJECT_DIR$/web/assets/views/app.html" />
         <option value="$PROJECT_DIR$/web/assets/views/partials/top-navbar.html" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+        <option value="$PROJECT_DIR$/web/assets/i18n/en.json" />
+        <option value="$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/fr.json" />
+        <option value="$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/en.json" />
+        <option value="$PROJECT_DIR$/web/assets/i18n/fr.json" />
       </list>
     </option>
   </component>
@@ -232,11 +231,81 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="bundles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="ubidelectricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubidelectricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="i18n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,29 +327,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="i18n" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -398,22 +445,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21915585">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.5">
@@ -670,26 +701,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/i18n/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.090909">
-          <caret line="991" column="0" selection-start-line="991" selection-start-column="0" selection-end-line="991" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3636364">
           <caret line="963" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="991" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/i18n/fr.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-270.27274">
-          <caret line="991" column="0" selection-start-line="991" selection-start-column="0" selection-end-line="991" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -784,7 +799,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.515625">
           <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
           <folding />
         </state>
@@ -792,7 +807,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.328125">
           <caret line="14" column="41" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="41" />
           <folding />
         </state>
@@ -810,9 +825,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0234375">
-          <caret line="401" column="33" selection-start-line="401" selection-start-column="29" selection-end-line="401" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.28125">
+          <caret line="403" column="35" selection-start-line="403" selection-start-column="35" selection-end-line="403" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/i18n/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.916666">
+          <caret line="988" column="0" selection-start-line="988" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6363635">
+          <caret line="416" column="50" selection-start-line="416" selection-start-column="50" selection-end-line="416" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/ubidelectricity/js/i18n/fr.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27272728">
+          <caret line="411" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/i18n/fr.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94871795">
+          <caret line="988" column="0" selection-start-line="988" selection-start-column="0" selection-end-line="988" selection-end-column="0" />
+          <folding>
+            <marker date="1473970429728" expanded="true" signature="2860:3374" placeholder="{...}" />
+            <marker date="1473970429728" expanded="true" signature="2882:2998" placeholder="{&quot;MAIN&quot;: &quot;Messages&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="3022:3151" placeholder="{&quot;MAIN&quot;: &quot;Activities&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="3169:3368" placeholder="{&quot;PROFILE&quot;: &quot;My Profile&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="3391:3593" placeholder="{&quot;MAIN&quot;: &quot;Style Selector&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="3832:4004" placeholder="{&quot;ONLINE&quot;: &quot;On-Line&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4027:4070" placeholder="{&quot;MAIN&quot;: &quot;Favorites&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4092:4404" placeholder="{&quot;MAIN&quot;: &quot;General Settings&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4448:4590" placeholder="{&quot;NAVIGATION&quot;: &quot;Main Navigation&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4610:4660" placeholder="{&quot;PLACEHOLDER&quot;: &quot;Search...&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4677:5290" placeholder="{...}" />
+            <marker date="1473970429728" expanded="true" signature="4704:4755" placeholder="{&quot;MAIN&quot;: &quot;Dashboard&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4779:4828" placeholder="{&quot;MAIN&quot;: &quot;Lougout&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4853:4902" placeholder="{&quot;MAIN&quot;: &quot;Tenders&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="4928:4978" placeholder="{&quot;MAIN&quot;: &quot;Settings&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="5002:5050" placeholder="{&quot;MAIN&quot;: &quot;Access&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="5078:5130" placeholder="{&quot;MAIN&quot;: &quot;Statistics&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="5152:5198" placeholder="{&quot;MAIN&quot;: &quot;News&quot;...}" />
+            <marker date="1473970429728" expanded="true" signature="5227:5280" placeholder="{&quot;MAIN&quot;: &quot;Marketplace&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
