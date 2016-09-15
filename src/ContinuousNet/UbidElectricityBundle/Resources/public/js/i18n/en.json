@@ -66,23 +66,23 @@
         "WELCOME": "Welcome to [[appName]]"
     },
     "topbar": {
-        "messages": {
-            "MAIN": "Messages",
-            "HEADER": "Unread messages",
-            "SEEALL": "See All"
-        },
-        "activities": {
-            "MAIN": "Activities",
-            "HEADER": "You have new notifications",
-            "SEEALL": "See All"
-        },
-        "user": {
-            "PROFILE": "My Profile",
-            "CALENDAR": "My Calendar",
-            "MESSAGES": "My Messages",
-            "LOCKSCREEN": "Lock Screen",
-            "LOGOUT": "Log Out"
-        }
+      "messages": {
+        "MAIN": "Messages",
+        "HEADER": "Unread messages",
+        "SEEALL": "See All"
+      },
+      "activities": {
+        "MAIN": "Activities",
+        "HEADER": "You have new notifications",
+        "SEEALL": "See All"
+      },
+      "user": {
+        "PROFILE": "My Profile",
+        "CALENDAR": "My Calendar",
+        "MESSAGES": "My Messages",
+        "LOCKSCREEN": "Lock Screen",
+        "LOGOUT": "Log Out"
+      }
     },
     "setting": {
         "MAIN": "Style Selector",
@@ -101,60 +101,60 @@
     },
     "offsidebar": {
         "chat": {
-            "ONLINE": "On-Line",
-            "OFFLINE": "Off-Line",
-            "BACK": "Back",
-            "SEND": "Send",
-            "PLACEHOLDER": "Message"
-        },
-        "favorites": {
-            "MAIN": "Favorites"
-        },
-        "settings": {
-            "MAIN": "General Settings",
-            "NOTIFICATIONS": "Enable Notifications",
-            "SHOWEMAIL": "Show your E-mail",
-            "SHOWUSERS": "Show Offline Users",
-            "EMAILALERT": "E-mail Alerts",
-            "SMSALERT": "SMS Alerts",
-            "SAVE": "Save Changes"
-        }
+          "ONLINE": "On-Line",
+          "OFFLINE": "Off-Line",
+          "BACK": "Back",
+          "SEND": "Send",
+          "PLACEHOLDER": "Message"
+      },
+      "favorites": {
+        "MAIN": "Favorites"
+      },
+      "settings": {
+        "MAIN": "General Settings",
+        "NOTIFICATIONS": "Enable Notifications",
+        "SHOWEMAIL": "Show your E-mail",
+        "SHOWUSERS": "Show Offline Users",
+        "EMAILALERT": "E-mail Alerts",
+        "SMSALERT": "SMS Alerts",
+        "SAVE": "Save Changes"
+      }
     },
     "sidebar": {
-        "heading": {
-            "NAVIGATION": "Main Navigation",
-            "FEATURES": "Core Features",
-            "DOCUMENTATION": "Documentation"
+      "heading": {
+        "NAVIGATION": "Main Navigation",
+        "FEATURES": "Core Features",
+        "DOCUMENTATION": "Documentation"
+      },
+      "search": {
+        "PLACEHOLDER": "Search..."
+      },
+      "nav": {
+        "dashboard": {
+            "MAIN": "Dashboard"
         },
-        "search": {
-            "PLACEHOLDER": "Search..."
+        "logout": {
+            "MAIN": "Lougout"
         },
-        "nav": {
-            "dashboard": {
-                "MAIN": "Dashboard"
-            },
-            "logout": {
-                "MAIN": "Lougout"
-            },
-            "tenders": {
-                "MAIN": "Tenders"
-            },
-            "settings": {
-                "MAIN": "Settings"
-            },
-            "access": {
-                "MAIN": "Access"
-            },
-            "statistics": {
-                "MAIN": "Statistics"
-            },
-            "news": {
-                "MAIN": "News"
-            },
-            "marketplace": {
-                "MAIN": "Marketplace"
-            }
+        "tenders": {
+            "MAIN": "Tenders"
+        },
+        "settings": {
+            "MAIN": "Settings"
+        },
+        "access": {
+            "MAIN": "Access"
+        },
+        "statistics": {
+            "MAIN": "Statistics"
+        },
+        "news": {
+            "MAIN": "News"
+        },
+        "marketplace": {
+            "MAIN": "Marketplace"
         }
+      }
     },
     "formats": {
         "DATE": "MM/dd/yyyy",
@@ -173,7 +173,7 @@
         "TOTALPRICE" : "total to pay",
         "MONTHS" :{
             "SELECTMONTH": "Select a month",
-            "JANURAY": "January",
+           "JANURAY": "January",
             "FEBRUARY": "February",
             "MARCH": "March",
             "APRIL": "April",
@@ -205,7 +205,7 @@
             "QUANTITY": "Quantity"
         }
     },
-    "content": {
+   "content": {
         "common": {
             "YESUNSUBSCRIBE": "Unsubscribe",
             "CREATENEW": "Create New",
@@ -401,12 +401,10 @@
                 "SECTORREQUIRED": "The Sector is required",
                 "SELECTTENDERTYPE": "Select Tender Type",
                 "TENDERTYPEREQUIRED": "The Tender Type is required",
-                "ENTERBIDDINGTYPE": "Enter the Bidding Type",
+                "SELECTBIDDINGTYPE": "Select Bidding Type",
                 "BIDDINGTYPEREQUIRED": "The Bidding Type is required",
                 "ENTERREFERENCE": "Enter the Reference",
                 "REFERENCEREQUIRED": "The Reference is required",
-                "ENTERDETAILS": "Enter the Details",
-                "DETAILSREQUIRED": "The Details is required",
                 "SELECTDEADLINE": "Select Deadline",
                 "ENTERESTIMATEDCOST": "Enter the Estimated Cost",
                 "ENTERADDRESS": "Enter the Address",
@@ -869,7 +867,6 @@
                 "TENDERTYPE": "Tender Type",
                 "BIDDINGTYPE": "Bidding Type",
                 "REFERENCE": "Reference",
-                "DETAILS": "Details",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Estimated Cost",
                 "ADDRESS": "Address",

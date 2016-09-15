@@ -4,8 +4,8 @@
  * Controller for Tenders List
  */
 
-app.controller('TendersCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
+app.controller('TendersCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
+function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
 
     $scope.isFiltersVisible = false;
 
@@ -158,6 +158,36 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.getTenderTypes();
 
+    $scope.biddingTypes = [];
+    $scope.biddingTypesLoaded = false;
+
+    $scope.getBiddingTypes = function() {
+        $scope.biddingTypesLoaded = true;
+        if ($scope.biddingTypes.length == 0) {
+            $scope.biddingTypes.push({});
+            var def = $q.defer();
+            $biddingTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[biddingType.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.biddingTypes.length = 0;
+                        for (var i in data.results) {
+                            $scope.biddingTypes.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.biddingTypes);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.biddingTypes;
+        }
+    };
+
+    $scope.getBiddingTypes();
+
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -281,12 +311,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'country', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'tender.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_id_show_filed', true), displayField: 'name', state: 'app.settings.countriesdetails' },
             { field: 'sector', title: $filter('translate')('content.list.fields.SECTOR'), sortable: 'sector.name', filter: { 'tender.sector': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSectors(), show: $scope.getParamValue('sector_id_show_filed', true), displayField: 'name', state: 'app.tenders.sectorsdetails' },
             { field: 'tender_type', title: $filter('translate')('content.list.fields.TENDERTYPE'), sortable: 'tender_type.name', filter: { 'tender.tenderType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderTypes(), show: $scope.getParamValue('tender_type_id_show_filed', true), displayField: 'name', state: 'app.tenders.tendertypesdetails' },
-            { field: 'bidding_type', title: $filter('translate')('content.list.fields.BIDDINGTYPE'), sortable: 'tender.biddingType', filter: { 'tender.biddingType': 'number' }, show: $scope.getParamValue('bidding_type_show_filed', true), getValue: $scope.textValue },
+            { field: 'bidding_type', title: $filter('translate')('content.list.fields.BIDDINGTYPE'), sortable: 'bidding_type.name', filter: { 'tender.biddingType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBiddingTypes(), show: $scope.getParamValue('bidding_type_id_show_filed', true), displayField: 'name', state: 'app.tenders.biddingtypesdetails' },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tender.title', filter: { 'tender.title': 'text' }, show: $scope.getParamValue('title_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tender.slug', filter: { 'tender.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: $scope.getParamValue('reference_show_filed', false), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'tender.description', filter: { 'tender.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), getValue: $scope.textValue },
-            { field: 'details', title: $filter('translate')('content.list.fields.DETAILS'), sortable: 'tender.details', filter: { 'tender.details': 'text' }, show: $scope.getParamValue('details_show_filed', false), getValue: $scope.textValue },
             { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tender.status', filter: { 'tender.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statuses, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'publish_date', title: $filter('translate')('content.list.fields.PUBLISHDATE'), sortable: 'tender.publishDate', filter: { 'tender.publishDate': 'text' }, show: $scope.getParamValue('publish_date_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
             { field: 'deadline', title: $filter('translate')('content.list.fields.DEADLINE'), sortable: 'tender.deadline', filter: { 'tender.deadline': 'text' }, show: $scope.getParamValue('deadline_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},

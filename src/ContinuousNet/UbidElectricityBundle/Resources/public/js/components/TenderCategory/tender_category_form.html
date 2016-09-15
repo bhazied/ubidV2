@@ -1,0 +1,270 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TENDERCATEGORIES">Tender Categories</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TenderCategoryFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTENDERCATEGORY" ng-if="tenderCategory.id == 0">
+                        New Tender Category
+                    </legend>
+                    <legend translate="content.list.EDITTENDERCATEGORY" ng-if="tenderCategory.id > 0">
+                        Edit Tender Category
+                    </legend>
+                    <form name="tenderCategoryForm" id="tenderCategoryForm" novalidate ng-submit="submitForm(tenderCategoryForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="tenderCategoryId" ng-model="tenderCategory.id" />
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':tenderCategoryForm.name.$dirty && tenderCategoryForm.name.$invalid, 'has-success':tenderCategoryForm.name.$valid}">
+                                    <label for="tenderCategoryName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.name" type="text" name="name" id="tenderCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="tenderCategory.name" my-resource-url="tendercategories" my-current-id="[[ tenderCategory.id ]]" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.name.$dirty && tenderCategoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.name.$dirty && tenderCategoryForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="tenderCategoryForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.name_ar" type="text" name="nameAr" id="tenderCategoryNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.name_fr" type="text" name="nameFr" id="tenderCategoryNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="tenderCategory.name" to="tenderCategory.slug"></slug>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':tenderCategoryForm.slug.$dirty && tenderCategoryForm.slug.$invalid, 'has-success':tenderCategoryForm.slug.$valid}">
+                                    <label for="tenderCategorySlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.slug" type="text" name="slug" id="tenderCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.slug.$dirty && tenderCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="tenderCategoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="tenderCategory.name_ar" to="tenderCategory.slug_ar"></slug>
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategorySlugAr" class="control-label">
+                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.slug_ar" type="text" name="slugAr" id="tenderCategorySlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="tenderCategory.name_fr" to="tenderCategory.slug_fr"></slug>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategorySlugFr" class="control-label">
+                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.slug_fr" type="text" name="slugFr" id="tenderCategorySlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryPicture" class="control-label">
+                                        <span translate="content.list.fields.PICTURE">Picture</span>
+                                    </label>
+                                    <div class="input-group">
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.picture" type="text" name="picture" id="tenderCategoryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <i class="ti-image"></i>
+                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tenderCategory.picture != '' && tenderCategory.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tenderCategory.picture ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tenderCategory.picture = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':tenderCategoryForm.description.$dirty && tenderCategoryForm.description.$invalid, 'has-success':tenderCategoryForm.description.$valid}">
+                                    <label for="tenderCategoryDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.description" type="text" name="description" id="tenderCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="true" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.description.$dirty && tenderCategoryForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
+                                    <span class="success text-small block" ng-if="tenderCategoryForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryDescriptionAr" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.description_ar" type="text" name="descriptionAr" id="tenderCategoryDescriptionAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryDescriptionFr" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.description_fr" type="text" name="descriptionFr" id="tenderCategoryDescriptionFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryParent" class="control-label">
+                                        <span translate="content.list.fields.PARENT">Parent</span>
+                                    </label>
+                                <div class="block" ng-if="parentsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="tenderCategory.parent" name="parent" id="tenderCategoryParent" class="form-control" ng-required="false">
+                                            <option translate="content.form.messages.SELECTPARENT" value="">Select Parent</option>
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':tenderCategoryForm.productType.$dirty && tenderCategoryForm.productType.$invalid, 'has-success':tenderCategoryForm.productType.$valid}">
+                                    <label for="tenderCategoryProductType" class="control-label">
+                                        <span translate="content.list.fields.PRODUCTTYPE">Product Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block" ng-if="productTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="tenderCategory.product_type" name="productType" id="tenderCategoryProductType" class="form-control" ng-required="true">
+                                            <option translate="content.form.messages.SELECTPRODUCTTYPE" value="">Select Product Type</option>
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.productType.$dirty && tenderCategoryForm.productType.$error.required" translate="content.form.messages.PRODUCTTYPEREQUIRED">Product Type is required.</span>
+                                    <span class="success text-small block" ng-if="tenderCategoryForm.productType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tenderCategoryOrdering" class="control-label">
+                                        <span translate="content.list.fields.ORDERING">Ordering</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tenderCategory.ordering" type="text" name="ordering" id="tenderCategoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':tenderCategoryForm.status.$dirty && tenderCategoryForm.status.$invalid, 'has-success':tenderCategoryForm.status.$valid}">
+                                    <label for="tenderCategoryStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="tenderCategory.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="tenderCategory.status" name="status" id="tenderCategoryStatus" class="form-control" ng-required="true">
+                                            <option translate="content.form.messages.SELECTSTATUS" value="">Select Status</option>
+                                        </select>
+                                        <span my-enum="[[ tenderCategory.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="tenderCategoryForm.status.$dirty && tenderCategoryForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="tenderCategoryForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERCATEGORIES">Back to Tender Categories list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(tenderCategoryForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderCategoryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="tenderCategories.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

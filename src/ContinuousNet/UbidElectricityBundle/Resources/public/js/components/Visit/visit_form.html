@@ -1,0 +1,91 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.VISITS">Visits</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="VisitFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWVISIT" ng-if="visit.id == 0">
+                        New Visit
+                    </legend>
+                    <legend translate="content.list.EDITVISIT" ng-if="visit.id > 0">
+                        Edit Visit
+                    </legend>
+                    <form name="visitForm" id="visitForm" novalidate ng-submit="submitForm(visitForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="visitId" ng-model="visit.id" />
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':visitForm.ip.$dirty && visitForm.ip.$invalid, 'has-success':visitForm.ip.$valid}">
+                                    <label for="visitIp" class="control-label">
+                                        <span translate="content.list.fields.IP">Ip</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="visit.ip" type="text" name="ip" id="visitIp" class="form-control" placeholder="[[ 'content.form.messages.ENTERIP' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="visitForm.ip.$dirty && visitForm.ip.$error.required" translate="content.form.messages.IPREQUIRED">Ip is required.</span>
+                                    <span class="success text-small block" ng-if="visitForm.ip.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="visit.is_valid" type="checkbox" name="isValid" id="visitIsValid" />
+                                    <label for="visitIsValid" translate="content.list.fields.ISVALID">Is Valid</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':visitForm.userAgent.$dirty && visitForm.userAgent.$invalid, 'has-success':visitForm.userAgent.$valid}">
+                                    <label for="visitUserAgent" class="control-label">
+                                        <span translate="content.list.fields.USERAGENT">User Agent</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-model="visit.user_agent" name="userAgent" id="visitUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="visitForm.userAgent.$dirty && visitForm.userAgent.$error.required" translate="content.form.messages.USERAGENTREQUIRED">User Agent is required.</span>
+                                    <span class="success text-small block" ng-if="visitForm.userAgent.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKVISITS">Back to Visits list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(visitForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="visitForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="visits.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

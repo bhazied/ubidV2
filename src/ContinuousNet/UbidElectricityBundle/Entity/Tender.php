@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="bidding_type_id", columns={"bidding_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -51,17 +51,6 @@ class Tender
      * 
      */
     private $id;
-
-    /**
-     * @var integer
-     * @access private
-     *
-     * @ORM\Column(name="bidding_type", type="integer", nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $biddingType;
 
     /**
      * @var string
@@ -106,17 +95,6 @@ class Tender
      * 
      */
     private $description;
-
-    /**
-     * @var array
-     * @access private
-     *
-     * @ORM\Column(name="details", type="array", nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $details;
 
     /**
      * @var string
@@ -333,6 +311,21 @@ class Tender
     private $tenderType;
 
     /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\BiddingType
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="BiddingType")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="bidding_type_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $biddingType;
+
+    /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
      * @access private
      *
@@ -401,30 +394,6 @@ class Tender
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set biddingType
-     *
-     * @access public
-     * @param integer $biddingType
-     * @return Tender
-     */
-    public function setBiddingType($biddingType)
-    {
-        $this->biddingType = $biddingType;
-        return $this;
-    }
-
-    /**
-     * Get biddingType
-     *
-     * @access public
-     * @return integer 
-     */
-    public function getBiddingType()
-    {
-        return $this->biddingType;
     }
 
     /**
@@ -521,30 +490,6 @@ class Tender
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set details
-     *
-     * @access public
-     * @param array $details
-     * @return Tender
-     */
-    public function setDetails(array $details)
-    {
-        $this->details = $details;
-        return $this;
-    }
-
-    /**
-     * Get details
-     *
-     * @access public
-     * @return array 
-     */
-    public function getDetails()
-    {
-        return $this->details;
     }
 
     /**
@@ -977,6 +922,30 @@ class Tender
     public function getTenderType()
     {
         return $this->tenderType;
+    }
+
+    /**
+     * Set biddingType
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\BiddingType $biddingType
+     * @return Tender
+     */
+    public function setBiddingType(BiddingType $biddingType = null)
+    {
+        $this->biddingType = $biddingType;
+        return $this;
+    }
+
+    /**
+     * Get biddingType
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\BiddingType 
+     */
+    public function getBiddingType()
+    {
+        return $this->biddingType;
     }
 
     /**

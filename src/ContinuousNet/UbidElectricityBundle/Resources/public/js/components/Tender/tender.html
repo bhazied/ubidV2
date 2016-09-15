@@ -1,0 +1,198 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TENDERS">Tenders</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TenderCtrl">
+            <div>
+                <div class="row margin-bottom-10">
+                    <div class="col-md-4">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" ng-click="add()" class="btn btn-primary">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDTENDER">Add Tender</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" ng-click="edit(tender)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITTENDER">Edit Tender</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.TENDERDETAILS">Tender Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REGION">Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: tender.region.id})">[[ tender.region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.COUNTRY">Country</span></td>
+                                <td><a ui-sref="app.settings.countriesdetails({id: tender.country.id})">[[ tender.country.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECTOR">Sector</span></td>
+                                <td><a ui-sref="app.tenders.sectorsdetails({id: tender.sector.id})">[[ tender.sector.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDERTYPE">Tender Type</span></td>
+                                <td><a ui-sref="app.tenders.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span></td>
+                                <td><a ui-sref="app.tenders.biddingtypesdetails({id: tender.bidding_type.id})">[[ tender.bidding_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLE">Title</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.slug"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.reference"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ tender.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PUBLISHDATE">Publish Date</span></td>
+                                <td>
+                                    <span>[[ tender.publish_date | date: dateFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEADLINE">Deadline</span></td>
+                                <td>
+                                    <span>[[ tender.deadline | date: dateFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ESTIMATEDCOST">Estimated Cost</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.estimated_cost"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ADDRESS">Address</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.address"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.EMAIL">Email</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.email"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PHONE">Phone</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.phone"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.attachment_file1"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.attachment_file2"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.attachment_file3"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.attachment_file4"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SOURCE">Source</span></td>
+                                <td>
+                                    <div ng-bind-html="tender.source"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ tender.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: tender.creator_user.id})">[[ tender.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ tender.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDERCATEGORIES">Tender Categories</span></td>
+                                <td>
+                                    <a ng-repeat="tenderCategory in tender.tender_categories" ui-sref="app.tenders.tendercategoriesdetails({id: tenderCategory.id})">[[ tenderCategory.name ]]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

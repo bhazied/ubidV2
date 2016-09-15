@@ -1,0 +1,80 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.USERSETTINGS">User Settings</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="UserSettingFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWUSERSETTING" ng-if="userSetting.id == 0">
+                        New User Setting
+                    </legend>
+                    <legend translate="content.list.EDITUSERSETTING" ng-if="userSetting.id > 0">
+                        Edit User Setting
+                    </legend>
+                    <form name="userSettingForm" id="userSettingForm" novalidate ng-submit="submitForm(userSettingForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="userSettingId" ng-model="userSetting.id" />
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':userSettingForm.key.$dirty && userSettingForm.key.$invalid, 'has-success':userSettingForm.key.$valid}">
+                                    <label for="userSettingKey" class="control-label">
+                                        <span translate="content.list.fields.KEY">Key</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="userSetting.key" type="text" name="key" id="userSettingKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERKEY' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="userSettingForm.key.$dirty && userSettingForm.key.$error.required" translate="content.form.messages.KEYREQUIRED">Key is required.</span>
+                                    <span class="success text-small block" ng-if="userSettingForm.key.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+                                <div class="form-group" ng-class="{'has-error':userSettingForm.value.$dirty && userSettingForm.value.$invalid, 'has-success':userSettingForm.value.$valid}">
+                                    <label for="userSettingValue" class="control-label">
+                                        <span translate="content.list.fields.VALUE">Value</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="userSetting.value" name="value" id="userSettingValue" class="form-control" placeholder="[[ 'content.form.messages.ENTERVALUE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></div>
+                                    </div>
+                                    <span class="error text-small block" ng-if="userSettingForm.value.$dirty && userSettingForm.value.$error.required" translate="content.form.messages.VALUEREQUIRED">Value is required.</span>
+                                    <span class="success text-small block" ng-if="userSettingForm.value.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKUSERSETTINGS">Back to User Settings list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(userSettingForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userSettingForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="userSettings.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

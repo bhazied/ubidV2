@@ -777,7 +777,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.TENDERS'
         },
-        resolve: loadSequence('ngTable', 'TendersCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ngTable', 'TendersCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersnew', {
         url: '/tenders/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -785,7 +785,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.NEWTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersedit', {
         url: '/tenders/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -793,7 +793,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersdetails', {
         url: '/tenders/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender.html',

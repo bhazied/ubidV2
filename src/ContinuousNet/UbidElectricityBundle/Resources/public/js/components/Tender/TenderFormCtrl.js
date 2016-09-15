@@ -4,8 +4,8 @@
  * Controller for Tender Form
  */
 
-app.controller('TenderFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
+app.controller('TenderFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -174,6 +174,31 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.getTenderTypes();
+
+    $scope.biddingTypes = [];
+    $scope.biddingTypesLoaded = false;
+
+    $scope.getBiddingTypes = function() {
+        $timeout(function(){
+            $scope.biddingTypesLoaded = true;
+            if ($scope.biddingTypes.length == 0) {
+                $scope.biddingTypes.push({});
+                var def = $q.defer();
+                $biddingTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[biddingType.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.biddingTypes = data.results;
+                    def.resolve($scope.biddingTypes);
+                });
+                return def;
+            } else {
+                return $scope.biddingTypes;
+            }
+        });
+    };
+
+    $scope.getBiddingTypes();
 
     $scope.users = [];
     $scope.usersLoaded = false;
