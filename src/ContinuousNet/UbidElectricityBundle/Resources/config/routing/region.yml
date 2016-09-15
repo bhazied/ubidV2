@@ -1,0 +1,30 @@
+region:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Region:index" }
+
+region_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Region:show" }
+
+region_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Region:new" }
+
+region_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Region:create" }
+    methods:  POST
+
+region_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Region:edit" }
+
+region_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Region:update" }
+    methods:  [POST, PUT]
+
+region_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Region:delete" }
+    methods:  [POST, DELETE]

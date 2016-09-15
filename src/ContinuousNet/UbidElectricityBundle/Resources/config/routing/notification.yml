@@ -1,0 +1,30 @@
+notification:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Notification:index" }
+
+notification_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Notification:show" }
+
+notification_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Notification:new" }
+
+notification_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Notification:create" }
+    methods:  POST
+
+notification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Notification:edit" }
+
+notification_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Notification:update" }
+    methods:  [POST, PUT]
+
+notification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Notification:delete" }
+    methods:  [POST, DELETE]

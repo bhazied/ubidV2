@@ -1,0 +1,30 @@
+menulink:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:index" }
+
+menulink_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:show" }
+
+menulink_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:new" }
+
+menulink_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:create" }
+    methods:  POST
+
+menulink_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:edit" }
+
+menulink_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:update" }
+    methods:  [POST, PUT]
+
+menulink_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:MenuLink:delete" }
+    methods:  [POST, DELETE]

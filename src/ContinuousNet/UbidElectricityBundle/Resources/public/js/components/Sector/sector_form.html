@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.SECTORS">Sectors</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="SectorFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWSECTOR" ng-if="sector.id == 0">
+                        New Sector
+                    </legend>
+                    <legend translate="content.list.EDITSECTOR" ng-if="sector.id > 0">
+                        Edit Sector
+                    </legend>
+                    <form name="sectorForm" id="sectorForm" novalidate ng-submit="submitForm(sectorForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="sectorId" ng-model="sector.id" />
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':sectorForm.name.$dirty && sectorForm.name.$invalid, 'has-success':sectorForm.name.$valid}">
+                                    <label for="sectorName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.name" type="text" name="name" id="sectorName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="sector.name" my-resource-url="sectors" my-current-id="[[ sector.id ]]" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="sectorForm.name.$dirty && sectorForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="error text-small block" ng-if="sectorForm.name.$dirty && sectorForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="sectorForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sectorNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.name_ar" type="text" name="nameAr" id="sectorNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sectorNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.name_fr" type="text" name="nameFr" id="sectorNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="sector.name" to="sector.slug"></slug>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':sectorForm.slug.$dirty && sectorForm.slug.$invalid, 'has-success':sectorForm.slug.$valid}">
+                                    <label for="sectorSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.slug" type="text" name="slug" id="sectorSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="sectorForm.slug.$dirty && sectorForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="sectorForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="sector.name_ar" to="sector.slug_ar"></slug>
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sectorSlugAr" class="control-label">
+                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.slug_ar" type="text" name="slugAr" id="sectorSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="sector.name_fr" to="sector.slug_fr"></slug>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sectorSlugFr" class="control-label">
+                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="sector.slug_fr" type="text" name="slugFr" id="sectorSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="sector.published" type="checkbox" name="published" id="sectorPublished" />
+                                    <label for="sectorPublished" translate="content.list.fields.PUBLISHED">Published</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSECTORS">Back to Sectors list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(sectorForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="sectorForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="sectors.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

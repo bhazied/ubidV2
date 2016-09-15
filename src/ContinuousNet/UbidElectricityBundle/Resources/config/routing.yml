@@ -1,0 +1,206 @@
+
+ubid_electricity:
+    resource: "@UbidElectricityBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+
+thumb:
+    resource: "@UbidElectricityBundle/Controller/ThumbController.php"
+    type:     annotation
+    prefix:   /
+
+api_login_check:
+    path: /api/login_check
+
+api_login_check_lang:
+    path: /{_locale}/api/login_check
+    requirements:
+        _locale: en|fr|ar
+
+ubid_electricity_v1_api:
+    resource: "@UbidElectricityBundle/Controller/ApiV1RESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api/v1
+    requirements:
+        _locale: en|fr|ar
+
+ubid_electricity_country_api:
+    resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_group_api:
+    resource: "@UbidElectricityBundle/Controller/GroupRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_language_api:
+    resource: "@UbidElectricityBundle/Controller/LanguageRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_log_api:
+    resource: "@UbidElectricityBundle/Controller/LogRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_menu_api:
+    resource: "@UbidElectricityBundle/Controller/MenuRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_menu_link_api:
+    resource: "@UbidElectricityBundle/Controller/MenuLinkRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_notification_api:
+    resource: "@UbidElectricityBundle/Controller/NotificationRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_post_api:
+    resource: "@UbidElectricityBundle/Controller/PostRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_post_category_api:
+    resource: "@UbidElectricityBundle/Controller/PostCategoryRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_post_type_api:
+    resource: "@UbidElectricityBundle/Controller/PostTypeRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_product_type_api:
+    resource: "@UbidElectricityBundle/Controller/ProductTypeRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_region_api:
+    resource: "@UbidElectricityBundle/Controller/RegionRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_sector_api:
+    resource: "@UbidElectricityBundle/Controller/SectorRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_tender_api:
+    resource: "@UbidElectricityBundle/Controller/TenderRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_tender_category_api:
+    resource: "@UbidElectricityBundle/Controller/TenderCategoryRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_tender_product_api:
+    resource: "@UbidElectricityBundle/Controller/TenderProductRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_tender_type_api:
+    resource: "@UbidElectricityBundle/Controller/TenderTypeRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_user_api:
+    resource: "@UbidElectricityBundle/Controller/UserRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_user_setting_api:
+    resource: "@UbidElectricityBundle/Controller/UserSettingRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_visit_api:
+    resource: "@UbidElectricityBundle/Controller/VisitRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_country:
+    resource: "@UbidElectricityBundle/Resources/config/routing/country.yml"
+    prefix:   /country
+
+ubid_electricity_group:
+    resource: "@UbidElectricityBundle/Resources/config/routing/group.yml"
+    prefix:   /group
+
+ubid_electricity_language:
+    resource: "@UbidElectricityBundle/Resources/config/routing/language.yml"
+    prefix:   /language
+
+ubid_electricity_log:
+    resource: "@UbidElectricityBundle/Resources/config/routing/log.yml"
+    prefix:   /log
+
+ubid_electricity_menu:
+    resource: "@UbidElectricityBundle/Resources/config/routing/menu.yml"
+    prefix:   /menu
+
+ubid_electricity_menu_link:
+    resource: "@UbidElectricityBundle/Resources/config/routing/menu_link.yml"
+    prefix:   /menu-link
+
+ubid_electricity_notification:
+    resource: "@UbidElectricityBundle/Resources/config/routing/notification.yml"
+    prefix:   /notification
+
+ubid_electricity_post:
+    resource: "@UbidElectricityBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+ubid_electricity_post_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/post_category.yml"
+    prefix:   /post-category
+
+ubid_electricity_post_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/post_type.yml"
+    prefix:   /post-type
+
+ubid_electricity_product_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/product_type.yml"
+    prefix:   /product-type
+
+ubid_electricity_region:
+    resource: "@UbidElectricityBundle/Resources/config/routing/region.yml"
+    prefix:   /region
+
+ubid_electricity_sector:
+    resource: "@UbidElectricityBundle/Resources/config/routing/sector.yml"
+    prefix:   /sector
+
+ubid_electricity_tender:
+    resource: "@UbidElectricityBundle/Resources/config/routing/tender.yml"
+    prefix:   /tender
+
+ubid_electricity_tender_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/tender_category.yml"
+    prefix:   /tender-category
+
+ubid_electricity_tender_product:
+    resource: "@UbidElectricityBundle/Resources/config/routing/tender_product.yml"
+    prefix:   /tender-product
+
+ubid_electricity_tender_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/tender_type.yml"
+    prefix:   /tender-type
+
+ubid_electricity_user:
+    resource: "@UbidElectricityBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+ubid_electricity_user_setting:
+    resource: "@UbidElectricityBundle/Resources/config/routing/user_setting.yml"
+    prefix:   /user-setting
+
+ubid_electricity_visit:
+    resource: "@UbidElectricityBundle/Resources/config/routing/visit.yml"
+    prefix:   /visit
+

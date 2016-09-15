@@ -1,0 +1,172 @@
+<ul>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.settings')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="settings"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.settings.MAIN">Settings</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.languages')}">
+                <a ui-sref="app.settings.languages">
+                    <span class="title" translate="content.list.LANGUAGES">Languages</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.countries')}">
+                <a ui-sref="app.settings.countries">
+                    <span class="title" translate="content.list.COUNTRIES">Countries</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.sectors')}">
+                <a ui-sref="app.settings.sectors">
+                    <span class="title" translate="content.list.SECTORS">Sectors</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.regions')}">
+                <a ui-sref="app.settings.regions">
+                    <span class="title" translate="content.list.REGIONS">Regions</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.menus')}">
+                <a ui-sref="app.settings.menus">
+                    <span class="title" translate="content.list.MENUS">Menus</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.menulinks')}">
+                <a ui-sref="app.settings.menulinks">
+                    <span class="title" translate="content.list.MENULINKS">Menu Links</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.access')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="access"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.access.MAIN">Access</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.access.notifications')}">
+                <a ui-sref="app.access.notifications">
+                    <span class="title" translate="content.list.NOTIFICATIONS">Notifications</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.users')}">
+                <a ui-sref="app.access.users">
+                    <span class="title" translate="content.list.USERS">Users</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.groups')}">
+                <a ui-sref="app.access.groups">
+                    <span class="title" translate="content.list.GROUPS">Groups</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.logs')}">
+                <a ui-sref="app.access.logs">
+                    <span class="title" translate="content.list.LOGS">Logs</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.usersettings')}">
+                <a ui-sref="app.access.usersettings">
+                    <span class="title" translate="content.list.USERSETTINGS">User Settings</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.news')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="news"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.news.MAIN">News</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.posts')}">
+                <a ui-sref="app.news.posts">
+                    <span class="title" translate="content.list.POSTS">Posts</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.postcategories')}">
+                <a ui-sref="app.news.postcategories">
+                    <span class="title" translate="content.list.POSTCATEGORIES">Post Categories</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.posttypes')}">
+                <a ui-sref="app.news.posttypes">
+                    <span class="title" translate="content.list.POSTTYPES">Post Types</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.tenders')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="tenders"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.tenders.MAIN">Tenders</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tenders')}">
+                <a ui-sref="app.tenders.tenders">
+                    <span class="title" translate="content.list.TENDERS">Tenders</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tenderproducts')}">
+                <a ui-sref="app.tenders.tenderproducts">
+                    <span class="title" translate="content.list.TENDERPRODUCTS">Tender Products</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tendercategories')}">
+                <a ui-sref="app.tenders.tendercategories">
+                    <span class="title" translate="content.list.TENDERCATEGORIES">Tender Categories</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.producttypes')}">
+                <a ui-sref="app.tenders.producttypes">
+                    <span class="title" translate="content.list.PRODUCTTYPES">Product Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tendertypes')}">
+                <a ui-sref="app.tenders.tendertypes">
+                    <span class="title" translate="content.list.TENDERTYPES">Tender Types</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.statistics')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="statistics"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.statistics.MAIN">Statistics</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.statistics.visits')}">
+                <a ui-sref="app.statistics.visits">
+                    <span class="title" translate="content.list.VISITS">Visits</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

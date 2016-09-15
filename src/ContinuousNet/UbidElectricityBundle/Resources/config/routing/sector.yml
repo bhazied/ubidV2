@@ -1,0 +1,30 @@
+sector:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Sector:index" }
+
+sector_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Sector:show" }
+
+sector_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Sector:new" }
+
+sector_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Sector:create" }
+    methods:  POST
+
+sector_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Sector:edit" }
+
+sector_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Sector:update" }
+    methods:  [POST, PUT]
+
+sector_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Sector:delete" }
+    methods:  [POST, DELETE]

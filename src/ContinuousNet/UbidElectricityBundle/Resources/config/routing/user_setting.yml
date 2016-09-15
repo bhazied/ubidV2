@@ -1,0 +1,30 @@
+usersetting:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:index" }
+
+usersetting_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:show" }
+
+usersetting_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:new" }
+
+usersetting_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:create" }
+    methods:  POST
+
+usersetting_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:edit" }
+
+usersetting_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:update" }
+    methods:  [POST, PUT]
+
+usersetting_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:UserSetting:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,30 @@
+tenderproduct:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:index" }
+
+tenderproduct_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:show" }
+
+tenderproduct_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:new" }
+
+tenderproduct_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:create" }
+    methods:  POST
+
+tenderproduct_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:edit" }
+
+tenderproduct_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:update" }
+    methods:  [POST, PUT]
+
+tenderproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TenderProduct:delete" }
+    methods:  [POST, DELETE]

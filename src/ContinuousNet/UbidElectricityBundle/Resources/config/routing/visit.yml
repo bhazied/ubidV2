@@ -1,0 +1,30 @@
+visit:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Visit:index" }
+
+visit_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Visit:show" }
+
+visit_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Visit:new" }
+
+visit_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Visit:create" }
+    methods:  POST
+
+visit_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Visit:edit" }
+
+visit_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Visit:update" }
+    methods:  [POST, PUT]
+
+visit_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Visit:delete" }
+    methods:  [POST, DELETE]
