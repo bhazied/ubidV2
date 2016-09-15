@@ -97,7 +97,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.settings.sectors');
+        $state.go('app.tenders.sectors');
     };
     
     if (angular.isDefined($stateParams.id)) {

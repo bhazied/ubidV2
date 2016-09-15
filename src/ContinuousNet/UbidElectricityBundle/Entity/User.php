@@ -180,17 +180,6 @@ class User  extends BaseUser
     protected $lastName;
 
     /**
-     * @var \DateTime
-     * @access protected
-     *
-     * @ORM\Column(name="birth_date", type="date", nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    protected $birthDate;
-
-    /**
      * @var string
      * @access protected
      *
@@ -244,17 +233,6 @@ class User  extends BaseUser
      * 
      */
     protected $job;
-
-    /**
-     * @var string
-     * @access protected
-     *
-     * @ORM\Column(name="facebook_key", type="string", length=255, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    protected $facebookKey;
 
     /**
      * @var string
@@ -898,30 +876,6 @@ class User  extends BaseUser
     }
 
     /**
-     * Set birthDate
-     *
-     * @access public
-     * @param \DateTime $birthDate
-     * @return User
-     */
-    public function setBirthDate(\DateTime $birthDate = null)
-    {
-        $this->birthDate = $birthDate;
-        return $this;
-    }
-
-    /**
-     * Get birthDate
-     *
-     * @access public
-     * @return \DateTime 
-     */
-    public function getBirthDate()
-    {
-        return $this->birthDate;
-    }
-
-    /**
      * Set picture
      *
      * @access public
@@ -1039,30 +993,6 @@ class User  extends BaseUser
     public function getJob()
     {
         return $this->job;
-    }
-
-    /**
-     * Set facebookKey
-     *
-     * @access public
-     * @param string $facebookKey
-     * @return User
-     */
-    public function setFacebookKey($facebookKey = null)
-    {
-        $this->facebookKey = $facebookKey;
-        return $this;
-    }
-
-    /**
-     * Get facebookKey
-     *
-     * @access public
-     * @return string 
-     */
-    public function getFacebookKey()
-    {
-        return $this->facebookKey;
     }
 
     /**

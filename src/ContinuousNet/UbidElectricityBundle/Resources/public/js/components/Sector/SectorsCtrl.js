@@ -212,15 +212,15 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     };
 
     $scope.add = function() {
-        $state.go('app.settings.sectorsnew');
+        $state.go('app.tenders.sectorsnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.settings.sectorsedit', {id: row.id});
+        $state.go('app.tenders.sectorsedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.settings.sectorsdetails', {id: row.id});
+        $state.go('app.tenders.sectorsdetails', {id: row.id});
     };
 }]);
 

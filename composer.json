@@ -33,6 +33,7 @@
         "helios-ag/fm-elfinder-bundle": "^6.0",
         "studio-42/elfinder": "2.1.x@dev",
         "symfony/translation": "^3.0",
+        "liip/imagine-bundle": "^1.5",
         "sensio/framework-extra-bundle": "3.0.12"
     },
     "require-dev": {

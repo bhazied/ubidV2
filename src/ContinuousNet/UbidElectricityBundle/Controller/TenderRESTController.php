@@ -89,7 +89,7 @@ class TenderRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderType', 'tender_type', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.tenderType = tender_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.modifierUser = modifier_user.id');
-            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.details');
+            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.details', 'tender.address', 'tender.email', 'tender.phone', 'tender.attachmentFile1', 'tender.attachmentFile2', 'tender.attachmentFile3', 'tender.attachmentFile4', 'tender.source');
             foreach ($filters as $field => $value) {
                 $_field = str_replace('tender.', 't_.', $field);
                 $key = str_replace('.', '', $field);

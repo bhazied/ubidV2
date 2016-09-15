@@ -48,6 +48,7 @@ class TenderType extends AbstractType
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('sector', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Sector', 'choice_label' => 'name'))
             ->add('tenderType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:TenderType', 'choice_label' => 'name'))
+            ->add('biddingType', IntegerType::class)
             ->add('title', TextType::class)
             ->add('slug', TextType::class)
             ->add('reference', TextType::class)
@@ -57,6 +58,14 @@ class TenderType extends AbstractType
             ->add('publishDate', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
             ->add('deadline', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
             ->add('estimatedCost', TextType::class)
+            ->add('address', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('phone', TextType::class)
+            ->add('attachmentFile1', TextType::class)
+            ->add('attachmentFile2', TextType::class)
+            ->add('attachmentFile3', TextType::class)
+            ->add('attachmentFile4', TextType::class)
+            ->add('source', TextType::class)
             ->add('tenderCategories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:TenderCategory', 'choice_label' => 'name'))
         ;
     }

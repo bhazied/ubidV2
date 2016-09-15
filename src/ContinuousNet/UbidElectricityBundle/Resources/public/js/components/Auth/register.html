@@ -1,0 +1,429 @@
+<!-- start: REGISTRATION -->
+<div class="row">
+	<div class="main-login col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+		<div class="logo text-center">
+			<img src="/assets/images/big_logo.png" alt="[[app.name]]"/><!-- ng-src="[[app.layout.logo]]" -->
+		</div>
+			<!-- start: REGISTER WIZARD -->
+			<div class="container-fluid container-fullw bg-white">
+				<div class="row">
+					<div class="col-md-12">
+						<h5 class="over-title margin-bottom-15"><span translate="register.WELCOME">Welcome to</span>  <span class="text-bold" translate="register.UBIDELECTRICITY">Sport Club's</span> <span translate="register.COMMUNITY">Community</span></h5>
+						<p>
+							<span translate="register.3STEPS">Access all features of your Ubid Electricity in 3 quick and easy steps.</span>
+                            <span translate="register.ALREADYHAVEANACCOUNT">Already have an account?</span>
+                            <a ui-sref="auth.login" translate="register.LOGIN">Log-In</a>
+                        </p>
+						<div ng-controller="RegisterCtrl">
+							<!-- start: WIZARD FORM -->
+							<form name="Form" id="form" novalidate>
+								<div id="wizard" class="swMain">
+									<!-- start: WIZARD SEPS -->
+									<ul>
+										<li ng-click="form.goTo(Form, 1)">
+											<a href ng-class="{'selected' : currentStep >= 1, 'done' : currentStep > 1}">
+												<div class="stepNumber">
+													1
+												</div>
+												<span class="stepDesc text-small" translate="register.LICENCEKEY"> Licence Key </span>
+											</a>
+										</li>
+										<li ng-click="form.goTo(Form, 2)">
+											<a href ng-class="{'selected' : currentStep >= 2, 'done' : currentStep > 2}">
+												<div class="stepNumber">
+													2
+												</div>
+												<span class="stepDesc text-small" translate="register.PERSONALINFORMATION"> Personal Information </span>
+											</a>
+										</li>
+										<li ng-click="form.goTo(Form, 3)">
+											<a href ng-class="{'selected' : currentStep >= 3, 'done' : currentStep > 3}">
+												<div class="stepNumber">
+													3
+												</div>
+												<span class="stepDesc text-small" translate="register.CREATEANACCOUNT"> Create an account </span>
+											</a>
+										</li>
+										<li ng-click="form.goTo(Form, 4)">
+											<a href ng-class="{'selected' : currentStep >= 4, 'done' : currentStep > 4}">
+												<div class="stepNumber">
+													4
+												</div>
+												<span class="stepDesc text-small" translate="register.COMPLETE"> Complete </span>
+											</a>
+										</li>
+									</ul>
+									<!-- end: WIZARD SEPS -->
+									<!-- start: WIZARD STEP 1 -->
+                                    <div id="step-1" ng-show="currentStep == 1">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="padding-30">
+                                                    <h2 class="StepTitle">
+                                                        <i class="ti-key fa-2x text-primary block margin-bottom-10"></i>
+                                                        <span translate="register.ENTERYOURLICENCEKEY">Enter your licence key</span>
+                                                    </h2>
+                                                    <p translate="register.LICENCEKEYDESCRIPTION">
+                                                        A 32-character alphanumeric string shown in five groups of five characters each, separated by hyphens, that you need to activate or renew your subscription.  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                                                    </p>
+                                                    <p class="text-small">
+                                                        <span  translate="register.PLEASECONTACTOURSALESSUPPORT">Please contact our sales support</span> <a href="mailto:contact@continuousnet.com" target="_blank">contact@continuousnet.com</a>.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <fieldset>
+                                                    <legend translate="register.LICENCEKEY">
+                                                        Licence Key
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group" ng-class="{'has-error':Form.licence.$dirty && Form.licence.$invalid, 'has-success':Form.licence.$valid}">
+                                                                <label class="control-label">
+                                                                    <span translate="content.list.fields.KEY">Key</span> <span class="symbol required"></span>
+                                                                </label>
+                                                                <div class="input-group">
+                                                                    <input type="text" placeholder="[[ 'content.form.messages.ENTERKEY' | translate ]]" class="form-control" name="licence" ng-model="user.licence" licence-validator ng-required="currentStep == 1"/>
+                                                                    <span class="input-group-addon">
+                                                                        <i ng-class="{'fa fa-key': !Form.licence.$pending, 'fa fa-spinner fa-spin': Form.licence.$pending} "></i>
+                                                                    </span>
+                                                                </div>
+                                                                <span class="error text-small block" ng-if="Form.licence.$dirty && Form.licence.$invalid && !Form.licence.$error.licenceValidator" translate="content.form.messages.KEYREQUIRED">Licence key is required</span>
+                                                                <span class="error text-small block" ng-if="Form.licence.$dirty && Form.licence.$error.licenceValidator" translate="content.form.messages.INVALIDELICENCEKEY">Invalid or already used licence key</span>
+                                                                <span class="success text-small" ng-if="Form.licence.$valid" translate="content.form.messages.VALIDELICENCEKEY">Valid licence key</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary btn-o next-step btn-wide pull-right" ng-click="form.next(Form)">
+                                                            <span translate="content.common.NEXT">Next</span>
+                                                            <i class="fa fa-arrow-circle-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end: WIZARD STEP 1 -->
+                                    <!-- start: WIZARD STEP 2 -->
+									<div id="step-2" ng-show="currentStep == 2">
+										<div class="row">
+											<div class="col-md-5">
+												<div class="padding-30">
+													<h2 class="StepTitle">
+                                                        <i class="ti-id-badge fa-2x text-primary block margin-bottom-10"></i>
+                                                        <span translate="register.ENTERYOURPERSONALINFORMATION">Enter your personal information</span>
+                                                    </h2>
+													<p translate="register.PERSONALINFORMATIONDESCRIPTION">
+														This is an added measure against fraud and to help you with our technical support.
+													</p>
+													<p class="text-small" translate="register.COMPANYDETAILSDESCRIPTION">
+														Enter your company details in case you create this account for a business use.
+													</p>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<fieldset>
+													<legend translate="register.PERSONALINFORMATION">
+														Personal Information
+													</legend>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group" ng-class="{'has-error':Form.firstName.$dirty && Form.firstName.$invalid, 'has-success':Form.firstName.$valid}">
+																<label class="control-label">
+																	<span translate="content.list.fields.FIRSTNAME">First Name</span>
+                                                                    <span class="symbol required"></span>
+																</label>
+																<input type="text" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" class="form-control" name="firstName" ng-model="user.firstName" ng-required="currentStep == 2"/>
+																<span class="error text-small block" ng-if="Form.firstName.$dirty && Form.firstName.$invalid" translate="content.form.messages.FIRSTNAMEREQUIRED">First Name is required</span>
+																<span class="success text-small" ng-if="Form.firstName.$valid" translate="content.form.messages.OK">Ok!</span>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group" ng-class="{'has-error':Form.lastName.$dirty && Form.lastName.$invalid, 'has-success':Form.lastName.$valid}">
+																<label class="control-label">
+																	<span translate="content.list.fields.LASTNAME">Last Name</span>
+                                                                    <span class="symbol required"></span>
+																</label>
+																<input type="text" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" class="form-control" name="lastName" ng-model="user.lastName" ng-required="currentStep == 2" />
+																<span class="error text-small block" ng-if="Form.lastName.$dirty && Form.lastName.$invalid" translate="content.form.messages.LASTNAMEREQUIRED">Last Name is required</span>
+																<span class="success text-small" ng-if="Form.lastName.$valid" translate="content.form.messages.OK">Ok!</span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+                                                            <div class="form-group" ng-class="{'has-error':Form.gender.$dirty && Form.gender.$invalid, 'has-success':Form.gender.$valid}">
+                                                                <label class="control-label block">
+                                                                    <span translate="content.list.fields.GENDER">Gender</span>
+																	<span class="symbol required"></span>
+																</label>
+																<div class="clip-radio radio-primary">
+                                                                    <input type="radio" id="male" name="gender" value="Male" ng-model="user.gender" ng-required="currentStep == 2">
+                                                                    <label for="male">
+                                                                        <i class="fa fa-male"></i>
+                                                                        <span translate="content.list.fields.genders.MALE">Male</span>
+                                                                    </label>
+																	<input type="radio" id="female" name="gender" value="Female" ng-model="user.gender" ng-required="currentStep == 2">
+																	<label for="female">
+                                                                        <i class="fa fa-female"></i>
+                                                                        <span translate="content.list.fields.genders.FEMALE">Female</span>
+																	</label>
+																</div>
+                                                                <span class="error text-small block" ng-if="Form.gender.$dirty && Form.gender.$invalid" translate="content.form.messages.GENDERREQUIRED">Gender is required</span>
+                                                                <span class="success text-small" ng-if="Form.gender.$valid" translate="content.form.messages.OK">Ok!</span>
+															</div>
+														</div>
+														<div class="col-md-6">
+                                                            <div class="form-group" ng-class="{'has-error':Form.job.$dirty && Form.job.$invalid, 'has-success':Form.job.$valid}">
+                                                                <label class="control-label">
+                                                                    <span translate="content.list.fields.JOB">Job</span>
+                                                                    <span class="symbol required"></span>
+																</label>
+                                                                <input type="text" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" class="form-control" name="job" ng-model="user.job" ng-required="currentStep == 2" />
+                                                                <span class="error text-small block" ng-if="Form.job.$dirty && Form.job.$invalid" translate="content.form.messages.JOBREQUIRED">Job is required</span>
+                                                                <span class="success text-small" ng-if="Form.job.$valid" translate="content.form.messages.OK">Ok!</span>
+                                                            </div>
+														</div>
+													</div>
+													<p>
+														<a href uib-popover="[[ 'register.WENEEDMYPERSONALINFORMATION' | translate ]]" popover-placement="top" popover-title="[[ 'register.DONTWORRY' | translate ]]" translate="register.WHYDOYOUNEEDMYPERSONALINFORMATION">
+															Why do you need my personal information?
+														</a>
+													</p>
+												</fieldset>
+												<fieldset>
+													<legend translate="register.COMPANYDETAILS">
+														Company Details
+													</legend>
+													<p>
+														<span translate="register.ENTERCOMPANYDETAILS1">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                                                        <span class="text-small block" translate="register.ENTERCOMPANYDETAILS2">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+													</p>
+													<uib-accordion close-others="oneAtATime" class="accordion">
+                                                        <uib-accordion-group is-open="question0.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.COMPANYNAME">Company Name</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question0.open, 'ti-angle-right': !question0.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <div class="form-group">
+                                                                <span class="input-icon">
+                                                                    <input ng-model="user.companyName" type="text" name="companyName" id="userCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" />
+                                                                    <i class="ti-stamp"></i>
+                                                                </span><!--/input-icon-->
+                                                            </div>
+                                                        </uib-accordion-group>
+                                                        <uib-accordion-group is-open="question1.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.COUNTRY">Country</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question1.open, 'ti-angle-right': !question1.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <div class="form-group">
+                                                                <span class="input-icon">
+                                                                    <select ng-options="item.id as item.name for item in countries" ng-model="user.country" name="country" id="country" class="form-control">
+                                                                        <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
+                                                                    </select>
+                                                                    <i class="ti-world"></i>
+                                                                </span><!--/input-icon-->
+                                                            </div>
+                                                        </uib-accordion-group>
+                                                        <uib-accordion-group is-open="question2.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.ADDRESS">Address</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question2.open, 'ti-angle-right': !question2.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <div class="form-group">
+                                                                <span class="input-icon">
+                                                                    <input ng-model="user.address" type="text" name="address" id="userAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" />
+                                                                    <i class="ti-location-pin"></i>
+                                                                </span><!--/input-icon-->
+                                                            </div>
+                                                        </uib-accordion-group>
+                                                        <uib-accordion-group is-open="question3.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.CITYNAME">City Name</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question3.open, 'ti-angle-right': !question3.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <div class="form-group">
+                                                                <span class="input-icon">
+                                                                    <input ng-model="user.cityName" type="text" name="cityName" id="userCityName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITYNAME' | translate ]]" />
+                                                                    <i class="ti-direction"></i>
+                                                                </span><!--/input-icon-->
+                                                            </div>
+                                                        </uib-accordion-group>
+                                                        <uib-accordion-group is-open="question4.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.ZIPCODE">Zip Code</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question4.open, 'ti-angle-right': !question4.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <span class="input-icon">
+                                                                <input ng-model="user.zipCode" type="text" name="zipCode" id="userZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" />
+                                                                <i class="ti-shortcode"></i>
+                                                            </span><!--/input-icon-->
+                                                        </uib-accordion-group>
+                                                        <uib-accordion-group is-open="question5.open">
+                                                            <uib-accordion-heading>
+                                                                <span translate="content.list.fields.PHONE">Phone</span>
+                                                                <i class="pull-right" ng-class="{'ti-angle-down': question5.open, 'ti-angle-right': !question5.open}"></i>
+                                                            </uib-accordion-heading>
+                                                            <span class="input-icon">
+                                                                <input ng-model="user.phone" type="text" name="phone" id="user" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" />
+                                                                <i class="fa fa-phone"></i>
+                                                            </span><!--/input-icon-->
+                                                        </uib-accordion-group>
+													</uib-accordion>
+												</fieldset>
+												<div class="form-group">
+                                                    <button class="btn btn-primary btn-o back-step btn-wide pull-left" ng-click="form.prev(Form)">
+                                                        <i class="fa fa-arrow-circle-left"></i>
+                                                        <span translate="content.common.BACK">Back</span>
+                                                    </button>
+													<button class="btn btn-primary btn-o next-step btn-wide pull-right" ng-click="form.next(Form)">
+                                                        <span translate="content.common.NEXT">Next</span>
+                                                        <i class="fa fa-arrow-circle-right"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end: WIZARD STEP 2 -->
+									<!-- start: WIZARD STEP 3 -->
+									<div id="step-3" ng-show="currentStep == 3">
+										<div class="row">
+											<div class="col-md-5">
+												<div class="padding-30">
+													<h2 class="StepTitle">
+                                                        <i class="ti-dashboard fa-2x text-primary block margin-bottom-10"></i>
+                                                        <span translate="register.CREATEANACCOUNT">Create an account</span>
+                                                        <span class="text-large block" translate="register.TOMANAGE">to manage your everything.</span>
+                                                    </h2>
+													<p translate="register.YOUWILLENJOY">
+														You’ll enjoy personal services and great benefits including:
+													</p>
+													<p class="text-small">
+														<ul class="no-margin">
+															<li translate="register.ACCESSTOEXCLUSIVERELEASES">
+																Access to exclusive releases and limited products.
+															</li>
+															<li translate="register.CUSTOMERSERVICES">
+																Customer services, benefits and promotions.
+															</li>
+														</ul>
+													</p>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<fieldset>
+													<legend translate="register.ACCOUNTCREDENTIAL">
+														Account Credential
+													</legend>
+													<div class="form-group" ng-class="{'has-error':Form.email.$dirty && Form.email.$invalid, 'has-success':Form.email.$valid}">
+														<label class="control-label">
+                                                            <span translate="content.list.fields.EMAIL">Email</span>
+                                                            <span class="symbol required"></span>
+														</label>
+														<div class="input-group">
+                                                            <input ng-if="currentStep > 2" type="email" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" class="form-control" name="email" ng-model="user.email" email-validator ng-required="currentStep == 3">
+                                                            <span class="input-group-addon">
+																<i ng-class="{'fa fa-envelope-o': !Form.email.$pending, 'fa fa-spinner fa-spin': Form.email.$pending} "></i>
+                                                            </span>
+                                                        </div>
+                                                        <span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.emailValidator" translate="content.form.messages.EMAILINVALIDALREADYINUSE">Email invalid or already used by another user!</span>
+                                                        <span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
+														<span class="error text-small block" ng-if="Form.email.$error.email" translate="content.form.messages.INVALIDEMAIL">Please, enter a valid email address.</span>
+														<span class="success text-small" ng-if="Form.email.$valid" translate="content.form.messages.VALIDEMAIL">It's a valid e-mail!</span>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group" ng-class="{'has-error':Form.password.$dirty && Form.password.$invalid, 'has-success':Form.password.$valid}">
+																<label class="control-label">
+                                                                    <span translate="content.list.fields.PASSWORD">Password</span>
+                                                                    <span class="symbol required"></span>
+																</label>
+																<span class="input-icon">
+                                                                    <input ng-if="currentStep > 2" ng-minlength="8" ng-maxlength="20" autocomplete="off" type="password" placeholder="[[ 'content.form.messages.ENTERPASSWORD' | translate ]]" class="form-control" name="password" ng-model="user.plainPassword.first" ng-required="currentStep == 3"/>
+																    <i class="ti-lock"></i>
+                                                                </span>
+																<span class="error text-small block" ng-if="Form.password.$error.minlength" translate="content.form.messages.TOOSHORT">Too short!</span>
+																<span class="error text-small block" ng-if="Form.password.$error.maxlength" translate="content.form.messages.TOOLONG">Too long!</span>
+                                                                <span class="error text-small block" ng-if="Form.password.$dirty && Form.password.$error.required" translate="content.form.messages.PASSWORDREQUIRED">Password is required.</span>
+																<span class="success text-small block" ng-if="Form.password.$valid">Ok!</span>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group" ng-class="{'has-error':Form.password2.$dirty && Form.password2.$error.compareTo || Form.password2.$dirty && Form.password2.$invalid, 'has-success':Form.password2.$valid}">
+																<label class="control-label">
+                                                                    <span translate="content.list.fields.REPEATPASSWORD">Repeat Password</span>
+																	<span class="symbol required"></span>
+																</label>
+																<span class="input-icon">
+                                                                    <input ng-if="currentStep > 2" type="password" placeholder="[[ 'content.form.messages.REENTERPASSWORD' | translate ]]" class="form-control" name="password2" ng-model="user.plainPassword.second" compare-to="user.plainPassword.first" ng-required="currentStep == 3"/>
+																    <i class="ti-lock"></i>
+                                                                </span>
+                                                                <span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.required" translate="content.form.messages.REPEATPASSWORDREQUIRED">Repeat password is required!</span>
+																<span class="error text-small block" ng-if="Form.password2.$dirty && Form.password2.$error.compareTo" translate="content.form.messages.PASSWORDSDONOTMATCH">Passwords do not match!</span>
+																<span class="success text-small block" ng-if="Form.password2.$valid" translate="content.form.messages.PASSWORDSMATCH">Passwords match!</span>
+															</div>
+														</div>
+													</div>
+												</fieldset>
+												<div class="form-group">
+													<button class="btn btn-primary btn-o back-step btn-wide pull-left" ng-click="form.prev(Form)">
+                                                        <i class="fa fa-arrow-circle-left"></i>
+                                                        <span translate="content.common.BACK">Back</span>
+													</button>
+													<button class="btn btn-primary btn-o next-step btn-wide pull-right" ng-click="form.next(Form)">
+                                                        <span translate="content.common.NEXT">Next</span>
+                                                        <i class="fa fa-arrow-circle-right"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end: WIZARD STEP 3 -->
+									<!-- start: WIZARD STEP 4 -->
+									<div id="step-4"  ng-show="currentStep == 4">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="text-center">
+													<h1 class=" ti-check block text-primary"></h1>
+													<h2 class="StepTitle" translate="content.form.messages.CONGRATULATIONS">Congratulations!</h2>
+													<p class="text-large" translate="content.form.messages.YOURREGISTRATIONISCOMPLETE">
+														Your registration is complete.
+													</p>
+													<p class="text-small" translate="content.form.messages.THANKYOUFORYOURREGISTRATION">
+														Thank you for your registration. We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.
+                                                    </p>
+                                                    <p class="text-small" translate="content.form.messages.IFYOUDONOTRECEIVEACONFIRMATIONEMAIL">
+                                                        If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.
+                                                    </p>
+                                                    <p class="text-small" translate="content.form.messages.IFYOUNEEDASSISTANCEPLEASECONTACTUS">
+                                                        If you need assistance, please contact us.
+													</p>
+                                                    <a class="btn btn-primary btn-o" ui-sref="auth.login" translate="content.form.messages.BACKTOLOGIN" ng-if="!authenticated">
+                                                        Back to login
+                                                    </a>
+                                                    <a class="btn btn-primary btn-o" ui-sref="app.dashboard" translate="content.form.messages.GOTODASHBOARD" ng-if="authenticated">
+                                                        Go to Dashboard
+                                                    </a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end: WIZARD STEP 4 -->
+								</div>
+							</form>
+							<!-- end: WIZARD FORM -->
+						</div>
+					</div>
+				</div>
+                <!-- start: COPYRIGHT -->
+                <div class="copyright">
+                    [[app.year]] &copy; [[ app.name ]] by [[ app.author ]].
+                </div>
+                <!-- end: COPYRIGHT -->
+			</div>
+			<!-- start: REGISTER WIZARD -->
+	</div>
+</div>
+<!-- end: REGISTRATION -->

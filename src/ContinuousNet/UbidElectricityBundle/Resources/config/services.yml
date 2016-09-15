@@ -1,0 +1,35 @@
+parameters:
+    ubid_electricity.event.jwt_response_listener.class: ContinuousNet\UbidElectricityBundle\EventListener\JWTResponseListener
+    ubid_electricity.event.jwt_created_listener.class: ContinuousNet\UbidElectricityBundle\EventListener\JWTCreatedListener
+    ubid_electricity.event.jwt_decoded_listener.class: ContinuousNet\UbidElectricityBundle\EventListener\JWTDecodedListener
+    ubid_electricity.event.user_session_data.class: ContinuousNet\UbidElectricityBundle\EventListener\UserSessionData
+
+services:
+    ubid_electricity.event.user_session_data:
+        class: %ubid_electricity.event.user_session_data.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @translator
+            - @lexik_jwt_authentication.jwt_manager
+
+    ubid_electricity.event.jwt_response_listener:
+        class: %ubid_electricity.event.jwt_response_listener.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @ubid_electricity.event.user_session_data
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_failure, method: onAuthenticationFailureResponse }
+    ubid_electricity.event.jwt_created_listener:
+        class: %ubid_electricity.event.jwt_created_listener.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+    ubid_electricity.event.jwt_decoded_listener:
+        class: %ubid_electricity.event.jwt_decoded_listener.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - 1800 # integer $maxInactivityTime (seconds)
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_decoded, method: onJWTDecoded }

@@ -53,6 +53,17 @@ class Tender
     private $id;
 
     /**
+     * @var integer
+     * @access private
+     *
+     * @ORM\Column(name="bidding_type", type="integer", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $biddingType;
+
+    /**
      * @var string
      * @access private
      *
@@ -150,6 +161,94 @@ class Tender
      * 
      */
     private $estimatedCost;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="address", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $address;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="email", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $email;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="phone", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $phone;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="attachment_file_1", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $attachmentFile1;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="attachment_file_2", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $attachmentFile2;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="attachment_file_3", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $attachmentFile3;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="attachment_file_4", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $attachmentFile4;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="source", type="string", length=511, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $source;
 
     /**
      * @var \DateTime
@@ -302,6 +401,30 @@ class Tender
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set biddingType
+     *
+     * @access public
+     * @param integer $biddingType
+     * @return Tender
+     */
+    public function setBiddingType($biddingType)
+    {
+        $this->biddingType = $biddingType;
+        return $this;
+    }
+
+    /**
+     * Get biddingType
+     *
+     * @access public
+     * @return integer 
+     */
+    public function getBiddingType()
+    {
+        return $this->biddingType;
     }
 
     /**
@@ -518,6 +641,198 @@ class Tender
     public function getEstimatedCost()
     {
         return $this->estimatedCost;
+    }
+
+    /**
+     * Set address
+     *
+     * @access public
+     * @param string $address
+     * @return Tender
+     */
+    public function setAddress($address = null)
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @access public
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set email
+     *
+     * @access public
+     * @param string $email
+     * @return Tender
+     */
+    public function setEmail($email = null)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @access public
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set phone
+     *
+     * @access public
+     * @param string $phone
+     * @return Tender
+     */
+    public function setPhone($phone = null)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @access public
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set attachmentFile1
+     *
+     * @access public
+     * @param string $attachmentFile1
+     * @return Tender
+     */
+    public function setAttachmentFile1($attachmentFile1 = null)
+    {
+        $this->attachmentFile1 = $attachmentFile1;
+        return $this;
+    }
+
+    /**
+     * Get attachmentFile1
+     *
+     * @access public
+     * @return string 
+     */
+    public function getAttachmentFile1()
+    {
+        return $this->attachmentFile1;
+    }
+
+    /**
+     * Set attachmentFile2
+     *
+     * @access public
+     * @param string $attachmentFile2
+     * @return Tender
+     */
+    public function setAttachmentFile2($attachmentFile2 = null)
+    {
+        $this->attachmentFile2 = $attachmentFile2;
+        return $this;
+    }
+
+    /**
+     * Get attachmentFile2
+     *
+     * @access public
+     * @return string 
+     */
+    public function getAttachmentFile2()
+    {
+        return $this->attachmentFile2;
+    }
+
+    /**
+     * Set attachmentFile3
+     *
+     * @access public
+     * @param string $attachmentFile3
+     * @return Tender
+     */
+    public function setAttachmentFile3($attachmentFile3 = null)
+    {
+        $this->attachmentFile3 = $attachmentFile3;
+        return $this;
+    }
+
+    /**
+     * Get attachmentFile3
+     *
+     * @access public
+     * @return string 
+     */
+    public function getAttachmentFile3()
+    {
+        return $this->attachmentFile3;
+    }
+
+    /**
+     * Set attachmentFile4
+     *
+     * @access public
+     * @param string $attachmentFile4
+     * @return Tender
+     */
+    public function setAttachmentFile4($attachmentFile4 = null)
+    {
+        $this->attachmentFile4 = $attachmentFile4;
+        return $this;
+    }
+
+    /**
+     * Get attachmentFile4
+     *
+     * @access public
+     * @return string 
+     */
+    public function getAttachmentFile4()
+    {
+        return $this->attachmentFile4;
+    }
+
+    /**
+     * Set source
+     *
+     * @access public
+     * @param string $source
+     * @return Tender
+     */
+    public function setSource($source = null)
+    {
+        $this->source = $source;
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @access public
+     * @return string 
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 
     /**

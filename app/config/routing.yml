@@ -1,3 +1,28 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+
+ubid_electricity:
+    resource: "@UbidElectricityBundle/Resources/config/routing.yml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@UbidElectricityBundle/Resources/config/routing/registration.xml"
+    prefix: '#/auth'
+
+fos_user_resetting:
+    resource: "@UbidElectricityBundle/Resources/config/routing/resetting.xml"
+    prefix: '#/auth'
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

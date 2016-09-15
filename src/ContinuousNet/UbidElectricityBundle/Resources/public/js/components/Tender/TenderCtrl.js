@@ -38,15 +38,15 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
     $scope.timeFormat = $filter('translate')('formats.TIME');
 
     $scope.list = function() {
-        $state.go('app.tenders.tenders');
+        $state.go('app.marketplace.tenders');
     };
 
     $scope.add = function() {
-        $state.go('app.tenders.tendersnew');
+        $state.go('app.marketplace.tendersnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.tenders.tendersedit', {id: row.id});
+        $state.go('app.marketplace.tendersedit', {id: row.id});
     };
 
     if (angular.isDefined($stateParams.id)) {

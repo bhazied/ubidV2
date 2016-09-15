@@ -66,23 +66,23 @@
         "WELCOME": "Welcome to [[appName]]"
     },
     "topbar": {
-      "messages": {
-        "MAIN": "Messages",
-        "HEADER": "Unread messages",
-        "SEEALL": "See All"
-      },
-      "activities": {
-        "MAIN": "Activities",
-        "HEADER": "You have new notifications",
-        "SEEALL": "See All"
-      },
-      "user": {
-        "PROFILE": "My Profile",
-        "CALENDAR": "My Calendar",
-        "MESSAGES": "My Messages",
-        "LOCKSCREEN": "Lock Screen",
-        "LOGOUT": "Log Out"
-      }
+        "messages": {
+            "MAIN": "Messages",
+            "HEADER": "Unread messages",
+            "SEEALL": "See All"
+        },
+        "activities": {
+            "MAIN": "Activities",
+            "HEADER": "You have new notifications",
+            "SEEALL": "See All"
+        },
+        "user": {
+            "PROFILE": "My Profile",
+            "CALENDAR": "My Calendar",
+            "MESSAGES": "My Messages",
+            "LOCKSCREEN": "Lock Screen",
+            "LOGOUT": "Log Out"
+        }
     },
     "setting": {
         "MAIN": "Style Selector",
@@ -101,57 +101,60 @@
     },
     "offsidebar": {
         "chat": {
-          "ONLINE": "On-Line",
-          "OFFLINE": "Off-Line",
-          "BACK": "Back",
-          "SEND": "Send",
-          "PLACEHOLDER": "Message"
-      },
-      "favorites": {
-        "MAIN": "Favorites"
-      },
-      "settings": {
-        "MAIN": "General Settings",
-        "NOTIFICATIONS": "Enable Notifications",
-        "SHOWEMAIL": "Show your E-mail",
-        "SHOWUSERS": "Show Offline Users",
-        "EMAILALERT": "E-mail Alerts",
-        "SMSALERT": "SMS Alerts",
-        "SAVE": "Save Changes"
-      }
-    },
-    "sidebar": {
-      "heading": {
-        "NAVIGATION": "Main Navigation",
-        "FEATURES": "Core Features",
-        "DOCUMENTATION": "Documentation"
-      },
-      "search": {
-        "PLACEHOLDER": "Search..."
-      },
-      "nav": {
-        "dashboard": {
-            "MAIN": "Dashboard"
+            "ONLINE": "On-Line",
+            "OFFLINE": "Off-Line",
+            "BACK": "Back",
+            "SEND": "Send",
+            "PLACEHOLDER": "Message"
         },
-        "logout": {
-            "MAIN": "Lougout"
+        "favorites": {
+            "MAIN": "Favorites"
         },
         "settings": {
-            "MAIN": "Settings"
-        },
-        "access": {
-            "MAIN": "Access"
-        },
-        "news": {
-            "MAIN": "News"
-        },
-        "tenders": {
-            "MAIN": "Tenders"
-        },
-        "statistics": {
-            "MAIN": "Statistics"
+            "MAIN": "General Settings",
+            "NOTIFICATIONS": "Enable Notifications",
+            "SHOWEMAIL": "Show your E-mail",
+            "SHOWUSERS": "Show Offline Users",
+            "EMAILALERT": "E-mail Alerts",
+            "SMSALERT": "SMS Alerts",
+            "SAVE": "Save Changes"
         }
-      }
+    },
+    "sidebar": {
+        "heading": {
+            "NAVIGATION": "Main Navigation",
+            "FEATURES": "Core Features",
+            "DOCUMENTATION": "Documentation"
+        },
+        "search": {
+            "PLACEHOLDER": "Search..."
+        },
+        "nav": {
+            "dashboard": {
+                "MAIN": "Dashboard"
+            },
+            "logout": {
+                "MAIN": "Lougout"
+            },
+            "tenders": {
+                "MAIN": "Tenders"
+            },
+            "settings": {
+                "MAIN": "Settings"
+            },
+            "access": {
+                "MAIN": "Access"
+            },
+            "statistics": {
+                "MAIN": "Statistics"
+            },
+            "news": {
+                "MAIN": "News"
+            },
+            "marketplace": {
+                "MAIN": "Marketplace"
+            }
+        }
     },
     "formats": {
         "DATE": "MM/dd/yyyy",
@@ -170,7 +173,7 @@
         "TOTALPRICE" : "total to pay",
         "MONTHS" :{
             "SELECTMONTH": "Select a month",
-           "JANURAY": "January",
+            "JANURAY": "January",
             "FEBRUARY": "February",
             "MARCH": "March",
             "APRIL": "April",
@@ -202,7 +205,7 @@
             "QUANTITY": "Quantity"
         }
     },
-   "content": {
+    "content": {
         "common": {
             "YESUNSUBSCRIBE": "Unsubscribe",
             "CREATENEW": "Create New",
@@ -305,12 +308,16 @@
                 "EMAILALREADYINUSE": "Email already used by another user!",
                 "VALIDEMAIL": "It's a valid e-mail!",
                 "INVALIDEMAIL": "Please, enter a valid email address.",
-                "SELECTREGION": "Select Region",
                 "ENTERNAME": "Enter the Name",
                 "NAMEREQUIRED": "The Name is required",
                 "NAMEALREADYINUSE": "This Name is already in use. Please choose another one.",
                 "ENTERNAMEAR": "Enter the Name Ar",
                 "ENTERNAMEFR": "Enter the Name Fr",
+                "ENTERSLUG": "Enter the Slug",
+                "SLUGREQUIRED": "The Slug is required",
+                "ENTERSLUGAR": "Enter the Slug Ar",
+                "ENTERSLUGFR": "Enter the Slug Fr",
+                "SELECTREGION": "Select Region",
                 "ENTERPICTURE": "Enter the Picture",
                 "ENTERCODE": "Enter the Code",
                 "CODEREQUIRED": "The Code is required",
@@ -319,20 +326,20 @@
                 "ENTERPREFIX": "Enter the Prefix",
                 "SELECTROLES": "Select Roles",
                 "ROLESREQUIRED": "The Roles is required",
-                "ENTERLOCALE": "Enter the Locale",
-                "LOCALEREQUIRED": "The Locale is required",
+                "SELECTVISIT": "Select Visit",
+                "VISITREQUIRED": "The Visit is required",
                 "ENTERENTITY": "Enter the Entity",
                 "ENTITYREQUIRED": "The Entity is required",
                 "ENTERFOREIGNKEY": "Enter the Foreign Key",
                 "FOREIGNKEYREQUIRED": "The Foreign Key is required",
+                "ENTERURL": "Enter the Url",
+                "URLREQUIRED": "The Url is required",
+                "ENTERLOCALE": "Enter the Locale",
+                "LOCALEREQUIRED": "The Locale is required",
                 "ENTERACTION": "Enter the Action",
                 "ACTIONREQUIRED": "The Action is required",
                 "ENTERIPADDRESS": "Enter the Ip Address",
                 "ENTERUSERAGENT": "Enter the User Agent",
-                "ENTERSLUG": "Enter the Slug",
-                "SLUGREQUIRED": "The Slug is required",
-                "ENTERSLUGAR": "Enter the Slug Ar",
-                "ENTERSLUGFR": "Enter the Slug Fr",
                 "SELECTMODE": "Select Mode",
                 "ENTERMENUCSS": "Enter the Menu Css",
                 "ENTERITEMCSS": "Enter the Item Css",
@@ -394,12 +401,22 @@
                 "SECTORREQUIRED": "The Sector is required",
                 "SELECTTENDERTYPE": "Select Tender Type",
                 "TENDERTYPEREQUIRED": "The Tender Type is required",
+                "ENTERBIDDINGTYPE": "Enter the Bidding Type",
+                "BIDDINGTYPEREQUIRED": "The Bidding Type is required",
                 "ENTERREFERENCE": "Enter the Reference",
                 "REFERENCEREQUIRED": "The Reference is required",
                 "ENTERDETAILS": "Enter the Details",
                 "DETAILSREQUIRED": "The Details is required",
                 "SELECTDEADLINE": "Select Deadline",
                 "ENTERESTIMATEDCOST": "Enter the Estimated Cost",
+                "ENTERADDRESS": "Enter the Address",
+                "ENTEREMAIL": "Enter the Email",
+                "ENTERPHONE": "Enter the Phone",
+                "ENTERATTACHMENTFILE1": "Enter the Attachment File1",
+                "ENTERATTACHMENTFILE2": "Enter the Attachment File2",
+                "ENTERATTACHMENTFILE3": "Enter the Attachment File3",
+                "ENTERATTACHMENTFILE4": "Enter the Attachment File4",
+                "ENTERSOURCE": "Enter the Source",
                 "SELECTPRODUCTTYPE": "Select Product Type",
                 "PRODUCTTYPEREQUIRED": "The Product Type is required",
                 "SELECTTENDER": "Select Tender",
@@ -417,23 +434,15 @@
                 "REPEATPASSWORDREQUIRED": "The Repeat Password is required",
                 "ENTERSALT": "Enter the Salt",
                 "SALTALREADYINUSE": "This Salt is already in use. Please choose another one.",
-                "ENTERPHONE": "Enter the Phone",
-                "PHONEALREADYINUSE": "This Phone is already in use. Please choose another one.",
-                "ENTEREMAIL": "Enter the Email",
-                "EMAILREQUIRED": "The Email is required",
-                "EMAILALREADYINUSE": "This Email is already in use. Please choose another one.",
                 "ENTERUSERNAMECANONICAL": "Enter the Username Canonical",
                 "ENTEREMAILCANONICAL": "Enter the Email Canonical",
                 "SELECTGENDER": "Select Gender",
                 "ENTERFIRSTNAME": "Enter the First Name",
                 "ENTERLASTNAME": "Enter the Last Name",
-                "SELECTBIRTHDATE": "Select Birth Date",
-                "ENTERADDRESS": "Enter the Address",
                 "ENTERZIPCODE": "Enter the Zip Code",
                 "ENTERCOMPANYNAME": "Enter the Company Name",
                 "ENTERJOB": "Enter the Job",
                 "SELECTLANGUAGE": "Select Language",
-                "ENTERFACEBOOKKEY": "Enter the Facebook Key",
                 "ENTERPROFILE": "Enter the Profile",
                 "ENTERSESSIONTIMEOUT": "Enter the Session Timeout",
                 "ENTERPHONEVALIDATIONCODE": "Enter the Phone Validation Code",
@@ -458,6 +467,20 @@
         },
         "list": {
             "DASHBOARD": "Dashboard",
+            "BIDDINGTYPES": "Bidding Types",
+            "BIDDINGTYPE": "Bidding Type",
+            "ADDBIDDINGTYPE": "Add New Bidding Type",
+            "NEWBIDDINGTYPE": "New Bidding Type",
+            "BIDDINGTYPEDETAILS": "Bidding Type Details",
+            "EDITBIDDINGTYPE": "Edit Bidding Type",
+            "BIDDINGTYPEUPDATED": "Bidding Type Updated",
+            "BIDDINGTYPENOTUPDATED": "Bidding Type Not Updated",
+            "BIDDINGTYPECREATED": "Bidding Type Created",
+            "BIDDINGTYPENOTCREATED": "Bidding Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERBIDDINGTYPE": "You will not be able to recover this Bidding Type!",
+            "BIDDINGTYPEDELETED": "Bidding Type Deleted",
+            "BIDDINGTYPENOTDELETED": "Bidding Type Not Deleted",
+            "BACKBIDDINGTYPES": "Back To Bidding Types List",
             "COUNTRIES": "Countries",
             "COUNTRY": "Country",
             "ADDCOUNTRY": "Add New Country",
@@ -486,6 +509,20 @@
             "GROUPDELETED": "Group Deleted",
             "GROUPNOTDELETED": "Group Not Deleted",
             "BACKGROUPS": "Back To Groups List",
+            "HITS": "Hits",
+            "HIT": "Hit",
+            "ADDHIT": "Add New Hit",
+            "NEWHIT": "New Hit",
+            "HITDETAILS": "Hit Details",
+            "EDITHIT": "Edit Hit",
+            "HITUPDATED": "Hit Updated",
+            "HITNOTUPDATED": "Hit Not Updated",
+            "HITCREATED": "Hit Created",
+            "HITNOTCREATED": "Hit Not Created",
+            "YOUWILLNOTBEABLETORECOVERHIT": "You will not be able to recover this Hit!",
+            "HITDELETED": "Hit Deleted",
+            "HITNOTDELETED": "Hit Not Deleted",
+            "BACKHITS": "Back To Hits List",
             "LANGUAGES": "Languages",
             "LANGUAGE": "Language",
             "ADDLANGUAGE": "Add New Language",
@@ -749,31 +786,34 @@
                 "CARDCCVREQUIRED" : "Ccv is required",
                 "CAPTCHA": "Security check",
                 "ID": "Id",
-                "REGION": "Region",
                 "NAME": "Name",
                 "NAMEAR": "Name Ar",
                 "NAMEFR": "Name Fr",
+                "SLUG": "Slug",
+                "SLUGAR": "Slug Ar",
+                "SLUGFR": "Slug Fr",
+                "ISPUBLISHED": "Is Published",
+                "CREATEDAT": "Created At",
+                "CREATORUSER": "Creator User",
+                "MODIFIEDAT": "Modified At",
+                "MODIFIERUSER": "Modifier User",
+                "REGION": "Region",
                 "PICTURE": "Picture",
                 "CODE": "Code",
                 "LONGCODE": "Long Code",
                 "PREFIX": "Prefix",
                 "PUBLISHED": "Published",
-                "CREATEDAT": "Created At",
-                "CREATORUSER": "Creator User",
-                "MODIFIEDAT": "Modified At",
-                "MODIFIERUSER": "Modifier User",
                 "ROLES": "Roles",
                 "USERS": "Users",
-                "LOCALE": "Locale",
-                "PREFERRED": "Preferred",
+                "VISIT": "Visit",
                 "ENTITY": "Entity",
                 "FOREIGNKEY": "Foreign Key",
+                "URL": "Url",
+                "LOCALE": "Locale",
+                "PREFERRED": "Preferred",
                 "ACTION": "Action",
                 "IPADDRESS": "Ip Address",
                 "USERAGENT": "User Agent",
-                "SLUG": "Slug",
-                "SLUGAR": "Slug Ar",
-                "SLUGFR": "Slug Fr",
                 "MODE": "Mode",
                 "MENUCSS": "Menu Css",
                 "ITEMCSS": "Item Css",
@@ -787,7 +827,6 @@
                 "COLUMNSNUMBER": "Columns Number",
                 "DISPLAYMODE": "Display Mode",
                 "TEXTPOSITION": "Text Position",
-                "ISPUBLISHED": "Is Published",
                 "MENU": "Menu",
                 "CONTROLLER": "Controller",
                 "ORDERING": "Ordering",
@@ -828,10 +867,19 @@
                 "COUNTRY": "Country",
                 "SECTOR": "Sector",
                 "TENDERTYPE": "Tender Type",
+                "BIDDINGTYPE": "Bidding Type",
                 "REFERENCE": "Reference",
                 "DETAILS": "Details",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Estimated Cost",
+                "ADDRESS": "Address",
+                "EMAIL": "Email",
+                "PHONE": "Phone",
+                "ATTACHMENTFILE1": "Attachment File1",
+                "ATTACHMENTFILE2": "Attachment File2",
+                "ATTACHMENTFILE3": "Attachment File3",
+                "ATTACHMENTFILE4": "Attachment File4",
+                "SOURCE": "Source",
                 "TENDERCATEGORIES": "Tender Categories",
                 "PRODUCTTYPE": "Product Type",
                 "TENDERS": "Tenders",
@@ -844,20 +892,15 @@
                 "PASSWORD": "Password",
                 "REPEATPASSWORD": "Repeat Password",
                 "SALT": "Salt",
-                "PHONE": "Phone",
-                "EMAIL": "Email",
                 "USERNAMECANONICAL": "Username Canonical",
                 "EMAILCANONICAL": "Email Canonical",
                 "GENDER": "Gender",
                 "FIRSTNAME": "First Name",
                 "LASTNAME": "Last Name",
-                "BIRTHDATE": "Birth Date",
-                "ADDRESS": "Address",
                 "ZIPCODE": "Zip Code",
                 "COMPANYNAME": "Company Name",
                 "JOB": "Job",
                 "LANGUAGE": "Language",
-                "FACEBOOKKEY": "Facebook Key",
                 "PROFILE": "Profile",
                 "ENABLEOAUTH": "Enable Oauth",
                 "SESSIONTIMEOUT": "Session Timeout",

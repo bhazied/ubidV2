@@ -1,0 +1,87 @@
+<!-- start: LOGIN -->
+<div class="row">
+	<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+		<div class="logo text-center">
+			<img src="/assets/images/big_logo.png" alt="[[app.name]]"/><!-- ng-src="[[app.layout.logo]]" -->
+		</div>
+		<!-- start: LOGIN BOX -->
+		<div class="box-login" ng-controller="LoginCtrl">
+			<form class="form-login" ng-submit="submit()">
+				<fieldset>
+					<legend translate="login.SIGNIN">
+						Sign in to your account
+					</legend>
+                    <div class="alert alert-danger" ng-if="status == 'error'">
+                        <button data-ct-dismiss="alert" class="close">
+                            &times;
+                        </button>
+                        <span translate="login.ERROR">Incorrect Email or Password.</span>
+                    </div>
+                    <div class="alert alert-success" ng-if="status == 'welcome'">
+                        <button data-ct-dismiss="alert" class="close">
+                            &times;
+                        </button>
+                        <span translate="login.WELCOME" translate-values="{ user: user }">Welcome [[user.firstName]].</span>
+                    </div>
+					
+					<p translate="login.PLEASESIGNIN">
+						Please enter your eamil and password to log in.
+					</p>
+					<div class="form-group">
+						<span class="input-icon">
+							<input ng-model="email" type="text" class="form-control" name="email" placeholder="[[ 'content.list.fields.EMAIL' | translate ]]">
+							<i class="fa fa-envelope"></i>
+						</span>
+					</div>
+					<div class="form-group form-actions">
+						<span class="input-icon">
+							<input ng-model="password" type="password" class="form-control password" name="password" placeholder="[[ 'content.list.fields.PASSWORD' | translate ]]">
+							<i class="fa fa-lock"></i>
+							<a class="forgot" ui-sref="auth.resetpassword" translate="login.FORGOTPASSWORD">
+								I forgot my password
+							</a>
+						</span>
+					</div>
+					<div class="form-actions">
+						<div class="checkbox clip-check check-primary">
+							<input type="checkbox" id="remember" value="1">
+							<label for="remember" translate="login.KEEPMESIGNEDIN">
+								Keep me signed in
+							</label>
+						</div>
+						<div class="btn-group dropdown pull-left" uib-dropdown on-toggle="toggled(open)">
+							<button class="btn btn-primary bg_brand" type="button">
+								[[language.selected]]
+							</button>
+							<button uib-dropdown-toggle="" class="btn btn-primary dropdown-toggle bg_brand" type="button">
+								<span class="caret"></span>
+								<span class="sr-only">Split button!</span>
+							</button>
+							<ul role="menu" class="dropdown-menu">
+								<li ng-repeat="(localeId, langName) in language.available">
+									<a ng-click="language.set(localeId, $event)" href="#" class="menu-toggler"> [[langName]] </a>
+								</li>
+							</ul>
+						</div>
+						<button type="submit" class="btn btn-primary pull-right bg_brand">
+							<span translate="login.LOGIN">Login</span> <i class="fa fa-arrow-circle-right"></i>
+						</button>
+					</div>
+					<!--div class="new-account">
+						<span translate="login.DONTHAVEACCOUNT">Don't have an account yet?</span>
+						<a ui-sref="auth.register" translate="login.CREATEACCOUNT">
+							Create an account
+						</a>
+					</div-->
+				</fieldset>
+			</form>
+			<!-- start: COPYRIGHT -->
+			<div class="copyright">
+				[[app.year]] &copy; [[ app.name ]] by [[ app.author ]].
+			</div>
+			<!-- end: COPYRIGHT -->
+		</div>
+		<!-- end: LOGIN BOX -->
+	</div>
+</div>
+<!-- end: LOGIN -->

@@ -279,8 +279,9 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'tender.id', filter: { 'tender.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'region', title: $filter('translate')('content.list.fields.REGION'), sortable: 'region.name', filter: { 'tender.region': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('region_id_show_filed', true), displayField: 'name', state: 'app.settings.regionsdetails' },
             { field: 'country', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'tender.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_id_show_filed', true), displayField: 'name', state: 'app.settings.countriesdetails' },
-            { field: 'sector', title: $filter('translate')('content.list.fields.SECTOR'), sortable: 'sector.name', filter: { 'tender.sector': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSectors(), show: $scope.getParamValue('sector_id_show_filed', true), displayField: 'name', state: 'app.settings.sectorsdetails' },
+            { field: 'sector', title: $filter('translate')('content.list.fields.SECTOR'), sortable: 'sector.name', filter: { 'tender.sector': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSectors(), show: $scope.getParamValue('sector_id_show_filed', true), displayField: 'name', state: 'app.tenders.sectorsdetails' },
             { field: 'tender_type', title: $filter('translate')('content.list.fields.TENDERTYPE'), sortable: 'tender_type.name', filter: { 'tender.tenderType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderTypes(), show: $scope.getParamValue('tender_type_id_show_filed', true), displayField: 'name', state: 'app.tenders.tendertypesdetails' },
+            { field: 'bidding_type', title: $filter('translate')('content.list.fields.BIDDINGTYPE'), sortable: 'tender.biddingType', filter: { 'tender.biddingType': 'number' }, show: $scope.getParamValue('bidding_type_show_filed', true), getValue: $scope.textValue },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tender.title', filter: { 'tender.title': 'text' }, show: $scope.getParamValue('title_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tender.slug', filter: { 'tender.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: $scope.getParamValue('reference_show_filed', false), getValue: $scope.textValue },
@@ -290,9 +291,17 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'publish_date', title: $filter('translate')('content.list.fields.PUBLISHDATE'), sortable: 'tender.publishDate', filter: { 'tender.publishDate': 'text' }, show: $scope.getParamValue('publish_date_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
             { field: 'deadline', title: $filter('translate')('content.list.fields.DEADLINE'), sortable: 'tender.deadline', filter: { 'tender.deadline': 'text' }, show: $scope.getParamValue('deadline_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
             { field: 'estimated_cost', title: $filter('translate')('content.list.fields.ESTIMATEDCOST'), sortable: 'tender.estimatedCost', filter: { 'tender.estimatedCost': 'number' }, show: $scope.getParamValue('estimated_cost_show_filed', false), getValue: $scope.textValue },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'tender.createdAt', filter: { 'tender.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'address', title: $filter('translate')('content.list.fields.ADDRESS'), sortable: 'tender.address', filter: { 'tender.address': 'text' }, show: $scope.getParamValue('address_show_filed', false), getValue: $scope.textValue },
+            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'tender.email', filter: { 'tender.email': 'text' }, show: $scope.getParamValue('email_show_filed', false), getValue: $scope.textValue },
+            { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'tender.phone', filter: { 'tender.phone': 'text' }, show: $scope.getParamValue('phone_show_filed', false), getValue: $scope.textValue },
+            { field: 'attachment_file1', title: $filter('translate')('content.list.fields.ATTACHMENTFILE1'), sortable: 'tender.attachmentFile1', filter: { 'tender.attachmentFile1': 'text' }, show: $scope.getParamValue('attachment_file1_show_filed', false), getValue: $scope.textValue },
+            { field: 'attachment_file2', title: $filter('translate')('content.list.fields.ATTACHMENTFILE2'), sortable: 'tender.attachmentFile2', filter: { 'tender.attachmentFile2': 'text' }, show: $scope.getParamValue('attachment_file2_show_filed', false), getValue: $scope.textValue },
+            { field: 'attachment_file3', title: $filter('translate')('content.list.fields.ATTACHMENTFILE3'), sortable: 'tender.attachmentFile3', filter: { 'tender.attachmentFile3': 'text' }, show: $scope.getParamValue('attachment_file3_show_filed', false), getValue: $scope.textValue },
+            { field: 'attachment_file4', title: $filter('translate')('content.list.fields.ATTACHMENTFILE4'), sortable: 'tender.attachmentFile4', filter: { 'tender.attachmentFile4': 'text' }, show: $scope.getParamValue('attachment_file4_show_filed', false), getValue: $scope.textValue },
+            { field: 'source', title: $filter('translate')('content.list.fields.SOURCE'), sortable: 'tender.source', filter: { 'tender.source': 'text' }, show: $scope.getParamValue('source_show_filed', false), getValue: $scope.textValue },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'tender.createdAt', filter: { 'tender.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'tender.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'tender.modifiedAt', filter: { 'tender.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'tender.modifiedAt', filter: { 'tender.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'tender.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'tender_categories', title: $filter('translate')('content.list.fields.TENDERCATEGORIES'), show: $scope.getParamValue('tender_categories_show_filed', false), getValue: $scope.linksValue, state: 'app.tenders.tendercategoriesdetails', displayField: 'name' },            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
@@ -388,15 +397,15 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     };
 
     $scope.add = function() {
-        $state.go('app.tenders.tendersnew');
+        $state.go('app.marketplace.tendersnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.tenders.tendersedit', {id: row.id});
+        $state.go('app.marketplace.tendersedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.tenders.tendersdetails', {id: row.id});
+        $state.go('app.marketplace.tendersdetails', {id: row.id});
     };
 }]);
 
