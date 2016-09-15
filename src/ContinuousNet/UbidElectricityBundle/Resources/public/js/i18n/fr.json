@@ -127,32 +127,32 @@
         "DOCUMENTATION": "Documentation"
       },
       "search": {
-        "PLACEHOLDER": "Search..."
+        "PLACEHOLDER": "Recherche..."
       },
       "nav": {
         "dashboard": {
-            "MAIN": "Dashboard"
+            "MAIN": "Classementau de bord"
         },
         "logout": {
-            "MAIN": "Lougout"
+            "MAIN": "Se déconnecter"
         },
         "tenders": {
-            "MAIN": "Tenders"
+            "MAIN": "Appels d'offres"
         },
         "settings": {
-            "MAIN": "Settings"
+            "MAIN": "Paramètres"
         },
         "access": {
-            "MAIN": "Access"
+            "MAIN": "Accès"
         },
         "statistics": {
             "MAIN": "Statistics"
         },
         "news": {
-            "MAIN": "News"
+            "MAIN": "Nouveaus"
         },
         "marketplace": {
-            "MAIN": "Marketplace"
+            "MAIN": "Place du marché"
         }
       }
     },
@@ -464,7 +464,7 @@
             }
         },
         "list": {
-            "DASHBOARD": "Dashboard",
+            "DASHBOARD": "Classementau de bord",
             "BIDDINGTYPES": "Type d'appel d'offress",
             "BIDDINGTYPE": "Type d'appel d'offres",
             "ADDBIDDINGTYPE": "Ajouter un(e) Type d'appel d'offres",
@@ -746,18 +746,18 @@
             "USERNOTDELETED": "Utilisateur non supprimé(e)",
             "BACKUSERS": "Retour à la liste des Utilisateurs",
             "USERSETTINGS": "Utilisateur Paramètres",
-            "USERSETTING": "Utilisateur Setting",
-            "ADDUSERSETTING": "Ajouter un(e) Utilisateur Setting",
-            "NEWUSERSETTING": "Ajouter d'un(e) Utilisateur Setting",
-            "USERSETTINGDETAILS": "Détails Utilisateur Setting",
-            "EDITUSERSETTING": "Modifier ce(tte) Utilisateur Setting",
-            "USERSETTINGUPDATED": "Utilisateur Setting mis(e) à jour",
-            "USERSETTINGNOTUPDATED": "Utilisateur Setting non mis(e) à jour",
-            "USERSETTINGCREATED": "Utilisateur Setting cré(e)",
-            "USERSETTINGNOTCREATED": "Utilisateur Setting non cré(e)",
-            "YOUWILLNOTBEABLETORECOVERUSERSETTING": "Vous ne serez pas en mesure de récupérer cette Utilisateur Setting!",
-            "USERSETTINGDELETED": "Utilisateur Setting supprimé(e)",
-            "USERSETTINGNOTDELETED": "Utilisateur Setting non supprimé(e)",
+            "USERSETTING": "Utilisateur Paramètre",
+            "ADDUSERSETTING": "Ajouter un(e) Utilisateur Paramètre",
+            "NEWUSERSETTING": "Ajouter d'un(e) Utilisateur Paramètre",
+            "USERSETTINGDETAILS": "Détails Utilisateur Paramètre",
+            "EDITUSERSETTING": "Modifier ce(tte) Utilisateur Paramètre",
+            "USERSETTINGUPDATED": "Utilisateur Paramètre mis(e) à jour",
+            "USERSETTINGNOTUPDATED": "Utilisateur Paramètre non mis(e) à jour",
+            "USERSETTINGCREATED": "Utilisateur Paramètre cré(e)",
+            "USERSETTINGNOTCREATED": "Utilisateur Paramètre non cré(e)",
+            "YOUWILLNOTBEABLETORECOVERUSERSETTING": "Vous ne serez pas en mesure de récupérer cette Utilisateur Paramètre!",
+            "USERSETTINGDELETED": "Utilisateur Paramètre supprimé(e)",
+            "USERSETTINGNOTDELETED": "Utilisateur Paramètre non supprimé(e)",
             "BACKUSERSETTINGS": "Retour à la liste des Utilisateur Paramètres",
             "VISITS": "Visites",
             "VISIT": "Visite",
