@@ -89,6 +89,13 @@ class UserRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'u_.modifierUser = modifier_user.id');
             $textFields = array('user.username', 'user.phone', 'user.email', 'user.usernameCanonical', 'user.emailCanonical', 'user.firstName', 'user.lastName', 'user.picture', 'user.address', 'user.zipCode', 'user.companyName', 'user.job', 'user.profile', 'user.phoneValidationCode', 'user.emailValidationCode', 'user.roles', 'user.confirmationToken');
             foreach ($filters as $field => $value) {
+                if (substr_count($field, '.') > 1) {
+                    if ($value == 'true') {
+                        list ($entityName, $listName, $listItem) = explode('.', $field);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF u_.'.$listName)->setParameter($listName.'_value', $listItem);
+                    }
+                    continue;
+                }
                 $_field = str_replace('user.', 'u_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
@@ -508,8 +515,8 @@ class UserRESTController extends BaseRESTController
     
     private function process(User $entity, $isNew)
     {
-        if (is_null($entity->getCompany()) && !is_null($this->getUser()->getCompany())) {
-            $entity->setCompany($this->getUser()->getCompany());
+        if (is_null($entity->getCompanyName()) && !is_null($this->getUser()->getCompanyName())) {
+            $entity->setCompanyName($this->getUser()->getCompanyName());
         }
         if (is_null($entity->getSalt()) || empty($entity->getSalt())) {
             $entity->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));

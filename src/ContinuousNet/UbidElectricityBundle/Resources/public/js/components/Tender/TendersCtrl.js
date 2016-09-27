@@ -4,12 +4,14 @@
  * Controller for Tenders List
  */
 
-app.controller('TendersCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
+app.controller('TendersCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
+function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
 
-    $scope.isFiltersVisible = false;
-
-    $scope.statuses = [{
+    $scope.statusesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Draft',
         title: $filter('translate')('content.list.fields.statuses.DRAFT'),
         css: 'primary'
@@ -44,12 +46,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getRegions = function() {
         $scope.regionsLoaded = true;
         if ($scope.regions.length == 0) {
-            $scope.regions.push({});
+            $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTREGION')});
             var def = $q.defer();
             $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.regions.length = 0;
                         for (var i in data.results) {
                             $scope.regions.push({
                                 id: data.results[i].id,
@@ -74,12 +75,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getCountries = function() {
         $scope.countriesLoaded = true;
         if ($scope.countries.length == 0) {
-            $scope.countries.push({});
+            $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
             var def = $q.defer();
             $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.countries.length = 0;
                         for (var i in data.results) {
                             $scope.countries.push({
                                 id: data.results[i].id,
@@ -104,12 +104,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getSectors = function() {
         $scope.sectorsLoaded = true;
         if ($scope.sectors.length == 0) {
-            $scope.sectors.push({});
+            $scope.sectors.push({id: '', title: $filter('translate')('content.form.messages.SELECTSECTOR')});
             var def = $q.defer();
             $sectorsDataFactory.query({offset: 0, limit: 10000, 'order_by[sector.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.sectors.length = 0;
                         for (var i in data.results) {
                             $scope.sectors.push({
                                 id: data.results[i].id,
@@ -134,12 +133,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getTenderTypes = function() {
         $scope.tenderTypesLoaded = true;
         if ($scope.tenderTypes.length == 0) {
-            $scope.tenderTypes.push({});
+            $scope.tenderTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDERTYPE')});
             var def = $q.defer();
             $tenderTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderType.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.tenderTypes.length = 0;
                         for (var i in data.results) {
                             $scope.tenderTypes.push({
                                 id: data.results[i].id,
@@ -164,12 +162,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getBiddingTypes = function() {
         $scope.biddingTypesLoaded = true;
         if ($scope.biddingTypes.length == 0) {
-            $scope.biddingTypes.push({});
+            $scope.biddingTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBIDDINGTYPE')});
             var def = $q.defer();
             $biddingTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[biddingType.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.biddingTypes.length = 0;
                         for (var i in data.results) {
                             $scope.biddingTypes.push({
                                 id: data.results[i].id,
@@ -194,12 +191,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.users.length = 0;
                         for (var i in data.results) {
                             $scope.users.push({
                                 id: data.results[i].id,
@@ -223,19 +219,27 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.tenderCategoriesLoaded = [];
 
     $scope.getTenderCategories = function() {
-        $timeout(function(){
-            if ($scope.tenderCategories.length == 0) {
-                $scope.tenderCategories.push({});
-                var def = $q.defer();
-                $tenderCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderCategory.id]': 'desc'}).$promise.then(function(data) {
-                    $scope.tenderCategories = data.results;
-                    def.resolve($scope.tenderCategories);
+        if ($scope.tenderCategories.length == 0) {
+            $scope.tenderCategories.push({});
+            var def = $q.defer();
+            $tenderCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderCategory.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.tenderCategories.length = 0;
+                        for (var i in data.results) {
+                            $scope.tenderCategories.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.tenderCategories);
+                    }
                 });
-                return def;
-            } else {
-                return $scope.tenderCategories;
-            }
-        });
+            });
+            return def;
+        } else {
+            return $scope.tenderCategories;
+        }
     };
 
     $scope.getTenderCategories();
@@ -279,7 +283,7 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.interpolatedValue = function($scope, row) {
         return this.interpolateExpr({
             row: row,
-            statuses: $scope.statuses,
+            statuses: $scope.statusesOptions,
             field: this.field,
             title: this.title,
             sortable: this.sortable,
@@ -290,13 +294,16 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.tendersParams[param] = newValue;
+        $location.search(param, JSON.stringify(newValue));
     };
 
     $scope.getParamValue = function(param, defaultValue) {
         if (!angular.isDefined($localStorage.tendersParams)) {
            $localStorage.tendersParams = {};
         }
-        if (angular.isDefined($localStorage.tendersParams[param])) {
+        if (angular.isDefined($location.search()[param])) {
+            return JSON.parse($location.search()[param]);
+        } else if (angular.isDefined($localStorage.tendersParams[param])) {
             return $localStorage.tendersParams[param];
         } else {
             $localStorage.tendersParams[param] = defaultValue;
@@ -316,7 +323,7 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tender.slug', filter: { 'tender.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: $scope.getParamValue('reference_show_filed', false), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'tender.description', filter: { 'tender.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tender.status', filter: { 'tender.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statuses, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tender.status', filter: { 'tender.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'publish_date', title: $filter('translate')('content.list.fields.PUBLISHDATE'), sortable: 'tender.publishDate', filter: { 'tender.publishDate': 'text' }, show: $scope.getParamValue('publish_date_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
             { field: 'deadline', title: $filter('translate')('content.list.fields.DEADLINE'), sortable: 'tender.deadline', filter: { 'tender.deadline': 'text' }, show: $scope.getParamValue('deadline_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
             { field: 'estimated_cost', title: $filter('translate')('content.list.fields.ESTIMATEDCOST'), sortable: 'tender.estimatedCost', filter: { 'tender.estimatedCost': 'number' }, show: $scope.getParamValue('estimated_cost_show_filed', false), getValue: $scope.textValue },
@@ -332,11 +339,13 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'tender.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'tender.modifiedAt', filter: { 'tender.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'tender.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'tender_categories', title: $filter('translate')('content.list.fields.TENDERCATEGORIES'), show: $scope.getParamValue('tender_categories_show_filed', false), getValue: $scope.linksValue, state: 'app.tenders.tendercategoriesdetails', displayField: 'name' },            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
+            { field: 'tender_categories', title: $filter('translate')('content.list.fields.TENDERCATEGORIES'), filter: { 'tender.tenderCategories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getTenderCategories(), show: $scope.getParamValue('tender_categories_show_filed', false), display: false, displayField: 'name', state: 'app.tenders.tendercategoriesdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'
             +'<button type="button" class="btn btn-danger" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.REMOVE')+'" ng-click="delete(row)"><i class="ti-trash"></i></button>'
-+'</div>') }
+            +'</div>') }
         ];
     };
 
@@ -348,20 +357,35 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         }, 500);
     });
 
-    $scope.tableParams = new ngTableParams({
-        page: 1, // show first page
-        count: $scope.getParamValue('count', 50), // count per page
-        sorting: $scope.getParamValue('sorting', {'tender.createdAt': 'desc'}),
-        filter: $scope.getParamValue('filter', {})
-    }, {
+    $scope.isFiltersVisible = $scope.getParamValue('tendersIsFiltersVisible', false);
+    $scope.$watch('isFiltersVisible', function() {
+        $scope.setParamValue('tendersIsFiltersVisible', $scope.isFiltersVisible);
+    });
+
+    $scope.page = 1; // show first page
+    $scope.count = 50; // count per page
+    $scope.sorting = {'tender.createdAt': 'desc'};
+    $scope.filter = {
+        tender_categories: []
+    };
+    $scope.tableParams = {
+        page: $scope.getParamValue('tendersPage', $scope.page),
+        count: $scope.getParamValue('tendersCount', $scope.count),
+        sorting: $scope.getParamValue('tendersSorting', $scope.sorting),
+        filter: $scope.getParamValue('tendersFilter', $scope.filter)
+    };
+    $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
-            var offset = (params.page() - 1) * params.count();
+            var current = params.page();
+            var offset = (current - 1) * params.count();
             var limit = params.count();
             var order_by = params.sorting();
             var filters = params.filter();
-            $scope.setParamValue('sorting', order_by);
-            $scope.setParamValue('filter', filters);
-            $scope.setParamValue('count', limit);
+            $scope.setParamValue('tendersIsFiltersVisible', $scope.isFiltersVisible);
+            $scope.setParamValue('tendersPage', current);
+            $scope.setParamValue('tendersCount', limit);
+            $scope.setParamValue('tendersSorting', order_by);
+            $scope.setParamValue('tendersFilter', filters);
             var http_params = {
                 offset: offset,
                 limit: limit

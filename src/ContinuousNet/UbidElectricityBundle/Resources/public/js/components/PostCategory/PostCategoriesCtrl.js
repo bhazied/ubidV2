@@ -4,12 +4,14 @@
  * Controller for Post Categories List
  */
 
-app.controller('PostCategoriesCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$postTypesDataFactory', '$usersDataFactory', '$postCategoriesDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $postTypesDataFactory, $usersDataFactory, $postCategoriesDataFactory) {
+app.controller('PostCategoriesCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$postTypesDataFactory', '$usersDataFactory', '$postCategoriesDataFactory',
+function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $postTypesDataFactory, $usersDataFactory, $postCategoriesDataFactory) {
 
-    $scope.isFiltersVisible = false;
-
-    $scope.statuses = [{
+    $scope.statusesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Draft',
         title: $filter('translate')('content.list.fields.statuses.DRAFT'),
         css: 'primary'
@@ -44,12 +46,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getParents = function() {
         $scope.postCategoriesLoaded = true;
         if ($scope.postCategories.length == 0) {
-            $scope.postCategories.push({});
+            $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
             var def = $q.defer();
             $postCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[postCategory.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.postCategories.length = 0;
                         for (var i in data.results) {
                             $scope.postCategories.push({
                                 id: data.results[i].id,
@@ -74,12 +75,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getPostTypes = function() {
         $scope.postTypesLoaded = true;
         if ($scope.postTypes.length == 0) {
-            $scope.postTypes.push({});
+            $scope.postTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
             var def = $q.defer();
             $postTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[postType.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.postTypes.length = 0;
                         for (var i in data.results) {
                             $scope.postTypes.push({
                                 id: data.results[i].id,
@@ -104,12 +104,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.users.length = 0;
                         for (var i in data.results) {
                             $scope.users.push({
                                 id: data.results[i].id,
@@ -155,7 +154,7 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.interpolatedValue = function($scope, row) {
         return this.interpolateExpr({
             row: row,
-            statuses: $scope.statuses,
+            statuses: $scope.statusesOptions,
             field: this.field,
             title: this.title,
             sortable: this.sortable,
@@ -166,13 +165,16 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.postCategoriesParams[param] = newValue;
+        $location.search(param, JSON.stringify(newValue));
     };
 
     $scope.getParamValue = function(param, defaultValue) {
         if (!angular.isDefined($localStorage.postCategoriesParams)) {
            $localStorage.postCategoriesParams = {};
         }
-        if (angular.isDefined($localStorage.postCategoriesParams[param])) {
+        if (angular.isDefined($location.search()[param])) {
+            return JSON.parse($location.search()[param]);
+        } else if (angular.isDefined($localStorage.postCategoriesParams[param])) {
             return $localStorage.postCategoriesParams[param];
         } else {
             $localStorage.postCategoriesParams[param] = defaultValue;
@@ -196,16 +198,18 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'parent', title: $filter('translate')('content.list.fields.PARENT'), sortable: 'parent.name', filter: { 'postCategory.parent': 'select' }, getValue: $scope.linkValue, filterData: $scope.getParents(), show: $scope.getParamValue('parent_id_show_filed', false), displayField: 'name', state: 'app.news.postcategoriesdetails' },
             { field: 'post_type', title: $filter('translate')('content.list.fields.POSTTYPE'), sortable: 'post_type.name', filter: { 'postCategory.postType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getPostTypes(), show: $scope.getParamValue('post_type_id_show_filed', false), displayField: 'name', state: 'app.news.posttypesdetails' },
             { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'postCategory.ordering', filter: { 'postCategory.ordering': 'number' }, show: $scope.getParamValue('ordering_show_filed', false), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'postCategory.status', filter: { 'postCategory.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statuses, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'postCategory.status', filter: { 'postCategory.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'postCategory.createdAt', filter: { 'postCategory.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'postCategory.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'postCategory.modifiedAt', filter: { 'postCategory.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'postCategory.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'posts', title: $filter('translate')('content.list.fields.POSTS'), show: $scope.getParamValue('posts_show_filed', false), getValue: $scope.linksValue, state: 'app.news.postsdetails', displayField: 'title' },            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
+            { field: 'posts', title: $filter('translate')('content.list.fields.POSTS'), filter: { 'postCategory.posts': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getPosts(), show: $scope.getParamValue('posts_show_filed', false), display: false, displayField: 'title', state: 'app.news.postsdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'
             +'<button type="button" class="btn btn-danger" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.REMOVE')+'" ng-click="delete(row)"><i class="ti-trash"></i></button>'
-+'</div>') }
+            +'</div>') }
         ];
     };
 
@@ -217,20 +221,35 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         }, 500);
     });
 
-    $scope.tableParams = new ngTableParams({
-        page: 1, // show first page
-        count: $scope.getParamValue('count', 50), // count per page
-        sorting: $scope.getParamValue('sorting', {'postCategory.name': 'asc'}),
-        filter: $scope.getParamValue('filter', {})
-    }, {
+    $scope.isFiltersVisible = $scope.getParamValue('postCategoriesIsFiltersVisible', false);
+    $scope.$watch('isFiltersVisible', function() {
+        $scope.setParamValue('postCategoriesIsFiltersVisible', $scope.isFiltersVisible);
+    });
+
+    $scope.page = 1; // show first page
+    $scope.count = 50; // count per page
+    $scope.sorting = {'postCategory.name': 'asc'};
+    $scope.filter = {
+        posts: []
+    };
+    $scope.tableParams = {
+        page: $scope.getParamValue('postCategoriesPage', $scope.page),
+        count: $scope.getParamValue('postCategoriesCount', $scope.count),
+        sorting: $scope.getParamValue('postCategoriesSorting', $scope.sorting),
+        filter: $scope.getParamValue('postCategoriesFilter', $scope.filter)
+    };
+    $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
-            var offset = (params.page() - 1) * params.count();
+            var current = params.page();
+            var offset = (current - 1) * params.count();
             var limit = params.count();
             var order_by = params.sorting();
             var filters = params.filter();
-            $scope.setParamValue('sorting', order_by);
-            $scope.setParamValue('filter', filters);
-            $scope.setParamValue('count', limit);
+            $scope.setParamValue('postCategoriesIsFiltersVisible', $scope.isFiltersVisible);
+            $scope.setParamValue('postCategoriesPage', current);
+            $scope.setParamValue('postCategoriesCount', limit);
+            $scope.setParamValue('postCategoriesSorting', order_by);
+            $scope.setParamValue('postCategoriesFilter', filters);
             var http_params = {
                 offset: offset,
                 limit: limit

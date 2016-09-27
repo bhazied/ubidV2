@@ -4,12 +4,14 @@
  * Controller for Users List
  */
 
-app.controller('UsersCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory) {
+app.controller('UsersCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory',
+function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory) {
 
-    $scope.isFiltersVisible = false;
-
-    $scope.types = [{
+    $scope.typesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Guest',
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
@@ -26,7 +28,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         title: $filter('translate')('content.list.fields.types.ADMINISTRATOR'),
         css: 'danger'
     }];
-    $scope.genders = [{
+    $scope.gendersOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Male',
         title: $filter('translate')('content.list.fields.genders.MALE'),
         css: 'primary'
@@ -35,7 +41,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         title: $filter('translate')('content.list.fields.genders.FEMALE'),
         css: 'success'
     }];
-    $scope.authenticationModes = [{
+    $scope.authenticationModesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Database',
         title: $filter('translate')('content.list.fields.authenticationmodes.DATABASE'),
         css: 'primary'
@@ -48,7 +58,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         title: $filter('translate')('content.list.fields.authenticationmodes.WEBSERVICE'),
         css: 'warning'
     }];
-    $scope.roles = [{
+    $scope.rolesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'ROLE_API',
         title: $filter('translate')('content.list.fields.roles.ROLE_API'),
         css: 'primary'
@@ -71,6 +85,10 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     }];
 
     $scope.booleanOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+     }, {
         id: '1',
         title: $filter('translate')('content.common.YES'),
         css: 'success'
@@ -89,12 +107,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getCountries = function() {
         $scope.countriesLoaded = true;
         if ($scope.countries.length == 0) {
-            $scope.countries.push({});
+            $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
             var def = $q.defer();
             $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.countries.length = 0;
                         for (var i in data.results) {
                             $scope.countries.push({
                                 id: data.results[i].id,
@@ -119,12 +136,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getLanguages = function() {
         $scope.languagesLoaded = true;
         if ($scope.languages.length == 0) {
-            $scope.languages.push({});
+            $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
             var def = $q.defer();
             $languagesDataFactory.query({offset: 0, limit: 10000, 'order_by[language.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.languages.length = 0;
                         for (var i in data.results) {
                             $scope.languages.push({
                                 id: data.results[i].id,
@@ -149,12 +165,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.users.length = 0;
                         for (var i in data.results) {
                             $scope.users.push({
                                 id: data.results[i].id,
@@ -178,19 +193,27 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.groupsLoaded = [];
 
     $scope.getGroups = function() {
-        $timeout(function(){
-            if ($scope.groups.length == 0) {
-                $scope.groups.push({});
-                var def = $q.defer();
-                $groupsDataFactory.query({offset: 0, limit: 10000, 'order_by[group.id]': 'desc'}).$promise.then(function(data) {
-                    $scope.groups = data.results;
-                    def.resolve($scope.groups);
+        if ($scope.groups.length == 0) {
+            $scope.groups.push({});
+            var def = $q.defer();
+            $groupsDataFactory.query({offset: 0, limit: 10000, 'order_by[group.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.groups.length = 0;
+                        for (var i in data.results) {
+                            $scope.groups.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.groups);
+                    }
                 });
-                return def;
-            } else {
-                return $scope.groups;
-            }
-        });
+            });
+            return def;
+        } else {
+            return $scope.groups;
+        }
     };
 
     $scope.getGroups();
@@ -234,9 +257,9 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.interpolatedValue = function($scope, row) {
         return this.interpolateExpr({
             row: row,
-            types: $scope.types,
-            genders: $scope.genders,
-            authenticationModes: $scope.authenticationModes,
+            types: $scope.typesOptions,
+            genders: $scope.gendersOptions,
+            authenticationModes: $scope.authenticationModesOptions,
             field: this.field,
             title: this.title,
             sortable: this.sortable,
@@ -247,13 +270,16 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.usersParams[param] = newValue;
+        $location.search(param, JSON.stringify(newValue));
     };
 
     $scope.getParamValue = function(param, defaultValue) {
         if (!angular.isDefined($localStorage.usersParams)) {
            $localStorage.usersParams = {};
         }
-        if (angular.isDefined($localStorage.usersParams[param])) {
+        if (angular.isDefined($location.search()[param])) {
+            return JSON.parse($location.search()[param]);
+        } else if (angular.isDefined($localStorage.usersParams[param])) {
             return $localStorage.usersParams[param];
         } else {
             $localStorage.usersParams[param] = defaultValue;
@@ -264,13 +290,13 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.setCols = function() {
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'user.id', filter: { 'user.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
-            { field: 'type', title: $filter('translate')('content.list.fields.TYPE'), sortable: 'user.type', filter: { 'user.type': 'select' }, show: $scope.getParamValue('type_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.types, interpolateExpr: $interpolate('<span my-enum="[[ row.type ]]" my-enum-list=\'[[ types ]]\'></span>') },
+            { field: 'type', title: $filter('translate')('content.list.fields.TYPE'), sortable: 'user.type', filter: { 'user.type': 'select' }, show: $scope.getParamValue('type_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.typesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.type ]]" my-enum-list=\'[[ types ]]\'></span>') },
             { field: 'username', title: $filter('translate')('content.list.fields.USERNAME'), sortable: 'user.username', filter: { 'user.username': 'text' }, show: $scope.getParamValue('username_show_filed', true), getValue: $scope.textValue },
             { field: 'password', title: $filter('translate')('content.list.fields.PASSWORD'), sortable: 'user.password', filter: { 'user.password': 'text' }, show: $scope.getParamValue('password_show_filed', false), getValue: $scope.textValue },
             { field: 'salt', title: $filter('translate')('content.list.fields.SALT'), sortable: 'user.salt', filter: { 'user.salt': 'text' }, show: $scope.getParamValue('salt_show_filed', false), getValue: $scope.textValue },
             { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'user.phone', filter: { 'user.phone': 'text' }, show: $scope.getParamValue('phone_show_filed', true), getValue: $scope.textValue },
             { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'user.email', filter: { 'user.email': 'text' }, show: $scope.getParamValue('email_show_filed', true), getValue: $scope.textValue },
-            { field: 'gender', title: $filter('translate')('content.list.fields.GENDER'), sortable: 'user.gender', filter: { 'user.gender': 'select' }, show: $scope.getParamValue('gender_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.genders, interpolateExpr: $interpolate('<span my-enum="[[ row.gender ]]" my-enum-list=\'[[ genders ]]\'></span>') },
+            { field: 'gender', title: $filter('translate')('content.list.fields.GENDER'), sortable: 'user.gender', filter: { 'user.gender': 'select' }, show: $scope.getParamValue('gender_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.gendersOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.gender ]]" my-enum-list=\'[[ genders ]]\'></span>') },
             { field: 'first_name', title: $filter('translate')('content.list.fields.FIRSTNAME'), sortable: 'user.firstName', filter: { 'user.firstName': 'text' }, show: $scope.getParamValue('first_name_show_filed', false), getValue: $scope.textValue },
             { field: 'last_name', title: $filter('translate')('content.list.fields.LASTNAME'), sortable: 'user.lastName', filter: { 'user.lastName': 'text' }, show: $scope.getParamValue('last_name_show_filed', false), getValue: $scope.textValue },
             { field: 'picture', title: $filter('translate')('content.list.fields.PICTURE'), sortable: 'user.picture', filter: { 'user.picture': 'text' }, show: $scope.getParamValue('picture_show_filed', false), getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<img ng-src="'+$rootScope.app.thumbURL+'[[ (row.picture)?row.picture:\'/assets/images/picturenotavailable.'+$scope.locale+'.png\' ]]" alt="" class="img-thumbnail" />') },
@@ -290,11 +316,13 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'user.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'user.modifiedAt', filter: { 'user.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'user.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'groups', title: $filter('translate')('content.list.fields.GROUPS'), show: $scope.getParamValue('groups_show_filed', false), getValue: $scope.linksValue, state: 'app.access.groupsdetails', displayField: 'name' },            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
+            { field: 'groups', title: $filter('translate')('content.list.fields.GROUPS'), filter: { 'user.groups': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getGroups(), show: $scope.getParamValue('groups_show_filed', false), display: false, displayField: 'name', state: 'app.access.groupsdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'
             +'<button type="button" class="btn btn-danger" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.REMOVE')+'" ng-click="delete(row)"><i class="ti-trash"></i></button>'
-+'</div>') }
+            +'</div>') }
         ];
     };
 
@@ -306,20 +334,35 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         }, 500);
     });
 
-    $scope.tableParams = new ngTableParams({
-        page: 1, // show first page
-        count: $scope.getParamValue('count', 50), // count per page
-        sorting: $scope.getParamValue('sorting', {'user.id': 'asc'}),
-        filter: $scope.getParamValue('filter', {})
-    }, {
+    $scope.isFiltersVisible = $scope.getParamValue('usersIsFiltersVisible', false);
+    $scope.$watch('isFiltersVisible', function() {
+        $scope.setParamValue('usersIsFiltersVisible', $scope.isFiltersVisible);
+    });
+
+    $scope.page = 1; // show first page
+    $scope.count = 50; // count per page
+    $scope.sorting = {'user.id': 'asc'};
+    $scope.filter = {
+        groups: []
+    };
+    $scope.tableParams = {
+        page: $scope.getParamValue('usersPage', $scope.page),
+        count: $scope.getParamValue('usersCount', $scope.count),
+        sorting: $scope.getParamValue('usersSorting', $scope.sorting),
+        filter: $scope.getParamValue('usersFilter', $scope.filter)
+    };
+    $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
-            var offset = (params.page() - 1) * params.count();
+            var current = params.page();
+            var offset = (current - 1) * params.count();
             var limit = params.count();
             var order_by = params.sorting();
             var filters = params.filter();
-            $scope.setParamValue('sorting', order_by);
-            $scope.setParamValue('filter', filters);
-            $scope.setParamValue('count', limit);
+            $scope.setParamValue('usersIsFiltersVisible', $scope.isFiltersVisible);
+            $scope.setParamValue('usersPage', current);
+            $scope.setParamValue('usersCount', limit);
+            $scope.setParamValue('usersSorting', order_by);
+            $scope.setParamValue('usersFilter', filters);
             var http_params = {
                 offset: offset,
                 limit: limit

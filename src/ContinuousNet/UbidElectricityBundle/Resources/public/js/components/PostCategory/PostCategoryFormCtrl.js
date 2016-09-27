@@ -56,7 +56,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.postCategoriesLoaded = true;
             if ($scope.postCategories.length == 0) {
-                $scope.postCategories.push({});
+                $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
                 var def = $q.defer();
                 $postCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -81,7 +81,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.postTypesLoaded = true;
             if ($scope.postTypes.length == 0) {
-                $scope.postTypes.push({});
+                $scope.postTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
                 var def = $q.defer();
                 $postTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[postType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -106,9 +106,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({});
+                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }

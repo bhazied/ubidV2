@@ -73,9 +73,6 @@ app.constant('JS_REQUIRES', {
         name: 'angular-ladda',
         files: ['/assets/bower_components/angular-ladda/dist/angular-ladda.min.js']
     }, {
-        name: 'ngTable',
-        files: ['/assets/bower_components/ng-table/dist/ng-table.min.js', '/assets/bower_components/ng-table/dist/ng-table.min.css']
-    }, {
         name: 'ui.select',
         files: ['/assets/bower_components/angular-ui-select/dist/select.min.js', '/assets/bower_components/angular-ui-select/dist/select.min.css', '/assets/bower_components/select2/dist/css/select2.min.css', '/assets/bower_components/select2-bootstrap-css/select2-bootstrap.min.css', '/assets/bower_components/selectize/dist/css/selectize.bootstrap3.css']
     }, {

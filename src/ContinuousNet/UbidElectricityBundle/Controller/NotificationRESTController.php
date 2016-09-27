@@ -87,6 +87,13 @@ class NotificationRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'n_.modifierUser = modifier_user.id');
             $textFields = array('notification.content', 'notification.link');
             foreach ($filters as $field => $value) {
+                if (substr_count($field, '.') > 1) {
+                    if ($value == 'true') {
+                        list ($entityName, $listName, $listItem) = explode('.', $field);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF n_.'.$listName)->setParameter($listName.'_value', $listItem);
+                    }
+                    continue;
+                }
                 $_field = str_replace('notification.', 'n_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {

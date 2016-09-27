@@ -4,10 +4,8 @@
  * Controller for Hits List
  */
 
-app.controller('HitsCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
-
-    $scope.isFiltersVisible = false;
+app.controller('HitsCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
+function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
 
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
@@ -19,12 +17,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getVisits = function() {
         $scope.visitsLoaded = true;
         if ($scope.visits.length == 0) {
-            $scope.visits.push({});
+            $scope.visits.push({id: '', title: $filter('translate')('content.form.messages.SELECTVISIT')});
             var def = $q.defer();
             $visitsDataFactory.query({offset: 0, limit: 10000, 'order_by[visit.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.visits.length = 0;
                         for (var i in data.results) {
                             $scope.visits.push({
                                 id: data.results[i].id,
@@ -49,12 +46,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.users.length = 0;
                         for (var i in data.results) {
                             $scope.users.push({
                                 id: data.results[i].id,
@@ -110,13 +106,16 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.hitsParams[param] = newValue;
+        $location.search(param, JSON.stringify(newValue));
     };
 
     $scope.getParamValue = function(param, defaultValue) {
         if (!angular.isDefined($localStorage.hitsParams)) {
            $localStorage.hitsParams = {};
         }
-        if (angular.isDefined($localStorage.hitsParams[param])) {
+        if (angular.isDefined($location.search()[param])) {
+            return JSON.parse($location.search()[param]);
+        } else if (angular.isDefined($localStorage.hitsParams[param])) {
             return $localStorage.hitsParams[param];
         } else {
             $localStorage.hitsParams[param] = defaultValue;
@@ -133,11 +132,12 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'url', title: $filter('translate')('content.list.fields.URL'), sortable: 'hit.url', filter: { 'hit.url': 'text' }, show: $scope.getParamValue('url_show_filed', true), getValue: $scope.textValue },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'hit.createdAt', filter: { 'hit.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', true), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'hit.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', true), displayField: 'username', state: 'app.access.usersdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'
             +'<button type="button" class="btn btn-danger" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.REMOVE')+'" ng-click="delete(row)"><i class="ti-trash"></i></button>'
-+'</div>') }
+            +'</div>') }
         ];
     };
 
@@ -149,20 +149,34 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         }, 500);
     });
 
-    $scope.tableParams = new ngTableParams({
-        page: 1, // show first page
-        count: $scope.getParamValue('count', 50), // count per page
-        sorting: $scope.getParamValue('sorting', {'hit.id': 'asc'}),
-        filter: $scope.getParamValue('filter', {})
-    }, {
+    $scope.isFiltersVisible = $scope.getParamValue('hitsIsFiltersVisible', false);
+    $scope.$watch('isFiltersVisible', function() {
+        $scope.setParamValue('hitsIsFiltersVisible', $scope.isFiltersVisible);
+    });
+
+    $scope.page = 1; // show first page
+    $scope.count = 50; // count per page
+    $scope.sorting = {'hit.id': 'asc'};
+    $scope.filter = {
+    };
+    $scope.tableParams = {
+        page: $scope.getParamValue('hitsPage', $scope.page),
+        count: $scope.getParamValue('hitsCount', $scope.count),
+        sorting: $scope.getParamValue('hitsSorting', $scope.sorting),
+        filter: $scope.getParamValue('hitsFilter', $scope.filter)
+    };
+    $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
-            var offset = (params.page() - 1) * params.count();
+            var current = params.page();
+            var offset = (current - 1) * params.count();
             var limit = params.count();
             var order_by = params.sorting();
             var filters = params.filter();
-            $scope.setParamValue('sorting', order_by);
-            $scope.setParamValue('filter', filters);
-            $scope.setParamValue('count', limit);
+            $scope.setParamValue('hitsIsFiltersVisible', $scope.isFiltersVisible);
+            $scope.setParamValue('hitsPage', current);
+            $scope.setParamValue('hitsCount', limit);
+            $scope.setParamValue('hitsSorting', order_by);
+            $scope.setParamValue('hitsFilter', filters);
             var http_params = {
                 offset: offset,
                 limit: limit

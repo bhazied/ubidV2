@@ -183,7 +183,6 @@
                                 <div class="block" ng-if="parentsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="postCategory.parent" name="parent" id="postCategoryParent" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTPARENT" value="">Select Parent</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -199,7 +198,6 @@
                                 <div class="block" ng-if="postTypesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTPOSTTYPE" value="">Select Post Type</option>
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -235,7 +233,6 @@
                                     </div>
                                     <div class="block" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="postCategory.status" name="status" id="postCategoryStatus" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTSTATUS" value="">Select Status</option>
                                         </select>
                                         <span my-enum="[[ postCategory.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>

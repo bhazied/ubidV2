@@ -1,0 +1,30 @@
+bidproduct:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:index" }
+
+bidproduct_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:show" }
+
+bidproduct_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:new" }
+
+bidproduct_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:create" }
+    methods:  POST
+
+bidproduct_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:edit" }
+
+bidproduct_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:update" }
+    methods:  [POST, PUT]
+
+bidproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:BidProduct:delete" }
+    methods:  [POST, DELETE]

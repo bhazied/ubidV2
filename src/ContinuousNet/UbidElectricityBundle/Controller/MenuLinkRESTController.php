@@ -88,6 +88,13 @@ class MenuLinkRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'ml_.modifierUser = modifier_user.id');
             $textFields = array('menuLink.name', 'menuLink.nameAr', 'menuLink.nameFr', 'menuLink.slug', 'menuLink.slugAr', 'menuLink.slugFr', 'menuLink.controller', 'menuLink.action');
             foreach ($filters as $field => $value) {
+                if (substr_count($field, '.') > 1) {
+                    if ($value == 'true') {
+                        list ($entityName, $listName, $listItem) = explode('.', $field);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF ml_.'.$listName)->setParameter($listName.'_value', $listItem);
+                    }
+                    continue;
+                }
                 $_field = str_replace('menuLink.', 'ml_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {

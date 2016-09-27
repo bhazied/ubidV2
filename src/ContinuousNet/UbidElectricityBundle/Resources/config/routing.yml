@@ -24,6 +24,16 @@ ubid_electricity_v1_api:
     requirements:
         _locale: en|fr|ar
 
+ubid_electricity_bid_api:
+    resource: "@UbidElectricityBundle/Controller/BidRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_bid_product_api:
+    resource: "@UbidElectricityBundle/Controller/BidProductRESTController.php"
+    type:   rest
+    prefix:   /api
+
 ubid_electricity_bidding_type_api:
     resource: "@UbidElectricityBundle/Controller/BiddingTypeRESTController.php"
     type:   rest
@@ -133,6 +143,14 @@ ubid_electricity_visit_api:
     resource: "@UbidElectricityBundle/Controller/VisitRESTController.php"
     type:   rest
     prefix:   /api
+
+ubid_electricity_bid:
+    resource: "@UbidElectricityBundle/Resources/config/routing/bid.yml"
+    prefix:   /bid
+
+ubid_electricity_bid_product:
+    resource: "@UbidElectricityBundle/Resources/config/routing/bid_product.yml"
+    prefix:   /bid-product
 
 ubid_electricity_bidding_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/bidding_type.yml"

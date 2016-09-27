@@ -35,7 +35,6 @@
                                 <div class="block" ng-if="visitsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="hit.visit" name="visit" id="hitVisit" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTVISIT" value="">Select Visit</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->

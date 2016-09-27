@@ -39,7 +39,6 @@
                                     </div>
                                     <div class="block" ng-if="types.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="user.type" name="type" id="userType" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTTYPE" value="">Select Type</option>
                                         </select>
                                         <span my-enum="[[ user.type ]]" my-enum-list="[[ types ]]"></span>
                                     </div>
@@ -130,7 +129,6 @@
                                     </div>
                                     <div class="block" ng-if="genders.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTGENDER" value="">Select Gender</option>
                                         </select>
                                         <span my-enum="[[ user.gender ]]" my-enum-list="[[ genders ]]"></span>
                                     </div>
@@ -245,7 +243,6 @@
                                 <div class="block" ng-if="countriesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false" ng-change="changeCountry()">
-                                            <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
                                         </select>
                                         <i class="fa fa-globe"></i>
                                     </span><!--/input-icon-->
@@ -260,7 +257,6 @@
                                 <div class="block" ng-if="languagesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTLANGUAGE" value="">Select Language</option>
                                         </select>
                                         <i class="fa fa-flag"></i>
                                     </span><!--/input-icon-->

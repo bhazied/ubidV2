@@ -87,6 +87,13 @@ class VisitRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'v_.modifierUser = modifier_user.id');
             $textFields = array('visit.ip', 'visit.userAgent');
             foreach ($filters as $field => $value) {
+                if (substr_count($field, '.') > 1) {
+                    if ($value == 'true') {
+                        list ($entityName, $listName, $listItem) = explode('.', $field);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF v_.'.$listName)->setParameter($listName.'_value', $listItem);
+                    }
+                    continue;
+                }
                 $_field = str_replace('visit.', 'v_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {

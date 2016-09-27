@@ -56,7 +56,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.tenderCategoriesLoaded = true;
             if ($scope.tenderCategories.length == 0) {
-                $scope.tenderCategories.push({});
+                $scope.tenderCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
                 var def = $q.defer();
                 $tenderCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderCategory.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -81,7 +81,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.productTypesLoaded = true;
             if ($scope.productTypes.length == 0) {
-                $scope.productTypes.push({});
+                $scope.productTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPRODUCTTYPE')});
                 var def = $q.defer();
                 $productTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[productType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -106,9 +106,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({});
+                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }

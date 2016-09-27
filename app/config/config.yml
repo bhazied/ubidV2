@@ -301,6 +301,9 @@ assetic:
         animate_css:
             inputs:   
                 - "assets/bower_components/animate.css/animate.min.css"
+        angular_table_css:
+            inputs:
+                - 'assets/bower_components/ng-table/dist/ng-table.min.css'
         toaster_css:
             inputs:   
                 - "assets/bower_components/AngularJS-Toaster/toaster.css"
@@ -357,6 +360,9 @@ assetic:
         angular_storage:
             inputs:
                 - "assets/bower_components/ngstorage/ngStorage.js" #.min
+        angular_table:
+            inputs:
+                - 'assets/bower_components/ng-table/dist/ng-table.min.js'
         videogular:
             inputs:
                 - "assets/bower_components/videogular/videogular.min.js"

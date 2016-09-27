@@ -9,6 +9,7 @@ angular.module('ubid-electricity', [
 	'ngSanitize',
 	'ngResource',
 	'ngTouch',
+	'ngTable',
 	'ui.router',
 	'ui.bootstrap',
 	'oc.lazyLoad',

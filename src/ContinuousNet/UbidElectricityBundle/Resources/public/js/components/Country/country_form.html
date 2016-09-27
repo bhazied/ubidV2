@@ -34,7 +34,6 @@
                                 <div class="block" ng-if="regionsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTREGION" value="">Select Region</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->

@@ -183,7 +183,6 @@
                                 <div class="block" ng-if="parentsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="tenderCategory.parent" name="parent" id="tenderCategoryParent" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTPARENT" value="">Select Parent</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -199,7 +198,6 @@
                                 <div class="block" ng-if="productTypesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="tenderCategory.product_type" name="productType" id="tenderCategoryProductType" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTPRODUCTTYPE" value="">Select Product Type</option>
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -235,7 +233,6 @@
                                     </div>
                                     <div class="block" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="tenderCategory.status" name="status" id="tenderCategoryStatus" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTSTATUS" value="">Select Status</option>
                                         </select>
                                         <span my-enum="[[ tenderCategory.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>

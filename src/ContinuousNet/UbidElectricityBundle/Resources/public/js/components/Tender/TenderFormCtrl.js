@@ -82,7 +82,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.regionsLoaded = true;
             if ($scope.regions.length == 0) {
-                $scope.regions.push({});
+                $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTREGION')});
                 var def = $q.defer();
                 $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -107,7 +107,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.countriesLoaded = true;
             if ($scope.countries.length == 0) {
-                $scope.countries.push({});
+                $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
                 var def = $q.defer();
                 $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -132,7 +132,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.sectorsLoaded = true;
             if ($scope.sectors.length == 0) {
-                $scope.sectors.push({});
+                $scope.sectors.push({id: '', title: $filter('translate')('content.form.messages.SELECTSECTOR')});
                 var def = $q.defer();
                 $sectorsDataFactory.query({offset: 0, limit: 10000, 'order_by[sector.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -157,7 +157,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.tenderTypesLoaded = true;
             if ($scope.tenderTypes.length == 0) {
-                $scope.tenderTypes.push({});
+                $scope.tenderTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDERTYPE')});
                 var def = $q.defer();
                 $tenderTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -182,7 +182,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.biddingTypesLoaded = true;
             if ($scope.biddingTypes.length == 0) {
-                $scope.biddingTypes.push({});
+                $scope.biddingTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBIDDINGTYPE')});
                 var def = $q.defer();
                 $biddingTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[biddingType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -207,9 +207,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({});
+                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }

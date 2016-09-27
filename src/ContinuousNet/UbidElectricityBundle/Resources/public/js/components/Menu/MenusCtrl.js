@@ -4,12 +4,14 @@
  * Controller for Menus List
  */
 
-app.controller('MenusCtrl', ['$scope', '$rootScope', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$menusDataFactory',
-function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $menusDataFactory) {
+app.controller('MenusCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$menusDataFactory',
+function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $menusDataFactory) {
 
-    $scope.isFiltersVisible = false;
-
-    $scope.modes = [{
+    $scope.modesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'Link',
         title: $filter('translate')('content.list.fields.modes.LINK'),
         css: 'primary'
@@ -62,7 +64,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         title: $filter('translate')('content.list.fields.modes.PACKAGE'),
         css: 'primary'
     }];
-    $scope.displayModes = [{
+    $scope.displayModesOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'ImageWithText',
         title: $filter('translate')('content.list.fields.displaymodes.IMAGEWITHTEXT'),
         css: 'primary'
@@ -75,7 +81,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         title: $filter('translate')('content.list.fields.displaymodes.TEXTONLY'),
         css: 'warning'
     }];
-    $scope.textPositions = [{
+    $scope.textPositionsOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
         id: 'None',
         title: $filter('translate')('content.list.fields.textpositions.NONE'),
         css: 'primary'
@@ -98,6 +108,10 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     }];
 
     $scope.booleanOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+     }, {
         id: '1',
         title: $filter('translate')('content.common.YES'),
         css: 'success'
@@ -116,12 +130,11 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
-                        $scope.users.length = 0;
                         for (var i in data.results) {
                             $scope.users.push({
                                 id: data.results[i].id,
@@ -167,9 +180,9 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
     $scope.interpolatedValue = function($scope, row) {
         return this.interpolateExpr({
             row: row,
-            modes: $scope.modes,
-            displayModes: $scope.displayModes,
-            textPositions: $scope.textPositions,
+            modes: $scope.modesOptions,
+            displayModes: $scope.displayModesOptions,
+            textPositions: $scope.textPositionsOptions,
             field: this.field,
             title: this.title,
             sortable: this.sortable,
@@ -180,13 +193,16 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.menusParams[param] = newValue;
+        $location.search(param, JSON.stringify(newValue));
     };
 
     $scope.getParamValue = function(param, defaultValue) {
         if (!angular.isDefined($localStorage.menusParams)) {
            $localStorage.menusParams = {};
         }
-        if (angular.isDefined($localStorage.menusParams[param])) {
+        if (angular.isDefined($location.search()[param])) {
+            return JSON.parse($location.search()[param]);
+        } else if (angular.isDefined($localStorage.menusParams[param])) {
             return $localStorage.menusParams[param];
         } else {
             $localStorage.menusParams[param] = defaultValue;
@@ -203,7 +219,7 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'menu.slug', filter: { 'menu.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'slug_ar', title: $filter('translate')('content.list.fields.SLUGAR'), sortable: 'menu.slugAr', filter: { 'menu.slugAr': 'text' }, show: $scope.getParamValue('slug_ar_show_filed', true), getValue: $scope.textValue },
             { field: 'slug_fr', title: $filter('translate')('content.list.fields.SLUGFR'), sortable: 'menu.slugFr', filter: { 'menu.slugFr': 'text' }, show: $scope.getParamValue('slug_fr_show_filed', true), getValue: $scope.textValue },
-            { field: 'mode', title: $filter('translate')('content.list.fields.MODE'), sortable: 'menu.mode', filter: { 'menu.mode': 'select' }, show: $scope.getParamValue('mode_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.modes, interpolateExpr: $interpolate('<span my-enum="[[ row.mode ]]" my-enum-list=\'[[ modes ]]\'></span>') },
+            { field: 'mode', title: $filter('translate')('content.list.fields.MODE'), sortable: 'menu.mode', filter: { 'menu.mode': 'select' }, show: $scope.getParamValue('mode_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.modesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.mode ]]" my-enum-list=\'[[ modes ]]\'></span>') },
             { field: 'menu_css', title: $filter('translate')('content.list.fields.MENUCSS'), sortable: 'menu.menuCss', filter: { 'menu.menuCss': 'text' }, show: $scope.getParamValue('menu_css_show_filed', false), getValue: $scope.textValue },
             { field: 'item_css', title: $filter('translate')('content.list.fields.ITEMCSS'), sortable: 'menu.itemCss', filter: { 'menu.itemCss': 'text' }, show: $scope.getParamValue('item_css_show_filed', false), getValue: $scope.textValue },
             { field: 'active_css', title: $filter('translate')('content.list.fields.ACTIVECSS'), sortable: 'menu.activeCss', filter: { 'menu.activeCss': 'text' }, show: $scope.getParamValue('active_css_show_filed', false), getValue: $scope.textValue },
@@ -214,18 +230,19 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
             { field: 'after_txt', title: $filter('translate')('content.list.fields.AFTERTXT'), sortable: 'menu.afterTxt', filter: { 'menu.afterTxt': 'text' }, show: $scope.getParamValue('after_txt_show_filed', false), getValue: $scope.textValue },
             { field: 'separator', title: $filter('translate')('content.list.fields.SEPARATOR'), sortable: 'menu.separator', filter: { 'menu.separator': 'text' }, show: $scope.getParamValue('separator_show_filed', false), getValue: $scope.textValue },
             { field: 'columns_number', title: $filter('translate')('content.list.fields.COLUMNSNUMBER'), sortable: 'menu.columnsNumber', filter: { 'menu.columnsNumber': 'number' }, show: $scope.getParamValue('columns_number_show_filed', false), getValue: $scope.textValue },
-            { field: 'display_mode', title: $filter('translate')('content.list.fields.DISPLAYMODE'), sortable: 'menu.displayMode', filter: { 'menu.displayMode': 'select' }, show: $scope.getParamValue('display_mode_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.displayModes, interpolateExpr: $interpolate('<span my-enum="[[ row.display_mode ]]" my-enum-list=\'[[ displayModes ]]\'></span>') },
-            { field: 'text_position', title: $filter('translate')('content.list.fields.TEXTPOSITION'), sortable: 'menu.textPosition', filter: { 'menu.textPosition': 'select' }, show: $scope.getParamValue('text_position_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.textPositions, interpolateExpr: $interpolate('<span my-enum="[[ row.text_position ]]" my-enum-list=\'[[ textPositions ]]\'></span>') },
+            { field: 'display_mode', title: $filter('translate')('content.list.fields.DISPLAYMODE'), sortable: 'menu.displayMode', filter: { 'menu.displayMode': 'select' }, show: $scope.getParamValue('display_mode_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.displayModesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.display_mode ]]" my-enum-list=\'[[ displayModes ]]\'></span>') },
+            { field: 'text_position', title: $filter('translate')('content.list.fields.TEXTPOSITION'), sortable: 'menu.textPosition', filter: { 'menu.textPosition': 'select' }, show: $scope.getParamValue('text_position_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.textPositionsOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.text_position ]]" my-enum-list=\'[[ textPositions ]]\'></span>') },
             { field: 'is_published', title: $filter('translate')('content.list.fields.ISPUBLISHED'), sortable: 'menu.isPublished', filter: { 'menu.isPublished': 'select' }, show: $scope.getParamValue('is_published_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_published ]]"></span>') },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'menu.createdAt', filter: { 'menu.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'menu.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'menu.modifiedAt', filter: { 'menu.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'menu.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<div class="btn-group pull-right">'
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'
             +'<button type="button" class="btn btn-danger" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.REMOVE')+'" ng-click="delete(row)"><i class="ti-trash"></i></button>'
-+'</div>') }
+            +'</div>') }
         ];
     };
 
@@ -237,20 +254,34 @@ function($scope, $rootScope, $sce, $timeout, $filter, ngTableParams, $state, $q,
         }, 500);
     });
 
-    $scope.tableParams = new ngTableParams({
-        page: 1, // show first page
-        count: $scope.getParamValue('count', 50), // count per page
-        sorting: $scope.getParamValue('sorting', {'menu.name': 'asc'}),
-        filter: $scope.getParamValue('filter', {})
-    }, {
+    $scope.isFiltersVisible = $scope.getParamValue('menusIsFiltersVisible', false);
+    $scope.$watch('isFiltersVisible', function() {
+        $scope.setParamValue('menusIsFiltersVisible', $scope.isFiltersVisible);
+    });
+
+    $scope.page = 1; // show first page
+    $scope.count = 50; // count per page
+    $scope.sorting = {'menu.name': 'asc'};
+    $scope.filter = {
+    };
+    $scope.tableParams = {
+        page: $scope.getParamValue('menusPage', $scope.page),
+        count: $scope.getParamValue('menusCount', $scope.count),
+        sorting: $scope.getParamValue('menusSorting', $scope.sorting),
+        filter: $scope.getParamValue('menusFilter', $scope.filter)
+    };
+    $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
-            var offset = (params.page() - 1) * params.count();
+            var current = params.page();
+            var offset = (current - 1) * params.count();
             var limit = params.count();
             var order_by = params.sorting();
             var filters = params.filter();
-            $scope.setParamValue('sorting', order_by);
-            $scope.setParamValue('filter', filters);
-            $scope.setParamValue('count', limit);
+            $scope.setParamValue('menusIsFiltersVisible', $scope.isFiltersVisible);
+            $scope.setParamValue('menusPage', current);
+            $scope.setParamValue('menusCount', limit);
+            $scope.setParamValue('menusSorting', order_by);
+            $scope.setParamValue('menusFilter', filters);
             var http_params = {
                 offset: offset,
                 limit: limit

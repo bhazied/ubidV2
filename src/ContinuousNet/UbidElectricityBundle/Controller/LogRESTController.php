@@ -86,6 +86,13 @@ class LogRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'l_.creatorUser = creator_user.id');
             $textFields = array('log.entity', 'log.action', 'log.ipAddress', 'log.userAgent');
             foreach ($filters as $field => $value) {
+                if (substr_count($field, '.') > 1) {
+                    if ($value == 'true') {
+                        list ($entityName, $listName, $listItem) = explode('.', $field);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF l_.'.$listName)->setParameter($listName.'_value', $listItem);
+                    }
+                    continue;
+                }
                 $_field = str_replace('log.', 'l_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {

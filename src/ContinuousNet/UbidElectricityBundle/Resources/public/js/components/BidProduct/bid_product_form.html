@@ -1,0 +1,215 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.BIDPRODUCTS">Bid Products</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="BidProductFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWBIDPRODUCT" ng-if="bidProduct.id == 0">
+                        New Bid Product
+                    </legend>
+                    <legend translate="content.list.EDITBIDPRODUCT" ng-if="bidProduct.id > 0">
+                        Edit Bid Product
+                    </legend>
+                    <form name="bidProductForm" id="bidProductForm" novalidate ng-submit="submitForm(bidProductForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="bidProductId" ng-model="bidProduct.id" />
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':bidProductForm.tenderProduct.$dirty && bidProductForm.tenderProduct.$invalid, 'has-success':bidProductForm.tenderProduct.$valid}">
+                                    <label for="bidProductTenderProduct" class="control-label">
+                                        <span translate="content.list.fields.TENDERPRODUCT">Tender Product</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block" ng-if="tenderProductsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.title for item in tenderProducts | filter:{ hidden : false }" ng-model="bidProduct.tender_product" name="tenderProduct" id="bidProductTenderProduct" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-control-skip-backward"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="bidProductForm.tenderProduct.$dirty && bidProductForm.tenderProduct.$error.required" translate="content.form.messages.TENDERPRODUCTREQUIRED">Tender Product is required.</span>
+                                    <span class="success text-small block" ng-if="bidProductForm.tenderProduct.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':bidProductForm.bid.$dirty && bidProductForm.bid.$invalid, 'has-success':bidProductForm.bid.$valid}">
+                                    <label for="bidProductBid" class="control-label">
+                                        <span translate="content.list.fields.BID">Bid</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block" ng-if="bidsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.title for item in bids | filter:{ hidden : false }" ng-model="bidProduct.bid" name="bid" id="bidProductBid" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="bidProductForm.bid.$dirty && bidProductForm.bid.$error.required" translate="content.form.messages.BIDREQUIRED">Bid is required.</span>
+                                    <span class="success text-small block" ng-if="bidProductForm.bid.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':bidProductForm.name.$dirty && bidProductForm.name.$invalid, 'has-success':bidProductForm.name.$valid}">
+                                    <label for="bidProductName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.name" type="text" name="name" id="bidProductName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bidProductForm.name.$dirty && bidProductForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="bidProductForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                                    <slug from="bidProduct.name" to="bidProduct.slug"></slug>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':bidProductForm.slug.$dirty && bidProductForm.slug.$invalid, 'has-success':bidProductForm.slug.$valid}">
+                                    <label for="bidProductSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.slug" type="text" name="slug" id="bidProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bidProductForm.slug.$dirty && bidProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="bidProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductBrand" class="control-label">
+                                        <span translate="content.list.fields.BRAND">Brand</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.brand" type="text" name="brand" id="bidProductBrand" class="form-control" placeholder="[[ 'content.form.messages.ENTERBRAND' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductModel" class="control-label">
+                                        <span translate="content.list.fields.MODEL">Model</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.model" type="text" name="model" id="bidProductModel" class="form-control" placeholder="[[ 'content.form.messages.ENTERMODEL' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.description" type="text" name="description" id="bidProductDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':bidProductForm.status.$dirty && bidProductForm.status.$invalid, 'has-success':bidProductForm.status.$valid}">
+                                    <label for="bidProductStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="bidProduct.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="bidProduct.status" name="status" id="bidProductStatus" class="form-control" ng-required="true">
+                                        </select>
+                                        <span my-enum="[[ bidProduct.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="bidProductForm.status.$dirty && bidProductForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="bidProductForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductUnitCost" class="control-label">
+                                        <span translate="content.list.fields.UNITCOST">Unit Cost</span>
+                                    </label>
+                                        <input ng-model="bidProduct.unit_cost" type="text" name="unitCost" id="bidProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductQuantity" class="control-label">
+                                        <span translate="content.list.fields.QUANTITY">Quantity</span>
+                                    </label>
+                                        <input ng-model="bidProduct.quantity" type="text" name="quantity" id="bidProductQuantity" class="form-control" placeholder="[[ 'content.form.messages.ENTERQUANTITY' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductDuration" class="control-label">
+                                        <span translate="content.list.fields.DURATION">Duration</span>
+                                    </label>
+                                        <input ng-model="bidProduct.duration" type="text" name="duration" id="bidProductDuration" class="form-control" placeholder="[[ 'content.form.messages.ENTERDURATION' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="bidProductOrdering" class="control-label">
+                                        <span translate="content.list.fields.ORDERING">Ordering</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bidProduct.ordering" type="text" name="ordering" id="bidProductOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBIDPRODUCTS">Back to Bid Products list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(bidProductForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidProductForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="bidProducts.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

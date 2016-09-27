@@ -97,6 +97,18 @@ app.config(function($breadcrumbProvider) {
     });
 });
 
+// ngTable Filter
+// configuration
+app.config(function(ngTableFilterConfigProvider) {
+
+    ngTableFilterConfigProvider.setConfig({
+        aliasUrls: {
+            'checkboxes': '/assets/views/partials/checkboxes.html'
+        }
+    });
+
+});
+
 if (!String.prototype.endsWith) {
 
     String.prototype.endsWith = function(searchString, position) {

@@ -121,7 +121,6 @@
                                     </div>
                                     <div class="block" ng-if="modes.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in modes" ng-model="menu.mode" name="mode" id="menuMode" class="form-control" ng-required="false">
-                                            <option translate="content.form.messages.SELECTMODE" value="">Select Mode</option>
                                         </select>
                                         <span my-enum="[[ menu.mode ]]" my-enum-list="[[ modes ]]"></span>
                                     </div>
@@ -261,7 +260,6 @@
                                     </div>
                                     <div class="block" ng-if="displayModes.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in displayModes" ng-model="menu.display_mode" name="display_mode" id="menuDisplayMode" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTDISPLAYMODE" value="">Select Display Mode</option>
                                         </select>
                                         <span my-enum="[[ menu.display_mode ]]" my-enum-list="[[ displayModes ]]"></span>
                                     </div>
@@ -285,7 +283,6 @@
                                     </div>
                                     <div class="block" ng-if="textPositions.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in textPositions" ng-model="menu.text_position" name="text_position" id="menuTextPosition" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTTEXTPOSITION" value="">Select Text Position</option>
                                         </select>
                                         <span my-enum="[[ menu.text_position ]]" my-enum-list="[[ textPositions ]]"></span>
                                     </div>

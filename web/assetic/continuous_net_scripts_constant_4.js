@@ -11,6 +11,12 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'BidsCtrl': '/bundles/ubidelectricity/js/components/Bid/BidsCtrl.js',
+        'BidFormCtrl': '/bundles/ubidelectricity/js/components/Bid/BidFormCtrl.js',
+        'BidCtrl': '/bundles/ubidelectricity/js/components/Bid/BidCtrl.js',
+        'BidProductsCtrl': '/bundles/ubidelectricity/js/components/BidProduct/BidProductsCtrl.js',
+        'BidProductFormCtrl': '/bundles/ubidelectricity/js/components/BidProduct/BidProductFormCtrl.js',
+        'BidProductCtrl': '/bundles/ubidelectricity/js/components/BidProduct/BidProductCtrl.js',
         'BiddingTypesCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypesCtrl.js',
         'BiddingTypeFormCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeFormCtrl.js',
         'BiddingTypeCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeCtrl.js',
@@ -93,6 +99,12 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
+    },{
+        name: 'bidService',
+        files: ['/bundles/ubidelectricity/js/components/Bid/BidService.js']
+    },{
+        name: 'bidProductService',
+        files: ['/bundles/ubidelectricity/js/components/BidProduct/BidProductService.js']
     },{
         name: 'biddingTypeService',
         files: ['/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeService.js']

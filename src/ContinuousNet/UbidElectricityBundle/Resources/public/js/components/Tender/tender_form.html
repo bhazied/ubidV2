@@ -35,7 +35,6 @@
                                 <div class="block" ng-if="regionsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="tender.region" name="region" id="tenderRegion" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTREGION" value="">Select Region</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -53,7 +52,6 @@
                                 <div class="block" ng-if="countriesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="tender.country" name="country" id="tenderCountry" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
                                         </select>
                                         <i class="fa fa-globe"></i>
                                     </span><!--/input-icon-->
@@ -73,7 +71,6 @@
                                 <div class="block" ng-if="sectorsLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in sectors | filter:{ hidden : false }" ng-model="tender.sector" name="sector" id="tenderSector" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTSECTOR" value="">Select Sector</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -91,7 +88,6 @@
                                 <div class="block" ng-if="tenderTypesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="tender.tender_type" name="tenderType" id="tenderTenderType" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTTENDERTYPE" value="">Select Tender Type</option>
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -111,7 +107,6 @@
                                 <div class="block" ng-if="biddingTypesLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="tender.bidding_type" name="biddingType" id="tenderBiddingType" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTBIDDINGTYPE" value="">Select Bidding Type</option>
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -196,7 +191,6 @@
                                     </div>
                                     <div class="block" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="tender.status" name="status" id="tenderStatus" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTSTATUS" value="">Select Status</option>
                                         </select>
                                         <span my-enum="[[ tender.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>

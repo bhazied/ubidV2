@@ -1,0 +1,20 @@
+
+<div class="btn-group">
+    <button type="button" class="btn btn-primary">
+        <i class="ti-check" ng-if="!$column.display"></i>
+        <i class="ti-check-box" ng-if="$column.display"></i>
+        [[$column.title()]]
+    </button>
+    <button type="button" class="btn btn-primary dropdown-toggle" ng-class="{'dropup': $column.display}" ng-click="$column.display = !$column.display">
+        <span class="caret"></span>
+        <span class="sr-only"></span>
+    </button>
+    <ul class="dropdown-menu my-dropdown" ng-show="$column.display">
+        <li ng-repeat="row in $column.data">
+            <div class="checkbox clip-check check-primary check-sm" style="margin: 3px 5px;">
+                <input ng-disabled="$filterRow.disabled" type="checkbox" id="[[$column.field]]_[[row.id]]" ng-model="params.filter()[name+'.'+row.id]" />
+                <label for="[[$column.field]]_[[row.id]]">[[row.title]]</label>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -35,7 +35,6 @@
                                 <div class="block" ng-if="menusLoaded">
                                     <span class="input-icon">
                                         <select ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="menuLink.menu" name="menu" id="menuLinkMenu" class="form-control" ng-required="true">
-                                            <option translate="content.form.messages.SELECTMENU" value="">Select Menu</option>
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->

@@ -1,6 +1,8 @@
 
 security:
     access_control:
+        - { path: ^/api/bids,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/bidproducts,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/api/biddingtypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/api/countries,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/api/groups,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
