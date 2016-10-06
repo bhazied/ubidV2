@@ -24,6 +24,21 @@ ubid_electricity_v1_api:
     requirements:
         _locale: en|fr|ar
 
+ubid_electricity_banner_api:
+    resource: "@UbidElectricityBundle/Controller/BannerRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_banner_position_api:
+    resource: "@UbidElectricityBundle/Controller/BannerPositionRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_banner_type_api:
+    resource: "@UbidElectricityBundle/Controller/BannerTypeRESTController.php"
+    type:   rest
+    prefix:   /api
+
 ubid_electricity_bid_api:
     resource: "@UbidElectricityBundle/Controller/BidRESTController.php"
     type:   rest
@@ -49,6 +64,11 @@ ubid_electricity_buyer_type_api:
     type:   rest
     prefix:   /api
 
+ubid_electricity_click_api:
+    resource: "@UbidElectricityBundle/Controller/ClickRESTController.php"
+    type:   rest
+    prefix:   /api
+
 ubid_electricity_country_api:
     resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
     type:   rest
@@ -61,6 +81,11 @@ ubid_electricity_group_api:
 
 ubid_electricity_hit_api:
     resource: "@UbidElectricityBundle/Controller/HitRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_impression_api:
+    resource: "@UbidElectricityBundle/Controller/ImpressionRESTController.php"
     type:   rest
     prefix:   /api
 
@@ -154,6 +179,18 @@ ubid_electricity_visit_api:
     type:   rest
     prefix:   /api
 
+ubid_electricity_banner:
+    resource: "@UbidElectricityBundle/Resources/config/routing/banner.yml"
+    prefix:   /banner
+
+ubid_electricity_banner_position:
+    resource: "@UbidElectricityBundle/Resources/config/routing/banner_position.yml"
+    prefix:   /banner-position
+
+ubid_electricity_banner_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/banner_type.yml"
+    prefix:   /banner-type
+
 ubid_electricity_bid:
     resource: "@UbidElectricityBundle/Resources/config/routing/bid.yml"
     prefix:   /bid
@@ -174,6 +211,10 @@ ubid_electricity_buyer_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/buyer_type.yml"
     prefix:   /buyer-type
 
+ubid_electricity_click:
+    resource: "@UbidElectricityBundle/Resources/config/routing/click.yml"
+    prefix:   /click
+
 ubid_electricity_country:
     resource: "@UbidElectricityBundle/Resources/config/routing/country.yml"
     prefix:   /country
@@ -185,6 +226,10 @@ ubid_electricity_group:
 ubid_electricity_hit:
     resource: "@UbidElectricityBundle/Resources/config/routing/hit.yml"
     prefix:   /hit
+
+ubid_electricity_impression:
+    resource: "@UbidElectricityBundle/Resources/config/routing/impression.yml"
+    prefix:   /impression
 
 ubid_electricity_language:
     resource: "@UbidElectricityBundle/Resources/config/routing/language.yml"

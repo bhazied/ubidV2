@@ -11,6 +11,15 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
+        'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
+        'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
+        'BannerPositionsCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionsCtrl.js',
+        'BannerPositionFormCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionFormCtrl.js',
+        'BannerPositionCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionCtrl.js',
+        'BannerTypesCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypesCtrl.js',
+        'BannerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypeFormCtrl.js',
+        'BannerTypeCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypeCtrl.js',
         'BidsCtrl': '/bundles/ubidelectricity/js/components/Bid/BidsCtrl.js',
         'BidFormCtrl': '/bundles/ubidelectricity/js/components/Bid/BidFormCtrl.js',
         'BidCtrl': '/bundles/ubidelectricity/js/components/Bid/BidCtrl.js',
@@ -26,6 +35,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
+        'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
+        'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
+        'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
         'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
         'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
         'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
@@ -35,6 +47,9 @@ app.constant('APP_JS_REQUIRES', {
         'HitsCtrl': '/bundles/ubidelectricity/js/components/Hit/HitsCtrl.js',
         'HitFormCtrl': '/bundles/ubidelectricity/js/components/Hit/HitFormCtrl.js',
         'HitCtrl': '/bundles/ubidelectricity/js/components/Hit/HitCtrl.js',
+        'ImpressionsCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionsCtrl.js',
+        'ImpressionFormCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionFormCtrl.js',
+        'ImpressionCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionCtrl.js',
         'LanguagesCtrl': '/bundles/ubidelectricity/js/components/Language/LanguagesCtrl.js',
         'LanguageFormCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageFormCtrl.js',
         'LanguageCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageCtrl.js',
@@ -106,6 +121,15 @@ app.constant('APP_JS_REQUIRES', {
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
     },{
+        name: 'bannerService',
+        files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
+    },{
+        name: 'bannerPositionService',
+        files: ['/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionService.js']
+    },{
+        name: 'bannerTypeService',
+        files: ['/bundles/ubidelectricity/js/components/BannerType/BannerTypeService.js']
+    },{
         name: 'bidService',
         files: ['/bundles/ubidelectricity/js/components/Bid/BidService.js']
     },{
@@ -121,6 +145,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
+        name: 'clickService',
+        files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
+    },{
         name: 'countryService',
         files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
     },{
@@ -129,6 +156,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'hitService',
         files: ['/bundles/ubidelectricity/js/components/Hit/HitService.js']
+    },{
+        name: 'impressionService',
+        files: ['/bundles/ubidelectricity/js/components/Impression/ImpressionService.js']
     },{
         name: 'languageService',
         files: ['/bundles/ubidelectricity/js/components/Language/LanguageService.js']

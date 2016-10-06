@@ -1,0 +1,164 @@
+'use strict';
+
+/**
+ * Controller for Impression Form
+ */
+
+app.controller('ImpressionFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$visitsDataFactory', '$bannersDataFactory', '$usersDataFactory', '$impressionsDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $visitsDataFactory, $bannersDataFactory, $usersDataFactory, $impressionsDataFactory) {
+
+    $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
+
+    $scope.disableSubmit = false;
+
+    // Editor options.
+    $scope.editorOptions = {
+        language: $scope.locale,
+        allowedContent: true,
+        entities: false
+    };
+
+    // Called when the editor is completely ready.
+    $scope.onReadyEditor = function () {
+        
+    };
+
+
+    $scope.visits = [];
+    $scope.visitsLoaded = false;
+
+    $scope.getVisits = function() {
+        $timeout(function(){
+            $scope.visitsLoaded = true;
+            if ($scope.visits.length == 0) {
+                $scope.visits.push({id: '', title: $filter('translate')('content.form.messages.SELECTVISIT')});
+                var def = $q.defer();
+                $visitsDataFactory.query({offset: 0, limit: 10000, 'order_by[visit.ip]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.visits = data.results;
+                    def.resolve($scope.visits);
+                });
+                return def;
+            } else {
+                return $scope.visits;
+            }
+        });
+    };
+
+    $scope.getVisits();
+
+    $scope.banners = [];
+    $scope.bannersLoaded = false;
+
+    $scope.getBanners = function() {
+        $timeout(function(){
+            $scope.bannersLoaded = true;
+            if ($scope.banners.length == 0) {
+                $scope.banners.push({id: '', title: $filter('translate')('content.form.messages.SELECTBANNER')});
+                var def = $q.defer();
+                $bannersDataFactory.query({offset: 0, limit: 10000, 'order_by[banner.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.banners = data.results;
+                    def.resolve($scope.banners);
+                });
+                return def;
+            } else {
+                return $scope.banners;
+            }
+        });
+    };
+
+    $scope.getBanners();
+
+    $scope.users = [];
+    $scope.usersLoaded = false;
+
+    $scope.getUsers = function() {
+        $timeout(function(){
+            $scope.usersLoaded = true;
+            if ($scope.users.length == 0) {
+                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
+                var def = $q.defer();
+                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.users = data.results;
+                    def.resolve($scope.users);
+                });
+                return def;
+            } else {
+                return $scope.users;
+            }
+        });
+    };
+
+    $scope.getUsers();
+
+
+    $scope.submitForm = function(form) {
+        var firstError = null;
+        if (form.$invalid) {
+            var field = null, firstError = null;
+            for (field in form) {
+                if (field[0] != '$') {
+                    if (firstError === null && !form[field].$valid) {
+                        firstError = form[field].$name;
+                    }
+                    if (form[field].$pristine) {
+                        form[field].$dirty = true;
+                    }
+                }
+            }
+            angular.element('.ng-invalid[name=' + firstError + ']').focus();
+            SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
+            return false;
+        } else {
+            if ($scope.impression.id > 0) {
+                $scope.disableSubmit = true;
+                $impressionsDataFactory.update($scope.impression).$promise.then(function(data) {
+                    $scope.disableSubmit = false;
+                    toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.IMPRESSIONUPDATED'));
+                    $scope.list();
+                }, function(error) {
+                    $scope.disableSubmit = false;
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.IMPRESSIONNOTUPDATED'));
+                    console.warn(error);
+                });
+            } else {
+                $scope.disableSubmit = true;
+                $impressionsDataFactory.create($scope.impression).$promise.then(function(data) {
+                    $scope.disableSubmit = false;
+                    toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.IMPRESSIONCREATED'));
+                    $scope.list();
+                }, function(error) {
+                    $scope.disableSubmit = false;
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.IMPRESSIONNOTCREATED'));
+                    console.warn(error);
+                });
+            }
+            return false;
+        }
+    };
+
+    $scope.list = function() {
+        $state.go('app.adserving.impressions');
+    };
+    
+    if (angular.isDefined($stateParams.id)) {
+        $impressionsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+            $timeout(function(){
+                $scope.impression = savable(data);
+            });
+        });
+    } else {
+        $scope.impression = {id: 0};
+
+    }
+
+}]);
+

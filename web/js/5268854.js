@@ -67857,6 +67857,15 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
+        'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
+        'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
+        'BannerPositionsCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionsCtrl.js',
+        'BannerPositionFormCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionFormCtrl.js',
+        'BannerPositionCtrl': '/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionCtrl.js',
+        'BannerTypesCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypesCtrl.js',
+        'BannerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypeFormCtrl.js',
+        'BannerTypeCtrl': '/bundles/ubidelectricity/js/components/BannerType/BannerTypeCtrl.js',
         'BidsCtrl': '/bundles/ubidelectricity/js/components/Bid/BidsCtrl.js',
         'BidFormCtrl': '/bundles/ubidelectricity/js/components/Bid/BidFormCtrl.js',
         'BidCtrl': '/bundles/ubidelectricity/js/components/Bid/BidCtrl.js',
@@ -67872,6 +67881,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
+        'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
+        'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
+        'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
         'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
         'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
         'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
@@ -67881,6 +67893,9 @@ app.constant('APP_JS_REQUIRES', {
         'HitsCtrl': '/bundles/ubidelectricity/js/components/Hit/HitsCtrl.js',
         'HitFormCtrl': '/bundles/ubidelectricity/js/components/Hit/HitFormCtrl.js',
         'HitCtrl': '/bundles/ubidelectricity/js/components/Hit/HitCtrl.js',
+        'ImpressionsCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionsCtrl.js',
+        'ImpressionFormCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionFormCtrl.js',
+        'ImpressionCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionCtrl.js',
         'LanguagesCtrl': '/bundles/ubidelectricity/js/components/Language/LanguagesCtrl.js',
         'LanguageFormCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageFormCtrl.js',
         'LanguageCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageCtrl.js',
@@ -67952,6 +67967,15 @@ app.constant('APP_JS_REQUIRES', {
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
     },{
+        name: 'bannerService',
+        files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
+    },{
+        name: 'bannerPositionService',
+        files: ['/bundles/ubidelectricity/js/components/BannerPosition/BannerPositionService.js']
+    },{
+        name: 'bannerTypeService',
+        files: ['/bundles/ubidelectricity/js/components/BannerType/BannerTypeService.js']
+    },{
         name: 'bidService',
         files: ['/bundles/ubidelectricity/js/components/Bid/BidService.js']
     },{
@@ -67967,6 +67991,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
+        name: 'clickService',
+        files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
+    },{
         name: 'countryService',
         files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
     },{
@@ -67975,6 +68002,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'hitService',
         files: ['/bundles/ubidelectricity/js/components/Hit/HitService.js']
+    },{
+        name: 'impressionService',
+        files: ['/bundles/ubidelectricity/js/components/Impression/ImpressionService.js']
     },{
         name: 'languageService',
         files: ['/bundles/ubidelectricity/js/components/Language/LanguageService.js']
@@ -68255,6 +68285,168 @@ function ($stateProvider) {
             label: 'content.list.DASHBOARD'
         },
         resolve: loadSequence('jquery-sparkline', 'DashboardCtrl', 'DashboardService')
+    }).state('app.adserving', {
+        url: '/adserving',
+        template: '<div ui-view class="fade-in-up"></div>',
+        title: 'sidebar.nav.adserving.MAIN',
+        ncyBreadcrumb: {
+            label: 'sidebar.nav.adserving.MAIN'
+        }
+    }).state('app.adserving.banners', {
+        url: '/banners',
+        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banners.html',
+        title: 'content.list.BANNERS',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERS'
+        },
+        resolve: loadSequence('BannersCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
+    }).state('app.adserving.bannersnew', {
+        url: '/banners/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner_form.html',
+        title: 'content.list.NEWBANNER',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWBANNER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerFormCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
+    }).state('app.adserving.bannersedit', {
+        url: '/banners/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner_form.html',
+        title: 'content.list.EDITBANNER',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITBANNER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerFormCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
+    }).state('app.adserving.bannersdetails', {
+        url: '/banners/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner.html',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERDETAILS'
+        },
+        resolve: loadSequence('BannerCtrl', 'bannerService')
+    }).state('app.adserving.bannertypes', {
+        url: '/banner-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_types.html',
+        title: 'content.list.BANNERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERTYPES'
+        },
+        resolve: loadSequence('BannerTypesCtrl', 'bannerTypeService', 'userService')
+    }).state('app.adserving.bannertypesnew', {
+        url: '/banner-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type_form.html',
+        title: 'content.list.NEWBANNERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWBANNERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerTypeFormCtrl', 'bannerTypeService', 'userService')
+    }).state('app.adserving.bannertypesedit', {
+        url: '/banner-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type_form.html',
+        title: 'content.list.EDITBANNERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITBANNERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerTypeFormCtrl', 'bannerTypeService', 'userService')
+    }).state('app.adserving.bannertypesdetails', {
+        url: '/banner-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERTYPEDETAILS'
+        },
+        resolve: loadSequence('BannerTypeCtrl', 'bannerTypeService')
+    }).state('app.adserving.bannerpositions', {
+        url: '/banner-positions',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_positions.html',
+        title: 'content.list.BANNERPOSITIONS',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERPOSITIONS'
+        },
+        resolve: loadSequence('BannerPositionsCtrl', 'bannerPositionService', 'userService')
+    }).state('app.adserving.bannerpositionsnew', {
+        url: '/banner-positions/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position_form.html',
+        title: 'content.list.NEWBANNERPOSITION',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWBANNERPOSITION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerPositionFormCtrl', 'bannerPositionService', 'userService')
+    }).state('app.adserving.bannerpositionsedit', {
+        url: '/banner-positions/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position_form.html',
+        title: 'content.list.EDITBANNERPOSITION',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITBANNERPOSITION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerPositionFormCtrl', 'bannerPositionService', 'userService')
+    }).state('app.adserving.bannerpositionsdetails', {
+        url: '/banner-positions/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position.html',
+        ncyBreadcrumb: {
+            label: 'content.list.BANNERPOSITIONDETAILS'
+        },
+        resolve: loadSequence('BannerPositionCtrl', 'bannerPositionService')
+    }).state('app.adserving.clicks', {
+        url: '/clicks',
+        templateUrl: '/bundles/ubidelectricity/js/components/Click/clicks.html',
+        title: 'content.list.CLICKS',
+        ncyBreadcrumb: {
+            label: 'content.list.CLICKS'
+        },
+        resolve: loadSequence('ClicksCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.clicksnew', {
+        url: '/clicks/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Click/click_form.html',
+        title: 'content.list.NEWCLICK',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWCLICK'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ClickFormCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.clicksedit', {
+        url: '/clicks/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Click/click_form.html',
+        title: 'content.list.EDITCLICK',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITCLICK'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ClickFormCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.clicksdetails', {
+        url: '/clicks/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Click/click.html',
+        ncyBreadcrumb: {
+            label: 'content.list.CLICKDETAILS'
+        },
+        resolve: loadSequence('ClickCtrl', 'clickService')
+    }).state('app.adserving.impressions', {
+        url: '/impressions',
+        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impressions.html',
+        title: 'content.list.IMPRESSIONS',
+        ncyBreadcrumb: {
+            label: 'content.list.IMPRESSIONS'
+        },
+        resolve: loadSequence('ImpressionsCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.impressionsnew', {
+        url: '/impressions/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression_form.html',
+        title: 'content.list.NEWIMPRESSION',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWIMPRESSION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ImpressionFormCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.impressionsedit', {
+        url: '/impressions/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression_form.html',
+        title: 'content.list.EDITIMPRESSION',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITIMPRESSION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ImpressionFormCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
+    }).state('app.adserving.impressionsdetails', {
+        url: '/impressions/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression.html',
+        ncyBreadcrumb: {
+            label: 'content.list.IMPRESSIONDETAILS'
+        },
+        resolve: loadSequence('ImpressionCtrl', 'impressionService')
     }).state('app.marketplace', {
         url: '/marketplace',
         template: '<div ui-view class="fade-in-up"></div>',

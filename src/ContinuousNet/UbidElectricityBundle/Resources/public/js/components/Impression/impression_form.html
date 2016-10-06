@@ -1,0 +1,84 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.IMPRESSIONS">Impressions</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="ImpressionFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWIMPRESSION" ng-if="impression.id == 0">
+                        New Impression
+                    </legend>
+                    <legend translate="content.list.EDITIMPRESSION" ng-if="impression.id > 0">
+                        Edit Impression
+                    </legend>
+                    <form name="impressionForm" id="impressionForm" novalidate ng-submit="submitForm(impressionForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="impressionId" ng-model="impression.id" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="impressionVisit" class="control-label">
+                                        <span translate="content.list.fields.VISIT">Visit</span>
+                                    </label>
+                                <div class="block" ng-if="visitsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="impression.visit" name="visit" id="impressionVisit" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':impressionForm.banner.$dirty && impressionForm.banner.$invalid, 'has-success':impressionForm.banner.$valid}">
+                                    <label for="impressionBanner" class="control-label">
+                                        <span translate="content.list.fields.BANNER">Banner</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block" ng-if="bannersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="impression.banner" name="banner" id="impressionBanner" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="impressionForm.banner.$dirty && impressionForm.banner.$error.required" translate="content.form.messages.BANNERREQUIRED">Banner is required.</span>
+                                    <span class="success text-small block" ng-if="impressionForm.banner.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKIMPRESSIONS">Back to Impressions list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(impressionForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="impressionForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="impressions.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+
