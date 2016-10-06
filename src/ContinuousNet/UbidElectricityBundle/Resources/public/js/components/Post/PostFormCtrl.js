@@ -132,7 +132,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getUsers();
 
-
     $scope.postCategories = [];
     $scope.postCategoriesLoaded = [];
 
@@ -154,6 +153,17 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getPostCategories();
 
+    $scope.postPostCategories = false;
+    $scope.$watch('postPostCategories', function() {
+        if ($scope.postPostCategories) {
+            $scope.post.post_categories = [];
+            for (var i in $scope.postCategories) {
+                $scope.post.post_categories.push($scope.postCategories[i].id);
+            }
+        } else {
+            $scope.post.post_categories = [];
+        }
+    });
 
     $scope.submitForm = function(form) {
         var firstError = null;

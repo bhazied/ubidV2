@@ -39,6 +39,16 @@ ubid_electricity_bidding_type_api:
     type:   rest
     prefix:   /api
 
+ubid_electricity_buyer_api:
+    resource: "@UbidElectricityBundle/Controller/BuyerRESTController.php"
+    type:   rest
+    prefix:   /api
+
+ubid_electricity_buyer_type_api:
+    resource: "@UbidElectricityBundle/Controller/BuyerTypeRESTController.php"
+    type:   rest
+    prefix:   /api
+
 ubid_electricity_country_api:
     resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
     type:   rest
@@ -155,6 +165,14 @@ ubid_electricity_bid_product:
 ubid_electricity_bidding_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/bidding_type.yml"
     prefix:   /bidding-type
+
+ubid_electricity_buyer:
+    resource: "@UbidElectricityBundle/Resources/config/routing/buyer.yml"
+    prefix:   /buyer
+
+ubid_electricity_buyer_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/buyer_type.yml"
+    prefix:   /buyer-type
 
 ubid_electricity_country:
     resource: "@UbidElectricityBundle/Resources/config/routing/country.yml"

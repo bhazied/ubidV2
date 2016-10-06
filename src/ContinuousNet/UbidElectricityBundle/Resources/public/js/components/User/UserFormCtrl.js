@@ -220,7 +220,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getUsers();
 
-
     $scope.groups = [];
     $scope.groupsLoaded = [];
 
@@ -242,6 +241,17 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getGroups();
 
+    $scope.userGroups = false;
+    $scope.$watch('userGroups', function() {
+        if ($scope.userGroups) {
+            $scope.user.groups = [];
+            for (var i in $scope.groups) {
+                $scope.user.groups.push($scope.groups[i].id);
+            }
+        } else {
+            $scope.user.groups = [];
+        }
+    });
 
     $scope.submitForm = function(form) {
         var firstError = null;

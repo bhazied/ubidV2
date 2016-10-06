@@ -137,7 +137,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-
     $scope.submitForm = function(form) {
         var firstError = null;
         if (form.$invalid) {

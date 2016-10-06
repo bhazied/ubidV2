@@ -452,14 +452,21 @@
                             <div class="col-md-12">
                                 <label for="postPostCategories" class="control-label">
                                     <span translate="content.list.fields.POSTCATEGORIES">Post Categories</span>
+                                    <input type="text" ng-model="postCategoriesSearchText" class="form-control underline" />
                                 </label>
                             </div><!--/col-md-12-->
-                            <div class="col-md-3" ng-repeat="postCategory in postCategories" ng-if="postCategory.id">
+                            <div class="col-md-3" ng-repeat="postCategory in postCategories | filter:postCategoriesSearchText" ng-if="postCategory.id">
                                 <div class="checkbox continuous-check check-primary">
                                     <input checklist-model="post.post_categories" checklist-value="postCategory.id" type="checkbox" name="postCategory[]" id="postPostCategory[[postCategory.id]]" />
                                     <label for="postPostCategory[[postCategory.id]]">[[ postCategory.name ]]</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-3-->
+                            <div class="col-md-12">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="postPostCategories" type="checkbox" id="postPostCategories" />
+                                    <label for="postPostCategories" translate="content.common.SELECTALL">Select All</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">

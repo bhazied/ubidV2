@@ -83,6 +83,7 @@ class TenderRESTController extends BaseRESTController
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.buyer = buyer.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'region', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.region = region.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.country = country.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.sector = sector.id');

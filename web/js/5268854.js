@@ -67866,6 +67866,12 @@ app.constant('APP_JS_REQUIRES', {
         'BiddingTypesCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypesCtrl.js',
         'BiddingTypeFormCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeFormCtrl.js',
         'BiddingTypeCtrl': '/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeCtrl.js',
+        'BuyersCtrl': '/bundles/ubidelectricity/js/components/Buyer/BuyersCtrl.js',
+        'BuyerFormCtrl': '/bundles/ubidelectricity/js/components/Buyer/BuyerFormCtrl.js',
+        'BuyerCtrl': '/bundles/ubidelectricity/js/components/Buyer/BuyerCtrl.js',
+        'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
+        'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
+        'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
         'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
         'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
         'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
@@ -67954,6 +67960,12 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'biddingTypeService',
         files: ['/bundles/ubidelectricity/js/components/BiddingType/BiddingTypeService.js']
+    },{
+        name: 'buyerService',
+        files: ['/bundles/ubidelectricity/js/components/Buyer/BuyerService.js']
+    },{
+        name: 'buyerTypeService',
+        files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
         name: 'countryService',
         files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
@@ -68250,6 +68262,37 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'sidebar.nav.marketplace.MAIN'
         }
+    }).state('app.marketplace.buyers', {
+        url: '/buyers',
+        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyers.html',
+        title: 'content.list.BUYERS',
+        ncyBreadcrumb: {
+            label: 'content.list.BUYERS'
+        },
+        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.buyersnew', {
+        url: '/buyers/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
+        title: 'content.list.NEWBUYER',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWBUYER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.buyersedit', {
+        url: '/buyers/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
+        title: 'content.list.EDITBUYER',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITBUYER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.buyersdetails', {
+        url: '/buyers/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer.html',
+        ncyBreadcrumb: {
+            label: 'content.list.BUYERDETAILS'
+        },
+        resolve: loadSequence('BuyerCtrl', 'buyerService')
     }).state('app.marketplace.tenders', {
         url: '/tenders',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tenders.html',
@@ -68257,7 +68300,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.TENDERS'
         },
-        resolve: loadSequence('TendersCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersnew', {
         url: '/tenders/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -68265,7 +68308,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.NEWTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersedit', {
         url: '/tenders/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -68273,7 +68316,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
     }).state('app.marketplace.tendersdetails', {
         url: '/tenders/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender.html',
@@ -68443,6 +68486,37 @@ function ($stateProvider) {
             label: 'content.list.TENDERCATEGORYDETAILS'
         },
         resolve: loadSequence('TenderCategoryCtrl', 'tenderCategoryService')
+    }).state('app.tenders.buyertypes', {
+        url: '/buyer-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_types.html',
+        title: 'content.list.BUYERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.BUYERTYPES'
+        },
+        resolve: loadSequence('BuyerTypesCtrl', 'buyerTypeService', 'userService')
+    }).state('app.tenders.buyertypesnew', {
+        url: '/buyer-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
+        title: 'content.list.NEWBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWBUYERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
+    }).state('app.tenders.buyertypesedit', {
+        url: '/buyer-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
+        title: 'content.list.EDITBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITBUYERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
+    }).state('app.tenders.buyertypesdetails', {
+        url: '/buyer-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.BUYERTYPEDETAILS'
+        },
+        resolve: loadSequence('BuyerTypeCtrl', 'buyerTypeService')
     }).state('app.tenders.producttypes', {
         url: '/product-types',
         templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',

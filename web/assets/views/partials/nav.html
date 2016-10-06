@@ -47,6 +47,11 @@
 			</div>
 		</a>
 		<ul class="sub-menu">
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.buyers')}">
+				<a ui-sref="app.marketplace.buyers">
+					<span class="title" translate="content.list.BUYERS">Buyers</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.tenders')}">
 				<a ui-sref="app.marketplace.tenders">
 					<span class="title" translate="content.list.TENDERS">Tenders</span>
@@ -85,6 +90,11 @@
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.sectors')}">
 				<a ui-sref="app.tenders.sectors">
 					<span class="title" translate="content.list.SECTORS">Sectors</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.buyertypes')}">
+				<a ui-sref="app.tenders.buyertypes">
+					<span class="title" translate="content.list.BUYERTYPES">Buyer Types</span>
 				</a>
 			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tendercategories')}">
