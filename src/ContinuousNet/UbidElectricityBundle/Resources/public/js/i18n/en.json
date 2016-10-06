@@ -1053,8 +1053,7 @@
                 },
                 "types": {
                     "GUEST": "Guest",
-                    "SUPPLIER": "Supplier",
-                    "BUYER": "Buyer",
+                    "SUBSCRIBER": "Subscriber",
                     "ADMINISTRATOR": "Administrator"
                 },
                 "genders": {
