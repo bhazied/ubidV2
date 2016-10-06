@@ -1,0 +1,30 @@
+puzzle:
+    path:     /
+    defaults: { _controller: "BucksHunterBundle:Puzzle:index" }
+
+puzzle_details:
+    path:     /{id}/details
+    defaults: { _controller: "BucksHunterBundle:Puzzle:show" }
+
+puzzle_new:
+    path:     /new
+    defaults: { _controller: "BucksHunterBundle:Puzzle:new" }
+
+puzzle_create:
+    path:     /create
+    defaults: { _controller: "BucksHunterBundle:Puzzle:create" }
+    methods:  POST
+
+puzzle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BucksHunterBundle:Puzzle:edit" }
+
+puzzle_update:
+    path:     /{id}/update
+    defaults: { _controller: "BucksHunterBundle:Puzzle:update" }
+    methods:  [POST, PUT]
+
+puzzle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BucksHunterBundle:Puzzle:delete" }
+    methods:  [POST, DELETE]

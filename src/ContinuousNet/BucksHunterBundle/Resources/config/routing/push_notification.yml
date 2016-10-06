@@ -1,0 +1,30 @@
+pushnotification:
+    path:     /
+    defaults: { _controller: "BucksHunterBundle:PushNotification:index" }
+
+pushnotification_details:
+    path:     /{id}/details
+    defaults: { _controller: "BucksHunterBundle:PushNotification:show" }
+
+pushnotification_new:
+    path:     /new
+    defaults: { _controller: "BucksHunterBundle:PushNotification:new" }
+
+pushnotification_create:
+    path:     /create
+    defaults: { _controller: "BucksHunterBundle:PushNotification:create" }
+    methods:  POST
+
+pushnotification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BucksHunterBundle:PushNotification:edit" }
+
+pushnotification_update:
+    path:     /{id}/update
+    defaults: { _controller: "BucksHunterBundle:PushNotification:update" }
+    methods:  [POST, PUT]
+
+pushnotification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BucksHunterBundle:PushNotification:delete" }
+    methods:  [POST, DELETE]

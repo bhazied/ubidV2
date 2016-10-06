@@ -38,7 +38,7 @@
         "EMAILCONFIRMATIONINPROGRESS": "Email confirmation in progress...",
         "EMAILCONFIRMED": "Email confrimed, your can access to your dashboard.",
         "EMAILNOTCONFIRMED": "Invalid token or email already confirmed!",
-        "NOTOKEN": "No token, please check url!"
+        "NOTOKEN": "Non token, please check url!"
     },
     "profile": {
         "PROFILEUPDATED": "Your profile has been updated.",
@@ -131,7 +131,7 @@
       },
       "nav": {
         "dashboard": {
-            "MAIN": "Classementau de bord"
+            "MAIN": "Tableau de bord"
         },
         "logout": {
             "MAIN": "Se déconnecter"
@@ -183,7 +183,7 @@
             "AUGUST": "August",
             "SEPTEMBER": "September",
             "OCTOBER": "October",
-            "NOVEMBER": "November",
+            "NOVEMBER": "Nonvember",
             "DECEMBER": "December"
         },
         "invoice" : {
@@ -225,7 +225,7 @@
             "SHOWDETAILS": "Détails Afficher",
             "REMOVE": "Supprimer",
             "YES": "Oui",
-            "NO": "No",
+            "NO": "Non",
             "ALL": "Tout",
             "NONE": "Aucun",
             "STATS": "Statistiques",
@@ -305,7 +305,7 @@
                 "IFYOUDONOTRECEIVEACONFIRMATIONEMAIL": "If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.",
                 "IFYOUNEEDASSISTANCEPLEASECONTACTUS": "If you need assistance, please contact us.",
                 "BACKTOLOGIN": "Retour to login",
-                "GOTODASHBOARD": "Go to Classementau de bord",
+                "GOTODASHBOARD": "Go to Tableau de bord",
                 "PASSWORDSDONOTMATCH": "Mot de passes do not match!",
                 "PASSWORDSMATCH": "Mot de passes match!",
                 "EMAILINVALID": "Email invalid!",
@@ -389,8 +389,8 @@
                 "ENTERNOTACTIVECSS": "Entrer une valeur pour Not Actif Css",
                 "ENTERFIRSTCSS": "Entrer une valeur pour Première Css",
                 "ENTERLASTCSS": "Entrer une valeur pour Dernière Css",
-                "ENTERBEFORETXT": "Entrer une valeur pour Textee d'avant",
-                "ENTERAFTERTXT": "Entrer une valeur pour Textee d'après",
+                "ENTERBEFORETXT": "Entrer une valeur pour Texte d'avant",
+                "ENTERAFTERTXT": "Entrer une valeur pour Texte d'après",
                 "ENTERSEPARATOR": "Entrer une valeur pour Séparateur",
                 "ENTERCOLUMNSNUMBER": "Entrer une valeur pour Nombre de colonnes",
                 "SELECTDISPLAYMODE": "Sélectionner une valeur pour Mode d'affichage",
@@ -478,7 +478,7 @@
             }
         },
         "list": {
-            "DASHBOARD": "Classementau de bord",
+            "DASHBOARD": "Tableau de bord",
             "BIDS": "Réponses",
             "BID": "Réponse",
             "ADDBID": "Ajouter un(e) Réponse",
@@ -921,8 +921,8 @@
                 "NOTACTIVECSS": "Not Actif Css",
                 "FIRSTCSS": "Première Css",
                 "LASTCSS": "Dernière Css",
-                "BEFORETXT": "Textee d'avant",
-                "AFTERTXT": "Textee d'après",
+                "BEFORETXT": "Texte d'avant",
+                "AFTERTXT": "Texte d'après",
                 "SEPARATOR": "Séparateur",
                 "COLUMNSNUMBER": "Nombre de colonnes",
                 "DISPLAYMODE": "Mode d'affichage",

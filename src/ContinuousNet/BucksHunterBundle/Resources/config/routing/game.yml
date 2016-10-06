@@ -1,0 +1,30 @@
+game:
+    path:     /
+    defaults: { _controller: "BucksHunterBundle:Game:index" }
+
+game_details:
+    path:     /{id}/details
+    defaults: { _controller: "BucksHunterBundle:Game:show" }
+
+game_new:
+    path:     /new
+    defaults: { _controller: "BucksHunterBundle:Game:new" }
+
+game_create:
+    path:     /create
+    defaults: { _controller: "BucksHunterBundle:Game:create" }
+    methods:  POST
+
+game_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BucksHunterBundle:Game:edit" }
+
+game_update:
+    path:     /{id}/update
+    defaults: { _controller: "BucksHunterBundle:Game:update" }
+    methods:  [POST, PUT]
+
+game_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BucksHunterBundle:Game:delete" }
+    methods:  [POST, DELETE]

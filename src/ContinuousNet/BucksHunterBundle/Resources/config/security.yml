@@ -1,0 +1,14 @@
+
+security:
+    access_control:
+        - { path: ^/api/banners,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/countries,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/games,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/languages,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/pushdevices,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/pushmessages,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/pushnotifications,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/puzzles,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/scores,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/sessions,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/users,      roles: [ROLE_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
