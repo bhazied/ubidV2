@@ -56,11 +56,11 @@ CREATE TABLE IF NOT EXISTS `buyer` (
 
 
 ALTER TABLE `buyer`
-  ADD CONSTRAINT `user_fk1` FOREIGN KEY (`buyer_type_id`) REFERENCES `buyer_type` (`id`),
-  ADD CONSTRAINT `user_fk2` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
-  ADD CONSTRAINT `user_fk3` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`),
-  ADD CONSTRAINT `user_fk4` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `user_fk5` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `buyer_fk1` FOREIGN KEY (`buyer_type_id`) REFERENCES `buyer_type` (`id`),
+  ADD CONSTRAINT `buyer_fk2` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
+  ADD CONSTRAINT `buyer_fk3` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`),
+  ADD CONSTRAINT `buyer_fk4` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `buyer_fk5` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `tender` ADD `buyer_id` INT UNSIGNED NOT NULL AFTER `id` ,
 ADD INDEX ( `buyer_id` ) ;
