@@ -1,0 +1,42 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Acceuil",
+            "ABOUT": "A propos de nous",
+            "HOW": "Comment ça marche",
+            "SUBMITPROJECT": "Ajouter un projet",
+            "SIGNIN": "Login",
+            "SIGNUP": "Enregestrement",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "Mon profile",
+            "MYBIDS": "Mes offres",
+            "LOGOUT": "Déconnexion"
+        }
+    },
+    "title" :{
+        "error":{
+            "LOGIN" : "Erreur d'authentification"
+        },
+        "message":{
+            "error":{
+                "LOGIN": "E-mail ou mot de passe erroné"
+            }
+        }
+    },
+    "content":{
+        "form":{
+            "fields":{
+                "types":{
+                    "SUPPLIER": "Fournisseur",
+                    "BAYER": "Acheteur"
+                },
+                "genders":{
+                    "MALE": "Homme",
+                    "FEMALE": "Femme"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,270 @@
+<section id="contentSection">
+    <!--<div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="left_content">
+                <div class="contact_area">
+                    <h2>[['form.register.title' | translate]]</h2>
+
+                    <form action="#" class="">
+                        <input class="form-control" type="text" placeholder="Name*">
+                        <input class="form-control" type="email" placeholder="Email*">
+                        <textarea class="form-control" cols="30" rows="10" placeholder="Message*"></textarea>
+                        <input type="submit" value="Send Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="row">
+        <div class="col-md-12" ng-controller="RegisterCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWUSER" ng-if="user.id == 0">
+                        Subscribe
+                    </legend>
+                    <form name="userForm" id="userForm" novalidate ng-submit="submitForm(userForm)">
+                        <div class="row">
+                            <input type="hidden" name="id" id="userId" ng-model="user.id" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userType" class="control-label">
+                                        <span translate="content.list.fields.TYPE">Type</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="types.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="type in types" ng-model="user.type" type="radio" id="type[[ type.id ]]" value="[[ type.id ]]" name="type" ng-required="false" />
+                                        <label ng-repeat-end for="type[[ type.id ]]">
+                                            [[ type.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block" ng-if="types.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="user.type" name="type" id="userType" class="form-control" ng-required="false">
+                                        </select>
+                                        <span my-enum="[[ user.type ]]" my-enum-list="[[ types ]]"></span>
+                                    </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':userForm.username.$dirty && userForm.username.$invalid, 'has-success':userForm.username.$valid}">
+                                    <label for="userUsername" class="control-label">
+                                        <span translate="content.list.fields.USERNAME">Username</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.username" type="text" name="username" id="userUsername" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERNAME' | translate ]]" ng-required="true" my-unique-field="user.username" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <i class="ti-user"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="userForm.username.$dirty && userForm.username.$error.required" translate="content.form.messages.USERNAMEREQUIRED">Username is required.</span>
+                                    <!--<span class="error text-small block" ng-if="userForm.username.$dirty && userForm.username.$error.myUniqueField" translate="content.form.messages.USERNAMEALREADYINUSE">This Username is already in use. Please choose another one.</span>-->
+                                    <span class="success text-small block" ng-if="userForm.username.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':userForm.password.$dirty && userForm.password.$invalid, 'has-success':userForm.password.$valid}">
+                                    <label for="userPassword" class="control-label">
+                                        <span translate="content.list.fields.PASSWORD">Password</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.password" type="password" name="password" id="userPassword" class="form-control" placeholder="[[ 'content.form.messages.ENTERPASSWORD' | translate ]]" ng-required="true" />
+                                        <i class="ti-lock"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="userForm.password.$dirty && userForm.password.$error.required" translate="content.form.messages.PASSWORDREQUIRED">Password is required.</span>
+                                    <span class="success text-small block" ng-if="userForm.password.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userSalt" class="control-label">
+                                        <span translate="content.list.fields.SALT">Salt</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.salt" type="text" name="salt" id="userSalt" class="form-control" placeholder="[[ 'content.form.messages.ENTERSALT' | translate ]]" ng-required="false" my-unique-field="user.salt" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userPhone" class="control-label">
+                                        <span translate="content.list.fields.PHONE">Phone</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.phone" type="text" name="phone" id="userPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" my-unique-field="user.phone" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <i class="fa fa-phone"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':userForm.email.$dirty && userForm.email.$invalid, 'has-success':userForm.email.$valid}">
+                                    <label for="userEmail" class="control-label">
+                                        <span translate="content.list.fields.EMAIL">Email</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.email" type="email" name="email" id="userEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="true" my-unique-field="user.email" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <i class="ti-email"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="userForm.email.$dirty && userForm.email.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
+                                    <span class="error text-small block" ng-if="userForm.email.$dirty && userForm.email.$error.myUniqueField" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="userForm.email.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userGender" class="control-label">
+                                        <span translate="content.list.fields.GENDER">Gender</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="genders.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="gender in genders" ng-model="user.gender" type="radio" id="gender[[ gender.id ]]" value="[[ gender.id ]]" name="gender" ng-required="false" />
+                                        <label ng-repeat-end for="gender[[ gender.id ]]">
+                                            [[ gender.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block" ng-if="genders.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control" ng-required="false">
+                                        </select>
+                                        <span my-enum="[[ user.gender ]]" my-enum-list="[[ genders ]]"></span>
+                                    </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userFirstName" class="control-label">
+                                        <span translate="content.list.fields.FIRSTNAME">First Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.first_name" type="text" name="firstName" id="userFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userLastName" class="control-label">
+                                        <span translate="content.list.fields.LASTNAME">Last Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.last_name" type="text" name="lastName" id="userLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.address" type="text" name="address" id="userAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userZipCode" class="control-label">
+                                        <span translate="content.list.fields.ZIPCODE">Zip Code</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.zip_code" type="text" name="zipCode" id="userZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" ng-required="false" />
+                                        <i class="ti-shortcode"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userCompanyName" class="control-label">
+                                        <span translate="content.list.fields.COMPANYNAME">Company Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.company_name" type="text" name="companyName" id="userCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-briefcase"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userJob" class="control-label">
+                                        <span translate="content.list.fields.JOB">Job</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.job" type="text" name="job" id="userJob" class="form-control" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" ng-required="false" />
+                                        <i class="ti-rocket"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userCountry" class="control-label">
+                                        <span translate="content.list.fields.COUNTRY">Country</span>
+                                    </label>
+                                    <div class="block" ng-if="countriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false" ng-change="changeCountry()">
+                                        </select>
+                                        <i class="fa fa-globe"></i>
+                                    </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userLanguage" class="control-label">
+                                        <span translate="content.list.fields.LANGUAGE">Language</span>
+                                    </label>
+                                    <div class="block" ng-if="languagesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-flag"></i>
+                                    </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userProfile" class="control-label">
+                                        <span translate="content.list.fields.PROFILE">Profile</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="user.profile" type="text" name="profile" id="userProfile" class="form-control" placeholder="[[ 'content.form.messages.ENTERPROFILE' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(userForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="users.length > 0">
+                    </div>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</section>

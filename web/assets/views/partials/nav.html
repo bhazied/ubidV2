@@ -82,7 +82,7 @@
 			</div>
 		</a>
 		<ul class="sub-menu">
-			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.sectors')}">
+			<li ng-if="user.roles.join('').inaexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.sectors')}">
 				<a ui-sref="app.tenders.sectors">
 					<span class="title" translate="content.list.SECTORS">Sectors</span>
 				</a>
@@ -178,7 +178,7 @@
 				</a>
 			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.logs')}">
-				<a ui-sref="app.access.logs">
+				<a ui-²="app.access.logs">
 					<span class="title" translate="content.list.LOGS">Logs</span>
 				</a>
 			</li>

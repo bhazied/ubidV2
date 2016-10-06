@@ -329,6 +329,10 @@ assetic:
                 - "assets/css/plugins.css"
                 - "assets/css/football_icons.css"
                 - "assets/css/custom.css"
+        site_front_css:
+            input:
+                - "assets/css/front/theme.css"
+                - "assets/css/front/style.css"
         jquery:
             inputs:
                 - "assets/bower_components/jquery/dist/jquery.js" #.min
@@ -410,6 +414,14 @@ assetic:
                 - "bundles/ubidelectricity/js/constant.js"
                 - "assets/js/config.router.js"
                 - "bundles/ubidelectricity/js/router.js"
+        site_front_scripts:
+            inputs:
+                - "assets/js/app.js"
+                - "assets/js/front.app.js"
+                - "assets/js/config.constant.js"
+                - "bundles/ubidelectricity/js/constant.js"
+                - "assets/js/front.config.router.js"
+                - "bundles/ubidelectricity/js/front.router.js"
         continuous_net_services:
             inputs:
                 - "assets/js/services/savable.js"
@@ -442,6 +454,15 @@ assetic:
                 - "bundles/ubidelectricity/js/components/Main/AppCtrl.js"
                 - "bundles/ubidelectricity/js/common/FileManager/FileManagerCtrl.js"
                 - "bundles/ubidelectricity/js/common/LocationPicker/LocationPickerCtrl.js"
+        site_front_controller:
+            input:
+                 - "assets/js/controllers/bootstrapCtrl.js"
+                 - "bundles/ubidelectricity/js/components/Auth/LoginService.js"
+                 - "bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js"
+                 - "bundles/ubidelectricity/js/components/Main/Front/FrontCtrl.js"
+                 - "bundles/ubidelectricity/js/common/FileManager/FileManagerCtrl.js"
+                 - "bundles/ubidelectricity/js/common/LocationPicker/LocationPickerCtrl.js"
+                 - "assets/bower_components/bootstrap/dist/js/bootstrap.min.js"
         #google_apis:
             #inputs:
                 #- "//maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization"

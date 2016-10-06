@@ -54,7 +54,12 @@ security:
             anonymous: true
 
         countries:
-            pattern:  ^/(en|fr|ar)/api/v1/countries
+            pattern:  ^/api/countries
+            stateless: true
+            anonymous: true
+
+        languages:
+            pattern: ^/api/languages
             stateless: true
             anonymous: true
 

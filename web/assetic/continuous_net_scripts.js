@@ -372,7 +372,9 @@ app.constant('APP_JS_REQUIRES', {
         'UserSettingCtrl': '/bundles/ubidelectricity/js/components/UserSetting/UserSettingCtrl.js',
         'VisitsCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitsCtrl.js',
         'VisitFormCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitFormCtrl.js',
-        'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js'
+        'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js',
+        'LoginFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js',
+        'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js'
     },
     modules: [{
         name: 'LoginService',

@@ -1,0 +1,17 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Acceuil",
+            "ABOUT": "A propos de nous",
+            "HOW": "Comment ça marche",
+            "SUBMITPROJECT": "Ajouter un projet",
+            "SIGNIN": "Login",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "My profile",
+            "MYBIDS": "My bids",
+            "LOGOUT": "Log out"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Home",
+            "ABOUT": "About Us",
+            "HOW": "How it works",
+            "SUBMITPROJECT": "Submit project",
+            "SIGNIN": "Sign in",
+            "SIGNUP": "Sign ip",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "My profile",
+            "MYBIDS": "My bids",
+            "LOGOUT": "Log out"
+        }
+    },
+    "title" :{
+        "error":{
+            "LOGIN" : "login error"
+        },
+        "message":{
+            "error":{
+                "LOGIN": "e-mail or password error"
+            }
+        }
+    }
+}
