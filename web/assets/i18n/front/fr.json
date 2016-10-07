@@ -35,7 +35,15 @@
                 "genders":{
                     "MALE": "Homme",
                     "FEMALE": "Femme"
-                }
+                },
+                "FIRST_NAME": "Prénom",
+                "LAST_NAME": "Nom",
+                "EMAIL": "E-mail",
+                "USERNAME": "nom d'utilisateur",
+                "PASSWORD": "Mot de passe"
+            },
+            "register":{
+                "TITLE": "Inscription"
             }
         }
     }

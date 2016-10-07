@@ -272,9 +272,46 @@ figure.effect-layla:hover figcaption::after, figure.effect-layla:hover h2, figur
 .contact_area{float:left; display:inline; width:100%; margin-bottom:30px}
 .contact_area > h2{color:#fff; display:inline-block; font-size:20px; padding:7px 10px 5px; text-transform:uppercase; margin-bottom:30px}
 .contact_area > p{margin-bottom:20px}
-.contact_form input[type="text"], .contact_form input[type="email"], .contact_form textarea{border-radius:0; margin-bottom:30px}
-.contact_form input[type="submit"]{border:medium none; color:#fff; height:35px; padding:5px 10px; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
-.contact_form input[type="submit"]:hover{border:1px solid #F9C42D}
+.form input[type="text"], .form input[type="email"], .form textarea{border-radius:0; margin-bottom:10px}
+.form input[type="submit"]{border:medium none; color:#fff; height:35px; padding:5px 10px; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
+.form input[type="submit"]:hover{border:1px solid #F9C42D}
+
+span.input-icon, span.input-help {
+    display: block;
+    position: relative;
+}
+
+.input-icon > input {
+    padding-left: 30px !important;
+    padding-right: 6px;
+}
+
+.input-icon.input-icon-right > input {
+    padding-left: 6px !important;
+    padding-right: 30px !important;
+}
+
+span.input-help > input {
+    padding-left: 30px;
+    padding-right: 6px;
+}
+
+.input-icon > [class*="fa-"], .input-icon > [class*="ti-"] {
+    bottom: 0;
+    color: #FCDE11;
+    display: inline-block;
+    left: 5px;
+    line-height: 35px;
+    padding: 0 3px;
+    position: absolute;
+    top: -1px;
+    z-index: 2;
+}
+
+.input-icon.input-icon-right > [class*="fa-"], .input-icon.input-icon-right > [class*="ti-"] {
+    left: auto;
+    right: 4px;
+}
 @media(max-width:1199px ){.logo_area{width:34%}.add_banner{width:580px}.nav-tabs > li{width:32.3%}.photograph_nav li{width:31.5%}
 @media(max-width:991px ){.add_banner{display:none}.logo_area{width:100%}.nav > li > a{padding:8px 8px}.latest_post_container{height:380px;overflow:hidden}#next-button{bottom:-2px}.single_iteam{height:415px}.photograph_nav li{width:47.7%}.related_post .spost_nav li{width:100%}.nav-tabs > li{width:31.9%}.nav-tabs > li > a{font-size:13px;padding-left:0 !important;padding-right:0 !important;text-align:center}}
 @media(max-width:767px ){.navbar-collapse{padding-left:15px}.mobile-show{display:block}.desktop-home{display:none}.navbar-inverse .navbar-nav > li > a{display:block}.header_top_left{width:100%}.header_top_right > p{display:none}.social_area{display:none}.single_iteam a{height:100%}.single_iteam a > img{height:100%}.error_page > a{margin-bottom:25px}.nav-tabs > li{width:32.6%}}

@@ -76,6 +76,15 @@ class ApiV1RESTController extends FOSRestController
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    private function getGroupByName($name){
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Group', 'g_');
+        $qb->select('g_');
+        $qb->where('g_.name= :name')->setParameter('name', $name);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
     /**
      * @Post("/checkEmail")
      * @View(serializerEnableMaxDepthChecks=true)
@@ -191,10 +200,12 @@ class ApiV1RESTController extends FOSRestController
             $data = array('status' => false, 'message' => null);
 
             $jsonData = json_decode($request->getContent(), true);
-
             $language = $this->getLanguageByCode($jsonData['locale']);
             $jsonData['language'] = $language->getId();
             unset($jsonData['locale']);
+
+            $group = $this->getGroupByName('Subscriber');
+            $jsonData['groups'] = array($group->getId());
 
             $jsonData['username'] = $jsonData['email'];
             $chars = '!#$%&\'*+-/=?^`{|}~.@';
@@ -206,7 +217,11 @@ class ApiV1RESTController extends FOSRestController
 
             $jsonData['roles'] = array('ROLE_API', 'ROLE_SUBSCRIBER');
 
-            $jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
+            //$jsonData['credentials_expired']  = false;
+
+            //$jsonData['enabled'] = true;
+
+            //$jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
 
             if (isset($jsonData['provider'])) {
                 unset($jsonData['provider']);
@@ -222,7 +237,15 @@ class ApiV1RESTController extends FOSRestController
             $formHandler = $this->container->get('fos_user.registration.form.handler');
             $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
 
-            $process = $formHandler->process($confirmationEnabled);
+            try {
+                $process = $formHandler->process($confirmationEnabled);
+            } catch (\Exception $e) {
+                if (json_decode($e->getMessage())) {
+                    return json_decode($e->getMessage());
+                } else {
+                    return $e->getMessage();
+                }
+            }
 
             if ($process) {
 
@@ -241,6 +264,10 @@ class ApiV1RESTController extends FOSRestController
 
                     $em->flush();
                 }
+                return $data;
+            }
+            else{
+                $data['message'] = $this->get('translator')->trans('register.failure_inscription');
                 return $data;
             }
 

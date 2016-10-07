@@ -130,7 +130,7 @@ app.controller('RegisterCtrl', ['$scope', '$rootScope', '$localStorage', '$state
                 }
             },
             submit: function () {
-                $scope.user.locale = $localStorage.language;
+                //$scope.user.locale = $localStorage.language;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                     if (angular.isDefined(data.token)) {
                         $localStorage.access_token = data.token;

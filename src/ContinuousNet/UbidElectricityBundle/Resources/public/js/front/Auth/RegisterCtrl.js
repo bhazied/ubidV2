@@ -4,8 +4,8 @@
  * Controller for User Form
  */
 
-app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory',
-    function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory) {
+app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory',
+    function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory) {
 
         $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -23,15 +23,6 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
         };
 
-        $scope.types = [{
-            id: 'Supplier',
-            title: $filter('translate')('content.form.fields.types.SUPPLIER'),
-            css: 'success'
-        }, {
-            id: 'Buyer',
-            title: $filter('translate')('content.form.fields.types.BUYER'),
-            css: 'warning'
-        }];
         $scope.genders = [{
             id: 'Male',
             title: $filter('translate')('content.form.fields.genders.MALE'),
@@ -54,15 +45,11 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
             title: $filter('translate')('content.list.fields.authenticationmodes.WEBSERVICE'),
             css: 'warning'
         }];
-        $scope.roles = [{
-            id: 'ROLE_API',
-            title: $filter('translate')('content.list.fields.rolesoptions.ROLE_API'),
-            css: 'primary'
-        }, {
+        $scope.roles = {
             id: 'ROLE_SUBSCRIBER',
             title: $filter('translate')('content.list.fields.rolesoptions.ROLE_SUBSCRIBER'),
             css: 'success'
-        }];
+        };
 
         $scope.passwordRequestedAtOpened = false;
         $scope.passwordRequestedAtToggle = function($event) {
@@ -137,7 +124,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
         $scope.getCountries();
 
         $scope.changeCountry = function() {
-            for (var i=0;i<$scope.cities.length;i++) {
+            /*for (var i=0;i<$scope.cities.length;i++) {
                 for (var j=0;j<$scope.countries.length;j++) {
                     if ($scope.countries[j].id == $scope.user.country) {
                         if (($scope.cities[i].country != null && $scope.cities[i].country.id == $scope.countries[j].id)) {
@@ -147,7 +134,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                         }
                     }
                 }
-            }
+            }*/
         };
 
         $scope.languages = [];
@@ -179,6 +166,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
 
         $scope.submitForm = function(form) {
+            console.log($scope.user);
             var firstError = null;
             if (form.$invalid) {
                 var field = null, firstError = null;
@@ -196,30 +184,15 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
                 return false;
             } else {
-               /* if ($scope.user.id > 0) {
-                    $scope.disableSubmit = true;
-                    $usersDataFactory.update($scope.user).$promise.then(function(data) {
-                        $scope.disableSubmit = false;
-                        toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.USERUPDATED'));
-                        $scope.list();
-                    }, function(error) {
-                        $scope.disableSubmit = false;
-                        toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.USERNOTUPDATED'));
-                        console.warn(error);
-                    });
-                } else {
-                    $scope.disableSubmit = true;
-                    $usersDataFactory.create($scope.user).$promise.then(function(data) {
-                        $scope.disableSubmit = false;
-                        toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.USERCREATED'));
-                        $scope.list();
-                    }, function(error) {
-                        $scope.disableSubmit = false;
-                        toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.USERNOTCREATED'));
-                        console.warn(error);
-                    });
-                }
-                return false;*/
+                $scope.user.locale = $localStorage.language;
+                $registerDataFactory.register($scope.user).$promise.then(function(data){
+                   if(data.status == true){
+                        $state.go("front.profile");
+                   }else{
+                       toaster.pop('error', $filter('translate')('title.error.SUBSCRIBTION'), $filter('translate')('message.error.SUBSCRIBTION'));
+                       return false;
+                   }
+                });
             }
         };
 
@@ -247,7 +220,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 });
             });
         } else {
-            $scope.user = {id: 0, type: 'Guest', gender: 'Male', authentication_mode: 'Database', groups: []};
+            $scope.user = { gender: 'Male'};
 
         }
 

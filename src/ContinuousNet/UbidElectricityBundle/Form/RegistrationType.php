@@ -1,6 +1,6 @@
 <?php
 
-namespace ContinuousNet\SportClubBundle\Form;
+namespace ContinuousNet\UbidElectricityBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,13 +29,17 @@ class RegistrationType extends AbstractType
             ->add('phone', TextType::class)
             ->add('gender', ChoiceType::class, array('choices' => array('Male' => 'Male', 'Female' => 'Female', ), 'expanded' => false, 'multiple' => false))
             ->add('firstName', TextType::class)
+            ->add('companyName', TextType::class)
+            ->add('job', TextType::class)
+            //->add('authenticationMode', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('birthDate', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
-            ->add('picture', TextType::class)
-            //->add('address', TextType::class)
-            //->add('zipCode', TextType::class)
-            ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'SportClubBundle:Country', 'choice_label' => 'name'))
-            ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'SportClubBundle:Language', 'choice_label' => 'name'))
+            //->add('birthDate', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
+            //->add('picture', TextType::class)
+            ->add('address', TextType::class)
+            ->add('zipCode', TextType::class)
+            ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
+            ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
+            ->add('groups', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Group', 'choice_label' => 'name'))
             //->add('profile', TextType::class)
             ->add('roles', ChoiceType::class, array('choices' => array('ROLE_API' => 'ROLE_API', 'ROLE_SUBSCRIBER' => 'ROLE_SUBSCRIBER', 'ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_ADMIN_PUBLISHER' => 'ROLE_ADMIN_PUBLISHER', 'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN', ), 'expanded' => true, 'multiple' => true))
         ;
@@ -59,7 +63,7 @@ class RegistrationType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            //'data_class'      => 'ContinuousNet\SportClubBundle\Entity\User',
+            //'data_class'      => 'ContinuousNet\UbidElectricityBundle\Entity\User',
             'csrf_protection' => false
         );
     }

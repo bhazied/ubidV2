@@ -35,7 +35,7 @@ app.config(['$stateProvider',
                 appClasses: 'bg-white usersession',
                 contentClasses: 'full-height'
             },
-            resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService')
+            resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService', 'RegisterService')
         }).state('auth.resetpassword', {
             url: '/reset-password',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset_password.html',
