@@ -242,7 +242,7 @@
                                     </label>
                                 <div class="block" ng-if="countriesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false" ng-change="changeCountry()">
+                                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-globe"></i>
                                     </span><!--/input-icon-->
@@ -327,14 +327,21 @@
                             <div class="col-md-12">
                                 <label for="userGroups" class="control-label">
                                     <span translate="content.list.fields.GROUPS">Groups</span>
+                                    <input type="text" ng-model="groupsSearchText" class="form-control underline" />
                                 </label>
                             </div><!--/col-md-12-->
-                            <div class="col-md-3" ng-repeat="group in groups" ng-if="group.id">
+                            <div class="col-md-3" ng-repeat="group in groups | filter:groupsSearchText" ng-if="group.id">
                                 <div class="checkbox continuous-check check-primary">
                                     <input checklist-model="user.groups" checklist-value="group.id" type="checkbox" name="group[]" id="userGroup[[group.id]]" />
                                     <label for="userGroup[[group.id]]">[[ group.name ]]</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-3-->
+                            <div class="col-md-12">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="userGroups" type="checkbox" id="userGroups" />
+                                    <label for="userGroups" translate="content.common.SELECTALL">Select All</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">

@@ -17,9 +17,14 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }
        // $scope.resetAccess();
         $scope.submit = function () {
-            $scope.user = {email: $scope.email, password: $scope.password};7
-            console.log($scope.user);
+            $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
+                cosole.log(data);
+                if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
+                    $scope.status = 'error';
+                    toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                    return;
+                }
                 $scope.status = 'welcome';
                 $localStorage.access_token = data.token;
                 $scope.user = $localStorage.user = $rootScope.user = data.user;

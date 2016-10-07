@@ -1,0 +1,348 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.BANNERS">Banners</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="BannerCtrl">
+            <div>
+                <div class="row margin-bottom-10">
+                    <div class="col-md-4">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBANNERS">Back to Banners list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" ng-click="add()" class="btn btn-primary">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDBANNER">Add Banner</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" ng-click="edit(banner)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITBANNER">Edit Banner</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.BANNERDETAILS">Banner Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BANNERTYPE">Banner Type</span></td>
+                                <td><a ui-sref="app.adserving.bannertypesdetails({id: banner.banner_type.id})">[[ banner.banner_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAME">Name</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PICTURE">Picture</span></td>
+                                <td>
+                                    <div class="user-image margin-top-10" ng-if="banner.picture != '' && banner.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ app.thumbURL + banner.picture ]]" alt="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CLOSABLE">Closable</span></td>
+                                <td>
+                                    <span my-boolean="[[ banner.closable ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.COUNTDOWN">Count Down</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.count_down"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.IPHONEACTION">Iphone Action</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.iphone_action"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ANDROIDACTION">Android Action</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.android_action"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.WEBACTION">Web Action</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.web_action"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.GENDER">Gender</span></td>
+                                <td>
+                                    <span my-enum="[[ banner.gender ]]" my-enum-list="[[ genders ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MINAGE">Min Age</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.min_age"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAXAGE">Max Age</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.max_age"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PRIORITY">Priority</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.priority"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.WEBURL">Web Url</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.web_url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PHONENUMBERTOCALL">Phone Number To Call</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.phone_number_to_call"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SMSMOBILENUMBER">Sms Mobile Number</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.sms_mobile_number"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SMSBODY">Sms Body</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.sms_body"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.EMAILADRESS">Email Adress</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.email_adress"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.EMAILSUBJECT">Email Subject</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.email_subject"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.EMAILBODY">Email Body</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.email_body"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ANDROIDAPPURL">Android App Url</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.android_app_url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.IPHONEAPPURL">Iphone App Url</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.iphone_app_url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.YOUTUBEURL">Youtube Url</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.youtube_url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAPLATITUDE">Map Latitude</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.map_latitude"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAPLONGITUDE">Map Longitude</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.map_longitude"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SCREEN">Screen</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.screen"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SCREENPARAMETERS">Screen Parameters</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.screen_parameters"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALHITS">Total Hits</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.total_hits"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TODAYHITS">Today Hits</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.today_hits"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALCLICKS">Total Clicks</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.total_clicks"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TODAYCLICKS">Today Clicks</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.today_clicks"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TEMPLATE">Template</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.template"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ADTEXT">Ad Text</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.ad_text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TEXTCOLOR">Text Color</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.text_color"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BACKGROUNDCOLOR">Background Color</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.background_color"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</span></td>
+                                <td>
+                                    <span my-boolean="[[ banner.auto_publishing ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTPUBLISHING">Start Publishing</span></td>
+                                <td>
+                                    <span>[[ banner.start_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDPUBLISHING">End Publishing</span></td>
+                                <td>
+                                    <span>[[ banner.end_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTPUBLISHINGTIME">Start Publishing Time</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.start_publishing_time"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDPUBLISHINGTIME">End Publishing Time</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.end_publishing_time"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAXCLICKSPERDAY">Max Clicks Per Day</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.max_clicks_per_day"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAXTOTALCLICKS">Max Total Clicks</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.max_total_clicks"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAXHITSPERDAY">Max Hits Per Day</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.max_hits_per_day"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAXTOTALHITS">Max Total Hits</span></td>
+                                <td>
+                                    <div ng-bind-html="banner.max_total_hits"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ banner.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ banner.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: banner.creator_user.id})">[[ banner.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ banner.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: banner.modifier_user.id})">[[ banner.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BANNERPOSITIONS">Banner Positions</span></td>
+                                <td>
+                                    <a ng-repeat="bannerPosition in banner.banner_positions" ui-sref="app.adserving.bannerpositionsdetails({id: bannerPosition.id})">[[ bannerPosition.name ]]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

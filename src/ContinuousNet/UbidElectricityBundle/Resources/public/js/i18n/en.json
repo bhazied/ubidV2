@@ -136,6 +136,9 @@
         "logout": {
             "MAIN": "Logout"
         },
+        "adserving": {
+            "MAIN": "Adserving"
+        },
         "marketplace": {
             "MAIN": "Marketplace"
         },
@@ -157,169 +160,227 @@
       }
     },
     "formats": {
-        "DATE": "MM/dd/yyyy,"
-        "TIME": "h:mma,"
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
         "DATETIME": "MM/dd/yyyy h:mma"
     },
     "payment":{
-        "RECURRENTPAYMENT": "Recurring payment,"
-        "RECURRENTPAYMENTDESCRIPTION": "This is a simple description for the recurring patmentmethod,"
-        "RECURRENTPAYMENTAMOUNT": "By choice,"
-        "SUCCESS": "SUCCESS,"
-        "SUCCESSTEXT": "You have an active subscription '[[ payment.productName ]]' from [[ payment.startDate ]] to [[ payment.endDate ]].,"
-        "WARNINGTEXT": "You do not have a subscription right now, please choose one of the offers and make the payment.,"
-        "PROFILENOTCOMPLETE" : "Not complete profile,"
-        "PROFILENOTCOMPLETETEXT" : "You must complete your profile (address, Zip code ..),"
-        "TOTALPRICE" : "total to pay,"
+        "RECURRENTPAYMENT": "Recurring payment",
+        "RECURRENTPAYMENTDESCRIPTION": "This is a simple description for the recurring patmentmethod",
+        "RECURRENTPAYMENTAMOUNT": "By choice",
+        "SUCCESS": "SUCCESS",
+        "SUCCESSTEXT": "You have an active subscription '[[ payment.productName ]]' from [[ payment.startDate ]] to [[ payment.endDate ]].",
+        "WARNINGTEXT": "You do not have a subscription right now, please choose one of the offers and make the payment.",
+        "PROFILENOTCOMPLETE" : "Not complete profile",
+        "PROFILENOTCOMPLETETEXT" : "You must complete your profile (address, Zip code ..)",
+        "TOTALPRICE" : "total to pay",
         "MONTHS" :{
-            "SELECTMONTH": "Select a month,"
-           "JANURAY": "January,"
-            "FEBRUARY": "February,"
-            "MARCH": "March,"
-            "APRIL": "April,"
-            "MAY": "May,"
-            "JUNE": "June,"
-            "JULY": "July,"
-            "AUGUST": "August,"
-            "SEPTEMBER": "September,"
-            "OCTOBER": "October,"
-            "NOVEMBER": "November,"
+            "SELECTMONTH": "Select a month",
+           "JANURAY": "January",
+            "FEBRUARY": "February",
+            "MARCH": "March",
+            "APRIL": "April",
+            "MAY": "May",
+            "JUNE": "June",
+            "JULY": "July",
+            "AUGUST": "August",
+            "SEPTEMBER": "September",
+            "OCTOBER": "October",
+            "NOVEMBER": "November",
             "DECEMBER": "December"
         },
         "invoice" : {
-            "ORDERDATE": "Order date,"
-            "DESCRIPTION" : "Description,"
-            "UNUTPRICE" : "Unit price,"
-            "AMOUNT" : "Amount,"
-            "SUBTOTAL" : "Subtotal,"
-            "TOTAL": "Total,"
-            "VAT": "VAT,"
-            "VATVALUE": "VAT amount,"
-            "AMOUNTPAID": "Amount paid,"
-            "AMOUNTDUE" : "Amount due,"
-            "PAYMENTMETHOD": "Payment Method,"
-            "SHIPPEDTO" : "Shipped to,"
-            "BILLEDTO": "Billed to,"
-            "INVOICENUMBER" : "Invoice number,"
-            "EXPORTTOPDF": "Export to PDF,"
+            "ORDERDATE": "Order date",
+            "DESCRIPTION" : "Description",
+            "UNUTPRICE" : "Unit price",
+            "AMOUNT" : "Amount",
+            "SUBTOTAL" : "Subtotal",
+            "TOTAL": "Total",
+            "VAT": "VAT",
+            "VATVALUE": "VAT amount",
+            "AMOUNTPAID": "Amount paid",
+            "AMOUNTDUE" : "Amount due",
+            "PAYMENTMETHOD": "Payment Method",
+            "SHIPPEDTO" : "Shipped to",
+            "BILLEDTO": "Billed to",
+            "INVOICENUMBER" : "Invoice number",
+            "EXPORTTOPDF": "Export to PDF",
             "QUANTITY": "Quantity"
         }
     },
    "content": {
         "common": {
-            "YESUNSUBSCRIBE": "Unsubscribe,"
-            "CREATENEW": "Create New,"
-            "ENABLEBATCHADD": "Enable batch add,"
-            "CLEARSORTING": "Clear sorting,"
-            "CLEARFILTER": "Clear filter,"
-            "SHOWFILTERROW": "Show filter row,"
-            "FIELDS": "Fields,"
-            "PAGE": "Page:,"
-            "TOTAL": "Total:,"
-            "COUNTPERPAGE": "Count per page:,"
-            "ACTIONS": "Actions,"
-            "SAVE": "Save,"
-            "EDIT": "Edit,"
-            "SHOWDETAILS": "Show Details,"
-            "REMOVE": "Remove,"
-            "YES": "Yes,"
-            "NO": "No,"
-            "ALL": "All,"
-            "NONE": "None,"
-            "STATS": "Statistics,"
-            "SEND": "Send,"
-            "EXPORTEDFIELDS": "Exported Fields,"
-            "COLUMNPOSITION": "Column Position,"
-            "SEND": "Send,"
-            "CONFIRMATION": "Confimation,"
-            "NOTIFICATION": "Notification,"
-            "ERROR": "Error,"
-            "WARNING": "Warning,"
-            "AREYOUSURE": "Are you sure?,"
-            "YESDELETE": "Yes, delete!,"
-            "NOCANCEL": "No cancel!,"
-            "CANCELLED": "Operation cancelled!,"
-            "DELETED": "Deleted!,"
-            "YESIHAVE": "Yes, i have!,"
-            "CLEAR": "Clear,"
-            "CLOSE": "Close,"
-            "DATE": "Date,"
-            "TIME": "Time,"
-            "CURRENT": "Today,"
-            "PROGRESS": "Progress,"
-            "SIZE": "Size,"
-            "FILE": "File,"
-            "FILEMANAGER": "File Manager,"
-            "NEXT": "Next,"
-            "PREVIOUS": "Previous,"
-            "BACK": "Back,"
-            "CONVERT": "Convert,"
-            "IMPORT": "Import,"
-            "EXPORT": "Export,"
-            "EDITOR": "Editor,"
-            "INVOICE": "Invoice,"
-            "ENCOCEAUDIO": "Encode Audio,"
-            "AUDIONOTENCODED": "Audio encoded,"
-            "AUDIONOTNOTENCODED": "Audio not encoded,"
-            "ENCOCEVIDEO": "Encode Video,"
-            "VIDEONOTENCODED": "Video encoded,"
-            "VIDEONOTNOTENCODED": "Video not encoded,"
-            "GENERATETHUMB": "Generate Thumbnail,"
-            "THUMBNAILGENERATED": "Thumbnail generated,"
-            "THUMBNAILNOTGENERATED": "Thumbnail not generated,"
-            "UPDATEDURATION": "Update duration,"
-            "DURATIONUPDATED": "Duration updated,"
-            "DURATIONNOTUPDATED": "Duration not updated,"
-            "PLEASEPLAYVIDEOBEFORE": "Please play video before!,"
-            "REMOVESEGMENTS": "Remove segments,"
-            "SEGMENTSREMOVED": "Segments removed,"
-            "SEGMENTSNOTREMOVED": "Segments not removed,"
+            "ENABLEBATCHADD": "Enable Batch Add",
+            "YESSUBSCRIBE": "Subscribe",
+            "YESUNSUBSCRIBE": "Unsubscribe",
+            "CREATENEW": "Create New",
+            "ENABLEBATCHADD": "Enable batch add",
+            "CLEARSORTING": "Clear sorting",
+            "CLEARFILTER": "Clear filter",
+            "SHOWFILTERROW": "Show filter row",
+            "FIELDS": "Fields",
+            "PAGE": "Page:",
+            "TOTAL": "Total:",
+            "COUNTPERPAGE": "Count per page:",
+            "ACTIONS": "Actions",
+            "SAVE": "Save",
+            "EDIT": "Edit",
+            "SHOWDETAILS": "Show Details",
+            "REMOVE": "Remove",
+            "YES": "Yes",
+            "NO": "No",
+            "ALL": "All",
+            "NONE": "None",
+            "STATS": "Statistics",
+            "SEND": "Send",
+            "EXPORTEDFIELDS": "Exported Fields",
+            "COLUMNPOSITION": "Column Position",
+            "CONFIRMATION": "Confimation",
+            "NOTIFICATION": "Notification",
+            "ERROR": "Error",
+            "WARNING": "Warning",
+            "AREYOUSURE": "Are you sure?",
+            "YESDELETE": "Yes, delete!",
+            "NOCANCEL": "No cancel!",
+            "CANCELLED": "Operation cancelled!",
+            "DELETED": "Deleted!",
+            "YESIHAVE": "Yes, i have!",
+            "CLEAR": "Clear",
+            "CLOSE": "Close",
+            "DATE": "Date",
+            "TIME": "Time",
+            "CURRENT": "Today",
+            "PROGRESS": "Progress",
+            "SIZE": "Size",
+            "FILE": "File",
+            "FILEMANAGER": "File Manager",
+            "LATITUDE": "Latitude",
+            "LONGITUDE": "Longitude",
+            "RADIUS": "Radius",
+            "NEXT": "Next",
+            "PREVIOUS": "Previous",
+            "BACK": "Back",
+            "CONVERT": "Convert",
+            "IMPORT": "Import",
+            "EXPORT": "Export",
+            "EDITOR": "Editor",
+            "INVOICE": "Invoice",
+            "ENCOCEAUDIO": "Encode Audio",
+            "AUDIONOTENCODED": "Audio encoded",
+            "AUDIONOTNOTENCODED": "Audio not encoded",
+            "ENCOCEVIDEO": "Encode Video",
+            "VIDEONOTENCODED": "Video encoded",
+            "VIDEONOTNOTENCODED": "Video not encoded",
+            "GENERATETHUMB": "Generate Thumbnail",
+            "THUMBNAILGENERATED": "Thumbnail generated",
+            "THUMBNAILNOTGENERATED": "Thumbnail not generated",
+            "UPDATEDURATION": "Update duration",
+            "DURATIONUPDATED": "Duration updated",
+            "DURATIONNOTUPDATED": "Duration not updated",
+            "PLEASEPLAYVIDEOBEFORE": "Please play video before!",
+            "REMOVESEGMENTS": "Remove segments",
+            "SEGMENTSREMOVED": "Segments removed",
+            "SEGMENTSNOTREMOVED": "Segments not removed",
             "COMINGSOON": "Coming Soon"
         },
         "form": {
             "messages": {
-                "CHECKFROMFIELDS": "Check form fields,"
-                "NODATATOEXPORT": "No data to export,"
-                "DATAEXPORTED": "Data exported,"
-                "DATANOTEXPORTED": "Data not exported,"
-                "NODATATOIMPORT": "No data to import,"
-                "DATAIMPORTED": "Data imported,"
-                "DATANOTIMPORTED": "Data not imported,"
-                "ALLOWEDFILEEXTENSIONS": "Allowed file extensions,"
-                "FORMCANNOTBESUBMITTED": "The form cannot be submitted because it contains validation errors!,"
-                "ERRORSAREMARKED": "Errors are marked with a red, dashed border!,"
-                "OK": "Ok!,"
-                "GOOD": "Good!,"
-                "TANKYOU": "Merci!,"
-                "WONDERFUL": "Wonderful!,"
-                "CONGRATULATIONS": "Congratulations!,"
-                "TOOSHORT": "Too short!,"
-                "TOOLONG": "Too long!,"
-                "PASSWORDTOUNLOCK": "Password to unlock,"
-                "YOURREGISTRATIONISCOMPLETE": "Your registration is complete.,"
-                "THANKYOUFORYOURREGISTRATION": "Thank you for your registration. We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.,"
-                "IFYOUDONOTRECEIVEACONFIRMATIONEMAIL": "If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.,"
-                "IFYOUNEEDASSISTANCEPLEASECONTACTUS": "If you need assistance, please contact us.,"
-                "BACKTOLOGIN": "Back to login,"
-                "GOTODASHBOARD": "Go to Dashboard,"
-                "PASSWORDSDONOTMATCH": "Passwords do not match!,"
-                "PASSWORDSMATCH": "Passwords match!,"
-                "EMAILINVALID": "Email invalid!,"
-                "EMAILALREADYINUSE": "Email already used by another user!,"
-                "VALIDEMAIL": "It's a valid e-mail!,"
-                "INVALIDEMAIL": "Please, enter a valid email address.,"
+                "CHECKFROMFIELDS": "Check form fields",
+                "NODATATOEXPORT": "No data to export",
+                "DATAEXPORTED": "Data exported",
+                "DATANOTEXPORTED": "Data not exported",
+                "NODATATOIMPORT": "No data to import",
+                "DATAIMPORTED": "Data imported",
+                "DATANOTIMPORTED": "Data not imported",
+                "ALLOWEDFILEEXTENSIONS": "Allowed file extensions",
+                "FORMCANNOTBESUBMITTED": "The form cannot be submitted because it contains validation errors!",
+                "ERRORSAREMARKED": "Errors are marked with a red, dashed border!",
+                "OK": "Ok!",
+                "GOOD": "Good!",
+                "TANKYOU": "Merci!",
+                "WONDERFUL": "Wonderful!",
+                "CONGRATULATIONS": "Congratulations!",
+                "TOOSHORT": "Too short!",
+                "TOOLONG": "Too long!",
+                "PASSWORDTOUNLOCK": "Password to unlock",
+                "YOURREGISTRATIONISCOMPLETE": "Your registration is complete.",
+                "THANKYOUFORYOURREGISTRATION": "Thank you for your registration. We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.",
+                "IFYOUDONOTRECEIVEACONFIRMATIONEMAIL": "If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.",
+                "IFYOUNEEDASSISTANCEPLEASECONTACTUS": "If you need assistance, please contact us.",
+                "BACKTOLOGIN": "Back to login",
+                "GOTODASHBOARD": "Go to Dashboard",
+                "PASSWORDSDONOTMATCH": "Passwords do not match!",
+                "PASSWORDSMATCH": "Passwords match!",
+                "EMAILINVALID": "Email invalid!",
+                "EMAILALREADYINUSE": "Email already used by another user!",
+                "VALIDEMAIL": "It's a valid e-mail!",
+                "INVALIDEMAIL": "Please, enter a valid email address.",
+                "SELECTBANNERTYPE": "Select Banner Type",
+                "BANNERTYPEREQUIRED": "The Banner Type is required",
+                "ENTERNAME": "Enter the Name",
+                "NAMEREQUIRED": "The Name is required",
+                "ENTERPICTURE": "Enter the Picture",
+                "ENTERCOUNTDOWN": "Enter the Count Down",
+                "ENTERIPHONEACTION": "Enter the Iphone Action",
+                "IPHONEACTIONREQUIRED": "The Iphone Action is required",
+                "ENTERANDROIDACTION": "Enter the Android Action",
+                "ANDROIDACTIONREQUIRED": "The Android Action is required",
+                "ENTERWEBACTION": "Enter the Web Action",
+                "WEBACTIONREQUIRED": "The Web Action is required",
+                "SELECTGENDER": "Select Gender",
+                "ENTERMINAGE": "Enter the Min Age",
+                "ENTERMAXAGE": "Enter the Max Age",
+                "ENTERPRIORITY": "Enter the Priority",
+                "ENTERWEBURL": "Enter the Web Url",
+                "ENTERPHONENUMBERTOCALL": "Enter the Phone Number To Call",
+                "ENTERSMSMOBILENUMBER": "Enter the Sms Mobile Number",
+                "ENTERSMSBODY": "Enter the Sms Body",
+                "ENTEREMAILADRESS": "Enter the Email Adress",
+                "ENTEREMAILSUBJECT": "Enter the Email Subject",
+                "ENTEREMAILBODY": "Enter the Email Body",
+                "ENTERANDROIDAPPURL": "Enter the Android App Url",
+                "ENTERIPHONEAPPURL": "Enter the Iphone App Url",
+                "ENTERYOUTUBEURL": "Enter the Youtube Url",
+                "ENTERMAPLATITUDE": "Enter the Map Latitude",
+                "ENTERMAPLONGITUDE": "Enter the Map Longitude",
+                "ENTERSCREEN": "Enter the Screen",
+                "ENTERSCREENPARAMETERS": "Enter the Screen Parameters",
+                "ENTERTOTALHITS": "Enter the Total Hits",
+                "ENTERTODAYHITS": "Enter the Today Hits",
+                "ENTERTOTALCLICKS": "Enter the Total Clicks",
+                "ENTERTODAYCLICKS": "Enter the Today Clicks",
+                "ENTERTEMPLATE": "Enter the Template",
+                "ENTERADTEXT": "Enter the Ad Text",
+                "ENTERTEXTCOLOR": "Enter the Text Color",
+                "ENTERBACKGROUNDCOLOR": "Enter the Background Color",
+                "SELECTSTARTPUBLISHING": "Select Start Publishing",
+                "SELECTENDPUBLISHING": "Select End Publishing",
+                "ENTERSTARTPUBLISHINGTIME": "Enter the Start Publishing Time",
+                "ENTERENDPUBLISHINGTIME": "Enter the End Publishing Time",
+                "ENTERMAXCLICKSPERDAY": "Enter the Max Clicks Per Day",
+                "ENTERMAXTOTALCLICKS": "Enter the Max Total Clicks",
+                "ENTERMAXHITSPERDAY": "Enter the Max Hits Per Day",
+                "ENTERMAXTOTALHITS": "Enter the Max Total Hits",
+                "SELECTSTATUS": "Select Status",
+                "STATUSREQUIRED": "The Status is required",
+                "ENTERSLUG": "Enter the Slug",
+                "SLUGREQUIRED": "The Slug is required",
+                "ENTERITEMSNUMBER": "Enter the Items Number",
+                "ITEMSNUMBERREQUIRED": "The Items Number is required",
+                "ENTERDISPLAYTIME": "Enter the Display Time",
+                "DISPLAYTIMEREQUIRED": "The Display Time is required",
+                "ENTEREXTENSIONS": "Enter the Extensions",
+                "EXTENSIONSREQUIRED": "The Extensions is required",
+                "ENTERMIMETYPES": "Enter the Mime Types",
+                "MIMETYPESREQUIRED": "The Mime Types is required",
                 "SELECTTENDER": "Select Tender",
                 "TENDERREQUIRED": "The Tender is required",
                 "ENTERTITLE": "Enter the Title",
                 "TITLEREQUIRED": "The Title is required",
-                "ENTERSLUG": "Enter the Slug",
-                "SLUGREQUIRED": "The Slug is required",
                 "ENTERREFERENCE": "Enter the Reference",
                 "REFERENCEREQUIRED": "The Reference is required",
                 "ENTERDESCRIPTION": "Enter the Description",
                 "DESCRIPTIONREQUIRED": "The Description is required",
-                "SELECTSTATUS": "Select Status",
-                "STATUSREQUIRED": "The Status is required",
                 "ENTERNOTE": "Enter the Note",
                 "ENTERTOTALCOST": "Enter the Total Cost",
                 "ENTERADDRESS": "Enter the Address",
@@ -333,8 +394,6 @@
                 "TENDERPRODUCTREQUIRED": "The Tender Product is required",
                 "SELECTBID": "Select Bid",
                 "BIDREQUIRED": "The Bid is required",
-                "ENTERNAME": "Enter the Name",
-                "NAMEREQUIRED": "The Name is required",
                 "ENTERBRAND": "Enter the Brand",
                 "ENTERMODEL": "Enter the Model",
                 "ENTERUNITCOST": "Enter the Unit Cost",
@@ -345,8 +404,20 @@
                 "ENTERNAMEFR": "Enter the Name Fr",
                 "ENTERSLUGAR": "Enter the Slug Ar",
                 "ENTERSLUGFR": "Enter the Slug Fr",
+                "SELECTBUYERTYPE": "Select Buyer Type",
+                "ENTERREFERENCENUMBER": "Enter the Reference Number",
+                "ENTERFIRSTNAME": "Enter the First Name",
+                "ENTERLASTNAME": "Enter the Last Name",
+                "ENTERJOB": "Enter the Job",
+                "ENTERZIPCODE": "Enter the Zip Code",
+                "ENTERCITY": "Enter the City",
+                "ENTERCOMPANYNAME": "Enter the Company Name",
+                "SELECTCOUNTRY": "Select Country",
+                "SELECTLANGUAGE": "Select Language",
+                "SELECTVISIT": "Select Visit",
+                "SELECTBANNER": "Select Banner",
+                "BANNERREQUIRED": "The Banner is required",
                 "SELECTREGION": "Select Region",
-                "ENTERPICTURE": "Enter the Picture",
                 "ENTERCODE": "Enter the Code",
                 "CODEREQUIRED": "The Code is required",
                 "ENTERLONGCODE": "Enter the Long Code",
@@ -354,8 +425,6 @@
                 "ENTERPREFIX": "Enter the Prefix",
                 "SELECTROLES": "Select Roles",
                 "ROLESREQUIRED": "The Roles is required",
-                "SELECTVISIT": "Select Visit",
-                "VISITREQUIRED": "The Visit is required",
                 "ENTERENTITY": "Enter the Entity",
                 "ENTITYREQUIRED": "The Entity is required",
                 "ENTERFOREIGNKEY": "Enter the Foreign Key",
@@ -397,15 +466,12 @@
                 "ENTERTITLEFR": "Enter the Title Fr",
                 "ENTERCONTENTAR": "Enter the Content Ar",
                 "ENTERCONTENTFR": "Enter the Content Fr",
-                "SELECTSTARTPUBLISHING": "Select Start Publishing",
-                "SELECTENDPUBLISHING": "Select End Publishing",
                 "SELECTPUBLISHDATE": "Select Publish Date",
                 "PUBLISHDATEREQUIRED": "The Publish Date is required",
                 "ENTERMETATITLE": "Enter the Meta Title",
                 "ENTERMETADESCRIPTION": "Enter the Meta Description",
                 "ENTERMETAKEYWORDS": "Enter the Meta Keywords",
                 "ENTERTOTALPRINTS": "Enter the Total Prints",
-                "ENTERTOTALHITS": "Enter the Total Hits",
                 "ENTERTOTALCOMMENTS": "Enter the Total Comments",
                 "ENTERTOTALRATINGS": "Enter the Total Ratings",
                 "ENTERAVERAGERATINGS": "Enter the Average Ratings",
@@ -415,8 +481,8 @@
                 "ENTERDESCRIPTIONAR": "Enter the Description Ar",
                 "ENTERDESCRIPTIONFR": "Enter the Description Fr",
                 "SELECTPARENT": "Select Parent",
-                "SELECTCOUNTRY": "Select Country",
-                "COUNTRYREQUIRED": "The Country is required",
+                "SELECTBUYER": "Select Buyer",
+                "BUYERREQUIRED": "The Buyer is required",
                 "SELECTSECTOR": "Select Sector",
                 "SECTORREQUIRED": "The Sector is required",
                 "SELECTTENDERTYPE": "Select Tender Type",
@@ -440,13 +506,6 @@
                 "SALTALREADYINUSE": "This Salt is already in use. Please choose another one.",
                 "ENTERUSERNAMECANONICAL": "Enter the Username Canonical",
                 "ENTEREMAILCANONICAL": "Enter the Email Canonical",
-                "SELECTGENDER": "Select Gender",
-                "ENTERFIRSTNAME": "Enter the First Name",
-                "ENTERLASTNAME": "Enter the Last Name",
-                "ENTERZIPCODE": "Enter the Zip Code",
-                "ENTERCOMPANYNAME": "Enter the Company Name",
-                "ENTERJOB": "Enter the Job",
-                "SELECTLANGUAGE": "Select Language",
                 "ENTERPROFILE": "Enter the Profile",
                 "ENTERSESSIONTIMEOUT": "Enter the Session Timeout",
                 "ENTERPHONEVALIDATIONCODE": "Enter the Phone Validation Code",
@@ -471,6 +530,48 @@
         },
         "list": {
             "DASHBOARD": "Dashboard",
+            "BANNERS": "Banners",
+            "BANNER": "Banner",
+            "ADDBANNER": "Add New Banner",
+            "NEWBANNER": "New Banner",
+            "BANNERDETAILS": "Banner Details",
+            "EDITBANNER": "Edit Banner",
+            "BANNERUPDATED": "Banner Updated",
+            "BANNERNOTUPDATED": "Banner Not Updated",
+            "BANNERCREATED": "Banner Created",
+            "BANNERNOTCREATED": "Banner Not Created",
+            "YOUWILLNOTBEABLETORECOVERBANNER": "You will not be able to recover this Banner!",
+            "BANNERDELETED": "Banner Deleted",
+            "BANNERNOTDELETED": "Banner Not Deleted",
+            "BACKBANNERS": "Back To Banners List",
+            "BANNERPOSITIONS": "Banner Positions",
+            "BANNERPOSITION": "Banner Position",
+            "ADDBANNERPOSITION": "Add New Banner Position",
+            "NEWBANNERPOSITION": "New Banner Position",
+            "BANNERPOSITIONDETAILS": "Banner Position Details",
+            "EDITBANNERPOSITION": "Edit Banner Position",
+            "BANNERPOSITIONUPDATED": "Banner Position Updated",
+            "BANNERPOSITIONNOTUPDATED": "Banner Position Not Updated",
+            "BANNERPOSITIONCREATED": "Banner Position Created",
+            "BANNERPOSITIONNOTCREATED": "Banner Position Not Created",
+            "YOUWILLNOTBEABLETORECOVERBANNERPOSITION": "You will not be able to recover this Banner Position!",
+            "BANNERPOSITIONDELETED": "Banner Position Deleted",
+            "BANNERPOSITIONNOTDELETED": "Banner Position Not Deleted",
+            "BACKBANNERPOSITIONS": "Back To Banner Positions List",
+            "BANNERTYPES": "Banner Types",
+            "BANNERTYPE": "Banner Type",
+            "ADDBANNERTYPE": "Add New Banner Type",
+            "NEWBANNERTYPE": "New Banner Type",
+            "BANNERTYPEDETAILS": "Banner Type Details",
+            "EDITBANNERTYPE": "Edit Banner Type",
+            "BANNERTYPEUPDATED": "Banner Type Updated",
+            "BANNERTYPENOTUPDATED": "Banner Type Not Updated",
+            "BANNERTYPECREATED": "Banner Type Created",
+            "BANNERTYPENOTCREATED": "Banner Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERBANNERTYPE": "You will not be able to recover this Banner Type!",
+            "BANNERTYPEDELETED": "Banner Type Deleted",
+            "BANNERTYPENOTDELETED": "Banner Type Not Deleted",
+            "BACKBANNERTYPES": "Back To Banner Types List",
             "BIDS": "Bids",
             "BID": "Bid",
             "ADDBID": "Add New Bid",
@@ -513,6 +614,48 @@
             "BIDDINGTYPEDELETED": "Bidding Type Deleted",
             "BIDDINGTYPENOTDELETED": "Bidding Type Not Deleted",
             "BACKBIDDINGTYPES": "Back To Bidding Types List",
+            "BUYERS": "Buyers",
+            "BUYER": "Buyer",
+            "ADDBUYER": "Add New Buyer",
+            "NEWBUYER": "New Buyer",
+            "BUYERDETAILS": "Buyer Details",
+            "EDITBUYER": "Edit Buyer",
+            "BUYERUPDATED": "Buyer Updated",
+            "BUYERNOTUPDATED": "Buyer Not Updated",
+            "BUYERCREATED": "Buyer Created",
+            "BUYERNOTCREATED": "Buyer Not Created",
+            "YOUWILLNOTBEABLETORECOVERBUYER": "You will not be able to recover this Buyer!",
+            "BUYERDELETED": "Buyer Deleted",
+            "BUYERNOTDELETED": "Buyer Not Deleted",
+            "BACKBUYERS": "Back To Buyers List",
+            "BUYERTYPES": "Buyer Types",
+            "BUYERTYPE": "Buyer Type",
+            "ADDBUYERTYPE": "Add New Buyer Type",
+            "NEWBUYERTYPE": "New Buyer Type",
+            "BUYERTYPEDETAILS": "Buyer Type Details",
+            "EDITBUYERTYPE": "Edit Buyer Type",
+            "BUYERTYPEUPDATED": "Buyer Type Updated",
+            "BUYERTYPENOTUPDATED": "Buyer Type Not Updated",
+            "BUYERTYPECREATED": "Buyer Type Created",
+            "BUYERTYPENOTCREATED": "Buyer Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERBUYERTYPE": "You will not be able to recover this Buyer Type!",
+            "BUYERTYPEDELETED": "Buyer Type Deleted",
+            "BUYERTYPENOTDELETED": "Buyer Type Not Deleted",
+            "BACKBUYERTYPES": "Back To Buyer Types List",
+            "CLICKS": "Clicks",
+            "CLICK": "Click",
+            "ADDCLICK": "Add New Click",
+            "NEWCLICK": "New Click",
+            "CLICKDETAILS": "Click Details",
+            "EDITCLICK": "Edit Click",
+            "CLICKUPDATED": "Click Updated",
+            "CLICKNOTUPDATED": "Click Not Updated",
+            "CLICKCREATED": "Click Created",
+            "CLICKNOTCREATED": "Click Not Created",
+            "YOUWILLNOTBEABLETORECOVERCLICK": "You will not be able to recover this Click!",
+            "CLICKDELETED": "Click Deleted",
+            "CLICKNOTDELETED": "Click Not Deleted",
+            "BACKCLICKS": "Back To Clicks List",
             "COUNTRIES": "Countries",
             "COUNTRY": "Country",
             "ADDCOUNTRY": "Add New Country",
@@ -555,6 +698,20 @@
             "HITDELETED": "Hit Deleted",
             "HITNOTDELETED": "Hit Not Deleted",
             "BACKHITS": "Back To Hits List",
+            "IMPRESSIONS": "Impressions",
+            "IMPRESSION": "Impression",
+            "ADDIMPRESSION": "Add New Impression",
+            "NEWIMPRESSION": "New Impression",
+            "IMPRESSIONDETAILS": "Impression Details",
+            "EDITIMPRESSION": "Edit Impression",
+            "IMPRESSIONUPDATED": "Impression Updated",
+            "IMPRESSIONNOTUPDATED": "Impression Not Updated",
+            "IMPRESSIONCREATED": "Impression Created",
+            "IMPRESSIONNOTCREATED": "Impression Not Created",
+            "YOUWILLNOTBEABLETORECOVERIMPRESSION": "You will not be able to recover this Impression!",
+            "IMPRESSIONDELETED": "Impression Deleted",
+            "IMPRESSIONNOTDELETED": "Impression Not Deleted",
+            "BACKIMPRESSIONS": "Back To Impressions List",
             "LANGUAGES": "Languages",
             "LANGUAGE": "Language",
             "ADDLANGUAGE": "Add New Language",
@@ -818,12 +975,68 @@
                 "CARDCCVREQUIRED" : "Ccv is required",
                 "CAPTCHA": "Security check",
                 "ID": "Id",
+                "BANNERTYPE": "Banner Type",
+                "NAME": "Name",
+                "PICTURE": "Picture",
+                "CLOSABLE": "Closable",
+                "COUNTDOWN": "Count Down",
+                "IPHONEACTION": "Iphone Action",
+                "ANDROIDACTION": "Android Action",
+                "WEBACTION": "Web Action",
+                "GENDER": "Gender",
+                "MINAGE": "Min Age",
+                "MAXAGE": "Max Age",
+                "PRIORITY": "Priority",
+                "WEBURL": "Web Url",
+                "PHONENUMBERTOCALL": "Phone Number To Call",
+                "SMSMOBILENUMBER": "Sms Mobile Number",
+                "SMSBODY": "Sms Body",
+                "EMAILADRESS": "Email Adress",
+                "EMAILSUBJECT": "Email Subject",
+                "EMAILBODY": "Email Body",
+                "ANDROIDAPPURL": "Android App Url",
+                "IPHONEAPPURL": "Iphone App Url",
+                "YOUTUBEURL": "Youtube Url",
+                "MAPLATITUDE": "Map Latitude",
+                "MAPLONGITUDE": "Map Longitude",
+                "SCREEN": "Screen",
+                "SCREENPARAMETERS": "Screen Parameters",
+                "TOTALHITS": "Total Hits",
+                "TODAYHITS": "Today Hits",
+                "TOTALCLICKS": "Total Clicks",
+                "TODAYCLICKS": "Today Clicks",
+                "TEMPLATE": "Template",
+                "ADTEXT": "Ad Text",
+                "TEXTCOLOR": "Text Color",
+                "BACKGROUNDCOLOR": "Background Color",
+                "AUTOPUBLISHING": "Auto Publishing",
+                "STARTPUBLISHING": "Start Publishing",
+                "ENDPUBLISHING": "End Publishing",
+                "STARTPUBLISHINGTIME": "Start Publishing Time",
+                "ENDPUBLISHINGTIME": "End Publishing Time",
+                "MAXCLICKSPERDAY": "Max Clicks Per Day",
+                "MAXTOTALCLICKS": "Max Total Clicks",
+                "MAXHITSPERDAY": "Max Hits Per Day",
+                "MAXTOTALHITS": "Max Total Hits",
+                "STATUS": "Status",
+                "CREATEDAT": "Created At",
+                "CREATORUSER": "Creator User",
+                "MODIFIEDAT": "Modified At",
+                "MODIFIERUSER": "Modifier User",
+                "BANNERPOSITIONS": "Banner Positions",
+                "SLUG": "Slug",
+                "ITEMSNUMBER": "Items Number",
+                "DISPLAYTIME": "Display Time",
+                "ISFULLSCREEN": "Is Full Screen",
+                "DISPLAYONETIME": "Display One Time",
+                "ISPUBLISHED": "Is Published",
+                "BANNERS": "Banners",
+                "EXTENSIONS": "Extensions",
+                "MIMETYPES": "Mime Types",
                 "TENDER": "Tender",
                 "TITLE": "Title",
-                "SLUG": "Slug",
                 "REFERENCE": "Reference",
                 "DESCRIPTION": "Description",
-                "STATUS": "Status",
                 "NOTE": "Note",
                 "TOTALCOST": "Total Cost",
                 "ADDRESS": "Address",
@@ -833,13 +1046,8 @@
                 "ATTACHMENTFILE2": "Attachment File2",
                 "ATTACHMENTFILE3": "Attachment File3",
                 "ATTACHMENTFILE4": "Attachment File4",
-                "CREATEDAT": "Created At",
-                "CREATORUSER": "Creator User",
-                "MODIFIEDAT": "Modified At",
-                "MODIFIERUSER": "Modifier User",
                 "TENDERPRODUCT": "Tender Product",
                 "BID": "Bid",
-                "NAME": "Name",
                 "BRAND": "Brand",
                 "MODEL": "Model",
                 "UNITCOST": "Unit Cost",
@@ -850,16 +1058,25 @@
                 "NAMEFR": "Name Fr",
                 "SLUGAR": "Slug Ar",
                 "SLUGFR": "Slug Fr",
-                "ISPUBLISHED": "Is Published",
+                "BUYERTYPE": "Buyer Type",
+                "REFERENCENUMBER": "Reference Number",
+                "FIRSTNAME": "First Name",
+                "LASTNAME": "Last Name",
+                "JOB": "Job",
+                "ZIPCODE": "Zip Code",
+                "CITY": "City",
+                "COMPANYNAME": "Company Name",
+                "COUNTRY": "Country",
+                "LANGUAGE": "Language",
+                "VISIT": "Visit",
+                "BANNER": "Banner",
                 "REGION": "Region",
-                "PICTURE": "Picture",
                 "CODE": "Code",
                 "LONGCODE": "Long Code",
                 "PREFIX": "Prefix",
                 "PUBLISHED": "Published",
                 "ROLES": "Roles",
                 "USERS": "Users",
-                "VISIT": "Visit",
                 "ENTITY": "Entity",
                 "FOREIGNKEY": "Foreign Key",
                 "URL": "Url",
@@ -892,15 +1109,11 @@
                 "CONTENTAR": "Content Ar",
                 "CONTENTFR": "Content Fr",
                 "ISHEADLINE": "Is Headline",
-                "AUTOPUBLISHING": "Auto Publishing",
-                "STARTPUBLISHING": "Start Publishing",
-                "ENDPUBLISHING": "End Publishing",
                 "PUBLISHDATE": "Publish Date",
                 "METATITLE": "Meta Title",
                 "METADESCRIPTION": "Meta Description",
                 "METAKEYWORDS": "Meta Keywords",
                 "TOTALPRINTS": "Total Prints",
-                "TOTALHITS": "Total Hits",
                 "TOTALCOMMENTS": "Total Comments",
                 "TOTALRATINGS": "Total Ratings",
                 "AVERAGERATINGS": "Average Ratings",
@@ -914,7 +1127,7 @@
                 "DESCRIPTIONFR": "Description Fr",
                 "PARENT": "Parent",
                 "POSTS": "Posts",
-                "COUNTRY": "Country",
+                "BUYER": "Buyer",
                 "SECTOR": "Sector",
                 "TENDERTYPE": "Tender Type",
                 "BIDDINGTYPE": "Bidding Type",
@@ -931,13 +1144,6 @@
                 "SALT": "Salt",
                 "USERNAMECANONICAL": "Username Canonical",
                 "EMAILCANONICAL": "Email Canonical",
-                "GENDER": "Gender",
-                "FIRSTNAME": "First Name",
-                "LASTNAME": "Last Name",
-                "ZIPCODE": "Zip Code",
-                "COMPANYNAME": "Company Name",
-                "JOB": "Job",
-                "LANGUAGE": "Language",
                 "PROFILE": "Profile",
                 "ENABLEOAUTH": "Enable Oauth",
                 "SESSIONTIMEOUT": "Session Timeout",
@@ -965,6 +1171,11 @@
                 "VALUE": "Value",
                 "IP": "Ip",
                 "ISVALID": "Is Valid",
+                "genders": {
+                    "ALL": "All",
+                    "MALE": "Male",
+                    "FEMALE": "Female"
+                },
                 "statuses": {
                     "DRAFT": "Draft",
                     "ONLINE": "Online",
@@ -1013,13 +1224,8 @@
                 },
                 "types": {
                     "GUEST": "Guest",
-                    "SUPPLIER": "Supplier",
-                    "BUYER": "Buyer",
+                    "SUBSCRIBER": "Subscriber",
                     "ADMINISTRATOR": "Administrator"
-                },
-                "genders": {
-                    "MALE": "Male",
-                    "FEMALE": "Female"
                 },
                 "authenticationmodes": {
                     "DATABASE": "Database",

@@ -16,17 +16,13 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
     }, {
-        id: 'Supplier',
-        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
+        id: 'Subscriber',
+        title: $filter('translate')('content.list.fields.types.SUBSCRIBER'),
         css: 'success'
-    }, {
-        id: 'Buyer',
-        title: $filter('translate')('content.list.fields.types.BUYER'),
-        css: 'warning'
     }, {
         id: 'Administrator',
         title: $filter('translate')('content.list.fields.types.ADMINISTRATOR'),
-        css: 'danger'
+        css: 'warning'
     }];
     $scope.gendersOptions = [{
         id: '',
@@ -229,7 +225,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + row.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 

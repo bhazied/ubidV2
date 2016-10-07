@@ -1,0 +1,30 @@
+banner:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Banner:index" }
+
+banner_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Banner:show" }
+
+banner_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Banner:new" }
+
+banner_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Banner:create" }
+    methods:  POST
+
+banner_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Banner:edit" }
+
+banner_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Banner:update" }
+    methods:  [POST, PUT]
+
+banner_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Banner:delete" }
+    methods:  [POST, DELETE]

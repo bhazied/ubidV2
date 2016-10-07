@@ -12,17 +12,13 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
     }, {
-        id: 'Supplier',
-        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
+        id: 'Subscriber',
+        title: $filter('translate')('content.list.fields.types.SUBSCRIBER'),
         css: 'success'
-    }, {
-        id: 'Buyer',
-        title: $filter('translate')('content.list.fields.types.BUYER'),
-        css: 'warning'
     }, {
         id: 'Administrator',
         title: $filter('translate')('content.list.fields.types.ADMINISTRATOR'),
-        css: 'danger'
+        css: 'warning'
     }];
     $scope.genders = [{
         id: 'Male',

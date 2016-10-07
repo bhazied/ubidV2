@@ -1,0 +1,30 @@
+buyer:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Buyer:index" }
+
+buyer_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Buyer:show" }
+
+buyer_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Buyer:new" }
+
+buyer_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Buyer:create" }
+    methods:  POST
+
+buyer_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Buyer:edit" }
+
+buyer_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Buyer:update" }
+    methods:  [POST, PUT]
+
+buyer_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Buyer:delete" }
+    methods:  [POST, DELETE]

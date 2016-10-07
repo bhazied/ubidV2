@@ -28,17 +28,13 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
     }, {
-        id: 'Supplier',
-        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
+        id: 'Subscriber',
+        title: $filter('translate')('content.list.fields.types.SUBSCRIBER'),
         css: 'success'
-    }, {
-        id: 'Buyer',
-        title: $filter('translate')('content.list.fields.types.BUYER'),
-        css: 'warning'
     }, {
         id: 'Administrator',
         title: $filter('translate')('content.list.fields.types.ADMINISTRATOR'),
-        css: 'danger'
+        css: 'warning'
     }];
     $scope.genders = [{
         id: 'Male',
@@ -156,20 +152,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getCountries();
 
-    $scope.changeCountry = function() {
-        for (var i=0;i<$scope.cities.length;i++) {
-            for (var j=0;j<$scope.countries.length;j++) {
-                if ($scope.countries[j].id == $scope.user.country) {
-                    if (($scope.cities[i].country != null && $scope.cities[i].country.id == $scope.countries[j].id)) {
-                        $scope.cities[i].hidden = false;
-                    } else {
-                        $scope.cities[i].hidden = true;
-                    }
-                }
-            }
-        }
-    };
-    
     $scope.languages = [];
     $scope.languagesLoaded = false;
 
@@ -220,7 +202,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getUsers();
 
-
     $scope.groups = [];
     $scope.groupsLoaded = [];
 
@@ -242,6 +223,17 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getGroups();
 
+    $scope.userGroups = false;
+    $scope.$watch('userGroups', function() {
+        if ($scope.userGroups) {
+            $scope.user.groups = [];
+            for (var i in $scope.groups) {
+                $scope.user.groups.push($scope.groups[i].id);
+            }
+        } else {
+            $scope.user.groups = [];
+        }
+    });
 
     $scope.submitForm = function(form) {
         var firstError = null;

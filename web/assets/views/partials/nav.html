@@ -47,6 +47,11 @@
 			</div>
 		</a>
 		<ul class="sub-menu">
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.buyers')}">
+				<a ui-sref="app.marketplace.buyers">
+					<span class="title" translate="content.list.BUYERS">Buyers</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.tenders')}">
 				<a ui-sref="app.marketplace.tenders">
 					<span class="title" translate="content.list.TENDERS">Tenders</span>
@@ -87,6 +92,11 @@
 					<span class="title" translate="content.list.SECTORS">Sectors</span>
 				</a>
 			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.buyertypes')}">
+				<a ui-sref="app.tenders.buyertypes">
+					<span class="title" translate="content.list.BUYERTYPES">Buyer Types</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.tendercategories')}">
 				<a ui-sref="app.tenders.tendercategories">
 					<span class="title" translate="content.list.TENDERCATEGORIES">Tender Categories</span>
@@ -105,6 +115,46 @@
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.biddingtypes')}">
 				<a ui-sref="app.tenders.biddingtypes">
 					<span class="title" translate="content.list.BIDDINGTYPES">Bidding Types</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+
+	<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.adserving')}">
+		<a href="javascript:void(0)">
+			<div class="item-content">
+				<div class="item-media">
+					<i class="ti-target"></i>
+				</div>
+				<div class="item-inner">
+					<span class="title" translate="sidebar.nav.adserving.MAIN">Adserving</span>
+				</div>
+			</div>
+		</a>
+		<ul class="sub-menu">
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.adserving.banners')}">
+				<a ui-sref="app.adserving.banners">
+					<span class="title" translate="content.list.BANNERS">Banners</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.adserving.bannertypes')}">
+				<a ui-sref="app.adserving.bannertypes">
+					<span class="title" translate="content.list.BANNERTYPES">Banner Types</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.adserving.clicks')}">
+				<a ui-sref="app.adserving.clicks">
+					<span class="title" translate="content.list.CLICKS">Clicks</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.adserving.bannerpositions')}">
+				<a ui-sref="app.adserving.bannerpositions">
+					<span class="title" translate="content.list.BANNERPOSITIONS">Banner Positions</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.adserving.impressions')}">
+				<a ui-sref="app.adserving.impressions">
+					<span class="title" translate="content.list.IMPRESSIONS">Impressions</span>
 				</a>
 			</li>
 		</ul>

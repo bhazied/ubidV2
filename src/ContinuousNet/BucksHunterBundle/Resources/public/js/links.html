@@ -1,0 +1,127 @@
+<ul>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.content')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="content"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.content.MAIN">Content</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.content.puzzles')}">
+                <a ui-sref="app.content.puzzles">
+                    <span class="title" translate="content.list.PUZZLES">Puzzles</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.content.banners')}">
+                <a ui-sref="app.content.banners">
+                    <span class="title" translate="content.list.BANNERS">Banners</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.settings')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="settings"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.settings.MAIN">Settings</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.languages')}">
+                <a ui-sref="app.settings.languages">
+                    <span class="title" translate="content.list.LANGUAGES">Languages</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.settings.countries')}">
+                <a ui-sref="app.settings.countries">
+                    <span class="title" translate="content.list.COUNTRIES">Countries</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.gaming')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="gaming"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.gaming.MAIN">Gaming</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.gaming.games')}">
+                <a ui-sref="app.gaming.games">
+                    <span class="title" translate="content.list.GAMES">Games</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.gaming.scores')}">
+                <a ui-sref="app.gaming.scores">
+                    <span class="title" translate="content.list.SCORES">Scores</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.mobile')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="mobile"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.mobile.MAIN">Mobile</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.mobile.pushnotifications')}">
+                <a ui-sref="app.mobile.pushnotifications">
+                    <span class="title" translate="content.list.PUSHNOTIFICATIONS">Push Notifications</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.mobile.pushdevices')}">
+                <a ui-sref="app.mobile.pushdevices">
+                    <span class="title" translate="content.list.PUSHDEVICES">Push Devices</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.mobile.pushmessages')}">
+                <a ui-sref="app.mobile.pushmessages">
+                    <span class="title" translate="content.list.PUSHMESSAGES">Push Messages</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.access')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="access"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.access.MAIN">Access</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.users')}">
+                <a ui-sref="app.access.users">
+                    <span class="title" translate="content.list.USERS">Users</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.sessions')}">
+                <a ui-sref="app.access.sessions">
+                    <span class="title" translate="content.list.SESSIONS">Sessions</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

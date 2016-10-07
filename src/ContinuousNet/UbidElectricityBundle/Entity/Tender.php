@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="bidding_type_id", columns={"bidding_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="buyer_id", columns={"buyer_id"}), @ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="bidding_type_id", columns={"bidding_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -249,6 +249,21 @@ class Tender
      * 
      */
     private $modifiedAt;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Buyer
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Buyer")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="buyer_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $buyer;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\Region
@@ -826,6 +841,30 @@ class Tender
     public function getModifiedAt()
     {
         return $this->modifiedAt;
+    }
+
+    /**
+     * Set buyer
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Buyer $buyer
+     * @return Tender
+     */
+    public function setBuyer(Buyer $buyer = null)
+    {
+        $this->buyer = $buyer;
+        return $this;
+    }
+
+    /**
+     * Get buyer
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Buyer 
+     */
+    public function getBuyer()
+    {
+        return $this->buyer;
     }
 
     /**
