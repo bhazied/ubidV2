@@ -10,7 +10,7 @@
                             </label>
                         <span class="input-icon">
                            <input type="text" name="searchSearchText" id="searchSearchText" ng-model="search.searchText" class="form-control" placeholder="[[ 'content.form.fields.TITLE' | translate ]]">
-                            <i class="fa fa-globe"></i>
+                            <i class="ti-tag"></i>
                         </span><!--/input-icon-->
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                             </label>
                         <span class="input-icon">
                            <input type="text" name="searchReference" id="searchReference" ng-model="search.reference" class="form-control" placeholder="[[ 'content.form.fields.REFERENCE' | translate ]]">
-                            <i class="fa fa-globe"></i>
+                            <i class="ti-marker-alt"></i>
                         </span><!--/input-icon-->
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <button type="button" ng-click="submitForm(searchform, 1)" class="btn btn-primary pull-left btn-warning" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
-                            <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SUBMITADVANCEDSEARCH">Search</span>
+                            <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-search" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SUBMITADVANCEDSEARCH">Search</span>
                         </button>
                     </div>
                 </div>
@@ -161,6 +161,5 @@
             </div>
         </div>
     </div>
-
 
 </section>

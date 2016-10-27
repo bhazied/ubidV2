@@ -1,5 +1,5 @@
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory) {
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
         $scope.col = 8;
         $scope.selectListCountries = [];
@@ -150,7 +150,6 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.searchResults = [];
         $scope.submitForm = function (form, page) {
             page = page-1;
-            console.log($scope.countries);
             $scope.disableSubmit = true;
             if($scope.price.maxValue > 0){
                 $scope.search.priceMinValue = $scope.price.minValue;
@@ -160,15 +159,20 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $scope.search.priceMaxValue = 0;
             }
             $scope.search.page = page;
-            $advancedSearchDataFactory.getResults($scope.search).$promise.then(function (data) {
-               console.log(data);
-                $scope.searchResults = data.results;
-                $scope.pageSize = 10;
-                $scope.total = data.inlineCount;
-                $scope.currentPage = page;
-                $scope.col = 4;
-
+            $timeout(function () {
+                $advancedSearchDataFactory.getResults($scope.search).$promise.then(function (data) {
+                    if(data.inlineCount > 0){
+                        $scope.searchResults = data.results;
+                        $scope.pageSize = 10;
+                        $scope.total = data.inlineCount;
+                        $scope.currentPage = page;
+                        $scope.col = 4;
+                    }
+                    else {
+                        SweetAlert.swal($filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTHEADER'), $filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTTEXT'), "info");
+                    }
+                    $scope.disableSubmit = false;
+                });
             });
-            $scope.disableSubmit = false;
         }
     }]);

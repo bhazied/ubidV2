@@ -64,7 +64,9 @@
                 "SELECTALL": "Séléctionner Tout",
                 "DEADLINE": "Date limite",
                 "SELECTDATE": "Séléctinner une date",
-                "SELECTCOUNTRY": "Séléctinner payes"
+                "SELECTCOUNTRY": "Séléctinner payes",
+                "ADVANCEDRESEARCHNORESULTHEADER": "Pas des résultats",
+                "ADVANCEDRESEARCHNORESULTTEXT":"Aucun appel d'offre trouvé avec les paramètres entrées"
             }
         }
     },

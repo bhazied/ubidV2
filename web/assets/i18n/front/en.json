@@ -63,7 +63,9 @@
                 "SELECTALL": "Select All",
                 "DEADLINE": "DEADLINE",
                 "SELECTDATE": "Select date",
-                "SELECTCOUNTRY": "Select countries"
+                "SELECTCOUNTRY": "Select countries",
+                "ADVANCEDRESEARCHNORESULTHEADER": "No results",
+                "ADVANCEDRESEARCHNORESULTTEXT":"No tender found with the input parameters"
             }
         }
     },
