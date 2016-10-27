@@ -331,6 +331,7 @@ assetic:
                 - "assets/css/custom.css"
         site_front_css:
             input:
+                - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.css"
                 - "assets/css/front/theme.css"
                 - "assets/css/front/style.css"
         jquery:
@@ -422,6 +423,8 @@ assetic:
                 - "bundles/ubidelectricity/js/constant.js"
                 - "assets/js/front.config.router.js"
                 - "bundles/ubidelectricity/js/front.router.js"
+                - "assets/bower_components/angular-paging/dist/paging.min.js"
+                - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.js"
         continuous_net_services:
             inputs:
                 - "assets/js/services/savable.js"

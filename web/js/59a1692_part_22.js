@@ -382,7 +382,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
-        $scope.anonymousStates = ['front.login', 'front.register', 'auth.resetpassword', 'auth.reset', 'auth.lockscreen', 'auth.emailconfirm', 'front.home', 'front.bids.short'];
+        $scope.anonymousStates = ['front.login', 'front.register', 'auth.resetpassword', 'auth.reset', 'auth.lockscreen', 'auth.emailconfirm', 'front.home', 'front.tenders.list', 'front.tenders.category', 'front.advanced_search'];
         $timeout(function() {
             if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {

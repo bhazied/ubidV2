@@ -39,11 +39,37 @@
                 "LAST_NAME": "Last name",
                 "EMAIL": "E-mail",
                 "USERNAME": "Username",
-                "PASSWORD": "Password"
+                "PASSWORD": "Password",
+                "TITLE": "Title",
+                "REFERENCE": "Reference"
             },
-            "register":{
-                "TITLE": "Subsscribtion form"
+            "titles":{
+                "REGISTER": "Subsscribtion form",
+                "ADVANCEDSEARCH": "Advanced Search"
+            },
+            "buttons":{
+                "SUBMITADVANCEDSEARCH": "Search"
+            },
+            "country_picker":{
+                "selectAll"       : "Select all",
+                "selectNone"      : "Select none",
+                "reset"           : "Reset",
+                "search"          : "Search country name ...",
+                "nothingSelected" : "Nothing is selected"
+            },
+            "messages":{
+                "ADVANCEDSEARCHPRICE": "search project with price between [[ price.minValue ]]  AND [[ price.maxValue ]]",
+                "ADVANCEDSEARCHCURRENCY": "All price are '[[ currency ]]' Currency",
+                "SELECTALL": "Select All",
+                "DEADLINE": "DEADLINE",
+                "SELECTDATE": "Select date",
+                "SELECTCOUNTRY": "Select countries"
             }
         }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
     }
 }

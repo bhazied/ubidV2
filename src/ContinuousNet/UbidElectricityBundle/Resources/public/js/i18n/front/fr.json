@@ -46,5 +46,10 @@
                 "TITLE": "Subsscribtion form"
             }
         }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
     }
 }

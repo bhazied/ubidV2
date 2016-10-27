@@ -1,4 +1,4 @@
-<section id="contentSection">
+<section id="contentSection" ng-controller="HomeCtrl">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
@@ -6,27 +6,20 @@
                     <h2><span>What are you bidding</span></h2>
                     <div class="single_post_content">
                         <ul class="spost_nav">
-                            <li>
-                                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                            <li ng-repeat="sector in sectorsList">
+                                <div class="media wow fadeInDown"> <!--<a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>-->
+                                    <div class="media-body"> <a ui-sref="front.tenders.sector({ id: [[ sector.id ]] })" class="catg_title"> [[ sector.name ]]  ( [[ sector.tenderCount ]] )</a> </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                                </div>
-                            </li>
+
                         </ul>
+                        <div paging
+                             page="currentPage"
+                             page-size="pageSize"
+                             total="total"
+                             paging-action=" getBidsBySector(page)"
+                        >
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,27 +29,14 @@
                 <div class="single_sidebar">
                     <h2><span>Last bids</span></h2>
                     <ul class="spost_nav">
-                        <li>
-                            <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                        <li ng-repeat="tender in tendersList">
+                            <div class="media wow fadeInDown"> <!--<a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a> -->
+                                <div class="media-body"> <a ui-sref="front.tender.details({id:[[ tender.id ]]})" class="catg_title"> [[ tender.title ]]</a> </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                                <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                            </div>
-                        </li>
+
                     </ul>
+                    <a ui-sref="front.tenders.list" class="catg_title">All tenders</a>
                 </div>
             </aside>
         </div>

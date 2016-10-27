@@ -104,7 +104,7 @@ app.config(['$stateProvider',
             url:'/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: "HOME PAGE UBID",
-            resolve: loadSequence()
+            resolve: loadSequence('HomeCtrl' ,'HomeService')
         }).state('front.contact', {
             url:'/contact',
             template : "<div>this is a contact page</div>",
@@ -115,6 +115,44 @@ app.config(['$stateProvider',
             template : "<div>this is about us page</div>",
             title: "about us page",
             resolve: loadSequence()
+        }).state('front.tenders',{
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.sector', {
+            url:'/sector/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Sector/tenderList.html',
+            title: "sector",
+            resolve: loadSequence()
+        }).state('front.tenders.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
+            title: "Tenders list",
+            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+        }).state('front.tenders.category',{
+            url: '/category/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
+            title: 'Tenders list filtred by category',
+            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+        }).state('front.tender',{
+            url: "/tender",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tender.details',{
+            url: '/details/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
+            title: "Tender description",
+            resolve: loadSequence('tendersFrontCtrl', 'HomeService')
+        }).state('front.advanced_search', {
+            url: '/advanced-search',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
+            title: "Advanced Search",
+            resolve: loadSequence('searchFormCtrl', 'SearchService', 'languageService', 'countryService', 'tenderfrontService', 'checklist-model', 'angular-slider')
         })
-
     }]);

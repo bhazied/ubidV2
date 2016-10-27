@@ -105,7 +105,10 @@ app.constant('APP_JS_REQUIRES', {
         'VisitFormCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitFormCtrl.js',
         'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js',
         'LoginFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js',
-        'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js'
+        'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
+        'HomeCtrl': '/bundles/ubidelectricity/js/front/Home/HomeCtrl.js',
+        'tendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/tendersFrontCtrl.js',
+        'searchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/searchFormCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -215,5 +218,14 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'visitService',
         files: ['/bundles/ubidelectricity/js/components/Visit/VisitService.js']
+    },{
+        name: 'HomeService',
+        files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
+    },{
+        name: 'tenderfrontService',
+        files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
+    },{
+        name: 'SearchService',
+        files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
     }]
 });

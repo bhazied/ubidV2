@@ -40,11 +40,37 @@
                 "LAST_NAME": "Nom",
                 "EMAIL": "E-mail",
                 "USERNAME": "nom d'utilisateur",
-                "PASSWORD": "Mot de passe"
+                "PASSWORD": "Mot de passe",
+                "TITLE": "Titre",
+                "REFERENCE": "Référence"
             },
-            "register":{
-                "TITLE": "Inscription"
+            "titles":{
+                "REGISTER": "Inscription",
+                "ADVANCEDSEARCH": "Recherche avancées"
+            },
+            "buttons":{
+              "SUBMITADVANCEDSEARCH": "Recherche"
+            },
+            "country_picker":{
+                "selectAll"       : "Séléctionner tout",
+                "selectNone"      : "Désélectionner tout",
+                "reset"           : "Reset",
+                "search"          : "chercher un pays...",
+                "nothingSelected" : "Rien n'est séléctionné"
+            },
+            "messages":{
+                "ADVANCEDSEARCHPRICE": "Budget recherché entre [[ minValue ]]  et [[ maxValue ]]",
+                "ADVANCEDSEARCHCURRENCY": "La devise est '[[ currency ]]'",
+                "SELECTALL": "Séléctionner Tout",
+                "DEADLINE": "Date limite",
+                "SELECTDATE": "Séléctinner une date",
+                "SELECTCOUNTRY": "Séléctinner payes"
             }
         }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
     }
 }
