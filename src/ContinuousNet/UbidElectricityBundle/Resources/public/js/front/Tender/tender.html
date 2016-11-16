@@ -1,1 +1,59 @@
-this for on etender
+<section id="contentSection" ng-controller="tenderCtrl">
+        <div class="row">
+            <h2>[[ tender.title ]]</h2>
+        </div>
+        <div class="row">
+            <ul class="list-group col-lg-4 col-md-6 col-sm-12">
+                <li class="list-group-item">
+                    <span class="badge">[[tender.reference]]</span>
+                    Reference
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">[[tender.publish_date | date : formats.DATE  | translate ]]</span>
+                    Publish date
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">[[tender.creator_user.first_name]]</span>
+                    Creator
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">[[tender.estimated_cost]]</span>
+                    Price
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">[[tender.deadline | date : format.DATE | translate]]</span>
+                    Deadline
+                </li>
+            </ul>
+        </div>
+        <div ng-if="loggedIn">
+            <div class="row">
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation"><a href="#"><img ng-src="[[tender.country.picture]]"></a></li>
+                    <li role="presentation"><a href="#">[[ tender.country.name ]]</a></li>
+                    <li role="presentation"><a href="#">[[ tender.region.name ]]</a></li>
+                    <li role="presentation"><a href="#">[[ tender.sector.name ]] </a></li>
+                </ul>
+                <p ng-bind-html="tender.description"></p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" ng-if="tender.attachment_file1">
+
+                </div>
+                <div class="col-lg-4" ng-if="tender.attachment_file2">
+
+                </div>
+                <div class="col-lg-4" ng-if="tender.attachment_file3">
+
+                </div>
+                <div class="col-lg-4" ng-if="tender.attachment_file4">
+
+                </div>
+            </div>
+        </div>
+        <div ng-if="!loggedIn">
+            <div class="row">
+                <my-tender-show tenderinfo="tender"></my-tender-show>
+            </div>
+        </div>
+</section>

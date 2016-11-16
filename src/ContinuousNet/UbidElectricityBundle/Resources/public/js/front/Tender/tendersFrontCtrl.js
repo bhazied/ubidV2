@@ -2,21 +2,24 @@
 app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$HomeDataFactory','$filter','$tendersFrontDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $HomeDataFactory, $filter, $tendersFrontDataFactory) {
 
+        $scope.category_name = $filter('translate')('content.text.ALLCATEGORIES');
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
         $scope.tendersLoaded = false;
         $scope.tendersList = [];
-        $scope.getTenders = function (page) {
+        $scope.getTenders = function (page, categoryId) {
             page = page -1;
+            var $params = {};
+            if(angular.isDefined(categoryId)){
+                $params.category = categoryId;
+            }
+            $params.locale = $localStorage.language;
+            $params.page = page;
             $scope.tendersList = [];
             $timeout(function () {
                 $scope.tendersLoaded = true;
                 var def = $q.defer();
-                var $params = {locale: $localStorage.language, page: page};
-                if(angular.isDefined($stateParams.id)){
-                    $params.category_id = $stateParams.id;
-                }
                     $HomeDataFactory.homeTenders($params).$promise.then(function(data){
                         if(data.results.length > 0){
                             $scope.tendersList = data.results;

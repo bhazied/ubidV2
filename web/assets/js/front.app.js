@@ -37,17 +37,16 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
                 logo: '/assets/images/big_logo.png', // relative path of the project logo
             }
         };
-        console.log( $rootScope.app);
 
         if (angular.isDefined($localStorage.user)) {
             $rootScope.user = $rootScope.currentUser = $localStorage.user;
 
         } else {
             $rootScope.user = $rootScope.currentUser = {
-                firstName: 'Guest',
-                job: 'Visitor',
-                picture: 'app/img/user/02.jpg',
-                roles: []
+                //firstName: 'Guest',
+                //job: 'Visitor',
+                //picture: 'app/img/user/02.jpg',
+                //roles: []
             };
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);

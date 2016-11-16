@@ -2,25 +2,23 @@
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="list-group">
-                <a href="#" class="list-group-item active">
-                    All Categories
-                </a>
+                <a href="#" class="list-group-item active" translate="content.text.ALLCATEGORIES"></a>
                 <div ng-repeat="category in categoriesList">
-                    <a ui-sref="front.tenders.category({ id: [[ category.id ]] })" class="list-group-item list-group-item-action"> [[ category.name ]] ( [[ category.tender_count]] )</a>
+                    <a ng-click="getTenders(1,category.id)" class="list-group-item list-group-item-action"> [[ category.name ]] ( [[ category.tender_count]] )</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action active">
-                    <h5 class="list-group-item-heading">Tender List</h5>
-                    <p class="list-group-item-heading">Tender List with différent category.</p>
+                    <h5 class="list-group-item-heading" translate="content.text.TENDERLIST">Tender List</h5>
+                    <p class="list-group-item-heading" translate="content.text.TENDERLISTCATEGORY" translate-values="{category_name: category_name}">Tender List (All category).</p>
                 </a>
                 <div ng-repeat="tender in tendersList">
                     <a ui-sref="front.tender.details({id: [[ tender.id ]]})" class="list-group-item list-group-item-action" >
                         <h2 class="list-group-item-heading">[[ tender.title ]]</h2>
-                        <h5 class="list-group-item-heading"> publised Date: [[ tender.publish_date | date : formats.DATE  | translate ]] </h5>
-                        <h5 class="list-group-item-heading"> Refrence : [[ tender.reference ]]</h5>
+                        <h5 class="list-group-item-heading"> [[ "content.form.fields.PUBLISHDATE" | translate ]] : [[ tender.publish_date | date : formats.DATE  | translate ]] </h5>
+                        <h5 class="list-group-item-heading"> [[ "content.form.fields.REFERENCE" | translate ]] : [[ tender.reference ]]</h5>
                     </a>
                 </div>
                 <div paging

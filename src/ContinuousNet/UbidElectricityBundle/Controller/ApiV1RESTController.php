@@ -3,6 +3,7 @@
 namespace ContinuousNet\UbidElectricityBundle\Controller;
 
 use ContinuousNet\UbidElectricityBundle\Entity\TenderCategory;
+use ContinuousNet\UbidElectricityBundle\Entity\Tender;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -12,6 +13,7 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View AS FOSView;
+use FOS\UserBundle\Model\UserManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
@@ -560,19 +562,21 @@ class ApiV1RESTController extends FOSRestController
      */
     public function homeTendersAction(Request $request){
         $data = [];
+        $category = !is_null($request->query->get('category')) ? $request->query->get('category') : null;
+        $sector = !is_null($request->query->get('sector')) ? $request->query->get('sector') : null;
         $em = $this->getDoctrine()->getManager();
         $page = $request->query->get('page');
-        $category = $request->query->get('category_id');
         $qb = $em->createQueryBuilder();
         $qb->from("UbidElectricityBundle:Tender", "t_");
 
-        /*if($category != null){
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderCategory', 'tc');
-            $qb->andwhere("tc.id = :category");
-
-        }*/
-        $qb->andwhere("t_.status = :status");
-        //$qb->andwhere("t_.tendres= :category");
+        $qb->andwhere("t_.status = :status")
+            ->setParameters(array('status' => 'Online'));
+        if(!is_null($category)){
+            $qb->andWhere(":category MEMBER OF t_.tenderCategories")->setParameter('category', $category);
+        }
+        if(!is_null($sector)){
+            $qb->andWhere("t_.sector = :sector")->setParameter("sector", $sector);
+        }
         $qb->select("t_");
         $qb->setMaxResults(10);
         if($page != null){
@@ -583,7 +587,6 @@ class ApiV1RESTController extends FOSRestController
 
         $qb->groupBy("t_.id");
         $qb->orderBy("t_.id", "DESC");
-        $qb->setParameters(array('status' => 'Online'));
         $results  = $qb->getQuery()->getResult();
         $tenders = null;
         if($results){
@@ -647,6 +650,148 @@ class ApiV1RESTController extends FOSRestController
         return $data;
     }
 
+    /**
+     * @GET("/homeTender/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     * @param $entity
+     */
+    public function homeTenderAction(Tender $entity){
+        return $entity;
+    }
+
+    /**
+     * @POST("/contact")
+     * @View(serializerEnableMaxDepthChecks=true)
+     * @param Request $request
+     */
+    public function contactAction(Request $request){
+        $response = array();
+        try
+        {
+            $subject = $request->request->get('subject');
+            $email = $request->request->get('email');
+            $firstName = $request->request->get('firstName');
+            $lastName = $request->request->get('lastName');
+            $message = $request->request->get('message');
+            $message = \Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setTo($this->container->getParameter('email_contact'))
+                ->setFrom($email)
+                ->setBody(
+                    $this->renderView("UbidElectricityBundle:Emails:contact.html.twig", array(
+                        "subject" => $subject,
+                        "lastName" => $lastName,
+                        "firstName" => $firstName,
+                        "email" => $email,
+                        "message" => $message
+                    )),
+                    "text/html"
+                );
+            $sent = $this->get('mailer')->send($message);
+            if($sent){
+                $response =  array(
+                    "status" => "0",
+                    'message' => "Message envoyé avec succée"
+                );
+            }
+            else{
+                $response =  array(
+                    "status" => "1",
+                    'message' => "Message non envoyé"
+                );
+            }
+            return $response;
+        }
+        catch(\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * @Get("/getProfile")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function getProfileAction() {
+        try {
+            $user = $this->getUser();
+
+            $data = array(
+                'id' => $user->getId(),
+                'name' => $user->getFirstName() . ' ' . $user->getLastName(),
+                'email' => $user->getEmail(),
+                'username' => $user->getUsername(),
+                'firstName' => $user->getFirstName(),
+                'lastName' => $user->getLastName(),
+                'phone' => $user->getPhone(),
+                'job' => $user->getJob(),
+                'zipCode' => $user->getZipCode(),
+                //'city' => $user->getCity(),
+                'type' => $user->getType(),
+                'gender' => $user->getGender(),
+                'address' => $user->getAddress(),
+                'country' => $user->getCountry(),
+                'picture' => $user->getPicture(),
+                'lastLogin' => $user->getLastLogin(),
+                'inscriptionDate' => $user->getCreatedAt()
+            );
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * @POST("/checkPassword")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function checkPasswordAction(Request $request){
+        $data = [];
+        $user = $this->getUser();
+        $password = $request->request->get('currentPassword');
+        $encoder_service = $this->get('security.encoder_factory');
+        $encoder = $encoder_service->getEncoder($user);
+        $encoded_pass = $encoder->encodePassword($password, $user->getSalt());
+        //return $encoded_pass." ".$password . " ".$user->getSalt();
+        if($encoded_pass == $user->getPassword()){
+            $data = [
+                'status' => true,
+                'message' => "OK"
+            ];
+        }
+        else{
+            $data = [
+                'status' => false,
+                'message' => "NOT OK"
+            ];
+        }
+        return $data;
+    }
+
+    /**
+     * @Post("/changePassword")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function changePasswordAction(Request $request) {
+
+        $data = array('status' => false, 'message' => null);
+        try {
+            $user = $this->getUser();
+            $jsonData = json_decode($request->getContent(), true);
+            $password =  $jsonData['newPassword'];
+            $user = $user->setPlainPassword($password);
+            $user = $user->setPassword($password);
+            $user->eraseCredentials();
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $data['status'] = true;
+            $data['message'] = $this->get('translator')->trans('Password changed');
+            return $data;
+        } catch (\Exception $e) {
+            $data['status'] = false;
+            $data['message'] = $this->get('translator')->trans('Password not changed.');
+        }
+    }
 
     private function getDefaultPackage() {
         $default_package_id = $this->getConfig('settings.default_package_id');

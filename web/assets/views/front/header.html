@@ -10,6 +10,15 @@
                 </ul>
             </div>
             <div class="header_top_right ">
+                <ul class="top_nav_right top_nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">switch language</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" ng-click="changeLanguage('fr')">Français</a></li>
+                            <li><a href="#" ng-click="changeLanguage('en')">Anglais</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="top_nav_right top_nav" ng-if="!loggedIn">
                     <li><a  href="#/register" translate="header.menu.SIGNUP"></a></li>
                     <li class="dropdown" id="menuLogin">

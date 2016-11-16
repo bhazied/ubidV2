@@ -673,6 +673,18 @@ class User  extends BaseUser
     }
 
     /**
+     * Sets the plain password.
+     *
+     * @param string $password
+     *
+     * @return self
+     */
+    public function setPlainPassword($password)
+    {
+        return $this->setPassword($password);
+    }
+
+    /**
      * Get password
      *
      * @access public
@@ -681,6 +693,11 @@ class User  extends BaseUser
     public function getPassword()
     {
         return $this->password;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->getPassword();
     }
 
     /**
