@@ -22,15 +22,15 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
     $scope.timeFormat = $filter('translate')('formats.TIME');
 
     $scope.list = function() {
-        $state.go('app.marketplace.messages');
+        $state.go('app.access.messages');
     };
 
     $scope.add = function() {
-        $state.go('app.marketplace.messagesnew');
+        $state.go('app.access.messagesnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.messagesedit', {id: row.id});
+        $state.go('app.access.messagesedit', {id: row.id});
     };
 
     if (angular.isDefined($stateParams.id)) {

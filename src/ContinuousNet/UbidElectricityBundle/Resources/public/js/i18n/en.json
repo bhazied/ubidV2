@@ -145,8 +145,8 @@
         "marketplace": {
             "MAIN": "Marketplace"
         },
-        "tenders": {
-            "MAIN": "Tenders"
+        "lists": {
+            "MAIN": "Lists"
         },
         "settings": {
             "MAIN": "Settings"
@@ -156,6 +156,9 @@
         },
         "news": {
             "MAIN": "News"
+        },
+        "tenders": {
+            "MAIN": "Tenders"
         }
       }
     },

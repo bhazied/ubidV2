@@ -96,7 +96,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.tenders.buyertypes');
+        $state.go('app.lists.buyertypes');
     };
     
     if (angular.isDefined($stateParams.id)) {

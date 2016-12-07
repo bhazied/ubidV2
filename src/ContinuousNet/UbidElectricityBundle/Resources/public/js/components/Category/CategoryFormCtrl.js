@@ -171,7 +171,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.tenders.categories');
+        $state.go('app.lists.categories');
     };
     
     $scope.category_parent_readonly = false;

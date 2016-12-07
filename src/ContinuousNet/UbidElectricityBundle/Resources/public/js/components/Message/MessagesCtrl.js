@@ -331,15 +331,15 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.add = function() {
-        $state.go('app.marketplace.messagesnew');
+        $state.go('app.access.messagesnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.messagesedit', {id: row.id});
+        $state.go('app.access.messagesedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.marketplace.messagesdetails', {id: row.id});
+        $state.go('app.access.messagesdetails', {id: row.id});
     };
 }]);
 

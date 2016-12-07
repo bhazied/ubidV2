@@ -66,15 +66,15 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECTOR">Sector</span></td>
-                                <td><a ui-sref="app.tenders.sectorsdetails({id: tender.sector.id})">[[ tender.sector.name ]]</a></span></td>
+                                <td><a ui-sref="app.lists.sectorsdetails({id: tender.sector.id})">[[ tender.sector.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TENDERTYPE">Tender Type</span></td>
-                                <td><a ui-sref="app.tenders.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></span></td>
+                                <td><a ui-sref="app.lists.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span></td>
-                                <td><a ui-sref="app.tenders.biddingtypesdetails({id: tender.bidding_type.id})">[[ tender.bidding_type.name ]]</a></span></td>
+                                <td><a ui-sref="app.lists.biddingtypesdetails({id: tender.bidding_type.id})">[[ tender.bidding_type.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TITLE">Title</span></td>
@@ -195,7 +195,7 @@
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                                 <td>
-                                    <a ng-repeat="category in tender.categories" ui-sref="app.tenders.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                    <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
                                 </td>
                             </tr>
                         </tbody>

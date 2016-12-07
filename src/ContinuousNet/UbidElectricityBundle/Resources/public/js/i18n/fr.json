@@ -145,8 +145,8 @@
         "marketplace": {
             "MAIN": "Place du marché"
         },
-        "tenders": {
-            "MAIN": "Appels d'offres"
+        "lists": {
+            "MAIN": "Lists"
         },
         "settings": {
             "MAIN": "Paramètres"
@@ -156,6 +156,9 @@
         },
         "news": {
             "MAIN": "Nouveaus"
+        },
+        "tenders": {
+            "MAIN": "Appels d'offres"
         }
       }
     },

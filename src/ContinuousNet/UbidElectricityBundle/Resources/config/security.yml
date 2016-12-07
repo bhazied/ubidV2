@@ -1,7 +1,7 @@
 
 security:
     access_control:
-        - { path: ^/(en|fr|ar)/api/alerts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/alerts$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/banners$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/bannerpositions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/bannertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
@@ -20,7 +20,7 @@ security:
         - { path: ^/(en|fr|ar)/api/logs$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/menus$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/menulinks$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/messages$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/messages$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/notifications$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/posts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/postcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }

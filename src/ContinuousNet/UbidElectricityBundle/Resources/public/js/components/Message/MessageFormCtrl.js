@@ -181,7 +181,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.marketplace.messages');
+        $state.go('app.access.messages');
     };
     
     $scope.message_from_user_readonly = false;
