@@ -2,22 +2,79 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa1a256c-8e7d-4987-ba04-520512efbcaf" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/BannerController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/BannerRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/CountryController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/CountryRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/GameController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/GameRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/LanguageController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/LanguageRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushDeviceController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushDeviceRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushMessageController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushMessageRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushNotificationController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushNotificationRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PuzzleController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PuzzleRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/ScoreController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/ScoreRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/SessionController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/SessionRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/UserController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/UserRESTController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Banner.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Country.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Game.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Language.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushDevice.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushMessage.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushNotification.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Puzzle.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Score.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Session.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/User.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/BannerType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/CountryType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/GameType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/LanguageType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushDeviceType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushMessageType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushNotificationType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PuzzleType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/ScoreType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/SessionType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/UserType.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/banner.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/country.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/game.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/language.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_device.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_message.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_notification.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/puzzle.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/score.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/session.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/user.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/security.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/constant.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/i18n/en.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/links.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/router.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Banner/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Country/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Game/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Language/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushDevice/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushMessage/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushNotification/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Puzzle/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Score/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Session/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/User/index.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/links.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/links.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_router_6.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_router_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/en.json" afterPath="$PROJECT_DIR$/web/assets/i18n/en.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/fr.json" afterPath="$PROJECT_DIR$/web/assets/i18n/fr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/views/partials/nav.html" afterPath="$PROJECT_DIR$/web/assets/views/partials/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854.js" afterPath="$PROJECT_DIR$/web/js/5268854.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854_part_19.js" afterPath="$PROJECT_DIR$/web/js/5268854_part_19.js" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +95,38 @@
     <favorites_list name="ubid_electricity" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="315" column="37" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BannerController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BannerController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.25">
+              <caret line="2" column="45" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0234375">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -141,7 +229,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -446,67 +533,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UbidElectricityBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i18n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -544,6 +571,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -596,7 +624,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -634,20 +662,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/sensio/framework-extra-bundle/Configuration/Template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3409091">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41396105">
@@ -907,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="305" column="51" selection-start-line="305" selection-start-column="43" selection-end-line="305" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -953,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.27272728">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="39" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.8679245">
           <caret line="126" column="31" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,7 +974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.84615386">
           <caret line="1238" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1238" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.090909">
           <caret line="1238" column="0" selection-start-line="1238" selection-start-column="0" selection-end-line="1238" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,7 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.0">
           <caret line="1238" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1238" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,6 +995,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9512987">
           <caret line="1238" column="0" selection-start-line="1238" selection-start-column="0" selection-end-line="1238" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="315" column="37" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BannerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0234375">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="4" />
           <folding />
         </state>
       </provider>
