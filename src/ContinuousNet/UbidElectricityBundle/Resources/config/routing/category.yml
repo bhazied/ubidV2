@@ -1,0 +1,30 @@
+category:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Category:index" }
+
+category_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Category:show" }
+
+category_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Category:new" }
+
+category_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Category:create" }
+    methods:  POST
+
+category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Category:edit" }
+
+category_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Category:update" }
+    methods:  [POST, PUT]
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Category:delete" }
+    methods:  [POST, DELETE]

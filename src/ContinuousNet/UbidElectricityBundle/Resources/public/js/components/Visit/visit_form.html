@@ -24,9 +24,10 @@
                         Edit Visit
                     </legend>
                     <form name="visitForm" id="visitForm" novalidate ng-submit="submitForm(visitForm)">
+                        <input type="hidden" name="id" id="visitId" ng-model="visit.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="visitId" ng-model="visit.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':visitForm.ip.$dirty && visitForm.ip.$invalid, 'has-success':visitForm.ip.$valid}">
                                     <label for="visitIp" class="control-label">
                                         <span translate="content.list.fields.IP">Ip</span>
@@ -39,16 +40,20 @@
                                     <span class="error text-small block" ng-if="visitForm.ip.$dirty && visitForm.ip.$error.required" translate="content.form.messages.IPREQUIRED">Ip is required.</span>
                                     <span class="success text-small block" ng-if="visitForm.ip.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="visit.is_valid" type="checkbox" name="isValid" id="visitIsValid" />
                                     <label for="visitIsValid" translate="content.list.fields.ISVALID">Is Valid</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':visitForm.userAgent.$dirty && visitForm.userAgent.$invalid, 'has-success':visitForm.userAgent.$valid}">
                                     <label for="visitUserAgent" class="control-label">
                                         <span translate="content.list.fields.USERAGENT">User Agent</span>
@@ -63,6 +68,7 @@
                                     <span class="error text-small block" ng-if="visitForm.userAgent.$dirty && visitForm.userAgent.$error.required" translate="content.form.messages.USERAGENTREQUIRED">User Agent is required.</span>
                                     <span class="success text-small block" ng-if="visitForm.userAgent.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -83,6 +89,14 @@
                     <div class="table-responsive" ng-if="visits.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

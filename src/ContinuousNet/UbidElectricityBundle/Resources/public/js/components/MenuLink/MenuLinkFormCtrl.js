@@ -124,6 +124,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.settings.menulinks');
     };
     
+    $scope.menu_link_menu_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $menuLinksDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -133,6 +134,10 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.menuLink = {id: 0};
 
+        if (angular.isDefined($stateParams.menu_link_menu) && JSON.parse($stateParams.menu_link_menu) != null) {
+            $scope.menuLink.menu = $stateParams.menu_link_menu;
+            $scope.menu_link_menu_readonly = true;
+        }
     }
 
 }]);

@@ -73,7 +73,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.dateFormat = $filter('translate')('formats.DATE');
     $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
     $scope.timeFormat = $filter('translate')('formats.TIME');
-    $scope.minDate = new Date(2010, 0, 1);
+    $scope.minDate = new Date(1900, 0, 1);
     $scope.maxDate = new Date(2050, 11, 31);
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -214,6 +214,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.news.posts');
     };
     
+    $scope.post_post_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $postsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -232,6 +233,10 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.post = {id: 0, publish_date: new Date(), status: 'Draft', post_categories: []};
 
+        if (angular.isDefined($stateParams.post_post_type) && JSON.parse($stateParams.post_post_type) != null) {
+            $scope.post.post_type = $stateParams.post_post_type;
+            $scope.post_post_type_readonly = true;
+        }
     }
 
     $scope.showFileManager = function(field) {

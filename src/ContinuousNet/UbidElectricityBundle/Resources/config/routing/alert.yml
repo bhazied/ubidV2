@@ -1,0 +1,30 @@
+alert:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Alert:index" }
+
+alert_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Alert:show" }
+
+alert_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Alert:new" }
+
+alert_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Alert:create" }
+    methods:  POST
+
+alert_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Alert:edit" }
+
+alert_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Alert:update" }
+    methods:  [POST, PUT]
+
+alert_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Alert:delete" }
+    methods:  [POST, DELETE]

@@ -45,6 +45,7 @@ class BidType extends AbstractType
     {
         $builder
             ->add('tender', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Tender', 'choice_label' => 'title'))
+            ->add('supplier', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Supplier', 'choice_label' => 'name'))
             ->add('title', TextType::class)
             ->add('slug', TextType::class)
             ->add('reference', TextType::class)

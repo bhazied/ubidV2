@@ -4,8 +4,8 @@
  * Controller for Tender Form
  */
 
-app.controller('TenderFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyersDataFactory', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$tenderCategoriesDataFactory', '$tendersDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyersDataFactory, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $tenderCategoriesDataFactory, $tendersDataFactory) {
+app.controller('TenderFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyersDataFactory', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$tendersDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyersDataFactory, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $categoriesDataFactory, $tendersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -23,6 +23,15 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         
     };
 
+    $scope.sections = [{
+        id: 'Consultation',
+        title: $filter('translate')('content.list.fields.sections.CONSULTATION'),
+        css: 'primary'
+    }, {
+        id: 'Tender',
+        title: $filter('translate')('content.list.fields.sections.TENDER'),
+        css: 'success'
+    }];
     $scope.statuses = [{
         id: 'Draft',
         title: $filter('translate')('content.list.fields.statuses.DRAFT'),
@@ -66,7 +75,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.dateFormat = $filter('translate')('formats.DATE');
     $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
     $scope.timeFormat = $filter('translate')('formats.TIME');
-    $scope.minDate = new Date(2010, 0, 1);
+    $scope.minDate = new Date(1900, 0, 1);
     $scope.maxDate = new Date(2050, 11, 31);
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -250,36 +259,36 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getUsers();
 
-    $scope.tenderCategories = [];
-    $scope.tenderCategoriesLoaded = [];
+    $scope.categories = [];
+    $scope.categoriesLoaded = [];
 
-    $scope.getTenderCategories = function() {
+    $scope.getCategories = function() {
         $timeout(function(){
-            if ($scope.tenderCategories.length == 0) {
-                $scope.tenderCategories.push({});
+            if ($scope.categories.length == 0) {
+                $scope.categories.push({});
                 var def = $q.defer();
-                $tenderCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[tenderCategory.name]': 'asc'}).$promise.then(function(data) {
-                    $scope.tenderCategories = data.results;
-                    def.resolve($scope.tenderCategories);
+                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
                 });
                 return def;
             } else {
-                return $scope.tenderCategories;
+                return $scope.categories;
             }
         });
     };
 
-    $scope.getTenderCategories();
+    $scope.getCategories();
 
-    $scope.tenderTenderCategories = false;
-    $scope.$watch('tenderTenderCategories', function() {
-        if ($scope.tenderTenderCategories) {
-            $scope.tender.tender_categories = [];
-            for (var i in $scope.tenderCategories) {
-                $scope.tender.tender_categories.push($scope.tenderCategories[i].id);
+    $scope.tenderCategories = false;
+    $scope.$watch('tenderCategories', function() {
+        if ($scope.tenderCategories) {
+            $scope.tender.categories = [];
+            for (var i in $scope.categories) {
+                $scope.tender.categories.push($scope.categories[i].id);
             }
         } else {
-            $scope.tender.tender_categories = [];
+            $scope.tender.categories = [];
         }
     });
 
@@ -332,6 +341,12 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.tenders');
     };
     
+    $scope.tender_buyer_readonly = false;
+    $scope.tender_region_readonly = false;
+    $scope.tender_country_readonly = false;
+    $scope.tender_sector_readonly = false;
+    $scope.tender_tender_type_readonly = false;
+    $scope.tender_bidding_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $tendersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -345,8 +360,32 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
             });
         });
     } else {
-        $scope.tender = {id: 0, status: 'Draft', tender_categories: []};
+        $scope.tender = {id: 0, section: 'Consultation', status: 'Draft', categories: []};
 
+        if (angular.isDefined($stateParams.tender_buyer) && JSON.parse($stateParams.tender_buyer) != null) {
+            $scope.tender.buyer = $stateParams.tender_buyer;
+            $scope.tender_buyer_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_region) && JSON.parse($stateParams.tender_region) != null) {
+            $scope.tender.region = $stateParams.tender_region;
+            $scope.tender_region_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_country) && JSON.parse($stateParams.tender_country) != null) {
+            $scope.tender.country = $stateParams.tender_country;
+            $scope.tender_country_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_sector) && JSON.parse($stateParams.tender_sector) != null) {
+            $scope.tender.sector = $stateParams.tender_sector;
+            $scope.tender_sector_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_tender_type) && JSON.parse($stateParams.tender_tender_type) != null) {
+            $scope.tender.tender_type = $stateParams.tender_tender_type;
+            $scope.tender_tender_type_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_bidding_type) && JSON.parse($stateParams.tender_bidding_type) != null) {
+            $scope.tender.bidding_type = $stateParams.tender_bidding_type;
+            $scope.tender_bidding_type_readonly = true;
+        }
     }
 
 }]);

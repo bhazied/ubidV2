@@ -24,160 +24,232 @@ ubid_electricity_v1_api:
     requirements:
         _locale: en|fr|ar
 
+ubid_electricity_dashboard:
+    resource: "@UbidElectricityBundle/Controller/DashboardRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api/dashboard
+    requirements:
+        _locale: en|fr|ar
+
+ubid_electricity_alert_api:
+    resource: "@UbidElectricityBundle/Controller/AlertRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_banner_api:
     resource: "@UbidElectricityBundle/Controller/BannerRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_banner_position_api:
     resource: "@UbidElectricityBundle/Controller/BannerPositionRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_banner_type_api:
     resource: "@UbidElectricityBundle/Controller/BannerTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_bid_api:
     resource: "@UbidElectricityBundle/Controller/BidRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_bid_product_api:
     resource: "@UbidElectricityBundle/Controller/BidProductRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_bidding_type_api:
     resource: "@UbidElectricityBundle/Controller/BiddingTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_buyer_api:
     resource: "@UbidElectricityBundle/Controller/BuyerRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_buyer_type_api:
     resource: "@UbidElectricityBundle/Controller/BuyerTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_category_api:
+    resource: "@UbidElectricityBundle/Controller/CategoryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_click_api:
     resource: "@UbidElectricityBundle/Controller/ClickRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_country_api:
     resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_group_api:
     resource: "@UbidElectricityBundle/Controller/GroupRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_hit_api:
     resource: "@UbidElectricityBundle/Controller/HitRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_impression_api:
     resource: "@UbidElectricityBundle/Controller/ImpressionRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_language_api:
     resource: "@UbidElectricityBundle/Controller/LanguageRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_log_api:
     resource: "@UbidElectricityBundle/Controller/LogRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_menu_api:
     resource: "@UbidElectricityBundle/Controller/MenuRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_menu_link_api:
     resource: "@UbidElectricityBundle/Controller/MenuLinkRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_message_api:
+    resource: "@UbidElectricityBundle/Controller/MessageRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_notification_api:
     resource: "@UbidElectricityBundle/Controller/NotificationRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_post_api:
     resource: "@UbidElectricityBundle/Controller/PostRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_post_category_api:
     resource: "@UbidElectricityBundle/Controller/PostCategoryRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_post_type_api:
     resource: "@UbidElectricityBundle/Controller/PostTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_product_type_api:
     resource: "@UbidElectricityBundle/Controller/ProductTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_region_api:
     resource: "@UbidElectricityBundle/Controller/RegionRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_sector_api:
     resource: "@UbidElectricityBundle/Controller/SectorRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_supplier_api:
+    resource: "@UbidElectricityBundle/Controller/SupplierRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_supplier_product_api:
+    resource: "@UbidElectricityBundle/Controller/SupplierProductRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_supplier_type_api:
+    resource: "@UbidElectricityBundle/Controller/SupplierTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_tender_api:
     resource: "@UbidElectricityBundle/Controller/TenderRESTController.php"
     type:   rest
-    prefix:   /api
-
-ubid_electricity_tender_category_api:
-    resource: "@UbidElectricityBundle/Controller/TenderCategoryRESTController.php"
-    type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_tender_product_api:
     resource: "@UbidElectricityBundle/Controller/TenderProductRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_tender_type_api:
     resource: "@UbidElectricityBundle/Controller/TenderTypeRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_user_api:
     resource: "@UbidElectricityBundle/Controller/UserRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_user_setting_api:
     resource: "@UbidElectricityBundle/Controller/UserSettingRESTController.php"
     type:   rest
-    prefix:   /api
-
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_visit_api:
     resource: "@UbidElectricityBundle/Controller/VisitRESTController.php"
     type:   rest
-    prefix:   /api
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_alert:
+    resource: "@UbidElectricityBundle/Resources/config/routing/alert.yml"
+    prefix:   /alert
 
 ubid_electricity_banner:
     resource: "@UbidElectricityBundle/Resources/config/routing/banner.yml"
@@ -210,6 +282,10 @@ ubid_electricity_buyer:
 ubid_electricity_buyer_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/buyer_type.yml"
     prefix:   /buyer-type
+
+ubid_electricity_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/category.yml"
+    prefix:   /category
 
 ubid_electricity_click:
     resource: "@UbidElectricityBundle/Resources/config/routing/click.yml"
@@ -247,6 +323,10 @@ ubid_electricity_menu_link:
     resource: "@UbidElectricityBundle/Resources/config/routing/menu_link.yml"
     prefix:   /menu-link
 
+ubid_electricity_message:
+    resource: "@UbidElectricityBundle/Resources/config/routing/message.yml"
+    prefix:   /message
+
 ubid_electricity_notification:
     resource: "@UbidElectricityBundle/Resources/config/routing/notification.yml"
     prefix:   /notification
@@ -275,13 +355,21 @@ ubid_electricity_sector:
     resource: "@UbidElectricityBundle/Resources/config/routing/sector.yml"
     prefix:   /sector
 
+ubid_electricity_supplier:
+    resource: "@UbidElectricityBundle/Resources/config/routing/supplier.yml"
+    prefix:   /supplier
+
+ubid_electricity_supplier_product:
+    resource: "@UbidElectricityBundle/Resources/config/routing/supplier_product.yml"
+    prefix:   /supplier-product
+
+ubid_electricity_supplier_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/supplier_type.yml"
+    prefix:   /supplier-type
+
 ubid_electricity_tender:
     resource: "@UbidElectricityBundle/Resources/config/routing/tender.yml"
     prefix:   /tender
-
-ubid_electricity_tender_category:
-    resource: "@UbidElectricityBundle/Resources/config/routing/tender_category.yml"
-    prefix:   /tender-category
 
 ubid_electricity_tender_product:
     resource: "@UbidElectricityBundle/Resources/config/routing/tender_product.yml"

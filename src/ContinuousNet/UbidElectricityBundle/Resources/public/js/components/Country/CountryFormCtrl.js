@@ -124,6 +124,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.settings.countries');
     };
     
+    $scope.country_region_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $countriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -133,6 +134,10 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.country = {id: 0};
 
+        if (angular.isDefined($stateParams.country_region) && JSON.parse($stateParams.country_region) != null) {
+            $scope.country.region = $stateParams.country_region;
+            $scope.country_region_readonly = true;
+        }
     }
 
     $scope.showFileManager = function(field) {

@@ -3,15 +3,16 @@
 /**
  * Banners Data Factory
  */
-app.factory('$bannersDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$bannersDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'banners', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'banners';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'banners/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'banners/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'banners/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

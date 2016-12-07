@@ -24,9 +24,10 @@
                         Edit Region
                     </legend>
                     <form name="regionForm" id="regionForm" novalidate ng-submit="submitForm(regionForm)">
+                        <input type="hidden" name="id" id="regionId" ng-model="region.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="regionId" ng-model="region.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':regionForm.name.$dirty && regionForm.name.$invalid, 'has-success':regionForm.name.$valid}">
                                     <label for="regionName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -40,8 +41,10 @@
                                     <span class="error text-small block" ng-if="regionForm.name.$dirty && regionForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="regionForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="regionNameAr" class="control-label">
                                         <span translate="content.list.fields.NAMEAR">Name Ar</span>
@@ -51,10 +54,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="regionNameFr" class="control-label">
                                         <span translate="content.list.fields.NAMEFR">Name Fr</span>
@@ -64,12 +69,15 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="region.published" type="checkbox" name="published" id="regionPublished" />
                                     <label for="regionPublished" translate="content.list.fields.PUBLISHED">Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -90,6 +98,14 @@
                     <div class="table-responsive" ng-if="regions.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

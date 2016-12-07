@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`bid_product`", indexes={@ORM\Index(name="tender_product_id", columns={"tender_product_id"}), @ORM\Index(name="bid_id", columns={"bid_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`bid_product`", indexes={@ORM\Index(name="tender_product_id", columns={"tender_product_id"}), @ORM\Index(name="bid_id", columns={"bid_id"}), @ORM\Index(name="supplier_product_id", columns={"supplier_product_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -53,81 +53,15 @@ class BidProduct
     private $id;
 
     /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $name;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slug;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="brand", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $brand;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="model", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $model;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="description", type="string", length=512, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $description;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $status;
-
-    /**
      * @var float
      * @access private
      *
-     * @ORM\Column(name="unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="new_unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
      */
-    private $unitCost;
+    private $newUnitCost;
 
     /**
      * @var float
@@ -215,6 +149,21 @@ class BidProduct
     private $bid;
 
     /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="SupplierProduct")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="supplier_product_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $supplierProduct;
+
+    /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
      * @access private
      *
@@ -265,171 +214,27 @@ class BidProduct
     }
 
     /**
-     * Set name
+     * Set newUnitCost
      *
      * @access public
-     * @param string $name
+     * @param float $newUnitCost
      * @return BidProduct
      */
-    public function setName($name)
+    public function setNewUnitCost($newUnitCost = null)
     {
-        $this->name = $name;
+        $this->newUnitCost = $newUnitCost;
         return $this;
     }
 
     /**
-     * Get name
-     *
-     * @access public
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set slug
-     *
-     * @access public
-     * @param string $slug
-     * @return BidProduct
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set brand
-     *
-     * @access public
-     * @param string $brand
-     * @return BidProduct
-     */
-    public function setBrand($brand = null)
-    {
-        $this->brand = $brand;
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @access public
-     * @return string 
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set model
-     *
-     * @access public
-     * @param string $model
-     * @return BidProduct
-     */
-    public function setModel($model = null)
-    {
-        $this->model = $model;
-        return $this;
-    }
-
-    /**
-     * Get model
-     *
-     * @access public
-     * @return string 
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    /**
-     * Set description
-     *
-     * @access public
-     * @param string $description
-     * @return BidProduct
-     */
-    public function setDescription($description = null)
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @access public
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set status
-     *
-     * @access public
-     * @param string $status
-     * @return BidProduct
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @access public
-     * @return string 
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set unitCost
-     *
-     * @access public
-     * @param float $unitCost
-     * @return BidProduct
-     */
-    public function setUnitCost($unitCost = null)
-    {
-        $this->unitCost = $unitCost;
-        return $this;
-    }
-
-    /**
-     * Get unitCost
+     * Get newUnitCost
      *
      * @access public
      * @return float 
      */
-    public function getUnitCost()
+    public function getNewUnitCost()
     {
-        return $this->unitCost;
+        return $this->newUnitCost;
     }
 
     /**
@@ -598,6 +403,30 @@ class BidProduct
     public function getBid()
     {
         return $this->bid;
+    }
+
+    /**
+     * Set supplierProduct
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct $supplierProduct
+     * @return BidProduct
+     */
+    public function setSupplierProduct(SupplierProduct $supplierProduct = null)
+    {
+        $this->supplierProduct = $supplierProduct;
+        return $this;
+    }
+
+    /**
+     * Get supplierProduct
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct 
+     */
+    public function getSupplierProduct()
+    {
+        return $this->supplierProduct;
     }
 
     /**

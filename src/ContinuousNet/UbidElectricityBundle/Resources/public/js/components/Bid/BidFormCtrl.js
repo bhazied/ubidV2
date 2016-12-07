@@ -4,8 +4,8 @@
  * Controller for Bid Form
  */
 
-app.controller('BidFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$usersDataFactory', '$bidsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $usersDataFactory, $bidsDataFactory) {
+app.controller('BidFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -90,6 +90,31 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getTenders();
 
+    $scope.suppliers = [];
+    $scope.suppliersLoaded = false;
+
+    $scope.getSuppliers = function() {
+        $timeout(function(){
+            $scope.suppliersLoaded = true;
+            if ($scope.suppliers.length == 0) {
+                $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
+                var def = $q.defer();
+                $suppliersDataFactory.query({offset: 0, limit: 10000, 'order_by[supplier.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.suppliers = data.results;
+                    def.resolve($scope.suppliers);
+                });
+                return def;
+            } else {
+                return $scope.suppliers;
+            }
+        });
+    };
+
+    $scope.getSuppliers();
+
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -165,6 +190,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.bids');
     };
     
+    $scope.bid_tender_readonly = false;
+    $scope.bid_supplier_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $bidsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -174,6 +201,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.bid = {id: 0, status: 'Draft'};
 
+        if (angular.isDefined($stateParams.bid_tender) && JSON.parse($stateParams.bid_tender) != null) {
+            $scope.bid.tender = $stateParams.bid_tender;
+            $scope.bid_tender_readonly = true;
+        }
+        if (angular.isDefined($stateParams.bid_supplier) && JSON.parse($stateParams.bid_supplier) != null) {
+            $scope.bid.supplier = $stateParams.bid_supplier;
+            $scope.bid_supplier_readonly = true;
+        }
     }
 
 }]);

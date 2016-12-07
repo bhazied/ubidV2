@@ -24,23 +24,26 @@
                         Edit Country
                     </legend>
                     <form name="countryForm" id="countryForm" novalidate ng-submit="submitForm(countryForm)">
+                        <input type="hidden" name="id" id="countryId" ng-model="country.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="countryId" ng-model="country.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="countryRegion" class="control-label">
                                         <span translate="content.list.fields.REGION">Region</span>
                                     </label>
-                                <div class="block" ng-if="regionsLoaded">
+                                <div class="block select-list" ng-if="regionsLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
+                                        <select ng-readonly="country_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':countryForm.name.$dirty && countryForm.name.$invalid, 'has-success':countryForm.name.$valid}">
                                     <label for="countryName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -54,10 +57,12 @@
                                     <span class="error text-small block" ng-if="countryForm.name.$dirty && countryForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="countryForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="countryNameAr" class="control-label">
                                         <span translate="content.list.fields.NAMEAR">Name Ar</span>
@@ -67,8 +72,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="countryNameFr" class="control-label">
                                         <span translate="content.list.fields.NAMEFR">Name Fr</span>
@@ -78,10 +85,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="countryPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -107,8 +116,10 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':countryForm.code.$dirty && countryForm.code.$invalid, 'has-success':countryForm.code.$valid}">
                                     <label for="countryCode" class="control-label">
                                         <span translate="content.list.fields.CODE">Code</span>
@@ -121,10 +132,12 @@
                                     <span class="error text-small block" ng-if="countryForm.code.$dirty && countryForm.code.$error.required" translate="content.form.messages.CODEREQUIRED">Code is required.</span>
                                     <span class="success text-small block" ng-if="countryForm.code.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':countryForm.longCode.$dirty && countryForm.longCode.$invalid, 'has-success':countryForm.longCode.$valid}">
                                     <label for="countryLongCode" class="control-label">
                                         <span translate="content.list.fields.LONGCODE">Long Code</span>
@@ -137,8 +150,10 @@
                                     <span class="error text-small block" ng-if="countryForm.longCode.$dirty && countryForm.longCode.$error.required" translate="content.form.messages.LONGCODEREQUIRED">Long Code is required.</span>
                                     <span class="success text-small block" ng-if="countryForm.longCode.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="countryPrefix" class="control-label">
                                         <span translate="content.list.fields.PREFIX">Prefix</span>
@@ -148,14 +163,17 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="country.published" type="checkbox" name="published" id="countryPublished" />
                                     <label for="countryPublished" translate="content.list.fields.PUBLISHED">Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -176,6 +194,14 @@
                     <div class="table-responsive" ng-if="countries.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

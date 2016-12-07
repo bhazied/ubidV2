@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="TenderCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDTENDER">Add Tender</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(tender)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITTENDER">Edit Tender</span>
                         </button>
@@ -44,6 +44,12 @@
                                 <td><span translate="content.list.fields.ID">Id</span></td>
                                 <td>
                                     <div ng-bind-html="tender.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECTION">Section</span></td>
+                                <td>
+                                    <span my-enum="[[ tender.section ]]" my-enum-list="[[ sections ]]"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -94,7 +100,7 @@
                                     <div ng-bind-html="tender.description"></div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
                                 <td><span translate="content.list.fields.STATUS">Status</span></td>
                                 <td>
                                     <span my-enum="[[ tender.status ]]" my-enum-list="[[ statuses ]]"></span>
@@ -187,13 +193,20 @@
                                 <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.TENDERCATEGORIES">Tender Categories</span></td>
+                                <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                                 <td>
-                                    <a ng-repeat="tenderCategory in tender.tender_categories" ui-sref="app.tenders.tendercategoriesdetails({id: tenderCategory.id})">[[ tenderCategory.name ]]</a>
+                                    <a ng-repeat="category in tender.categories" ui-sref="app.tenders.categoriesdetails({id: category.id})">[[ category.name ]]</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2e6bef912a34937946b90883377b8970",
-    "content-hash": "ec97affd6a8885eb735eff70e626c5a6",
+    "hash": "ad988f7eb8248283ad3813128a8e4f8f",
+    "content-hash": "d0e80346fff5699e086a85c6690869e5",
     "packages": [
         {
             "name": "components/elfinder",
@@ -3948,6 +3948,57 @@
             "time": "2016-08-05 08:37:39"
         },
         {
+            "name": "twbs/bootstrap",
+            "version": "v4.0.0-alpha.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "b5890e0608ad2262cde4a38e90afa19f1cb5d852"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/b5890e0608ad2262cde4a38e90afa19f1cb5d852",
+                "reference": "b5890e0608ad2262cde4a38e90afa19f1cb5d852",
+                "shasum": ""
+            },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "https://getbootstrap.com",
+            "keywords": [
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "web"
+            ],
+            "time": "2016-10-19 15:30:27"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.24.2",
             "source": {
@@ -4241,7 +4292,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "studio-42/elfinder": 20
+        "studio-42/elfinder": 20,
+        "twbs/bootstrap": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -85,9 +85,10 @@ class BidProductRESTController extends BaseRESTController
             $qb->from('UbidElectricityBundle:BidProduct', 'bp_');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderProduct', 'tender_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.tenderProduct = tender_product.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Bid', 'bid', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.bid = bid.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct', 'supplier_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.supplierProduct = supplier_product.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.modifierUser = modifier_user.id');
-            $textFields = array('bidProduct.name', 'bidProduct.slug', 'bidProduct.brand', 'bidProduct.model', 'bidProduct.description');
+            $textFields = array('');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
@@ -146,18 +147,6 @@ class BidProductRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
-            $authorizedChangeStatus = false;
-            $roles = $this->getUser()->getRoles();
-            if (!empty($roles)) {
-                foreach ($roles as $role) {
-                    if (substr_count($role, 'ROLE_ADMIN_PUBLISHER') > 0) {
-                        $authorizedChangeStatus = true;
-                    }
-                }
-            }
-            if (!$authorizedChangeStatus) {
-                $entity->setStatus('Draft');
-            }
             $em->persist($entity);
             $em->flush();
             return $entity;
@@ -184,18 +173,6 @@ class BidProductRESTController extends BaseRESTController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $entity->setModifierUser($this->getUser());
-                $authorizedChangeStatus = false;
-                $roles = $this->getUser()->getRoles();
-                if (!empty($roles)) {
-                    foreach ($roles as $role) {
-                        if (substr_count($role, 'ROLE_ADMIN_PUBLISHER') > 0) {
-                            $authorizedChangeStatus = true;
-                        }
-                    }
-                }
-                if (!$authorizedChangeStatus) {
-                    $entity->setStatus('Draft');
-                }
                 $em->flush();
                 return $entity;
             }
@@ -242,13 +219,5 @@ class BidProductRESTController extends BaseRESTController
         }
     }
     
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

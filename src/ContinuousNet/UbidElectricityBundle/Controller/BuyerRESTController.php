@@ -219,13 +219,5 @@ class BuyerRESTController extends BaseRESTController
         }
     }
     
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

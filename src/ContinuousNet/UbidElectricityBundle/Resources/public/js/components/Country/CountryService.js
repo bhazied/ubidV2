@@ -3,15 +3,16 @@
 /**
  * Countries Data Factory
  */
-app.factory('$countriesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$countriesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'countries', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'countries';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'countries/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'countries/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'countries/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

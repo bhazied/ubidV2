@@ -56,6 +56,17 @@ class Tender
      * @var string
      * @access private
      *
+     * @ORM\Column(name="section", type="string", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $section;
+
+    /**
+     * @var string
+     * @access private
+     *
      * @ORM\Column(name="title", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
@@ -374,13 +385,13 @@ class Tender
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="TenderCategory", inversedBy="tenders")
-     * @ORM\JoinTable(name="tenders_tender_categories",
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="tenders")
+     * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="tender_category_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *     }
      * )
      * 
@@ -388,7 +399,7 @@ class Tender
      * @MaxDepth(2)
      * 
      */
-    private $tenderCategories;
+    private $categories;
 
     /**
      * Constructor
@@ -397,7 +408,7 @@ class Tender
      */
     public function __construct()
     {
-        $this->tenderCategories = new DoctrineCollection();
+        $this->categories = new DoctrineCollection();
     }
 
     /**
@@ -409,6 +420,30 @@ class Tender
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set section
+     *
+     * @access public
+     * @param string $section
+     * @return Tender
+     */
+    public function setSection($section)
+    {
+        $this->section = $section;
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @access public
+     * @return string 
+     */
+    public function getSection()
+    {
+        return $this->section;
     }
 
     /**
@@ -1036,59 +1071,59 @@ class Tender
     }
 
     /**
-     * Add tenderCategory
+     * Add category
      *
      * @access public
-     * @param TenderCategory $tenderCategory
+     * @param Category $category
      * @return Tender
      */
-    public function addTenderCategory(TenderCategory $tenderCategory)
+    public function addCategory(Category $category)
     {
-        if (!$this->tenderCategories->contains($tenderCategory))
+        if (!$this->categories->contains($category))
         {
-            $this->tenderCategories->add($tenderCategory);
+            $this->categories->add($category);
         }
         return $this;
     }
 
     /**
-     * Remove tenderCategory
+     * Remove category
      *
      * @access public
-     * @param TenderCategory $tenderCategory
+     * @param Category $category
      * @return Tender
      */
-    public function removeTenderCategory(TenderCategory $tenderCategory)
+    public function removeCategory(Category $category)
     {
-        if ($this->tenderCategories->contains($tenderCategory))
+        if ($this->categories->contains($category))
         {
-            $this->tenderCategories->removeElement($tenderCategory);
+            $this->categories->removeElement($category);
         }
         return $this;
     }
 
     /**
-     * Set tenderCategory
+     * Set category
      *
      * @access public
      * @param \Doctrine\Common\Collections\Collection
      * @return Tender
      */
-    public function setTenderCategories($tenderCategories)
+    public function setCategories($categories)
     {
-        $this->tenderCategories = $tenderCategories;
+        $this->categories = $categories;
         return $this;
     }
 
     /**
-     * Get tenderCategory
+     * Get category
      *
      * @access public
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTenderCategories()
+    public function getCategories()
     {
-        return $this->tenderCategories;
+        return $this->categories;
     }
 
     /**

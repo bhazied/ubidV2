@@ -3,15 +3,16 @@
 /**
  * Post Types Data Factory
  */
-app.factory('$postTypesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$postTypesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'posttypes', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'posttypes';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'posttypes/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'posttypes/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'posttypes/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

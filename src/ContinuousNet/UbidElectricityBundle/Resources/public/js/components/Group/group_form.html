@@ -24,9 +24,10 @@
                         Edit Group
                     </legend>
                     <form name="groupForm" id="groupForm" novalidate ng-submit="submitForm(groupForm)">
+                        <input type="hidden" name="id" id="groupId" ng-model="group.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="groupId" ng-model="group.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':groupForm.name.$dirty && groupForm.name.$invalid, 'has-success':groupForm.name.$valid}">
                                     <label for="groupName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -39,8 +40,10 @@
                                     <span class="error text-small block" ng-if="groupForm.name.$dirty && groupForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
                                     <span class="success text-small block" ng-if="groupForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':groupForm.roles.$dirty && groupForm.roles.$invalid, 'has-success':groupForm.roles.$valid}">
                                     <label for="groupRoles" class="control-label">
                                         <span translate="content.list.fields.ROLES">Roles</span>
@@ -57,6 +60,7 @@
                                     <span class="error text-small block" ng-if="groupForm.roles.$dirty && groupForm.roles.$error.required" translate="content.form.messages.ROLESREQUIRED">Roles is required.</span>
                                     <span class="success text-small block" ng-if="groupForm.roles.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -77,6 +81,14 @@
                     <div class="table-responsive" ng-if="groups.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

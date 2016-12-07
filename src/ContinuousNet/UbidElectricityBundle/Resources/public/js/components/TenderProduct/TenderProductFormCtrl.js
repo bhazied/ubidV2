@@ -174,6 +174,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.tenderproducts');
     };
     
+    $scope.tender_product_tender_readonly = false;
+    $scope.tender_product_product_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $tenderProductsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -183,6 +185,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.tenderProduct = {id: 0, status: 'Draft'};
 
+        if (angular.isDefined($stateParams.tender_product_tender) && JSON.parse($stateParams.tender_product_tender) != null) {
+            $scope.tenderProduct.tender = $stateParams.tender_product_tender;
+            $scope.tender_product_tender_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_product_product_type) && JSON.parse($stateParams.tender_product_product_type) != null) {
+            $scope.tenderProduct.product_type = $stateParams.tender_product_product_type;
+            $scope.tender_product_product_type_readonly = true;
+        }
     }
 
 }]);

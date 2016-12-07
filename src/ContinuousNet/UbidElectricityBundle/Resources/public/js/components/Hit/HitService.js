@@ -3,15 +3,16 @@
 /**
  * Hits Data Factory
  */
-app.factory('$hitsDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$hitsDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'hits', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'hits';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'hits/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'hits/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'hits/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

@@ -4,8 +4,8 @@
  * Controller for Banners List
  */
 
-app.controller('BannersCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$bannerTypesDataFactory', '$usersDataFactory', '$bannerPositionsDataFactory', '$bannersDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $bannerTypesDataFactory, $usersDataFactory, $bannerPositionsDataFactory, $bannersDataFactory) {
+app.controller('BannersCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$bannerTypesDataFactory', '$usersDataFactory', '$bannerPositionsDataFactory', '$bannersDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $bannerTypesDataFactory, $usersDataFactory, $bannerPositionsDataFactory, $bannersDataFactory) {
 
     $scope.gendersOptions = [{
         id: '',
@@ -68,6 +68,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         css: 'danger'
     }];
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -176,7 +177,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -187,7 +193,13 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         }
         var links = [];
         for (var i in values) {
-            links.push('<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">' + values[i][this.displayField] + '</a>');
+            var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            var displayFields = this.displayField.split(' ');
+            for (var j in displayFields) {
+                link += value[displayFields[j]] + ' ';
+            }
+            html += '</a>';
+            links.push(link);
         }
         var html = links.join(', ');
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
@@ -198,7 +210,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -216,6 +232,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.bannersParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -223,9 +240,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.bannersParams)) {
            $localStorage.bannersParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.bannersParams[param])) {
+        } else if (angular.isDefined($localStorage.bannersParams[param]) && $localStorage.bannersParams[param] != null) {
             return $localStorage.bannersParams[param];
         } else {
             $localStorage.bannersParams[param] = defaultValue;
@@ -279,7 +298,6 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             { field: 'max_total_clicks', title: $filter('translate')('content.list.fields.MAXTOTALCLICKS'), sortable: 'banner.maxTotalClicks', filter: { 'banner.maxTotalClicks': 'number' }, show: $scope.getParamValue('max_total_clicks_show_filed', false), getValue: $scope.textValue },
             { field: 'max_hits_per_day', title: $filter('translate')('content.list.fields.MAXHITSPERDAY'), sortable: 'banner.maxHitsPerDay', filter: { 'banner.maxHitsPerDay': 'number' }, show: $scope.getParamValue('max_hits_per_day_show_filed', false), getValue: $scope.textValue },
             { field: 'max_total_hits', title: $filter('translate')('content.list.fields.MAXTOTALHITS'), sortable: 'banner.maxTotalHits', filter: { 'banner.maxTotalHits': 'number' }, show: $scope.getParamValue('max_total_hits_show_filed', false), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'banner.status', filter: { 'banner.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'banner.createdAt', filter: { 'banner.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'banner.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'banner.modifiedAt', filter: { 'banner.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
@@ -308,16 +326,24 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('bannersPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('bannersCount', $scope.count);
     $scope.sorting = {'banner.id': 'asc'};
+    $scope.sorting = $scope.getParamValue('bannersSorting', $scope.sorting);
     $scope.filter = {
         banner_positions: []
     };
+    $scope.filter = $scope.getParamValue('bannersFilter', $scope.filter);
+    $scope.setParamValue('bannersPage', $scope.page);
+    $scope.setParamValue('bannersCount', $scope.count);
+    $scope.setParamValue('bannersSorting', $scope.sorting);
+    $scope.setParamValue('bannersFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('bannersPage', $scope.page),
-        count: $scope.getParamValue('bannersCount', $scope.count),
-        sorting: $scope.getParamValue('bannersSorting', $scope.sorting),
-        filter: $scope.getParamValue('bannersFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -346,7 +372,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $bannersDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -367,7 +395,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $bannersDataFactory.remove(row).$promise.then(function(data) {
+                $bannersDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.BANNERDELETED'), 

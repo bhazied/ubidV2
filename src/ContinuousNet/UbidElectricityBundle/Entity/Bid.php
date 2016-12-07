@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`bid`", indexes={@ORM\Index(name="tender_id", columns={"tender_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`bid`", indexes={@ORM\Index(name="tender_id", columns={"tender_id"}), @ORM\Index(name="supplier_id", columns={"supplier_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -242,6 +242,21 @@ class Bid
      * 
      */
     private $tender;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Supplier
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $supplier;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
@@ -699,6 +714,30 @@ class Bid
     public function getTender()
     {
         return $this->tender;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Supplier $supplier
+     * @return Bid
+     */
+    public function setSupplier(Supplier $supplier = null)
+    {
+        $this->supplier = $supplier;
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Supplier 
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
     }
 
     /**

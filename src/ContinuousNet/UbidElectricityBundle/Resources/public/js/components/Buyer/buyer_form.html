@@ -24,23 +24,26 @@
                         Edit Buyer
                     </legend>
                     <form name="buyerForm" id="buyerForm" novalidate ng-submit="submitForm(buyerForm)">
+                        <input type="hidden" name="id" id="buyerId" ng-model="buyer.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="buyerId" ng-model="buyer.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerBuyerType" class="control-label">
                                         <span translate="content.list.fields.BUYERTYPE">Buyer Type</span>
                                     </label>
-                                <div class="block" ng-if="buyerTypesLoaded">
+                                <div class="block select-list" ng-if="buyerTypesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in buyerTypes | filter:{ hidden : false }" ng-model="buyer.buyer_type" name="buyerType" id="buyerBuyerType" class="form-control" ng-required="false">
+                                        <select ng-readonly="buyer_buyer_type_readonly" ng-options="item.id as item.name for item in buyerTypes | filter:{ hidden : false }" ng-model="buyer.buyer_type" name="buyerType" id="buyerBuyerType" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':buyerForm.name.$dirty && buyerForm.name.$invalid, 'has-success':buyerForm.name.$valid}">
                                     <label for="buyerName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -54,10 +57,12 @@
                                     <span class="error text-small block" ng-if="buyerForm.name.$dirty && buyerForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="buyerForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerDescription" class="control-label">
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
@@ -67,8 +72,10 @@
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerReferenceNumber" class="control-label">
                                         <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
@@ -78,10 +85,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerPhone" class="control-label">
                                         <span translate="content.list.fields.PHONE">Phone</span>
@@ -91,8 +100,10 @@
                                         <i class="fa fa-phone"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':buyerForm.email.$dirty && buyerForm.email.$invalid, 'has-success':buyerForm.email.$valid}">
                                     <label for="buyerEmail" class="control-label">
                                         <span translate="content.list.fields.EMAIL">Email</span>
@@ -106,10 +117,12 @@
                                     <span class="error text-small block" ng-if="buyerForm.email.$dirty && buyerForm.email.$error.myUniqueField" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="buyerForm.email.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerFirstName" class="control-label">
                                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
@@ -119,8 +132,10 @@
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerLastName" class="control-label">
                                         <span translate="content.list.fields.LASTNAME">Last Name</span>
@@ -130,10 +145,12 @@
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerJob" class="control-label">
                                         <span translate="content.list.fields.JOB">Job</span>
@@ -143,8 +160,10 @@
                                         <i class="ti-rocket"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -170,10 +189,12 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerAddress" class="control-label">
                                         <span translate="content.list.fields.ADDRESS">Address</span>
@@ -183,8 +204,10 @@
                                         <i class="ti-home"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerZipCode" class="control-label">
                                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
@@ -194,10 +217,12 @@
                                         <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerCity" class="control-label">
                                         <span translate="content.list.fields.CITY">City</span>
@@ -207,8 +232,10 @@
                                         <i class="ti-direction"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerCompanyName" class="control-label">
                                         <span translate="content.list.fields.COMPANYNAME">Company Name</span>
@@ -218,36 +245,77 @@
                                         <i class="ti-briefcase"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerCountry" class="control-label">
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                <div class="block" ng-if="countriesLoaded">
+                                <div class="block select-list" ng-if="countriesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
+                                        <select ng-readonly="buyer_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-globe"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="buyerLanguage" class="control-label">
                                         <span translate="content.list.fields.LANGUAGE">Language</span>
                                     </label>
-                                <div class="block" ng-if="languagesLoaded">
+                                <div class="block select-list" ng-if="languagesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
+                                        <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-flag"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="buyer.is_public" type="checkbox" name="isPublic" id="buyerIsPublic" />
+                                    <label for="buyerIsPublic" translate="content.list.fields.ISPUBLIC">Is Public</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
+                                    <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="buyer.enable_private_message" type="checkbox" name="enablePrivateMessage" id="buyerEnablePrivateMessage" />
+                                    <label for="buyerEnablePrivateMessage" translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="buyer.enable_share" type="checkbox" name="enableShare" id="buyerEnableShare" />
+                                    <label for="buyerEnableShare" translate="content.list.fields.ENABLESHARE">Enable Share</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -268,6 +336,14 @@
                     <div class="table-responsive" ng-if="buyers.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->
