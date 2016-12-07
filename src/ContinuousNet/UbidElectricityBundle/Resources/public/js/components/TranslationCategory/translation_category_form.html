@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONCATEGORIES">Translation Categories</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationCategoryFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONCATEGORY" ng-if="translationCategory.id == 0">
+                        New Translation Category
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONCATEGORY" ng-if="translationCategory.id > 0">
+                        Edit Translation Category
+                    </legend>
+                    <form name="translationCategoryForm" id="translationCategoryForm" novalidate ng-submit="submitForm(translationCategoryForm)">
+                        <input type="hidden" name="id" id="translationCategoryId" ng-model="translationCategory.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCategoryForm.category.$dirty && translationCategoryForm.category.$invalid, 'has-success':translationCategoryForm.category.$valid}">
+                                    <label for="translationCategoryCategory" class="control-label">
+                                        <span translate="content.list.fields.CATEGORY">Category</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="categoriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_category_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="translationCategory.category" name="category" id="translationCategoryCategory" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-foolder-open-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationCategoryForm.category.$dirty && translationCategoryForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
+                                    <span class="success text-small block" ng-if="translationCategoryForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCategoryForm.locale.$dirty && translationCategoryForm.locale.$invalid, 'has-success':translationCategoryForm.locale.$valid}">
+                                    <label for="translationCategoryLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationCategory.locale" name="locale" id="translationCategoryLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationCategoryForm.locale.$dirty && translationCategoryForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationCategoryForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCategoryForm.name.$dirty && translationCategoryForm.name.$invalid, 'has-success':translationCategoryForm.name.$valid}">
+                                    <label for="translationCategoryName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationCategory.name" type="text" name="name" id="translationCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationCategoryForm.name.$dirty && translationCategoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationCategoryForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationCategory.locale" to="translationCategory.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationCategoryForm.slug.$dirty && translationCategoryForm.slug.$invalid, 'has-success':translationCategoryForm.slug.$valid}">
+                                    <label for="translationCategorySlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationCategory.slug" type="text" name="slug" id="translationCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationCategoryForm.slug.$dirty && translationCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationCategoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationCategory.validated" type="checkbox" name="validated" id="translationCategoryValidated" />
+                                    <label for="translationCategoryValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONCATEGORIES">Back to Translation Categories list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationCategoryForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationCategoryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationCategories.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

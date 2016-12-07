@@ -1,0 +1,30 @@
+translationbiddingtype:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:index" }
+
+translationbiddingtype_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:show" }
+
+translationbiddingtype_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:new" }
+
+translationbiddingtype_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:create" }
+    methods:  POST
+
+translationbiddingtype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:edit" }
+
+translationbiddingtype_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:update" }
+    methods:  [POST, PUT]
+
+translationbiddingtype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TranslationBiddingType:delete" }
+    methods:  [POST, DELETE]

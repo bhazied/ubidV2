@@ -65,34 +65,6 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="postTitleAr" class="control-label">
-                                        <span translate="content.list.fields.TITLEAR">Title Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.title_ar" type="text" name="titleAr" id="postTitleAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="postTitleFr" class="control-label">
-                                        <span translate="content.list.fields.TITLEFR">Title Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.title_fr" type="text" name="titleFr" id="postTitleFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
                                     <slug from="post.title" to="post.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':postForm.slug.$dirty && postForm.slug.$invalid, 'has-success':postForm.slug.$valid}">
                                     <label for="postSlug" class="control-label">
@@ -105,36 +77,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postForm.slug.$dirty && postForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="postForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="post.title_ar" to="post.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="postSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.slug_ar" type="text" name="slugAr" id="postSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="post.title_fr" to="post.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="postSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.slug_fr" type="text" name="slugFr" id="postSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -181,34 +123,6 @@
                                     </div>
                                     <span class="error text-small block" ng-if="postForm.content.$dirty && postForm.content.$error.required" translate="content.form.messages.CONTENTREQUIRED">Content is required.</span>
                                     <span class="success text-small block" ng-if="postForm.content.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="postContentAr" class="control-label">
-                                        <span translate="content.list.fields.CONTENTAR">Content Ar</span>
-                                    </label>
-                                    <div class="note-editor">
-                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="post.content_ar" name="contentAr" id="postContentAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTENTAR' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="postContentFr" class="control-label">
-                                        <span translate="content.list.fields.CONTENTFR">Content Fr</span>
-                                    </label>
-                                    <div class="note-editor">
-                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="post.content_fr" name="contentFr" id="postContentFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTENTFR' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
-                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-12-->

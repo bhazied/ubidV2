@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONBIDDINGTYPES">Translation Bidding Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationBiddingTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONBIDDINGTYPE" ng-if="translationBiddingType.id == 0">
+                        New Translation Bidding Type
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONBIDDINGTYPE" ng-if="translationBiddingType.id > 0">
+                        Edit Translation Bidding Type
+                    </legend>
+                    <form name="translationBiddingTypeForm" id="translationBiddingTypeForm" novalidate ng-submit="submitForm(translationBiddingTypeForm)">
+                        <input type="hidden" name="id" id="translationBiddingTypeId" ng-model="translationBiddingType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationBiddingTypeForm.biddingType.$dirty && translationBiddingTypeForm.biddingType.$invalid, 'has-success':translationBiddingTypeForm.biddingType.$valid}">
+                                    <label for="translationBiddingTypeBiddingType" class="control-label">
+                                        <span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="biddingTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_bidding_type_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationBiddingTypeForm.biddingType.$dirty && translationBiddingTypeForm.biddingType.$error.required" translate="content.form.messages.BIDDINGTYPEREQUIRED">Bidding Type is required.</span>
+                                    <span class="success text-small block" ng-if="translationBiddingTypeForm.biddingType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationBiddingTypeForm.locale.$dirty && translationBiddingTypeForm.locale.$invalid, 'has-success':translationBiddingTypeForm.locale.$valid}">
+                                    <label for="translationBiddingTypeLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationBiddingType.locale" name="locale" id="translationBiddingTypeLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationBiddingTypeForm.locale.$dirty && translationBiddingTypeForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationBiddingTypeForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationBiddingTypeForm.name.$dirty && translationBiddingTypeForm.name.$invalid, 'has-success':translationBiddingTypeForm.name.$valid}">
+                                    <label for="translationBiddingTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationBiddingType.name" type="text" name="name" id="translationBiddingTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationBiddingTypeForm.name.$dirty && translationBiddingTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationBiddingTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationBiddingType.locale" to="translationBiddingType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationBiddingTypeForm.slug.$dirty && translationBiddingTypeForm.slug.$invalid, 'has-success':translationBiddingTypeForm.slug.$valid}">
+                                    <label for="translationBiddingTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationBiddingType.slug" type="text" name="slug" id="translationBiddingTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationBiddingTypeForm.slug.$dirty && translationBiddingTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationBiddingTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationBiddingType.validated" type="checkbox" name="validated" id="translationBiddingTypeValidated" />
+                                    <label for="translationBiddingTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONBIDDINGTYPES">Back to Translation Bidding Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationBiddingTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationBiddingTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationBiddingTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

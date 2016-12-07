@@ -272,21 +272,85 @@
             </li>
         </ul>
     </li>
-    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.tenders')}">
+    <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active open':$state.includes('app.nogroup')}">
         <a href="javascript:void(0)">
             <div class="item-content">
                 <div class="item-media">
-                    <i class="tenders"></i>
+                    <i class="nogroup"></i>
                 </div>
                 <div class="item-inner">
-                    <span class="title" translate="sidebar.nav.tenders.MAIN">Tenders</span>
+                    <span class="title" translate="sidebar.nav.nogroup.MAIN">NoGroup</span>
                 </div>
             </div>
         </a>
         <ul class="sub-menu">
-            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.tenders.producttypes')}">
-                <a ui-sref="app.tenders.producttypes">
+            <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.nogroup.producttypes')}">
+                <a ui-sref="app.nogroup.producttypes">
                     <span class="title" translate="content.list.PRODUCTTYPES">Product Types</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.translation')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="translation"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.translation.MAIN">Translation</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationposttypes')}">
+                <a ui-sref="app.translation.translationposttypes">
+                    <span class="title" translate="content.list.TRANSLATIONPOSTTYPES">Translation Post Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationproducttypes')}">
+                <a ui-sref="app.translation.translationproducttypes">
+                    <span class="title" translate="content.list.TRANSLATIONPRODUCTTYPES">Translation Product Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationsuppliertypes')}">
+                <a ui-sref="app.translation.translationsuppliertypes">
+                    <span class="title" translate="content.list.TRANSLATIONSUPPLIERTYPES">Translation Supplier Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationtendertypes')}">
+                <a ui-sref="app.translation.translationtendertypes">
+                    <span class="title" translate="content.list.TRANSLATIONTENDERTYPES">Translation Tender Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationposts')}">
+                <a ui-sref="app.translation.translationposts">
+                    <span class="title" translate="content.list.TRANSLATIONPOSTS">Translation Posts</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationmenulinks')}">
+                <a ui-sref="app.translation.translationmenulinks">
+                    <span class="title" translate="content.list.TRANSLATIONMENULINKS">Translation Menu Links</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationbiddingtypes')}">
+                <a ui-sref="app.translation.translationbiddingtypes">
+                    <span class="title" translate="content.list.TRANSLATIONBIDDINGTYPES">Translation Bidding Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationbuyertypes')}">
+                <a ui-sref="app.translation.translationbuyertypes">
+                    <span class="title" translate="content.list.TRANSLATIONBUYERTYPES">Translation Buyer Types</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationcategories')}">
+                <a ui-sref="app.translation.translationcategories">
+                    <span class="title" translate="content.list.TRANSLATIONCATEGORIES">Translation Categories</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationmenus')}">
+                <a ui-sref="app.translation.translationmenus">
+                    <span class="title" translate="content.list.TRANSLATIONMENUS">Translation Menus</span>
                 </a>
             </li>
         </ul>

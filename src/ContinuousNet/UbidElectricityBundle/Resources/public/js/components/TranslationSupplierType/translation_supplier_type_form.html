@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONSUPPLIERTYPES">Translation Supplier Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationSupplierTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONSUPPLIERTYPE" ng-if="translationSupplierType.id == 0">
+                        New Translation Supplier Type
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONSUPPLIERTYPE" ng-if="translationSupplierType.id > 0">
+                        Edit Translation Supplier Type
+                    </legend>
+                    <form name="translationSupplierTypeForm" id="translationSupplierTypeForm" novalidate ng-submit="submitForm(translationSupplierTypeForm)">
+                        <input type="hidden" name="id" id="translationSupplierTypeId" ng-model="translationSupplierType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationSupplierTypeForm.supplierType.$dirty && translationSupplierTypeForm.supplierType.$invalid, 'has-success':translationSupplierTypeForm.supplierType.$valid}">
+                                    <label for="translationSupplierTypeSupplierType" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIERTYPE">Supplier Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="supplierTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_supplier_type_supplier_type_readonly" ng-options="item.id as item.name for item in supplierTypes | filter:{ hidden : false }" ng-model="translationSupplierType.supplier_type" name="supplierType" id="translationSupplierTypeSupplierType" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationSupplierTypeForm.supplierType.$dirty && translationSupplierTypeForm.supplierType.$error.required" translate="content.form.messages.SUPPLIERTYPEREQUIRED">Supplier Type is required.</span>
+                                    <span class="success text-small block" ng-if="translationSupplierTypeForm.supplierType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationSupplierTypeForm.locale.$dirty && translationSupplierTypeForm.locale.$invalid, 'has-success':translationSupplierTypeForm.locale.$valid}">
+                                    <label for="translationSupplierTypeLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationSupplierType.locale" name="locale" id="translationSupplierTypeLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationSupplierTypeForm.locale.$dirty && translationSupplierTypeForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationSupplierTypeForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationSupplierTypeForm.name.$dirty && translationSupplierTypeForm.name.$invalid, 'has-success':translationSupplierTypeForm.name.$valid}">
+                                    <label for="translationSupplierTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationSupplierType.name" type="text" name="name" id="translationSupplierTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationSupplierTypeForm.name.$dirty && translationSupplierTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationSupplierTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationSupplierType.locale" to="translationSupplierType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationSupplierTypeForm.slug.$dirty && translationSupplierTypeForm.slug.$invalid, 'has-success':translationSupplierTypeForm.slug.$valid}">
+                                    <label for="translationSupplierTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationSupplierType.slug" type="text" name="slug" id="translationSupplierTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationSupplierTypeForm.slug.$dirty && translationSupplierTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationSupplierTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationSupplierType.validated" type="checkbox" name="validated" id="translationSupplierTypeValidated" />
+                                    <label for="translationSupplierTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONSUPPLIERTYPES">Back to Translation Supplier Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationSupplierTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationSupplierTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationSupplierTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

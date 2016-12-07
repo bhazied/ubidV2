@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONPRODUCTTYPES">Translation Product Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationProductTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONPRODUCTTYPE" ng-if="translationProductType.id == 0">
+                        New Translation Product Type
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONPRODUCTTYPE" ng-if="translationProductType.id > 0">
+                        Edit Translation Product Type
+                    </legend>
+                    <form name="translationProductTypeForm" id="translationProductTypeForm" novalidate ng-submit="submitForm(translationProductTypeForm)">
+                        <input type="hidden" name="id" id="translationProductTypeId" ng-model="translationProductType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationProductTypeForm.productType.$dirty && translationProductTypeForm.productType.$invalid, 'has-success':translationProductTypeForm.productType.$valid}">
+                                    <label for="translationProductTypeProductType" class="control-label">
+                                        <span translate="content.list.fields.PRODUCTTYPE">Product Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="productTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_product_type_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="translationProductType.product_type" name="productType" id="translationProductTypeProductType" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationProductTypeForm.productType.$dirty && translationProductTypeForm.productType.$error.required" translate="content.form.messages.PRODUCTTYPEREQUIRED">Product Type is required.</span>
+                                    <span class="success text-small block" ng-if="translationProductTypeForm.productType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationProductTypeForm.locale.$dirty && translationProductTypeForm.locale.$invalid, 'has-success':translationProductTypeForm.locale.$valid}">
+                                    <label for="translationProductTypeLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationProductType.locale" name="locale" id="translationProductTypeLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationProductTypeForm.locale.$dirty && translationProductTypeForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationProductTypeForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationProductTypeForm.name.$dirty && translationProductTypeForm.name.$invalid, 'has-success':translationProductTypeForm.name.$valid}">
+                                    <label for="translationProductTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationProductType.name" type="text" name="name" id="translationProductTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationProductTypeForm.name.$dirty && translationProductTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationProductTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationProductType.locale" to="translationProductType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationProductTypeForm.slug.$dirty && translationProductTypeForm.slug.$invalid, 'has-success':translationProductTypeForm.slug.$valid}">
+                                    <label for="translationProductTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationProductType.slug" type="text" name="slug" id="translationProductTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationProductTypeForm.slug.$dirty && translationProductTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationProductTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationProductType.validated" type="checkbox" name="validated" id="translationProductTypeValidated" />
+                                    <label for="translationProductTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONPRODUCTTYPES">Back to Translation Product Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationProductTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationProductTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationProductTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

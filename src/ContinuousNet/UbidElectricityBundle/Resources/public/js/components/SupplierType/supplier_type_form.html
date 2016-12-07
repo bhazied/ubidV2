@@ -45,34 +45,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="supplierTypeNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplierType.name_ar" type="text" name="nameAr" id="supplierTypeNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="supplierTypeNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplierType.name_fr" type="text" name="nameFr" id="supplierTypeNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
                                     <slug from="supplierType.name" to="supplierType.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':supplierTypeForm.slug.$dirty && supplierTypeForm.slug.$invalid, 'has-success':supplierTypeForm.slug.$valid}">
                                     <label for="supplierTypeSlug" class="control-label">
@@ -85,36 +57,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="supplierTypeForm.slug.$dirty && supplierTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="supplierTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="supplierType.name_ar" to="supplierType.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="supplierTypeSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplierType.slug_ar" type="text" name="slugAr" id="supplierTypeSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="supplierType.name_fr" to="supplierType.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="supplierTypeSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplierType.slug_fr" type="text" name="slugFr" id="supplierTypeSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

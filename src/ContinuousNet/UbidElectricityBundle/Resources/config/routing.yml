@@ -229,6 +229,66 @@ ubid_electricity_tender_type_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_translation_bidding_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationBiddingTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_buyer_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationBuyerTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_category_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationCategoryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_menu_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationMenuRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_menu_link_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationMenuLinkRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_post_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationPostRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_post_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationPostTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_product_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationProductTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_supplier_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationSupplierTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_tender_type_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationTenderTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_user_api:
     resource: "@UbidElectricityBundle/Controller/UserRESTController.php"
     type:   rest
@@ -378,6 +438,46 @@ ubid_electricity_tender_product:
 ubid_electricity_tender_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/tender_type.yml"
     prefix:   /tender-type
+
+ubid_electricity_translation_bidding_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_bidding_type.yml"
+    prefix:   /translation-bidding-type
+
+ubid_electricity_translation_buyer_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_buyer_type.yml"
+    prefix:   /translation-buyer-type
+
+ubid_electricity_translation_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_category.yml"
+    prefix:   /translation-category
+
+ubid_electricity_translation_menu:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_menu.yml"
+    prefix:   /translation-menu
+
+ubid_electricity_translation_menu_link:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_menu_link.yml"
+    prefix:   /translation-menu-link
+
+ubid_electricity_translation_post:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_post.yml"
+    prefix:   /translation-post
+
+ubid_electricity_translation_post_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_post_type.yml"
+    prefix:   /translation-post-type
+
+ubid_electricity_translation_product_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_product_type.yml"
+    prefix:   /translation-product-type
+
+ubid_electricity_translation_supplier_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_supplier_type.yml"
+    prefix:   /translation-supplier-type
+
+ubid_electricity_translation_tender_type:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_tender_type.yml"
+    prefix:   /translation-tender-type
 
 ubid_electricity_user:
     resource: "@UbidElectricityBundle/Resources/config/routing/user.yml"
