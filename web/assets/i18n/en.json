@@ -136,26 +136,29 @@
             "logout": {
                 "MAIN": "Logout"
             },
+            "access": {
+                "MAIN": "Access"
+            },
             "adserving": {
                 "MAIN": "Adserving"
             },
             "marketplace": {
                 "MAIN": "Marketplace"
             },
-            "tenders": {
-                "MAIN": "Tenders"
+            "lists": {
+                "MAIN": "Lists"
             },
             "settings": {
                 "MAIN": "Settings"
-            },
-            "access": {
-                "MAIN": "Access"
             },
             "statistics": {
                 "MAIN": "Statistics"
             },
             "news": {
                 "MAIN": "News"
+            },
+            "translation": {
+                "MAIN": "Translation"
             }
         }
     },
@@ -210,6 +213,17 @@
     },
     "content": {
         "common": {
+            "DOWNLOAD": "Download",
+            "CUSTOMIZE": "Customize",
+            "CUSTOMIZINGDASHBOARD": "Customizing Dashboard",
+            "SYNCAPPS": "Synchronisation Applications",
+            "AGENDA": "Agenda",
+            "LIBRARY": "Library",
+            "HELP": "Help",
+            "SELECTALL": "Select All",
+            "UNSELECTALL": "Unselect All",
+            "YESSUBSCRIBE": "Subscribe",
+            "YESSUBSCRIBE": "Subscribe",
             "ENABLEBATCHADD": "Enable Batch Add",
             "YESSUBSCRIBE": "Subscribe",
             "YESUNSUBSCRIBE": "Unsubscribe",
@@ -225,6 +239,8 @@
             "ACTIONS": "Actions",
             "SAVE": "Save",
             "EDIT": "Edit",
+            "ADD": "Add",
+            "SHOWLIST": "Show List",
             "SHOWDETAILS": "Show Details",
             "REMOVE": "Remove",
             "YES": "Yes",
@@ -315,10 +331,17 @@
                 "EMAILALREADYINUSE": "Email already used by another user!",
                 "VALIDEMAIL": "It's a valid e-mail!",
                 "INVALIDEMAIL": "Please, enter a valid email address.",
-                "SELECTBANNERTYPE": "Select Banner Type",
-                "BANNERTYPEREQUIRED": "The Banner Type is required",
+                "SELECTTYPE": "Select Type",
+                "TYPEREQUIRED": "The Type is required",
+                "SELECTCATEGORY": "Select Category",
                 "ENTERNAME": "Enter the Name",
                 "NAMEREQUIRED": "The Name is required",
+                "ENTERDESCRIPTION": "Enter the Description",
+                "SELECTSTATUS": "Select Status",
+                "STATUSREQUIRED": "The Status is required",
+                "ENTERUNITCOST": "Enter the Unit Cost",
+                "SELECTBANNERTYPE": "Select Banner Type",
+                "BANNERTYPEREQUIRED": "The Banner Type is required",
                 "ENTERPICTURE": "Enter the Picture",
                 "ENTERCOUNTDOWN": "Enter the Count Down",
                 "ENTERIPHONEACTION": "Enter the Iphone Action",
@@ -361,8 +384,6 @@
                 "ENTERMAXTOTALCLICKS": "Enter the Max Total Clicks",
                 "ENTERMAXHITSPERDAY": "Enter the Max Hits Per Day",
                 "ENTERMAXTOTALHITS": "Enter the Max Total Hits",
-                "SELECTSTATUS": "Select Status",
-                "STATUSREQUIRED": "The Status is required",
                 "ENTERSLUG": "Enter the Slug",
                 "SLUGREQUIRED": "The Slug is required",
                 "ENTERITEMSNUMBER": "Enter the Items Number",
@@ -375,12 +396,12 @@
                 "MIMETYPESREQUIRED": "The Mime Types is required",
                 "SELECTTENDER": "Select Tender",
                 "TENDERREQUIRED": "The Tender is required",
+                "SELECTSUPPLIER": "Select Supplier",
+                "SUPPLIERREQUIRED": "The Supplier is required",
                 "ENTERTITLE": "Enter the Title",
                 "TITLEREQUIRED": "The Title is required",
                 "ENTERREFERENCE": "Enter the Reference",
                 "REFERENCEREQUIRED": "The Reference is required",
-                "ENTERDESCRIPTION": "Enter the Description",
-                "DESCRIPTIONREQUIRED": "The Description is required",
                 "ENTERNOTE": "Enter the Note",
                 "ENTERTOTALCOST": "Enter the Total Cost",
                 "ENTERADDRESS": "Enter the Address",
@@ -394,16 +415,12 @@
                 "TENDERPRODUCTREQUIRED": "The Tender Product is required",
                 "SELECTBID": "Select Bid",
                 "BIDREQUIRED": "The Bid is required",
-                "ENTERBRAND": "Enter the Brand",
-                "ENTERMODEL": "Enter the Model",
-                "ENTERUNITCOST": "Enter the Unit Cost",
+                "SELECTSUPPLIERPRODUCT": "Select Supplier Product",
+                "SUPPLIERPRODUCTREQUIRED": "The Supplier Product is required",
+                "ENTERNEWUNITCOST": "Enter the New Unit Cost",
                 "ENTERQUANTITY": "Enter the Quantity",
                 "ENTERDURATION": "Enter the Duration",
                 "ENTERORDERING": "Enter the Ordering",
-                "ENTERNAMEAR": "Enter the Name Ar",
-                "ENTERNAMEFR": "Enter the Name Fr",
-                "ENTERSLUGAR": "Enter the Slug Ar",
-                "ENTERSLUGFR": "Enter the Slug Fr",
                 "SELECTBUYERTYPE": "Select Buyer Type",
                 "ENTERREFERENCENUMBER": "Enter the Reference Number",
                 "ENTERFIRSTNAME": "Enter the First Name",
@@ -414,10 +431,17 @@
                 "ENTERCOMPANYNAME": "Enter the Company Name",
                 "SELECTCOUNTRY": "Select Country",
                 "SELECTLANGUAGE": "Select Language",
+                "ENTERDESCRIPTIONAR": "Enter the Description Ar",
+                "ENTERDESCRIPTIONFR": "Enter the Description Fr",
+                "SELECTPARENT": "Select Parent",
+                "SELECTPRODUCTTYPE": "Select Product Type",
+                "PRODUCTTYPEREQUIRED": "The Product Type is required",
                 "SELECTVISIT": "Select Visit",
                 "SELECTBANNER": "Select Banner",
                 "BANNERREQUIRED": "The Banner is required",
                 "SELECTREGION": "Select Region",
+                "ENTERNAMEAR": "Enter the Name Ar",
+                "ENTERNAMEFR": "Enter the Name Fr",
                 "ENTERCODE": "Enter the Code",
                 "CODEREQUIRED": "The Code is required",
                 "ENTERLONGCODE": "Enter the Long Code",
@@ -456,16 +480,27 @@
                 "MENUREQUIRED": "The Menu is required",
                 "ENTERCONTROLLER": "Enter the Controller",
                 "CONTROLLERREQUIRED": "The Controller is required",
+                "SELECTFROMUSER": "Select From User",
+                "FROMUSERREQUIRED": "The From User is required",
+                "SELECTFROMBUYER": "Select From Buyer",
+                "SELECTFROMSUPPLIER": "Select From Supplier",
+                "SELECTTOUSER": "Select To User",
+                "TOUSERREQUIRED": "The To User is required",
+                "SELECTTOBUYER": "Select To Buyer",
+                "SELECTTOSUPPLIER": "Select To Supplier",
+                "ENTERSUBJECT": "Enter the Subject",
+                "SUBJECTREQUIRED": "The Subject is required",
+                "ENTERBODY": "Enter the Body",
+                "SELECTSENDINGTIME": "Select Sending Time",
+                "SENDINGTIMEREQUIRED": "The Sending Time is required",
+                "SELECTREADINGTIME": "Select Reading Time",
+                "READINGTIMEREQUIRED": "The Reading Time is required",
                 "ENTERCONTENT": "Enter the Content",
                 "CONTENTREQUIRED": "The Content is required",
                 "ENTERLINK": "Enter the Link",
                 "LINKREQUIRED": "The Link is required",
                 "SELECTPOSTTYPE": "Select Post Type",
                 "POSTTYPEREQUIRED": "The Post Type is required",
-                "ENTERTITLEAR": "Enter the Title Ar",
-                "ENTERTITLEFR": "Enter the Title Fr",
-                "ENTERCONTENTAR": "Enter the Content Ar",
-                "ENTERCONTENTFR": "Enter the Content Fr",
                 "SELECTPUBLISHDATE": "Select Publish Date",
                 "PUBLISHDATEREQUIRED": "The Publish Date is required",
                 "ENTERMETATITLE": "Enter the Meta Title",
@@ -478,9 +513,13 @@
                 "ENTERTOTALLIKES": "Enter the Total Likes",
                 "ENTERTOTALDISLIKES": "Enter the Total Dislikes",
                 "ENTERTOTALBOOKMARKS": "Enter the Total Bookmarks",
-                "ENTERDESCRIPTIONAR": "Enter the Description Ar",
-                "ENTERDESCRIPTIONFR": "Enter the Description Fr",
-                "SELECTPARENT": "Select Parent",
+                "ENTERSLUGAR": "Enter the Slug Ar",
+                "ENTERSLUGFR": "Enter the Slug Fr",
+                "SELECTSUPPLIERTYPE": "Select Supplier Type",
+                "ENTERBRAND": "Enter the Brand",
+                "ENTERMODEL": "Enter the Model",
+                "SELECTSECTION": "Select Section",
+                "SECTIONREQUIRED": "The Section is required",
                 "SELECTBUYER": "Select Buyer",
                 "BUYERREQUIRED": "The Buyer is required",
                 "SELECTSECTOR": "Select Sector",
@@ -492,9 +531,10 @@
                 "SELECTDEADLINE": "Select Deadline",
                 "ENTERESTIMATEDCOST": "Enter the Estimated Cost",
                 "ENTERSOURCE": "Enter the Source",
-                "SELECTPRODUCTTYPE": "Select Product Type",
-                "PRODUCTTYPEREQUIRED": "The Product Type is required",
-                "SELECTTYPE": "Select Type",
+                "SELECTMENULINK": "Select Menu Link",
+                "MENULINKREQUIRED": "The Menu Link is required",
+                "SELECTPOST": "Select Post",
+                "POSTREQUIRED": "The Post is required",
                 "ENTERUSERNAME": "Enter the Username",
                 "USERNAMEREQUIRED": "The Username is required",
                 "USERNAMEALREADYINUSE": "This Username is already in use. Please choose another one.",
@@ -529,7 +569,22 @@
             }
         },
         "list": {
+            "LOGIN": "Login",
             "DASHBOARD": "Dashboard",
+            "ALERTS": "Alerts",
+            "ALERT": "Alert",
+            "ADDALERT": "Add New Alert",
+            "NEWALERT": "New Alert",
+            "ALERTDETAILS": "Alert Details",
+            "EDITALERT": "Edit Alert",
+            "ALERTUPDATED": "Alert Updated",
+            "ALERTNOTUPDATED": "Alert Not Updated",
+            "ALERTCREATED": "Alert Created",
+            "ALERTNOTCREATED": "Alert Not Created",
+            "YOUWILLNOTBEABLETORECOVERALERT": "You will not be able to recover this Alert!",
+            "ALERTDELETED": "Alert Deleted",
+            "ALERTNOTDELETED": "Alert Not Deleted",
+            "BACKALERTS": "Back To Alerts List",
             "BANNERS": "Banners",
             "BANNER": "Banner",
             "ADDBANNER": "Add New Banner",
@@ -642,6 +697,20 @@
             "BUYERTYPEDELETED": "Buyer Type Deleted",
             "BUYERTYPENOTDELETED": "Buyer Type Not Deleted",
             "BACKBUYERTYPES": "Back To Buyer Types List",
+            "CATEGORIES": "Categories",
+            "CATEGORY": "Category",
+            "ADDCATEGORY": "Add New Category",
+            "NEWCATEGORY": "New Category",
+            "CATEGORYDETAILS": "Category Details",
+            "EDITCATEGORY": "Edit Category",
+            "CATEGORYUPDATED": "Category Updated",
+            "CATEGORYNOTUPDATED": "Category Not Updated",
+            "CATEGORYCREATED": "Category Created",
+            "CATEGORYNOTCREATED": "Category Not Created",
+            "YOUWILLNOTBEABLETORECOVERCATEGORY": "You will not be able to recover this Category!",
+            "CATEGORYDELETED": "Category Deleted",
+            "CATEGORYNOTDELETED": "Category Not Deleted",
+            "BACKCATEGORIES": "Back To Categories List",
             "CLICKS": "Clicks",
             "CLICK": "Click",
             "ADDCLICK": "Add New Click",
@@ -768,6 +837,20 @@
             "MENULINKDELETED": "Menu Link Deleted",
             "MENULINKNOTDELETED": "Menu Link Not Deleted",
             "BACKMENULINKS": "Back To Menu Links List",
+            "MESSAGES": "Messages",
+            "MESSAGE": "Message",
+            "ADDMESSAGE": "Add New Message",
+            "NEWMESSAGE": "New Message",
+            "MESSAGEDETAILS": "Message Details",
+            "EDITMESSAGE": "Edit Message",
+            "MESSAGEUPDATED": "Message Updated",
+            "MESSAGENOTUPDATED": "Message Not Updated",
+            "MESSAGECREATED": "Message Created",
+            "MESSAGENOTCREATED": "Message Not Created",
+            "YOUWILLNOTBEABLETORECOVERMESSAGE": "You will not be able to recover this Message!",
+            "MESSAGEDELETED": "Message Deleted",
+            "MESSAGENOTDELETED": "Message Not Deleted",
+            "BACKMESSAGES": "Back To Messages List",
             "NOTIFICATIONS": "Notifications",
             "NOTIFICATION": "Notification",
             "ADDNOTIFICATION": "Add New Notification",
@@ -866,6 +949,48 @@
             "SECTORDELETED": "Sector Deleted",
             "SECTORNOTDELETED": "Sector Not Deleted",
             "BACKSECTORS": "Back To Sectors List",
+            "SUPPLIERS": "Suppliers",
+            "SUPPLIER": "Supplier",
+            "ADDSUPPLIER": "Add New Supplier",
+            "NEWSUPPLIER": "New Supplier",
+            "SUPPLIERDETAILS": "Supplier Details",
+            "EDITSUPPLIER": "Edit Supplier",
+            "SUPPLIERUPDATED": "Supplier Updated",
+            "SUPPLIERNOTUPDATED": "Supplier Not Updated",
+            "SUPPLIERCREATED": "Supplier Created",
+            "SUPPLIERNOTCREATED": "Supplier Not Created",
+            "YOUWILLNOTBEABLETORECOVERSUPPLIER": "You will not be able to recover this Supplier!",
+            "SUPPLIERDELETED": "Supplier Deleted",
+            "SUPPLIERNOTDELETED": "Supplier Not Deleted",
+            "BACKSUPPLIERS": "Back To Suppliers List",
+            "SUPPLIERPRODUCTS": "Supplier Products",
+            "SUPPLIERPRODUCT": "Supplier Product",
+            "ADDSUPPLIERPRODUCT": "Add New Supplier Product",
+            "NEWSUPPLIERPRODUCT": "New Supplier Product",
+            "SUPPLIERPRODUCTDETAILS": "Supplier Product Details",
+            "EDITSUPPLIERPRODUCT": "Edit Supplier Product",
+            "SUPPLIERPRODUCTUPDATED": "Supplier Product Updated",
+            "SUPPLIERPRODUCTNOTUPDATED": "Supplier Product Not Updated",
+            "SUPPLIERPRODUCTCREATED": "Supplier Product Created",
+            "SUPPLIERPRODUCTNOTCREATED": "Supplier Product Not Created",
+            "YOUWILLNOTBEABLETORECOVERSUPPLIERPRODUCT": "You will not be able to recover this Supplier Product!",
+            "SUPPLIERPRODUCTDELETED": "Supplier Product Deleted",
+            "SUPPLIERPRODUCTNOTDELETED": "Supplier Product Not Deleted",
+            "BACKSUPPLIERPRODUCTS": "Back To Supplier Products List",
+            "SUPPLIERTYPES": "Supplier Types",
+            "SUPPLIERTYPE": "Supplier Type",
+            "ADDSUPPLIERTYPE": "Add New Supplier Type",
+            "NEWSUPPLIERTYPE": "New Supplier Type",
+            "SUPPLIERTYPEDETAILS": "Supplier Type Details",
+            "EDITSUPPLIERTYPE": "Edit Supplier Type",
+            "SUPPLIERTYPEUPDATED": "Supplier Type Updated",
+            "SUPPLIERTYPENOTUPDATED": "Supplier Type Not Updated",
+            "SUPPLIERTYPECREATED": "Supplier Type Created",
+            "SUPPLIERTYPENOTCREATED": "Supplier Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERSUPPLIERTYPE": "You will not be able to recover this Supplier Type!",
+            "SUPPLIERTYPEDELETED": "Supplier Type Deleted",
+            "SUPPLIERTYPENOTDELETED": "Supplier Type Not Deleted",
+            "BACKSUPPLIERTYPES": "Back To Supplier Types List",
             "TENDERS": "Tenders",
             "TENDER": "Tender",
             "ADDTENDER": "Add New Tender",
@@ -880,20 +1005,6 @@
             "TENDERDELETED": "Tender Deleted",
             "TENDERNOTDELETED": "Tender Not Deleted",
             "BACKTENDERS": "Back To Tenders List",
-            "TENDERCATEGORIES": "Tender Categories",
-            "TENDERCATEGORY": "Tender Category",
-            "ADDTENDERCATEGORY": "Add New Tender Category",
-            "NEWTENDERCATEGORY": "New Tender Category",
-            "TENDERCATEGORYDETAILS": "Tender Category Details",
-            "EDITTENDERCATEGORY": "Edit Tender Category",
-            "TENDERCATEGORYUPDATED": "Tender Category Updated",
-            "TENDERCATEGORYNOTUPDATED": "Tender Category Not Updated",
-            "TENDERCATEGORYCREATED": "Tender Category Created",
-            "TENDERCATEGORYNOTCREATED": "Tender Category Not Created",
-            "YOUWILLNOTBEABLETORECOVERTENDERCATEGORY": "You will not be able to recover this Tender Category!",
-            "TENDERCATEGORYDELETED": "Tender Category Deleted",
-            "TENDERCATEGORYNOTDELETED": "Tender Category Not Deleted",
-            "BACKTENDERCATEGORIES": "Back To Tender Categories List",
             "TENDERPRODUCTS": "Tender Products",
             "TENDERPRODUCT": "Tender Product",
             "ADDTENDERPRODUCT": "Add New Tender Product",
@@ -922,6 +1033,146 @@
             "TENDERTYPEDELETED": "Tender Type Deleted",
             "TENDERTYPENOTDELETED": "Tender Type Not Deleted",
             "BACKTENDERTYPES": "Back To Tender Types List",
+            "TRANSLATIONBIDDINGTYPES": "Translation Bidding Types",
+            "TRANSLATIONBIDDINGTYPE": "Translation Bidding Type",
+            "ADDTRANSLATIONBIDDINGTYPE": "Add New Translation Bidding Type",
+            "NEWTRANSLATIONBIDDINGTYPE": "New Translation Bidding Type",
+            "TRANSLATIONBIDDINGTYPEDETAILS": "Translation Bidding Type Details",
+            "EDITTRANSLATIONBIDDINGTYPE": "Edit Translation Bidding Type",
+            "TRANSLATIONBIDDINGTYPEUPDATED": "Translation Bidding Type Updated",
+            "TRANSLATIONBIDDINGTYPENOTUPDATED": "Translation Bidding Type Not Updated",
+            "TRANSLATIONBIDDINGTYPECREATED": "Translation Bidding Type Created",
+            "TRANSLATIONBIDDINGTYPENOTCREATED": "Translation Bidding Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONBIDDINGTYPE": "You will not be able to recover this Translation Bidding Type!",
+            "TRANSLATIONBIDDINGTYPEDELETED": "Translation Bidding Type Deleted",
+            "TRANSLATIONBIDDINGTYPENOTDELETED": "Translation Bidding Type Not Deleted",
+            "BACKTRANSLATIONBIDDINGTYPES": "Back To Translation Bidding Types List",
+            "TRANSLATIONBUYERTYPES": "Translation Buyer Types",
+            "TRANSLATIONBUYERTYPE": "Translation Buyer Type",
+            "ADDTRANSLATIONBUYERTYPE": "Add New Translation Buyer Type",
+            "NEWTRANSLATIONBUYERTYPE": "New Translation Buyer Type",
+            "TRANSLATIONBUYERTYPEDETAILS": "Translation Buyer Type Details",
+            "EDITTRANSLATIONBUYERTYPE": "Edit Translation Buyer Type",
+            "TRANSLATIONBUYERTYPEUPDATED": "Translation Buyer Type Updated",
+            "TRANSLATIONBUYERTYPENOTUPDATED": "Translation Buyer Type Not Updated",
+            "TRANSLATIONBUYERTYPECREATED": "Translation Buyer Type Created",
+            "TRANSLATIONBUYERTYPENOTCREATED": "Translation Buyer Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONBUYERTYPE": "You will not be able to recover this Translation Buyer Type!",
+            "TRANSLATIONBUYERTYPEDELETED": "Translation Buyer Type Deleted",
+            "TRANSLATIONBUYERTYPENOTDELETED": "Translation Buyer Type Not Deleted",
+            "BACKTRANSLATIONBUYERTYPES": "Back To Translation Buyer Types List",
+            "TRANSLATIONCATEGORIES": "Translation Categories",
+            "TRANSLATIONCATEGORY": "Translation Category",
+            "ADDTRANSLATIONCATEGORY": "Add New Translation Category",
+            "NEWTRANSLATIONCATEGORY": "New Translation Category",
+            "TRANSLATIONCATEGORYDETAILS": "Translation Category Details",
+            "EDITTRANSLATIONCATEGORY": "Edit Translation Category",
+            "TRANSLATIONCATEGORYUPDATED": "Translation Category Updated",
+            "TRANSLATIONCATEGORYNOTUPDATED": "Translation Category Not Updated",
+            "TRANSLATIONCATEGORYCREATED": "Translation Category Created",
+            "TRANSLATIONCATEGORYNOTCREATED": "Translation Category Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONCATEGORY": "You will not be able to recover this Translation Category!",
+            "TRANSLATIONCATEGORYDELETED": "Translation Category Deleted",
+            "TRANSLATIONCATEGORYNOTDELETED": "Translation Category Not Deleted",
+            "BACKTRANSLATIONCATEGORIES": "Back To Translation Categories List",
+            "TRANSLATIONMENUS": "Translation Menus",
+            "TRANSLATIONMENU": "Translation Menu",
+            "ADDTRANSLATIONMENU": "Add New Translation Menu",
+            "NEWTRANSLATIONMENU": "New Translation Menu",
+            "TRANSLATIONMENUDETAILS": "Translation Menu Details",
+            "EDITTRANSLATIONMENU": "Edit Translation Menu",
+            "TRANSLATIONMENUUPDATED": "Translation Menu Updated",
+            "TRANSLATIONMENUNOTUPDATED": "Translation Menu Not Updated",
+            "TRANSLATIONMENUCREATED": "Translation Menu Created",
+            "TRANSLATIONMENUNOTCREATED": "Translation Menu Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONMENU": "You will not be able to recover this Translation Menu!",
+            "TRANSLATIONMENUDELETED": "Translation Menu Deleted",
+            "TRANSLATIONMENUNOTDELETED": "Translation Menu Not Deleted",
+            "BACKTRANSLATIONMENUS": "Back To Translation Menus List",
+            "TRANSLATIONMENULINKS": "Translation Menu Links",
+            "TRANSLATIONMENULINK": "Translation Menu Link",
+            "ADDTRANSLATIONMENULINK": "Add New Translation Menu Link",
+            "NEWTRANSLATIONMENULINK": "New Translation Menu Link",
+            "TRANSLATIONMENULINKDETAILS": "Translation Menu Link Details",
+            "EDITTRANSLATIONMENULINK": "Edit Translation Menu Link",
+            "TRANSLATIONMENULINKUPDATED": "Translation Menu Link Updated",
+            "TRANSLATIONMENULINKNOTUPDATED": "Translation Menu Link Not Updated",
+            "TRANSLATIONMENULINKCREATED": "Translation Menu Link Created",
+            "TRANSLATIONMENULINKNOTCREATED": "Translation Menu Link Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONMENULINK": "You will not be able to recover this Translation Menu Link!",
+            "TRANSLATIONMENULINKDELETED": "Translation Menu Link Deleted",
+            "TRANSLATIONMENULINKNOTDELETED": "Translation Menu Link Not Deleted",
+            "BACKTRANSLATIONMENULINKS": "Back To Translation Menu Links List",
+            "TRANSLATIONPOSTS": "Translation Posts",
+            "TRANSLATIONPOST": "Translation Post",
+            "ADDTRANSLATIONPOST": "Add New Translation Post",
+            "NEWTRANSLATIONPOST": "New Translation Post",
+            "TRANSLATIONPOSTDETAILS": "Translation Post Details",
+            "EDITTRANSLATIONPOST": "Edit Translation Post",
+            "TRANSLATIONPOSTUPDATED": "Translation Post Updated",
+            "TRANSLATIONPOSTNOTUPDATED": "Translation Post Not Updated",
+            "TRANSLATIONPOSTCREATED": "Translation Post Created",
+            "TRANSLATIONPOSTNOTCREATED": "Translation Post Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONPOST": "You will not be able to recover this Translation Post!",
+            "TRANSLATIONPOSTDELETED": "Translation Post Deleted",
+            "TRANSLATIONPOSTNOTDELETED": "Translation Post Not Deleted",
+            "BACKTRANSLATIONPOSTS": "Back To Translation Posts List",
+            "TRANSLATIONPOSTTYPES": "Translation Post Types",
+            "TRANSLATIONPOSTTYPE": "Translation Post Type",
+            "ADDTRANSLATIONPOSTTYPE": "Add New Translation Post Type",
+            "NEWTRANSLATIONPOSTTYPE": "New Translation Post Type",
+            "TRANSLATIONPOSTTYPEDETAILS": "Translation Post Type Details",
+            "EDITTRANSLATIONPOSTTYPE": "Edit Translation Post Type",
+            "TRANSLATIONPOSTTYPEUPDATED": "Translation Post Type Updated",
+            "TRANSLATIONPOSTTYPENOTUPDATED": "Translation Post Type Not Updated",
+            "TRANSLATIONPOSTTYPECREATED": "Translation Post Type Created",
+            "TRANSLATIONPOSTTYPENOTCREATED": "Translation Post Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONPOSTTYPE": "You will not be able to recover this Translation Post Type!",
+            "TRANSLATIONPOSTTYPEDELETED": "Translation Post Type Deleted",
+            "TRANSLATIONPOSTTYPENOTDELETED": "Translation Post Type Not Deleted",
+            "BACKTRANSLATIONPOSTTYPES": "Back To Translation Post Types List",
+            "TRANSLATIONPRODUCTTYPES": "Translation Product Types",
+            "TRANSLATIONPRODUCTTYPE": "Translation Product Type",
+            "ADDTRANSLATIONPRODUCTTYPE": "Add New Translation Product Type",
+            "NEWTRANSLATIONPRODUCTTYPE": "New Translation Product Type",
+            "TRANSLATIONPRODUCTTYPEDETAILS": "Translation Product Type Details",
+            "EDITTRANSLATIONPRODUCTTYPE": "Edit Translation Product Type",
+            "TRANSLATIONPRODUCTTYPEUPDATED": "Translation Product Type Updated",
+            "TRANSLATIONPRODUCTTYPENOTUPDATED": "Translation Product Type Not Updated",
+            "TRANSLATIONPRODUCTTYPECREATED": "Translation Product Type Created",
+            "TRANSLATIONPRODUCTTYPENOTCREATED": "Translation Product Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONPRODUCTTYPE": "You will not be able to recover this Translation Product Type!",
+            "TRANSLATIONPRODUCTTYPEDELETED": "Translation Product Type Deleted",
+            "TRANSLATIONPRODUCTTYPENOTDELETED": "Translation Product Type Not Deleted",
+            "BACKTRANSLATIONPRODUCTTYPES": "Back To Translation Product Types List",
+            "TRANSLATIONSUPPLIERTYPES": "Translation Supplier Types",
+            "TRANSLATIONSUPPLIERTYPE": "Translation Supplier Type",
+            "ADDTRANSLATIONSUPPLIERTYPE": "Add New Translation Supplier Type",
+            "NEWTRANSLATIONSUPPLIERTYPE": "New Translation Supplier Type",
+            "TRANSLATIONSUPPLIERTYPEDETAILS": "Translation Supplier Type Details",
+            "EDITTRANSLATIONSUPPLIERTYPE": "Edit Translation Supplier Type",
+            "TRANSLATIONSUPPLIERTYPEUPDATED": "Translation Supplier Type Updated",
+            "TRANSLATIONSUPPLIERTYPENOTUPDATED": "Translation Supplier Type Not Updated",
+            "TRANSLATIONSUPPLIERTYPECREATED": "Translation Supplier Type Created",
+            "TRANSLATIONSUPPLIERTYPENOTCREATED": "Translation Supplier Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONSUPPLIERTYPE": "You will not be able to recover this Translation Supplier Type!",
+            "TRANSLATIONSUPPLIERTYPEDELETED": "Translation Supplier Type Deleted",
+            "TRANSLATIONSUPPLIERTYPENOTDELETED": "Translation Supplier Type Not Deleted",
+            "BACKTRANSLATIONSUPPLIERTYPES": "Back To Translation Supplier Types List",
+            "TRANSLATIONTENDERTYPES": "Translation Tender Types",
+            "TRANSLATIONTENDERTYPE": "Translation Tender Type",
+            "ADDTRANSLATIONTENDERTYPE": "Add New Translation Tender Type",
+            "NEWTRANSLATIONTENDERTYPE": "New Translation Tender Type",
+            "TRANSLATIONTENDERTYPEDETAILS": "Translation Tender Type Details",
+            "EDITTRANSLATIONTENDERTYPE": "Edit Translation Tender Type",
+            "TRANSLATIONTENDERTYPEUPDATED": "Translation Tender Type Updated",
+            "TRANSLATIONTENDERTYPENOTUPDATED": "Translation Tender Type Not Updated",
+            "TRANSLATIONTENDERTYPECREATED": "Translation Tender Type Created",
+            "TRANSLATIONTENDERTYPENOTCREATED": "Translation Tender Type Not Created",
+            "YOUWILLNOTBEABLETORECOVERTRANSLATIONTENDERTYPE": "You will not be able to recover this Translation Tender Type!",
+            "TRANSLATIONTENDERTYPEDELETED": "Translation Tender Type Deleted",
+            "TRANSLATIONTENDERTYPENOTDELETED": "Translation Tender Type Not Deleted",
+            "BACKTRANSLATIONTENDERTYPES": "Back To Translation Tender Types List",
             "USERS": "Users",
             "USER": "User",
             "ADDUSER": "Add New User",
@@ -964,6 +1215,146 @@
             "VISITDELETED": "Visit Deleted",
             "VISITNOTDELETED": "Visit Not Deleted",
             "BACKVISITS": "Back To Visits List",
+            "fieldsets": {
+                "ALERT" : {
+                    "DEFAULT" : "Default"
+                },
+                "BANNER" : {
+                    "DEFAULT" : "Default"
+                },
+                "BANNERPOSITION" : {
+                    "DEFAULT" : "Default"
+                },
+                "BANNERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "BID" : {
+                    "DEFAULT" : "Default"
+                },
+                "BIDPRODUCT" : {
+                    "DEFAULT" : "Default"
+                },
+                "BIDDINGTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "BUYER" : {
+                    "DEFAULT" : "Default"
+                },
+                "BUYERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "CATEGORY" : {
+                    "DEFAULT" : "Default"
+                },
+                "CLICK" : {
+                    "DEFAULT" : "Default"
+                },
+                "COUNTRY" : {
+                    "DEFAULT" : "Default"
+                },
+                "GROUP" : {
+                    "DEFAULT" : "Default"
+                },
+                "HIT" : {
+                    "DEFAULT" : "Default"
+                },
+                "IMPRESSION" : {
+                    "DEFAULT" : "Default"
+                },
+                "LANGUAGE" : {
+                    "DEFAULT" : "Default"
+                },
+                "LOG" : {
+                    "DEFAULT" : "Default"
+                },
+                "MENU" : {
+                    "DEFAULT" : "Default"
+                },
+                "MENULINK" : {
+                    "DEFAULT" : "Default"
+                },
+                "MESSAGE" : {
+                    "DEFAULT" : "Default"
+                },
+                "NOTIFICATION" : {
+                    "DEFAULT" : "Default"
+                },
+                "POST" : {
+                    "DEFAULT" : "Default"
+                },
+                "POSTCATEGORY" : {
+                    "DEFAULT" : "Default"
+                },
+                "POSTTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "PRODUCTTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "REGION" : {
+                    "DEFAULT" : "Default"
+                },
+                "SECTOR" : {
+                    "DEFAULT" : "Default"
+                },
+                "SUPPLIER" : {
+                    "DEFAULT" : "Default"
+                },
+                "SUPPLIERPRODUCT" : {
+                    "DEFAULT" : "Default"
+                },
+                "SUPPLIERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TENDER" : {
+                    "DEFAULT" : "Default"
+                },
+                "TENDERPRODUCT" : {
+                    "DEFAULT" : "Default"
+                },
+                "TENDERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONBIDDINGTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONBUYERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONCATEGORY" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONMENU" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONMENULINK" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONPOST" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONPOSTTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONPRODUCTTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONSUPPLIERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "TRANSLATIONTENDERTYPE" : {
+                    "DEFAULT" : "Default"
+                },
+                "USER" : {
+                    "DEFAULT" : "Default"
+                },
+                "USERSETTING" : {
+                    "DEFAULT" : "Default"
+                },
+                "VISIT" : {
+                    "DEFAULT" : "Default"
+                }
+            },
             "fields": {
                 "CARDNUMBER" : "Card Number",
                 "CARDMONTHEXPR" : "Expiration Month",
@@ -975,8 +1366,17 @@
                 "CARDCCVREQUIRED" : "Ccv is required",
                 "CAPTCHA": "Security check",
                 "ID": "Id",
-                "BANNERTYPE": "Banner Type",
+                "TYPE": "Type",
+                "CATEGORY": "Category",
                 "NAME": "Name",
+                "DESCRIPTION": "Description",
+                "STATUS": "Status",
+                "UNITCOST": "Unit Cost",
+                "CREATEDAT": "Created At",
+                "CREATORUSER": "Creator User",
+                "MODIFIEDAT": "Modified At",
+                "MODIFIERUSER": "Modifier User",
+                "BANNERTYPE": "Banner Type",
                 "PICTURE": "Picture",
                 "CLOSABLE": "Closable",
                 "COUNTDOWN": "Count Down",
@@ -1018,11 +1418,6 @@
                 "MAXTOTALCLICKS": "Max Total Clicks",
                 "MAXHITSPERDAY": "Max Hits Per Day",
                 "MAXTOTALHITS": "Max Total Hits",
-                "STATUS": "Status",
-                "CREATEDAT": "Created At",
-                "CREATORUSER": "Creator User",
-                "MODIFIEDAT": "Modified At",
-                "MODIFIERUSER": "Modifier User",
                 "BANNERPOSITIONS": "Banner Positions",
                 "SLUG": "Slug",
                 "ITEMSNUMBER": "Items Number",
@@ -1034,9 +1429,9 @@
                 "EXTENSIONS": "Extensions",
                 "MIMETYPES": "Mime Types",
                 "TENDER": "Tender",
+                "SUPPLIER": "Supplier",
                 "TITLE": "Title",
                 "REFERENCE": "Reference",
-                "DESCRIPTION": "Description",
                 "NOTE": "Note",
                 "TOTALCOST": "Total Cost",
                 "ADDRESS": "Address",
@@ -1048,16 +1443,11 @@
                 "ATTACHMENTFILE4": "Attachment File4",
                 "TENDERPRODUCT": "Tender Product",
                 "BID": "Bid",
-                "BRAND": "Brand",
-                "MODEL": "Model",
-                "UNITCOST": "Unit Cost",
+                "SUPPLIERPRODUCT": "Supplier Product",
+                "NEWUNITCOST": "New Unit Cost",
                 "QUANTITY": "Quantity",
                 "DURATION": "Duration",
                 "ORDERING": "Ordering",
-                "NAMEAR": "Name Ar",
-                "NAMEFR": "Name Fr",
-                "SLUGAR": "Slug Ar",
-                "SLUGFR": "Slug Fr",
                 "BUYERTYPE": "Buyer Type",
                 "REFERENCENUMBER": "Reference Number",
                 "FIRSTNAME": "First Name",
@@ -1068,9 +1458,20 @@
                 "COMPANYNAME": "Company Name",
                 "COUNTRY": "Country",
                 "LANGUAGE": "Language",
+                "ISPUBLIC": "Is Public",
+                "ENABLECOMMENT": "Enable Comment",
+                "ENABLEPRIVATEMESSAGE": "Enable Private Message",
+                "ENABLESHARE": "Enable Share",
+                "DESCRIPTIONAR": "Description Ar",
+                "DESCRIPTIONFR": "Description Fr",
+                "PARENT": "Parent",
+                "PRODUCTTYPE": "Product Type",
+                "TENDERS": "Tenders",
                 "VISIT": "Visit",
                 "BANNER": "Banner",
                 "REGION": "Region",
+                "NAMEAR": "Name Ar",
+                "NAMEFR": "Name Fr",
                 "CODE": "Code",
                 "LONGCODE": "Long Code",
                 "PREFIX": "Prefix",
@@ -1100,14 +1501,21 @@
                 "TEXTPOSITION": "Text Position",
                 "MENU": "Menu",
                 "CONTROLLER": "Controller",
+                "FROMUSER": "From User",
+                "FROMBUYER": "From Buyer",
+                "FROMSUPPLIER": "From Supplier",
+                "TOUSER": "To User",
+                "TOBUYER": "To Buyer",
+                "TOSUPPLIER": "To Supplier",
+                "SUBJECT": "Subject",
+                "BODY": "Body",
+                "ISREAD": "Is Read",
+                "SENDINGTIME": "Sending Time",
+                "READINGTIME": "Reading Time",
                 "CONTENT": "Content",
                 "LINK": "Link",
                 "READ": "Read",
                 "POSTTYPE": "Post Type",
-                "TITLEAR": "Title Ar",
-                "TITLEFR": "Title Fr",
-                "CONTENTAR": "Content Ar",
-                "CONTENTFR": "Content Fr",
                 "ISHEADLINE": "Is Headline",
                 "PUBLISHDATE": "Publish Date",
                 "METATITLE": "Meta Title",
@@ -1123,10 +1531,13 @@
                 "ISTOP": "Is Top",
                 "ISNEW": "Is New",
                 "POSTCATEGORIES": "Post Categories",
-                "DESCRIPTIONAR": "Description Ar",
-                "DESCRIPTIONFR": "Description Fr",
-                "PARENT": "Parent",
+                "SLUGAR": "Slug Ar",
+                "SLUGFR": "Slug Fr",
                 "POSTS": "Posts",
+                "SUPPLIERTYPE": "Supplier Type",
+                "BRAND": "Brand",
+                "MODEL": "Model",
+                "SECTION": "Section",
                 "BUYER": "Buyer",
                 "SECTOR": "Sector",
                 "TENDERTYPE": "Tender Type",
@@ -1134,10 +1545,10 @@
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Estimated Cost",
                 "SOURCE": "Source",
-                "TENDERCATEGORIES": "Tender Categories",
-                "PRODUCTTYPE": "Product Type",
-                "TENDERS": "Tenders",
-                "TYPE": "Type",
+                "CATEGORIES": "Categories",
+                "VALIDATED": "Validated",
+                "MENULINK": "Menu Link",
+                "POST": "Post",
                 "USERNAME": "Username",
                 "PASSWORD": "Password",
                 "REPEATPASSWORD": "Repeat Password",
@@ -1171,12 +1582,18 @@
                 "VALUE": "Value",
                 "IP": "Ip",
                 "ISVALID": "Is Valid",
-                "genders": {
-                    "ALL": "All",
-                    "MALE": "Male",
-                    "FEMALE": "Female"
+                "types": {
+                    "TENDER": "Tender",
+                    "SUPPLIER": "Supplier",
+                    "SUPPLIERPRODUCT": "Supplier Product",
+                    "GUEST": "Guest",
+                    "BUYER": "Buyer",
+                    "BOTH": "Both",
+                    "ADMINISTRATOR": "Administrator"
                 },
                 "statuses": {
+                    "ACTIVE": "Active",
+                    "INACTIVE": "Inactive",
                     "DRAFT": "Draft",
                     "ONLINE": "Online",
                     "DEACTIVATED": "Deactivated",
@@ -1186,7 +1603,13 @@
                     "SELECTED": "Selected",
                     "REJECTED": "Rejected",
                     "SHORTLISTED": "Shortlisted",
-                    "QUALIFIED": "Qualified"
+                    "QUALIFIED": "Qualified",
+                    "SENT": "Sent"
+                },
+                "genders": {
+                    "ALL": "All",
+                    "MALE": "Male",
+                    "FEMALE": "Female"
                 },
                 "rolesoptions": {
                     "ROLEAPI": "Role Api",
@@ -1222,10 +1645,9 @@
                     "LEFT": "Left",
                     "RIGHT": "Right"
                 },
-                "types": {
-                    "GUEST": "Guest",
-                    "SUBSCRIBER": "Subscriber",
-                    "ADMINISTRATOR": "Administrator"
+                "sections": {
+                    "CONSULTATION": "Consultation",
+                    "TENDER": "Tender"
                 },
                 "authenticationmodes": {
                     "DATABASE": "Database",

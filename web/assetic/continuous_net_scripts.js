@@ -301,6 +301,9 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
+        'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
+        'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
         'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
         'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
         'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
@@ -325,6 +328,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
+        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
+        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
+        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
         'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
         'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
         'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
@@ -352,6 +358,9 @@ app.constant('APP_JS_REQUIRES', {
         'MenuLinksCtrl': '/bundles/ubidelectricity/js/components/MenuLink/MenuLinksCtrl.js',
         'MenuLinkFormCtrl': '/bundles/ubidelectricity/js/components/MenuLink/MenuLinkFormCtrl.js',
         'MenuLinkCtrl': '/bundles/ubidelectricity/js/components/MenuLink/MenuLinkCtrl.js',
+        'MessagesCtrl': '/bundles/ubidelectricity/js/components/Message/MessagesCtrl.js',
+        'MessageFormCtrl': '/bundles/ubidelectricity/js/components/Message/MessageFormCtrl.js',
+        'MessageCtrl': '/bundles/ubidelectricity/js/components/Message/MessageCtrl.js',
         'NotificationsCtrl': '/bundles/ubidelectricity/js/components/Notification/NotificationsCtrl.js',
         'NotificationFormCtrl': '/bundles/ubidelectricity/js/components/Notification/NotificationFormCtrl.js',
         'NotificationCtrl': '/bundles/ubidelectricity/js/components/Notification/NotificationCtrl.js',
@@ -373,18 +382,54 @@ app.constant('APP_JS_REQUIRES', {
         'SectorsCtrl': '/bundles/ubidelectricity/js/components/Sector/SectorsCtrl.js',
         'SectorFormCtrl': '/bundles/ubidelectricity/js/components/Sector/SectorFormCtrl.js',
         'SectorCtrl': '/bundles/ubidelectricity/js/components/Sector/SectorCtrl.js',
+        'SuppliersCtrl': '/bundles/ubidelectricity/js/components/Supplier/SuppliersCtrl.js',
+        'SupplierFormCtrl': '/bundles/ubidelectricity/js/components/Supplier/SupplierFormCtrl.js',
+        'SupplierCtrl': '/bundles/ubidelectricity/js/components/Supplier/SupplierCtrl.js',
+        'SupplierProductsCtrl': '/bundles/ubidelectricity/js/components/SupplierProduct/SupplierProductsCtrl.js',
+        'SupplierProductFormCtrl': '/bundles/ubidelectricity/js/components/SupplierProduct/SupplierProductFormCtrl.js',
+        'SupplierProductCtrl': '/bundles/ubidelectricity/js/components/SupplierProduct/SupplierProductCtrl.js',
+        'SupplierTypesCtrl': '/bundles/ubidelectricity/js/components/SupplierType/SupplierTypesCtrl.js',
+        'SupplierTypeFormCtrl': '/bundles/ubidelectricity/js/components/SupplierType/SupplierTypeFormCtrl.js',
+        'SupplierTypeCtrl': '/bundles/ubidelectricity/js/components/SupplierType/SupplierTypeCtrl.js',
         'TendersCtrl': '/bundles/ubidelectricity/js/components/Tender/TendersCtrl.js',
         'TenderFormCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderFormCtrl.js',
         'TenderCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderCtrl.js',
-        'TenderCategoriesCtrl': '/bundles/ubidelectricity/js/components/TenderCategory/TenderCategoriesCtrl.js',
-        'TenderCategoryFormCtrl': '/bundles/ubidelectricity/js/components/TenderCategory/TenderCategoryFormCtrl.js',
-        'TenderCategoryCtrl': '/bundles/ubidelectricity/js/components/TenderCategory/TenderCategoryCtrl.js',
         'TenderProductsCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductsCtrl.js',
         'TenderProductFormCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductFormCtrl.js',
         'TenderProductCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductCtrl.js',
         'TenderTypesCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypesCtrl.js',
         'TenderTypeFormCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypeFormCtrl.js',
         'TenderTypeCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypeCtrl.js',
+        'TranslationBiddingTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypesCtrl.js',
+        'TranslationBiddingTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeFormCtrl.js',
+        'TranslationBiddingTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeCtrl.js',
+        'TranslationBuyerTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypesCtrl.js',
+        'TranslationBuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeFormCtrl.js',
+        'TranslationBuyerTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeCtrl.js',
+        'TranslationCategoriesCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoriesCtrl.js',
+        'TranslationCategoryFormCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryFormCtrl.js',
+        'TranslationCategoryCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryCtrl.js',
+        'TranslationMenusCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenusCtrl.js',
+        'TranslationMenuFormCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuFormCtrl.js',
+        'TranslationMenuCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuCtrl.js',
+        'TranslationMenuLinksCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinksCtrl.js',
+        'TranslationMenuLinkFormCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkFormCtrl.js',
+        'TranslationMenuLinkCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkCtrl.js',
+        'TranslationPostsCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostsCtrl.js',
+        'TranslationPostFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostFormCtrl.js',
+        'TranslationPostCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostCtrl.js',
+        'TranslationPostTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypesCtrl.js',
+        'TranslationPostTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeFormCtrl.js',
+        'TranslationPostTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeCtrl.js',
+        'TranslationProductTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypesCtrl.js',
+        'TranslationProductTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeFormCtrl.js',
+        'TranslationProductTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeCtrl.js',
+        'TranslationSupplierTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypesCtrl.js',
+        'TranslationSupplierTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeFormCtrl.js',
+        'TranslationSupplierTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeCtrl.js',
+        'TranslationTenderTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypesCtrl.js',
+        'TranslationTenderTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeFormCtrl.js',
+        'TranslationTenderTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeCtrl.js',
         'UsersCtrl': '/bundles/ubidelectricity/js/components/User/UsersCtrl.js',
         'UserFormCtrl': '/bundles/ubidelectricity/js/components/User/UserFormCtrl.js',
         'UserCtrl': '/bundles/ubidelectricity/js/components/User/UserCtrl.js',
@@ -411,6 +456,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
     },{
+        name: 'alertService',
+        files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
+    },{
         name: 'bannerService',
         files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
     },{
@@ -434,6 +482,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
+    },{
+        name: 'categoryService',
+        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
     },{
         name: 'clickService',
         files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
@@ -462,6 +513,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'menuLinkService',
         files: ['/bundles/ubidelectricity/js/components/MenuLink/MenuLinkService.js']
     },{
+        name: 'messageService',
+        files: ['/bundles/ubidelectricity/js/components/Message/MessageService.js']
+    },{
         name: 'notificationService',
         files: ['/bundles/ubidelectricity/js/components/Notification/NotificationService.js']
     },{
@@ -483,17 +537,53 @@ app.constant('APP_JS_REQUIRES', {
         name: 'sectorService',
         files: ['/bundles/ubidelectricity/js/components/Sector/SectorService.js']
     },{
+        name: 'supplierService',
+        files: ['/bundles/ubidelectricity/js/components/Supplier/SupplierService.js']
+    },{
+        name: 'supplierProductService',
+        files: ['/bundles/ubidelectricity/js/components/SupplierProduct/SupplierProductService.js']
+    },{
+        name: 'supplierTypeService',
+        files: ['/bundles/ubidelectricity/js/components/SupplierType/SupplierTypeService.js']
+    },{
         name: 'tenderService',
         files: ['/bundles/ubidelectricity/js/components/Tender/TenderService.js']
-    },{
-        name: 'tenderCategoryService',
-        files: ['/bundles/ubidelectricity/js/components/TenderCategory/TenderCategoryService.js']
     },{
         name: 'tenderProductService',
         files: ['/bundles/ubidelectricity/js/components/TenderProduct/TenderProductService.js']
     },{
         name: 'tenderTypeService',
         files: ['/bundles/ubidelectricity/js/components/TenderType/TenderTypeService.js']
+    },{
+        name: 'translationBiddingTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeService.js']
+    },{
+        name: 'translationBuyerTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeService.js']
+    },{
+        name: 'translationCategoryService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryService.js']
+    },{
+        name: 'translationMenuService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuService.js']
+    },{
+        name: 'translationMenuLinkService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkService.js']
+    },{
+        name: 'translationPostService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostService.js']
+    },{
+        name: 'translationPostTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeService.js']
+    },{
+        name: 'translationProductTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeService.js']
+    },{
+        name: 'translationSupplierTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeService.js']
+    },{
+        name: 'translationTenderTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeService.js']
     },{
         name: 'userService',
         files: ['/bundles/ubidelectricity/js/components/User/UserService.js']
@@ -712,7 +802,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'topbar.user.PROFILE'
         },
-        resolve: loadSequence('jquery-sparkline', 'ProfileCtrl', 'ProfileService', 'countryService')
+        resolve: loadSequence('ProfileCtrl', 'ProfileService', 'countryService')
     }).state('app.changepassword', {
         url: '/change-password',
         templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
@@ -720,7 +810,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'topbar.user.CHANGEPASSWORD'
         },
-        resolve: loadSequence('jquery-sparkline', 'ChangePasswordCtrl', 'ProfileService')
+        resolve: loadSequence('ChangePasswordCtrl', 'ProfileService')
     }).state('app.dashboard', {
         url: '/dashboard',
         templateUrl: '/bundles/ubidelectricity/js/components/Main/dashboard.html',
@@ -728,7 +818,303 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.DASHBOARD'
         },
-        resolve: loadSequence('jquery-sparkline', 'DashboardCtrl', 'DashboardService')
+        resolve: loadSequence('DashboardCtrl', 'DashboardService')
+    }).state('app.access', {
+        url: '/access',
+        template: '<div ui-view class="fade-in-up"></div>',
+        title: 'sidebar.nav.access.MAIN',
+        ncyBreadcrumb: {
+            label: 'sidebar.nav.access.MAIN'
+        }
+    }).state('app.access.notifications', {
+        url: '/notifications',
+        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notifications.html',
+        title: 'content.list.NOTIFICATIONS',
+        ncyBreadcrumb: {
+            label: 'content.list.NOTIFICATIONS'
+        },
+        params: {
+            'notificationsIsFiltersVisible': null,
+            'notificationsPage': null,
+            'notificationsCount': null,
+            'notificationsSorting': null,
+            'notificationsFilter': null
+        },
+        resolve: loadSequence('NotificationsCtrl', 'notificationService', 'userService')
+    }).state('app.access.notificationsnew', {
+        url: '/notifications/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
+        title: 'content.list.NEWNOTIFICATION',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWNOTIFICATION'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
+    }).state('app.access.notificationsedit', {
+        url: '/notifications/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
+        title: 'content.list.EDITNOTIFICATION',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITNOTIFICATION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
+    }).state('app.access.notificationsdetails', {
+        url: '/notifications/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification.html',
+        ncyBreadcrumb: {
+            label: 'content.list.NOTIFICATIONDETAILS'
+        },
+        resolve: loadSequence('NotificationCtrl', 'notificationService')
+    }).state('app.access.users', {
+        url: '/users',
+        templateUrl: '/bundles/ubidelectricity/js/components/User/users.html',
+        title: 'content.list.USERS',
+        ncyBreadcrumb: {
+            label: 'content.list.USERS'
+        },
+        params: {
+            'usersIsFiltersVisible': null,
+            'usersPage': null,
+            'usersCount': null,
+            'usersSorting': null,
+            'usersFilter': null
+        },
+        resolve: loadSequence('UsersCtrl', 'userService', 'countryService', 'languageService', 'groupService')
+    }).state('app.access.usersnew', {
+        url: '/users/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
+        title: 'content.list.NEWUSER',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWUSER'
+        },
+        params: {
+            'user_country': null,
+            'user_language': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
+    }).state('app.access.usersedit', {
+        url: '/users/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
+        title: 'content.list.EDITUSER',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITUSER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
+    }).state('app.access.usersdetails', {
+        url: '/users/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/User/user.html',
+        ncyBreadcrumb: {
+            label: 'content.list.USERDETAILS'
+        },
+        resolve: loadSequence('UserCtrl', 'userService')
+    }).state('app.access.alerts', {
+        url: '/alerts',
+        templateUrl: '/bundles/ubidelectricity/js/components/Alert/alerts.html',
+        title: 'content.list.ALERTS',
+        ncyBreadcrumb: {
+            label: 'content.list.ALERTS'
+        },
+        params: {
+            'alertsIsFiltersVisible': null,
+            'alertsPage': null,
+            'alertsCount': null,
+            'alertsSorting': null,
+            'alertsFilter': null
+        },
+        resolve: loadSequence('AlertsCtrl', 'alertService', 'categoryService', 'userService')
+    }).state('app.access.alertsnew', {
+        url: '/alerts/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Alert/alert_form.html',
+        title: 'content.list.NEWALERT',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWALERT'
+        },
+        params: {
+            'alert_category': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'AlertFormCtrl', 'alertService', 'categoryService', 'userService')
+    }).state('app.access.alertsedit', {
+        url: '/alerts/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Alert/alert_form.html',
+        title: 'content.list.EDITALERT',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITALERT'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'AlertFormCtrl', 'alertService', 'categoryService', 'userService')
+    }).state('app.access.alertsdetails', {
+        url: '/alerts/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Alert/alert.html',
+        ncyBreadcrumb: {
+            label: 'content.list.ALERTDETAILS'
+        },
+        resolve: loadSequence('AlertCtrl', 'alertService')
+    }).state('app.access.messages', {
+        url: '/messages',
+        templateUrl: '/bundles/ubidelectricity/js/components/Message/messages.html',
+        title: 'content.list.MESSAGES',
+        ncyBreadcrumb: {
+            label: 'content.list.MESSAGES'
+        },
+        params: {
+            'messagesIsFiltersVisible': null,
+            'messagesPage': null,
+            'messagesCount': null,
+            'messagesSorting': null,
+            'messagesFilter': null
+        },
+        resolve: loadSequence('MessagesCtrl', 'messageService', 'userService', 'buyerService', 'supplierService')
+    }).state('app.access.messagesnew', {
+        url: '/messages/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Message/message_form.html',
+        title: 'content.list.NEWMESSAGE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWMESSAGE'
+        },
+        params: {
+            'message_from_user': null,
+            'message_from_buyer': null,
+            'message_from_supplier': null,
+            'message_to_user': null,
+            'message_to_buyer': null,
+            'message_to_supplier': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService')
+    }).state('app.access.messagesedit', {
+        url: '/messages/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Message/message_form.html',
+        title: 'content.list.EDITMESSAGE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITMESSAGE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService')
+    }).state('app.access.messagesdetails', {
+        url: '/messages/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Message/message.html',
+        ncyBreadcrumb: {
+            label: 'content.list.MESSAGEDETAILS'
+        },
+        resolve: loadSequence('MessageCtrl', 'messageService')
+    }).state('app.access.groups', {
+        url: '/groups',
+        templateUrl: '/bundles/ubidelectricity/js/components/Group/groups.html',
+        title: 'content.list.GROUPS',
+        ncyBreadcrumb: {
+            label: 'content.list.GROUPS'
+        },
+        params: {
+            'groupsIsFiltersVisible': null,
+            'groupsPage': null,
+            'groupsCount': null,
+            'groupsSorting': null,
+            'groupsFilter': null
+        },
+        resolve: loadSequence('GroupsCtrl', 'groupService', 'userService')
+    }).state('app.access.groupsnew', {
+        url: '/groups/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
+        title: 'content.list.NEWGROUP',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWGROUP'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
+    }).state('app.access.groupsedit', {
+        url: '/groups/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
+        title: 'content.list.EDITGROUP',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITGROUP'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
+    }).state('app.access.groupsdetails', {
+        url: '/groups/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Group/group.html',
+        ncyBreadcrumb: {
+            label: 'content.list.GROUPDETAILS'
+        },
+        resolve: loadSequence('GroupCtrl', 'groupService')
+    }).state('app.access.logs', {
+        url: '/logs',
+        templateUrl: '/bundles/ubidelectricity/js/components/Log/logs.html',
+        title: 'content.list.LOGS',
+        ncyBreadcrumb: {
+            label: 'content.list.LOGS'
+        },
+        params: {
+            'logsIsFiltersVisible': null,
+            'logsPage': null,
+            'logsCount': null,
+            'logsSorting': null,
+            'logsFilter': null
+        },
+        resolve: loadSequence('LogsCtrl', 'logService', 'userService')
+    }).state('app.access.logsnew', {
+        url: '/logs/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
+        title: 'content.list.NEWLOG',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWLOG'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
+    }).state('app.access.logsedit', {
+        url: '/logs/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
+        title: 'content.list.EDITLOG',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITLOG'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
+    }).state('app.access.logsdetails', {
+        url: '/logs/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Log/log.html',
+        ncyBreadcrumb: {
+            label: 'content.list.LOGDETAILS'
+        },
+        resolve: loadSequence('LogCtrl', 'logService')
+    }).state('app.access.usersettings', {
+        url: '/user-settings',
+        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_settings.html',
+        title: 'content.list.USERSETTINGS',
+        ncyBreadcrumb: {
+            label: 'content.list.USERSETTINGS'
+        },
+        params: {
+            'userSettingsIsFiltersVisible': null,
+            'userSettingsPage': null,
+            'userSettingsCount': null,
+            'userSettingsSorting': null,
+            'userSettingsFilter': null
+        },
+        resolve: loadSequence('UserSettingsCtrl', 'userSettingService', 'userService')
+    }).state('app.access.usersettingsnew', {
+        url: '/user-settings/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
+        title: 'content.list.NEWUSERSETTING',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWUSERSETTING'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
+    }).state('app.access.usersettingsedit', {
+        url: '/user-settings/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
+        title: 'content.list.EDITUSERSETTING',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITUSERSETTING'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
+    }).state('app.access.usersettingsdetails', {
+        url: '/user-settings/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting.html',
+        ncyBreadcrumb: {
+            label: 'content.list.USERSETTINGDETAILS'
+        },
+        resolve: loadSequence('UserSettingCtrl', 'userSettingService')
     }).state('app.adserving', {
         url: '/adserving',
         template: '<div ui-view class="fade-in-up"></div>',
@@ -743,6 +1129,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BANNERS'
         },
+        params: {
+            'bannersIsFiltersVisible': null,
+            'bannersPage': null,
+            'bannersCount': null,
+            'bannersSorting': null,
+            'bannersFilter': null
+        },
         resolve: loadSequence('BannersCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
     }).state('app.adserving.bannersnew', {
         url: '/banners/new',
@@ -750,6 +1143,9 @@ function ($stateProvider) {
         title: 'content.list.NEWBANNER',
         ncyBreadcrumb: {
             label: 'content.list.NEWBANNER'
+        },
+        params: {
+            'banner_banner_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerFormCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
     }).state('app.adserving.bannersedit', {
@@ -774,6 +1170,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BANNERTYPES'
         },
+        params: {
+            'bannerTypesIsFiltersVisible': null,
+            'bannerTypesPage': null,
+            'bannerTypesCount': null,
+            'bannerTypesSorting': null,
+            'bannerTypesFilter': null
+        },
         resolve: loadSequence('BannerTypesCtrl', 'bannerTypeService', 'userService')
     }).state('app.adserving.bannertypesnew', {
         url: '/banner-types/new',
@@ -781,6 +1184,8 @@ function ($stateProvider) {
         title: 'content.list.NEWBANNERTYPE',
         ncyBreadcrumb: {
             label: 'content.list.NEWBANNERTYPE'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerTypeFormCtrl', 'bannerTypeService', 'userService')
     }).state('app.adserving.bannertypesedit', {
@@ -805,6 +1210,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BANNERPOSITIONS'
         },
+        params: {
+            'bannerPositionsIsFiltersVisible': null,
+            'bannerPositionsPage': null,
+            'bannerPositionsCount': null,
+            'bannerPositionsSorting': null,
+            'bannerPositionsFilter': null
+        },
         resolve: loadSequence('BannerPositionsCtrl', 'bannerPositionService', 'userService')
     }).state('app.adserving.bannerpositionsnew', {
         url: '/banner-positions/new',
@@ -812,6 +1224,8 @@ function ($stateProvider) {
         title: 'content.list.NEWBANNERPOSITION',
         ncyBreadcrumb: {
             label: 'content.list.NEWBANNERPOSITION'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerPositionFormCtrl', 'bannerPositionService', 'userService')
     }).state('app.adserving.bannerpositionsedit', {
@@ -836,6 +1250,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.CLICKS'
         },
+        params: {
+            'clicksIsFiltersVisible': null,
+            'clicksPage': null,
+            'clicksCount': null,
+            'clicksSorting': null,
+            'clicksFilter': null
+        },
         resolve: loadSequence('ClicksCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
     }).state('app.adserving.clicksnew', {
         url: '/clicks/new',
@@ -843,6 +1264,10 @@ function ($stateProvider) {
         title: 'content.list.NEWCLICK',
         ncyBreadcrumb: {
             label: 'content.list.NEWCLICK'
+        },
+        params: {
+            'click_visit': null,
+            'click_banner': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ClickFormCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
     }).state('app.adserving.clicksedit', {
@@ -867,6 +1292,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.IMPRESSIONS'
         },
+        params: {
+            'impressionsIsFiltersVisible': null,
+            'impressionsPage': null,
+            'impressionsCount': null,
+            'impressionsSorting': null,
+            'impressionsFilter': null
+        },
         resolve: loadSequence('ImpressionsCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
     }).state('app.adserving.impressionsnew', {
         url: '/impressions/new',
@@ -874,6 +1306,10 @@ function ($stateProvider) {
         title: 'content.list.NEWIMPRESSION',
         ncyBreadcrumb: {
             label: 'content.list.NEWIMPRESSION'
+        },
+        params: {
+            'impression_visit': null,
+            'impression_banner': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ImpressionFormCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
     }).state('app.adserving.impressionsedit', {
@@ -905,6 +1341,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BUYERS'
         },
+        params: {
+            'buyersIsFiltersVisible': null,
+            'buyersPage': null,
+            'buyersCount': null,
+            'buyersSorting': null,
+            'buyersFilter': null
+        },
         resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
     }).state('app.marketplace.buyersnew', {
         url: '/buyers/new',
@@ -912,6 +1355,11 @@ function ($stateProvider) {
         title: 'content.list.NEWBUYER',
         ncyBreadcrumb: {
             label: 'content.list.NEWBUYER'
+        },
+        params: {
+            'buyer_buyer_type': null,
+            'buyer_country': null,
+            'buyer_language': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
     }).state('app.marketplace.buyersedit', {
@@ -929,6 +1377,49 @@ function ($stateProvider) {
             label: 'content.list.BUYERDETAILS'
         },
         resolve: loadSequence('BuyerCtrl', 'buyerService')
+    }).state('app.marketplace.suppliers', {
+        url: '/suppliers',
+        templateUrl: '/bundles/ubidelectricity/js/components/Supplier/suppliers.html',
+        title: 'content.list.SUPPLIERS',
+        ncyBreadcrumb: {
+            label: 'content.list.SUPPLIERS'
+        },
+        params: {
+            'suppliersIsFiltersVisible': null,
+            'suppliersPage': null,
+            'suppliersCount': null,
+            'suppliersSorting': null,
+            'suppliersFilter': null
+        },
+        resolve: loadSequence('SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.suppliersnew', {
+        url: '/suppliers/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
+        title: 'content.list.NEWSUPPLIER',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWSUPPLIER'
+        },
+        params: {
+            'supplier_supplier_type': null,
+            'supplier_country': null,
+            'supplier_language': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.suppliersedit', {
+        url: '/suppliers/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
+        title: 'content.list.EDITSUPPLIER',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITSUPPLIER'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'userService')
+    }).state('app.marketplace.suppliersdetails', {
+        url: '/suppliers/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier.html',
+        ncyBreadcrumb: {
+            label: 'content.list.SUPPLIERDETAILS'
+        },
+        resolve: loadSequence('SupplierCtrl', 'supplierService')
     }).state('app.marketplace.tenders', {
         url: '/tenders',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tenders.html',
@@ -936,7 +1427,14 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.TENDERS'
         },
-        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        params: {
+            'tendersIsFiltersVisible': null,
+            'tendersPage': null,
+            'tendersCount': null,
+            'tendersSorting': null,
+            'tendersFilter': null
+        },
+        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
     }).state('app.marketplace.tendersnew', {
         url: '/tenders/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -944,7 +1442,15 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.NEWTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        params: {
+            'tender_buyer': null,
+            'tender_region': null,
+            'tender_country': null,
+            'tender_sector': null,
+            'tender_tender_type': null,
+            'tender_bidding_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
     }).state('app.marketplace.tendersedit', {
         url: '/tenders/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -952,7 +1458,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITTENDER'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
     }).state('app.marketplace.tendersdetails', {
         url: '/tenders/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender.html',
@@ -967,6 +1473,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.TENDERPRODUCTS'
         },
+        params: {
+            'tenderProductsIsFiltersVisible': null,
+            'tenderProductsPage': null,
+            'tenderProductsCount': null,
+            'tenderProductsSorting': null,
+            'tenderProductsFilter': null
+        },
         resolve: loadSequence('TenderProductsCtrl', 'tenderProductService', 'tenderService', 'productTypeService', 'userService')
     }).state('app.marketplace.tenderproductsnew', {
         url: '/tender-products/new',
@@ -974,6 +1487,10 @@ function ($stateProvider) {
         title: 'content.list.NEWTENDERPRODUCT',
         ncyBreadcrumb: {
             label: 'content.list.NEWTENDERPRODUCT'
+        },
+        params: {
+            'tender_product_tender': null,
+            'tender_product_product_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderProductFormCtrl', 'tenderProductService', 'tenderService', 'productTypeService', 'userService')
     }).state('app.marketplace.tenderproductsedit', {
@@ -998,7 +1515,14 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BIDS'
         },
-        resolve: loadSequence('BidsCtrl', 'bidService', 'tenderService', 'userService')
+        params: {
+            'bidsIsFiltersVisible': null,
+            'bidsPage': null,
+            'bidsCount': null,
+            'bidsSorting': null,
+            'bidsFilter': null
+        },
+        resolve: loadSequence('BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
     }).state('app.marketplace.bidsnew', {
         url: '/bids/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid_form.html',
@@ -1006,7 +1530,11 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.NEWBID'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'userService')
+        params: {
+            'bid_tender': null,
+            'bid_supplier': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
     }).state('app.marketplace.bidsedit', {
         url: '/bids/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid_form.html',
@@ -1014,7 +1542,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITBID'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'userService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
     }).state('app.marketplace.bidsdetails', {
         url: '/bids/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid.html',
@@ -1022,6 +1550,48 @@ function ($stateProvider) {
             label: 'content.list.BIDDETAILS'
         },
         resolve: loadSequence('BidCtrl', 'bidService')
+    }).state('app.marketplace.supplierproducts', {
+        url: '/supplier-products',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_products.html',
+        title: 'content.list.SUPPLIERPRODUCTS',
+        ncyBreadcrumb: {
+            label: 'content.list.SUPPLIERPRODUCTS'
+        },
+        params: {
+            'supplierProductsIsFiltersVisible': null,
+            'supplierProductsPage': null,
+            'supplierProductsCount': null,
+            'supplierProductsSorting': null,
+            'supplierProductsFilter': null
+        },
+        resolve: loadSequence('SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+    }).state('app.marketplace.supplierproductsnew', {
+        url: '/supplier-products/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product_form.html',
+        title: 'content.list.NEWSUPPLIERPRODUCT',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWSUPPLIERPRODUCT'
+        },
+        params: {
+            'supplier_product_supplier': null,
+            'supplier_product_category': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+    }).state('app.marketplace.supplierproductsedit', {
+        url: '/supplier-products/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product_form.html',
+        title: 'content.list.EDITSUPPLIERPRODUCT',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITSUPPLIERPRODUCT'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+    }).state('app.marketplace.supplierproductsdetails', {
+        url: '/supplier-products/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product.html',
+        ncyBreadcrumb: {
+            label: 'content.list.SUPPLIERPRODUCTDETAILS'
+        },
+        resolve: loadSequence('SupplierProductCtrl', 'supplierProductService')
     }).state('app.marketplace.bidproducts', {
         url: '/bid-products',
         templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_products.html',
@@ -1029,7 +1599,14 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.BIDPRODUCTS'
         },
-        resolve: loadSequence('BidProductsCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
+        params: {
+            'bidProductsIsFiltersVisible': null,
+            'bidProductsPage': null,
+            'bidProductsCount': null,
+            'bidProductsSorting': null,
+            'bidProductsFilter': null
+        },
+        resolve: loadSequence('BidProductsCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'supplierProductService', 'userService')
     }).state('app.marketplace.bidproductsnew', {
         url: '/bid-products/new',
         templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product_form.html',
@@ -1037,7 +1614,12 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.NEWBIDPRODUCT'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
+        params: {
+            'bid_product_tender_product': null,
+            'bid_product_bid': null,
+            'bid_product_supplier_product': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'supplierProductService', 'userService')
     }).state('app.marketplace.bidproductsedit', {
         url: '/bid-products/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product_form.html',
@@ -1045,7 +1627,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITBIDPRODUCT'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'supplierProductService', 'userService')
     }).state('app.marketplace.bidproductsdetails', {
         url: '/bid-products/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product.html',
@@ -1053,30 +1635,39 @@ function ($stateProvider) {
             label: 'content.list.BIDPRODUCTDETAILS'
         },
         resolve: loadSequence('BidProductCtrl', 'bidProductService')
-    }).state('app.tenders', {
-        url: '/tenders',
+    }).state('app.lists', {
+        url: '/lists',
         template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.tenders.MAIN',
+        title: 'sidebar.nav.lists.MAIN',
         ncyBreadcrumb: {
-            label: 'sidebar.nav.tenders.MAIN'
+            label: 'sidebar.nav.lists.MAIN'
         }
-    }).state('app.tenders.sectors', {
+    }).state('app.lists.sectors', {
         url: '/sectors',
         templateUrl: '/bundles/ubidelectricity/js/components/Sector/sectors.html',
         title: 'content.list.SECTORS',
         ncyBreadcrumb: {
             label: 'content.list.SECTORS'
         },
+        params: {
+            'sectorsIsFiltersVisible': null,
+            'sectorsPage': null,
+            'sectorsCount': null,
+            'sectorsSorting': null,
+            'sectorsFilter': null
+        },
         resolve: loadSequence('SectorsCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsnew', {
+    }).state('app.lists.sectorsnew', {
         url: '/sectors/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector_form.html',
         title: 'content.list.NEWSECTOR',
         ncyBreadcrumb: {
             label: 'content.list.NEWSECTOR'
         },
+        params: {
+        },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SectorFormCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsedit', {
+    }).state('app.lists.sectorsedit', {
         url: '/sectors/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector_form.html',
         title: 'content.list.EDITSECTOR',
@@ -1084,61 +1675,39 @@ function ($stateProvider) {
             label: 'content.list.EDITSECTOR'
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SectorFormCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsdetails', {
+    }).state('app.lists.sectorsdetails', {
         url: '/sectors/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector.html',
         ncyBreadcrumb: {
             label: 'content.list.SECTORDETAILS'
         },
         resolve: loadSequence('SectorCtrl', 'sectorService')
-    }).state('app.tenders.tendercategories', {
-        url: '/tender-categories',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_categories.html',
-        title: 'content.list.TENDERCATEGORIES',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERCATEGORIES'
-        },
-        resolve: loadSequence('TenderCategoriesCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesnew', {
-        url: '/tender-categories/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category_form.html',
-        title: 'content.list.NEWTENDERCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTENDERCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderCategoryFormCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesedit', {
-        url: '/tender-categories/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category_form.html',
-        title: 'content.list.EDITTENDERCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTENDERCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderCategoryFormCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesdetails', {
-        url: '/tender-categories/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERCATEGORYDETAILS'
-        },
-        resolve: loadSequence('TenderCategoryCtrl', 'tenderCategoryService')
-    }).state('app.tenders.buyertypes', {
+    }).state('app.lists.buyertypes', {
         url: '/buyer-types',
         templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_types.html',
         title: 'content.list.BUYERTYPES',
         ncyBreadcrumb: {
             label: 'content.list.BUYERTYPES'
         },
+        params: {
+            'buyerTypesIsFiltersVisible': null,
+            'buyerTypesPage': null,
+            'buyerTypesCount': null,
+            'buyerTypesSorting': null,
+            'buyerTypesFilter': null
+        },
         resolve: loadSequence('BuyerTypesCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesnew', {
+    }).state('app.lists.buyertypesnew', {
         url: '/buyer-types/new',
         templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
         title: 'content.list.NEWBUYERTYPE',
         ncyBreadcrumb: {
             label: 'content.list.NEWBUYERTYPE'
         },
+        params: {
+        },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesedit', {
+    }).state('app.lists.buyertypesedit', {
         url: '/buyer-types/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
         title: 'content.list.EDITBUYERTYPE',
@@ -1146,61 +1715,121 @@ function ($stateProvider) {
             label: 'content.list.EDITBUYERTYPE'
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesdetails', {
+    }).state('app.lists.buyertypesdetails', {
         url: '/buyer-types/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type.html',
         ncyBreadcrumb: {
             label: 'content.list.BUYERTYPEDETAILS'
         },
         resolve: loadSequence('BuyerTypeCtrl', 'buyerTypeService')
-    }).state('app.tenders.producttypes', {
-        url: '/product-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',
-        title: 'content.list.PRODUCTTYPES',
+    }).state('app.lists.suppliertypes', {
+        url: '/supplier-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierType/supplier_types.html',
+        title: 'content.list.SUPPLIERTYPES',
         ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPES'
+            label: 'content.list.SUPPLIERTYPES'
         },
-        resolve: loadSequence('ProductTypesCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesnew', {
-        url: '/product-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.NEWPRODUCTTYPE',
+        params: {
+            'supplierTypesIsFiltersVisible': null,
+            'supplierTypesPage': null,
+            'supplierTypesCount': null,
+            'supplierTypesSorting': null,
+            'supplierTypesFilter': null
+        },
+        resolve: loadSequence('SupplierTypesCtrl', 'supplierTypeService', 'userService')
+    }).state('app.lists.suppliertypesnew', {
+        url: '/supplier-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierType/supplier_type_form.html',
+        title: 'content.list.NEWSUPPLIERTYPE',
         ncyBreadcrumb: {
-            label: 'content.list.NEWPRODUCTTYPE'
+            label: 'content.list.NEWSUPPLIERTYPE'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesedit', {
-        url: '/product-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.EDITPRODUCTTYPE',
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierTypeFormCtrl', 'supplierTypeService', 'userService')
+    }).state('app.lists.suppliertypesedit', {
+        url: '/supplier-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierType/supplier_type_form.html',
+        title: 'content.list.EDITSUPPLIERTYPE',
         ncyBreadcrumb: {
-            label: 'content.list.EDITPRODUCTTYPE'
+            label: 'content.list.EDITSUPPLIERTYPE'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesdetails', {
-        url: '/product-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type.html',
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierTypeFormCtrl', 'supplierTypeService', 'userService')
+    }).state('app.lists.suppliertypesdetails', {
+        url: '/supplier-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/SupplierType/supplier_type.html',
         ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPEDETAILS'
+            label: 'content.list.SUPPLIERTYPEDETAILS'
         },
-        resolve: loadSequence('ProductTypeCtrl', 'productTypeService')
-    }).state('app.tenders.tendertypes', {
+        resolve: loadSequence('SupplierTypeCtrl', 'supplierTypeService')
+    }).state('app.lists.categories', {
+        url: '/categories',
+        templateUrl: '/bundles/ubidelectricity/js/components/Category/categories.html',
+        title: 'content.list.CATEGORIES',
+        ncyBreadcrumb: {
+            label: 'content.list.CATEGORIES'
+        },
+        params: {
+            'categoriesIsFiltersVisible': null,
+            'categoriesPage': null,
+            'categoriesCount': null,
+            'categoriesSorting': null,
+            'categoriesFilter': null
+        },
+        resolve: loadSequence('CategoriesCtrl', 'categoryService', 'productTypeService', 'userService')
+    }).state('app.lists.categoriesnew', {
+        url: '/categories/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/Category/category_form.html',
+        title: 'content.list.NEWCATEGORY',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWCATEGORY'
+        },
+        params: {
+            'category_parent': null,
+            'category_product_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService')
+    }).state('app.lists.categoriesedit', {
+        url: '/categories/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Category/category_form.html',
+        title: 'content.list.EDITCATEGORY',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITCATEGORY'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService')
+    }).state('app.lists.categoriesdetails', {
+        url: '/categories/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/Category/category.html',
+        ncyBreadcrumb: {
+            label: 'content.list.CATEGORYDETAILS'
+        },
+        resolve: loadSequence('CategoryCtrl', 'categoryService')
+    }).state('app.lists.tendertypes', {
         url: '/tender-types',
         templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_types.html',
         title: 'content.list.TENDERTYPES',
         ncyBreadcrumb: {
             label: 'content.list.TENDERTYPES'
         },
+        params: {
+            'tenderTypesIsFiltersVisible': null,
+            'tenderTypesPage': null,
+            'tenderTypesCount': null,
+            'tenderTypesSorting': null,
+            'tenderTypesFilter': null
+        },
         resolve: loadSequence('TenderTypesCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesnew', {
+    }).state('app.lists.tendertypesnew', {
         url: '/tender-types/new',
         templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type_form.html',
         title: 'content.list.NEWTENDERTYPE',
         ncyBreadcrumb: {
             label: 'content.list.NEWTENDERTYPE'
         },
+        params: {
+        },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderTypeFormCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesedit', {
+    }).state('app.lists.tendertypesedit', {
         url: '/tender-types/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type_form.html',
         title: 'content.list.EDITTENDERTYPE',
@@ -1208,30 +1837,79 @@ function ($stateProvider) {
             label: 'content.list.EDITTENDERTYPE'
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderTypeFormCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesdetails', {
+    }).state('app.lists.tendertypesdetails', {
         url: '/tender-types/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type.html',
         ncyBreadcrumb: {
             label: 'content.list.TENDERTYPEDETAILS'
         },
         resolve: loadSequence('TenderTypeCtrl', 'tenderTypeService')
-    }).state('app.tenders.biddingtypes', {
+    }).state('app.lists.producttypes', {
+        url: '/product-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',
+        title: 'content.list.PRODUCTTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.PRODUCTTYPES'
+        },
+        params: {
+            'productTypesIsFiltersVisible': null,
+            'productTypesPage': null,
+            'productTypesCount': null,
+            'productTypesSorting': null,
+            'productTypesFilter': null
+        },
+        resolve: loadSequence('ProductTypesCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesnew', {
+        url: '/product-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
+        title: 'content.list.NEWPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWPRODUCTTYPE'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesedit', {
+        url: '/product-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
+        title: 'content.list.EDITPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITPRODUCTTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesdetails', {
+        url: '/product-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.PRODUCTTYPEDETAILS'
+        },
+        resolve: loadSequence('ProductTypeCtrl', 'productTypeService')
+    }).state('app.lists.biddingtypes', {
         url: '/bidding-types',
         templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_types.html',
         title: 'content.list.BIDDINGTYPES',
         ncyBreadcrumb: {
             label: 'content.list.BIDDINGTYPES'
         },
+        params: {
+            'biddingTypesIsFiltersVisible': null,
+            'biddingTypesPage': null,
+            'biddingTypesCount': null,
+            'biddingTypesSorting': null,
+            'biddingTypesFilter': null
+        },
         resolve: loadSequence('BiddingTypesCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesnew', {
+    }).state('app.lists.biddingtypesnew', {
         url: '/bidding-types/new',
         templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type_form.html',
         title: 'content.list.NEWBIDDINGTYPE',
         ncyBreadcrumb: {
             label: 'content.list.NEWBIDDINGTYPE'
         },
+        params: {
+        },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BiddingTypeFormCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesedit', {
+    }).state('app.lists.biddingtypesedit', {
         url: '/bidding-types/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type_form.html',
         title: 'content.list.EDITBIDDINGTYPE',
@@ -1239,7 +1917,7 @@ function ($stateProvider) {
             label: 'content.list.EDITBIDDINGTYPE'
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BiddingTypeFormCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesdetails', {
+    }).state('app.lists.biddingtypesdetails', {
         url: '/bidding-types/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type.html',
         ncyBreadcrumb: {
@@ -1260,6 +1938,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.LANGUAGES'
         },
+        params: {
+            'languagesIsFiltersVisible': null,
+            'languagesPage': null,
+            'languagesCount': null,
+            'languagesSorting': null,
+            'languagesFilter': null
+        },
         resolve: loadSequence('LanguagesCtrl', 'languageService', 'userService')
     }).state('app.settings.languagesnew', {
         url: '/languages/new',
@@ -1267,6 +1952,8 @@ function ($stateProvider) {
         title: 'content.list.NEWLANGUAGE',
         ncyBreadcrumb: {
             label: 'content.list.NEWLANGUAGE'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LanguageFormCtrl', 'languageService', 'userService')
     }).state('app.settings.languagesedit', {
@@ -1291,6 +1978,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.COUNTRIES'
         },
+        params: {
+            'countriesIsFiltersVisible': null,
+            'countriesPage': null,
+            'countriesCount': null,
+            'countriesSorting': null,
+            'countriesFilter': null
+        },
         resolve: loadSequence('CountriesCtrl', 'countryService', 'regionService', 'userService')
     }).state('app.settings.countriesnew', {
         url: '/countries/new',
@@ -1298,6 +1992,9 @@ function ($stateProvider) {
         title: 'content.list.NEWCOUNTRY',
         ncyBreadcrumb: {
             label: 'content.list.NEWCOUNTRY'
+        },
+        params: {
+            'country_region': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CountryFormCtrl', 'countryService', 'regionService', 'userService')
     }).state('app.settings.countriesedit', {
@@ -1322,6 +2019,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.REGIONS'
         },
+        params: {
+            'regionsIsFiltersVisible': null,
+            'regionsPage': null,
+            'regionsCount': null,
+            'regionsSorting': null,
+            'regionsFilter': null
+        },
         resolve: loadSequence('RegionsCtrl', 'regionService', 'userService')
     }).state('app.settings.regionsnew', {
         url: '/regions/new',
@@ -1329,6 +2033,8 @@ function ($stateProvider) {
         title: 'content.list.NEWREGION',
         ncyBreadcrumb: {
             label: 'content.list.NEWREGION'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'RegionFormCtrl', 'regionService', 'userService')
     }).state('app.settings.regionsedit', {
@@ -1353,6 +2059,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.MENUS'
         },
+        params: {
+            'menusIsFiltersVisible': null,
+            'menusPage': null,
+            'menusCount': null,
+            'menusSorting': null,
+            'menusFilter': null
+        },
         resolve: loadSequence('MenusCtrl', 'menuService', 'userService')
     }).state('app.settings.menusnew', {
         url: '/menus/new',
@@ -1360,6 +2073,8 @@ function ($stateProvider) {
         title: 'content.list.NEWMENU',
         ncyBreadcrumb: {
             label: 'content.list.NEWMENU'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuFormCtrl', 'menuService', 'userService')
     }).state('app.settings.menusedit', {
@@ -1384,6 +2099,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.MENULINKS'
         },
+        params: {
+            'menuLinksIsFiltersVisible': null,
+            'menuLinksPage': null,
+            'menuLinksCount': null,
+            'menuLinksSorting': null,
+            'menuLinksFilter': null
+        },
         resolve: loadSequence('MenuLinksCtrl', 'menuLinkService', 'menuService', 'userService')
     }).state('app.settings.menulinksnew', {
         url: '/menu-links/new',
@@ -1391,6 +2113,9 @@ function ($stateProvider) {
         title: 'content.list.NEWMENULINK',
         ncyBreadcrumb: {
             label: 'content.list.NEWMENULINK'
+        },
+        params: {
+            'menu_link_menu': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuLinkFormCtrl', 'menuLinkService', 'menuService', 'userService')
     }).state('app.settings.menulinksedit', {
@@ -1408,168 +2133,6 @@ function ($stateProvider) {
             label: 'content.list.MENULINKDETAILS'
         },
         resolve: loadSequence('MenuLinkCtrl', 'menuLinkService')
-    }).state('app.access', {
-        url: '/access',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.access.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.access.MAIN'
-        }
-    }).state('app.access.users', {
-        url: '/users',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/users.html',
-        title: 'content.list.USERS',
-        ncyBreadcrumb: {
-            label: 'content.list.USERS'
-        },
-        resolve: loadSequence('UsersCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersnew', {
-        url: '/users/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
-        title: 'content.list.NEWUSER',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWUSER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersedit', {
-        url: '/users/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
-        title: 'content.list.EDITUSER',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITUSER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersdetails', {
-        url: '/users/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user.html',
-        ncyBreadcrumb: {
-            label: 'content.list.USERDETAILS'
-        },
-        resolve: loadSequence('UserCtrl', 'userService')
-    }).state('app.access.notifications', {
-        url: '/notifications',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notifications.html',
-        title: 'content.list.NOTIFICATIONS',
-        ncyBreadcrumb: {
-            label: 'content.list.NOTIFICATIONS'
-        },
-        resolve: loadSequence('NotificationsCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsnew', {
-        url: '/notifications/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
-        title: 'content.list.NEWNOTIFICATION',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWNOTIFICATION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsedit', {
-        url: '/notifications/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
-        title: 'content.list.EDITNOTIFICATION',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITNOTIFICATION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsdetails', {
-        url: '/notifications/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification.html',
-        ncyBreadcrumb: {
-            label: 'content.list.NOTIFICATIONDETAILS'
-        },
-        resolve: loadSequence('NotificationCtrl', 'notificationService')
-    }).state('app.access.groups', {
-        url: '/groups',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/groups.html',
-        title: 'content.list.GROUPS',
-        ncyBreadcrumb: {
-            label: 'content.list.GROUPS'
-        },
-        resolve: loadSequence('GroupsCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsnew', {
-        url: '/groups/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
-        title: 'content.list.NEWGROUP',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWGROUP'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsedit', {
-        url: '/groups/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
-        title: 'content.list.EDITGROUP',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITGROUP'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsdetails', {
-        url: '/groups/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group.html',
-        ncyBreadcrumb: {
-            label: 'content.list.GROUPDETAILS'
-        },
-        resolve: loadSequence('GroupCtrl', 'groupService')
-    }).state('app.access.logs', {
-        url: '/logs',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/logs.html',
-        title: 'content.list.LOGS',
-        ncyBreadcrumb: {
-            label: 'content.list.LOGS'
-        },
-        resolve: loadSequence('LogsCtrl', 'logService', 'userService')
-    }).state('app.access.logsnew', {
-        url: '/logs/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
-        title: 'content.list.NEWLOG',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWLOG'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
-    }).state('app.access.logsedit', {
-        url: '/logs/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
-        title: 'content.list.EDITLOG',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITLOG'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
-    }).state('app.access.logsdetails', {
-        url: '/logs/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log.html',
-        ncyBreadcrumb: {
-            label: 'content.list.LOGDETAILS'
-        },
-        resolve: loadSequence('LogCtrl', 'logService')
-    }).state('app.access.usersettings', {
-        url: '/user-settings',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_settings.html',
-        title: 'content.list.USERSETTINGS',
-        ncyBreadcrumb: {
-            label: 'content.list.USERSETTINGS'
-        },
-        resolve: loadSequence('UserSettingsCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsnew', {
-        url: '/user-settings/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
-        title: 'content.list.NEWUSERSETTING',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWUSERSETTING'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsedit', {
-        url: '/user-settings/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
-        title: 'content.list.EDITUSERSETTING',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITUSERSETTING'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsdetails', {
-        url: '/user-settings/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting.html',
-        ncyBreadcrumb: {
-            label: 'content.list.USERSETTINGDETAILS'
-        },
-        resolve: loadSequence('UserSettingCtrl', 'userSettingService')
     }).state('app.statistics', {
         url: '/statistics',
         template: '<div ui-view class="fade-in-up"></div>',
@@ -1584,6 +2147,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.HITS'
         },
+        params: {
+            'hitsIsFiltersVisible': null,
+            'hitsPage': null,
+            'hitsCount': null,
+            'hitsSorting': null,
+            'hitsFilter': null
+        },
         resolve: loadSequence('HitsCtrl', 'hitService', 'visitService', 'userService')
     }).state('app.statistics.hitsnew', {
         url: '/hits/new',
@@ -1591,6 +2161,9 @@ function ($stateProvider) {
         title: 'content.list.NEWHIT',
         ncyBreadcrumb: {
             label: 'content.list.NEWHIT'
+        },
+        params: {
+            'hit_visit': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'HitFormCtrl', 'hitService', 'visitService', 'userService')
     }).state('app.statistics.hitsedit', {
@@ -1615,6 +2188,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.VISITS'
         },
+        params: {
+            'visitsIsFiltersVisible': null,
+            'visitsPage': null,
+            'visitsCount': null,
+            'visitsSorting': null,
+            'visitsFilter': null
+        },
         resolve: loadSequence('VisitsCtrl', 'visitService', 'userService')
     }).state('app.statistics.visitsnew', {
         url: '/visits/new',
@@ -1622,6 +2202,8 @@ function ($stateProvider) {
         title: 'content.list.NEWVISIT',
         ncyBreadcrumb: {
             label: 'content.list.NEWVISIT'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'VisitFormCtrl', 'visitService', 'userService')
     }).state('app.statistics.visitsedit', {
@@ -1653,6 +2235,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.POSTS'
         },
+        params: {
+            'postsIsFiltersVisible': null,
+            'postsPage': null,
+            'postsCount': null,
+            'postsSorting': null,
+            'postsFilter': null
+        },
         resolve: loadSequence('PostsCtrl', 'postService', 'postTypeService', 'userService', 'postCategoryService')
     }).state('app.news.postsnew', {
         url: '/posts/new',
@@ -1660,6 +2249,9 @@ function ($stateProvider) {
         title: 'content.list.NEWPOST',
         ncyBreadcrumb: {
             label: 'content.list.NEWPOST'
+        },
+        params: {
+            'post_post_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostFormCtrl', 'postService', 'postTypeService', 'userService', 'postCategoryService')
     }).state('app.news.postsedit', {
@@ -1684,6 +2276,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.POSTCATEGORIES'
         },
+        params: {
+            'postCategoriesIsFiltersVisible': null,
+            'postCategoriesPage': null,
+            'postCategoriesCount': null,
+            'postCategoriesSorting': null,
+            'postCategoriesFilter': null
+        },
         resolve: loadSequence('PostCategoriesCtrl', 'postCategoryService', 'postTypeService', 'userService')
     }).state('app.news.postcategoriesnew', {
         url: '/post-categories/new',
@@ -1691,6 +2290,10 @@ function ($stateProvider) {
         title: 'content.list.NEWPOSTCATEGORY',
         ncyBreadcrumb: {
             label: 'content.list.NEWPOSTCATEGORY'
+        },
+        params: {
+            'post_category_parent': null,
+            'post_category_post_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostCategoryFormCtrl', 'postCategoryService', 'postTypeService', 'userService')
     }).state('app.news.postcategoriesedit', {
@@ -1715,6 +2318,13 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.POSTTYPES'
         },
+        params: {
+            'postTypesIsFiltersVisible': null,
+            'postTypesPage': null,
+            'postTypesCount': null,
+            'postTypesSorting': null,
+            'postTypesFilter': null
+        },
         resolve: loadSequence('PostTypesCtrl', 'postTypeService', 'userService')
     }).state('app.news.posttypesnew', {
         url: '/post-types/new',
@@ -1722,6 +2332,8 @@ function ($stateProvider) {
         title: 'content.list.NEWPOSTTYPE',
         ncyBreadcrumb: {
             label: 'content.list.NEWPOSTTYPE'
+        },
+        params: {
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostTypeFormCtrl', 'postTypeService', 'userService')
     }).state('app.news.posttypesedit', {
@@ -1739,6 +2351,423 @@ function ($stateProvider) {
             label: 'content.list.POSTTYPEDETAILS'
         },
         resolve: loadSequence('PostTypeCtrl', 'postTypeService')
+    }).state('app.translation', {
+        url: '/translation',
+        template: '<div ui-view class="fade-in-up"></div>',
+        title: 'sidebar.nav.translation.MAIN',
+        ncyBreadcrumb: {
+            label: 'sidebar.nav.translation.MAIN'
+        }
+    }).state('app.translation.translationposttypes', {
+        url: '/translation-post-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_types.html',
+        title: 'content.list.TRANSLATIONPOSTTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPOSTTYPES'
+        },
+        params: {
+            'translationPostTypesIsFiltersVisible': null,
+            'translationPostTypesPage': null,
+            'translationPostTypesCount': null,
+            'translationPostTypesSorting': null,
+            'translationPostTypesFilter': null
+        },
+        resolve: loadSequence('TranslationPostTypesCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesnew', {
+        url: '/translation-post-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
+        title: 'content.list.NEWTRANSLATIONPOSTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONPOSTTYPE'
+        },
+        params: {
+            'translation_post_type_post_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesedit', {
+        url: '/translation-post-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
+        title: 'content.list.EDITTRANSLATIONPOSTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONPOSTTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesdetails', {
+        url: '/translation-post-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPOSTTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationPostTypeCtrl', 'translationPostTypeService')
+    }).state('app.translation.translationproducttypes', {
+        url: '/translation-product-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationProductType/translation_product_types.html',
+        title: 'content.list.TRANSLATIONPRODUCTTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPRODUCTTYPES'
+        },
+        params: {
+            'translationProductTypesIsFiltersVisible': null,
+            'translationProductTypesPage': null,
+            'translationProductTypesCount': null,
+            'translationProductTypesSorting': null,
+            'translationProductTypesFilter': null
+        },
+        resolve: loadSequence('TranslationProductTypesCtrl', 'translationProductTypeService', 'productTypeService', 'userService')
+    }).state('app.translation.translationproducttypesnew', {
+        url: '/translation-product-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationProductType/translation_product_type_form.html',
+        title: 'content.list.NEWTRANSLATIONPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONPRODUCTTYPE'
+        },
+        params: {
+            'translation_product_type_product_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationProductTypeFormCtrl', 'translationProductTypeService', 'productTypeService', 'userService')
+    }).state('app.translation.translationproducttypesedit', {
+        url: '/translation-product-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationProductType/translation_product_type_form.html',
+        title: 'content.list.EDITTRANSLATIONPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONPRODUCTTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationProductTypeFormCtrl', 'translationProductTypeService', 'productTypeService', 'userService')
+    }).state('app.translation.translationproducttypesdetails', {
+        url: '/translation-product-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationProductType/translation_product_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPRODUCTTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationProductTypeCtrl', 'translationProductTypeService')
+    }).state('app.translation.translationsuppliertypes', {
+        url: '/translation-supplier-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_types.html',
+        title: 'content.list.TRANSLATIONSUPPLIERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSUPPLIERTYPES'
+        },
+        params: {
+            'translationSupplierTypesIsFiltersVisible': null,
+            'translationSupplierTypesPage': null,
+            'translationSupplierTypesCount': null,
+            'translationSupplierTypesSorting': null,
+            'translationSupplierTypesFilter': null
+        },
+        resolve: loadSequence('TranslationSupplierTypesCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesnew', {
+        url: '/translation-supplier-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
+        title: 'content.list.NEWTRANSLATIONSUPPLIERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONSUPPLIERTYPE'
+        },
+        params: {
+            'translation_supplier_type_supplier_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesedit', {
+        url: '/translation-supplier-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
+        title: 'content.list.EDITTRANSLATIONSUPPLIERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONSUPPLIERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesdetails', {
+        url: '/translation-supplier-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSUPPLIERTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationSupplierTypeCtrl', 'translationSupplierTypeService')
+    }).state('app.translation.translationtendertypes', {
+        url: '/translation-tender-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationTenderType/translation_tender_types.html',
+        title: 'content.list.TRANSLATIONTENDERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONTENDERTYPES'
+        },
+        params: {
+            'translationTenderTypesIsFiltersVisible': null,
+            'translationTenderTypesPage': null,
+            'translationTenderTypesCount': null,
+            'translationTenderTypesSorting': null,
+            'translationTenderTypesFilter': null
+        },
+        resolve: loadSequence('TranslationTenderTypesCtrl', 'translationTenderTypeService', 'tenderTypeService', 'userService')
+    }).state('app.translation.translationtendertypesnew', {
+        url: '/translation-tender-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationTenderType/translation_tender_type_form.html',
+        title: 'content.list.NEWTRANSLATIONTENDERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONTENDERTYPE'
+        },
+        params: {
+            'translation_tender_type_tender_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationTenderTypeFormCtrl', 'translationTenderTypeService', 'tenderTypeService', 'userService')
+    }).state('app.translation.translationtendertypesedit', {
+        url: '/translation-tender-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationTenderType/translation_tender_type_form.html',
+        title: 'content.list.EDITTRANSLATIONTENDERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONTENDERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationTenderTypeFormCtrl', 'translationTenderTypeService', 'tenderTypeService', 'userService')
+    }).state('app.translation.translationtendertypesdetails', {
+        url: '/translation-tender-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationTenderType/translation_tender_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONTENDERTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationTenderTypeCtrl', 'translationTenderTypeService')
+    }).state('app.translation.translationposts', {
+        url: '/translation-posts',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPost/translation_posts.html',
+        title: 'content.list.TRANSLATIONPOSTS',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPOSTS'
+        },
+        params: {
+            'translationPostsIsFiltersVisible': null,
+            'translationPostsPage': null,
+            'translationPostsCount': null,
+            'translationPostsSorting': null,
+            'translationPostsFilter': null
+        },
+        resolve: loadSequence('TranslationPostsCtrl', 'translationPostService', 'postService', 'userService')
+    }).state('app.translation.translationpostsnew', {
+        url: '/translation-posts/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPost/translation_post_form.html',
+        title: 'content.list.NEWTRANSLATIONPOST',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONPOST'
+        },
+        params: {
+            'translation_post_post': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostFormCtrl', 'translationPostService', 'postService', 'userService')
+    }).state('app.translation.translationpostsedit', {
+        url: '/translation-posts/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPost/translation_post_form.html',
+        title: 'content.list.EDITTRANSLATIONPOST',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONPOST'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostFormCtrl', 'translationPostService', 'postService', 'userService')
+    }).state('app.translation.translationpostsdetails', {
+        url: '/translation-posts/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPost/translation_post.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONPOSTDETAILS'
+        },
+        resolve: loadSequence('TranslationPostCtrl', 'translationPostService')
+    }).state('app.translation.translationmenulinks', {
+        url: '/translation-menu-links',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenuLink/translation_menu_links.html',
+        title: 'content.list.TRANSLATIONMENULINKS',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONMENULINKS'
+        },
+        params: {
+            'translationMenuLinksIsFiltersVisible': null,
+            'translationMenuLinksPage': null,
+            'translationMenuLinksCount': null,
+            'translationMenuLinksSorting': null,
+            'translationMenuLinksFilter': null
+        },
+        resolve: loadSequence('TranslationMenuLinksCtrl', 'translationMenuLinkService', 'menuLinkService', 'userService')
+    }).state('app.translation.translationmenulinksnew', {
+        url: '/translation-menu-links/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenuLink/translation_menu_link_form.html',
+        title: 'content.list.NEWTRANSLATIONMENULINK',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONMENULINK'
+        },
+        params: {
+            'translation_menu_link_menu_link': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationMenuLinkFormCtrl', 'translationMenuLinkService', 'menuLinkService', 'userService')
+    }).state('app.translation.translationmenulinksedit', {
+        url: '/translation-menu-links/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenuLink/translation_menu_link_form.html',
+        title: 'content.list.EDITTRANSLATIONMENULINK',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONMENULINK'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationMenuLinkFormCtrl', 'translationMenuLinkService', 'menuLinkService', 'userService')
+    }).state('app.translation.translationmenulinksdetails', {
+        url: '/translation-menu-links/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenuLink/translation_menu_link.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONMENULINKDETAILS'
+        },
+        resolve: loadSequence('TranslationMenuLinkCtrl', 'translationMenuLinkService')
+    }).state('app.translation.translationbuyertypes', {
+        url: '/translation-buyer-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_types.html',
+        title: 'content.list.TRANSLATIONBUYERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBUYERTYPES'
+        },
+        params: {
+            'translationBuyerTypesIsFiltersVisible': null,
+            'translationBuyerTypesPage': null,
+            'translationBuyerTypesCount': null,
+            'translationBuyerTypesSorting': null,
+            'translationBuyerTypesFilter': null
+        },
+        resolve: loadSequence('TranslationBuyerTypesCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesnew', {
+        url: '/translation-buyer-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
+        title: 'content.list.NEWTRANSLATIONBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONBUYERTYPE'
+        },
+        params: {
+            'translation_buyer_type_buyer_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesedit', {
+        url: '/translation-buyer-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
+        title: 'content.list.EDITTRANSLATIONBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONBUYERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesdetails', {
+        url: '/translation-buyer-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBUYERTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationBuyerTypeCtrl', 'translationBuyerTypeService')
+    }).state('app.translation.translationcategories', {
+        url: '/translation-categories',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCategory/translation_categories.html',
+        title: 'content.list.TRANSLATIONCATEGORIES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONCATEGORIES'
+        },
+        params: {
+            'translationCategoriesIsFiltersVisible': null,
+            'translationCategoriesPage': null,
+            'translationCategoriesCount': null,
+            'translationCategoriesSorting': null,
+            'translationCategoriesFilter': null
+        },
+        resolve: loadSequence('TranslationCategoriesCtrl', 'translationCategoryService', 'categoryService', 'userService')
+    }).state('app.translation.translationcategoriesnew', {
+        url: '/translation-categories/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCategory/translation_category_form.html',
+        title: 'content.list.NEWTRANSLATIONCATEGORY',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONCATEGORY'
+        },
+        params: {
+            'translation_category_category': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationCategoryFormCtrl', 'translationCategoryService', 'categoryService', 'userService')
+    }).state('app.translation.translationcategoriesedit', {
+        url: '/translation-categories/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCategory/translation_category_form.html',
+        title: 'content.list.EDITTRANSLATIONCATEGORY',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONCATEGORY'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationCategoryFormCtrl', 'translationCategoryService', 'categoryService', 'userService')
+    }).state('app.translation.translationcategoriesdetails', {
+        url: '/translation-categories/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCategory/translation_category.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONCATEGORYDETAILS'
+        },
+        resolve: loadSequence('TranslationCategoryCtrl', 'translationCategoryService')
+    }).state('app.translation.translationmenus', {
+        url: '/translation-menus',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenu/translation_menus.html',
+        title: 'content.list.TRANSLATIONMENUS',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONMENUS'
+        },
+        params: {
+            'translationMenusIsFiltersVisible': null,
+            'translationMenusPage': null,
+            'translationMenusCount': null,
+            'translationMenusSorting': null,
+            'translationMenusFilter': null
+        },
+        resolve: loadSequence('TranslationMenusCtrl', 'translationMenuService', 'menuService', 'userService')
+    }).state('app.translation.translationmenusnew', {
+        url: '/translation-menus/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenu/translation_menu_form.html',
+        title: 'content.list.NEWTRANSLATIONMENU',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONMENU'
+        },
+        params: {
+            'translation_menu_menu': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationMenuFormCtrl', 'translationMenuService', 'menuService', 'userService')
+    }).state('app.translation.translationmenusedit', {
+        url: '/translation-menus/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenu/translation_menu_form.html',
+        title: 'content.list.EDITTRANSLATIONMENU',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONMENU'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationMenuFormCtrl', 'translationMenuService', 'menuService', 'userService')
+    }).state('app.translation.translationmenusdetails', {
+        url: '/translation-menus/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenu/translation_menu.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONMENUDETAILS'
+        },
+        resolve: loadSequence('TranslationMenuCtrl', 'translationMenuService')
+    }).state('app.translation.translationbiddingtypes', {
+        url: '/translation-bidding-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBiddingType/translation_bidding_types.html',
+        title: 'content.list.TRANSLATIONBIDDINGTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBIDDINGTYPES'
+        },
+        params: {
+            'translationBiddingTypesIsFiltersVisible': null,
+            'translationBiddingTypesPage': null,
+            'translationBiddingTypesCount': null,
+            'translationBiddingTypesSorting': null,
+            'translationBiddingTypesFilter': null
+        },
+        resolve: loadSequence('TranslationBiddingTypesCtrl', 'translationBiddingTypeService', 'biddingTypeService', 'userService')
+    }).state('app.translation.translationbiddingtypesnew', {
+        url: '/translation-bidding-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBiddingType/translation_bidding_type_form.html',
+        title: 'content.list.NEWTRANSLATIONBIDDINGTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONBIDDINGTYPE'
+        },
+        params: {
+            'translation_bidding_type_bidding_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBiddingTypeFormCtrl', 'translationBiddingTypeService', 'biddingTypeService', 'userService')
+    }).state('app.translation.translationbiddingtypesedit', {
+        url: '/translation-bidding-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBiddingType/translation_bidding_type_form.html',
+        title: 'content.list.EDITTRANSLATIONBIDDINGTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONBIDDINGTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBiddingTypeFormCtrl', 'translationBiddingTypeService', 'biddingTypeService', 'userService')
+    }).state('app.translation.translationbiddingtypesdetails', {
+        url: '/translation-bidding-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBiddingType/translation_bidding_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBIDDINGTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationBiddingTypeCtrl', 'translationBiddingTypeService')
     });
 
 }]);

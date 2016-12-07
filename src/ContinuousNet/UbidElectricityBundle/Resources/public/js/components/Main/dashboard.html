@@ -1,8 +1,74 @@
-<!-- start: DASHBOARD TITLE -->
-<section id="page-title" class="padding-top-15 padding-bottom-15">
-    <div class="row">
-        <div class="col-sm-12">
-            <h1 class="mainTitle" translate="dashboard.WELCOME" translate-values="{ appName: app.name }">WELCOME TO SPORT-CLUB</h1>
+
+<div ng-controller="DashboardCtrl">
+    <!-- start: FEATURED BOX LINKS -->
+    <div class="container-fluid container-fullw bg-white">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-white no-radius text-center dashboard-botton" ui-sref="app.marketplace.tenders">
+                    <div class="panel-body">
+                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa fa-gavel fa-stack-1x fa-inverse"></i> </span>
+                        <h2 class="StepTitle">[[data.countTenders]]<br /><span translate="content.list.TENDERS">Tenders</span></h2>
+                        <p class="cl-effect-1">
+                            <a translate="content.common.SHOWLIST">
+                                Show list
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-white no-radius text-center dashboard-botton"  ui-sref="app.marketplace.bids">
+                    <div class="panel-body">
+                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-tags fa-stack-1x fa-inverse"></i> </span>
+                        <h2 class="StepTitle">[[data.countBids]]<br /><span translate="content.list.BIDS">Bids</span></h2>
+                        <p class="cl-effect-1">
+                            <a translate="content.common.SHOWLIST">
+                                Show list
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-white no-radius text-center dashboard-botton"  ui-sref="app.marketplace.supplierproducts">
+                    <div class="panel-body">
+                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i> </span>
+                        <h2 class="StepTitle">[[data.countSupplierProducts]]<br /><span translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span></h2>
+                        <p class="cl-effect-1">
+                            <a translate="content.common.SHOWLIST">
+                                Show list
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-white no-radius text-center dashboard-botton"  ui-sref="app.marketplace.suppliers">
+                    <div class="panel-body">
+                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-truck fa-stack-1x fa-inverse"></i> </span>
+                        <h2 class="StepTitle">[[data.countSuppliers]]<br /><span translate="content.list.SUPPLIERS">Suppliers</span></h2>
+                        <p class="cl-effect-1">
+                            <a translate="content.common.SHOWLIST">
+                                Show list
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-white no-radius text-center dashboard-botton"  ui-sref="app.marketplace.buyers">
+                    <div class="panel-body">
+                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-money fa-stack-1x fa-inverse"></i> </span>
+                        <h2 class="StepTitle">[[data.countBuyers]]<br /><span translate="content.list.BUYERS">Buyers</span></h2>
+                        <p class="cl-effect-1">
+                            <a translate="content.common.SHOWLIST">
+                                Show list
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+    <!-- end: FEATURED BOX LINKS -->
+</div>
