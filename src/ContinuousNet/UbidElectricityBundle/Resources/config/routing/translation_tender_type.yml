@@ -1,0 +1,30 @@
+translationtendertype:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:index" }
+
+translationtendertype_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:show" }
+
+translationtendertype_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:new" }
+
+translationtendertype_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:create" }
+    methods:  POST
+
+translationtendertype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:edit" }
+
+translationtendertype_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:update" }
+    methods:  [POST, PUT]
+
+translationtendertype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TranslationTenderType:delete" }
+    methods:  [POST, DELETE]

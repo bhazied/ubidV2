@@ -67,56 +67,12 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="title_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $titleAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="title_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $titleFr;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
     private $slug;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugFr;
 
     /**
      * @var string
@@ -139,28 +95,6 @@ class Post
      * 
      */
     private $content;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="content_ar", type="text", nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $contentAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="content_fr", type="text", nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $contentFr;
 
     /**
      * @var boolean
@@ -515,54 +449,6 @@ class Post
     }
 
     /**
-     * Set titleAr
-     *
-     * @access public
-     * @param string $titleAr
-     * @return Post
-     */
-    public function setTitleAr($titleAr = null)
-    {
-        $this->titleAr = $titleAr;
-        return $this;
-    }
-
-    /**
-     * Get titleAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getTitleAr()
-    {
-        return $this->titleAr;
-    }
-
-    /**
-     * Set titleFr
-     *
-     * @access public
-     * @param string $titleFr
-     * @return Post
-     */
-    public function setTitleFr($titleFr = null)
-    {
-        $this->titleFr = $titleFr;
-        return $this;
-    }
-
-    /**
-     * Get titleFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getTitleFr()
-    {
-        return $this->titleFr;
-    }
-
-    /**
      * Set slug
      *
      * @access public
@@ -584,54 +470,6 @@ class Post
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set slugAr
-     *
-     * @access public
-     * @param string $slugAr
-     * @return Post
-     */
-    public function setSlugAr($slugAr = null)
-    {
-        $this->slugAr = $slugAr;
-        return $this;
-    }
-
-    /**
-     * Get slugAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugAr()
-    {
-        return $this->slugAr;
-    }
-
-    /**
-     * Set slugFr
-     *
-     * @access public
-     * @param string $slugFr
-     * @return Post
-     */
-    public function setSlugFr($slugFr = null)
-    {
-        $this->slugFr = $slugFr;
-        return $this;
-    }
-
-    /**
-     * Get slugFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugFr()
-    {
-        return $this->slugFr;
     }
 
     /**
@@ -680,54 +518,6 @@ class Post
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set contentAr
-     *
-     * @access public
-     * @param string $contentAr
-     * @return Post
-     */
-    public function setContentAr($contentAr = null)
-    {
-        $this->contentAr = $contentAr;
-        return $this;
-    }
-
-    /**
-     * Get contentAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getContentAr()
-    {
-        return $this->contentAr;
-    }
-
-    /**
-     * Set contentFr
-     *
-     * @access public
-     * @param string $contentFr
-     * @return Post
-     */
-    public function setContentFr($contentFr = null)
-    {
-        $this->contentFr = $contentFr;
-        return $this;
-    }
-
-    /**
-     * Get contentFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getContentFr()
-    {
-        return $this->contentFr;
     }
 
     /**

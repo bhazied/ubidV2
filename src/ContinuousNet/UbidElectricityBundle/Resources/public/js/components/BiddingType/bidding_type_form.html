@@ -45,34 +45,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="biddingTypeNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="biddingType.name_ar" type="text" name="nameAr" id="biddingTypeNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="biddingTypeNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="biddingType.name_fr" type="text" name="nameFr" id="biddingTypeNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
                                     <slug from="biddingType.name" to="biddingType.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':biddingTypeForm.slug.$dirty && biddingTypeForm.slug.$invalid, 'has-success':biddingTypeForm.slug.$valid}">
                                     <label for="biddingTypeSlug" class="control-label">
@@ -85,36 +57,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="biddingTypeForm.slug.$dirty && biddingTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="biddingTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="biddingType.name_ar" to="biddingType.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="biddingTypeSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="biddingType.slug_ar" type="text" name="slugAr" id="biddingTypeSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="biddingType.name_fr" to="biddingType.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="biddingTypeSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="biddingType.slug_fr" type="text" name="slugFr" id="biddingTypeSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

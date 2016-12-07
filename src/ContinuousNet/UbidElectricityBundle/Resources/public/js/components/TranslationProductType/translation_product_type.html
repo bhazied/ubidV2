@@ -1,0 +1,111 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONPRODUCTTYPES">Translation Product Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationProductTypeCtrl">
+            <div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONPRODUCTTYPES">Back to Translation Product Types list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDTRANSLATIONPRODUCTTYPE">Add Translation Product Type</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(translationProductType)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITTRANSLATIONPRODUCTTYPE">Edit Translation Product Type</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.TRANSLATIONPRODUCTTYPEDETAILS">Translation Product Type Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="translationProductType.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PRODUCTTYPE">Product Type</span></td>
+                                <td><a ui-sref="app.nogroup.producttypesdetails({id: translationProductType.product_type.id})">[[ translationProductType.product_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LOCALE">Locale</span></td>
+                                <td>
+                                    <div ng-bind-html="translationProductType.locale"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAME">Name</span></td>
+                                <td>
+                                    <div ng-bind-html="translationProductType.name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td>
+                                    <div ng-bind-html="translationProductType.slug"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VALIDATED">Validated</span></td>
+                                <td>
+                                    <span my-boolean="[[ translationProductType.validated ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: translationProductType.creator_user.id})">[[ translationProductType.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ translationProductType.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: translationProductType.modifier_user.id})">[[ translationProductType.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ translationProductType.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

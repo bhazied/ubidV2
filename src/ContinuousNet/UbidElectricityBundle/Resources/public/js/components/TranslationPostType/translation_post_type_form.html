@@ -1,0 +1,141 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONPOSTTYPES">Translation Post Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationPostTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONPOSTTYPE" ng-if="translationPostType.id == 0">
+                        New Translation Post Type
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONPOSTTYPE" ng-if="translationPostType.id > 0">
+                        Edit Translation Post Type
+                    </legend>
+                    <form name="translationPostTypeForm" id="translationPostTypeForm" novalidate ng-submit="submitForm(translationPostTypeForm)">
+                        <input type="hidden" name="id" id="translationPostTypeId" ng-model="translationPostType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostTypeForm.postType.$dirty && translationPostTypeForm.postType.$invalid, 'has-success':translationPostTypeForm.postType.$valid}">
+                                    <label for="translationPostTypePostType" class="control-label">
+                                        <span translate="content.list.fields.POSTTYPE">Post Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="postTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_post_type_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="translationPostType.post_type" name="postType" id="translationPostTypePostType" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationPostTypeForm.postType.$dirty && translationPostTypeForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostTypeForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostTypeForm.locale.$dirty && translationPostTypeForm.locale.$invalid, 'has-success':translationPostTypeForm.locale.$valid}">
+                                    <label for="translationPostTypeLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPostType.locale" name="locale" id="translationPostTypeLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationPostTypeForm.locale.$dirty && translationPostTypeForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostTypeForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostTypeForm.name.$dirty && translationPostTypeForm.name.$invalid, 'has-success':translationPostTypeForm.name.$valid}">
+                                    <label for="translationPostTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationPostType.name" type="text" name="name" id="translationPostTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationPostTypeForm.name.$dirty && translationPostTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationPostType.locale" to="translationPostType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationPostTypeForm.slug.$dirty && translationPostTypeForm.slug.$invalid, 'has-success':translationPostTypeForm.slug.$valid}">
+                                    <label for="translationPostTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationPostType.slug" type="text" name="slug" id="translationPostTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationPostTypeForm.slug.$dirty && translationPostTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationPostType.validated" type="checkbox" name="validated" id="translationPostTypeValidated" />
+                                    <label for="translationPostTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONPOSTTYPES">Back to Translation Post Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationPostTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationPostTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

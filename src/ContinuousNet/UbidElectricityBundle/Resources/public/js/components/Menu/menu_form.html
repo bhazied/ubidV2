@@ -45,34 +45,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="menuNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menu.name_ar" type="text" name="nameAr" id="menuNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="menuNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menu.name_fr" type="text" name="nameFr" id="menuNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
                                     <slug from="menu.name" to="menu.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':menuForm.slug.$dirty && menuForm.slug.$invalid, 'has-success':menuForm.slug.$valid}">
                                     <label for="menuSlug" class="control-label">
@@ -85,36 +57,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuForm.slug.$dirty && menuForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="menuForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="menu.name_ar" to="menu.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="menuSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menu.slug_ar" type="text" name="slugAr" id="menuSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="menu.name_fr" to="menu.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="menuSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menu.slug_fr" type="text" name="slugFr" id="menuSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

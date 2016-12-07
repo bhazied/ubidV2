@@ -25,7 +25,7 @@ security:
         - { path: ^/(en|fr|ar)/api/posts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/postcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/posttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/producttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/producttypes$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/regions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/sectors$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/suppliers$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
@@ -34,6 +34,16 @@ security:
         - { path: ^/(en|fr|ar)/api/tenders$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/tenderproducts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/tendertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationbuyertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationmenus$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationmenulinks$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationposts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationposttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationproducttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/translationtendertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/users$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/usersettings$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/visits$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }

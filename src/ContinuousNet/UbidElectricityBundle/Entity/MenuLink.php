@@ -68,56 +68,12 @@ class MenuLink
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name_ar", type="string", length=100, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="name_fr", type="string", length=100, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameFr;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="slug", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
     private $slug;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_ar", type="string", length=100, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_fr", type="string", length=100, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugFr;
 
     /**
      * @var boolean
@@ -286,54 +242,6 @@ class MenuLink
     }
 
     /**
-     * Set nameAr
-     *
-     * @access public
-     * @param string $nameAr
-     * @return MenuLink
-     */
-    public function setNameAr($nameAr = null)
-    {
-        $this->nameAr = $nameAr;
-        return $this;
-    }
-
-    /**
-     * Get nameAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameAr()
-    {
-        return $this->nameAr;
-    }
-
-    /**
-     * Set nameFr
-     *
-     * @access public
-     * @param string $nameFr
-     * @return MenuLink
-     */
-    public function setNameFr($nameFr = null)
-    {
-        $this->nameFr = $nameFr;
-        return $this;
-    }
-
-    /**
-     * Get nameFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameFr()
-    {
-        return $this->nameFr;
-    }
-
-    /**
      * Set slug
      *
      * @access public
@@ -355,54 +263,6 @@ class MenuLink
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set slugAr
-     *
-     * @access public
-     * @param string $slugAr
-     * @return MenuLink
-     */
-    public function setSlugAr($slugAr = null)
-    {
-        $this->slugAr = $slugAr;
-        return $this;
-    }
-
-    /**
-     * Get slugAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugAr()
-    {
-        return $this->slugAr;
-    }
-
-    /**
-     * Set slugFr
-     *
-     * @access public
-     * @param string $slugFr
-     * @return MenuLink
-     */
-    public function setSlugFr($slugFr = null)
-    {
-        $this->slugFr = $slugFr;
-        return $this;
-    }
-
-    /**
-     * Get slugFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugFr()
-    {
-        return $this->slugFr;
     }
 
     /**

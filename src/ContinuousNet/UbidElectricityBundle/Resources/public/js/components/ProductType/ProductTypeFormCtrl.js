@@ -96,7 +96,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.tenders.producttypes');
+        $state.go('app.nogroup.producttypes');
     };
     
     if (angular.isDefined($stateParams.id)) {

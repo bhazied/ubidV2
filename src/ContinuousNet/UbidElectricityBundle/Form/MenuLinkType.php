@@ -46,11 +46,7 @@ class MenuLinkType extends AbstractType
         $builder
             ->add('menu', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Menu', 'choice_label' => 'name'))
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('slug', TextType::class)
-            ->add('slugAr', TextType::class)
-            ->add('slugFr', TextType::class)
             ->add('isPublished', CheckboxType::class)
             ->add('controller', TextType::class)
             ->add('action', TextType::class)

@@ -1,0 +1,111 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONBUYERTYPES">Translation Buyer Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationBuyerTypeCtrl">
+            <div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONBUYERTYPES">Back to Translation Buyer Types list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDTRANSLATIONBUYERTYPE">Add Translation Buyer Type</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(translationBuyerType)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITTRANSLATIONBUYERTYPE">Edit Translation Buyer Type</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.TRANSLATIONBUYERTYPEDETAILS">Translation Buyer Type Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="translationBuyerType.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BUYERTYPE">Buyer Type</span></td>
+                                <td><a ui-sref="app.lists.buyertypesdetails({id: translationBuyerType.buyer_type.id})">[[ translationBuyerType.buyer_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LOCALE">Locale</span></td>
+                                <td>
+                                    <div ng-bind-html="translationBuyerType.locale"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAME">Name</span></td>
+                                <td>
+                                    <div ng-bind-html="translationBuyerType.name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td>
+                                    <div ng-bind-html="translationBuyerType.slug"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VALIDATED">Validated</span></td>
+                                <td>
+                                    <span my-boolean="[[ translationBuyerType.validated ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: translationBuyerType.creator_user.id})">[[ translationBuyerType.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ translationBuyerType.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: translationBuyerType.modifier_user.id})">[[ translationBuyerType.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ translationBuyerType.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

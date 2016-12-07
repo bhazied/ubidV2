@@ -50,6 +50,7 @@ class ProductTypeRESTController extends BaseRESTController
      */
     public function getAction(ProductType $entity)
     {
+        $entity = $this->translateEntity($entity);
         $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
@@ -116,6 +117,7 @@ class ProductTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('pt_.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

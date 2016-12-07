@@ -1,0 +1,155 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONPOSTS">Translation Posts</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationPostFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONPOST" ng-if="translationPost.id == 0">
+                        New Translation Post
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONPOST" ng-if="translationPost.id > 0">
+                        Edit Translation Post
+                    </legend>
+                    <form name="translationPostForm" id="translationPostForm" novalidate ng-submit="submitForm(translationPostForm)">
+                        <input type="hidden" name="id" id="translationPostId" ng-model="translationPost.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostForm.post.$dirty && translationPostForm.post.$invalid, 'has-success':translationPostForm.post.$valid}">
+                                    <label for="translationPostPost" class="control-label">
+                                        <span translate="content.list.fields.POST">Post</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="postsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="translation_post_post_readonly" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="translationPostForm.post.$dirty && translationPostForm.post.$error.required" translate="content.form.messages.POSTREQUIRED">Post is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostForm.post.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostForm.locale.$dirty && translationPostForm.locale.$invalid, 'has-success':translationPostForm.locale.$valid}">
+                                    <label for="translationPostLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPost.locale" name="locale" id="translationPostLocale" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationPostForm.locale.$dirty && translationPostForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPostForm.name.$dirty && translationPostForm.name.$invalid, 'has-success':translationPostForm.name.$valid}">
+                                    <label for="translationPostName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationPost.name" type="text" name="name" id="translationPostName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationPostForm.name.$dirty && translationPostForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="translationPost.locale" to="translationPost.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':translationPostForm.slug.$dirty && translationPostForm.slug.$invalid, 'has-success':translationPostForm.slug.$valid}">
+                                    <label for="translationPostSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationPost.slug" type="text" name="slug" id="translationPostSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationPostForm.slug.$dirty && translationPostForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="translationPostContent" class="control-label">
+                                        <span translate="content.list.fields.CONTENT">Content</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="translationPost.content" name="content" id="translationPostContent" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTENT' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="translationPost.validated" type="checkbox" name="validated" id="translationPostValidated" />
+                                    <label for="translationPostValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONPOSTS">Back to Translation Posts list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationPostForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationPosts.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

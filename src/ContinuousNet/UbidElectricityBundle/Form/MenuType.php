@@ -45,11 +45,7 @@ class MenuType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('slug', TextType::class)
-            ->add('slugAr', TextType::class)
-            ->add('slugFr', TextType::class)
             ->add('mode', ChoiceType::class, array('choices' => array('Link' => 'Link', 'ImageCategory' => 'ImageCategory', 'PostCategory' => 'PostCategory', 'VideoCategory' => 'VideoCategory', 'Album' => 'Album', 'Show' => 'Show', 'Sport' => 'Sport', 'SportEvent' => 'SportEvent', 'Team' => 'Team', 'Stadium' => 'Stadium', 'Player' => 'Player', 'Day' => 'Day', 'Package' => 'Package', ), 'expanded' => false, 'multiple' => false))
             ->add('menuCss', TextType::class)
             ->add('itemCss', TextType::class)

@@ -45,34 +45,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="categoryNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="category.name_ar" type="text" name="nameAr" id="categoryNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="categoryNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="category.name_fr" type="text" name="nameFr" id="categoryNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
                                     <slug from="category.name" to="category.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':categoryForm.slug.$dirty && categoryForm.slug.$invalid, 'has-success':categoryForm.slug.$valid}">
                                     <label for="categorySlug" class="control-label">
@@ -85,36 +57,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="categoryForm.slug.$dirty && categoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="categoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="category.name_ar" to="category.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="categorySlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="category.slug_ar" type="text" name="slugAr" id="categorySlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="category.name_fr" to="category.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="categorySlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="category.slug_fr" type="text" name="slugFr" id="categorySlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

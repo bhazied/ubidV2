@@ -110,6 +110,36 @@ app.constant('APP_JS_REQUIRES', {
         'TenderTypesCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypesCtrl.js',
         'TenderTypeFormCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypeFormCtrl.js',
         'TenderTypeCtrl': '/bundles/ubidelectricity/js/components/TenderType/TenderTypeCtrl.js',
+        'TranslationBiddingTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypesCtrl.js',
+        'TranslationBiddingTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeFormCtrl.js',
+        'TranslationBiddingTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeCtrl.js',
+        'TranslationBuyerTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypesCtrl.js',
+        'TranslationBuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeFormCtrl.js',
+        'TranslationBuyerTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeCtrl.js',
+        'TranslationCategoriesCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoriesCtrl.js',
+        'TranslationCategoryFormCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryFormCtrl.js',
+        'TranslationCategoryCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryCtrl.js',
+        'TranslationMenusCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenusCtrl.js',
+        'TranslationMenuFormCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuFormCtrl.js',
+        'TranslationMenuCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuCtrl.js',
+        'TranslationMenuLinksCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinksCtrl.js',
+        'TranslationMenuLinkFormCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkFormCtrl.js',
+        'TranslationMenuLinkCtrl': '/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkCtrl.js',
+        'TranslationPostsCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostsCtrl.js',
+        'TranslationPostFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostFormCtrl.js',
+        'TranslationPostCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostCtrl.js',
+        'TranslationPostTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypesCtrl.js',
+        'TranslationPostTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeFormCtrl.js',
+        'TranslationPostTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeCtrl.js',
+        'TranslationProductTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypesCtrl.js',
+        'TranslationProductTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeFormCtrl.js',
+        'TranslationProductTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeCtrl.js',
+        'TranslationSupplierTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypesCtrl.js',
+        'TranslationSupplierTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeFormCtrl.js',
+        'TranslationSupplierTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeCtrl.js',
+        'TranslationTenderTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypesCtrl.js',
+        'TranslationTenderTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeFormCtrl.js',
+        'TranslationTenderTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeCtrl.js',
         'UsersCtrl': '/bundles/ubidelectricity/js/components/User/UsersCtrl.js',
         'UserFormCtrl': '/bundles/ubidelectricity/js/components/User/UserFormCtrl.js',
         'UserCtrl': '/bundles/ubidelectricity/js/components/User/UserCtrl.js',
@@ -234,6 +264,36 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'tenderTypeService',
         files: ['/bundles/ubidelectricity/js/components/TenderType/TenderTypeService.js']
+    },{
+        name: 'translationBiddingTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationBiddingType/TranslationBiddingTypeService.js']
+    },{
+        name: 'translationBuyerTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationBuyerType/TranslationBuyerTypeService.js']
+    },{
+        name: 'translationCategoryService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryService.js']
+    },{
+        name: 'translationMenuService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuService.js']
+    },{
+        name: 'translationMenuLinkService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationMenuLink/TranslationMenuLinkService.js']
+    },{
+        name: 'translationPostService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostService.js']
+    },{
+        name: 'translationPostTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeService.js']
+    },{
+        name: 'translationProductTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeService.js']
+    },{
+        name: 'translationSupplierTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeService.js']
+    },{
+        name: 'translationTenderTypeService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationTenderType/TranslationTenderTypeService.js']
     },{
         name: 'userService',
         files: ['/bundles/ubidelectricity/js/components/User/UserService.js']

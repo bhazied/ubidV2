@@ -45,11 +45,7 @@ class SupplierTypeType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('slug', TextType::class)
-            ->add('slugAr', TextType::class)
-            ->add('slugFr', TextType::class)
             ->add('isPublished', CheckboxType::class)
         ;
     }
