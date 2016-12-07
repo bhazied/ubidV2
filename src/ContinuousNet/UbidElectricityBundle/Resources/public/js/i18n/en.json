@@ -157,9 +157,6 @@
         "news": {
             "MAIN": "News"
         },
-        "nogroup": {
-            "MAIN": "NoGroup"
-        },
         "translation": {
             "MAIN": "Translation"
         }
