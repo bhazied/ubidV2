@@ -25,7 +25,7 @@ security:
         - { path: ^/(en|fr|ar)/api/posts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/postcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/posttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/producttypes$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/producttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/regions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/sectors$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/suppliers$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }

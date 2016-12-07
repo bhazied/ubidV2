@@ -1133,6 +1133,46 @@ function ($stateProvider) {
             label: 'content.list.TENDERTYPEDETAILS'
         },
         resolve: loadSequence('TenderTypeCtrl', 'tenderTypeService')
+    }).state('app.lists.producttypes', {
+        url: '/product-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',
+        title: 'content.list.PRODUCTTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.PRODUCTTYPES'
+        },
+        params: {
+            'productTypesIsFiltersVisible': null,
+            'productTypesPage': null,
+            'productTypesCount': null,
+            'productTypesSorting': null,
+            'productTypesFilter': null
+        },
+        resolve: loadSequence('ProductTypesCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesnew', {
+        url: '/product-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
+        title: 'content.list.NEWPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWPRODUCTTYPE'
+        },
+        params: {
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesedit', {
+        url: '/product-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
+        title: 'content.list.EDITPRODUCTTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITPRODUCTTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
+    }).state('app.lists.producttypesdetails', {
+        url: '/product-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.PRODUCTTYPEDETAILS'
+        },
+        resolve: loadSequence('ProductTypeCtrl', 'productTypeService')
     }).state('app.lists.biddingtypes', {
         url: '/bidding-types',
         templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_types.html',
@@ -1600,53 +1640,6 @@ function ($stateProvider) {
             label: 'content.list.POSTTYPEDETAILS'
         },
         resolve: loadSequence('PostTypeCtrl', 'postTypeService')
-    }).state('app.nogroup', {
-        url: '/no-group',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.nogroup.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.nogroup.MAIN'
-        }
-    }).state('app.nogroup.producttypes', {
-        url: '/product-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',
-        title: 'content.list.PRODUCTTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPES'
-        },
-        params: {
-            'productTypesIsFiltersVisible': null,
-            'productTypesPage': null,
-            'productTypesCount': null,
-            'productTypesSorting': null,
-            'productTypesFilter': null
-        },
-        resolve: loadSequence('ProductTypesCtrl', 'productTypeService', 'userService')
-    }).state('app.nogroup.producttypesnew', {
-        url: '/product-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.NEWPRODUCTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWPRODUCTTYPE'
-        },
-        params: {
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.nogroup.producttypesedit', {
-        url: '/product-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.EDITPRODUCTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITPRODUCTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.nogroup.producttypesdetails', {
-        url: '/product-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPEDETAILS'
-        },
-        resolve: loadSequence('ProductTypeCtrl', 'productTypeService')
     }).state('app.translation', {
         url: '/translation',
         template: '<div ui-view class="fade-in-up"></div>',
