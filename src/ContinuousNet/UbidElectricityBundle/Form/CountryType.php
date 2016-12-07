@@ -46,8 +46,6 @@ class CountryType extends AbstractType
         $builder
             ->add('region', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('picture', TextType::class)
             ->add('code', TextType::class)
             ->add('longCode', TextType::class)
