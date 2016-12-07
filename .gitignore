@@ -16,4 +16,4 @@
 /web/.htaccess
 /web/.release
 /web/release
-/.idea
+/.idea/*

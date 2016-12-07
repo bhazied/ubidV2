@@ -2,78 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa1a256c-8e7d-4987-ba04-520512efbcaf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/BannerController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/BannerRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/CountryController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/CountryRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/GameController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/GameRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/LanguageController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/LanguageRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushDeviceController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushDeviceRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushMessageController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushMessageRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushNotificationController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PushNotificationRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PuzzleController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/PuzzleRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/ScoreController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/ScoreRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/SessionController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/SessionRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/UserController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Controller/UserRESTController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Banner.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Country.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Game.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Language.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushDevice.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushMessage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/PushNotification.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Puzzle.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Score.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/Session.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Entity/User.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/BannerType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/CountryType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/GameType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/LanguageType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushDeviceType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushMessageType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PushNotificationType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/PuzzleType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/ScoreType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/SessionType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Form/UserType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/banner.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/country.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/game.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/language.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_device.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_message.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/push_notification.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/puzzle.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/score.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/session.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/routing/user.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/config/security.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/constant.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/i18n/en.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/links.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/public/js/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Banner/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Country/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Game/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Language/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushDevice/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushMessage/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/PushNotification/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Puzzle/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Score/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/Session/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ContinuousNet/BucksHunterBundle/Resources/views/User/index.html.twig" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ubid_electricity.iws" />
@@ -96,31 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="315" column="37" selection-start-line="315" selection-start-column="37" selection-end-line="315" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BannerController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BannerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25">
-              <caret line="2" column="45" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0234375">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.6323185">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -134,7 +43,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Routing/Generator/UrlGenerator.php" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/DependencyInjection/Configuration.php" />
@@ -147,7 +55,6 @@
         <option value="$PROJECT_DIR$/web/assets/js/controllers/mainCtrl.js" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ThumbController.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/web/.htaccess" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
@@ -185,6 +92,8 @@
         <option value="$PROJECT_DIR$/web/assets/views/partials/nav.html" />
         <option value="$PROJECT_DIR$/web/assets/i18n/fr.json" />
         <option value="$PROJECT_DIR$/web/assets/i18n/en.json" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -662,13 +571,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41396105">
-          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1018,6 +920,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0234375">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6323185">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
           <folding />
         </state>
       </provider>
