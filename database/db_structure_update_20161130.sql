@@ -252,3 +252,301 @@ ALTER TABLE `message`
   ADD CONSTRAINT `message_fk7` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `message_fk8` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
+ALTER TABLE `bidding_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `buyer_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `category`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `menu`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `menu_link`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `post_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `post`
+  DROP `title_ar`,
+  DROP `title_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`,
+  DROP `content_ar`,
+  DROP `content_fr`;
+
+ALTER TABLE `supplier_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `tender_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+
+CREATE TABLE IF NOT EXISTS `translation_bidding_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `bidding_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `bidding_type_id` (`bidding_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_bidding_type`
+  ADD CONSTRAINT `translation_bidding_type_fk1` FOREIGN KEY (`bidding_type_id`) REFERENCES `bidding_type` (`id`),
+  ADD CONSTRAINT `translation_bidding_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_bidding_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_buyer_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `buyer_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `buyer_type_id` (`buyer_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_buyer_type`
+  ADD CONSTRAINT `translation_buyer_type_fk1` FOREIGN KEY (`buyer_type_id`) REFERENCES `buyer_type` (`id`),
+  ADD CONSTRAINT `translation_buyer_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_buyer_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_category`
+  ADD CONSTRAINT `translation_category_fk1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `translation_category_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_category_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_menu` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `menu_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `menu_id` (`menu_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_menu`
+  ADD CONSTRAINT `translation_menu_fk1` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `translation_menu_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_menu_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_menu_link` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `menu_link_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `menu_link_id` (`menu_link_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_menu_link`
+  ADD CONSTRAINT `translation_menu_link_fk1` FOREIGN KEY (`menu_link_id`) REFERENCES `menu_link` (`id`),
+  ADD CONSTRAINT `translation_menu_link_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_menu_link_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_post` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `post_id` int(10) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `content` text DEFAULT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_post`
+  ADD CONSTRAINT `translation_post_fk1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
+  ADD CONSTRAINT `translation_post_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_post_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+
+CREATE TABLE IF NOT EXISTS `translation_post_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `post_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_type_id` (`post_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_post_type`
+  ADD CONSTRAINT `translation_post_type_fk1` FOREIGN KEY (`post_type_id`) REFERENCES `post_type` (`id`),
+  ADD CONSTRAINT `translation_post_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_post_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_product_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_type_id` (`product_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `translation_supplier_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `supplier_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `supplier_type_id` (`supplier_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_supplier_type`
+  ADD CONSTRAINT `translation_supplier_type_fk1` FOREIGN KEY (`supplier_type_id`) REFERENCES `supplier_type` (`id`),
+  ADD CONSTRAINT `translation_supplier_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_supplier_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+ALTER TABLE `translation_product_type`
+  ADD CONSTRAINT `translation_product_type_fk1` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`),
+  ADD CONSTRAINT `translation_product_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_product_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_tender_type` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tender_type_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tender_type_id` (`tender_type_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_tender_type`
+  ADD CONSTRAINT `translation_tender_type_fk1` FOREIGN KEY (`tender_type_id`) REFERENCES `tender_type` (`id`),
+  ADD CONSTRAINT `translation_tender_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `translation_tender_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
