@@ -214,6 +214,11 @@
 					<span class="title" translate="content.list.TRANSLATIONPOSTTYPES">Translation Post Types</span>
 				</a>
 			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationpostcategories')}">
+				<a ui-sref="app.translation.translationpostcategories">
+					<span class="title" translate="content.list.TRANSLATIONPOSTCATEGORIES">Translation Post Categories</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationproducttypes')}">
 				<a ui-sref="app.translation.translationproducttypes">
 					<span class="title" translate="content.list.TRANSLATIONPRODUCTTYPES">Translation Product Types</span>
@@ -257,6 +262,36 @@
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationmenus')}">
 				<a ui-sref="app.translation.translationmenus">
 					<span class="title" translate="content.list.TRANSLATIONMENUS">Translation Menus</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+
+	<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.news')}">
+		<a href="javascript:void(0)">
+			<div class="item-content">
+				<div class="item-media">
+					<i class="ti-book"></i>
+				</div>
+				<div class="item-inner">
+					<span class="title" translate="sidebar.nav.news.MAIN">News</span>
+				</div>
+			</div>
+		</a>
+		<ul class="sub-menu">
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.posts')}">
+				<a ui-sref="app.news.posts">
+					<span class="title" translate="content.list.POSTS">Posts</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.postcategories')}">
+				<a ui-sref="app.news.postcategories">
+					<span class="title" translate="content.list.POSTCATEGORIES">Post Categories</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.news.posttypes')}">
+				<a ui-sref="app.news.posttypes">
+					<span class="title" translate="content.list.POSTTYPES">Post Types</span>
 				</a>
 			</li>
 		</ul>

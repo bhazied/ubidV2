@@ -272,6 +272,10 @@ ALTER TABLE `category`
   DROP `description_ar`,
   DROP `description_fr`;
 
+ALTER TABLE `country`
+  DROP `name_ar`,
+  DROP `name_fr`;
+
 ALTER TABLE `menu`
   DROP `name_ar`,
   DROP `name_fr`,
@@ -285,22 +289,38 @@ ALTER TABLE `menu_link`
   DROP `slug_fr`;
 
 ALTER TABLE `post`
-DROP `title_ar`,
-DROP `title_fr`,
-DROP `slug_ar`,
-DROP `slug_fr`,
-DROP `content_ar`,
-DROP `content_fr`;
+  DROP `title_ar`,
+  DROP `title_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`,
+  DROP `content_ar`,
+  DROP `content_fr`;
 
 ALTER TABLE `post_category`
-DROP `name_ar`,
-DROP `name_fr`,
-DROP `slug_ar`,
-DROP `slug_fr`,
-DROP `description_ar`,
-DROP `description_fr`;
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`,
+  DROP `description_ar`,
+  DROP `description_fr`;
 
 ALTER TABLE `post_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `product_type`
+  DROP `name_ar`,
+  DROP `name_fr`,
+  DROP `slug_ar`,
+  DROP `slug_fr`;
+
+ALTER TABLE `region`
+  DROP `name_ar`,
+  DROP `name_fr`;
+
+ALTER TABLE `sector`
   DROP `name_ar`,
   DROP `name_fr`,
   DROP `slug_ar`,
@@ -387,9 +407,32 @@ CREATE TABLE IF NOT EXISTS `translation_category` (
 
 
 ALTER TABLE `translation_category`
-  ADD CONSTRAINT `translation_category_fk1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
-  ADD CONSTRAINT `translation_category_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `translation_category_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+ADD CONSTRAINT `translation_category_fk1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+ADD CONSTRAINT `translation_category_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `translation_category_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_country` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `country_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `country_id` (`country_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_country`
+ADD CONSTRAINT `translation_country_fk1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
+ADD CONSTRAINT `translation_country_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `translation_country_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
 
 CREATE TABLE IF NOT EXISTS `translation_menu` (
@@ -530,6 +573,53 @@ CREATE TABLE IF NOT EXISTS `translation_product_type` (
   KEY `creator_user_id` (`creator_user_id`),
   KEY `modifier_user_id` (`modifier_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `translation_region` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `region_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `region_id` (`region_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_region`
+ADD CONSTRAINT `translation_region_fk1` FOREIGN KEY (`region_id`) REFERENCES `region` (`id`),
+ADD CONSTRAINT `translation_region_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `translation_region_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
+
+
+CREATE TABLE IF NOT EXISTS `translation_sector` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sector_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sector_id` (`sector_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_sector`
+ADD CONSTRAINT `translation_sector_fk1` FOREIGN KEY (`sector_id`) REFERENCES `sector` (`id`),
+ADD CONSTRAINT `translation_sector_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `translation_sector_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
 
 CREATE TABLE IF NOT EXISTS `translation_supplier_type` (
