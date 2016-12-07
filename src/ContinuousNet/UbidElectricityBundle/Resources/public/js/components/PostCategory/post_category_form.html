@@ -45,34 +45,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="postCategoryNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.name_ar" type="text" name="nameAr" id="postCategoryNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="postCategoryNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.name_fr" type="text" name="nameFr" id="postCategoryNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
                                     <slug from="postCategory.name" to="postCategory.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':postCategoryForm.slug.$dirty && postCategoryForm.slug.$invalid, 'has-success':postCategoryForm.slug.$valid}">
                                     <label for="postCategorySlug" class="control-label">
@@ -85,36 +57,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postCategoryForm.slug.$dirty && postCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                    <slug from="postCategory.name_ar" to="postCategory.slug_ar"></slug>
-                                <div class="form-group">
-                                    <label for="postCategorySlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.slug_ar" type="text" name="slugAr" id="postCategorySlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="postCategory.name_fr" to="postCategory.slug_fr"></slug>
-                                <div class="form-group">
-                                    <label for="postCategorySlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.slug_fr" type="text" name="slugFr" id="postCategorySlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -162,34 +104,6 @@
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postCategoryForm.description.$dirty && postCategoryForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="postCategoryDescriptionAr" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.description_ar" type="text" name="descriptionAr" id="postCategoryDescriptionAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="postCategoryDescriptionFr" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.description_fr" type="text" name="descriptionFr" id="postCategoryDescriptionFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

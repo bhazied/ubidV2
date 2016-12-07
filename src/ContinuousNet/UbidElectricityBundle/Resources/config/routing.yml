@@ -247,6 +247,12 @@ ubid_electricity_translation_category_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_translation_country_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationCountryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_translation_menu_api:
     resource: "@UbidElectricityBundle/Controller/TranslationMenuRESTController.php"
     type:   rest
@@ -279,6 +285,18 @@ ubid_electricity_translation_post_type_api:
         _locale: en|fr|ar
 ubid_electricity_translation_product_type_api:
     resource: "@UbidElectricityBundle/Controller/TranslationProductTypeRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_region_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationRegionRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_translation_sector_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationSectorRESTController.php"
     type:   rest
     prefix:   /{_locale}/api
     requirements:
@@ -457,6 +475,10 @@ ubid_electricity_translation_category:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_category.yml"
     prefix:   /translation-category
 
+ubid_electricity_translation_country:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_country.yml"
+    prefix:   /translation-country
+
 ubid_electricity_translation_menu:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_menu.yml"
     prefix:   /translation-menu
@@ -480,6 +502,14 @@ ubid_electricity_translation_post_type:
 ubid_electricity_translation_product_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_product_type.yml"
     prefix:   /translation-product-type
+
+ubid_electricity_translation_region:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_region.yml"
+    prefix:   /translation-region
+
+ubid_electricity_translation_sector:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_sector.yml"
+    prefix:   /translation-sector
 
 ubid_electricity_translation_supplier_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_supplier_type.yml"

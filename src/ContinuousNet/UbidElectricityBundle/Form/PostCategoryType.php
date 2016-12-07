@@ -45,15 +45,9 @@ class PostCategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('slug', TextType::class)
-            ->add('slugAr', TextType::class)
-            ->add('slugFr', TextType::class)
             ->add('picture', TextType::class)
             ->add('description', TextType::class)
-            ->add('descriptionAr', TextType::class)
-            ->add('descriptionFr', TextType::class)
             ->add('parent', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:PostCategory', 'choice_label' => 'name'))
             ->add('postType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:PostType', 'choice_label' => 'name'))
             ->add('ordering', IntegerType::class)

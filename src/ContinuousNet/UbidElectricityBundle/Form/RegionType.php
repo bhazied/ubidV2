@@ -45,8 +45,6 @@ class RegionType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('nameAr', TextType::class)
-            ->add('nameFr', TextType::class)
             ->add('published', CheckboxType::class)
         ;
     }

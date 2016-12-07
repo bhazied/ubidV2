@@ -1,0 +1,30 @@
+translationsector:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:index" }
+
+translationsector_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:show" }
+
+translationsector_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:new" }
+
+translationsector_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:create" }
+    methods:  POST
+
+translationsector_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:edit" }
+
+translationsector_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:update" }
+    methods:  [POST, PUT]
+
+translationsector_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TranslationSector:delete" }
+    methods:  [POST, DELETE]
