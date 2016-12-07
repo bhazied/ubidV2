@@ -282,6 +282,13 @@ assetic:
     filters:
         cssrewrite: ~
     assets:
+        bootstrap_4_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
+        bootstrap_4_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
+
         google_fonts:
             inputs:   
                 #- "http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
