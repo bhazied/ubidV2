@@ -50,6 +50,7 @@ class PostCategoryRESTController extends BaseRESTController
      */
     public function getAction(PostCategory $entity)
     {
+        $entity = $this->translateEntity($entity);
         $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
@@ -118,6 +119,7 @@ class PostCategoryRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('pc_.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

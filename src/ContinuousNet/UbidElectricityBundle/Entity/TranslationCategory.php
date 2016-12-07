@@ -86,6 +86,17 @@ class TranslationCategory
     private $slug;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="description", type="string", length=320, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $description;
+
+    /**
      * @var boolean
      * @access private
      *
@@ -253,6 +264,30 @@ class TranslationCategory
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @access public
+     * @param string $description
+     * @return TranslationCategory
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @access public
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

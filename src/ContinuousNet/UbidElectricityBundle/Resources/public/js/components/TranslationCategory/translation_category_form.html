@@ -100,6 +100,19 @@
                         <div class="row">
                             <div class="col-md-6">
 
+                                <div class="form-group">
+                                    <label for="translationCategoryDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="translationCategory.description" type="text" name="description" id="translationCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="translationCategory.validated" type="checkbox" name="validated" id="translationCategoryValidated" />
                                     <label for="translationCategoryValidated" translate="content.list.fields.VALIDATED">Validated</label>

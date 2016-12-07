@@ -1,0 +1,30 @@
+translationpostcategory:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:index" }
+
+translationpostcategory_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:show" }
+
+translationpostcategory_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:new" }
+
+translationpostcategory_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:create" }
+    methods:  POST
+
+translationpostcategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:edit" }
+
+translationpostcategory_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:update" }
+    methods:  [POST, PUT]
+
+translationpostcategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TranslationPostCategory:delete" }
+    methods:  [POST, DELETE]

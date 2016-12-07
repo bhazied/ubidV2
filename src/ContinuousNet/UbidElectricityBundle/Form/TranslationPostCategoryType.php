@@ -18,9 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
- * Translation Category Type
+ * Translation Post Category Type
  * 
- * Render Translation Category Type 
+ * Render Translation Post Category Type 
  * 
  * PHP version 5.4.4
  * 
@@ -31,11 +31,11 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
  * @license   AMINOGRAM REGULAR LICENSE
  * @version    Release: 1.0
  * @link       http://ubidelectricity.continuousnet.com/ContinuousNet\UbidElectricityBundle/Form
- * @see        TranslationCategoryType
+ * @see        TranslationPostCategoryType
  * @since      Class available since Release 1.0
  * @access     public
  */
-class TranslationCategoryType extends AbstractType
+class TranslationPostCategoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -44,7 +44,7 @@ class TranslationCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
+            ->add('postCategory', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:PostCategory', 'choice_label' => 'name'))
             ->add('locale', TextType::class)
             ->add('name', TextType::class)
             ->add('slug', TextType::class)
@@ -59,7 +59,7 @@ class TranslationCategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ContinuousNet\UbidElectricityBundle\Entity\TranslationCategory'
+            'data_class' => 'ContinuousNet\UbidElectricityBundle\Entity\TranslationPostCategory'
         ));
     }
 
@@ -68,6 +68,6 @@ class TranslationCategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'UbidElectricityBundle_TranslationCategory';
+        return 'UbidElectricityBundle_TranslationPostCategory';
     }
 }

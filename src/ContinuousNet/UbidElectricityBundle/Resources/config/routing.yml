@@ -265,6 +265,12 @@ ubid_electricity_translation_post_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_translation_post_category_api:
+    resource: "@UbidElectricityBundle/Controller/TranslationPostCategoryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_translation_post_type_api:
     resource: "@UbidElectricityBundle/Controller/TranslationPostTypeRESTController.php"
     type:   rest
@@ -462,6 +468,10 @@ ubid_electricity_translation_menu_link:
 ubid_electricity_translation_post:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_post.yml"
     prefix:   /translation-post
+
+ubid_electricity_translation_post_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/translation_post_category.yml"
+    prefix:   /translation-post-category
 
 ubid_electricity_translation_post_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/translation_post_type.yml"

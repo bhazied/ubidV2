@@ -13,9 +13,9 @@ use JMS\Serializer\Annotation\MaxDepth;
 use JMS\Serializer\Annotation\Groups;
 
 /**
- * Category Entity
+ * Translation Post Category Entity
  * 
- * Storing Categories data to the database using Doctrine
+ * Storing TranslationPostCategories data to the database using Doctrine
  * 
  * PHP version 5.4.4
  * 
@@ -26,19 +26,18 @@ use JMS\Serializer\Annotation\Groups;
  * @license	CONTINUOUS NET REGULAR LICENSE
  * @version    Release: 1.0
  * @link       http://ubidelectricity.continuousnet.com/ContinuousNet/UbidElectricityBundle/Entity
- * @see        Category
+ * @see        TranslationPostCategory
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`category`", indexes={@ORM\Index(name="parent_id", columns={"parent_id"}), @ORM\Index(name="product_type_id", columns={"product_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`translation_post_category`", indexes={@ORM\Index(name="post_category_id", columns={"post_category_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
- * @UniqueEntity("name")
  * @ORM\HasLifecycleCallbacks()
  * 
  * @ExclusionPolicy("none")
  * 
  */
-class Category 
+class TranslationPostCategory 
 {
     /**
      * @var integer
@@ -57,7 +56,18 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="locale", type="string", length=5, nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $locale;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,18 +89,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $picture;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="description", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="description", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -98,26 +97,15 @@ class Category
     private $description;
 
     /**
-     * @var integer
+     * @var boolean
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="validated", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
-    private $ordering;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $status;
+    private $validated;
 
     /**
      * @var \DateTime
@@ -142,34 +130,19 @@ class Category
     private $modifiedAt;
 
     /**
-     * @var \ContinuousNet\UbidElectricityBundle\Entity\Category
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\PostCategory
      * @access private
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="PostCategory")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
      * @MaxDepth(1)
      * 
      */
-    private $parent;
-
-    /**
-     * @var \ContinuousNet\UbidElectricityBundle\Entity\ProductType
-     * @access private
-     *
-     * @ORM\ManyToOne(targetEntity="ProductType")
-     * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")
-     * })
-     * 
-     * @Expose
-     * @MaxDepth(1)
-     * 
-     */
-    private $productType;
+    private $postCategory;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
@@ -202,33 +175,12 @@ class Category
     private $modifierUser;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access private
-     *
-     * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
-     * @ORM\JoinTable(name="tenders_categories",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    private $tenders;
-
-    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
-        $this->tenders = new DoctrineCollection();
     }
 
     /**
@@ -243,11 +195,35 @@ class Category
     }
 
     /**
+     * Set locale
+     *
+     * @access public
+     * @param string $locale
+     * @return TranslationPostCategory
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @access public
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
      * Set name
      *
      * @access public
      * @param string $name
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setName($name)
     {
@@ -271,7 +247,7 @@ class Category
      *
      * @access public
      * @param string $slug
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setSlug($slug)
     {
@@ -291,37 +267,13 @@ class Category
     }
 
     /**
-     * Set picture
-     *
-     * @access public
-     * @param string $picture
-     * @return Category
-     */
-    public function setPicture($picture = null)
-    {
-        $this->picture = $picture;
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @access public
-     * @return string 
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
      * Set description
      *
      * @access public
      * @param string $description
-     * @return Category
+     * @return TranslationPostCategory
      */
-    public function setDescription($description)
+    public function setDescription($description = null)
     {
         $this->description = $description;
         return $this;
@@ -339,51 +291,27 @@ class Category
     }
 
     /**
-     * Set ordering
+     * Set validated
      *
      * @access public
-     * @param integer $ordering
-     * @return Category
+     * @param boolean $validated
+     * @return TranslationPostCategory
      */
-    public function setOrdering($ordering = null)
+    public function setValidated($validated)
     {
-        $this->ordering = $ordering;
+        $this->validated = $validated;
         return $this;
     }
 
     /**
-     * Get ordering
+     * Get validated
      *
      * @access public
-     * @return integer 
+     * @return boolean 
      */
-    public function getOrdering()
+    public function getValidated()
     {
-        return $this->ordering;
-    }
-
-    /**
-     * Set status
-     *
-     * @access public
-     * @param string $status
-     * @return Category
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @access public
-     * @return string 
-     */
-    public function getStatus()
-    {
-        return $this->status;
+        return $this->validated;
     }
 
     /**
@@ -391,7 +319,7 @@ class Category
      *
      * @access public
      * @param \DateTime $createdAt
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
@@ -415,7 +343,7 @@ class Category
      *
      * @access public
      * @param \DateTime $modifiedAt
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setModifiedAt(\DateTime $modifiedAt = null)
     {
@@ -435,51 +363,27 @@ class Category
     }
 
     /**
-     * Set parent
+     * Set postCategory
      *
      * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\Category $parent
-     * @return Category
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\PostCategory $postCategory
+     * @return TranslationPostCategory
      */
-    public function setParent(Category $parent = null)
+    public function setPostCategory(PostCategory $postCategory = null)
     {
-        $this->parent = $parent;
+        $this->postCategory = $postCategory;
         return $this;
     }
 
     /**
-     * Get parent
+     * Get postCategory
      *
      * @access public
-     * @return \ContinuousNet\UbidElectricityBundle\Entity\Category 
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\PostCategory 
      */
-    public function getParent()
+    public function getPostCategory()
     {
-        return $this->parent;
-    }
-
-    /**
-     * Set productType
-     *
-     * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\ProductType $productType
-     * @return Category
-     */
-    public function setProductType(ProductType $productType = null)
-    {
-        $this->productType = $productType;
-        return $this;
-    }
-
-    /**
-     * Get productType
-     *
-     * @access public
-     * @return \ContinuousNet\UbidElectricityBundle\Entity\ProductType 
-     */
-    public function getProductType()
-    {
-        return $this->productType;
+        return $this->postCategory;
     }
 
     /**
@@ -487,7 +391,7 @@ class Category
      *
      * @access public
      * @param \ContinuousNet\UbidElectricityBundle\Entity\User $creatorUser
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setCreatorUser(User $creatorUser = null)
     {
@@ -511,7 +415,7 @@ class Category
      *
      * @access public
      * @param \ContinuousNet\UbidElectricityBundle\Entity\User $modifierUser
-     * @return Category
+     * @return TranslationPostCategory
      */
     public function setModifierUser(User $modifierUser = null)
     {
@@ -528,62 +432,6 @@ class Category
     public function getModifierUser()
     {
         return $this->modifierUser;
-    }
-
-    /**
-     * Add tender
-     *
-     * @access public
-     * @param Tender $tender
-     * @return Category
-     */
-    public function addTender(Tender $tender)
-    {
-        if (!$this->tenders->contains($tender))
-        {
-            $this->tenders->add($tender);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove tender
-     *
-     * @access public
-     * @param Tender $tender
-     * @return Category
-     */
-    public function removeTender(Tender $tender)
-    {
-        if ($this->tenders->contains($tender))
-        {
-            $this->tenders->removeElement($tender);
-        }
-        return $this;
-    }
-
-    /**
-     * Set tender
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return Category
-     */
-    public function setTenders($tenders)
-    {
-        $this->tenders = $tenders;
-        return $this;
-    }
-
-    /**
-     * Get tender
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTenders()
-    {
-        return $this->tenders;
     }
 
     /**

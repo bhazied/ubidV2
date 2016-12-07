@@ -128,6 +128,9 @@ app.constant('APP_JS_REQUIRES', {
         'TranslationPostsCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostsCtrl.js',
         'TranslationPostFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostFormCtrl.js',
         'TranslationPostCtrl': '/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostCtrl.js',
+        'TranslationPostCategoriesCtrl': '/bundles/ubidelectricity/js/components/TranslationPostCategory/TranslationPostCategoriesCtrl.js',
+        'TranslationPostCategoryFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPostCategory/TranslationPostCategoryFormCtrl.js',
+        'TranslationPostCategoryCtrl': '/bundles/ubidelectricity/js/components/TranslationPostCategory/TranslationPostCategoryCtrl.js',
         'TranslationPostTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypesCtrl.js',
         'TranslationPostTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeFormCtrl.js',
         'TranslationPostTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeCtrl.js',
@@ -282,6 +285,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'translationPostService',
         files: ['/bundles/ubidelectricity/js/components/TranslationPost/TranslationPostService.js']
+    },{
+        name: 'translationPostCategoryService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationPostCategory/TranslationPostCategoryService.js']
     },{
         name: 'translationPostTypeService',
         files: ['/bundles/ubidelectricity/js/components/TranslationPostType/TranslationPostTypeService.js']

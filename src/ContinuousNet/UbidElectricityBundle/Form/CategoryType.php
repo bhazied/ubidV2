@@ -48,8 +48,6 @@ class CategoryType extends AbstractType
             ->add('slug', TextType::class)
             ->add('picture', TextType::class)
             ->add('description', TextType::class)
-            ->add('descriptionAr', TextType::class)
-            ->add('descriptionFr', TextType::class)
             ->add('parent', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
             ->add('productType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:ProductType', 'choice_label' => 'name'))
             ->add('ordering', IntegerType::class)
