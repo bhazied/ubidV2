@@ -67965,6 +67965,9 @@ app.constant('APP_JS_REQUIRES', {
         'TranslationCategoriesCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoriesCtrl.js',
         'TranslationCategoryFormCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryFormCtrl.js',
         'TranslationCategoryCtrl': '/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryCtrl.js',
+        'TranslationCountriesCtrl': '/bundles/ubidelectricity/js/components/TranslationCountry/TranslationCountriesCtrl.js',
+        'TranslationCountryFormCtrl': '/bundles/ubidelectricity/js/components/TranslationCountry/TranslationCountryFormCtrl.js',
+        'TranslationCountryCtrl': '/bundles/ubidelectricity/js/components/TranslationCountry/TranslationCountryCtrl.js',
         'TranslationMenusCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenusCtrl.js',
         'TranslationMenuFormCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuFormCtrl.js',
         'TranslationMenuCtrl': '/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuCtrl.js',
@@ -67983,6 +67986,12 @@ app.constant('APP_JS_REQUIRES', {
         'TranslationProductTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypesCtrl.js',
         'TranslationProductTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeFormCtrl.js',
         'TranslationProductTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeCtrl.js',
+        'TranslationRegionsCtrl': '/bundles/ubidelectricity/js/components/TranslationRegion/TranslationRegionsCtrl.js',
+        'TranslationRegionFormCtrl': '/bundles/ubidelectricity/js/components/TranslationRegion/TranslationRegionFormCtrl.js',
+        'TranslationRegionCtrl': '/bundles/ubidelectricity/js/components/TranslationRegion/TranslationRegionCtrl.js',
+        'TranslationSectorsCtrl': '/bundles/ubidelectricity/js/components/TranslationSector/TranslationSectorsCtrl.js',
+        'TranslationSectorFormCtrl': '/bundles/ubidelectricity/js/components/TranslationSector/TranslationSectorFormCtrl.js',
+        'TranslationSectorCtrl': '/bundles/ubidelectricity/js/components/TranslationSector/TranslationSectorCtrl.js',
         'TranslationSupplierTypesCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypesCtrl.js',
         'TranslationSupplierTypeFormCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeFormCtrl.js',
         'TranslationSupplierTypeCtrl': '/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeCtrl.js',
@@ -68123,6 +68132,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'translationCategoryService',
         files: ['/bundles/ubidelectricity/js/components/TranslationCategory/TranslationCategoryService.js']
     },{
+        name: 'translationCountryService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationCountry/TranslationCountryService.js']
+    },{
         name: 'translationMenuService',
         files: ['/bundles/ubidelectricity/js/components/TranslationMenu/TranslationMenuService.js']
     },{
@@ -68140,6 +68152,12 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'translationProductTypeService',
         files: ['/bundles/ubidelectricity/js/components/TranslationProductType/TranslationProductTypeService.js']
+    },{
+        name: 'translationRegionService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationRegion/TranslationRegionService.js']
+    },{
+        name: 'translationSectorService',
+        files: ['/bundles/ubidelectricity/js/components/TranslationSector/TranslationSectorService.js']
     },{
         name: 'translationSupplierTypeService',
         files: ['/bundles/ubidelectricity/js/components/TranslationSupplierType/TranslationSupplierTypeService.js']
@@ -69920,47 +69938,6 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'sidebar.nav.translation.MAIN'
         }
-    }).state('app.translation.translationposttypes', {
-        url: '/translation-post-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_types.html',
-        title: 'content.list.TRANSLATIONPOSTTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONPOSTTYPES'
-        },
-        params: {
-            'translationPostTypesIsFiltersVisible': null,
-            'translationPostTypesPage': null,
-            'translationPostTypesCount': null,
-            'translationPostTypesSorting': null,
-            'translationPostTypesFilter': null
-        },
-        resolve: loadSequence('TranslationPostTypesCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
-    }).state('app.translation.translationposttypesnew', {
-        url: '/translation-post-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
-        title: 'content.list.NEWTRANSLATIONPOSTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTRANSLATIONPOSTTYPE'
-        },
-        params: {
-            'translation_post_type_post_type': null
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
-    }).state('app.translation.translationposttypesedit', {
-        url: '/translation-post-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
-        title: 'content.list.EDITTRANSLATIONPOSTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTRANSLATIONPOSTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
-    }).state('app.translation.translationposttypesdetails', {
-        url: '/translation-post-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONPOSTTYPEDETAILS'
-        },
-        resolve: loadSequence('TranslationPostTypeCtrl', 'translationPostTypeService')
     }).state('app.translation.translationproducttypes', {
         url: '/translation-product-types',
         templateUrl: '/bundles/ubidelectricity/js/components/TranslationProductType/translation_product_types.html',
@@ -70002,47 +69979,129 @@ function ($stateProvider) {
             label: 'content.list.TRANSLATIONPRODUCTTYPEDETAILS'
         },
         resolve: loadSequence('TranslationProductTypeCtrl', 'translationProductTypeService')
-    }).state('app.translation.translationsuppliertypes', {
-        url: '/translation-supplier-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_types.html',
-        title: 'content.list.TRANSLATIONSUPPLIERTYPES',
+    }).state('app.translation.translationposttypes', {
+        url: '/translation-post-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_types.html',
+        title: 'content.list.TRANSLATIONPOSTTYPES',
         ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONSUPPLIERTYPES'
+            label: 'content.list.TRANSLATIONPOSTTYPES'
         },
         params: {
-            'translationSupplierTypesIsFiltersVisible': null,
-            'translationSupplierTypesPage': null,
-            'translationSupplierTypesCount': null,
-            'translationSupplierTypesSorting': null,
-            'translationSupplierTypesFilter': null
+            'translationPostTypesIsFiltersVisible': null,
+            'translationPostTypesPage': null,
+            'translationPostTypesCount': null,
+            'translationPostTypesSorting': null,
+            'translationPostTypesFilter': null
         },
-        resolve: loadSequence('TranslationSupplierTypesCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
-    }).state('app.translation.translationsuppliertypesnew', {
-        url: '/translation-supplier-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
-        title: 'content.list.NEWTRANSLATIONSUPPLIERTYPE',
+        resolve: loadSequence('TranslationPostTypesCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesnew', {
+        url: '/translation-post-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
+        title: 'content.list.NEWTRANSLATIONPOSTTYPE',
         ncyBreadcrumb: {
-            label: 'content.list.NEWTRANSLATIONSUPPLIERTYPE'
+            label: 'content.list.NEWTRANSLATIONPOSTTYPE'
         },
         params: {
-            'translation_supplier_type_supplier_type': null
+            'translation_post_type_post_type': null
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
-    }).state('app.translation.translationsuppliertypesedit', {
-        url: '/translation-supplier-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
-        title: 'content.list.EDITTRANSLATIONSUPPLIERTYPE',
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesedit', {
+        url: '/translation-post-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type_form.html',
+        title: 'content.list.EDITTRANSLATIONPOSTTYPE',
         ncyBreadcrumb: {
-            label: 'content.list.EDITTRANSLATIONSUPPLIERTYPE'
+            label: 'content.list.EDITTRANSLATIONPOSTTYPE'
         },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
-    }).state('app.translation.translationsuppliertypesdetails', {
-        url: '/translation-supplier-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type.html',
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationPostTypeFormCtrl', 'translationPostTypeService', 'postTypeService', 'userService')
+    }).state('app.translation.translationposttypesdetails', {
+        url: '/translation-post-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostType/translation_post_type.html',
         ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONSUPPLIERTYPEDETAILS'
+            label: 'content.list.TRANSLATIONPOSTTYPEDETAILS'
         },
-        resolve: loadSequence('TranslationSupplierTypeCtrl', 'translationSupplierTypeService')
+        resolve: loadSequence('TranslationPostTypeCtrl', 'translationPostTypeService')
+    }).state('app.translation.translationregions', {
+        url: '/translation-regions',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationRegion/translation_regions.html',
+        title: 'content.list.TRANSLATIONREGIONS',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONREGIONS'
+        },
+        params: {
+            'translationRegionsIsFiltersVisible': null,
+            'translationRegionsPage': null,
+            'translationRegionsCount': null,
+            'translationRegionsSorting': null,
+            'translationRegionsFilter': null
+        },
+        resolve: loadSequence('TranslationRegionsCtrl', 'translationRegionService', 'regionService', 'userService')
+    }).state('app.translation.translationregionsnew', {
+        url: '/translation-regions/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationRegion/translation_region_form.html',
+        title: 'content.list.NEWTRANSLATIONREGION',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONREGION'
+        },
+        params: {
+            'translation_region_region': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationRegionFormCtrl', 'translationRegionService', 'regionService', 'userService')
+    }).state('app.translation.translationregionsedit', {
+        url: '/translation-regions/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationRegion/translation_region_form.html',
+        title: 'content.list.EDITTRANSLATIONREGION',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONREGION'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationRegionFormCtrl', 'translationRegionService', 'regionService', 'userService')
+    }).state('app.translation.translationregionsdetails', {
+        url: '/translation-regions/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationRegion/translation_region.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONREGIONDETAILS'
+        },
+        resolve: loadSequence('TranslationRegionCtrl', 'translationRegionService')
+    }).state('app.translation.translationsectors', {
+        url: '/translation-sectors',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSector/translation_sectors.html',
+        title: 'content.list.TRANSLATIONSECTORS',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSECTORS'
+        },
+        params: {
+            'translationSectorsIsFiltersVisible': null,
+            'translationSectorsPage': null,
+            'translationSectorsCount': null,
+            'translationSectorsSorting': null,
+            'translationSectorsFilter': null
+        },
+        resolve: loadSequence('TranslationSectorsCtrl', 'translationSectorService', 'sectorService', 'userService')
+    }).state('app.translation.translationsectorsnew', {
+        url: '/translation-sectors/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSector/translation_sector_form.html',
+        title: 'content.list.NEWTRANSLATIONSECTOR',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONSECTOR'
+        },
+        params: {
+            'translation_sector_sector': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSectorFormCtrl', 'translationSectorService', 'sectorService', 'userService')
+    }).state('app.translation.translationsectorsedit', {
+        url: '/translation-sectors/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSector/translation_sector_form.html',
+        title: 'content.list.EDITTRANSLATIONSECTOR',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONSECTOR'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSectorFormCtrl', 'translationSectorService', 'sectorService', 'userService')
+    }).state('app.translation.translationsectorsdetails', {
+        url: '/translation-sectors/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSector/translation_sector.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSECTORDETAILS'
+        },
+        resolve: loadSequence('TranslationSectorCtrl', 'translationSectorService')
     }).state('app.translation.translationtendertypes', {
         url: '/translation-tender-types',
         templateUrl: '/bundles/ubidelectricity/js/components/TranslationTenderType/translation_tender_types.html',
@@ -70084,6 +70143,47 @@ function ($stateProvider) {
             label: 'content.list.TRANSLATIONTENDERTYPEDETAILS'
         },
         resolve: loadSequence('TranslationTenderTypeCtrl', 'translationTenderTypeService')
+    }).state('app.translation.translationsuppliertypes', {
+        url: '/translation-supplier-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_types.html',
+        title: 'content.list.TRANSLATIONSUPPLIERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSUPPLIERTYPES'
+        },
+        params: {
+            'translationSupplierTypesIsFiltersVisible': null,
+            'translationSupplierTypesPage': null,
+            'translationSupplierTypesCount': null,
+            'translationSupplierTypesSorting': null,
+            'translationSupplierTypesFilter': null
+        },
+        resolve: loadSequence('TranslationSupplierTypesCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesnew', {
+        url: '/translation-supplier-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
+        title: 'content.list.NEWTRANSLATIONSUPPLIERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONSUPPLIERTYPE'
+        },
+        params: {
+            'translation_supplier_type_supplier_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesedit', {
+        url: '/translation-supplier-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type_form.html',
+        title: 'content.list.EDITTRANSLATIONSUPPLIERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONSUPPLIERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationSupplierTypeFormCtrl', 'translationSupplierTypeService', 'supplierTypeService', 'userService')
+    }).state('app.translation.translationsuppliertypesdetails', {
+        url: '/translation-supplier-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationSupplierType/translation_supplier_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONSUPPLIERTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationSupplierTypeCtrl', 'translationSupplierTypeService')
     }).state('app.translation.translationpostcategories', {
         url: '/translation-post-categories',
         templateUrl: '/bundles/ubidelectricity/js/components/TranslationPostCategory/translation_post_categories.html',
@@ -70166,47 +70266,6 @@ function ($stateProvider) {
             label: 'content.list.TRANSLATIONPOSTDETAILS'
         },
         resolve: loadSequence('TranslationPostCtrl', 'translationPostService')
-    }).state('app.translation.translationbuyertypes', {
-        url: '/translation-buyer-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_types.html',
-        title: 'content.list.TRANSLATIONBUYERTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONBUYERTYPES'
-        },
-        params: {
-            'translationBuyerTypesIsFiltersVisible': null,
-            'translationBuyerTypesPage': null,
-            'translationBuyerTypesCount': null,
-            'translationBuyerTypesSorting': null,
-            'translationBuyerTypesFilter': null
-        },
-        resolve: loadSequence('TranslationBuyerTypesCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
-    }).state('app.translation.translationbuyertypesnew', {
-        url: '/translation-buyer-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
-        title: 'content.list.NEWTRANSLATIONBUYERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTRANSLATIONBUYERTYPE'
-        },
-        params: {
-            'translation_buyer_type_buyer_type': null
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
-    }).state('app.translation.translationbuyertypesedit', {
-        url: '/translation-buyer-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
-        title: 'content.list.EDITTRANSLATIONBUYERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTRANSLATIONBUYERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
-    }).state('app.translation.translationbuyertypesdetails', {
-        url: '/translation-buyer-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TRANSLATIONBUYERTYPEDETAILS'
-        },
-        resolve: loadSequence('TranslationBuyerTypeCtrl', 'translationBuyerTypeService')
     }).state('app.translation.translationcategories', {
         url: '/translation-categories',
         templateUrl: '/bundles/ubidelectricity/js/components/TranslationCategory/translation_categories.html',
@@ -70248,6 +70307,88 @@ function ($stateProvider) {
             label: 'content.list.TRANSLATIONCATEGORYDETAILS'
         },
         resolve: loadSequence('TranslationCategoryCtrl', 'translationCategoryService')
+    }).state('app.translation.translationbuyertypes', {
+        url: '/translation-buyer-types',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_types.html',
+        title: 'content.list.TRANSLATIONBUYERTYPES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBUYERTYPES'
+        },
+        params: {
+            'translationBuyerTypesIsFiltersVisible': null,
+            'translationBuyerTypesPage': null,
+            'translationBuyerTypesCount': null,
+            'translationBuyerTypesSorting': null,
+            'translationBuyerTypesFilter': null
+        },
+        resolve: loadSequence('TranslationBuyerTypesCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesnew', {
+        url: '/translation-buyer-types/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
+        title: 'content.list.NEWTRANSLATIONBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONBUYERTYPE'
+        },
+        params: {
+            'translation_buyer_type_buyer_type': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesedit', {
+        url: '/translation-buyer-types/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type_form.html',
+        title: 'content.list.EDITTRANSLATIONBUYERTYPE',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONBUYERTYPE'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationBuyerTypeFormCtrl', 'translationBuyerTypeService', 'buyerTypeService', 'userService')
+    }).state('app.translation.translationbuyertypesdetails', {
+        url: '/translation-buyer-types/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationBuyerType/translation_buyer_type.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONBUYERTYPEDETAILS'
+        },
+        resolve: loadSequence('TranslationBuyerTypeCtrl', 'translationBuyerTypeService')
+    }).state('app.translation.translationcountries', {
+        url: '/translation-countries',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCountry/translation_countries.html',
+        title: 'content.list.TRANSLATIONCOUNTRIES',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONCOUNTRIES'
+        },
+        params: {
+            'translationCountriesIsFiltersVisible': null,
+            'translationCountriesPage': null,
+            'translationCountriesCount': null,
+            'translationCountriesSorting': null,
+            'translationCountriesFilter': null
+        },
+        resolve: loadSequence('TranslationCountriesCtrl', 'translationCountryService', 'countryService', 'userService')
+    }).state('app.translation.translationcountriesnew', {
+        url: '/translation-countries/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCountry/translation_country_form.html',
+        title: 'content.list.NEWTRANSLATIONCOUNTRY',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTRANSLATIONCOUNTRY'
+        },
+        params: {
+            'translation_country_country': null
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationCountryFormCtrl', 'translationCountryService', 'countryService', 'userService')
+    }).state('app.translation.translationcountriesedit', {
+        url: '/translation-countries/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCountry/translation_country_form.html',
+        title: 'content.list.EDITTRANSLATIONCOUNTRY',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTRANSLATIONCOUNTRY'
+        },
+        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TranslationCountryFormCtrl', 'translationCountryService', 'countryService', 'userService')
+    }).state('app.translation.translationcountriesdetails', {
+        url: '/translation-countries/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TranslationCountry/translation_country.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TRANSLATIONCOUNTRYDETAILS'
+        },
+        resolve: loadSequence('TranslationCountryCtrl', 'translationCountryService')
     }).state('app.translation.translationmenus', {
         url: '/translation-menus',
         templateUrl: '/bundles/ubidelectricity/js/components/TranslationMenu/translation_menus.html',

@@ -120,15 +120,13 @@ CREATE TABLE IF NOT EXISTS `tenders_categories` (
 
 
 ALTER TABLE `tenders_categories`
-  ADD CONSTRAINT `category_id_fk2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
-  ADD CONSTRAINT `tender_id_fk1` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`);
+  ADD CONSTRAINT `tenders_categories_fk1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `tenders_categories_fk2` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`);
 
 
 DROP TABLE IF EXISTS `tenders_tender_categories`;
 
 DROP TABLE IF EXISTS `tender_category`;
-
-DROP TABLE IF EXISTS `supplier_product`;
 
 CREATE TABLE IF NOT EXISTS `supplier_product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
