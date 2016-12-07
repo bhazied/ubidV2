@@ -1,0 +1,143 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MESSAGES">Messages</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MessageCtrl">
+            <div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMESSAGES">Back to Messages list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDMESSAGE">Add Message</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(message)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITMESSAGE">Edit Message</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.MESSAGEDETAILS">Message Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="message.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FROMUSER">From User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: message.from_user.id})">[[ message.from_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FROMBUYER">From Buyer</span></td>
+                                <td><a ui-sref="app.marketplace.buyersdetails({id: message.from_buyer.id})">[[ message.from_buyer.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FROMSUPPLIER">From Supplier</span></td>
+                                <td><a ui-sref="app.marketplace.suppliersdetails({id: message.from_supplier.id})">[[ message.from_supplier.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOUSER">To User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: message.to_user.id})">[[ message.to_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOBUYER">To Buyer</span></td>
+                                <td><a ui-sref="app.marketplace.buyersdetails({id: message.to_buyer.id})">[[ message.to_buyer.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOSUPPLIER">To Supplier</span></td>
+                                <td><a ui-sref="app.marketplace.suppliersdetails({id: message.to_supplier.id})">[[ message.to_supplier.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUBJECT">Subject</span></td>
+                                <td>
+                                    <div ng-bind-html="message.subject"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BODY">Body</span></td>
+                                <td>
+                                    <div ng-bind-html="message.body"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ message.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISREAD">Is Read</span></td>
+                                <td>
+                                    <span my-boolean="[[ message.is_read ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SENDINGTIME">Sending Time</span></td>
+                                <td>
+                                    <span>[[ message.sending_time | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.READINGTIME">Reading Time</span></td>
+                                <td>
+                                    <span>[[ message.reading_time | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ message.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: message.creator_user.id})">[[ message.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ message.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: message.modifier_user.id})">[[ message.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

@@ -7,6 +7,15 @@
 app.controller('TenderCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tendersDataFactory',
 function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tendersDataFactory) {
 
+    $scope.sections = [{
+        id: 'Consultation',
+        title: $filter('translate')('content.list.fields.sections.CONSULTATION'),
+        css: 'primary'
+    }, {
+        id: 'Tender',
+        title: $filter('translate')('content.list.fields.sections.TENDER'),
+        css: 'success'
+    }];
     $scope.statuses = [{
         id: 'Draft',
         title: $filter('translate')('content.list.fields.statuses.DRAFT'),

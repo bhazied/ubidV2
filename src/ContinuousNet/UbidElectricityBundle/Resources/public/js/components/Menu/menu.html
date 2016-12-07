@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="MenuCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMENUS">Back to Menus list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDMENU">Add Menu</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(menu)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITMENU">Edit Menu</span>
                         </button>
@@ -188,6 +188,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

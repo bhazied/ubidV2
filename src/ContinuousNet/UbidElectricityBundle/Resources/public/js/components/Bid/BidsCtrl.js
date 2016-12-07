@@ -4,8 +4,8 @@
  * Controller for Bids List
  */
 
-app.controller('BidsCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$usersDataFactory', '$bidsDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $usersDataFactory, $bidsDataFactory) {
+app.controller('BidsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory) {
 
     $scope.statusesOptions = [{
         id: '',
@@ -53,6 +53,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         css: 'danger'
     }];
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -84,6 +85,35 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     };
 
     $scope.getTenders();
+
+    $scope.suppliers = [];
+    $scope.suppliersLoaded = false;
+
+    $scope.getSuppliers = function() {
+        $scope.suppliersLoaded = true;
+        if ($scope.suppliers.length == 0) {
+            $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
+            var def = $q.defer();
+            $suppliersDataFactory.query({offset: 0, limit: 10000, 'order_by[supplier.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        for (var i in data.results) {
+                            $scope.suppliers.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.suppliers);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.suppliers;
+        }
+    };
+
+    $scope.getSuppliers();
 
     $scope.users = [];
     $scope.usersLoaded = false;
@@ -126,7 +156,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -135,7 +170,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -152,6 +191,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.bidsParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -159,9 +199,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.bidsParams)) {
            $localStorage.bidsParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.bidsParams[param])) {
+        } else if (angular.isDefined($localStorage.bidsParams[param]) && $localStorage.bidsParams[param] != null) {
             return $localStorage.bidsParams[param];
         } else {
             $localStorage.bidsParams[param] = defaultValue;
@@ -173,11 +215,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'bid.id', filter: { 'bid.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'tender', title: $filter('translate')('content.list.fields.TENDER'), sortable: 'tender.title', filter: { 'bid.tender': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenders(), show: $scope.getParamValue('tender_id_show_filed', true), displayField: 'title', state: 'app.marketplace.tendersdetails' },
+            { field: 'supplier', title: $filter('translate')('content.list.fields.SUPPLIER'), sortable: 'supplier.name', filter: { 'bid.supplier': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSuppliers(), show: $scope.getParamValue('supplier_id_show_filed', true), displayField: 'name', state: 'app.marketplace.suppliersdetails' },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'bid.title', filter: { 'bid.title': 'text' }, show: $scope.getParamValue('title_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'bid.slug', filter: { 'bid.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'bid.reference', filter: { 'bid.reference': 'text' }, show: $scope.getParamValue('reference_show_filed', true), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'bid.description', filter: { 'bid.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'bid.status', filter: { 'bid.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'bid.status', filter: { 'bid.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'note', title: $filter('translate')('content.list.fields.NOTE'), sortable: 'bid.note', filter: { 'bid.note': 'text' }, show: $scope.getParamValue('note_show_filed', false), getValue: $scope.textValue },
             { field: 'total_cost', title: $filter('translate')('content.list.fields.TOTALCOST'), sortable: 'bid.totalCost', filter: { 'bid.totalCost': 'number' }, show: $scope.getParamValue('total_cost_show_filed', false), getValue: $scope.textValue },
             { field: 'address', title: $filter('translate')('content.list.fields.ADDRESS'), sortable: 'bid.address', filter: { 'bid.address': 'text' }, show: $scope.getParamValue('address_show_filed', false), getValue: $scope.textValue },
@@ -214,15 +257,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('bidsPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('bidsCount', $scope.count);
     $scope.sorting = {'bid.createdAt': 'desc'};
+    $scope.sorting = $scope.getParamValue('bidsSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('bidsFilter', $scope.filter);
+    $scope.setParamValue('bidsPage', $scope.page);
+    $scope.setParamValue('bidsCount', $scope.count);
+    $scope.setParamValue('bidsSorting', $scope.sorting);
+    $scope.setParamValue('bidsFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('bidsPage', $scope.page),
-        count: $scope.getParamValue('bidsCount', $scope.count),
-        sorting: $scope.getParamValue('bidsSorting', $scope.sorting),
-        filter: $scope.getParamValue('bidsFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -251,7 +302,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $bidsDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -272,7 +325,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $bidsDataFactory.remove(row).$promise.then(function(data) {
+                $bidsDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.BIDDELETED'), 

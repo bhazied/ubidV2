@@ -24,17 +24,18 @@
                         Edit Hit
                     </legend>
                     <form name="hitForm" id="hitForm" novalidate ng-submit="submitForm(hitForm)">
+                        <input type="hidden" name="id" id="hitId" ng-model="hit.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="hitId" ng-model="hit.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':hitForm.visit.$dirty && hitForm.visit.$invalid, 'has-success':hitForm.visit.$valid}">
                                     <label for="hitVisit" class="control-label">
                                         <span translate="content.list.fields.VISIT">Visit</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block" ng-if="visitsLoaded">
+                                <div class="block select-list" ng-if="visitsLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="hit.visit" name="visit" id="hitVisit" class="form-control" ng-required="true">
+                                        <select ng-readonly="hit_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="hit.visit" name="visit" id="hitVisit" class="form-control" ng-required="true">
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -42,8 +43,10 @@
                                     <span class="error text-small block" ng-if="hitForm.visit.$dirty && hitForm.visit.$error.required" translate="content.form.messages.VISITREQUIRED">Visit is required.</span>
                                     <span class="success text-small block" ng-if="hitForm.visit.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':hitForm.entity.$dirty && hitForm.entity.$invalid, 'has-success':hitForm.entity.$valid}">
                                     <label for="hitEntity" class="control-label">
                                         <span translate="content.list.fields.ENTITY">Entity</span>
@@ -56,10 +59,12 @@
                                     <span class="error text-small block" ng-if="hitForm.entity.$dirty && hitForm.entity.$error.required" translate="content.form.messages.ENTITYREQUIRED">Entity is required.</span>
                                     <span class="success text-small block" ng-if="hitForm.entity.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':hitForm.foreignKey.$dirty && hitForm.foreignKey.$invalid, 'has-success':hitForm.foreignKey.$valid}">
                                     <label for="hitForeignKey" class="control-label">
                                         <span translate="content.list.fields.FOREIGNKEY">Foreign Key</span>
@@ -72,8 +77,10 @@
                                     <span class="error text-small block" ng-if="hitForm.foreignKey.$dirty && hitForm.foreignKey.$error.required" translate="content.form.messages.FOREIGNKEYREQUIRED">Foreign Key is required.</span>
                                     <span class="success text-small block" ng-if="hitForm.foreignKey.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':hitForm.url.$dirty && hitForm.url.$invalid, 'has-success':hitForm.url.$valid}">
                                     <label for="hitUrl" class="control-label">
                                         <span translate="content.list.fields.URL">Url</span>
@@ -86,6 +93,7 @@
                                     <span class="error text-small block" ng-if="hitForm.url.$dirty && hitForm.url.$error.required" translate="content.form.messages.URLREQUIRED">Url is required.</span>
                                     <span class="success text-small block" ng-if="hitForm.url.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -106,6 +114,14 @@
                     <div class="table-responsive" ng-if="hits.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

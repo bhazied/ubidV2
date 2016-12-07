@@ -4,10 +4,11 @@
  * Controller for Hits List
  */
 
-app.controller('HitsCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
+app.controller('HitsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
 
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -81,7 +82,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -90,7 +96,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -106,6 +116,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.hitsParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -113,9 +124,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.hitsParams)) {
            $localStorage.hitsParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.hitsParams[param])) {
+        } else if (angular.isDefined($localStorage.hitsParams[param]) && $localStorage.hitsParams[param] != null) {
             return $localStorage.hitsParams[param];
         } else {
             $localStorage.hitsParams[param] = defaultValue;
@@ -155,15 +168,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('hitsPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('hitsCount', $scope.count);
     $scope.sorting = {'hit.id': 'asc'};
+    $scope.sorting = $scope.getParamValue('hitsSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('hitsFilter', $scope.filter);
+    $scope.setParamValue('hitsPage', $scope.page);
+    $scope.setParamValue('hitsCount', $scope.count);
+    $scope.setParamValue('hitsSorting', $scope.sorting);
+    $scope.setParamValue('hitsFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('hitsPage', $scope.page),
-        count: $scope.getParamValue('hitsCount', $scope.count),
-        sorting: $scope.getParamValue('hitsSorting', $scope.sorting),
-        filter: $scope.getParamValue('hitsFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -192,7 +213,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $hitsDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -213,7 +236,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $hitsDataFactory.remove(row).$promise.then(function(data) {
+                $hitsDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.HITDELETED'), 

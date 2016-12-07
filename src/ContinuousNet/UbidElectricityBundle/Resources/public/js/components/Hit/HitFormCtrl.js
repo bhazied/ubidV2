@@ -124,6 +124,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.statistics.hits');
     };
     
+    $scope.hit_visit_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $hitsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -133,6 +134,10 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.hit = {id: 0};
 
+        if (angular.isDefined($stateParams.hit_visit) && JSON.parse($stateParams.hit_visit) != null) {
+            $scope.hit.visit = $stateParams.hit_visit;
+            $scope.hit_visit_readonly = true;
+        }
     }
 
 }]);

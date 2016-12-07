@@ -14,23 +14,26 @@
 <div class="container-fluid container-fullw bg-white">
     <div class="row">
         <div class="col-md-12" ng-controller="PostCategoriesCtrl">
+
+            <uib-progressbar ng-if="isLoading" class="progress-striped active" value="100" type="primary"></uib-progressbar>
+
             <div>
-                <div class="row margin-bottom-10 list-toolbox">
-                    <div class="col-md-2">
+                <div class="row list-toolbox">
+                    <div class="col-md-2 margin-bottom-10">
                         <span class="setting-title pull-left" translate="content.common.SHOWFILTERROW">Show filter row</span>
                         <span class="setting-switch pull-right"><switch ng-model="isFiltersVisible" class="green"></switch></span>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 margin-bottom-10">
                         <button ng-click="tableParams.filter({})" class="btn btn-primary">
                             <i class="ti-filter"></i> <span  translate="content.common.CLEARFILTER">Clear filter</span>
                         </button>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 margin-bottom-10">
                         <button ng-click="tableParams.sorting({})" class="btn btn-primary">
                             <i class="ti-split-v"></i> <span  translate="content.common.CLEARSORTING">Clear sorting</span>
                         </button>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 margin-bottom-10">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary">
                                 <i class="ti-layout-grid3"></i>
@@ -50,13 +53,13 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <button type="button" ng-click="add()" class="btn btn-primary pull-right">
+                    <div class="col-md-4 margin-bottom-10">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDPOSTCATEGORY">Add Post Category</span>
                         </button>
                     </div>
                 </div>
-                <p>
+                <p class="pager">
                     <strong translate="content.common.PAGE">Page:</strong> [[tableParams.page()]] - <strong translate="content.common.TOTAL">Total:</strong> [[tableParams.total()]] - <strong translate="content.common.COUNTPERPAGE">Count per page:</strong> [[tableParams.count()]]
                 </p>
                 <div class="table-responsive">
@@ -69,12 +72,12 @@
                         </tr>
                     </table>
                 </div>
-                <div class="row margin-bottom-10 list-toolbox">
-                    <div class="col-md-4">
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

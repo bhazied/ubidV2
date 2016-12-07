@@ -4,10 +4,11 @@
  * Controller for User Settings List
  */
 
-app.controller('UserSettingsCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$userSettingsDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $userSettingsDataFactory) {
+app.controller('UserSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$userSettingsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $userSettingsDataFactory) {
 
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -52,7 +53,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -61,7 +67,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -77,6 +87,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.userSettingsParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -84,9 +95,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.userSettingsParams)) {
            $localStorage.userSettingsParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.userSettingsParams[param])) {
+        } else if (angular.isDefined($localStorage.userSettingsParams[param]) && $localStorage.userSettingsParams[param] != null) {
             return $localStorage.userSettingsParams[param];
         } else {
             $localStorage.userSettingsParams[param] = defaultValue;
@@ -126,15 +139,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('userSettingsPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('userSettingsCount', $scope.count);
     $scope.sorting = {'userSetting.id': 'asc'};
+    $scope.sorting = $scope.getParamValue('userSettingsSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('userSettingsFilter', $scope.filter);
+    $scope.setParamValue('userSettingsPage', $scope.page);
+    $scope.setParamValue('userSettingsCount', $scope.count);
+    $scope.setParamValue('userSettingsSorting', $scope.sorting);
+    $scope.setParamValue('userSettingsFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('userSettingsPage', $scope.page),
-        count: $scope.getParamValue('userSettingsCount', $scope.count),
-        sorting: $scope.getParamValue('userSettingsSorting', $scope.sorting),
-        filter: $scope.getParamValue('userSettingsFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -163,7 +184,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $userSettingsDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -184,7 +207,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $userSettingsDataFactory.remove(row).$promise.then(function(data) {
+                $userSettingsDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.USERSETTINGDELETED'), 

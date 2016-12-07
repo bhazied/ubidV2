@@ -1,0 +1,30 @@
+message:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:Message:index" }
+
+message_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:Message:show" }
+
+message_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:Message:new" }
+
+message_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:Message:create" }
+    methods:  POST
+
+message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:Message:edit" }
+
+message_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:Message:update" }
+    methods:  [POST, PUT]
+
+message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:Message:delete" }
+    methods:  [POST, DELETE]

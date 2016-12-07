@@ -3,15 +3,16 @@
 /**
  * Clicks Data Factory
  */
-app.factory('$clicksDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$clicksDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'clicks', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'clicks';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'clicks/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'clicks/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'clicks/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

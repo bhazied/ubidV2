@@ -60,6 +60,10 @@ class BuyerType extends AbstractType
             ->add('companyName', TextType::class)
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
+            ->add('isPublic', CheckboxType::class)
+            ->add('enableComment', CheckboxType::class)
+            ->add('enablePrivateMessage', CheckboxType::class)
+            ->add('enableShare', CheckboxType::class)
         ;
     }
     

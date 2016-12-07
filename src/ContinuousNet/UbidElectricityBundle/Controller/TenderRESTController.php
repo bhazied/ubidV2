@@ -183,9 +183,9 @@ class TenderRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $previousTenderCategories = $entity->getTenderCategories()->toArray();
-            foreach ($previousTenderCategories as $previousTenderCategory) {
-                $entity->removeTenderCategory($previousTenderCategory);
+            $previousCategories = $entity->getCategories()->toArray();
+            foreach ($previousCategories as $previousCategory) {
+                $entity->removeCategory($previousCategory);
             }
             $form = $this->createForm(new TenderType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
@@ -200,9 +200,6 @@ class TenderRESTController extends BaseRESTController
                             $authorizedChangeStatus = true;
                         }
                     }
-                }
-                if (!$authorizedChangeStatus) {
-                    $entity->setStatus('Draft');
                 }
                 $em->flush();
                 return $entity;
@@ -250,13 +247,5 @@ class TenderRESTController extends BaseRESTController
         }
     }
     
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

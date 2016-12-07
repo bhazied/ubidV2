@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="PostCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPOSTS">Back to Posts list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDPOST">Add Post</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(post)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPOST">Edit Post</span>
                         </button>
@@ -162,7 +162,7 @@
                                     <div ng-bind-html="post.meta_keywords"></div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
                                 <td><span translate="content.list.fields.STATUS">Status</span></td>
                                 <td>
                                     <span my-enum="[[ post.status ]]" my-enum-list="[[ statuses ]]"></span>
@@ -262,6 +262,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

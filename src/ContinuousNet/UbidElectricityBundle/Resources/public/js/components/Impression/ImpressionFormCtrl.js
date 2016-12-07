@@ -149,6 +149,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.adserving.impressions');
     };
     
+    $scope.impression_visit_readonly = false;
+    $scope.impression_banner_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $impressionsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -158,6 +160,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.impression = {id: 0};
 
+        if (angular.isDefined($stateParams.impression_visit) && JSON.parse($stateParams.impression_visit) != null) {
+            $scope.impression.visit = $stateParams.impression_visit;
+            $scope.impression_visit_readonly = true;
+        }
+        if (angular.isDefined($stateParams.impression_banner) && JSON.parse($stateParams.impression_banner) != null) {
+            $scope.impression.banner = $stateParams.impression_banner;
+            $scope.impression_banner_readonly = true;
+        }
     }
 
 }]);

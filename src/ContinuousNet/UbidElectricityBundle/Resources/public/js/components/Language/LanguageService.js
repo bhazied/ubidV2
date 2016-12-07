@@ -3,15 +3,16 @@
 /**
  * Languages Data Factory
  */
-app.factory('$languagesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$languagesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'languages', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'languages';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'languages/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'languages/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'languages/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

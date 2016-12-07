@@ -28,13 +28,21 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
     }, {
-        id: 'Subscriber',
-        title: $filter('translate')('content.list.fields.types.SUBSCRIBER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
         css: 'success'
+    }, {
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
+        css: 'warning'
+    }, {
+        id: 'Both',
+        title: $filter('translate')('content.list.fields.types.BOTH'),
+        css: 'danger'
     }, {
         id: 'Administrator',
         title: $filter('translate')('content.list.fields.types.ADMINISTRATOR'),
-        css: 'warning'
+        css: 'default'
     }];
     $scope.genders = [{
         id: 'Male',
@@ -118,7 +126,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.dateFormat = $filter('translate')('formats.DATE');
     $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
     $scope.timeFormat = $filter('translate')('formats.TIME');
-    $scope.minDate = new Date(2010, 0, 1);
+    $scope.minDate = new Date(1900, 0, 1);
     $scope.maxDate = new Date(2050, 11, 31);
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -284,6 +292,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.access.users');
     };
     
+    $scope.user_country_readonly = false;
+    $scope.user_language_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $usersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -308,6 +318,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.user = {id: 0, type: 'Guest', gender: 'Male', authentication_mode: 'Database', groups: []};
 
+        if (angular.isDefined($stateParams.user_country) && JSON.parse($stateParams.user_country) != null) {
+            $scope.user.country = $stateParams.user_country;
+            $scope.user_country_readonly = true;
+        }
+        if (angular.isDefined($stateParams.user_language) && JSON.parse($stateParams.user_language) != null) {
+            $scope.user.language = $stateParams.user_language;
+            $scope.user_language_readonly = true;
+        }
     }
 
     $scope.showFileManager = function(field) {

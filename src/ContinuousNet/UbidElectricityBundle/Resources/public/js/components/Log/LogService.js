@@ -3,15 +3,16 @@
 /**
  * Logs Data Factory
  */
-app.factory('$logsDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$logsDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'logs', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'logs';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'logs/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'logs/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'logs/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

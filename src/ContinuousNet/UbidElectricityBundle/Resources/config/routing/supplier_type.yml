@@ -1,0 +1,30 @@
+suppliertype:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:index" }
+
+suppliertype_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:show" }
+
+suppliertype_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:new" }
+
+suppliertype_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:create" }
+    methods:  POST
+
+suppliertype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:edit" }
+
+suppliertype_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:update" }
+    methods:  [POST, PUT]
+
+suppliertype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:SupplierType:delete" }
+    methods:  [POST, DELETE]

@@ -199,6 +199,50 @@ class Buyer
     private $companyName;
 
     /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="is_public", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $isPublic;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_comment", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enableComment;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_private_message", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enablePrivateMessage;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_share", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enableShare;
+
+    /**
      * @var \DateTime
      * @access private
      *
@@ -625,6 +669,102 @@ class Buyer
     public function getCompanyName()
     {
         return $this->companyName;
+    }
+
+    /**
+     * Set isPublic
+     *
+     * @access public
+     * @param boolean $isPublic
+     * @return Buyer
+     */
+    public function setIsPublic($isPublic)
+    {
+        $this->isPublic = $isPublic;
+        return $this;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getIsPublic()
+    {
+        return $this->isPublic;
+    }
+
+    /**
+     * Set enableComment
+     *
+     * @access public
+     * @param boolean $enableComment
+     * @return Buyer
+     */
+    public function setEnableComment($enableComment)
+    {
+        $this->enableComment = $enableComment;
+        return $this;
+    }
+
+    /**
+     * Get enableComment
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnableComment()
+    {
+        return $this->enableComment;
+    }
+
+    /**
+     * Set enablePrivateMessage
+     *
+     * @access public
+     * @param boolean $enablePrivateMessage
+     * @return Buyer
+     */
+    public function setEnablePrivateMessage($enablePrivateMessage)
+    {
+        $this->enablePrivateMessage = $enablePrivateMessage;
+        return $this;
+    }
+
+    /**
+     * Get enablePrivateMessage
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnablePrivateMessage()
+    {
+        return $this->enablePrivateMessage;
+    }
+
+    /**
+     * Set enableShare
+     *
+     * @access public
+     * @param boolean $enableShare
+     * @return Buyer
+     */
+    public function setEnableShare($enableShare)
+    {
+        $this->enableShare = $enableShare;
+        return $this;
+    }
+
+    /**
+     * Get enableShare
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnableShare()
+    {
+        return $this->enableShare;
     }
 
     /**

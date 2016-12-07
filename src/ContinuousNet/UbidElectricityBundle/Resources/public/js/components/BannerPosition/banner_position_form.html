@@ -24,9 +24,10 @@
                         Edit Banner Position
                     </legend>
                     <form name="bannerPositionForm" id="bannerPositionForm" novalidate ng-submit="submitForm(bannerPositionForm)">
+                        <input type="hidden" name="id" id="bannerPositionId" ng-model="bannerPosition.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="bannerPositionId" ng-model="bannerPosition.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerPositionForm.name.$dirty && bannerPositionForm.name.$invalid, 'has-success':bannerPositionForm.name.$valid}">
                                     <label for="bannerPositionName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -39,9 +40,11 @@
                                     <span class="error text-small block" ng-if="bannerPositionForm.name.$dirty && bannerPositionForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
                                     <span class="success text-small block" ng-if="bannerPositionForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
-                                    <slug from="bannerPosition.name" to="bannerPosition.slug"></slug>
                             <div class="col-md-6">
+
+                                    <slug from="bannerPosition.name" to="bannerPosition.slug"></slug>
                                 <div class="form-group" ng-class="{'has-error':bannerPositionForm.slug.$dirty && bannerPositionForm.slug.$invalid, 'has-success':bannerPositionForm.slug.$valid}">
                                     <label for="bannerPositionSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -54,10 +57,12 @@
                                     <span class="error text-small block" ng-if="bannerPositionForm.slug.$dirty && bannerPositionForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="bannerPositionForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerPositionForm.itemsNumber.$dirty && bannerPositionForm.itemsNumber.$invalid, 'has-success':bannerPositionForm.itemsNumber.$valid}">
                                     <label for="bannerPositionItemsNumber" class="control-label">
                                         <span translate="content.list.fields.ITEMSNUMBER">Items Number</span>
@@ -70,8 +75,10 @@
                                     <span class="error text-small block" ng-if="bannerPositionForm.itemsNumber.$dirty && bannerPositionForm.itemsNumber.$error.required" translate="content.form.messages.ITEMSNUMBERREQUIRED">Items Number is required.</span>
                                     <span class="success text-small block" ng-if="bannerPositionForm.itemsNumber.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerPositionForm.displayTime.$dirty && bannerPositionForm.displayTime.$invalid, 'has-success':bannerPositionForm.displayTime.$valid}">
                                     <label for="bannerPositionDisplayTime" class="control-label">
                                         <span translate="content.list.fields.DISPLAYTIME">Display Time</span>
@@ -84,28 +91,35 @@
                                     <span class="error text-small block" ng-if="bannerPositionForm.displayTime.$dirty && bannerPositionForm.displayTime.$error.required" translate="content.form.messages.DISPLAYTIMEREQUIRED">Display Time is required.</span>
                                     <span class="success text-small block" ng-if="bannerPositionForm.displayTime.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="bannerPosition.is_full_screen" type="checkbox" name="isFullScreen" id="bannerPositionIsFullScreen" />
                                     <label for="bannerPositionIsFullScreen" translate="content.list.fields.ISFULLSCREEN">Is Full Screen</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="bannerPosition.display_one_time" type="checkbox" name="displayOneTime" id="bannerPositionDisplayOneTime" />
                                     <label for="bannerPositionDisplayOneTime" translate="content.list.fields.DISPLAYONETIME">Display One Time</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="bannerPosition.is_published" type="checkbox" name="isPublished" id="bannerPositionIsPublished" />
                                     <label for="bannerPositionIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -126,6 +140,14 @@
                     <div class="table-responsive" ng-if="bannerPositions.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

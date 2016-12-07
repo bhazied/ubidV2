@@ -174,6 +174,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.buyers');
     };
     
+    $scope.buyer_buyer_type_readonly = false;
+    $scope.buyer_country_readonly = false;
+    $scope.buyer_language_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $buyersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -183,6 +186,18 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.buyer = {id: 0};
 
+        if (angular.isDefined($stateParams.buyer_buyer_type) && JSON.parse($stateParams.buyer_buyer_type) != null) {
+            $scope.buyer.buyer_type = $stateParams.buyer_buyer_type;
+            $scope.buyer_buyer_type_readonly = true;
+        }
+        if (angular.isDefined($stateParams.buyer_country) && JSON.parse($stateParams.buyer_country) != null) {
+            $scope.buyer.country = $stateParams.buyer_country;
+            $scope.buyer_country_readonly = true;
+        }
+        if (angular.isDefined($stateParams.buyer_language) && JSON.parse($stateParams.buyer_language) != null) {
+            $scope.buyer.language = $stateParams.buyer_language;
+            $scope.buyer_language_readonly = true;
+        }
     }
 
     $scope.showFileManager = function(field) {

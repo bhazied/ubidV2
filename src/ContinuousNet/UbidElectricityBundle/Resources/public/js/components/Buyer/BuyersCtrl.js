@@ -4,10 +4,25 @@
  * Controller for Buyers List
  */
 
-app.controller('BuyersCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$usersDataFactory', '$buyersDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $usersDataFactory, $buyersDataFactory) {
+app.controller('BuyersCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$usersDataFactory', '$buyersDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $usersDataFactory, $buyersDataFactory) {
 
 
+    $scope.booleanOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+     }, {
+        id: '1',
+        title: $filter('translate')('content.common.YES'),
+        css: 'success'
+     }, {
+        id: '0',
+        title: $filter('translate')('content.common.NO'),
+        css: 'danger'
+    }];
+
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -139,7 +154,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -148,7 +168,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -164,6 +188,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.buyersParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -171,9 +196,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.buyersParams)) {
            $localStorage.buyersParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.buyersParams[param])) {
+        } else if (angular.isDefined($localStorage.buyersParams[param]) && $localStorage.buyersParams[param] != null) {
             return $localStorage.buyersParams[param];
         } else {
             $localStorage.buyersParams[param] = defaultValue;
@@ -200,6 +227,10 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             { field: 'company_name', title: $filter('translate')('content.list.fields.COMPANYNAME'), sortable: 'buyer.companyName', filter: { 'buyer.companyName': 'text' }, show: $scope.getParamValue('company_name_show_filed', false), getValue: $scope.textValue },
             { field: 'country', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'buyer.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_id_show_filed', false), displayField: 'name', state: 'app.settings.countriesdetails' },
             { field: 'language', title: $filter('translate')('content.list.fields.LANGUAGE'), sortable: 'language.name', filter: { 'buyer.language': 'select' }, getValue: $scope.linkValue, filterData: $scope.getLanguages(), show: $scope.getParamValue('language_id_show_filed', false), displayField: 'name', state: 'app.settings.languagesdetails' },
+            { field: 'is_public', title: $filter('translate')('content.list.fields.ISPUBLIC'), sortable: 'buyer.isPublic', filter: { 'buyer.isPublic': 'select' }, show: $scope.getParamValue('is_public_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_public ]]"></span>') },
+            { field: 'enable_comment', title: $filter('translate')('content.list.fields.ENABLECOMMENT'), sortable: 'buyer.enableComment', filter: { 'buyer.enableComment': 'select' }, show: $scope.getParamValue('enable_comment_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_comment ]]"></span>') },
+            { field: 'enable_private_message', title: $filter('translate')('content.list.fields.ENABLEPRIVATEMESSAGE'), sortable: 'buyer.enablePrivateMessage', filter: { 'buyer.enablePrivateMessage': 'select' }, show: $scope.getParamValue('enable_private_message_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_private_message ]]"></span>') },
+            { field: 'enable_share', title: $filter('translate')('content.list.fields.ENABLESHARE'), sortable: 'buyer.enableShare', filter: { 'buyer.enableShare': 'select' }, show: $scope.getParamValue('enable_share_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_share ]]"></span>') },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'buyer.createdAt', filter: { 'buyer.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'buyer.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'buyer.modifiedAt', filter: { 'buyer.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
@@ -227,15 +258,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('buyersPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('buyersCount', $scope.count);
     $scope.sorting = {'buyer.id': 'asc'};
+    $scope.sorting = $scope.getParamValue('buyersSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('buyersFilter', $scope.filter);
+    $scope.setParamValue('buyersPage', $scope.page);
+    $scope.setParamValue('buyersCount', $scope.count);
+    $scope.setParamValue('buyersSorting', $scope.sorting);
+    $scope.setParamValue('buyersFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('buyersPage', $scope.page),
-        count: $scope.getParamValue('buyersCount', $scope.count),
-        sorting: $scope.getParamValue('buyersSorting', $scope.sorting),
-        filter: $scope.getParamValue('buyersFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -264,7 +303,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $buyersDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -285,7 +326,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $buyersDataFactory.remove(row).$promise.then(function(data) {
+                $buyersDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.BUYERDELETED'), 
