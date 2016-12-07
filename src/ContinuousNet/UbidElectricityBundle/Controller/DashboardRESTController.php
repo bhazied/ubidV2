@@ -39,12 +39,12 @@ use ContinuousNet\BiodyXpertBundle\Entity\BodyMeasurement;
  * PHP version 5.4.4
  *
  * @category   Symfony 2 REST Controller
- * @package  ContinuousNet\BiodyXpertBundle\Controller
+ * @package  ContinuousNet\UbidElectricityBundle\Controller
  * @author    Sahbi KHALFALLAH <sahbi.khalfallah@continuousnet.com>
  * @copyright  2016 CONTINUOUS NET
  * @license  CONTINUOUS NET REGULAR LICENSE
  * @version  Release: 1.0
- * @link    http://biodyxpert.continuousnet.com/ContinuousNet/BiodyXpertBundle/Controller
+ * @link    http://ubidelectricity.continuousnet.com/ContinuousNet/BiodyXpertBundle/Controller
  * @see      DashboardRESTController
  * @since      Class available since Release 1.0
  * @deprecated Nothing

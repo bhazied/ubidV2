@@ -34,6 +34,11 @@
 					<span class="title" translate="content.list.SUPPLIERS">Suppliers</span>
 				</a>
 			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.supplierproducts')}">
+				<a ui-sref="app.marketplace.supplierproducts">
+					<span class="title" translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.buyers')}">
 				<a ui-sref="app.marketplace.buyers">
 					<span class="title" translate="content.list.BUYERS">Buyers</span>
@@ -52,11 +57,6 @@
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.bids')}">
 				<a ui-sref="app.marketplace.bids">
 					<span class="title" translate="content.list.BIDS">Bids</span>
-				</a>
-			</li>
-			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.supplierproducts')}">
-				<a ui-sref="app.marketplace.supplierproducts">
-					<span class="title" translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span>
 				</a>
 			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.bidproducts')}">

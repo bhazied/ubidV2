@@ -268,7 +268,9 @@ ALTER TABLE `category`
   DROP `name_ar`,
   DROP `name_fr`,
   DROP `slug_ar`,
-  DROP `slug_fr`;
+  DROP `slug_fr`,
+  DROP `description_ar`,
+  DROP `description_fr`;
 
 ALTER TABLE `menu`
   DROP `name_ar`,
@@ -282,19 +284,27 @@ ALTER TABLE `menu_link`
   DROP `slug_ar`,
   DROP `slug_fr`;
 
+ALTER TABLE `post`
+DROP `title_ar`,
+DROP `title_fr`,
+DROP `slug_ar`,
+DROP `slug_fr`,
+DROP `content_ar`,
+DROP `content_fr`;
+
+ALTER TABLE `post_category`
+DROP `name_ar`,
+DROP `name_fr`,
+DROP `slug_ar`,
+DROP `slug_fr`,
+DROP `description_ar`,
+DROP `description_fr`;
+
 ALTER TABLE `post_type`
   DROP `name_ar`,
   DROP `name_fr`,
   DROP `slug_ar`,
   DROP `slug_fr`;
-
-ALTER TABLE `post`
-  DROP `title_ar`,
-  DROP `title_fr`,
-  DROP `slug_ar`,
-  DROP `slug_fr`,
-  DROP `content_ar`,
-  DROP `content_fr`;
 
 ALTER TABLE `supplier_type`
   DROP `name_ar`,
@@ -363,6 +373,7 @@ CREATE TABLE IF NOT EXISTS `translation_category` (
   `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
   `name` varchar(320) NOT NULL,
   `slug` varchar(320) NOT NULL,
+  `description` varchar(320) DEFAULT NULL,
   `validated` tinyint(1) NOT NULL,
   `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
   `created_at` datetime NOT NULL,
@@ -453,6 +464,30 @@ ALTER TABLE `translation_post`
   ADD CONSTRAINT `translation_post_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `translation_post_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
+
+CREATE TABLE IF NOT EXISTS `translation_post_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `post_category_id` smallint(5) unsigned NOT NULL,
+  `locale` varchar(5) NOT NULL COMMENT '{"order":"asc"}',
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `description` varchar(320) DEFAULT NULL,
+  `validated` tinyint(1) NOT NULL,
+  `creator_user_id` mediumint(8) unsigned NOT NULL COMMENT '{"prefix":"creator_"}',
+  `created_at` datetime NOT NULL,
+  `modifier_user_id` mediumint(8) unsigned DEFAULT NULL COMMENT '{"prefix":"modifier_"}',
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_category_id` (`post_category_id`),
+  KEY `creator_user_id` (`creator_user_id`),
+  KEY `modifier_user_id` (`modifier_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='{"grp":"Translation","pstn":1,"rls":["ADM"]}' AUTO_INCREMENT=1 ;
+
+
+ALTER TABLE `translation_post_category`
+ADD CONSTRAINT `translation_post_category_fk1` FOREIGN KEY (`post_category_id`) REFERENCES `post_category` (`id`),
+ADD CONSTRAINT `translation_post_category_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
+ADD CONSTRAINT `translation_post_category_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
 
 CREATE TABLE IF NOT EXISTS `translation_post_type` (

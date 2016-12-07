@@ -289,3 +289,6 @@ table .img-thumbnail {
     min-height: 1400px;
 }
 
+#my-dashboard h2.StepTitle {
+    min-height: 100px;
+}
