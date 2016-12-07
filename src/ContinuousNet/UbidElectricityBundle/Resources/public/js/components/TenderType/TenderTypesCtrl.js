@@ -254,15 +254,15 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.add = function() {
-        $state.go('app.tenders.tendertypesnew');
+        $state.go('app.lists.tendertypesnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.tenders.tendertypesedit', {id: row.id});
+        $state.go('app.lists.tendertypesedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.tenders.tendertypesdetails', {id: row.id});
+        $state.go('app.lists.tendertypesdetails', {id: row.id});
     };
 }]);
 

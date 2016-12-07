@@ -208,7 +208,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'category.description', filter: { 'category.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), getValue: $scope.textValue },
             { field: 'description_ar', title: $filter('translate')('content.list.fields.DESCRIPTIONAR'), sortable: 'category.descriptionAr', filter: { 'category.descriptionAr': 'text' }, show: $scope.getParamValue('description_ar_show_filed', false), getValue: $scope.textValue },
             { field: 'description_fr', title: $filter('translate')('content.list.fields.DESCRIPTIONFR'), sortable: 'category.descriptionFr', filter: { 'category.descriptionFr': 'text' }, show: $scope.getParamValue('description_fr_show_filed', false), getValue: $scope.textValue },
-            { field: 'parent', title: $filter('translate')('content.list.fields.PARENT'), sortable: 'parent.name', filter: { 'category.parent': 'select' }, getValue: $scope.linkValue, filterData: $scope.getParents(), show: $scope.getParamValue('parent_id_show_filed', false), displayField: 'name', state: 'app.tenders.categoriesdetails' },
+            { field: 'parent', title: $filter('translate')('content.list.fields.PARENT'), sortable: 'parent.name', filter: { 'category.parent': 'select' }, getValue: $scope.linkValue, filterData: $scope.getParents(), show: $scope.getParamValue('parent_id_show_filed', false), displayField: 'name', state: 'app.lists.categoriesdetails' },
             { field: 'product_type', title: $filter('translate')('content.list.fields.PRODUCTTYPE'), sortable: 'product_type.name', filter: { 'category.productType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getProductTypes(), show: $scope.getParamValue('product_type_id_show_filed', false), displayField: 'name', state: 'app.tenders.producttypesdetails' },
             { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'category.ordering', filter: { 'category.ordering': 'number' }, show: $scope.getParamValue('ordering_show_filed', false), getValue: $scope.textValue },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'category.createdAt', filter: { 'category.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
@@ -335,15 +335,15 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.add = function() {
-        $state.go('app.tenders.categoriesnew');
+        $state.go('app.lists.categoriesnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.tenders.categoriesedit', {id: row.id});
+        $state.go('app.lists.categoriesedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.tenders.categoriesdetails', {id: row.id});
+        $state.go('app.lists.categoriesdetails', {id: row.id});
     };
 }]);
 
