@@ -1,22 +1,4 @@
-<!-- start: SEARCH FORM -->
-<!--div class="search-form">
-	<a class="s-open" href="#">
-		<i class="ti-search"></i>
-	</a>
-	<form class="navbar-form" role="search">
-		<a class="s-remove" href="#" ng-toggle-class="search-open" target=".navbar-form">
-			<i class="ti-close"></i>
-		</a>
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="[[ 'sidebar.search.PLACEHOLDER' | translate ]]">
-			<button class="btn search-button" type="submit">
-				<i class="ti-search"></i>
-			</button>
-		</div>
-	</form>
-</div-->
-<!-- end: SEARCH FORM -->
-<!-- start: MAIN NAVIGATION MENU -->
+
 <div class="navbar-title">
 	<span translate="sidebar.heading.NAVIGATION">Main Navigation</span>
 </div>
@@ -47,6 +29,11 @@
 			</div>
 		</a>
 		<ul class="sub-menu">
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.suppliers')}">
+				<a ui-sref="app.marketplace.suppliers">
+					<span class="title" translate="content.list.SUPPLIERS">Suppliers</span>
+				</a>
+			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.buyers')}">
 				<a ui-sref="app.marketplace.buyers">
 					<span class="title" translate="content.list.BUYERS">Buyers</span>
@@ -65,6 +52,11 @@
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.bids')}">
 				<a ui-sref="app.marketplace.bids">
 					<span class="title" translate="content.list.BIDS">Bids</span>
+				</a>
+			</li>
+			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.supplierproducts')}">
+				<a ui-sref="app.marketplace.supplierproducts">
+					<span class="title" translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span>
 				</a>
 			</li>
 			<li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.bidproducts')}">
