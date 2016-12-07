@@ -104,14 +104,14 @@
                     <span class="title" translate="content.list.SUPPLIERS">Suppliers</span>
                 </a>
             </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.supplierproducts')}">
+                <a ui-sref="app.marketplace.supplierproducts">
+                    <span class="title" translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span>
+                </a>
+            </li>
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.buyers')}">
                 <a ui-sref="app.marketplace.buyers">
                     <span class="title" translate="content.list.BUYERS">Buyers</span>
-                </a>
-            </li>
-            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.tenders')}">
-                <a ui-sref="app.marketplace.tenders">
-                    <span class="title" translate="content.list.TENDERS">Tenders</span>
                 </a>
             </li>
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.tenderproducts')}">
@@ -124,14 +124,14 @@
                     <span class="title" translate="content.list.BIDS">Bids</span>
                 </a>
             </li>
-            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.supplierproducts')}">
-                <a ui-sref="app.marketplace.supplierproducts">
-                    <span class="title" translate="content.list.SUPPLIERPRODUCTS">Supplier Products</span>
-                </a>
-            </li>
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.bidproducts')}">
                 <a ui-sref="app.marketplace.bidproducts">
                     <span class="title" translate="content.list.BIDPRODUCTS">Bid Products</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.marketplace.tenders')}">
+                <a ui-sref="app.marketplace.tenders">
+                    <span class="title" translate="content.list.TENDERS">Tenders</span>
                 </a>
             </li>
         </ul>
