@@ -294,6 +294,11 @@
                     <span class="title" translate="content.list.TRANSLATIONPOSTTYPES">Translation Post Types</span>
                 </a>
             </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationpostcategories')}">
+                <a ui-sref="app.translation.translationpostcategories">
+                    <span class="title" translate="content.list.TRANSLATIONPOSTCATEGORIES">Translation Post Categories</span>
+                </a>
+            </li>
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationproducttypes')}">
                 <a ui-sref="app.translation.translationproducttypes">
                     <span class="title" translate="content.list.TRANSLATIONPRODUCTTYPES">Translation Product Types</span>

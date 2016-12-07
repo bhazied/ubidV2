@@ -2,8 +2,8 @@
 
 namespace ContinuousNet\UbidElectricityBundle\Controller;
 
-use ContinuousNet\UbidElectricityBundle\Entity\TranslationCategory;
-use ContinuousNet\UbidElectricityBundle\Form\TranslationCategoryType;
+use ContinuousNet\UbidElectricityBundle\Entity\TranslationPostCategory;
+use ContinuousNet\UbidElectricityBundle\Form\TranslationPostCategoryType;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -20,9 +20,9 @@ use Symfony\Component\Finder\SplFileInfo;
 use Voryx\RESTGeneratorBundle\Controller\VoryxController;
 
 /**
- * Translation Category REST Controller
+ * Translation Post Category REST Controller
  * 
- * Manage TranslationCategories 
+ * Manage TranslationPostCategories 
  * 
  * PHP version 5.4.4
  * 
@@ -33,22 +33,22 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
  * @license  CONTINUOUS NET REGULAR LICENSE
  * @version  Release: 1.0
  * @link    http://ubidelectricity.continuousnet.com/ContinuousNet/UbidElectricityBundle/Controller
- * @see      TranslationCategoryRESTController
+ * @see      TranslationPostCategoryRESTController
  * @since      Class available since Release 1.0
  * @access    public
- * @RouteResource("TranslationCategory")
+ * @RouteResource("TranslationPostCategory")
  */
-class TranslationCategoryRESTController extends BaseRESTController
+class TranslationPostCategoryRESTController extends BaseRESTController
 {
     /**
-     * Get a Translation Category entity
+     * Get a Translation Post Category entity
      *
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function getAction(TranslationCategory $entity)
+    public function getAction(TranslationPostCategory $entity)
     {
         $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
@@ -56,7 +56,7 @@ class TranslationCategoryRESTController extends BaseRESTController
     }
 
     /**
-     * Get all Translation Category entities.
+     * Get all Translation Post Category entities.
      *
      * @View(serializerEnableMaxDepthChecks=true)
      *
@@ -82,20 +82,20 @@ class TranslationCategoryRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TranslationCategory', 'tc_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'category', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.category = category.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.modifierUser = modifier_user.id');
-            $textFields = array('translationCategory.locale', 'translationCategory.name', 'translationCategory.slug', 'translationCategory.description');
+            $qb->from('UbidElectricityBundle:TranslationPostCategory', 'tpc_');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostCategory', 'post_category', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpc_.postCategory = post_category.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpc_.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpc_.modifierUser = modifier_user.id');
+            $textFields = array('translationPostCategory.locale', 'translationPostCategory.name', 'translationPostCategory.slug', 'translationPostCategory.description');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
                         list ($entityName, $listName, $listItem) = explode('.', $field);
-                        $qb->andWhere(':'.$listName.'_value MEMBER OF tc_.'.$listName)->setParameter($listName.'_value', $listItem);
+                        $qb->andWhere(':'.$listName.'_value MEMBER OF tpc_.'.$listName)->setParameter($listName.'_value', $listItem);
                     }
                     continue;
                 }
-                $_field = str_replace('translationCategory.', 'tc_.', $field);
+                $_field = str_replace('translationPostCategory.', 'tpc_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -106,16 +106,16 @@ class TranslationCategoryRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(tc_.id)');
+            $qb->select('count(tpc_.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('translationCategory.', 'tc_.', $field);
+                $field = str_replace('translationPostCategory.', 'tpc_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('tc_');
+            $qbList->select('tpc_');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('tc_.id');
+            $qbList->groupBy('tpc_.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;
@@ -127,7 +127,7 @@ class TranslationCategoryRESTController extends BaseRESTController
     }
 
     /**
-     * Create a Translation Category entity.
+     * Create a Translation Post Category entity.
      *
      * @View(statusCode=201, serializerEnableMaxDepthChecks=true)
      *
@@ -139,8 +139,8 @@ class TranslationCategoryRESTController extends BaseRESTController
     public function postAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = new TranslationCategory();
-        $form = $this->createForm(new TranslationCategoryType(), $entity, array('method' => $request->getMethod()));
+        $entity = new TranslationPostCategory();
+        $form = $this->createForm(new TranslationPostCategoryType(), $entity, array('method' => $request->getMethod()));
         $this->removeExtraFields($request, $form);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -152,7 +152,7 @@ class TranslationCategoryRESTController extends BaseRESTController
     }
 
     /**
-     * Update a Translation Category entity.
+     * Update a Translation Post Category entity.
      *
      * @View(serializerEnableMaxDepthChecks=true)
      *
@@ -161,12 +161,12 @@ class TranslationCategoryRESTController extends BaseRESTController
      *
      * @return Response
      */
-    public function putAction(Request $request, TranslationCategory $entity)
+    public function putAction(Request $request, TranslationPostCategory $entity)
     {
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $form = $this->createForm(new TranslationCategoryType(), $entity, array('method' => $request->getMethod()));
+            $form = $this->createForm(new TranslationPostCategoryType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -181,7 +181,7 @@ class TranslationCategoryRESTController extends BaseRESTController
     }
 
     /**
-     * Partial Update to a Translation Category entity.
+     * Partial Update to a Translation Post Category entity.
      *
      * @View(serializerEnableMaxDepthChecks=true)
      *
@@ -190,13 +190,13 @@ class TranslationCategoryRESTController extends BaseRESTController
      *
      * @return Response
      */
-    public function patchAction(Request $request, TranslationCategory $entity)
+    public function patchAction(Request $request, TranslationPostCategory $entity)
     {
         return $this->putAction($request, $entity);
     }
 
     /**
-     * Delete a Translation Category entity.
+     * Delete a Translation Post Category entity.
      *
      * @View(statusCode=204)
      *
@@ -205,7 +205,7 @@ class TranslationCategoryRESTController extends BaseRESTController
      *
      * @return Response
      */
-    public function deleteAction(Request $request, TranslationCategory $entity)
+    public function deleteAction(Request $request, TranslationPostCategory $entity)
     {
         try {
             $em = $this->getDoctrine()->getManager();
