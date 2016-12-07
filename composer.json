@@ -34,7 +34,8 @@
         "studio-42/elfinder": "2.1.x@dev",
         "symfony/translation": "^3.0",
         "liip/imagine-bundle": "^1.5",
-        "sensio/framework-extra-bundle": "3.0.12"
+        "sensio/framework-extra-bundle": "3.0.12",
+        "twbs/bootstrap": "4.0.0-alpha.5"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "~2.7"
