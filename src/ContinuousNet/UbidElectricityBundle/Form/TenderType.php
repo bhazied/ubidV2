@@ -67,6 +67,7 @@ class TenderType extends AbstractType
             ->add('attachmentFile3', TextType::class)
             ->add('attachmentFile4', TextType::class)
             ->add('source', TextType::class)
+            ->add('views', IntegerType::class)
             ->add('categories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
         ;
     }

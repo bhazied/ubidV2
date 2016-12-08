@@ -210,6 +210,17 @@ class Supplier
     private $isPublic;
 
     /**
+     * @var integer
+     * @access private
+     *
+     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $views;
+
+    /**
      * @var boolean
      * @access private
      *
@@ -693,6 +704,30 @@ class Supplier
     public function getIsPublic()
     {
         return $this->isPublic;
+    }
+
+    /**
+     * Set views
+     *
+     * @access public
+     * @param integer $views
+     * @return Supplier
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @access public
+     * @return integer 
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 
     /**

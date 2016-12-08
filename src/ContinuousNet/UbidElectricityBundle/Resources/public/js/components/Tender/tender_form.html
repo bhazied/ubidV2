@@ -426,6 +426,24 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':tenderForm.views.$dirty && tenderForm.views.$invalid, 'has-success':tenderForm.views.$valid}">
+                                    <label for="tenderViews" class="control-label">
+                                        <span translate="content.list.fields.VIEWS">Views</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="tender.views" type="text" name="views" id="tenderViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="tenderForm.views.$dirty && tenderForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
+                                    <span class="success text-small block" ng-if="tenderForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-12">
                                 <label for="tenderCategories" class="control-label">
                                     <span translate="content.list.fields.CATEGORIES">Categories</span>
