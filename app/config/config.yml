@@ -341,6 +341,7 @@ assetic:
                 - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.css"
                 - "assets/css/front/theme.css"
                 - "assets/css/front/style.css"
+                - "assets/css/front/e-elctricity.css"
         jquery:
             inputs:
                 - "assets/bower_components/jquery/dist/jquery.js" #.min

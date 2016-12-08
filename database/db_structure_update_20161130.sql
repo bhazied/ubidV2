@@ -673,3 +673,13 @@ ALTER TABLE `translation_tender_type`
   ADD CONSTRAINT `translation_tender_type_fk2` FOREIGN KEY (`creator_user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `translation_tender_type_fk3` FOREIGN KEY (`modifier_user_id`) REFERENCES `user` (`id`);
 
+
+ALTER TABLE `tender` ADD `views` INT NOT NULL AFTER `source` ;
+
+ALTER TABLE `supplier_product` ADD `views` INT NOT NULL AFTER `is_public` ;
+
+ALTER TABLE `supplier` ADD `views` INT NOT NULL AFTER `is_public` ;
+
+ALTER TABLE `buyer` ADD `views` INT NOT NULL AFTER `is_public` ;
+
+
