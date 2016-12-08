@@ -55,6 +55,7 @@ class SupplierProductType extends AbstractType
             ->add('status', ChoiceType::class, array('choices' => array('Draft' => 'Draft', 'Online' => 'Online', 'Deactivated' => 'Deactivated', 'Offline' => 'Offline', 'Deleted' => 'Deleted', 'Archived' => 'Archived', ), 'expanded' => false, 'multiple' => false))
             ->add('unitCost', TextType::class)
             ->add('isPublic', CheckboxType::class)
+            ->add('views', IntegerType::class)
         ;
     }
     

@@ -61,6 +61,7 @@ class SupplierType extends AbstractType
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
             ->add('isPublic', CheckboxType::class)
+            ->add('views', IntegerType::class)
             ->add('enableComment', CheckboxType::class)
             ->add('enablePrivateMessage', CheckboxType::class)
             ->add('enableShare', CheckboxType::class)

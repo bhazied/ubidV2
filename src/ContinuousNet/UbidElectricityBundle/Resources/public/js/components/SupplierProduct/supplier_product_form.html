@@ -215,6 +215,22 @@
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.views.$dirty && supplierProductForm.views.$invalid, 'has-success':supplierProductForm.views.$valid}">
+                                    <label for="supplierProductViews" class="control-label">
+                                        <span translate="content.list.fields.VIEWS">Views</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.views" type="text" name="views" id="supplierProductViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="supplierProductForm.views.$dirty && supplierProductForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">

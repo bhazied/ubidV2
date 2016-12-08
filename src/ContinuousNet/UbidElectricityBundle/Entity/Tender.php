@@ -240,6 +240,17 @@ class Tender
     private $source;
 
     /**
+     * @var integer
+     * @access private
+     *
+     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $views;
+
+    /**
      * @var \DateTime
      * @access private
      *
@@ -828,6 +839,30 @@ class Tender
     public function getSource()
     {
         return $this->source;
+    }
+
+    /**
+     * Set views
+     *
+     * @access public
+     * @param integer $views
+     * @return Tender
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @access public
+     * @return integer 
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 
     /**
