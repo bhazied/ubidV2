@@ -28,6 +28,36 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        thumb:
+            pattern:  ^/thumb
+            stateless: true
+            anonymous: true
+
+        home_tenders:
+            pattern: ^/(en|fr|ar)/api/v1/homeTenders
+            stateless: true
+            anonymous: true
+
+        homeSectors:
+            pattern: ^/(en|fr|ar)/api/v1/homeSectors
+            stateless: true
+            anonymous: true
+
+        advanced_search:
+            pattern: ^/api/sr
+            stateless: true
+            anonymous: true
+
+        max_estimated_cost:
+            pattern: ^/api/maxCost
+            stateless: true
+            anonymous: true
+
+        categoriesTenders:
+            pattern: ^/(en|fr|ar)/api/v1/categoriesTenders
+            stateless: true
+            anonymous: true
+
         register:
             pattern:  ^/(en|fr|ar)/api/v1/register
             stateless: true
@@ -39,7 +69,12 @@ security:
             anonymous: true
 
         countries:
-            pattern:  ^/(en|fr|ar)/api/v1/countries
+            pattern:  ^/api/countries
+            stateless: true
+            anonymous: true
+
+        languages:
+            pattern: ^/api/languages
             stateless: true
             anonymous: true
 

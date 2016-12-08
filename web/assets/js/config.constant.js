@@ -129,5 +129,8 @@ app.constant('JS_REQUIRES', {
     }, {
         name: 'angular-notification-icons',
         files: ['/assets/bower_components/angular-notification-icons/dist/angular-notification-icons.min.js', '/assets/bower_components/angular-notification-icons/dist/angular-notification-icons.min.css']
+    },{
+        name: 'angular-slider',
+        files: ['/assets/bower_components/angularjs-slider/dist/rzslider.min.js', '/assets/bower_components/angularjs-slider/dist/rzslider.min.css']
     }]
 });

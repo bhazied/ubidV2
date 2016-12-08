@@ -2,6 +2,7 @@
 ubid_electricity:
     resource: "@UbidElectricityBundle/Controller/DefaultController.php"
     type:     annotation
+    host: "ubid.com"
     prefix:   /
 
 thumb:
@@ -531,3 +532,12 @@ ubid_electricity_visit:
     resource: "@UbidElectricityBundle/Resources/config/routing/visit.yml"
     prefix:   /visit
 
+public_ubid_electricity:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+    host: "public.ubid.com"
+
+ubid_advanced_search:
+    resource: "@UbidElectricityBundle/Controller/SearchRestController.php"
+    type:   rest
+    prefix: /api

@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+            <div class="header_top_left">
+                <ul class="top_nav top_nav_left">
+                    <li><a ui-sref="front.home" translate="header.menu.HOME">Home</a></li>
+                    <li><a ui-sref="front.about" translate="header.menu.ABOUT">About</a></li>
+                    <li><a ui-sref="front.contact" translate="header.menu.CONTACT">Contact</a></li>
+                    <li><a ui-sref="front.advanced_search">Search</a></li>
+                </ul>
+            </div>
+            <div class="header_top_right ">
+                <ul class="top_nav_right top_nav" ng-if="!loggedIn">
+                    <li><a  href="#/register" translate="header.menu.SIGNUP"></a></li>
+                    <li class="dropdown" id="menuLogin">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin" translate="header.menu.SIGNIN"></a>
+                        <div class="dropdown-menu" data-ng-include=" '/bundles/ubidelectricity/js/front/Auth/login.html' "></div>
+                    </li>
+                </ul>
+                <ul class="top_nav_right top_nav" ng-if="loggedIn">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Hi   [[ user.firstName ]] [[ user.lastName ]] ! </a>
+                        <ul class="dropdown-menu">
+                            <li><a  ui-sref="front.profile" translate="header.user.PROFILE"></a></li>
+                            <li><a  ui-sref="front.mybids" translate="header.user.MYBIDS"></a></li>
+                            <li><a   ng-controller="LoginFrontCtrl" ng-href='#' ng-click="logout()" translate="header.user.LOGOUT"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="header_bottom">
+            <div class="logo_area col-lg-6 col-md-6 col-sm-6"><a ui-sref="front.home" class="logo"><img  ng-src = "[[app.layout.logo]]" alt="[[app.name]]"/></a></div>
+            <div class="add_banner col-lg-6 col-md-6 col-sm-6">
+                <p>Join us
+                to find your service provider in</p>
+                <p>Energy, Power, Electrical products & Solutions,...</p>
+                <button type="button" class="btn btn-warning" translate="header.menu.SUBMITPROJRCT"></button>
+            </div>
+        </div>
+    </div>
+</div>

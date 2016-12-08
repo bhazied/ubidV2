@@ -1,6 +1,7 @@
 
 security:
     access_control:
+<<<<<<< HEAD
         - { path: ^/(en|fr|ar)/api/alerts$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/banners$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/bannerpositions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
@@ -51,3 +52,36 @@ security:
         - { path: ^/(en|fr|ar)/api/users$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/usersettings$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/visits$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+=======
+        - { path: ^/api/banners,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/bannerpositions,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/bannertypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/bids,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/bidproducts,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/biddingtypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/buyers,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/buyertypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/clicks,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        #- { path: ^/api/countries,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/groups,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/hits,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/impressions,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        #- { path: ^/api/languages,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/logs,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/menus,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/menulinks,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/notifications,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/posts,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/postcategories,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/posttypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/producttypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/regions,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/sectors,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/tenders,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/tendercategories,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/tenderproducts,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/tendertypes,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/users,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/usersettings,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/api/visits,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+>>>>>>> frontoffice

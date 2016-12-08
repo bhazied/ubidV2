@@ -1,0 +1,78 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Acceuil",
+            "ABOUT": "A propos de nous",
+            "HOW": "Comment ça marche",
+            "SUBMITPROJECT": "Ajouter un projet",
+            "SIGNIN": "Login",
+            "SIGNUP": "Enregestrement",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "Mon profile",
+            "MYBIDS": "Mes offres",
+            "LOGOUT": "Déconnexion"
+        }
+    },
+    "title" :{
+        "error":{
+            "LOGIN" : "Erreur d'authentification"
+        },
+        "message":{
+            "error":{
+                "LOGIN": "E-mail ou mot de passe erroné"
+            }
+        }
+    },
+    "content":{
+        "form":{
+            "fields":{
+                "types":{
+                    "SUPPLIER": "Fournisseur",
+                    "BAYER": "Acheteur"
+                },
+                "genders":{
+                    "MALE": "Homme",
+                    "FEMALE": "Femme"
+                },
+                "FIRST_NAME": "Prénom",
+                "LAST_NAME": "Nom",
+                "EMAIL": "E-mail",
+                "USERNAME": "nom d'utilisateur",
+                "PASSWORD": "Mot de passe",
+                "TITLE": "Titre",
+                "REFERENCE": "Référence"
+            },
+            "titles":{
+                "REGISTER": "Inscription",
+                "ADVANCEDSEARCH": "Recherche avancées"
+            },
+            "buttons":{
+              "SUBMITADVANCEDSEARCH": "Recherche"
+            },
+            "country_picker":{
+                "selectAll"       : "Séléctionner tout",
+                "selectNone"      : "Désélectionner tout",
+                "reset"           : "Reset",
+                "search"          : "chercher un pays...",
+                "nothingSelected" : "Rien n'est séléctionné"
+            },
+            "messages":{
+                "ADVANCEDSEARCHPRICE": "Budget recherché entre [[ minValue ]]  et [[ maxValue ]]",
+                "ADVANCEDSEARCHCURRENCY": "La devise est '[[ currency ]]'",
+                "SELECTALL": "Séléctionner Tout",
+                "DEADLINE": "Date limite",
+                "SELECTDATE": "Séléctinner une date",
+                "SELECTCOUNTRY": "Séléctinner payes",
+                "ADVANCEDRESEARCHNORESULTHEADER": "Pas des résultats",
+                "ADVANCEDRESEARCHNORESULTTEXT":"Aucun appel d'offre trouvé avec les paramètres entrées"
+            }
+        }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
+    }
+}

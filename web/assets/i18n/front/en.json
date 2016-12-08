@@ -1,0 +1,77 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Home",
+            "ABOUT": "About Us",
+            "HOW": "How it works",
+            "SUBMITPROJECT": "Submit project",
+            "SIGNIN": "Sign in",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "My Profile",
+            "MYBIDS": "My bids",
+            "LOGOUT": "Log out"
+        }
+    },
+    "title" :{
+        "error":{
+            "LOGIN" : "Autentication Error"
+        },
+        "message":{
+            "error":{
+                "LOGIN": "E-mail or password error"
+            }
+        }
+    },
+    "content":{
+        "form":{
+            "fields":{
+                "types":{
+                    "SUPPLIER": "Supplier",
+                    "BAYER": "Bayer"
+                },
+                "genders":{
+                    "MALE": "Male",
+                    "FEMALE": "Female"
+                },
+                "FIRST_NAME": "First name",
+                "LAST_NAME": "Last name",
+                "EMAIL": "E-mail",
+                "USERNAME": "Username",
+                "PASSWORD": "Password",
+                "TITLE": "Title",
+                "REFERENCE": "Reference"
+            },
+            "titles":{
+                "REGISTER": "Subsscribtion form",
+                "ADVANCEDSEARCH": "Advanced Search"
+            },
+            "buttons":{
+                "SUBMITADVANCEDSEARCH": "Search"
+            },
+            "country_picker":{
+                "selectAll"       : "Select all",
+                "selectNone"      : "Select none",
+                "reset"           : "Reset",
+                "search"          : "Search country name ...",
+                "nothingSelected" : "Nothing is selected"
+            },
+            "messages":{
+                "ADVANCEDSEARCHPRICE": "search project with price between [[ price.minValue ]]  AND [[ price.maxValue ]]",
+                "ADVANCEDSEARCHCURRENCY": "All price are '[[ currency ]]' Currency",
+                "SELECTALL": "Select All",
+                "DEADLINE": "DEADLINE",
+                "SELECTDATE": "Select date",
+                "SELECTCOUNTRY": "Select countries",
+                "ADVANCEDRESEARCHNORESULTHEADER": "No results",
+                "ADVANCEDRESEARCHNORESULTTEXT":"No tender found with the input parameters"
+            }
+        }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
+    }
+}

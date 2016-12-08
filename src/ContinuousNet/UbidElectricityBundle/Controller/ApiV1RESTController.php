@@ -2,6 +2,7 @@
 
 namespace ContinuousNet\UbidElectricityBundle\Controller;
 
+use ContinuousNet\UbidElectricityBundle\Entity\TenderCategory;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -73,6 +74,15 @@ class ApiV1RESTController extends FOSRestController
         $qb->from('UbidElectricityBundle:Language', 'l_');
         $qb->select('l_');
         $qb->andWhere('l_.code = :code')->setParameter('code', $code);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    private function getGroupByName($name){
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Group', 'g_');
+        $qb->select('g_');
+        $qb->where('g_.name= :name')->setParameter('name', $name);
         return $qb->getQuery()->getOneOrNullResult();
     }
 
@@ -191,10 +201,12 @@ class ApiV1RESTController extends FOSRestController
             $data = array('status' => false, 'message' => null);
 
             $jsonData = json_decode($request->getContent(), true);
-
             $language = $this->getLanguageByCode($jsonData['locale']);
             $jsonData['language'] = $language->getId();
             unset($jsonData['locale']);
+
+            $group = $this->getGroupByName('Subscriber');
+            $jsonData['groups'] = array($group->getId());
 
             $jsonData['username'] = $jsonData['email'];
             $chars = '!#$%&\'*+-/=?^`{|}~.@';
@@ -206,7 +218,11 @@ class ApiV1RESTController extends FOSRestController
 
             $jsonData['roles'] = array('ROLE_API', 'ROLE_SUBSCRIBER');
 
-            $jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
+            //$jsonData['credentials_expired']  = false;
+
+            //$jsonData['enabled'] = true;
+
+            //$jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
 
             if (isset($jsonData['provider'])) {
                 unset($jsonData['provider']);
@@ -222,7 +238,15 @@ class ApiV1RESTController extends FOSRestController
             $formHandler = $this->container->get('fos_user.registration.form.handler');
             $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
 
-            $process = $formHandler->process($confirmationEnabled);
+            try {
+                $process = $formHandler->process($confirmationEnabled);
+            } catch (\Exception $e) {
+                if (json_decode($e->getMessage())) {
+                    return json_decode($e->getMessage());
+                } else {
+                    return $e->getMessage();
+                }
+            }
 
             if ($process) {
 
@@ -241,6 +265,10 @@ class ApiV1RESTController extends FOSRestController
 
                     $em->flush();
                 }
+                return $data;
+            }
+            else{
+                $data['message'] = $this->get('translator')->trans('register.failure_inscription');
                 return $data;
             }
 
@@ -526,6 +554,100 @@ class ApiV1RESTController extends FOSRestController
         }
     }
 
+    /**
+     * @GET("/homeTenders")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function homeTendersAction(Request $request){
+        $data = [];
+        $em = $this->getDoctrine()->getManager();
+        $page = $request->query->get('page');
+        $category = $request->query->get('category_id');
+        $qb = $em->createQueryBuilder();
+        $qb->from("UbidElectricityBundle:Tender", "t_");
+
+        /*if($category != null){
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderCategory', 'tc');
+            $qb->andwhere("tc.id = :category");
+
+        }*/
+        $qb->andwhere("t_.status = :status");
+        //$qb->andwhere("t_.tendres= :category");
+        $qb->select("t_");
+        $qb->setMaxResults(10);
+        if($page != null){
+            $qb->setFirstResult((10*$page));
+        }else{
+            $qb->setFirstResult(0);
+        }
+
+        $qb->groupBy("t_.id");
+        $qb->orderBy("t_.id", "DESC");
+        $qb->setParameters(array('status' => 'Online'));
+        $results  = $qb->getQuery()->getResult();
+        $tenders = null;
+        if($results){
+            $data['results'] = $results;
+        }
+        return $data;
+    }
+
+    /**
+     * @GET("/homeSectors")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function homeSectorsAction(Request $request){
+        $data = [];
+        $page = $request->query->get('page');
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from("UbidElectricityBundle:Sector", "s_");
+            //->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Tender', 'tender', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.tender= tender.id')
+
+        $qbList = clone $qb;
+        $qb->select('count(s_.id)');
+        $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+        $qbList->select('s_')
+            ->setMaxResults(10)
+            ->setFirstResult((10*$page))
+            ->groupBy('s_.id')
+            ->orderBy('s_.id', 'ASC');
+        $results = $qbList->getQuery()->getResult();
+        
+        if($results){
+            $data['results'] = $results;
+            $i=0;
+            foreach ($results as $r ){
+                //return $r->getId();
+                $tenders = $this->getDoctrine()->getRepository("UbidElectricityBundle:Tender")->findBy(array('sector' => $r->getId()));
+                //return $tenders;
+                $data['tender_count'][$i] = count($tenders);
+                $i++;
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * @GET("/categoriesTenders")
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function categoriesTendersAction(Request $request){
+        $locale = $request->getLocale();
+        $data = [];
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from("UbidElectricityBundle:TenderCategory", "tc_")
+            ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderCategory', 'parent', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.parent = parent.id')
+            ->select('tc_');
+        $results = $qb->getQuery()->getResult();
+        if($results){
+            $data['results'] = $results;
+        }
+        return $data;
+    }
+
+
     private function getDefaultPackage() {
         $default_package_id = $this->getConfig('settings.default_package_id');
         $em = $this->getDoctrine()->getManager();
@@ -541,5 +663,6 @@ class ApiV1RESTController extends FOSRestController
         }
         return $code;
     }
+
     
 }

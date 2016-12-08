@@ -1,0 +1,54 @@
+{
+    "header": {
+        "menu": {
+            "HOME": "Home",
+            "ABOUT": "About Us",
+            "HOW": "How it works",
+            "SUBMITPROJECT": "Submit project",
+            "SIGNIN": "Sign in",
+            "CONTACT": "Contact"
+        },
+        "user":{
+            "PROFILE": "My Profile",
+            "MYBIDS": "My bids",
+            "LOGOUT": "Log out"
+        }
+    },
+    "title" :{
+        "error":{
+            "LOGIN" : "Autentication Error"
+        },
+        "message":{
+            "error":{
+                "LOGIN": "E-mail or password error"
+            }
+        }
+    },
+    "content":{
+        "form":{
+            "fields":{
+                "types":{
+                    "SUPPLIER": "Supplier",
+                    "BAYER": "Bayer"
+                },
+                "genders":{
+                    "MALE": "Male",
+                    "FEMALE": "Female"
+                },
+                "FIRST_NAME": "First name",
+                "LAST_NAME": "Last name",
+                "EMAIL": "E-mail",
+                "USERNAME": "Username",
+                "PASSWORD": "Password"
+            },
+            "register":{
+                "TITLE": "Subsscribtion form"
+            }
+        }
+    },
+    "formats": {
+        "DATE": "MM/dd/yyyy",
+        "TIME": "h:mma",
+        "DATETIME": "MM/dd/yyyy h:mma"
+    }
+}
