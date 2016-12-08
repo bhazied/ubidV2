@@ -679,10 +679,10 @@ class User  extends BaseUser
      *
      * @return self
      */
-    public function setPlainPassword($password)
+   /* public function setPlainPassword($password)
     {
         return $this->setPassword($password);
-    }
+    }*/
 
     /**
      * Get password
@@ -695,10 +695,10 @@ class User  extends BaseUser
         return $this->password;
     }
 
-    public function getPlainPassword()
+   /* public function getPlainPassword()
     {
         return $this->getPassword();
-    }
+    }*/
 
     /**
      * Set salt

@@ -199,5 +199,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         });
 
+        $scope.add_tender = function () {
+            $state.go('front.tender.add');
+        }
 
     }]);

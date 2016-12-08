@@ -779,7 +779,7 @@ class ApiV1RESTController extends FOSRestController
             $user = $this->getUser();
             $jsonData = json_decode($request->getContent(), true);
             $password =  $jsonData['newPassword'];
-            $user = $user->setPlainPassword($password);
+            //$user = $user->setPlainPassword($password);
             $user = $user->setPassword($password);
             $user->eraseCredentials();
             $em = $this->getDoctrine()->getManager();

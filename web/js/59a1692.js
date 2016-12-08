@@ -67586,7 +67586,7 @@ angular.module('ubid-electricity', [
 ]);
 
 'use strict'
-var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select']);
+var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
     function ($rootScope, $state, $stateParams, $localStorage) {
@@ -67964,7 +67964,8 @@ app.constant('APP_JS_REQUIRES', {
         'contactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/contactFormCtrl.js',
         'profileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/profileFrontCtrl.js',
         'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
-        'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js'
+        'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrll.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68356,6 +68357,11 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: "Tender description",
             resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+        }).state('front.tender.add',{
+            url: '/add',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
+            title: "Tender description",
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
         }).state('front.advanced_search', {
             url: '/advanced-search',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
@@ -71876,6 +71882,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         });
 
+        $scope.add_tender = function () {
+            $state.go('front.tender.add');
+        }
 
     }]);
 

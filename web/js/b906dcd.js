@@ -56141,6 +56141,13 @@ angular.module('duScroll.scrollspy', ['duScroll.spyAPI'])
   };
 }]);
 
+/*
+ angular-file-upload v1.1.6
+ https://github.com/nervgh/angular-file-upload
+*/
+
+!function(a,b){return"function"==typeof define&&define.amd?void define("angular-file-upload",["angular"],function(a){return b(a)}):b(a)}("undefined"==typeof angular?null:angular,function(a){var b=a.module("angularFileUpload",[]);return b.value("fileUploaderOptions",{url:"/",alias:"file",headers:{},queue:[],progress:0,autoUpload:!1,removeAfterUpload:!1,method:"POST",filters:[],formData:[],queueLimit:Number.MAX_VALUE,withCredentials:!1}).factory("FileUploader",["fileUploaderOptions","$rootScope","$http","$window","$compile",function(b,c,d,e,f){function g(c){var d=a.copy(b);a.extend(this,d,c,{isUploading:!1,_nextIndex:0,_failFilterIndex:-1,_directives:{select:[],drop:[],over:[]}}),this.filters.unshift({name:"queueLimit",fn:this._queueLimitFilter}),this.filters.unshift({name:"folder",fn:this._folderFilter})}function h(b){var c=a.isElement(b),d=c?b.value:b,e=a.isString(d)?"FakePath":"Object",f="_createFrom"+e;this[f](d)}function i(b,c,d){var e=a.isElement(c),f=e?a.element(c):null,h=e?null:c;a.extend(this,{url:b.url,alias:b.alias,headers:a.copy(b.headers),formData:a.copy(b.formData),removeAfterUpload:b.removeAfterUpload,withCredentials:b.withCredentials,method:b.method},d,{uploader:b,file:new g.FileLikeObject(c),isReady:!1,isUploading:!1,isUploaded:!1,isSuccess:!1,isCancel:!1,isError:!1,progress:0,index:null,_file:h,_input:f}),f&&this._replaceNode(f)}function j(b){a.extend(this,b),this.uploader._directives[this.prop].push(this),this._saveLinks(),this.bind()}function k(a){k.super_.apply(this,arguments),this.uploader.isHTML5||this.element.removeAttr("multiple"),this.element.prop("value",null)}function l(a){l.super_.apply(this,arguments)}function m(a){m.super_.apply(this,arguments)}return g.prototype.isHTML5=!(!e.File||!e.FormData),g.prototype.addToQueue=function(b,c,d){var e=this.isArrayLikeObject(b)?b:[b],f=this._getFilters(d),h=this.queue.length,i=[];a.forEach(e,function(a){var b=new g.FileLikeObject(a);if(this._isValidFile(b,f,c)){var d=new g.FileItem(this,a,c);i.push(d),this.queue.push(d),this._onAfterAddingFile(d)}else{var e=f[this._failFilterIndex];this._onWhenAddingFileFailed(b,e,c)}},this),this.queue.length!==h&&(this._onAfterAddingAll(i),this.progress=this._getTotalProgress()),this._render(),this.autoUpload&&this.uploadAll()},g.prototype.removeFromQueue=function(a){var b=this.getIndexOfItem(a),c=this.queue[b];c.isUploading&&c.cancel(),this.queue.splice(b,1),c._destroy(),this.progress=this._getTotalProgress()},g.prototype.clearQueue=function(){for(;this.queue.length;)this.queue[0].remove();this.progress=0},g.prototype.uploadItem=function(a){var b=this.getIndexOfItem(a),c=this.queue[b],d=this.isHTML5?"_xhrTransport":"_iframeTransport";c._prepareToUploading(),this.isUploading||(this.isUploading=!0,this[d](c))},g.prototype.cancelItem=function(a){var b=this.getIndexOfItem(a),c=this.queue[b],d=this.isHTML5?"_xhr":"_form";c&&c.isUploading&&c[d].abort()},g.prototype.uploadAll=function(){var b=this.getNotUploadedItems().filter(function(a){return!a.isUploading});b.length&&(a.forEach(b,function(a){a._prepareToUploading()}),b[0].upload())},g.prototype.cancelAll=function(){var b=this.getNotUploadedItems();a.forEach(b,function(a){a.cancel()})},g.prototype.isFile=function(a){var b=e.File;return b&&a instanceof b},g.prototype.isFileLikeObject=function(a){return a instanceof g.FileLikeObject},g.prototype.isArrayLikeObject=function(b){return a.isObject(b)&&"length"in b},g.prototype.getIndexOfItem=function(b){return a.isNumber(b)?b:this.queue.indexOf(b)},g.prototype.getNotUploadedItems=function(){return this.queue.filter(function(a){return!a.isUploaded})},g.prototype.getReadyItems=function(){return this.queue.filter(function(a){return a.isReady&&!a.isUploading}).sort(function(a,b){return a.index-b.index})},g.prototype.destroy=function(){a.forEach(this._directives,function(b){a.forEach(this._directives[b],function(a){a.destroy()},this)},this)},g.prototype.onAfterAddingAll=function(a){},g.prototype.onAfterAddingFile=function(a){},g.prototype.onWhenAddingFileFailed=function(a,b,c){},g.prototype.onBeforeUploadItem=function(a){},g.prototype.onProgressItem=function(a,b){},g.prototype.onProgressAll=function(a){},g.prototype.onSuccessItem=function(a,b,c,d){},g.prototype.onErrorItem=function(a,b,c,d){},g.prototype.onCancelItem=function(a,b,c,d){},g.prototype.onCompleteItem=function(a,b,c,d){},g.prototype.onCompleteAll=function(){},g.prototype._getTotalProgress=function(a){if(this.removeAfterUpload)return a||0;var b=this.getNotUploadedItems().length,c=b?this.queue.length-b:this.queue.length,d=100/this.queue.length,e=(a||0)*d/100;return Math.round(c*d+e)},g.prototype._getFilters=function(b){if(a.isUndefined(b))return this.filters;if(a.isArray(b))return b;var c=b.match(/[^\s,]+/g);return this.filters.filter(function(a){return-1!==c.indexOf(a.name)},this)},g.prototype._render=function(){c.$$phase||c.$apply()},g.prototype._folderFilter=function(a){return!(!a.size&&!a.type)},g.prototype._queueLimitFilter=function(){return this.queue.length<this.queueLimit},g.prototype._isValidFile=function(a,b,c){return this._failFilterIndex=-1,b.length?b.every(function(b){return this._failFilterIndex++,b.fn.call(this,a,c)},this):!0},g.prototype._isSuccessCode=function(a){return a>=200&&300>a||304===a},g.prototype._transformResponse=function(b,c){var e=this._headersGetter(c);return a.forEach(d.defaults.transformResponse,function(a){b=a(b,e)}),b},g.prototype._parseHeaders=function(b){var c,d,e,f={};return b?(a.forEach(b.split("\n"),function(a){e=a.indexOf(":"),c=a.slice(0,e).trim().toLowerCase(),d=a.slice(e+1).trim(),c&&(f[c]=f[c]?f[c]+", "+d:d)}),f):f},g.prototype._headersGetter=function(a){return function(b){return b?a[b.toLowerCase()]||null:a}},g.prototype._xhrTransport=function(b){var c=b._xhr=new XMLHttpRequest,d=new FormData,e=this;if(e._onBeforeUploadItem(b),a.forEach(b.formData,function(b){a.forEach(b,function(a,b){d.append(b,a)})}),"number"!=typeof b._file.size)throw new TypeError("The file specified is no longer valid");d.append(b.alias,b._file,b.file.name),c.upload.onprogress=function(a){var c=Math.round(a.lengthComputable?100*a.loaded/a.total:0);e._onProgressItem(b,c)},c.onload=function(){var a=e._parseHeaders(c.getAllResponseHeaders()),d=e._transformResponse(c.response,a),f=e._isSuccessCode(c.status)?"Success":"Error",g="_on"+f+"Item";e[g](b,d,c.status,a),e._onCompleteItem(b,d,c.status,a)},c.onerror=function(){var a=e._parseHeaders(c.getAllResponseHeaders()),d=e._transformResponse(c.response,a);e._onErrorItem(b,d,c.status,a),e._onCompleteItem(b,d,c.status,a)},c.onabort=function(){var a=e._parseHeaders(c.getAllResponseHeaders()),d=e._transformResponse(c.response,a);e._onCancelItem(b,d,c.status,a),e._onCompleteItem(b,d,c.status,a)},c.open(b.method,b.url,!0),c.withCredentials=b.withCredentials,a.forEach(b.headers,function(a,b){c.setRequestHeader(b,a)}),c.send(d),this._render()},g.prototype._iframeTransport=function(b){var c=a.element('<form style="display: none;" />'),d=a.element('<iframe name="iframeTransport'+Date.now()+'">'),e=b._input,f=this;b._form&&b._form.replaceWith(e),b._form=c,f._onBeforeUploadItem(b),e.prop("name",b.alias),a.forEach(b.formData,function(b){a.forEach(b,function(b,d){var e=a.element('<input type="hidden" name="'+d+'" />');e.val(b),c.append(e)})}),c.prop({action:b.url,method:"POST",target:d.prop("name"),enctype:"multipart/form-data",encoding:"multipart/form-data"}),d.bind("load",function(){try{var a=d[0].contentDocument.body.innerHTML}catch(c){}var e={response:a,status:200,dummy:!0},g={},h=f._transformResponse(e.response,g);f._onSuccessItem(b,h,e.status,g),f._onCompleteItem(b,h,e.status,g)}),c.abort=function(){var a,g={status:0,dummy:!0},h={};d.unbind("load").prop("src","javascript:false;"),c.replaceWith(e),f._onCancelItem(b,a,g.status,h),f._onCompleteItem(b,a,g.status,h)},e.after(c),c.append(e).append(d),c[0].submit(),this._render()},g.prototype._onWhenAddingFileFailed=function(a,b,c){this.onWhenAddingFileFailed(a,b,c)},g.prototype._onAfterAddingFile=function(a){this.onAfterAddingFile(a)},g.prototype._onAfterAddingAll=function(a){this.onAfterAddingAll(a)},g.prototype._onBeforeUploadItem=function(a){a._onBeforeUpload(),this.onBeforeUploadItem(a)},g.prototype._onProgressItem=function(a,b){var c=this._getTotalProgress(b);this.progress=c,a._onProgress(b),this.onProgressItem(a,b),this.onProgressAll(c),this._render()},g.prototype._onSuccessItem=function(a,b,c,d){a._onSuccess(b,c,d),this.onSuccessItem(a,b,c,d)},g.prototype._onErrorItem=function(a,b,c,d){a._onError(b,c,d),this.onErrorItem(a,b,c,d)},g.prototype._onCancelItem=function(a,b,c,d){a._onCancel(b,c,d),this.onCancelItem(a,b,c,d)},g.prototype._onCompleteItem=function(b,c,d,e){b._onComplete(c,d,e),this.onCompleteItem(b,c,d,e);var f=this.getReadyItems()[0];return this.isUploading=!1,a.isDefined(f)?void f.upload():(this.onCompleteAll(),this.progress=this._getTotalProgress(),void this._render())},g.isFile=g.prototype.isFile,g.isFileLikeObject=g.prototype.isFileLikeObject,g.isArrayLikeObject=g.prototype.isArrayLikeObject,g.isHTML5=g.prototype.isHTML5,g.inherit=function(a,b){a.prototype=Object.create(b.prototype),a.prototype.constructor=a,a.super_=b},g.FileLikeObject=h,g.FileItem=i,g.FileDirective=j,g.FileSelect=k,g.FileDrop=l,g.FileOver=m,h.prototype._createFromFakePath=function(a){this.lastModifiedDate=null,this.size=null,this.type="like/"+a.slice(a.lastIndexOf(".")+1).toLowerCase(),this.name=a.slice(a.lastIndexOf("/")+a.lastIndexOf("\\")+2)},h.prototype._createFromObject=function(b){this.lastModifiedDate=a.copy(b.lastModifiedDate),this.size=b.size,this.type=b.type,this.name=b.name},i.prototype.upload=function(){try{this.uploader.uploadItem(this)}catch(a){this.uploader._onCompleteItem(this,"",0,[]),this.uploader._onErrorItem(this,"",0,[])}},i.prototype.cancel=function(){this.uploader.cancelItem(this)},i.prototype.remove=function(){this.uploader.removeFromQueue(this)},i.prototype.onBeforeUpload=function(){},i.prototype.onProgress=function(a){},i.prototype.onSuccess=function(a,b,c){},i.prototype.onError=function(a,b,c){},i.prototype.onCancel=function(a,b,c){},i.prototype.onComplete=function(a,b,c){},i.prototype._onBeforeUpload=function(){this.isReady=!0,this.isUploading=!0,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!1,this.isError=!1,this.progress=0,this.onBeforeUpload()},i.prototype._onProgress=function(a){this.progress=a,this.onProgress(a)},i.prototype._onSuccess=function(a,b,c){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!0,this.isCancel=!1,this.isError=!1,this.progress=100,this.index=null,this.onSuccess(a,b,c)},i.prototype._onError=function(a,b,c){this.isReady=!1,this.isUploading=!1,this.isUploaded=!0,this.isSuccess=!1,this.isCancel=!1,this.isError=!0,this.progress=0,this.index=null,this.onError(a,b,c)},i.prototype._onCancel=function(a,b,c){this.isReady=!1,this.isUploading=!1,this.isUploaded=!1,this.isSuccess=!1,this.isCancel=!0,this.isError=!1,this.progress=0,this.index=null,this.onCancel(a,b,c)},i.prototype._onComplete=function(a,b,c){this.onComplete(a,b,c),this.removeAfterUpload&&this.remove()},i.prototype._destroy=function(){this._input&&this._input.remove(),this._form&&this._form.remove(),delete this._form,delete this._input},i.prototype._prepareToUploading=function(){this.index=this.index||++this.uploader._nextIndex,this.isReady=!0},i.prototype._replaceNode=function(a){var b=f(a.clone())(a.scope());b.prop("value",null),a.css("display","none"),a.after(b)},j.prototype.events={},j.prototype.bind=function(){for(var a in this.events){var b=this.events[a];this.element.bind(a,this[b])}},j.prototype.unbind=function(){for(var a in this.events)this.element.unbind(a,this.events[a])},j.prototype.destroy=function(){var a=this.uploader._directives[this.prop].indexOf(this);this.uploader._directives[this.prop].splice(a,1),this.unbind()},j.prototype._saveLinks=function(){for(var a in this.events){var b=this.events[a];this[b]=this[b].bind(this)}},g.inherit(k,j),k.prototype.events={$destroy:"destroy",change:"onChange"},k.prototype.prop="select",k.prototype.getOptions=function(){},k.prototype.getFilters=function(){},k.prototype.isEmptyAfterSelection=function(){return!!this.element.attr("multiple")},k.prototype.onChange=function(){var a=this.uploader.isHTML5?this.element[0].files:this.element[0],b=this.getOptions(),c=this.getFilters();this.uploader.isHTML5||this.destroy(),this.uploader.addToQueue(a,b,c),this.isEmptyAfterSelection()&&this.element.prop("value",null)},g.inherit(l,j),l.prototype.events={$destroy:"destroy",drop:"onDrop",dragover:"onDragOver",dragleave:"onDragLeave"},l.prototype.prop="drop",l.prototype.getOptions=function(){},l.prototype.getFilters=function(){},l.prototype.onDrop=function(b){var c=this._getTransfer(b);if(c){var d=this.getOptions(),e=this.getFilters();this._preventAndStop(b),a.forEach(this.uploader._directives.over,this._removeOverClass,this),this.uploader.addToQueue(c.files,d,e)}},l.prototype.onDragOver=function(b){var c=this._getTransfer(b);this._haveFiles(c.types)&&(c.dropEffect="copy",this._preventAndStop(b),a.forEach(this.uploader._directives.over,this._addOverClass,this))},l.prototype.onDragLeave=function(b){b.currentTarget===this.element[0]&&(this._preventAndStop(b),a.forEach(this.uploader._directives.over,this._removeOverClass,this))},l.prototype._getTransfer=function(a){return a.dataTransfer?a.dataTransfer:a.originalEvent.dataTransfer},l.prototype._preventAndStop=function(a){a.preventDefault(),a.stopPropagation()},l.prototype._haveFiles=function(a){return a?a.indexOf?-1!==a.indexOf("Files"):a.contains?a.contains("Files"):!1:!1},l.prototype._addOverClass=function(a){a.addOverClass()},l.prototype._removeOverClass=function(a){a.removeOverClass()},g.inherit(m,j),m.prototype.events={$destroy:"destroy"},m.prototype.prop="over",m.prototype.overClass="nv-file-over",m.prototype.addOverClass=function(){this.element.addClass(this.getOverClass())},m.prototype.removeOverClass=function(){this.element.removeClass(this.getOverClass())},m.prototype.getOverClass=function(){return this.overClass},g}]).directive("nvFileSelect",["$parse","FileUploader",function(a,b){return{link:function(c,d,e){var f=c.$eval(e.uploader);if(!(f instanceof b))throw new TypeError('"Uploader" must be an instance of FileUploader');var g=new b.FileSelect({uploader:f,element:d});g.getOptions=a(e.options).bind(g,c),g.getFilters=function(){return e.filters}}}}]).directive("nvFileDrop",["$parse","FileUploader",function(a,b){return{link:function(c,d,e){var f=c.$eval(e.uploader);if(!(f instanceof b))throw new TypeError('"Uploader" must be an instance of FileUploader');if(f.isHTML5){var g=new b.FileDrop({uploader:f,element:d});g.getOptions=a(e.options).bind(g,c),g.getFilters=function(){return e.filters}}}}}]).directive("nvFileOver",["FileUploader",function(a){return{link:function(b,c,d){var e=b.$eval(d.uploader);if(!(e instanceof a))throw new TypeError('"Uploader" must be an instance of FileUploader');var f=new a.FileOver({uploader:e,element:c});f.getOverClass=function(){return d.overClass||this.overClass}}}}]),b});
+//# sourceMappingURL=angular-file-upload.min.map
 angular.module('colorpicker.module', [])
     .factory('Helper', function () {
       'use strict';
@@ -67585,95 +67592,97 @@ angular.module('ubid-electricity', [
 	'at.multirange-slider'
 ]);
 
-var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
+'use strict'
+var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
+
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
-function ($rootScope, $state, $stateParams, $localStorage) {
+    function ($rootScope, $state, $stateParams, $localStorage) {
+        // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
+        FastClick.attach(document.body);
 
-    // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
-    FastClick.attach(document.body);
+        // Set some reference to access them from any scope
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
 
-    // Set some reference to access them from any scope
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-
-    // GLOBAL APP SCOPE
-    // set below basic information
-    $rootScope.app = {
-        name: 'U bid electricity', // name of your project
-        description: 'Electricity Tenders Marketplace', // brief description
-        author: 'ContinuousNet', // author's name or company name
-        version: '2.0', // current version
-        year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
-        isMobile: (function () {// true if the browser is a mobile device
-            var check = false;
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                check = true;
-            };
-            return check;
-        })(),
-        apiURL: '/api/', // rest api url
-        apiVersion: 'v1/', // rest version url
-        thumbURL: '/thumb?image=', // rest version url
-        layout: {
-            isNavbarFixed: true, //true if you want to initialize the template with fixed header
-            isSidebarFixed: true, // true if you want to initialize the template with fixed sidebar
-            isSidebarClosed: false, // true if you want to initialize the template with closed sidebar
-            isFooterFixed: false, // true if you want to initialize the template with fixed footer
-            theme: 'theme-1', // indicate the theme chosen for your project
-            logo: '/assets/images/logo.png' // relative path of the project logo
-        }
-    };
-    console.log( $rootScope.app)
-    
-    if (angular.isDefined($localStorage.user)) {
-        $rootScope.user = $rootScope.currentUser = $localStorage.user;
-    } else {
-        $rootScope.user = $rootScope.currentUser = {
-            firstName: 'User',
-            job: 'Webmaster',
-            picture: 'app/img/user/02.jpg',
-            roles: []
+        // GLOBAL APP SCOPE
+        // set below basic information
+        $rootScope.app = {
+            name: 'U bid electricity', // name of your project
+            description: 'Electricity Tenders web site', // brief description
+            author: 'ContinuousNet', // author's name or company name
+            version: '2.0', // current version
+            year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
+            isMobile: (function () {// true if the browser is a mobile device
+                var check = false;
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    check = true;
+                };
+                return check;
+            })(),
+            apiURL: '/api/', // rest api url
+            apiVersion: 'v1/', // rest version url
+            thumbURL: '/thumb?image=', // rest version url
+            layout: {
+                isNavbarFixed: true, //true if you want to initialize the template with fixed header
+                isSidebarFixed: true, // true if you want to initialize the template with fixed sidebar
+                isSidebarClosed: false, // true if you want to initialize the template with closed sidebar
+                isFooterFixed: false, // true if you want to initialize the template with fixed footer
+                theme: 'theme-1', // indicate the theme chosen for your project
+                logo: '/assets/images/big_logo.png', // relative path of the project logo
+            }
         };
-    }
-    
-}]);
+
+        if (angular.isDefined($localStorage.user)) {
+            $rootScope.user = $rootScope.currentUser = $localStorage.user;
+
+        } else {
+            $rootScope.user = $rootScope.currentUser = {
+                //firstName: 'Guest',
+                //job: 'Visitor',
+                //picture: 'app/img/user/02.jpg',
+                //roles: []
+            };
+        }
+        $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
+
+    }]);
 
 // translate config
 app.config(['$translateProvider',
-function ($translateProvider) {
+    function ($translateProvider) {
 
-    // prefix and suffix information  is required to specify a pattern
-    // You can simply use the static-files loader with this pattern:
-    $translateProvider.useStaticFilesLoader({
-        prefix: '/assets/i18n/',
-        suffix: '.json'
-    });
+        // prefix and suffix information  is required to specify a pattern
+        // You can simply use the static-files loader with this pattern:
+        $translateProvider.useStaticFilesLoader({
+            prefix: '/assets/i18n/front/',
+            suffix: '.json'
+        });
 
-    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-    // This is where preferredLanguage(langKey) comes in.
-    $translateProvider.preferredLanguage('fr');
+        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+        // This is where preferredLanguage(langKey) comes in.
+        $translateProvider.preferredLanguage('fr');
 
-    // Store the language in the local storage
-    $translateProvider.useLocalStorage();
-    
-    // Enable sanitize
-    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+        // Store the language in the local storage
+        $translateProvider.useLocalStorage();
 
-}]);
+        // Enable sanitize
+        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+
+    }]);
 
 // Angular-Loading-Bar
 // configuration
 app.config(['cfpLoadingBarProvider',
-function (cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeBar = true;
-    cfpLoadingBarProvider.includeSpinner = false;
+    function (cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeBar = true;
+        cfpLoadingBarProvider.includeSpinner = false;
 
-}]);
+    }]);
 
-//  This binding is brought you by [[ ]] interpolation symbols. 
+//  This binding is brought you by [[ ]] interpolation symbols.
 app.config(function($interpolateProvider) {
-	$interpolateProvider.startSymbol('[[');
-	$interpolateProvider.endSymbol(']]');
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
 });
 
 // Angular-Breadcrumb
@@ -68091,68 +68100,69 @@ app.constant('APP_JS_REQUIRES', {
     }]
 });
 
+
 'use strict';
 
 app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$filter', '$timeout', 'toaster',
-function ($q, $localStorage, $location, $filter, $timeout, toaster) {
-    return {
-        request: function (config) {
-            if ($localStorage.access_token) {
-                config.headers['Authorization'] = 'Bearer ' + $localStorage.access_token ;
+    function ($q, $localStorage, $location, $filter, $timeout, toaster) {
+        return {
+            request: function (config) {
+                if ($localStorage.access_token) {
+                    config.headers['Authorization'] = 'Bearer ' + $localStorage.access_token ;
+                }
+                return config;
+            },
+            responseError: function (response) {
+                if ( response.status === 401) {
+                    delete $localStorage.access_token;
+                    $location.path('/login/signin');
+                } else if (response.status === 403) {
+                    toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
+                    $timeout(function(){
+                        $location.path('/app/dashboard');
+                    }, 1000);
+                }
+                return $q.reject(response);
             }
-            return config;
-        },
-        responseError: function (response) {
-            if ( response.status === 401) {
-                delete $localStorage.access_token;
-                $location.path('/login/signin');
-            } else if (response.status === 403) {
-                toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
-                $timeout(function(){
-                    $location.path('/app/dashboard');
-                }, 1000);
-            }
-            return $q.reject(response);
-        }
-    };
-}]);
+        };
+    }]);
 
 // Generates a resolve object previously configured in constant.JS_REQUIRES or in constant.APP_JS_REQUIRES (config.constant.js)
 function loadSequence() {
     var _args = arguments;
     return {
         deps: ['$ocLazyLoad', '$q', 'JS_REQUIRES', 'APP_JS_REQUIRES',
-        function ($ocLL, $q, jsRequires, appJsRequires) {
-            var promise = $q.when(1);
-            for (var i = 0, len = _args.length; i < len; i++) {
-                promise = promiseThen(_args[i]);
-            }
-            return promise;
+            function ($ocLL, $q, jsRequires, appJsRequires) {
+                var promise = $q.when(1);
+                for (var i = 0, len = _args.length; i < len; i++) {
+                    promise = promiseThen(_args[i]);
+                }
+                return promise;
 
-            function promiseThen(_arg) {
-                if (typeof _arg == 'function')
-                    return promise.then(_arg);
-                else
-                    return promise.then(function () {
-                        var nowLoad = requiredData(_arg);
-                        if (!nowLoad)
-                            return $.error('Route resolve: Bad resource name [' + _arg + ']');
-                        return $ocLL.load(nowLoad);
-                    });
-            }
+                function promiseThen(_arg) {
+                    if (typeof _arg == 'function')
+                        return promise.then(_arg);
+                    else
+                        return promise.then(function () {
+                            var nowLoad = requiredData(_arg);
+                            if (!nowLoad)
+                                return $.error('Route resolve: Bad resource name [' + _arg + ']');
+                            return $ocLL.load(nowLoad);
+                        });
+                }
 
-            function requiredData(name) {
-                if (jsRequires.modules)
-                    for (var m in jsRequires.modules)
-                        if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
-                            return jsRequires.modules[m];
-                if (appJsRequires.modules)
-                    for (var m in appJsRequires.modules)
-                        if (appJsRequires.modules[m].name && appJsRequires.modules[m].name === name)
-                            return appJsRequires.modules[m];
-                return (jsRequires.scripts && jsRequires.scripts[name]) || (appJsRequires.scripts && appJsRequires.scripts[name]);
-            }
-        }]
+                function requiredData(name) {
+                    if (jsRequires.modules)
+                        for (var m in jsRequires.modules)
+                            if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
+                                return jsRequires.modules[m];
+                    if (appJsRequires.modules)
+                        for (var m in appJsRequires.modules)
+                            if (appJsRequires.modules[m].name && appJsRequires.modules[m].name === name)
+                                return appJsRequires.modules[m];
+                    return (jsRequires.scripts && jsRequires.scripts[name]) || (appJsRequires.scripts && appJsRequires.scripts[name]);
+                }
+            }]
     };
 }
 
@@ -68160,1173 +68170,1359 @@ function loadSequence() {
  * Config for the router
  */
 app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$ocLazyLoadProvider', 'JS_REQUIRES', 'APP_JS_REQUIRES',
-function ($stateProvider, $httpProvider, $urlRouterProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $ocLazyLoadProvider, jsRequires, appJsRequires) {
+    function ($stateProvider, $httpProvider, $urlRouterProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $ocLazyLoadProvider, jsRequires, appJsRequires) {
 
-    app.controller = $controllerProvider.register;
-    app.directive = $compileProvider.directive;
-    app.filter = $filterProvider.register;
-    app.factory = $provide.factory;
-    app.service = $provide.service;
-    app.constant = $provide.constant;
-    app.value = $provide.value;
-    
-    $httpProvider.interceptors.push('httpRequestInterceptor');
+        app.controller = $controllerProvider.register;
+        app.directive = $compileProvider.directive;
+        app.filter = $filterProvider.register;
+        app.factory = $provide.factory;
+        app.service = $provide.service;
+        app.constant = $provide.constant;
+        app.value = $provide.value;
 
-    // LAZY MODULES
+        $httpProvider.interceptors.push('httpRequestInterceptor');
 
-    $ocLazyLoadProvider.config({
-        debug: false,
-        events: true,
-        modules: jsRequires.modules.concat(appJsRequires)
-    });
+        // LAZY MODULES
+
+        $ocLazyLoadProvider.config({
+            debug: false,
+            events: true,
+            modules: jsRequires.modules.concat(appJsRequires)
+        });
 
 
-    // APPLICATION ROUTES
-    // -----------------------------------
-    // For any unmatched url, redirect to /auth/login
-    $urlRouterProvider.otherwise('/auth/login');
-    //
-    // Set up the states
-    $stateProvider.state('app', {
-        url: '/app',
-        templateUrl: '/assets/views/app.html',
-        resolve: loadSequence('modernizr', 'moment', 'angularMoment', 'uiSwitch', 'perfect-scrollbar-plugin', 'toaster', 'ngAside', 'vAccordion', 'sweet-alert', 'chartjs', 'tc.chartjs', 'oitozero.ngSweetAlert', 'truncate', 'htmlToPlaintext', 'angular-notification-icons'),
-        abstract: true
-    }).state('error', {
-        url: '/error',
-        template: '<div ui-view class="fade-in-up"></div>'
-    }).state('error.404', {
-        url: '/404',
-        templateUrl: '/assets/views/utility_404.html',
-    }).state('error.500', {
-        url: '/500',
-        templateUrl: '/assets/views/utility_500.html',
-    });
-    
-}]);
+        // APPLICATION ROUTES
+        // -----------------------------------
+        // For any unmatched url, redirect to /
+        $urlRouterProvider.otherwise('/');
+        //
+        // Set up the states
+        $stateProvider.state('front', {
+            templateUrl: '/assets/views/front/front.html',
+            resolve: loadSequence('modernizr', 'moment', 'angularMoment', 'uiSwitch', 'perfect-scrollbar-plugin', 'toaster', 'ngAside', 'vAccordion', 'sweet-alert', 'chartjs', 'tc.chartjs', 'oitozero.ngSweetAlert', 'truncate', 'htmlToPlaintext', 'angular-notification-icons'),
+            abstract: true
+        }).state('error', {
+            url: '/error',
+            template: '<div ui-view class="fade-in-up"></div>'
+        }).state('error.404', {
+            url: '/404',
+            templateUrl: '/assets/views/utility_404.html',
+        }).state('error.500', {
+            url: '/500',
+            templateUrl: '/assets/views/utility_500.html',
+        });
+
+    }]);
 
 /**
  * Config for the app router
  */
 app.config(['$stateProvider',
-function ($stateProvider) {
+    function ($stateProvider) {
 
-    $stateProvider.state('auth', {
-        url: '/auth',
-        template: '<div ui-view class="fade-in-right-big smooth"></div>',
-        title: 'sidebar.nav.auth.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.auth.MAIN'
-        }
-    }).state('auth.login', {
-        url: '/login',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
-        title: 'content.list.LOGIN',
-        ncyBreadcrumb: {
-            label: 'content.list.LOGIN'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('LoginCtrl', 'LoginService')
-    }).state('auth.register', {
-        url: '/register',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/register.html',
-        title: 'content.list.REGISTER',
-        ncyBreadcrumb: {
-            label: 'content.list.REGISTER'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterCtrl', 'RegisterService')
-    }).state('auth.resetpassword', {
-        url: '/reset-password',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset_password.html',
-        title: 'content.list.RESETPAWSSWORD',
-        ncyBreadcrumb: {
-            label: 'content.list.RESETPAWSSWORD'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
-    }).state('auth.emailconfirm', {
-        url: '/email-confirm/:token/:language',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/email_confirm.html',
-        title: 'content.list.EMAILCONFIRM',
-        ncyBreadcrumb: {
-            label: 'content.list.EMAILCONFIRM'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
-    }).state('auth.reset', {
-        url: '/reset/:token/:language',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset.html',
-        title: 'content.list.RESET',
-        ncyBreadcrumb: {
-            label: 'content.list.RESET'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('ResetCtrl', 'ResetPasswordService')
-    }).state('auth.lockscreen', {
-        url: '/lock-screen',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/lock_screen.html',
-        title: 'content.list.LOCKSCREEN',
-        ncyBreadcrumb: {
-            label: 'content.list.LOCKSCREEN'
-        },
-        data: {
-            appClasses: 'bg-white usersession',
-            contentClasses: 'full-height'
-        },
-        resolve: loadSequence('LockScreenCtrl', 'LoginService')
-    }).state('app.profile', {
-        url: '/profile',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/profile.html',
-        title: 'topbar.user.PROFILE',
-        ncyBreadcrumb: {
-            label: 'topbar.user.PROFILE'
-        },
-        resolve: loadSequence('jquery-sparkline', 'ProfileCtrl', 'ProfileService', 'countryService')
-    }).state('app.changepassword', {
-        url: '/change-password',
-        templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
-        title: 'topbar.user.CHANGEPASSWORD',
-        ncyBreadcrumb: {
-            label: 'topbar.user.CHANGEPASSWORD'
-        },
-        resolve: loadSequence('jquery-sparkline', 'ChangePasswordCtrl', 'ProfileService')
-    }).state('app.dashboard', {
-        url: '/dashboard',
-        templateUrl: '/bundles/ubidelectricity/js/components/Main/dashboard.html',
-        title: 'content.list.DASHBOARD',
-        ncyBreadcrumb: {
-            label: 'content.list.DASHBOARD'
-        },
-        resolve: loadSequence('jquery-sparkline', 'DashboardCtrl', 'DashboardService')
-    }).state('app.adserving', {
-        url: '/adserving',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.adserving.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.adserving.MAIN'
-        }
-    }).state('app.adserving.banners', {
-        url: '/banners',
-        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banners.html',
-        title: 'content.list.BANNERS',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERS'
-        },
-        resolve: loadSequence('BannersCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
-    }).state('app.adserving.bannersnew', {
-        url: '/banners/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner_form.html',
-        title: 'content.list.NEWBANNER',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBANNER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerFormCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
-    }).state('app.adserving.bannersedit', {
-        url: '/banners/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner_form.html',
-        title: 'content.list.EDITBANNER',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBANNER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerFormCtrl', 'bannerService', 'bannerTypeService', 'userService', 'bannerPositionService')
-    }).state('app.adserving.bannersdetails', {
-        url: '/banners/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Banner/banner.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERDETAILS'
-        },
-        resolve: loadSequence('BannerCtrl', 'bannerService')
-    }).state('app.adserving.bannertypes', {
-        url: '/banner-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_types.html',
-        title: 'content.list.BANNERTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERTYPES'
-        },
-        resolve: loadSequence('BannerTypesCtrl', 'bannerTypeService', 'userService')
-    }).state('app.adserving.bannertypesnew', {
-        url: '/banner-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type_form.html',
-        title: 'content.list.NEWBANNERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBANNERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerTypeFormCtrl', 'bannerTypeService', 'userService')
-    }).state('app.adserving.bannertypesedit', {
-        url: '/banner-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type_form.html',
-        title: 'content.list.EDITBANNERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBANNERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerTypeFormCtrl', 'bannerTypeService', 'userService')
-    }).state('app.adserving.bannertypesdetails', {
-        url: '/banner-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerType/banner_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERTYPEDETAILS'
-        },
-        resolve: loadSequence('BannerTypeCtrl', 'bannerTypeService')
-    }).state('app.adserving.bannerpositions', {
-        url: '/banner-positions',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_positions.html',
-        title: 'content.list.BANNERPOSITIONS',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERPOSITIONS'
-        },
-        resolve: loadSequence('BannerPositionsCtrl', 'bannerPositionService', 'userService')
-    }).state('app.adserving.bannerpositionsnew', {
-        url: '/banner-positions/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position_form.html',
-        title: 'content.list.NEWBANNERPOSITION',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBANNERPOSITION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerPositionFormCtrl', 'bannerPositionService', 'userService')
-    }).state('app.adserving.bannerpositionsedit', {
-        url: '/banner-positions/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position_form.html',
-        title: 'content.list.EDITBANNERPOSITION',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBANNERPOSITION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BannerPositionFormCtrl', 'bannerPositionService', 'userService')
-    }).state('app.adserving.bannerpositionsdetails', {
-        url: '/banner-positions/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BannerPosition/banner_position.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BANNERPOSITIONDETAILS'
-        },
-        resolve: loadSequence('BannerPositionCtrl', 'bannerPositionService')
-    }).state('app.adserving.clicks', {
-        url: '/clicks',
-        templateUrl: '/bundles/ubidelectricity/js/components/Click/clicks.html',
-        title: 'content.list.CLICKS',
-        ncyBreadcrumb: {
-            label: 'content.list.CLICKS'
-        },
-        resolve: loadSequence('ClicksCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.clicksnew', {
-        url: '/clicks/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Click/click_form.html',
-        title: 'content.list.NEWCLICK',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWCLICK'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ClickFormCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.clicksedit', {
-        url: '/clicks/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Click/click_form.html',
-        title: 'content.list.EDITCLICK',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITCLICK'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ClickFormCtrl', 'clickService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.clicksdetails', {
-        url: '/clicks/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Click/click.html',
-        ncyBreadcrumb: {
-            label: 'content.list.CLICKDETAILS'
-        },
-        resolve: loadSequence('ClickCtrl', 'clickService')
-    }).state('app.adserving.impressions', {
-        url: '/impressions',
-        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impressions.html',
-        title: 'content.list.IMPRESSIONS',
-        ncyBreadcrumb: {
-            label: 'content.list.IMPRESSIONS'
-        },
-        resolve: loadSequence('ImpressionsCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.impressionsnew', {
-        url: '/impressions/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression_form.html',
-        title: 'content.list.NEWIMPRESSION',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWIMPRESSION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ImpressionFormCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.impressionsedit', {
-        url: '/impressions/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression_form.html',
-        title: 'content.list.EDITIMPRESSION',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITIMPRESSION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ImpressionFormCtrl', 'impressionService', 'visitService', 'bannerService', 'userService')
-    }).state('app.adserving.impressionsdetails', {
-        url: '/impressions/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Impression/impression.html',
-        ncyBreadcrumb: {
-            label: 'content.list.IMPRESSIONDETAILS'
-        },
-        resolve: loadSequence('ImpressionCtrl', 'impressionService')
-    }).state('app.marketplace', {
-        url: '/marketplace',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.marketplace.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.marketplace.MAIN'
-        }
-    }).state('app.marketplace.buyers', {
-        url: '/buyers',
-        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyers.html',
-        title: 'content.list.BUYERS',
-        ncyBreadcrumb: {
-            label: 'content.list.BUYERS'
-        },
-        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
-    }).state('app.marketplace.buyersnew', {
-        url: '/buyers/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
-        title: 'content.list.NEWBUYER',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBUYER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
-    }).state('app.marketplace.buyersedit', {
-        url: '/buyers/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
-        title: 'content.list.EDITBUYER',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBUYER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService')
-    }).state('app.marketplace.buyersdetails', {
-        url: '/buyers/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BUYERDETAILS'
-        },
-        resolve: loadSequence('BuyerCtrl', 'buyerService')
-    }).state('app.marketplace.tenders', {
-        url: '/tenders',
-        templateUrl: '/bundles/ubidelectricity/js/components/Tender/tenders.html',
-        title: 'content.list.TENDERS',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERS'
-        },
-        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
-    }).state('app.marketplace.tendersnew', {
-        url: '/tenders/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
-        title: 'content.list.NEWTENDER',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTENDER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
-    }).state('app.marketplace.tendersedit', {
-        url: '/tenders/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
-        title: 'content.list.EDITTENDER',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTENDER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService')
-    }).state('app.marketplace.tendersdetails', {
-        url: '/tenders/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERDETAILS'
-        },
-        resolve: loadSequence('TenderCtrl', 'tenderService')
-    }).state('app.marketplace.tenderproducts', {
-        url: '/tender-products',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderProduct/tender_products.html',
-        title: 'content.list.TENDERPRODUCTS',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERPRODUCTS'
-        },
-        resolve: loadSequence('TenderProductsCtrl', 'tenderProductService', 'tenderService', 'productTypeService', 'userService')
-    }).state('app.marketplace.tenderproductsnew', {
-        url: '/tender-products/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderProduct/tender_product_form.html',
-        title: 'content.list.NEWTENDERPRODUCT',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTENDERPRODUCT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderProductFormCtrl', 'tenderProductService', 'tenderService', 'productTypeService', 'userService')
-    }).state('app.marketplace.tenderproductsedit', {
-        url: '/tender-products/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderProduct/tender_product_form.html',
-        title: 'content.list.EDITTENDERPRODUCT',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTENDERPRODUCT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderProductFormCtrl', 'tenderProductService', 'tenderService', 'productTypeService', 'userService')
-    }).state('app.marketplace.tenderproductsdetails', {
-        url: '/tender-products/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderProduct/tender_product.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERPRODUCTDETAILS'
-        },
-        resolve: loadSequence('TenderProductCtrl', 'tenderProductService')
-    }).state('app.marketplace.bids', {
-        url: '/bids',
-        templateUrl: '/bundles/ubidelectricity/js/components/Bid/bids.html',
-        title: 'content.list.BIDS',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDS'
-        },
-        resolve: loadSequence('BidsCtrl', 'bidService', 'tenderService', 'userService')
-    }).state('app.marketplace.bidsnew', {
-        url: '/bids/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid_form.html',
-        title: 'content.list.NEWBID',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBID'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'userService')
-    }).state('app.marketplace.bidsedit', {
-        url: '/bids/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid_form.html',
-        title: 'content.list.EDITBID',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBID'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidFormCtrl', 'bidService', 'tenderService', 'userService')
-    }).state('app.marketplace.bidsdetails', {
-        url: '/bids/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Bid/bid.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDDETAILS'
-        },
-        resolve: loadSequence('BidCtrl', 'bidService')
-    }).state('app.marketplace.bidproducts', {
-        url: '/bid-products',
-        templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_products.html',
-        title: 'content.list.BIDPRODUCTS',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDPRODUCTS'
-        },
-        resolve: loadSequence('BidProductsCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
-    }).state('app.marketplace.bidproductsnew', {
-        url: '/bid-products/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product_form.html',
-        title: 'content.list.NEWBIDPRODUCT',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBIDPRODUCT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
-    }).state('app.marketplace.bidproductsedit', {
-        url: '/bid-products/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product_form.html',
-        title: 'content.list.EDITBIDPRODUCT',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBIDPRODUCT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BidProductFormCtrl', 'bidProductService', 'tenderProductService', 'bidService', 'userService')
-    }).state('app.marketplace.bidproductsdetails', {
-        url: '/bid-products/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BidProduct/bid_product.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDPRODUCTDETAILS'
-        },
-        resolve: loadSequence('BidProductCtrl', 'bidProductService')
-    }).state('app.tenders', {
-        url: '/tenders',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.tenders.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.tenders.MAIN'
-        }
-    }).state('app.tenders.sectors', {
-        url: '/sectors',
-        templateUrl: '/bundles/ubidelectricity/js/components/Sector/sectors.html',
-        title: 'content.list.SECTORS',
-        ncyBreadcrumb: {
-            label: 'content.list.SECTORS'
-        },
-        resolve: loadSequence('SectorsCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsnew', {
-        url: '/sectors/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector_form.html',
-        title: 'content.list.NEWSECTOR',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWSECTOR'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SectorFormCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsedit', {
-        url: '/sectors/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector_form.html',
-        title: 'content.list.EDITSECTOR',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITSECTOR'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SectorFormCtrl', 'sectorService', 'userService')
-    }).state('app.tenders.sectorsdetails', {
-        url: '/sectors/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Sector/sector.html',
-        ncyBreadcrumb: {
-            label: 'content.list.SECTORDETAILS'
-        },
-        resolve: loadSequence('SectorCtrl', 'sectorService')
-    }).state('app.tenders.tendercategories', {
-        url: '/tender-categories',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_categories.html',
-        title: 'content.list.TENDERCATEGORIES',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERCATEGORIES'
-        },
-        resolve: loadSequence('TenderCategoriesCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesnew', {
-        url: '/tender-categories/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category_form.html',
-        title: 'content.list.NEWTENDERCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTENDERCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderCategoryFormCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesedit', {
-        url: '/tender-categories/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category_form.html',
-        title: 'content.list.EDITTENDERCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTENDERCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderCategoryFormCtrl', 'tenderCategoryService', 'productTypeService', 'userService')
-    }).state('app.tenders.tendercategoriesdetails', {
-        url: '/tender-categories/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderCategory/tender_category.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERCATEGORYDETAILS'
-        },
-        resolve: loadSequence('TenderCategoryCtrl', 'tenderCategoryService')
-    }).state('app.tenders.buyertypes', {
-        url: '/buyer-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_types.html',
-        title: 'content.list.BUYERTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.BUYERTYPES'
-        },
-        resolve: loadSequence('BuyerTypesCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesnew', {
-        url: '/buyer-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
-        title: 'content.list.NEWBUYERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBUYERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesedit', {
-        url: '/buyer-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type_form.html',
-        title: 'content.list.EDITBUYERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBUYERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerTypeFormCtrl', 'buyerTypeService', 'userService')
-    }).state('app.tenders.buyertypesdetails', {
-        url: '/buyer-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BuyerType/buyer_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BUYERTYPEDETAILS'
-        },
-        resolve: loadSequence('BuyerTypeCtrl', 'buyerTypeService')
-    }).state('app.tenders.producttypes', {
-        url: '/product-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_types.html',
-        title: 'content.list.PRODUCTTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPES'
-        },
-        resolve: loadSequence('ProductTypesCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesnew', {
-        url: '/product-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.NEWPRODUCTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWPRODUCTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesedit', {
-        url: '/product-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type_form.html',
-        title: 'content.list.EDITPRODUCTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITPRODUCTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductTypeFormCtrl', 'productTypeService', 'userService')
-    }).state('app.tenders.producttypesdetails', {
-        url: '/product-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/ProductType/product_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.PRODUCTTYPEDETAILS'
-        },
-        resolve: loadSequence('ProductTypeCtrl', 'productTypeService')
-    }).state('app.tenders.tendertypes', {
-        url: '/tender-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_types.html',
-        title: 'content.list.TENDERTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERTYPES'
-        },
-        resolve: loadSequence('TenderTypesCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesnew', {
-        url: '/tender-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type_form.html',
-        title: 'content.list.NEWTENDERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWTENDERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderTypeFormCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesedit', {
-        url: '/tender-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type_form.html',
-        title: 'content.list.EDITTENDERTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITTENDERTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderTypeFormCtrl', 'tenderTypeService', 'userService')
-    }).state('app.tenders.tendertypesdetails', {
-        url: '/tender-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/TenderType/tender_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.TENDERTYPEDETAILS'
-        },
-        resolve: loadSequence('TenderTypeCtrl', 'tenderTypeService')
-    }).state('app.tenders.biddingtypes', {
-        url: '/bidding-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_types.html',
-        title: 'content.list.BIDDINGTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDDINGTYPES'
-        },
-        resolve: loadSequence('BiddingTypesCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesnew', {
-        url: '/bidding-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type_form.html',
-        title: 'content.list.NEWBIDDINGTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWBIDDINGTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BiddingTypeFormCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesedit', {
-        url: '/bidding-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type_form.html',
-        title: 'content.list.EDITBIDDINGTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITBIDDINGTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BiddingTypeFormCtrl', 'biddingTypeService', 'userService')
-    }).state('app.tenders.biddingtypesdetails', {
-        url: '/bidding-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/BiddingType/bidding_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.BIDDINGTYPEDETAILS'
-        },
-        resolve: loadSequence('BiddingTypeCtrl', 'biddingTypeService')
-    }).state('app.settings', {
-        url: '/settings',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.settings.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.settings.MAIN'
-        }
-    }).state('app.settings.languages', {
-        url: '/languages',
-        templateUrl: '/bundles/ubidelectricity/js/components/Language/languages.html',
-        title: 'content.list.LANGUAGES',
-        ncyBreadcrumb: {
-            label: 'content.list.LANGUAGES'
-        },
-        resolve: loadSequence('LanguagesCtrl', 'languageService', 'userService')
-    }).state('app.settings.languagesnew', {
-        url: '/languages/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Language/language_form.html',
-        title: 'content.list.NEWLANGUAGE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWLANGUAGE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LanguageFormCtrl', 'languageService', 'userService')
-    }).state('app.settings.languagesedit', {
-        url: '/languages/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Language/language_form.html',
-        title: 'content.list.EDITLANGUAGE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITLANGUAGE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LanguageFormCtrl', 'languageService', 'userService')
-    }).state('app.settings.languagesdetails', {
-        url: '/languages/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Language/language.html',
-        ncyBreadcrumb: {
-            label: 'content.list.LANGUAGEDETAILS'
-        },
-        resolve: loadSequence('LanguageCtrl', 'languageService')
-    }).state('app.settings.countries', {
-        url: '/countries',
-        templateUrl: '/bundles/ubidelectricity/js/components/Country/countries.html',
-        title: 'content.list.COUNTRIES',
-        ncyBreadcrumb: {
-            label: 'content.list.COUNTRIES'
-        },
-        resolve: loadSequence('CountriesCtrl', 'countryService', 'regionService', 'userService')
-    }).state('app.settings.countriesnew', {
-        url: '/countries/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Country/country_form.html',
-        title: 'content.list.NEWCOUNTRY',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWCOUNTRY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CountryFormCtrl', 'countryService', 'regionService', 'userService')
-    }).state('app.settings.countriesedit', {
-        url: '/countries/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Country/country_form.html',
-        title: 'content.list.EDITCOUNTRY',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITCOUNTRY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CountryFormCtrl', 'countryService', 'regionService', 'userService')
-    }).state('app.settings.countriesdetails', {
-        url: '/countries/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Country/country.html',
-        ncyBreadcrumb: {
-            label: 'content.list.COUNTRYDETAILS'
-        },
-        resolve: loadSequence('CountryCtrl', 'countryService')
-    }).state('app.settings.regions', {
-        url: '/regions',
-        templateUrl: '/bundles/ubidelectricity/js/components/Region/regions.html',
-        title: 'content.list.REGIONS',
-        ncyBreadcrumb: {
-            label: 'content.list.REGIONS'
-        },
-        resolve: loadSequence('RegionsCtrl', 'regionService', 'userService')
-    }).state('app.settings.regionsnew', {
-        url: '/regions/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Region/region_form.html',
-        title: 'content.list.NEWREGION',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWREGION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'RegionFormCtrl', 'regionService', 'userService')
-    }).state('app.settings.regionsedit', {
-        url: '/regions/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Region/region_form.html',
-        title: 'content.list.EDITREGION',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITREGION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'RegionFormCtrl', 'regionService', 'userService')
-    }).state('app.settings.regionsdetails', {
-        url: '/regions/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Region/region.html',
-        ncyBreadcrumb: {
-            label: 'content.list.REGIONDETAILS'
-        },
-        resolve: loadSequence('RegionCtrl', 'regionService')
-    }).state('app.settings.menus', {
-        url: '/menus',
-        templateUrl: '/bundles/ubidelectricity/js/components/Menu/menus.html',
-        title: 'content.list.MENUS',
-        ncyBreadcrumb: {
-            label: 'content.list.MENUS'
-        },
-        resolve: loadSequence('MenusCtrl', 'menuService', 'userService')
-    }).state('app.settings.menusnew', {
-        url: '/menus/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Menu/menu_form.html',
-        title: 'content.list.NEWMENU',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWMENU'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuFormCtrl', 'menuService', 'userService')
-    }).state('app.settings.menusedit', {
-        url: '/menus/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Menu/menu_form.html',
-        title: 'content.list.EDITMENU',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITMENU'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuFormCtrl', 'menuService', 'userService')
-    }).state('app.settings.menusdetails', {
-        url: '/menus/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Menu/menu.html',
-        ncyBreadcrumb: {
-            label: 'content.list.MENUDETAILS'
-        },
-        resolve: loadSequence('MenuCtrl', 'menuService')
-    }).state('app.settings.menulinks', {
-        url: '/menu-links',
-        templateUrl: '/bundles/ubidelectricity/js/components/MenuLink/menu_links.html',
-        title: 'content.list.MENULINKS',
-        ncyBreadcrumb: {
-            label: 'content.list.MENULINKS'
-        },
-        resolve: loadSequence('MenuLinksCtrl', 'menuLinkService', 'menuService', 'userService')
-    }).state('app.settings.menulinksnew', {
-        url: '/menu-links/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/MenuLink/menu_link_form.html',
-        title: 'content.list.NEWMENULINK',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWMENULINK'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuLinkFormCtrl', 'menuLinkService', 'menuService', 'userService')
-    }).state('app.settings.menulinksedit', {
-        url: '/menu-links/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/MenuLink/menu_link_form.html',
-        title: 'content.list.EDITMENULINK',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITMENULINK'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'MenuLinkFormCtrl', 'menuLinkService', 'menuService', 'userService')
-    }).state('app.settings.menulinksdetails', {
-        url: '/menu-links/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/MenuLink/menu_link.html',
-        ncyBreadcrumb: {
-            label: 'content.list.MENULINKDETAILS'
-        },
-        resolve: loadSequence('MenuLinkCtrl', 'menuLinkService')
-    }).state('app.access', {
-        url: '/access',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.access.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.access.MAIN'
-        }
-    }).state('app.access.users', {
-        url: '/users',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/users.html',
-        title: 'content.list.USERS',
-        ncyBreadcrumb: {
-            label: 'content.list.USERS'
-        },
-        resolve: loadSequence('UsersCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersnew', {
-        url: '/users/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
-        title: 'content.list.NEWUSER',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWUSER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersedit', {
-        url: '/users/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user_form.html',
-        title: 'content.list.EDITUSER',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITUSER'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserFormCtrl', 'userService', 'countryService', 'languageService', 'groupService')
-    }).state('app.access.usersdetails', {
-        url: '/users/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/User/user.html',
-        ncyBreadcrumb: {
-            label: 'content.list.USERDETAILS'
-        },
-        resolve: loadSequence('UserCtrl', 'userService')
-    }).state('app.access.notifications', {
-        url: '/notifications',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notifications.html',
-        title: 'content.list.NOTIFICATIONS',
-        ncyBreadcrumb: {
-            label: 'content.list.NOTIFICATIONS'
-        },
-        resolve: loadSequence('NotificationsCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsnew', {
-        url: '/notifications/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
-        title: 'content.list.NEWNOTIFICATION',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWNOTIFICATION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsedit', {
-        url: '/notifications/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification_form.html',
-        title: 'content.list.EDITNOTIFICATION',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITNOTIFICATION'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'NotificationFormCtrl', 'notificationService', 'userService')
-    }).state('app.access.notificationsdetails', {
-        url: '/notifications/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Notification/notification.html',
-        ncyBreadcrumb: {
-            label: 'content.list.NOTIFICATIONDETAILS'
-        },
-        resolve: loadSequence('NotificationCtrl', 'notificationService')
-    }).state('app.access.groups', {
-        url: '/groups',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/groups.html',
-        title: 'content.list.GROUPS',
-        ncyBreadcrumb: {
-            label: 'content.list.GROUPS'
-        },
-        resolve: loadSequence('GroupsCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsnew', {
-        url: '/groups/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
-        title: 'content.list.NEWGROUP',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWGROUP'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsedit', {
-        url: '/groups/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group_form.html',
-        title: 'content.list.EDITGROUP',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITGROUP'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'GroupFormCtrl', 'groupService', 'userService')
-    }).state('app.access.groupsdetails', {
-        url: '/groups/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Group/group.html',
-        ncyBreadcrumb: {
-            label: 'content.list.GROUPDETAILS'
-        },
-        resolve: loadSequence('GroupCtrl', 'groupService')
-    }).state('app.access.logs', {
-        url: '/logs',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/logs.html',
-        title: 'content.list.LOGS',
-        ncyBreadcrumb: {
-            label: 'content.list.LOGS'
-        },
-        resolve: loadSequence('LogsCtrl', 'logService', 'userService')
-    }).state('app.access.logsnew', {
-        url: '/logs/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
-        title: 'content.list.NEWLOG',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWLOG'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
-    }).state('app.access.logsedit', {
-        url: '/logs/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log_form.html',
-        title: 'content.list.EDITLOG',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITLOG'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'LogFormCtrl', 'logService', 'userService')
-    }).state('app.access.logsdetails', {
-        url: '/logs/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Log/log.html',
-        ncyBreadcrumb: {
-            label: 'content.list.LOGDETAILS'
-        },
-        resolve: loadSequence('LogCtrl', 'logService')
-    }).state('app.access.usersettings', {
-        url: '/user-settings',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_settings.html',
-        title: 'content.list.USERSETTINGS',
-        ncyBreadcrumb: {
-            label: 'content.list.USERSETTINGS'
-        },
-        resolve: loadSequence('UserSettingsCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsnew', {
-        url: '/user-settings/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
-        title: 'content.list.NEWUSERSETTING',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWUSERSETTING'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsedit', {
-        url: '/user-settings/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting_form.html',
-        title: 'content.list.EDITUSERSETTING',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITUSERSETTING'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'UserSettingFormCtrl', 'userSettingService', 'userService')
-    }).state('app.access.usersettingsdetails', {
-        url: '/user-settings/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/UserSetting/user_setting.html',
-        ncyBreadcrumb: {
-            label: 'content.list.USERSETTINGDETAILS'
-        },
-        resolve: loadSequence('UserSettingCtrl', 'userSettingService')
-    }).state('app.statistics', {
-        url: '/statistics',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.statistics.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.statistics.MAIN'
-        }
-    }).state('app.statistics.hits', {
-        url: '/hits',
-        templateUrl: '/bundles/ubidelectricity/js/components/Hit/hits.html',
-        title: 'content.list.HITS',
-        ncyBreadcrumb: {
-            label: 'content.list.HITS'
-        },
-        resolve: loadSequence('HitsCtrl', 'hitService', 'visitService', 'userService')
-    }).state('app.statistics.hitsnew', {
-        url: '/hits/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Hit/hit_form.html',
-        title: 'content.list.NEWHIT',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWHIT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'HitFormCtrl', 'hitService', 'visitService', 'userService')
-    }).state('app.statistics.hitsedit', {
-        url: '/hits/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Hit/hit_form.html',
-        title: 'content.list.EDITHIT',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITHIT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'HitFormCtrl', 'hitService', 'visitService', 'userService')
-    }).state('app.statistics.hitsdetails', {
-        url: '/hits/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Hit/hit.html',
-        ncyBreadcrumb: {
-            label: 'content.list.HITDETAILS'
-        },
-        resolve: loadSequence('HitCtrl', 'hitService')
-    }).state('app.statistics.visits', {
-        url: '/visits',
-        templateUrl: '/bundles/ubidelectricity/js/components/Visit/visits.html',
-        title: 'content.list.VISITS',
-        ncyBreadcrumb: {
-            label: 'content.list.VISITS'
-        },
-        resolve: loadSequence('VisitsCtrl', 'visitService', 'userService')
-    }).state('app.statistics.visitsnew', {
-        url: '/visits/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Visit/visit_form.html',
-        title: 'content.list.NEWVISIT',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWVISIT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'VisitFormCtrl', 'visitService', 'userService')
-    }).state('app.statistics.visitsedit', {
-        url: '/visits/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Visit/visit_form.html',
-        title: 'content.list.EDITVISIT',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITVISIT'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'VisitFormCtrl', 'visitService', 'userService')
-    }).state('app.statistics.visitsdetails', {
-        url: '/visits/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Visit/visit.html',
-        ncyBreadcrumb: {
-            label: 'content.list.VISITDETAILS'
-        },
-        resolve: loadSequence('VisitCtrl', 'visitService')
-    }).state('app.news', {
-        url: '/news',
-        template: '<div ui-view class="fade-in-up"></div>',
-        title: 'sidebar.nav.news.MAIN',
-        ncyBreadcrumb: {
-            label: 'sidebar.nav.news.MAIN'
-        }
-    }).state('app.news.posts', {
-        url: '/posts',
-        templateUrl: '/bundles/ubidelectricity/js/components/Post/posts.html',
-        title: 'content.list.POSTS',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTS'
-        },
-        resolve: loadSequence('PostsCtrl', 'postService', 'postTypeService', 'userService', 'postCategoryService')
-    }).state('app.news.postsnew', {
-        url: '/posts/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/Post/post_form.html',
-        title: 'content.list.NEWPOST',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWPOST'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostFormCtrl', 'postService', 'postTypeService', 'userService', 'postCategoryService')
-    }).state('app.news.postsedit', {
-        url: '/posts/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Post/post_form.html',
-        title: 'content.list.EDITPOST',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITPOST'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostFormCtrl', 'postService', 'postTypeService', 'userService', 'postCategoryService')
-    }).state('app.news.postsdetails', {
-        url: '/posts/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/Post/post.html',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTDETAILS'
-        },
-        resolve: loadSequence('PostCtrl', 'postService')
-    }).state('app.news.postcategories', {
-        url: '/post-categories',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostCategory/post_categories.html',
-        title: 'content.list.POSTCATEGORIES',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTCATEGORIES'
-        },
-        resolve: loadSequence('PostCategoriesCtrl', 'postCategoryService', 'postTypeService', 'userService')
-    }).state('app.news.postcategoriesnew', {
-        url: '/post-categories/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostCategory/post_category_form.html',
-        title: 'content.list.NEWPOSTCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWPOSTCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostCategoryFormCtrl', 'postCategoryService', 'postTypeService', 'userService')
-    }).state('app.news.postcategoriesedit', {
-        url: '/post-categories/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostCategory/post_category_form.html',
-        title: 'content.list.EDITPOSTCATEGORY',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITPOSTCATEGORY'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostCategoryFormCtrl', 'postCategoryService', 'postTypeService', 'userService')
-    }).state('app.news.postcategoriesdetails', {
-        url: '/post-categories/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostCategory/post_category.html',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTCATEGORYDETAILS'
-        },
-        resolve: loadSequence('PostCategoryCtrl', 'postCategoryService')
-    }).state('app.news.posttypes', {
-        url: '/post-types',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostType/post_types.html',
-        title: 'content.list.POSTTYPES',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTTYPES'
-        },
-        resolve: loadSequence('PostTypesCtrl', 'postTypeService', 'userService')
-    }).state('app.news.posttypesnew', {
-        url: '/post-types/new',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostType/post_type_form.html',
-        title: 'content.list.NEWPOSTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.NEWPOSTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostTypeFormCtrl', 'postTypeService', 'userService')
-    }).state('app.news.posttypesedit', {
-        url: '/post-types/edit/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostType/post_type_form.html',
-        title: 'content.list.EDITPOSTTYPE',
-        ncyBreadcrumb: {
-            label: 'content.list.EDITPOSTTYPE'
-        },
-        resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostTypeFormCtrl', 'postTypeService', 'userService')
-    }).state('app.news.posttypesdetails', {
-        url: '/post-types/details/:id',
-        templateUrl: '/bundles/ubidelectricity/js/components/PostType/post_type.html',
-        ncyBreadcrumb: {
-            label: 'content.list.POSTTYPEDETAILS'
-        },
-        resolve: loadSequence('PostTypeCtrl', 'postTypeService')
-    });
+        $stateProvider.state('auth', {
+            url: '/auth',
+            template: '<div ui-view class="fade-in-right-big smooth"></div>',
+            title: 'sidebar.nav.auth.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.auth.MAIN'
+            }
+        }).state('front.login', {
+            url: '/login',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
+            title: 'content.list.LOGIN',
+            ncyBreadcrumb: {
+                label: 'content.list.LOGIN'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('LoginCtrl', 'LoginService')
+        }).state('front.register', {
+            url: '/register',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/register.html',
+            title: 'content.list.REGISTER',
+            ncyBreadcrumb: {
+                label: 'content.list.REGISTER'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService', 'RegisterService')
+        }).state('auth.resetpassword', {
+            url: '/reset-password',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset_password.html',
+            title: 'content.list.RESETPAWSSWORD',
+            ncyBreadcrumb: {
+                label: 'content.list.RESETPAWSSWORD'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
+        }).state('auth.emailconfirm', {
+            url: '/email-confirm/:token/:language',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/email_confirm.html',
+            title: 'content.list.EMAILCONFIRM',
+            ncyBreadcrumb: {
+                label: 'content.list.EMAILCONFIRM'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
+        }).state('auth.reset', {
+            url: '/reset/:token/:language',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset.html',
+            title: 'content.list.RESET',
+            ncyBreadcrumb: {
+                label: 'content.list.RESET'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('ResetCtrl', 'ResetPasswordService')
+        }).state('auth.lockscreen', {
+            url: '/lock-screen',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/lock_screen.html',
+            title: 'content.list.LOCKSCREEN',
+            ncyBreadcrumb: {
+                label: 'content.list.LOCKSCREEN'
+            },
+            data: {
+                appClasses: 'bg-white usersession',
+                contentClasses: 'full-height'
+            },
+            resolve: loadSequence('LockScreenCtrl', 'LoginService')
+        }).state('front.profile', {
+            url: '/profile',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/profile.html',
+            title: 'topbar.user.PROFILE',
+            ncyBreadcrumb: {
+                label: 'topbar.user.PROFILE'
+            },
+            resolve: loadSequence('jquery-sparkline', 'profileFrontCtrl', 'ProfileFrontService', 'countryService')
+        }).state('front.changepassword', {
+            url: '/change-password',
+            templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
+            title: 'topbar.user.CHANGEPASSWORD',
+            ncyBreadcrumb: {
+                label: 'topbar.user.CHANGEPASSWORD'
+            },
+            resolve: loadSequence('jquery-sparkline', 'ChangePasswordCtrl', 'ProfileService')
+        }).state('front.home', {
+            url:'/',
+            templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
+            title: "HOME PAGE UBID",
+            resolve: loadSequence('HomeCtrl' ,'HomeService')
+        }).state('front.contact', {
+            url:'/contact',
+            templateUrl : "/bundles/ubidelectricity/js/front/Contact/contact_form.html",
+            title: "Contact page",
+            resolve: loadSequence('contactService', 'contactFormCtrl')
+        }).state('front.about', {
+            url:'/about-us',
+            template : "<div>this is about us page</div>",
+            title: "about us page",
+            resolve: loadSequence()
+        }).state('front.tenders',{
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.sector', {
+            url:'/sector/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Sector/tenderList.html',
+            title: "sector",
+            resolve: loadSequence()
+        }).state('front.tenders.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
+            title: "Tenders list",
+            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+        }).state('front.tenders.category',{
+            url: '/category/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
+            title: 'Tenders list filtred by category',
+            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+        }).state('front.tender',{
+            url: "/tender",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tender.details',{
+            url: '/details/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
+            title: "Tender description",
+            resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+        }).state('front.tender.add',{
+            url: '/add',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
+            title: "Tender description",
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
+        }).state('front.advanced_search', {
+            url: '/advanced-search',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
+            title: "Advanced Search",
+            resolve: loadSequence('searchFormCtrl', 'SearchService', 'languageService', 'countryService', 'tenderfrontService', 'checklist-model', 'angular-slider')
+        }).state('front.bidder',{
+            url: "/bidder",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer',{
+            url: "/buyer",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.add',{
+            url:"/buyer/add",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/add_buyer.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyerFrontFormCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.list',{
+            url:"/buyer/list",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersCtrl' ,'BuyersFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        })
+    }]);
 
-}]);
+/*! 
+* angular-paging v2.2.2 by Brant Wills - MIT licensed 
+* https://github.com/brantwills/Angular-Paging.git 
+*/
+angular.module("bw.paging",[]).directive("paging",function(){function a(a,b,c){a.$watchCollection("[page,pageSize,total,disabled]",function(){l(a,c)})}function b(a,b){return'<ul data-ng-hide="Hide" data-ng-class="ulClass"> <li title="{{Item.title}}" data-ng-class="Item.liClass" data-ng-repeat="Item in List"> <a '+(b.pgHref?'data-ng-href="{{Item.pgHref}}" ':"href ")+'data-ng-class="Item.aClass" data-ng-click="Item.action()" data-ng-bind="Item.value"></a> </li></ul>'}function c(a,b){a.List=[],a.Hide=!1,a.page=parseInt(a.page)||1,a.total=parseInt(a.total)||0,a.adjacent=parseInt(a.adjacent)||2,a.pgHref=a.pgHref||"",a.dots=a.dots||"...",a.ulClass=a.ulClass||"pagination",a.activeClass=a.activeClass||"active",a.disabledClass=a.disabledClass||"disabled",a.textFirst=a.textFirst||"<<",a.textLast=a.textLast||">>",a.textNext=a.textNext||">",a.textPrev=a.textPrev||"<",a.textFirstClass=a.textFirstClass||"",a.textLastClass=a.textLastClass||"",a.textNextClass=a.textNextClass||"",a.textPrevClass=a.textPrevClass||"",a.textTitlePage=a.textTitlePage||"Page {page}",a.textTitleFirst=a.textTitleFirst||"First Page",a.textTitleLast=a.textTitleLast||"Last Page",a.textTitleNext=a.textTitleNext||"Next Page",a.textTitlePrev=a.textTitlePrev||"Previous Page",a.hideIfEmpty=d(a,b.hideIfEmpty),a.showPrevNext=d(a,b.showPrevNext),a.showFirstLast=d(a,b.showFirstLast),a.scrollTop=d(a,b.scrollTop),a.isDisabled=d(a,b.disabled)}function d(a,b){return angular.isDefined(b)?!!a.$parent.$eval(b):!1}function e(a,b){a.page>b&&(a.page=b),a.page<=0&&(a.page=1),a.adjacent<=0&&(a.adjacent=2),1>=b&&(a.Hide=a.hideIfEmpty)}function f(a,b){a.page!=b&&(a.isDisabled||(a.page=b,a.pagingAction({page:a.page,pageSize:a.pageSize,total:a.total}),a.scrollTop&&scrollTo(0,0)))}function g(a,b,c){if(!(!a.showPrevNext&&!a.showFirstLast||1>b)){var d,e,g;if("prev"===c){d=a.page-1<=0;var h=a.page-1<=0?1:a.page-1;a.showFirstLast&&(e={value:a.textFirst,title:a.textTitleFirst,aClass:a.textFirstClass,page:1}),a.showPrevNext&&(g={value:a.textPrev,title:a.textTitlePrev,aClass:a.textPrevClass,page:h})}else{d=a.page+1>b;var i=a.page+1>=b?b:a.page+1;a.showPrevNext&&(e={value:a.textNext,title:a.textTitleNext,aClass:a.textNextClass,page:i}),a.showFirstLast&&(g={value:a.textLast,title:a.textTitleLast,aClass:a.textLastClass,page:b})}var j=function(b,c){return{title:b.title,aClass:b.aClass,value:b.aClass?"":b.value,liClass:c?a.disabledClass:"",pgHref:c?"":a.pgHref.replace(m,b.page),action:function(){c||f(a,b.page)}}};if(a.isDisabled&&(d=!0),e){var k=j(e,d);a.List.push(k)}if(g){var l=j(g,d);a.List.push(l)}}}function h(a,b,c){var d=0;for(d=a;b>=d;d++){var e=c.pgHref.replace(m,d),g=c.page==d?c.activeClass:"";c.isDisabled&&(e="",g=c.disabledClass),c.List.push({value:d,title:c.textTitlePage.replace(m,d),liClass:g,pgHref:e,action:function(){f(c,this.value)}})}}function i(a){a.List.push({value:a.dots,liClass:a.disabledClass})}function j(a,b){h(1,2,a),3!=b&&i(a)}function k(a,b,c){c!=a-2&&i(b),h(a-1,a,b)}function l(a,b){(!a.pageSize||a.pageSize<=0)&&(a.pageSize=1);var d=Math.ceil(a.total/a.pageSize);c(a,b),e(a,d);var f,i,l=2*a.adjacent+2;g(a,d,"prev"),l+2>=d?(f=1,h(f,d,a)):a.page-a.adjacent<=2?(f=1,i=1+l,h(f,i,a),k(d,a,i)):a.page<d-(a.adjacent+2)?(f=a.page-a.adjacent,i=a.page+a.adjacent,j(a,f),h(f,i,a),k(d,a,i)):(f=d-l,i=d,j(a,f),h(f,i,a)),g(a,d,"next")}var m=/\{page\}/g;return{restrict:"EA",link:a,template:b,scope:{page:"=",pageSize:"=",total:"=",disabled:"@",dots:"@",ulClass:"@",activeClass:"@",disabledClass:"@",adjacent:"@",pagingAction:"&",pgHref:"@",textFirst:"@",textLast:"@",textNext:"@",textPrev:"@",textFirstClass:"@",textLastClass:"@",textNextClass:"@",textPrevClass:"@",textTitlePage:"@",textTitleFirst:"@",textTitleLast:"@",textTitleNext:"@",textTitlePrev:"@"}}});
+/* 
+ * Angular JS Multi Select
+ * Creates a dropdown-like button with checkboxes. 
+ *
+ * Project started on: Tue, 14 Jan 2014 - 5:18:02 PM
+ * Current version: 4.0.0
+ * 
+ * Released under the MIT License
+ * --------------------------------------------------------------------------------
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Ignatius Steven (https://github.com/isteven)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ * of this software and associated documentation files (the "Software"), to deal 
+ * in the Software without restriction, including without limitation the rights 
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+ * copies of the Software, and to permit persons to whom the Software is 
+ * furnished to do so, subject to the following conditions: 
+ *
+ * The above copyright notice and this permission notice shall be included in all 
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+ * SOFTWARE.
+ * --------------------------------------------------------------------------------
+ */
+
+'use strict'
+
+angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect' , [ '$sce', '$timeout', '$templateCache', function ( $sce, $timeout, $templateCache ) {
+    return {
+        restrict: 
+            'AE',
+
+        scope: 
+        {   
+            // models
+            inputModel      : '=',
+            outputModel     : '=',
+
+            // settings based on attribute
+            isDisabled      : '=',
+
+            // callbacks
+            onClear         : '&',  
+            onClose         : '&',
+            onSearchChange  : '&',  
+            onItemClick     : '&',            
+            onOpen          : '&', 
+            onReset         : '&',  
+            onSelectAll     : '&',  
+            onSelectNone    : '&',  
+
+            // i18n
+            translation     : '='   
+        },
+        
+        /* 
+         * The rest are attributes. They don't need to be parsed / binded, so we can safely access them by value.
+         * - buttonLabel, directiveId, helperElements, itemLabel, maxLabels, orientation, selectionMode, minSearchLength,
+         *   tickProperty, disableProperty, groupProperty, searchProperty, maxHeight, outputProperties
+         */
+                                                         
+         templateUrl: 
+            'isteven-multi-select.htm',                            
+
+        link: function ( $scope, element, attrs ) {                       
+
+            $scope.backUp           = [];
+            $scope.varButtonLabel   = '';               
+            $scope.spacingProperty  = '';
+            $scope.indexProperty    = '';                        
+            $scope.orientationH     = false;
+            $scope.orientationV     = true;
+            $scope.filteredModel    = [];
+            $scope.inputLabel       = { labelFilter: '' };                        
+            $scope.tabIndex         = 0;            
+            $scope.lang             = {};
+            $scope.helperStatus     = {
+                all     : true,
+                none    : true,
+                reset   : true,
+                filter  : true
+            };
+
+            var 
+                prevTabIndex        = 0,
+                helperItems         = [],
+                helperItemsLength   = 0,
+                checkBoxLayer       = '',
+                scrolled            = false,
+                selectedItems       = [],
+                formElements        = [],
+                vMinSearchLength    = 0,
+                clickedItem         = null                
+
+            // v3.0.0
+            // clear button clicked
+            $scope.clearClicked = function( e ) {                
+                $scope.inputLabel.labelFilter = '';
+                $scope.updateFilter();
+                $scope.select( 'clear', e );                
+            }
+
+            // A little hack so that AngularJS ng-repeat can loop using start and end index like a normal loop
+            // http://stackoverflow.com/questions/16824853/way-to-ng-repeat-defined-number-of-times-instead-of-repeating-over-array
+            $scope.numberToArray = function( num ) {
+                return new Array( num );   
+            }
+
+            // Call this function when user type on the filter field
+            $scope.searchChanged = function() {                                                
+                if ( $scope.inputLabel.labelFilter.length < vMinSearchLength && $scope.inputLabel.labelFilter.length > 0 ) {
+                    return false;
+                }                
+                $scope.updateFilter();
+            }
+
+            $scope.updateFilter = function()
+            {      
+                // we check by looping from end of input-model
+                $scope.filteredModel = [];
+                var i = 0;
+
+                if ( typeof $scope.inputModel === 'undefined' ) {
+                    return false;                   
+                }
+
+                for( i = $scope.inputModel.length - 1; i >= 0; i-- ) {
+
+                    // if it's group end, we push it to filteredModel[];
+                    if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ attrs.groupProperty ] === false ) {
+                        $scope.filteredModel.push( $scope.inputModel[ i ] );
+                    }
+                    
+                    // if it's data 
+                    var gotData = false;
+                    if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] === 'undefined' ) {                        
+                        
+                        // If we set the search-key attribute, we use this loop. 
+                        if ( typeof attrs.searchProperty !== 'undefined' && attrs.searchProperty !== '' ) {
+
+                            for (var key in $scope.inputModel[ i ]  ) {
+                                if ( 
+                                    typeof $scope.inputModel[ i ][ key ] !== 'boolean'
+                                    && String( $scope.inputModel[ i ][ key ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0                                     
+                                    && attrs.searchProperty.indexOf( key ) > -1
+                                ) {
+                                    gotData = true;
+                                    break;
+                                }
+                            }                        
+                        }
+                        // if there's no search-key attribute, we use this one. Much better on performance.
+                        else {
+                            for ( var key in $scope.inputModel[ i ]  ) {
+                                if ( 
+                                    typeof $scope.inputModel[ i ][ key ] !== 'boolean'
+                                    && String( $scope.inputModel[ i ][ key ] ).toUpperCase().indexOf( $scope.inputLabel.labelFilter.toUpperCase() ) >= 0                                     
+                                ) {
+                                    gotData = true;
+                                    break;
+                                }
+                            }                        
+                        }
+
+                        if ( gotData === true ) {    
+                            // push
+                            $scope.filteredModel.push( $scope.inputModel[ i ] );
+                        }
+                    }
+
+                    // if it's group start
+                    if ( typeof $scope.inputModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.inputModel[ i ][ attrs.groupProperty ] === true ) {
+
+                        if ( typeof $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] !== 'undefined' 
+                                && $scope.filteredModel[ $scope.filteredModel.length - 1 ][ attrs.groupProperty ] === false ) {
+                            $scope.filteredModel.pop();
+                        }
+                        else {
+                            $scope.filteredModel.push( $scope.inputModel[ i ] );
+                        }
+                    }
+                }                
+
+                $scope.filteredModel.reverse();  
+                
+                $timeout( function() {                    
+
+                    $scope.getFormElements();               
+                    
+                    // Callback: on filter change                      
+                    if ( $scope.inputLabel.labelFilter.length > vMinSearchLength ) {
+
+                        var filterObj = [];
+
+                        angular.forEach( $scope.filteredModel, function( value, key ) {
+                            if ( typeof value !== 'undefined' ) {                   
+                                if ( typeof value[ attrs.groupProperty ] === 'undefined' ) {                                                                    
+                                    var tempObj = angular.copy( value );
+                                    var index = filterObj.push( tempObj );                                
+                                    delete filterObj[ index - 1 ][ $scope.indexProperty ];
+                                    delete filterObj[ index - 1 ][ $scope.spacingProperty ];      
+                                }
+                            }
+                        });
+
+                        $scope.onSearchChange({ 
+                            data: 
+                            {
+                                keyword: $scope.inputLabel.labelFilter, 
+                                result: filterObj 
+                            } 
+                        });
+                    }
+                },0);
+            };
+
+            // List all the input elements. We need this for our keyboard navigation.
+            // This function will be called everytime the filter is updated. 
+            // Depending on the size of filtered mode, might not good for performance, but oh well..
+            $scope.getFormElements = function() {                                     
+                formElements = [];
+
+                var 
+                    selectButtons   = [],
+                    inputField      = [],
+                    checkboxes      = [],
+                    clearButton     = [];
+                
+                // If available, then get select all, select none, and reset buttons
+                if ( $scope.helperStatus.all || $scope.helperStatus.none || $scope.helperStatus.reset ) {                                                       
+                    selectButtons = element.children().children().next().children().children()[ 0 ].getElementsByTagName( 'button' );                    
+                    // If available, then get the search box and the clear button
+                    if ( $scope.helperStatus.filter ) {                                            
+                        // Get helper - search and clear button. 
+                        inputField =    element.children().children().next().children().children().next()[ 0 ].getElementsByTagName( 'input' );                    
+                        clearButton =   element.children().children().next().children().children().next()[ 0 ].getElementsByTagName( 'button' );                        
+                    }
+                }
+                else {
+                    if ( $scope.helperStatus.filter ) {   
+                        // Get helper - search and clear button. 
+                        inputField =    element.children().children().next().children().children()[ 0 ].getElementsByTagName( 'input' );                    
+                        clearButton =   element.children().children().next().children().children()[ 0 ].getElementsByTagName( 'button' );
+                    }
+                }
+               
+                // Get checkboxes
+                if ( !$scope.helperStatus.all && !$scope.helperStatus.none && !$scope.helperStatus.reset && !$scope.helperStatus.filter ) {
+                    checkboxes = element.children().children().next()[ 0 ].getElementsByTagName( 'input' );
+                }
+                else {
+                    checkboxes = element.children().children().next().children().next()[ 0 ].getElementsByTagName( 'input' );
+                }
+
+                // Push them into global array formElements[] 
+                for ( var i = 0; i < selectButtons.length ; i++ )   { formElements.push( selectButtons[ i ] );  }
+                for ( var i = 0; i < inputField.length ; i++ )      { formElements.push( inputField[ i ] );     }
+                for ( var i = 0; i < clearButton.length ; i++ )     { formElements.push( clearButton[ i ] );    }
+                for ( var i = 0; i < checkboxes.length ; i++ )      { formElements.push( checkboxes[ i ] );     }                                
+            }            
+
+            // check if an item has attrs.groupProperty (be it true or false)
+            $scope.isGroupMarker = function( item , type ) {
+                if ( typeof item[ attrs.groupProperty ] !== 'undefined' && item[ attrs.groupProperty ] === type ) return true; 
+                return false;
+            }
+
+            $scope.removeGroupEndMarker = function( item ) {
+                if ( typeof item[ attrs.groupProperty ] !== 'undefined' && item[ attrs.groupProperty ] === false ) return false; 
+                return true;
+            }                       
+
+            // call this function when an item is clicked
+            $scope.syncItems = function( item, e, ng_repeat_index ) {                                      
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                // if the directive is globaly disabled, do nothing
+                if ( typeof attrs.disableProperty !== 'undefined' && item[ attrs.disableProperty ] === true ) {                                        
+                    return false;
+                }
+
+                // if item is disabled, do nothing
+                if ( typeof attrs.isDisabled !== 'undefined' && $scope.isDisabled === true ) {                        
+                    return false;
+                }                                
+
+                // if end group marker is clicked, do nothing
+                if ( typeof item[ attrs.groupProperty ] !== 'undefined' && item[ attrs.groupProperty ] === false ) {
+                    return false;
+                }                
+
+                var index = $scope.filteredModel.indexOf( item );       
+
+                // if the start of group marker is clicked ( only for multiple selection! )
+                // how it works:
+                // - if, in a group, there are items which are not selected, then they all will be selected
+                // - if, in a group, all items are selected, then they all will be de-selected                
+                if ( typeof item[ attrs.groupProperty ] !== 'undefined' && item[ attrs.groupProperty ] === true ) {                                  
+
+                    // this is only for multiple selection, so if selection mode is single, do nothing
+                    if ( typeof attrs.selectionMode !== 'undefined' && attrs.selectionMode.toUpperCase() === 'SINGLE' ) {
+                        return false;
+                    }
+                    
+                    var i,j,k;
+                    var startIndex = 0;
+                    var endIndex = $scope.filteredModel.length - 1;
+                    var tempArr = [];
+
+                    // nest level is to mark the depth of the group.
+                    // when you get into a group (start group marker), nestLevel++
+                    // when you exit a group (end group marker), nextLevel--
+                    var nestLevel = 0;                    
+
+                    // we loop throughout the filtered model (not whole model)
+                    for( i = index ; i < $scope.filteredModel.length ; i++) {  
+
+                        // this break will be executed when we're done processing each group
+                        if ( nestLevel === 0 && i > index ) 
+                        {
+                            break;
+                        }
+                    
+                        if ( typeof $scope.filteredModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.filteredModel[ i ][ attrs.groupProperty ] === true ) {
+                            
+                            // To cater multi level grouping
+                            if ( tempArr.length === 0 ) {
+                                startIndex = i + 1; 
+                            }                            
+                            nestLevel = nestLevel + 1;
+                        }                                                
+
+                        // if group end
+                        else if ( typeof $scope.filteredModel[ i ][ attrs.groupProperty ] !== 'undefined' && $scope.filteredModel[ i ][ attrs.groupProperty ] === false ) {
+
+                            nestLevel = nestLevel - 1;                            
+
+                            // cek if all are ticked or not                            
+                            if ( tempArr.length > 0 && nestLevel === 0 ) {                                
+
+                                var allTicked = true;       
+
+                                endIndex = i;
+
+                                for ( j = 0; j < tempArr.length ; j++ ) {                                
+                                    if ( typeof tempArr[ j ][ $scope.tickProperty ] !== 'undefined' &&  tempArr[ j ][ $scope.tickProperty ] === false ) {
+                                        allTicked = false;
+                                        break;
+                                    }
+                                }                                                                                    
+
+                                if ( allTicked === true ) {
+                                    for ( j = startIndex; j <= endIndex ; j++ ) {
+                                        if ( typeof $scope.filteredModel[ j ][ attrs.groupProperty ] === 'undefined' ) {
+                                            if ( typeof attrs.disableProperty === 'undefined' ) {
+                                                $scope.filteredModel[ j ][ $scope.tickProperty ] = false;
+                                                // we refresh input model as well
+                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = false;
+                                            }
+                                            else if ( $scope.filteredModel[ j ][ attrs.disableProperty ] !== true ) {
+                                                $scope.filteredModel[ j ][ $scope.tickProperty ] = false;
+                                                // we refresh input model as well
+                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = false;
+                                            }
+                                        }
+                                    }                                
+                                }
+
+                                else {
+                                    for ( j = startIndex; j <= endIndex ; j++ ) {
+                                        if ( typeof $scope.filteredModel[ j ][ attrs.groupProperty ] === 'undefined' ) {
+                                            if ( typeof attrs.disableProperty === 'undefined' ) {
+                                                $scope.filteredModel[ j ][ $scope.tickProperty ] = true;                                                
+                                                // we refresh input model as well
+                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = true;
+
+                                            }                                            
+                                            else if ( $scope.filteredModel[ j ][ attrs.disableProperty ] !== true ) {
+                                                $scope.filteredModel[ j ][ $scope.tickProperty ] = true;
+                                                // we refresh input model as well
+                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = true;
+                                            }
+                                        }
+                                    }                                
+                                }                                                                                    
+                            }
+                        }
+            
+                        // if data
+                        else {                            
+                            tempArr.push( $scope.filteredModel[ i ] );                                                                                    
+                        }
+                    }                                 
+                }
+
+                // if an item (not group marker) is clicked
+                else {
+
+                    // If it's single selection mode
+                    if ( typeof attrs.selectionMode !== 'undefined' && attrs.selectionMode.toUpperCase() === 'SINGLE' ) {
+                        
+                        // first, set everything to false
+                        for( i=0 ; i < $scope.filteredModel.length ; i++) {                            
+                            $scope.filteredModel[ i ][ $scope.tickProperty ] = false;                            
+                        }        
+                        for( i=0 ; i < $scope.inputModel.length ; i++) {                            
+                            $scope.inputModel[ i ][ $scope.tickProperty ] = false;                            
+                        }        
+                        
+                        // then set the clicked item to true
+                        $scope.filteredModel[ index ][ $scope.tickProperty ] = true;                                                                 
+                    }   
+
+                    // Multiple
+                    else {
+                        $scope.filteredModel[ index ][ $scope.tickProperty ]   = !$scope.filteredModel[ index ][ $scope.tickProperty ];
+                    }
+
+                    // we refresh input model as well
+                    var inputModelIndex = $scope.filteredModel[ index ][ $scope.indexProperty ];                                        
+                    $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = $scope.filteredModel[ index ][ $scope.tickProperty ];                    
+                }                                  
+
+                // we execute the callback function here
+                clickedItem = angular.copy( item );                                                    
+                if ( clickedItem !== null ) {                        
+                    $timeout( function() {
+                        delete clickedItem[ $scope.indexProperty ];
+                        delete clickedItem[ $scope.spacingProperty ];      
+                        $scope.onItemClick( { data: clickedItem } );
+                        clickedItem = null;                    
+                    }, 0 );                                                 
+                }                                    
+                
+                $scope.refreshOutputModel();
+                $scope.refreshButton();                              
+
+                // We update the index here
+                prevTabIndex = $scope.tabIndex;
+                $scope.tabIndex = ng_repeat_index + helperItemsLength;
+                                
+                // Set focus on the hidden checkbox 
+                e.target.focus();
+
+                // set & remove CSS style
+                $scope.removeFocusStyle( prevTabIndex );
+                $scope.setFocusStyle( $scope.tabIndex );
+
+                if ( typeof attrs.selectionMode !== 'undefined' && attrs.selectionMode.toUpperCase() === 'SINGLE' ) {
+                    // on single selection mode, we then hide the checkbox layer
+                    $scope.toggleCheckboxes( e );       
+                }
+            }     
+
+            // update $scope.outputModel
+            $scope.refreshOutputModel = function() {            
+                
+                $scope.outputModel  = [];
+                var 
+                    outputProps     = [],
+                    tempObj         = {};
+
+                // v4.0.0
+                if ( typeof attrs.outputProperties !== 'undefined' ) {                    
+                    outputProps = attrs.outputProperties.split(' ');                
+                    angular.forEach( $scope.inputModel, function( value, key ) {                    
+                        if ( 
+                            typeof value !== 'undefined' 
+                            && typeof value[ attrs.groupProperty ] === 'undefined' 
+                            && value[ $scope.tickProperty ] === true 
+                        ) {
+                            tempObj         = {};
+                            angular.forEach( value, function( value1, key1 ) {                                
+                                if ( outputProps.indexOf( key1 ) > -1 ) {                                                                         
+                                    tempObj[ key1 ] = value1;                                    
+                                }
+                            });
+                            var index = $scope.outputModel.push( tempObj );                                                               
+                            delete $scope.outputModel[ index - 1 ][ $scope.indexProperty ];
+                            delete $scope.outputModel[ index - 1 ][ $scope.spacingProperty ];                                      
+                        }
+                    });         
+                }
+                else {
+                    angular.forEach( $scope.inputModel, function( value, key ) {                    
+                        if ( 
+                            typeof value !== 'undefined' 
+                            && typeof value[ attrs.groupProperty ] === 'undefined' 
+                            && value[ $scope.tickProperty ] === true 
+                        ) {
+                            var temp = angular.copy( value );
+                            var index = $scope.outputModel.push( temp );                                                               
+                            delete $scope.outputModel[ index - 1 ][ $scope.indexProperty ];
+                            delete $scope.outputModel[ index - 1 ][ $scope.spacingProperty ];                                      
+                        }
+                    });         
+                }
+            }
+
+            // refresh button label
+            $scope.refreshButton = function() {
+
+                $scope.varButtonLabel   = '';                
+                var ctr                 = 0;                  
+
+                // refresh button label...
+                if ( $scope.outputModel.length === 0 ) {
+                    // https://github.com/isteven/angular-multi-select/pull/19                    
+                    $scope.varButtonLabel = $scope.lang.nothingSelected;
+                }
+                else {                
+                    var tempMaxLabels = $scope.outputModel.length;
+                    if ( typeof attrs.maxLabels !== 'undefined' && attrs.maxLabels !== '' ) {
+                        tempMaxLabels = attrs.maxLabels;
+                    }
+
+                    // if max amount of labels displayed..
+                    if ( $scope.outputModel.length > tempMaxLabels ) {
+                        $scope.more = true;
+                    }
+                    else {
+                        $scope.more = false;
+                    }                
+                    
+                    angular.forEach( $scope.inputModel, function( value, key ) {
+                        if ( typeof value !== 'undefined' && value[ attrs.tickProperty ] === true ) {                        
+                            if ( ctr < tempMaxLabels ) {                            
+                                $scope.varButtonLabel += ( $scope.varButtonLabel.length > 0 ? '</div>, <div class="buttonLabel">' : '<div class="buttonLabel">') + $scope.writeLabel( value, 'buttonLabel' );
+                            }
+                            ctr++;
+                        }
+                    });                
+
+                    if ( $scope.more === true ) {
+                        // https://github.com/isteven/angular-multi-select/pull/16
+                        if (tempMaxLabels > 0) {
+                            $scope.varButtonLabel += ', ... ';
+                        }
+                        $scope.varButtonLabel += '(' + $scope.outputModel.length + ')';                        
+                    }
+                }
+                $scope.varButtonLabel = $sce.trustAsHtml( $scope.varButtonLabel + '<span class="caret"></span>' );                
+            }
+
+            // Check if a checkbox is disabled or enabled. It will check the granular control (disableProperty) and global control (isDisabled)
+            // Take note that the granular control has higher priority.
+            $scope.itemIsDisabled = function( item ) {
+                
+                if ( typeof attrs.disableProperty !== 'undefined' && item[ attrs.disableProperty ] === true ) {                                        
+                    return true;
+                }
+                else {             
+                    if ( $scope.isDisabled === true ) {                        
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                
+            }
+
+            // A simple function to parse the item label settings. Used on the buttons and checkbox labels.
+            $scope.writeLabel = function( item, type ) {
+                
+                // type is either 'itemLabel' or 'buttonLabel'
+                var temp    = attrs[ type ].split( ' ' );                    
+                var label   = '';                
+
+                angular.forEach( temp, function( value, key ) {                    
+                    item[ value ] && ( label += '&nbsp;' + value.split( '.' ).reduce( function( prev, current ) {
+                        return prev[ current ]; 
+                    }, item ));        
+                });
+                
+                if ( type.toUpperCase() === 'BUTTONLABEL' ) {                    
+                    return label;
+                }
+                return $sce.trustAsHtml( label );
+            }                                
+
+            // UI operations to show/hide checkboxes based on click event..
+            $scope.toggleCheckboxes = function( e ) {                                    
+                
+                // We grab the button
+                var clickedEl = element.children()[0];
+
+                // Just to make sure.. had a bug where key events were recorded twice
+                angular.element( document ).off( 'click', $scope.externalClickListener );
+                angular.element( document ).off( 'keydown', $scope.keyboardListener );        
+
+                // The idea below was taken from another multi-select directive - https://github.com/amitava82/angular-multiselect 
+                // His version is awesome if you need a more simple multi-select approach.                                
+
+                // close
+                if ( angular.element( checkBoxLayer ).hasClass( 'show' )) {                         
+
+                    angular.element( checkBoxLayer ).removeClass( 'show' );                    
+                    angular.element( clickedEl ).removeClass( 'buttonClicked' );                    
+                    angular.element( document ).off( 'click', $scope.externalClickListener );
+                    angular.element( document ).off( 'keydown', $scope.keyboardListener );                                    
+
+                    // clear the focused element;
+                    $scope.removeFocusStyle( $scope.tabIndex );
+                    if ( typeof formElements[ $scope.tabIndex ] !== 'undefined' ) {
+                        formElements[ $scope.tabIndex ].blur();
+                    }
+
+                    // close callback
+                    $timeout( function() {
+                        $scope.onClose();
+                    }, 0 );
+
+                    // set focus on button again
+                    element.children().children()[ 0 ].focus();
+                } 
+                // open
+                else                 
+                {    
+                    // clear filter
+                    $scope.inputLabel.labelFilter = '';                
+                    $scope.updateFilter();                                
+
+                    helperItems = [];
+                    helperItemsLength = 0;
+
+                    angular.element( checkBoxLayer ).addClass( 'show' );
+                    angular.element( clickedEl ).addClass( 'buttonClicked' );       
+
+                    // Attach change event listener on the input filter. 
+                    // We need this because ng-change is apparently not an event listener.                    
+                    angular.element( document ).on( 'click', $scope.externalClickListener );
+                    angular.element( document ).on( 'keydown', $scope.keyboardListener );  
+
+                    // to get the initial tab index, depending on how many helper elements we have. 
+                    // priority is to always focus it on the input filter                                                                
+                    $scope.getFormElements();
+                    $scope.tabIndex = 0;
+
+                    var helperContainer = angular.element( element[ 0 ].querySelector( '.helperContainer' ) )[0];                
+                    
+                    if ( typeof helperContainer !== 'undefined' ) {
+                        for ( var i = 0; i < helperContainer.getElementsByTagName( 'BUTTON' ).length ; i++ ) {
+                            helperItems[ i ] = helperContainer.getElementsByTagName( 'BUTTON' )[ i ];
+                        }
+                        helperItemsLength = helperItems.length + helperContainer.getElementsByTagName( 'INPUT' ).length;
+                    }
+                    
+                    // focus on the filter element on open. 
+                    if ( element[ 0 ].querySelector( '.inputFilter' ) ) {                        
+                        element[ 0 ].querySelector( '.inputFilter' ).focus();    
+                        $scope.tabIndex = $scope.tabIndex + helperItemsLength - 2;
+                        // blur button in vain
+                        angular.element( element ).children()[ 0 ].blur();
+                    }
+                    // if there's no filter then just focus on the first checkbox item
+                    else {                  
+                        if ( !$scope.isDisabled ) {                        
+                            $scope.tabIndex = $scope.tabIndex + helperItemsLength;
+                            if ( $scope.inputModel.length > 0 ) {
+                                formElements[ $scope.tabIndex ].focus();
+                                $scope.setFocusStyle( $scope.tabIndex );
+                                // blur button in vain
+                                angular.element( element ).children()[ 0 ].blur();
+                            }                            
+                        }
+                    }                          
+
+                    // open callback
+                    $scope.onOpen();
+                }                            
+            }
+            
+            // handle clicks outside the button / multi select layer
+            $scope.externalClickListener = function( e ) {                   
+
+                var targetsArr = element.find( e.target.tagName );
+                for (var i = 0; i < targetsArr.length; i++) {                                        
+                    if ( e.target == targetsArr[i] ) {
+                        return;
+                    }
+                }
+
+                angular.element( checkBoxLayer.previousSibling ).removeClass( 'buttonClicked' );                    
+                angular.element( checkBoxLayer ).removeClass( 'show' );
+                angular.element( document ).off( 'click', $scope.externalClickListener ); 
+                angular.element( document ).off( 'keydown', $scope.keyboardListener );                
+                
+                // close callback                
+                $timeout( function() {
+                    $scope.onClose();
+                }, 0 );
+
+                // set focus on button again
+                element.children().children()[ 0 ].focus();
+            }
+   
+            // select All / select None / reset buttons
+            $scope.select = function( type, e ) {
+
+                var helperIndex = helperItems.indexOf( e.target );
+                $scope.tabIndex = helperIndex;
+
+                switch( type.toUpperCase() ) {
+                    case 'ALL':
+                        angular.forEach( $scope.filteredModel, function( value, key ) {                            
+                            if ( typeof value !== 'undefined' && value[ attrs.disableProperty ] !== true ) {                                
+                                if ( typeof value[ attrs.groupProperty ] === 'undefined' ) {                                
+                                    value[ $scope.tickProperty ] = true;
+                                }
+                            }
+                        });                            
+                        $scope.refreshOutputModel();                                    
+                        $scope.refreshButton();                                                  
+                        $scope.onSelectAll();                                                
+                        break;
+                    case 'NONE':
+                        angular.forEach( $scope.filteredModel, function( value, key ) {
+                            if ( typeof value !== 'undefined' && value[ attrs.disableProperty ] !== true ) {                        
+                                if ( typeof value[ attrs.groupProperty ] === 'undefined' ) {                                
+                                    value[ $scope.tickProperty ] = false;
+                                }
+                            }
+                        });               
+                        $scope.refreshOutputModel();                                    
+                        $scope.refreshButton();                                                                          
+                        $scope.onSelectNone();                        
+                        break;
+                    case 'RESET':            
+                        angular.forEach( $scope.filteredModel, function( value, key ) {                            
+                            if ( typeof value[ attrs.groupProperty ] === 'undefined' && typeof value !== 'undefined' && value[ attrs.disableProperty ] !== true ) {                        
+                                var temp = value[ $scope.indexProperty ];                                
+                                value[ $scope.tickProperty ] = $scope.backUp[ temp ][ $scope.tickProperty ];
+                            }
+                        });               
+                        $scope.refreshOutputModel();                                    
+                        $scope.refreshButton();                                                                          
+                        $scope.onReset();                        
+                        break;
+                    case 'CLEAR':
+                        $scope.tabIndex = $scope.tabIndex + 1;
+                        $scope.onClear();    
+                        break;
+                    case 'FILTER':                        
+                        $scope.tabIndex = helperItems.length - 1;
+                        break;
+                    default:                        
+                }                                                                                 
+            }            
+
+            // just to create a random variable name                
+            function genRandomString( length ) {                
+                var possible    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                var temp        = '';
+                for( var i=0; i < length; i++ ) {
+                     temp += possible.charAt( Math.floor( Math.random() * possible.length ));
+                }
+                return temp;
+            }
+
+            // count leading spaces
+            $scope.prepareGrouping = function() {
+                var spacing     = 0;                                                
+                angular.forEach( $scope.filteredModel, function( value, key ) {
+                    value[ $scope.spacingProperty ] = spacing;                    
+                    if ( value[ attrs.groupProperty ] === true ) {
+                        spacing+=2;
+                    }                    
+                    else if ( value[ attrs.groupProperty ] === false ) {
+                        spacing-=2;
+                    }                 
+                });
+            }
+
+            // prepare original index
+            $scope.prepareIndex = function() {
+                var ctr = 0;
+                angular.forEach( $scope.filteredModel, function( value, key ) {
+                    value[ $scope.indexProperty ] = ctr;
+                    ctr++;
+                });
+            }
+
+            // navigate using up and down arrow
+            $scope.keyboardListener = function( e ) { 
+                
+                var key = e.keyCode ? e.keyCode : e.which;      
+                var isNavigationKey = false;                                                
+
+                // ESC key (close)
+                if ( key === 27 ) {
+                    e.preventDefault();                   
+                    e.stopPropagation();
+                    $scope.toggleCheckboxes( e );
+                }                    
+                
+                
+                // next element ( tab, down & right key )                    
+                else if ( key === 40 || key === 39 || ( !e.shiftKey && key == 9 ) ) {                    
+                    
+                    isNavigationKey = true;
+                    prevTabIndex = $scope.tabIndex; 
+                    $scope.tabIndex++;                         
+                    if ( $scope.tabIndex > formElements.length - 1 ) {
+                        $scope.tabIndex = 0;
+                        prevTabIndex = formElements.length - 1; 
+                    }                                                            
+                    while ( formElements[ $scope.tabIndex ].disabled === true ) {
+                        $scope.tabIndex++;
+                        if ( $scope.tabIndex > formElements.length - 1 ) {
+                            $scope.tabIndex = 0;                            
+                        }                                                                                    
+                        if ( $scope.tabIndex === prevTabIndex ) {
+                            break;
+                        }
+                    }              
+                }
+                  
+                // prev element ( shift+tab, up & left key )
+                else if ( key === 38 || key === 37 || ( e.shiftKey && key == 9 ) ) { 
+                    isNavigationKey = true;
+                    prevTabIndex = $scope.tabIndex; 
+                    $scope.tabIndex--;                              
+                    if ( $scope.tabIndex < 0 ) {
+                        $scope.tabIndex = formElements.length - 1;
+                        prevTabIndex = 0;
+                    }                                         
+                    while ( formElements[ $scope.tabIndex ].disabled === true ) {                        
+                        $scope.tabIndex--;
+                        if ( $scope.tabIndex === prevTabIndex ) {
+                            break;
+                        }                                            
+                        if ( $scope.tabIndex < 0 ) {
+                            $scope.tabIndex = formElements.length - 1;
+                        }                             
+                    }                                                     
+                }                    
+
+                if ( isNavigationKey === true ) {                                         
+                    
+                    e.preventDefault();
+
+                    // set focus on the checkbox                    
+                    formElements[ $scope.tabIndex ].focus();    
+                    var actEl = document.activeElement;                     
+                    
+                    if ( actEl.type.toUpperCase() === 'CHECKBOX' ) {                                                   
+                        $scope.setFocusStyle( $scope.tabIndex );
+                        $scope.removeFocusStyle( prevTabIndex );
+                    }                    
+                    else {
+                        $scope.removeFocusStyle( prevTabIndex );
+                        $scope.removeFocusStyle( helperItemsLength );
+                        $scope.removeFocusStyle( formElements.length - 1 );
+                    } 
+                }                
+
+                isNavigationKey = false;
+            }
+
+            // set (add) CSS style on selected row
+            $scope.setFocusStyle = function( tabIndex ) {                                
+                angular.element( formElements[ tabIndex ] ).parent().parent().parent().addClass( 'multiSelectFocus' );                        
+            }
+
+            // remove CSS style on selected row
+            $scope.removeFocusStyle = function( tabIndex ) {                
+                angular.element( formElements[ tabIndex ] ).parent().parent().parent().removeClass( 'multiSelectFocus' );
+            }
+
+            /*********************
+             *********************             
+             *
+             * 1) Initializations
+             *
+             *********************
+             *********************/
+
+            // attrs to $scope - attrs-$scope - attrs - $scope
+            // Copy some properties that will be used on the template. They need to be in the $scope.
+            $scope.groupProperty    = attrs.groupProperty;   
+            $scope.tickProperty     = attrs.tickProperty;
+            $scope.directiveId      = attrs.directiveId;
+            
+            // Unfortunately I need to add these grouping properties into the input model
+            var tempStr = genRandomString( 5 );
+            $scope.indexProperty = 'idx_' + tempStr;
+            $scope.spacingProperty = 'spc_' + tempStr;         
+
+            // set orientation css            
+            if ( typeof attrs.orientation !== 'undefined' ) {
+
+                if ( attrs.orientation.toUpperCase() === 'HORIZONTAL' ) {                    
+                    $scope.orientationH = true;
+                    $scope.orientationV = false;
+                }
+                else 
+                {
+                    $scope.orientationH = false;
+                    $scope.orientationV = true;
+                }
+            }            
+
+            // get elements required for DOM operation
+            checkBoxLayer = element.children().children().next()[0];
+
+            // set max-height property if provided
+            if ( typeof attrs.maxHeight !== 'undefined' ) {                
+                var layer = element.children().children().children()[0];
+                angular.element( layer ).attr( "style", "height:" + attrs.maxHeight + "; overflow-y:scroll;" );                                
+            }
+
+            // some flags for easier checking            
+            for ( var property in $scope.helperStatus ) {
+                if ( $scope.helperStatus.hasOwnProperty( property )) {                    
+                    if ( 
+                        typeof attrs.helperElements !== 'undefined' 
+                        && attrs.helperElements.toUpperCase().indexOf( property.toUpperCase() ) === -1 
+                    ) {
+                        $scope.helperStatus[ property ] = false;
+                    }
+                }
+            }
+            if ( typeof attrs.selectionMode !== 'undefined' && attrs.selectionMode.toUpperCase() === 'SINGLE' )  {
+                $scope.helperStatus[ 'all' ] = false;
+                $scope.helperStatus[ 'none' ] = false;
+            }
+
+            // helper button icons.. I guess you can use html tag here if you want to. 
+            $scope.icon        = {};            
+            $scope.icon.selectAll  = '&#10003;';    // a tick icon
+            $scope.icon.selectNone = '&times;';     // x icon
+            $scope.icon.reset      = '&#8630;';     // undo icon            
+            // this one is for the selected items
+            $scope.icon.tickMark   = '&#10003;';    // a tick icon 
+
+            // configurable button labels                       
+            if ( typeof attrs.translation !== 'undefined' ) {
+                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;' + $scope.translation.selectAll );
+                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;' + $scope.translation.selectNone );
+                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;' + $scope.translation.reset );
+                $scope.lang.search          = $scope.translation.search;                
+                $scope.lang.nothingSelected = $sce.trustAsHtml( $scope.translation.nothingSelected );                
+            }
+            else {
+                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;Select All' );                
+                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;Select None' );
+                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;Reset' );
+                $scope.lang.search          = 'Search...';
+                $scope.lang.nothingSelected = 'None Selected';                
+            }
+            $scope.icon.tickMark = $sce.trustAsHtml( $scope.icon.tickMark );
+                
+            // min length of keyword to trigger the filter function
+            if ( typeof attrs.MinSearchLength !== 'undefined' && parseInt( attrs.MinSearchLength ) > 0 ) {
+                vMinSearchLength = Math.floor( parseInt( attrs.MinSearchLength ) );
+            }
+
+            /*******************************************************
+             *******************************************************
+             *
+             * 2) Logic starts here, initiated by watch 1 & watch 2
+             *
+             *******************************************************
+             *******************************************************/
+            
+            // watch1, for changes in input model property
+            // updates multi-select when user select/deselect a single checkbox programatically
+            // https://github.com/isteven/angular-multi-select/issues/8            
+            $scope.$watch( 'inputModel' , function( newVal ) {                                 
+                if ( newVal ) {                            
+                    $scope.refreshOutputModel();                                    
+                    $scope.refreshButton();                                                  
+                }
+            }, true );
+            
+            // watch2 for changes in input model as a whole
+            // this on updates the multi-select when a user load a whole new input-model. We also update the $scope.backUp variable
+            $scope.$watch( 'inputModel' , function( newVal ) {  
+                if ( newVal ) {
+                    $scope.backUp = angular.copy( $scope.inputModel );    
+                    $scope.updateFilter();
+                    $scope.prepareGrouping();
+                    $scope.prepareIndex();                                                              
+                    $scope.refreshOutputModel();                
+                    $scope.refreshButton();                                                                                                                 
+                }
+            });                        
+
+            // watch for changes in directive state (disabled or enabled)
+            $scope.$watch( 'isDisabled' , function( newVal ) {         
+                $scope.isDisabled = newVal;                               
+            });            
+            
+            // this is for touch enabled devices. We don't want to hide checkboxes on scroll. 
+            var onTouchStart = function( e ) { 
+            	$scope.$apply( function() {
+            		$scope.scrolled = false;
+            	}); 
+            };
+            angular.element( document ).bind( 'touchstart', onTouchStart);
+            var onTouchMove = function( e ) { 
+            	$scope.$apply( function() {
+            		$scope.scrolled = true;                
+            	});
+            };
+            angular.element( document ).bind( 'touchmove', onTouchMove);            
+
+            // unbind document events to prevent memory leaks
+            $scope.$on( '$destroy', function () {
+			    angular.element( document ).unbind( 'touchstart', onTouchStart);
+            	angular.element( document ).unbind( 'touchmove', onTouchMove);
+            });
+        }
+    }
+}]).run( [ '$templateCache' , function( $templateCache ) {
+    var template = 
+        '<span class="multiSelect inlineBlock">' +
+            // main button
+            '<button id="{{directiveId}}" type="button"' +                
+                'ng-click="toggleCheckboxes( $event ); refreshSelectedItems(); refreshButton(); prepareGrouping; prepareIndex();"' +
+                'ng-bind-html="varButtonLabel"' +
+                'ng-disabled="disable-button"' +
+            '>' +
+            '</button>' +
+            // overlay layer
+            '<div class="checkboxLayer">' +
+                // container of the helper elements
+                '<div class="helperContainer" ng-if="helperStatus.filter || helperStatus.all || helperStatus.none || helperStatus.reset ">' +
+                    // container of the first 3 buttons, select all, none and reset
+                    '<div class="line" ng-if="helperStatus.all || helperStatus.none || helperStatus.reset ">' +
+                        // select all
+                        '<button type="button" class="helperButton"' +
+                            'ng-disabled="isDisabled"' + 
+                            'ng-if="helperStatus.all"' +
+                            'ng-click="select( \'all\', $event );"' +
+                            'ng-bind-html="lang.selectAll">' +
+                        '</button>'+
+                        // select none
+                        '<button type="button" class="helperButton"' +
+                            'ng-disabled="isDisabled"' + 
+                            'ng-if="helperStatus.none"' +
+                            'ng-click="select( \'none\', $event );"' +
+                            'ng-bind-html="lang.selectNone">' +
+                        '</button>'+
+                        // reset
+                        '<button type="button" class="helperButton reset"' +
+                            'ng-disabled="isDisabled"' + 
+                            'ng-if="helperStatus.reset"' +
+                            'ng-click="select( \'reset\', $event );"' +
+                            'ng-bind-html="lang.reset">'+
+                        '</button>' +
+                    '</div>' +
+                    // the search box
+                    '<div class="line" style="position:relative" ng-if="helperStatus.filter">'+
+                        // textfield                
+                        '<input placeholder="{{lang.search}}" type="text"' +
+                            'ng-click="select( \'filter\', $event )" '+
+                            'ng-model="inputLabel.labelFilter" '+
+                            'ng-change="searchChanged()" class="inputFilter"'+
+                            '/>'+
+                        // clear button
+                        '<button type="button" class="clearButton" ng-click="clearClicked( $event )" >×</button> '+
+                    '</div> '+
+                '</div> '+
+                // selection items
+                '<div class="checkBoxContainer">'+
+                    '<div '+
+                        'ng-repeat="item in filteredModel | filter:removeGroupEndMarker" class="multiSelectItem"'+
+                        'ng-class="{selected: item[ tickProperty ], horizontal: orientationH, vertical: orientationV, multiSelectGroup:item[ groupProperty ], disabled:itemIsDisabled( item )}"'+
+                        'ng-click="syncItems( item, $event, $index );" '+
+                        'ng-mouseleave="removeFocusStyle( tabIndex );"> '+
+                        // this is the spacing for grouped items
+                        '<div class="acol" ng-if="item[ spacingProperty ] > 0" ng-repeat="i in numberToArray( item[ spacingProperty ] ) track by $index">'+                        
+                    '</div>  '+        
+                    '<div class="acol">'+
+                        '<label>'+                                
+                            // input, so that it can accept focus on keyboard click
+                            '<input class="checkbox focusable" type="checkbox" '+
+                                'ng-disabled="itemIsDisabled( item )" '+
+                                'ng-checked="item[ tickProperty ]" '+
+                                'ng-click="syncItems( item, $event, $index )" />'+
+                            // item label using ng-bind-hteml
+                            '<span '+
+                                'ng-class="{disabled:itemIsDisabled( item )}" '+
+                                'ng-bind-html="writeLabel( item, \'itemLabel\' )">'+
+                            '</span>'+
+                        '</label>'+
+                    '</div>'+
+                    // the tick/check mark
+                    '<span class="tickMark" ng-if="item[ groupProperty ] !== true && item[ tickProperty ] === true" ng-bind-html="icon.tickMark"></span>'+
+                '</div>'+
+            '</div>'+
+        '</div>'+
+    '</span>';
+	$templateCache.put( 'isteven-multi-select.htm' , template );
+}]); 
 
 'use strict';
 
@@ -71424,192 +71620,280 @@ app.controller('ModalInstanceCtrl', ["$scope", "$uibModalInstance", "items", fun
     };
 }]);
 'use strict';
+
 /**
- * Sport-Club Main Controller
+ * Login Data Factory
  */
-app.controller('AppCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams',
-function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams) {
+app.factory('$loginDataFactory', ['$resource', '$rootScope',
+    function($resource, $rootScope) {
 
-	$scope.anonymousStates = ['auth.login', 'auth.register', 'auth.resetpassword', 'auth.reset', 'auth.lockscreen', 'auth.emailconfirm'];
+        return $resource($rootScope.app.apiURL + 'login_check', {}, {
+            check: { method: 'POST' }
+        });
 
-	$timeout(function() {
-		if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
-			$timeout(function() {
-				console.warn('no access token for ('+$state.current.name+') > redirection');
-				$state.go('auth.login');
-			});
-		}
-	}, 2000);
+    }
+]);
 
-	// Loading bar transition
-	// -----------------------------------
-	var $win = $($window);
+'use strict';
 
-	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-		//start loading bar on stateChangeStart
-		cfpLoadingBar.start();
+/**
+ * Controller for user login
+ */
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
 
-	});
-	
-	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        $scope.resetAccess = function(){
+            if ($localStorage.access_token) {
+                delete $localStorage.access_token;
+            }
+            delete  $localStorage.user;
+            $scope.status = '';
+            $scope.user = {};
 
-		//stop loading bar on stateChangeSuccess
-		event.targetScope.$watch("$viewContentLoaded", function() {
+        }
+        $scope.submit = function () {
+            $scope.user = {email: $scope.email, password: $scope.password};
+            $loginDataFactory.check($scope.user).$promise.then(function(data) {
+                if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
+                    $scope.status = 'error';
+                    toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                    return;
+                }
+                $scope.status = 'welcome';
+                $localStorage.access_token = data.token;
+                $scope.user = $localStorage.user = $rootScope.user = data.user;
+                $timeout(function() {
 
-			cfpLoadingBar.complete();
-		});
+                        $rootScope.loggedIn = true;
 
-		// scroll top the page on change state
-		$('#app .main-content').css({
-			position : 'relative',
-			top : 'auto'
-		});
-		
-		$('footer').show();
-		
-		window.scrollTo(0, 0);
+                    $state.go('front.home');
+                }, 1000);
+            }, function(error) {
+                $scope.status = 'error';
+                toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                $rootScope.loggedIn = false;
+            });
+            return false;
+        };
 
-		if (angular.element('.email-reader').length) {
-			angular.element('.email-reader').animate({
-				scrollTop : 0
-			}, 0);
-		}
+        $scope.logout = function(){
+                $scope.resetAccess();
+            $timeout(function() {
 
-		// Save the route title
-		$rootScope.currTitle = $filter('translate')($state.current.title);
-	});
+                $rootScope.loggedIn = false;
 
-	// State not found
-	$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
-		//$rootScope.loading = false;
-		console.log(unfoundState.to);
-		// "lazy.state"
-		console.log(unfoundState.toParams);
-		// {a:1, b:2}
-		console.log(unfoundState.options);
-		// {inherit:false} + default options
-	});
+                $state.go('front.home');
+            }, 1000);
+        };
 
-	$rootScope.pageTitle = function() {
-		return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
-	};
+    }]);
 
-	// save settings to local storage
-	if (angular.isDefined($localStorage.layout)) {
-		$scope.app.layout = $localStorage.layout;
-	} else {
-		$localStorage.layout = $scope.app.layout;
-	}
-	$scope.$watch('app.layout', function() {
-		// save to local storage
-		$localStorage.layout = $scope.app.layout;
-	}, true);
+'use strict';
+/**
+ * Ubid electricity Main Controller
+ */
+app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
+    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
-	//global function to scroll page up
-	$scope.toTheTop = function() {
+        $scope.anonymousStates = [
+            'front.login',
+            'front.register',
+            'auth.resetpassword',
+            'auth.reset',
+            'auth.lockscreen',
+            'auth.emailconfirm',
+            'front.home',
+            'front.tenders.list',
+            'front.tenders.category',
+            'front.advanced_search',
+            'front.tender.details'
+        ];
+        $timeout(function() {
+            if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
+                $timeout(function() {
+                    console.warn('no access token for ('+$state.current.name+') > redirection');
+                    $state.go('front.home');
+                });
+            }
+        }, 2000);
 
-		$document.scrollTopAnimated(0, 600);
+        $scope.changeLanguage = function (lang) {
+           // $translate.use(lang);
+        }
+        
+        // Loading bar transition
+        // -----------------------------------
+        var $win = $($window);
 
-	};
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            //start loading bar on stateChangeStart
+            cfpLoadingBar.start();
 
-	// angular translate
-	// ----------------------
+        });
 
-	$scope.language = {
-		// Handles language dropdown
-		listIsOpen : false,
-		// list of available languages
-		available : {
-			'en' : 'English',
-			'fr' : 'Français'
-		},
-		// display always the current ui language
-		init : function() {
-			if (angular.isDefined($stateParams.language)) {
-				$scope.language.selected = $scope.language.available[$stateParams.language];
-				$localStorage.language = $stateParams.language;
-			} else {
-				var proposedLanguage = $translate.proposedLanguage() || $translate.use();
-				var preferredLanguage = $translate.preferredLanguage();
-				for (var lang in $scope.language.available) {
-					if (window.location.hash.endsWith('/'+lang)) {
-						proposedLanguage = lang;
-					}
-				}
-				// we know we have set a preferred one in app.config
-				$scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
-				$localStorage.language = (proposedLanguage || preferredLanguage);
-			}
-		},
-		set : function(localeId, ev) {
-			$translate.use(localeId);
-			$scope.language.selected = $scope.language.available[localeId];
-			$scope.language.listIsOpen = !$scope.language.listIsOpen;
-			$localStorage.language = localeId;
-			$rootScope.$broadcast('languageChange', [localeId]);
-		}
-	};
+        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
-	$scope.language.init();$localStorage.language
+            //stop loading bar on stateChangeSuccess
+            event.targetScope.$watch("$viewContentLoaded", function() {
 
-	// Function that find the exact height and width of the viewport in a cross-browser way
-	var viewport = function() {
-		var e = window, a = 'inner';
-		if (!('innerWidth' in window)) {
-			a = 'client';
-			e = document.documentElement || document.body;
-		}
-		return {
-			width : e[a + 'Width'],
-			height : e[a + 'Height']
-		};
-	};
+                cfpLoadingBar.complete();
+            });
 
-	// function that adds information in a scope of the height and width of the page
-	$scope.getWindowDimensions = function() {
-		return {
-			'h' : viewport().height,
-			'w' : viewport().width
-		};
-	};
+            // scroll top the page on change state
+            $('#app .main-content').css({
+                position : 'relative',
+                top : 'auto'
+            });
 
-	// Detect when window is resized and set some variables
-	$scope.$watch($scope.getWindowDimensions, function(newValue, oldValue) {
-		$scope.windowHeight = newValue.h;
-		$scope.windowWidth = newValue.w;
-		
-		if (newValue.w >= 992) {
-			$scope.isLargeDevice = true;
-		} else {
-			$scope.isLargeDevice = false;
-		}
-		if (newValue.w < 992) {
-			$scope.isSmallDevice = true;
-		} else {
-			$scope.isSmallDevice = false;
-		}
-		if (newValue.w <= 768) {
-			$scope.isMobileDevice = true;
-		} else {
-			$scope.isMobileDevice = false;
-		}
-	}, true);
+            $('footer').show();
 
-	// Apply on resize
-	$win.on('resize', function() {
-		
-		$scope.$apply();
-		if ($scope.isLargeDevice) {
-			$('#app .main-content').css({
-				position : 'relative',
-				top : 'auto',
-				width: 'auto'
-			});
-			$('footer').show();
-		}
-	});
-    
-}]);
+            window.scrollTo(0, 0);
+
+            if (angular.element('.email-reader').length) {
+                angular.element('.email-reader').animate({
+                    scrollTop : 0
+                }, 0);
+            }
+
+            // Save the route title
+            $rootScope.currTitle = $filter('translate')($state.current.title);
+        });
+
+        // State not found
+        $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
+            //$rootScope.loading = false;
+            console.log(unfoundState.to);
+            // "lazy.state"
+            console.log(unfoundState.toParams);
+            // {a:1, b:2}
+            console.log(unfoundState.options);
+            // {inherit:false} + default options
+        });
+
+        $rootScope.pageTitle = function() {
+            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+        };
+
+        // save settings to local storage
+        if (angular.isDefined($localStorage.layout)) {
+            $scope.app.layout = $localStorage.layout;
+        } else {
+            $localStorage.layout = $scope.app.layout;
+        }
+        $scope.$watch('app.layout', function() {
+            // save to local storage
+            $localStorage.layout = $scope.app.layout;
+        }, true);
+
+        //global function to scroll page up
+        $scope.toTheTop = function() {
+
+            $document.scrollTopAnimated(0, 600);
+
+        };
+
+        // angular translate
+        // ----------------------
+
+        $scope.language = {
+            // Handles language dropdown
+            listIsOpen : false,
+            // list of available languages
+            available : {
+                'en' : 'English',
+                'fr' : 'Français'
+            },
+            // display always the current ui language
+            init : function() {
+                if (angular.isDefined($stateParams.language)) {
+                    $scope.language.selected = $scope.language.available[$stateParams.language];
+                    $localStorage.language = $stateParams.language;
+                } else {
+                    var proposedLanguage = $translate.proposedLanguage() || $translate.use();
+                    var preferredLanguage = $translate.preferredLanguage();
+                    for (var lang in $scope.language.available) {
+                        if (window.location.hash.endsWith('/'+lang)) {
+                            proposedLanguage = lang;
+                        }
+                    }
+                    // we know we have set a preferred one in app.config
+                    $scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
+                    $localStorage.language = (proposedLanguage || preferredLanguage);
+                }
+            },
+            set : function(localeId, ev) {
+                $translate.use(localeId);
+                $scope.language.selected = $scope.language.available[localeId];
+                $scope.language.listIsOpen = !$scope.language.listIsOpen;
+                $localStorage.language = localeId;
+                $rootScope.$broadcast('languageChange', [localeId]);
+            }
+        };
+
+        $scope.language.init();$localStorage.language
+
+        // Function that find the exact height and width of the viewport in a cross-browser way
+        var viewport = function() {
+            var e = window, a = 'inner';
+            if (!('innerWidth' in window)) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+            return {
+                width : e[a + 'Width'],
+                height : e[a + 'Height']
+            };
+        };
+
+        // function that adds information in a scope of the height and width of the page
+        $scope.getWindowDimensions = function() {
+            return {
+                'h' : viewport().height,
+                'w' : viewport().width
+            };
+        };
+
+        // Detect when window is resized and set some variables
+        $scope.$watch($scope.getWindowDimensions, function(newValue, oldValue) {
+            $scope.windowHeight = newValue.h;
+            $scope.windowWidth = newValue.w;
+
+            if (newValue.w >= 992) {
+                $scope.isLargeDevice = true;
+            } else {
+                $scope.isLargeDevice = false;
+            }
+            if (newValue.w < 992) {
+                $scope.isSmallDevice = true;
+            } else {
+                $scope.isSmallDevice = false;
+            }
+            if (newValue.w <= 768) {
+                $scope.isMobileDevice = true;
+            } else {
+                $scope.isMobileDevice = false;
+            }
+        }, true);
+
+        // Apply on resize
+        $win.on('resize', function() {
+
+            $scope.$apply();
+            if ($scope.isLargeDevice) {
+                $('#app .main-content').css({
+                    position : 'relative',
+                    top : 'auto',
+                    width: 'auto'
+                });
+                $('footer').show();
+            }
+        });
+
+        $scope.add_tender = function () {
+            $state.go('front.tender.add');
+        }
+
+    }]);
 
 'use strict';
 
@@ -71725,3 +72009,11 @@ app.controller('LocationPickerCtrl', ['$scope', '$localStorage', '$timeout', '$u
         };
 
     }]);
+
+/*!
+ * Bootstrap v3.3.4 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";var b=a.fn.jquery.split(" ")[0].split(".");if(b[0]<2&&b[1]<9||1==b[0]&&9==b[1]&&b[2]<1)throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher")}(jQuery),+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.3.4",d.TRANSITION_DURATION=150,d.prototype.close=function(b){function c(){g.detach().trigger("closed.bs.alert").remove()}var e=a(this),f=e.attr("data-target");f||(f=e.attr("href"),f=f&&f.replace(/.*(?=#[^\s]*$)/,""));var g=a(f);b&&b.preventDefault(),g.length||(g=e.closest(".alert")),g.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(g.removeClass("in"),a.support.transition&&g.hasClass("fade")?g.one("bsTransitionEnd",c).emulateTransitionEnd(d.TRANSITION_DURATION):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.3.4",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),setTimeout(a.proxy(function(){d[e](null==f[b]?this.options[b]:f[b]),"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")&&(c.prop("checked")&&this.$element.hasClass("active")?a=!1:b.find(".active").removeClass("active")),a&&c.prop("checked",!this.$element.hasClass("active")).trigger("change")}else this.$element.attr("aria-pressed",!this.$element.hasClass("active"));a&&this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),c.preventDefault()}).on("focus.bs.button.data-api blur.bs.button.data-api",'[data-toggle^="button"]',function(b){a(b.target).closest(".btn").toggleClass("focus",/^focus(in)?$/.test(b.type))})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=null,this.sliding=null,this.interval=null,this.$active=null,this.$items=null,this.options.keyboard&&this.$element.on("keydown.bs.carousel",a.proxy(this.keydown,this)),"hover"==this.options.pause&&!("ontouchstart"in document.documentElement)&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.3.4",c.TRANSITION_DURATION=600,c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0,keyboard:!0},c.prototype.keydown=function(a){if(!/input|textarea/i.test(a.target.tagName)){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()}},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.getItemForDirection=function(a,b){var c=this.getItemIndex(b),d="prev"==a&&0===c||"next"==a&&c==this.$items.length-1;if(d&&!this.options.wrap)return b;var e="prev"==a?-1:1,f=(c+e)%this.$items.length;return this.$items.eq(f)},c.prototype.to=function(a){var b=this,c=this.getItemIndex(this.$active=this.$element.find(".item.active"));return a>this.$items.length-1||0>a?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){b.to(a)}):c==a?this.pause().cycle():this.slide(a>c?"next":"prev",this.$items.eq(a))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,d){var e=this.$element.find(".item.active"),f=d||this.getItemForDirection(b,e),g=this.interval,h="next"==b?"left":"right",i=this;if(f.hasClass("active"))return this.sliding=!1;var j=f[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:h});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,g&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(f)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:h});return a.support.transition&&this.$element.hasClass("slide")?(f.addClass(b),f[0].offsetWidth,e.addClass(h),f.addClass(h),e.one("bsTransitionEnd",function(){f.removeClass([b,h].join(" ")).addClass("active"),e.removeClass(["active",h].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(c.TRANSITION_DURATION)):(e.removeClass("active"),f.addClass("active"),this.sliding=!1,this.$element.trigger(m)),g&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this};var e=function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}};a(document).on("click.bs.carousel.data-api","[data-slide]",e).on("click.bs.carousel.data-api","[data-slide-to]",e),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){var c,d=b.attr("data-target")||(c=b.attr("href"))&&c.replace(/.*(?=#[^\s]+$)/,"");return a(d)}function c(b){return this.each(function(){var c=a(this),e=c.data("bs.collapse"),f=a.extend({},d.DEFAULTS,c.data(),"object"==typeof b&&b);!e&&f.toggle&&/show|hide/.test(b)&&(f.toggle=!1),e||c.data("bs.collapse",e=new d(this,f)),"string"==typeof b&&e[b]()})}var d=function(b,c){this.$element=a(b),this.options=a.extend({},d.DEFAULTS,c),this.$trigger=a('[data-toggle="collapse"][href="#'+b.id+'"],[data-toggle="collapse"][data-target="#'+b.id+'"]'),this.transitioning=null,this.options.parent?this.$parent=this.getParent():this.addAriaAndCollapsedClass(this.$element,this.$trigger),this.options.toggle&&this.toggle()};d.VERSION="3.3.4",d.TRANSITION_DURATION=350,d.DEFAULTS={toggle:!0},d.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},d.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var b,e=this.$parent&&this.$parent.children(".panel").children(".in, .collapsing");if(!(e&&e.length&&(b=e.data("bs.collapse"),b&&b.transitioning))){var f=a.Event("show.bs.collapse");if(this.$element.trigger(f),!f.isDefaultPrevented()){e&&e.length&&(c.call(e,"hide"),b||e.data("bs.collapse",null));var g=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[g](0).attr("aria-expanded",!0),this.$trigger.removeClass("collapsed").attr("aria-expanded",!0),this.transitioning=1;var h=function(){this.$element.removeClass("collapsing").addClass("collapse in")[g](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return h.call(this);var i=a.camelCase(["scroll",g].join("-"));this.$element.one("bsTransitionEnd",a.proxy(h,this)).emulateTransitionEnd(d.TRANSITION_DURATION)[g](this.$element[0][i])}}}},d.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded",!1),this.$trigger.addClass("collapsed").attr("aria-expanded",!1),this.transitioning=1;var e=function(){this.transitioning=0,this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(e,this)).emulateTransitionEnd(d.TRANSITION_DURATION):e.call(this)}}},d.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()},d.prototype.getParent=function(){return a(this.options.parent).find('[data-toggle="collapse"][data-parent="'+this.options.parent+'"]').each(a.proxy(function(c,d){var e=a(d);this.addAriaAndCollapsedClass(b(e),e)},this)).end()},d.prototype.addAriaAndCollapsedClass=function(a,b){var c=a.hasClass("in");a.attr("aria-expanded",c),b.toggleClass("collapsed",!c).attr("aria-expanded",c)};var e=a.fn.collapse;a.fn.collapse=c,a.fn.collapse.Constructor=d,a.fn.collapse.noConflict=function(){return a.fn.collapse=e,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(d){var e=a(this);e.attr("data-target")||d.preventDefault();var f=b(e),g=f.data("bs.collapse"),h=g?"toggle":e.data();c.call(f,h)})}(jQuery),+function(a){"use strict";function b(b){b&&3===b.which||(a(e).remove(),a(f).each(function(){var d=a(this),e=c(d),f={relatedTarget:this};e.hasClass("open")&&(e.trigger(b=a.Event("hide.bs.dropdown",f)),b.isDefaultPrevented()||(d.attr("aria-expanded","false"),e.removeClass("open").trigger("hidden.bs.dropdown",f)))}))}function c(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.3.4",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=c(e),g=f.hasClass("open");if(b(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a('<div class="dropdown-backdrop"/>').insertAfter(a(this)).on("click",b);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus").attr("aria-expanded","true"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(b){if(/(38|40|27|32)/.test(b.which)&&!/input|textarea/i.test(b.target.tagName)){var d=a(this);if(b.preventDefault(),b.stopPropagation(),!d.is(".disabled, :disabled")){var e=c(d),g=e.hasClass("open");if(!g&&27!=b.which||g&&27==b.which)return 27==b.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.disabled):visible a",i=e.find('[role="menu"]'+h+', [role="listbox"]'+h);if(i.length){var j=i.index(b.target);38==b.which&&j>0&&j--,40==b.which&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",b).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f,g.prototype.keydown).on("keydown.bs.dropdown.data-api",'[role="menu"]',g.prototype.keydown).on("keydown.bs.dropdown.data-api",'[role="listbox"]',g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$dialog=this.$element.find(".modal-dialog"),this.$backdrop=null,this.isShown=null,this.originalBodyPad=null,this.scrollbarWidth=0,this.ignoreBackdropClick=!1,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.3.4",c.TRANSITION_DURATION=300,c.BACKDROP_TRANSITION_DURATION=150,c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var d=this,e=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(e),this.isShown||e.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.setScrollbar(),this.$body.addClass("modal-open"),this.escape(),this.resize(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.$dialog.on("mousedown.dismiss.bs.modal",function(){d.$element.one("mouseup.dismiss.bs.modal",function(b){a(b.target).is(d.$element)&&(d.ignoreBackdropClick=!0)})}),this.backdrop(function(){var e=a.support.transition&&d.$element.hasClass("fade");d.$element.parent().length||d.$element.appendTo(d.$body),d.$element.show().scrollTop(0),d.adjustDialog(),e&&d.$element[0].offsetWidth,d.$element.addClass("in").attr("aria-hidden",!1),d.enforceFocus();var f=a.Event("shown.bs.modal",{relatedTarget:b});e?d.$dialog.one("bsTransitionEnd",function(){d.$element.trigger("focus").trigger(f)}).emulateTransitionEnd(c.TRANSITION_DURATION):d.$element.trigger("focus").trigger(f)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.escape(),this.resize(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal").off("mouseup.dismiss.bs.modal"),this.$dialog.off("mousedown.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(c.TRANSITION_DURATION):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keydown.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keydown.dismiss.bs.modal")},c.prototype.resize=function(){this.isShown?a(window).on("resize.bs.modal",a.proxy(this.handleUpdate,this)):a(window).off("resize.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$body.removeClass("modal-open"),a.resetAdjustments(),a.resetScrollbar(),a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var d=this,e=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var f=a.support.transition&&e;if(this.$backdrop=a('<div class="modal-backdrop '+e+'" />').appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){return this.ignoreBackdropClick?void(this.ignoreBackdropClick=!1):void(a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus():this.hide()))},this)),f&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;f?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var g=function(){d.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):g()}else b&&b()},c.prototype.handleUpdate=function(){this.adjustDialog()},c.prototype.adjustDialog=function(){var a=this.$element[0].scrollHeight>document.documentElement.clientHeight;this.$element.css({paddingLeft:!this.bodyIsOverflowing&&a?this.scrollbarWidth:"",paddingRight:this.bodyIsOverflowing&&!a?this.scrollbarWidth:""})},c.prototype.resetAdjustments=function(){this.$element.css({paddingLeft:"",paddingRight:""})},c.prototype.checkScrollbar=function(){var a=window.innerWidth;if(!a){var b=document.documentElement.getBoundingClientRect();a=b.right-Math.abs(b.left)}this.bodyIsOverflowing=document.body.clientWidth<a,this.scrollbarWidth=this.measureScrollbar()},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.originalBodyPad=document.body.style.paddingRight||"",this.bodyIsOverflowing&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right",this.originalBodyPad)},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=null,this.options=null,this.enabled=null,this.timeout=null,this.hoverState=null,this.$element=null,this.init("tooltip",a,b)};c.VERSION="3.3.4",c.TRANSITION_DURATION=150,c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){if(this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(this.options.viewport.selector||this.options.viewport),this.$element[0]instanceof document.constructor&&!this.options.selector)throw new Error("`selector` option must be specified when initializing "+this.type+" on the window.document object!");for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c&&c.$tip&&c.$tip.is(":visible")?void(c.hoverState="in"):(c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show())},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide()},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var d=a.contains(this.$element[0].ownerDocument.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!d)return;var e=this,f=this.tip(),g=this.getUID(this.type);this.setContent(),f.attr("id",g),this.$element.attr("aria-describedby",g),this.options.animation&&f.addClass("fade");var h="function"==typeof this.options.placement?this.options.placement.call(this,f[0],this.$element[0]):this.options.placement,i=/\s?auto?\s?/i,j=i.test(h);j&&(h=h.replace(i,"")||"top"),f.detach().css({top:0,left:0,display:"block"}).addClass(h).data("bs."+this.type,this),this.options.container?f.appendTo(this.options.container):f.insertAfter(this.$element);var k=this.getPosition(),l=f[0].offsetWidth,m=f[0].offsetHeight;if(j){var n=h,o=this.options.container?a(this.options.container):this.$element.parent(),p=this.getPosition(o);h="bottom"==h&&k.bottom+m>p.bottom?"top":"top"==h&&k.top-m<p.top?"bottom":"right"==h&&k.right+l>p.width?"left":"left"==h&&k.left-l<p.left?"right":h,f.removeClass(n).addClass(h)}var q=this.getCalculatedOffset(h,k,l,m);this.applyPlacement(q,h);var r=function(){var a=e.hoverState;e.$element.trigger("shown.bs."+e.type),e.hoverState=null,"out"==a&&e.leave(e)};a.support.transition&&this.$tip.hasClass("fade")?f.one("bsTransitionEnd",r).emulateTransitionEnd(c.TRANSITION_DURATION):r()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top=b.top+g,b.left=b.left+h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=/top|bottom/.test(c),m=l?2*k.left-e+i:2*k.top-f+j,n=l?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(m,d[0][n],l)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c?"left":"top",50*(1-a/b)+"%").css(c?"top":"left","")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(b){function d(){"in"!=e.hoverState&&f.detach(),e.$element.removeAttr("aria-describedby").trigger("hidden.bs."+e.type),b&&b()}var e=this,f=a(this.$tip),g=a.Event("hide.bs."+this.type);return this.$element.trigger(g),g.isDefaultPrevented()?void 0:(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",d).emulateTransitionEnd(c.TRANSITION_DURATION):d(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName,e=c.getBoundingClientRect();null==e.width&&(e=a.extend({},e,{width:e.right-e.left,height:e.bottom-e.top}));var f=d?{top:0,left:0}:b.offset(),g={scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop()},h=d?{width:a(window).width(),height:a(window).height()}:null;return a.extend({},e,g,h,f)},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.width&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){return this.$tip=this.$tip||a(this.options.template)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){var a=this;clearTimeout(this.timeout),this.hide(function(){a.$element.off("."+a.type).removeData("bs."+a.type)})};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.3.4",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").children().detach().end()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){this.$body=a(document.body),this.$scrollElement=a(a(c).is(document.body)?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",a.proxy(this.process,this)),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.3.4",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b=this,c="offset",d=0;this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight(),a.isWindow(this.$scrollElement[0])||(c="position",d=this.$scrollElement.scrollTop()),this.$body.find(this.selector).map(function(){var b=a(this),e=b.data("target")||b.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[c]().top+d,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){b.offsets.push(this[0]),b.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<e[0])return this.activeTarget=null,this.clear();for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(void 0===e[a+1]||b<e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),d.trigger("activate.bs.scrollspy")},b.prototype.clear=function(){a(this.selector).parentsUntil(this.options.target,".active").removeClass("active")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.3.4",c.TRANSITION_DURATION=150,c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){
+var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a.Event("show.bs.tab",{relatedTarget:e[0]});if(e.trigger(f),b.trigger(g),!g.isDefaultPrevented()&&!f.isDefaultPrevented()){var h=a(d);this.activate(b.closest("li"),c),this.activate(h,h.parent(),function(){e.trigger({type:"hidden.bs.tab",relatedTarget:b[0]}),b.trigger({type:"shown.bs.tab",relatedTarget:e[0]})})}}},c.prototype.activate=function(b,d,e){function f(){g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!1),b.addClass("active").find('[data-toggle="tab"]').attr("aria-expanded",!0),h?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu").length&&b.closest("li.dropdown").addClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!0),e&&e()}var g=d.find("> .active"),h=e&&a.support.transition&&(g.length&&g.hasClass("fade")||!!d.find("> .fade").length);g.length&&h?g.one("bsTransitionEnd",f).emulateTransitionEnd(c.TRANSITION_DURATION):f(),g.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this};var e=function(c){c.preventDefault(),b.call(a(this),"show")};a(document).on("click.bs.tab.data-api",'[data-toggle="tab"]',e).on("click.bs.tab.data-api",'[data-toggle="pill"]',e)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=null,this.unpin=null,this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.3.4",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getState=function(a,b,c,d){var e=this.$target.scrollTop(),f=this.$element.offset(),g=this.$target.height();if(null!=c&&"top"==this.affixed)return c>e?"top":!1;if("bottom"==this.affixed)return null!=c?e+this.unpin<=f.top?!1:"bottom":a-d>=e+g?!1:"bottom";var h=null==this.affixed,i=h?e:f.top,j=h?g:b;return null!=c&&c>=e?"top":null!=d&&i+j>=a-d?"bottom":!1},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=this.$element.height(),d=this.options.offset,e=d.top,f=d.bottom,g=a(document.body).height();"object"!=typeof d&&(f=e=d),"function"==typeof e&&(e=d.top(this.$element)),"function"==typeof f&&(f=d.bottom(this.$element));var h=this.getState(g,b,e,f);if(this.affixed!=h){null!=this.unpin&&this.$element.css("top","");var i="affix"+(h?"-"+h:""),j=a.Event(i+".bs.affix");if(this.$element.trigger(j),j.isDefaultPrevented())return;this.affixed=h,this.unpin="bottom"==h?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(i).trigger(i.replace("affix","affixed")+".bs.affix")}"bottom"==h&&this.$element.offset({top:g-b-f})}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},null!=d.offsetBottom&&(d.offset.bottom=d.offsetBottom),null!=d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);

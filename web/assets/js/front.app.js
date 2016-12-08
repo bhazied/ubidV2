@@ -1,5 +1,5 @@
 'use strict'
-var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select']);
+var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
     function ($rootScope, $state, $stateParams, $localStorage) {

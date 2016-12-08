@@ -313,3 +313,8 @@ ubid_advanced_search:
     resource: "@UbidElectricityBundle/Controller/SearchRestController.php"
     type:   rest
     prefix: /api
+
+ubid_upload_api:
+    resource: "@UbidElectricityBundle/Controller/UploadRESTController.php"
+    type:   rest
+    prefix:   /api

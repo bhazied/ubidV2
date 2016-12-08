@@ -149,6 +149,11 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: "Tender description",
             resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+        }).state('front.tender.add',{
+            url: '/add',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
+            title: "Tender description",
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
         }).state('front.advanced_search', {
             url: '/advanced-search',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',

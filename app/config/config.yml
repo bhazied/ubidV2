@@ -385,6 +385,9 @@ assetic:
         angular_scroll:
             inputs:
                 - "assets/bower_components/angular-scroll/angular-scroll.js" #.min
+        angular_file_uplaod:
+            inputs:
+                - "assets/bower_components/angular-file-upload/angular-file-upload.min.js"
         bootstrap_colorpicker:
             inputs:
                 - "assets/bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js" #.min
