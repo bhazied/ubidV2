@@ -77,6 +77,21 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
+                                    <label for="supplierMainProductsServices" class="control-label">
+                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.main_products_services" type="text" name="mainProductsServices" id="supplierMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
                                     <label for="supplierReferenceNumber" class="control-label">
                                         <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
                                     </label>
@@ -87,8 +102,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -102,6 +115,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':supplierForm.email.$dirty && supplierForm.email.$invalid, 'has-success':supplierForm.email.$valid}">
@@ -119,8 +134,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -134,6 +147,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -147,8 +162,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -162,6 +175,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -191,8 +206,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -206,6 +219,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -219,8 +234,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -234,6 +247,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -247,8 +262,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -265,6 +278,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -279,6 +294,97 @@
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierTotalRevenu" class="control-label">
+                                        <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.total revenu" type="text" name="totalRevenu" id="supplierTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-bar-chart"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierFirstMarketRegion" class="control-label">
+                                        <span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span>
+                                    </label>
+                                <div class="block select-list" ng-if="regionsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="supplier_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.first_market_region" name="firstMarketRegion" id="supplierFirstMarketRegion" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="supplier.first_market_rate" type="checkbox" name="firstMarketRate" id="supplierFirstMarketRate" />
+                                    <label for="supplierFirstMarketRate" translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierSecondMarketRegion" class="control-label">
+                                        <span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span>
+                                    </label>
+                                <div class="block select-list" ng-if="regionsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="supplier_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.second_market_region" name="secondMarketRegion" id="supplierSecondMarketRegion" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="supplier.second_market_rate" type="checkbox" name="secondMarketRate" id="supplierSecondMarketRate" />
+                                    <label for="supplierSecondMarketRate" translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierThirdMarketRegion" class="control-label">
+                                        <span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span>
+                                    </label>
+                                <div class="block select-list" ng-if="regionsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="supplier_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.third_market_region" name="thirdMarketRegion" id="supplierThirdMarketRegion" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="supplier.third_market_rate" type="checkbox" name="thirdMarketRate" id="supplierThirdMarketRate" />
+                                    <label for="supplierThirdMarketRate" translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</label>
+                                </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->

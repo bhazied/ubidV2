@@ -86,9 +86,12 @@ class BuyerRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BuyerType', 'buyer_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.buyerType = buyer_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.country = country.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.language = language.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'first_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.firstMarketRegion = first_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'second_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.secondMarketRegion = second_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'third_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.thirdMarketRegion = third_market_region.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.modifierUser = modifier_user.id');
-            $textFields = array('buyer.name', 'buyer.description', 'buyer.referenceNumber', 'buyer.phone', 'buyer.email', 'buyer.firstName', 'buyer.lastName', 'buyer.job', 'buyer.picture', 'buyer.address', 'buyer.zipCode', 'buyer.city', 'buyer.companyName');
+            $textFields = array('buyer.name', 'buyer.description', 'buyer.mainProductsServices', 'buyer.referenceNumber', 'buyer.phone', 'buyer.email', 'buyer.firstName', 'buyer.lastName', 'buyer.job', 'buyer.picture', 'buyer.address', 'buyer.zipCode', 'buyer.city', 'buyer.companyName');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {

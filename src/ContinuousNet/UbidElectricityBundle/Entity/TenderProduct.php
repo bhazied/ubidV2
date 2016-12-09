@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`tender_product`", indexes={@ORM\Index(name="tender_id", columns={"tender_id"}), @ORM\Index(name="product_type_id", columns={"product_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`tender_product`", indexes={@ORM\Index(name="tender_id", columns={"tender_id"}), @ORM\Index(name="category_id", columns={"category_id"}), @ORM\Index(name="product_type_id", columns={"product_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -176,6 +176,21 @@ class TenderProduct
      * 
      */
     private $tender;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Category
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $category;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\ProductType
@@ -504,6 +519,30 @@ class TenderProduct
     public function getTender()
     {
         return $this->tender;
+    }
+
+    /**
+     * Set category
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Category $category
+     * @return TenderProduct
+     */
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**

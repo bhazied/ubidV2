@@ -4,8 +4,8 @@
  * Controller for Suppliers List
  */
 
-app.controller('SuppliersCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$usersDataFactory', '$suppliersDataFactory',
-function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $usersDataFactory, $suppliersDataFactory) {
+app.controller('SuppliersCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$suppliersDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $suppliersDataFactory) {
 
 
     $scope.booleanOptions = [{
@@ -113,6 +113,35 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.getLanguages();
 
+    $scope.regions = [];
+    $scope.regionsLoaded = false;
+
+    $scope.getRegions = function() {
+        $scope.regionsLoaded = true;
+        if ($scope.regions.length == 0) {
+            $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTFIRSTMARKETREGION')});
+            var def = $q.defer();
+            $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        for (var i in data.results) {
+                            $scope.regions.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.regions);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.regions;
+        }
+    };
+
+    $scope.getRegions();
+
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -214,9 +243,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'supplier_type', title: $filter('translate')('content.list.fields.SUPPLIERTYPE'), sortable: 'supplier_type.name', filter: { 'supplier.supplierType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSupplierTypes(), show: $scope.getParamValue('supplier_type_id_show_filed', true), displayField: 'name', state: 'app.lists.suppliertypesdetails' },
             { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'supplier.name', filter: { 'supplier.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'supplier.description', filter: { 'supplier.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), getValue: $scope.textValue },
+            { field: 'main_products_services', title: $filter('translate')('content.list.fields.MAINPRODUCTSSERVICES'), sortable: 'supplier.mainProductsServices', filter: { 'supplier.mainProductsServices': 'text' }, show: $scope.getParamValue('main_products_services_show_filed', true), getValue: $scope.textValue },
             { field: 'reference_number', title: $filter('translate')('content.list.fields.REFERENCENUMBER'), sortable: 'supplier.referenceNumber', filter: { 'supplier.referenceNumber': 'text' }, show: $scope.getParamValue('reference_number_show_filed', true), getValue: $scope.textValue },
             { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'supplier.phone', filter: { 'supplier.phone': 'text' }, show: $scope.getParamValue('phone_show_filed', true), getValue: $scope.textValue },
-            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'supplier.email', filter: { 'supplier.email': 'text' }, show: $scope.getParamValue('email_show_filed', true), getValue: $scope.textValue },
+            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'supplier.email', filter: { 'supplier.email': 'text' }, show: $scope.getParamValue('email_show_filed', false), getValue: $scope.textValue },
             { field: 'first_name', title: $filter('translate')('content.list.fields.FIRSTNAME'), sortable: 'supplier.firstName', filter: { 'supplier.firstName': 'text' }, show: $scope.getParamValue('first_name_show_filed', false), getValue: $scope.textValue },
             { field: 'last_name', title: $filter('translate')('content.list.fields.LASTNAME'), sortable: 'supplier.lastName', filter: { 'supplier.lastName': 'text' }, show: $scope.getParamValue('last_name_show_filed', false), getValue: $scope.textValue },
             { field: 'job', title: $filter('translate')('content.list.fields.JOB'), sortable: 'supplier.job', filter: { 'supplier.job': 'text' }, show: $scope.getParamValue('job_show_filed', false), getValue: $scope.textValue },
@@ -227,6 +257,13 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'company_name', title: $filter('translate')('content.list.fields.COMPANYNAME'), sortable: 'supplier.companyName', filter: { 'supplier.companyName': 'text' }, show: $scope.getParamValue('company_name_show_filed', false), getValue: $scope.textValue },
             { field: 'country', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'supplier.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_id_show_filed', false), displayField: 'name', state: 'app.settings.countriesdetails' },
             { field: 'language', title: $filter('translate')('content.list.fields.LANGUAGE'), sortable: 'language.name', filter: { 'supplier.language': 'select' }, getValue: $scope.linkValue, filterData: $scope.getLanguages(), show: $scope.getParamValue('language_id_show_filed', false), displayField: 'name', state: 'app.settings.languagesdetails' },
+            { field: 'total revenu', title: $filter('translate')('content.list.fields.TOTALREVENU'), sortable: 'supplier.totalRevenu', filter: { 'supplier.totalRevenu': 'number' }, show: $scope.getParamValue('total revenu_show_filed', false), getValue: $scope.textValue },
+            { field: 'first_market_region', title: $filter('translate')('content.list.fields.FIRSTMARKETREGION'), sortable: 'first_market_region.name', filter: { 'supplier.firstMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('first_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'first_market_rate', title: $filter('translate')('content.list.fields.FIRSTMARKETRATE'), sortable: 'supplier.firstMarketRate', filter: { 'supplier.firstMarketRate': 'select' }, show: $scope.getParamValue('first_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.first_market_rate ]]"></span>') },
+            { field: 'second_market_region', title: $filter('translate')('content.list.fields.SECONDMARKETREGION'), sortable: 'second_market_region.name', filter: { 'supplier.secondMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('second_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'second_market_rate', title: $filter('translate')('content.list.fields.SECONDMARKETRATE'), sortable: 'supplier.secondMarketRate', filter: { 'supplier.secondMarketRate': 'select' }, show: $scope.getParamValue('second_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.second_market_rate ]]"></span>') },
+            { field: 'third_market_region', title: $filter('translate')('content.list.fields.THIRDMARKETREGION'), sortable: 'third_market_region.name', filter: { 'supplier.thirdMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('third_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'third_market_rate', title: $filter('translate')('content.list.fields.THIRDMARKETRATE'), sortable: 'supplier.thirdMarketRate', filter: { 'supplier.thirdMarketRate': 'select' }, show: $scope.getParamValue('third_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.third_market_rate ]]"></span>') },
             { field: 'is_public', title: $filter('translate')('content.list.fields.ISPUBLIC'), sortable: 'supplier.isPublic', filter: { 'supplier.isPublic': 'select' }, show: $scope.getParamValue('is_public_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_public ]]"></span>') },
             { field: 'views', title: $filter('translate')('content.list.fields.VIEWS'), sortable: 'supplier.views', filter: { 'supplier.views': 'number' }, show: $scope.getParamValue('views_show_filed', false), getValue: $scope.textValue },
             { field: 'enable_comment', title: $filter('translate')('content.list.fields.ENABLECOMMENT'), sortable: 'supplier.enableComment', filter: { 'supplier.enableComment': 'select' }, show: $scope.getParamValue('enable_comment_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_comment ]]"></span>') },

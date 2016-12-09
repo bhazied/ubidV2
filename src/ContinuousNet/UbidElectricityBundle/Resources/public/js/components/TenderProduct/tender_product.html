@@ -51,6 +51,10 @@
                                 <td><a ui-sref="app.marketplace.tendersdetails({id: tenderProduct.tender.id})">[[ tenderProduct.tender.title ]]</a></span></td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.CATEGORY">Category</span></td>
+                                <td><a ui-sref="app.lists.categoriesdetails({id: tenderProduct.category.id})">[[ tenderProduct.category.name ]]</a></span></td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.PRODUCTTYPE">Product Type</span></td>
                                 <td><a ui-sref="app.lists.producttypesdetails({id: tenderProduct.product_type.id})">[[ tenderProduct.product_type.name ]]</a></span></td>
                             </tr>

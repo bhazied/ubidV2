@@ -16,9 +16,13 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
         title: $filter('translate')('content.list.fields.types.SUPPLIER'),
         css: 'success'
     }, {
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
+        css: 'warning'
+    }, {
         id: 'SupplierProduct',
         title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
-        css: 'warning'
+        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',

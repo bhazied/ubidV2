@@ -47,6 +47,27 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
+                                <div class="form-group" ng-class="{'has-error':tenderProductForm.category.$dirty && tenderProductForm.category.$invalid, 'has-success':tenderProductForm.category.$valid}">
+                                    <label for="tenderProductCategory" class="control-label">
+                                        <span translate="content.list.fields.CATEGORY">Category</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="categoriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="tender_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="tenderProduct.category" name="category" id="tenderProductCategory" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-foolder-open-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="tenderProductForm.category.$dirty && tenderProductForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
+                                    <span class="success text-small block" ng-if="tenderProductForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':tenderProductForm.productType.$dirty && tenderProductForm.productType.$invalid, 'has-success':tenderProductForm.productType.$valid}">
                                     <label for="tenderProductProductType" class="control-label">
                                         <span translate="content.list.fields.PRODUCTTYPE">Product Type</span>
@@ -64,8 +85,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderProductForm.title.$dirty && tenderProductForm.title.$invalid, 'has-success':tenderProductForm.title.$valid}">
@@ -82,6 +101,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                     <slug from="tenderProduct.title" to="tenderProduct.slug"></slug>
@@ -99,8 +120,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-12">
 
                                 <div class="form-group" ng-class="{'has-error':tenderProductForm.description.$dirty && tenderProductForm.description.$invalid, 'has-success':tenderProductForm.description.$valid}">

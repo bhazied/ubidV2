@@ -20,9 +20,13 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         title: $filter('translate')('content.list.fields.types.SUPPLIER'),
         css: 'success'
     }, {
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
+        css: 'warning'
+    }, {
         id: 'SupplierProduct',
         title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
-        css: 'warning'
+        css: 'danger'
     }];
     $scope.statusesOptions = [{
         id: '',

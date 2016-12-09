@@ -86,9 +86,12 @@ class SupplierRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\SupplierType', 'supplier_type', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.supplierType = supplier_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.country = country.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.language = language.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'first_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.firstMarketRegion = first_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'second_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.secondMarketRegion = second_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'third_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.thirdMarketRegion = third_market_region.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.modifierUser = modifier_user.id');
-            $textFields = array('supplier.name', 'supplier.description', 'supplier.referenceNumber', 'supplier.phone', 'supplier.email', 'supplier.firstName', 'supplier.lastName', 'supplier.job', 'supplier.picture', 'supplier.address', 'supplier.zipCode', 'supplier.city', 'supplier.companyName');
+            $textFields = array('supplier.name', 'supplier.description', 'supplier.mainProductsServices', 'supplier.referenceNumber', 'supplier.phone', 'supplier.email', 'supplier.firstName', 'supplier.lastName', 'supplier.job', 'supplier.picture', 'supplier.address', 'supplier.zipCode', 'supplier.city', 'supplier.companyName');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
