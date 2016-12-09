@@ -4,8 +4,8 @@
  * Controller for Tender Products List
  */
 
-app.controller('TenderProductsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
-function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
+app.controller('TenderProductsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$categoriesDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $categoriesDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
 
     $scope.statusesOptions = [{
         id: '',
@@ -69,6 +69,35 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.getTenders();
+
+    $scope.categories = [];
+    $scope.categoriesLoaded = false;
+
+    $scope.getCategories = function() {
+        $scope.categoriesLoaded = true;
+        if ($scope.categories.length == 0) {
+            $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+            var def = $q.defer();
+            $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        for (var i in data.results) {
+                            $scope.categories.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.categories);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.categories;
+        }
+    };
+
+    $scope.getCategories();
 
     $scope.productTypes = [];
     $scope.productTypesLoaded = false;
@@ -199,6 +228,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'tenderProduct.id', filter: { 'tenderProduct.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'tender', title: $filter('translate')('content.list.fields.TENDER'), sortable: 'tender.title', filter: { 'tenderProduct.tender': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenders(), show: $scope.getParamValue('tender_id_show_filed', true), displayField: 'title', state: 'app.marketplace.tendersdetails' },
+            { field: 'category', title: $filter('translate')('content.list.fields.CATEGORY'), sortable: 'category.name', filter: { 'tenderProduct.category': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCategories(), show: $scope.getParamValue('category_id_show_filed', true), displayField: 'name', state: 'app.lists.categoriesdetails' },
             { field: 'product_type', title: $filter('translate')('content.list.fields.PRODUCTTYPE'), sortable: 'product_type.name', filter: { 'tenderProduct.productType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getProductTypes(), show: $scope.getParamValue('product_type_id_show_filed', true), displayField: 'name', state: 'app.lists.producttypesdetails' },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tenderProduct.title', filter: { 'tenderProduct.title': 'text' }, show: $scope.getParamValue('title_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tenderProduct.slug', filter: { 'tenderProduct.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },

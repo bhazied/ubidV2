@@ -4,8 +4,8 @@
  * Controller for Buyer Form
  */
 
-app.controller('BuyerFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$usersDataFactory', '$buyersDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $usersDataFactory, $buyersDataFactory) {
+app.controller('BuyerFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$buyersDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $buyersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -99,6 +99,31 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getLanguages();
 
+    $scope.regions = [];
+    $scope.regionsLoaded = false;
+
+    $scope.getRegions = function() {
+        $timeout(function(){
+            $scope.regionsLoaded = true;
+            if ($scope.regions.length == 0) {
+                $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTFIRSTMARKETREGION')});
+                var def = $q.defer();
+                $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.regions = data.results;
+                    def.resolve($scope.regions);
+                });
+                return def;
+            } else {
+                return $scope.regions;
+            }
+        });
+    };
+
+    $scope.getRegions();
+
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -177,6 +202,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.buyer_buyer_type_readonly = false;
     $scope.buyer_country_readonly = false;
     $scope.buyer_language_readonly = false;
+    $scope.buyer_first_market_region_readonly = false;
+    $scope.buyer_second_market_region_readonly = false;
+    $scope.buyer_third_market_region_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $buyersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -197,6 +225,18 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         if (angular.isDefined($stateParams.buyer_language) && JSON.parse($stateParams.buyer_language) != null) {
             $scope.buyer.language = $stateParams.buyer_language;
             $scope.buyer_language_readonly = true;
+        }
+        if (angular.isDefined($stateParams.buyer_first_market_region) && JSON.parse($stateParams.buyer_first_market_region) != null) {
+            $scope.buyer.first_market_region = $stateParams.buyer_first_market_region;
+            $scope.buyer_first_market_region_readonly = true;
+        }
+        if (angular.isDefined($stateParams.buyer_second_market_region) && JSON.parse($stateParams.buyer_second_market_region) != null) {
+            $scope.buyer.second_market_region = $stateParams.buyer_second_market_region;
+            $scope.buyer_second_market_region_readonly = true;
+        }
+        if (angular.isDefined($stateParams.buyer_third_market_region) && JSON.parse($stateParams.buyer_third_market_region) != null) {
+            $scope.buyer.third_market_region = $stateParams.buyer_third_market_region;
+            $scope.buyer_third_market_region_readonly = true;
         }
     }
 

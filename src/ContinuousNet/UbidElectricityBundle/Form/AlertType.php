@@ -44,7 +44,7 @@ class AlertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Supplier' => 'Supplier', 'SupplierProduct' => 'SupplierProduct', ), 'expanded' => false, 'multiple' => false))
+            ->add('type', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Supplier' => 'Supplier', 'Buyer' => 'Buyer', 'SupplierProduct' => 'SupplierProduct', ), 'expanded' => false, 'multiple' => false))
             ->add('category', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
             ->add('name', TextType::class)
             ->add('description', TextType::class)

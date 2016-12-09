@@ -63,6 +63,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                                <td>
+                                    <div ng-bind-html="supplier.main_products_services"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.REFERENCENUMBER">Reference Number</span></td>
                                 <td>
                                     <div ng-bind-html="supplier.reference_number"></div>
@@ -139,6 +145,42 @@
                             <tr>
                                 <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
                                 <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
+                                <td>
+                                    <div ng-bind-html="supplier.total revenu"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.first_market_region.id})">[[ supplier.first_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ supplier.first_market_rate ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.second_market_region.id})">[[ supplier.second_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ supplier.second_market_rate ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.third_market_region.id})">[[ supplier.third_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ supplier.third_market_rate ]]"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.ISPUBLIC">Is Public</span></td>
