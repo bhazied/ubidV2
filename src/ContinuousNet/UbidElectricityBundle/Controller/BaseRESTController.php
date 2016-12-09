@@ -13,30 +13,110 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use ContinuousNet\UbidElectricityBundle\Entity\Company;
 
 use Voryx\RESTGeneratorBundle\Controller\VoryxController;
 
 class BaseRESTController extends VoryxController
 {
 
-    public function getEntityDir($entity, $pluralize = true) {
+    public $locales = array(
+        'en' => 'en_US',
+        'fr' => 'fr_FR'
+    );
+
+    public function getConfig($path)
+    {
+        $config = $this->container->getParameter('uid_electricity');
+        $paths = explode('.', $path);
+        foreach ($paths as $index) {
+            $config = $config[$index];
+        }
+        return $config;
+    }
+
+    public function translateEntity($entity, $level = 0)
+    {
+        $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
+        $entityName = str_replace($ns, '', get_class($entity));
+        $translationEntityName = 'Translation' . $entityName;
+        $translationEntityFullName = $ns . $translationEntityName;
+        if (class_exists($translationEntityFullName)) {
+            $entityField = lcfirst($entityName);
+            $request = $this->get('request');
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->select('t');
+            $qb->from('UbidElectricityBundle:' . $translationEntityName, 't');
+            $qb->andWhere('t.locale = :locale')->setParameter('locale', $request->getLocale());
+            $qb->andWhere('t.validated = :validated')->setParameter('validated', true);
+            $qb->andWhere('t.' . $entityField . ' = :' . $entityField)->setParameter($entityField, $entity->getId());
+            $qb->setMaxResults(1);
+            $translation = $qb->getQuery()->getOneOrNullResult();
+            if (!is_null($translation)) {
+                $notTranslatableFields = array('Id', 'Locale', 'Validated', 'CreatorUser', 'CreatedAt', 'ModifierUser', 'ModifiedAt', $entityName);
+                $translatableFields = array();
+                $methods = get_class_methods($translation);
+                foreach ($methods as $method) {
+                    if (substr($method, 0, 3) == 'get') {
+                        $field = str_replace('get', '', $method);
+                        if (!in_array($field, $notTranslatableFields)) {
+                            array_push($translatableFields, $field);
+                        }
+                    }
+                }
+                foreach ($translatableFields as $field) {
+                    $setMethod = 'set' . $field;
+                    $getMethod = 'get' . $field;
+                    $entity->$setMethod($translation->$getMethod());
+                }
+            }
+        }
+        if ($level < 1) {
+            $methods = get_class_methods($entity);
+            foreach ($methods as $method) {
+                if (substr($method, 0, 3) == 'get') {
+                    $field = str_replace('get', '', $method);
+                    $setMethod = 'set' . $field;
+                    $fieldValue = $entity->$method();
+                    if (is_object($fieldValue)) {
+                        if (substr(get_class($fieldValue), 0, strlen($ns)) == $ns) {
+                            $entity->$setMethod($this->translateEntity($fieldValue, $level + 1));
+                        }
+                    }
+                }
+            }
+        }
+        return $entity;
+
+    }
+
+    public function translateEntities($entities)
+    {
+        foreach ($entities as $i => $entity) {
+            $entities[$i] = $this->translateEntity($entity);
+        }
+        return $entities;
+    }
+
+    public function getEntityDir($entity, $pluralize = true)
+    {
         $dir = strtolower(join('', array_slice(explode('\\', get_class($entity)), -1)));
         if ($pluralize) {
             $lastLetter = substr($dir, -1);
-            switch($lastLetter) {
+            switch ($lastLetter) {
                 case 'y':
-                    return substr($dir,0,-1).'ies';
+                    return substr($dir, 0, -1) . 'ies';
                 case 's':
-                    return $dir.'es';
+                    return $dir . 'es';
                 default:
-                    return $dir.'s';
+                    return $dir . 's';
             }
         }
         return $dir;
     }
 
-    public function getSubDirectory($entity, $absolute = true) {
+    public function getSubDirectory($entity, $absolute = true)
+    {
         $directory = '';
         if ($absolute) {
             $directory .= $this->get('kernel')->getRootDir() . '/../web/uploads/';
@@ -45,57 +125,19 @@ class BaseRESTController extends VoryxController
         return $directory;
     }
 
-    public function createSubDirectory($entity) {
+    public function createSubDirectory($entity)
+    {
         $directory = $this->getSubDirectory($entity);
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
     }
 
-    public function createSubDirectories($entities) {
+    public function createSubDirectories($entities)
+    {
         foreach ($entities as $entity) {
             $this->createSubDirectory($entity);
         }
     }
 
-    public function getCompanySubDirectory($entity, $absolute = true) {
-        $directory = '';
-        if ($absolute) {
-            $directory .= $this->get('kernel')->getRootDir() . '/../web/uploads/';
-        }
-        $company = $this->getUser()->getCompany();
-        if (is_null($company)) {
-            $domain = strtoupper(substr(strstr($this->getUser()->getEmail(), '@'), 1));
-            $name = strstr($domain, '.', true);
-            $em = $this->getDoctrine()->getManager();
-            $company = $em->getRepository('UbidElectricityBundle:Company')->findOneByName($name);
-            if (is_null($company)) {
-                $company = new Company();
-                $company->setIsActive(true);
-                $company->setCreatorUser($this->getUser());
-                $company->setName($name);
-                $em->persist($company);
-                $em->flush();
-            }
-            $this->getUser()->setCompany($company);
-            $em->flush();
-        }
-        $directory .= 'companies/company_'.sprintf('%05d', $company->getId()) . '/';
-        $directory .= $this->getEntityDir($entity, false) . '_' . sprintf('%05d', $entity->getId()) . '/';
-        return $directory;
-    }
-
-    public function createCompanySubDirectory($entity) {
-        $directory = $this->getCompanySubDirectory($entity);
-        if (!is_dir($directory)) {
-            mkdir($directory, 0777, true);
-        }
-    }
-
-    public function createCompanySubDirectories($entities) {
-        foreach ($entities as $entity) {
-            $this->createCompanySubDirectory($entity);
-        }
-    }
-    
 }
