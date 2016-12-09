@@ -2,31 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e19f8dd-0812-4a6a-809f-f3bb92a4c692" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/e-elctricity.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/fonts/CenturyGothic.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/fonts/CenturyGothic.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/fonts/CenturyGothic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/fonts/CenturyGothic.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/fancybox_loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/fancybox_loading@2x.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/fancybox_overlay.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/fancybox_sprite.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/fancybox_sprite@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/slider_next.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/slider_prev.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/socials.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/images/status.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/css/front/theme.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/favicon.ico" afterPath="$PROJECT_DIR$/web/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Default/public.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Default/public.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/publicLayoutNew.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/publicLayoutNew.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/address.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/blank.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/email.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fancybox_loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fancybox_loading@2x.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fancybox_overlay.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fancybox_sprite.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fancybox_sprite@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fax.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/fb.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/flash.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/gp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/li.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/logo-e-electricity-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/logo-e-electricity-text.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/man.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/message.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/microship.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/plus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/pole.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/profile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/search.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/share.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/slider_next.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/slider_prev.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/socials.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/status.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/tel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/tw.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/front/images/yt.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/front/css/e-elctricity.css" afterPath="$PROJECT_DIR$/web/front/css/e-elctricity.css" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,8 +78,8 @@
       <file leaf-file-name="e-elctricity.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65746754">
-              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.6818182">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -425,8 +432,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65746754">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.6818182">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding />
         </state>
       </provider>

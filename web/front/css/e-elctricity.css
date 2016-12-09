@@ -17,7 +17,7 @@
 }
 
 .navbar-logo-icon {
-    background-image: url('/front/images/logo-e-electricity-icon.png');
+    background-image: url('/front/img/logo-e-electricity-icon.png');
     background-position: center;
     background-repeat: no-repeat;
     height: 85px;
@@ -26,7 +26,7 @@
 }
 
 .navbar-logo-text {
-    background-image: url('/front/images/logo-e-electricity-text.png');
+    background-image: url('/front/img/logo-e-electricity-text.png');
     background-position: center;
     background-repeat: no-repeat;
     height: 85px;
