@@ -12,3 +12,6 @@
     font-family: 'CenturyGothic';
 }
 
+.bg-inverse {
+    background-color: #1D69AD !important;
+}

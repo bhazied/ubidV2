@@ -288,7 +288,6 @@ assetic:
         bootstrap_4_js:
             inputs:
                 - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
-
         google_fonts:
             inputs:   
                 #- "http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
@@ -338,10 +337,10 @@ assetic:
                 - "assets/css/custom.css"
         site_front_css:
             input:
-                - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.css"
-                - "assets/css/front/theme.css"
-                - "assets/css/front/style.css"
-                - "assets/css/front/e-elctricity.css"
+                # - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.css"
+                # - "assets/css/front/theme.css"
+                # - "assets/css/front/style.css"
+                - "front/e-elctricity.css"
         jquery:
             inputs:
                 - "assets/bower_components/jquery/dist/jquery.js" #.min
