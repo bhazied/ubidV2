@@ -297,7 +297,7 @@ assetic:
                 - "assets/bower_components/bootstrap/dist/css/bootstrap.min.css"
         font_awesome:
             inputs:   
-                - "assets/bower_components/font-awesome/css/font-awesome.min.css"
+                - "assets/bower_components/components-font-awesome/css/font-awesome.min.css"
         themify_icons:
             inputs:   
                 - "assets/bower_components/themify-icons/css/themify-icons.css"

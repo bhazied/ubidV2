@@ -1,7 +1,507 @@
 {% extends 'UbidElectricityBundle::publicLayoutNew.html.twig' %}
 
 {% block body %}
-    <!--<div ui-view id="front_app" ng-class="{'app-mobile' : app.isMobile, 'app-navbar-fixed' : app.layout.isNavbarFixed, 'app-sidebar-fixed' : app.layout.isSidebarFixed, 'app-sidebar-closed':app.layout.isSidebarClosed, 'app-footer-fixed':app.layout.isFooterFixed}"></div>-->
-    <div ui-view id="front_app" ng-class=""></div>
+
+    <div ui-view id="front_app">
+
+        <nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar">
+
+            <a class="navbar-logo-icon" ui-sref="front.home"></a>
+
+            <a class="navbar-logo-text" ui-sref="front.home"></a>
+
+            <form class="float-xs-left">
+                <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" />
+                <button class="search" type="submit"></button>
+            </form>
+
+            <div class="float-xs-right" id="language-switcher">
+                <span class="current-language flag en" title="English">
+                    <ul class="languages">
+                        <li class="flag es" title="Español"></li>
+                        <li class="flag fr" title="Français"></li>
+                        <li class="flag it" title="Italiano"></li>
+                        <li class="flag de" title="Deutsch"></li>
+                    </ul>
+                </span>
+                <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
+            </div>
+
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="front.registerbuyer" translate="front.IMABUYER">I'm a <b>Buyer</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="front.registersupplier" translate="front.IMASUPPLIER">I'm a <b>Supplier</b></a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="container" id="container">
+
+            <div class="row mt-2">
+                <div class="col-md-4">
+
+                    <span class="slogan" translate="front.JOINUS"><b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...</span>
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <span class="user-name pull-right">Sahbi KHALFALLAH</span>
+                    <span class="user-photo pull-right user.gender Male"></span>
+                    <span class="notification pull-right"><span class="badge">5</span></span>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-8 offset-md-2">
+                    <div class="search-box">
+                        <ul>
+                            <li><a class="plus"></a></li>
+                            <li><a class="flash"></a></li>
+                            <li><a class="microship"></a></li>
+                            <li><a class="pole"></a></li>
+                        </ul>
+                        <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
+                        <button class="btn" type="submit" translate="front.FIND">Find</button>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3" id="specific_search">
+
+                    <h3 class="sidebar-title" translate="front.SPECIFICSEARCH">Specific Search</h3>
+
+                    <div class="form-group">
+                        <label class="sidebar-label" translate="front.RELATEDCATEGORIES">Related Categories</label>
+                        <div class="categories-checkbox">
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 1</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 2</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 3</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 4</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 5</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 6</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Category 7</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="sidebar-label" translate="front.REGIONCOUNTRY">Region/Country</label>
+                        <div class="countries-checkbox">
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 1</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 2</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 3</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 4</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 5</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 6</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Country 7</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group nice-select">
+                                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="date_rages">
+                                        <option translate="front.MORETHAN">More Than</option>
+                                        <option translate="front.LESSTHAN">Less Than</option>
+                                        <option translate="front.EQUALTO">Equal To</option>
+                                    </select>
+                                    <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-0">
+                                <div class="input-group">
+                                    <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
+                                    <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sidebar-label" translate="front.CATEGORIES">Publication Date</label>
+                        <div class="input-group nice-select">
+                            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="date_rages">
+                                <option translate="front.TODAY">Today</option>
+                                <option translate="front.YESTERDAY">Yesterday</option>
+                                <option translate="front.LAST7DAYS">Last 7 days</option>
+                                <option translate="front.LAST30DAYS">Last 30 days</option>
+                                <option translate="front.THISMONTH">This month</option>
+                                <option translate="front.LASTMONTH">Last month</option>
+                                <option translate="front.CUSTOMDATE">Custom Date</option>
+                            </select>
+                            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <input ng-model="search.publish_date_from" type="text" class="form-control" placeholder=""/>
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" translate="front.TO">To</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <input ng-model="search.publish_date_to" type="text" class="form-control" placeholder=""/>
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sidebar-label" translate="front.CATEGORIES">Due Date</label>
+                        <div class="input-group nice-select">
+                            <select class="form-control" class="select" ng-model="search.deadline" ng-options="date_rages">
+                                <option translate="front.TODAY">Today</option>
+                                <option translate="front.YESTERDAY">Yesterday</option>
+                                <option translate="front.LAST7DAYS">Last 7 days</option>
+                                <option translate="front.LAST30DAYS">Last 30 days</option>
+                                <option translate="front.THISMONTH">This month</option>
+                                <option translate="front.LASTMONTH">Last month</option>
+                                <option translate="front.CUSTOMDATE">Custom Date</option>
+                            </select>
+                            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <input ng-model="search.deadline_from" type="text" class="form-control" placeholder=""/>
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" translate="front.TO">To</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <input ng-model="search.deadline_to" type="text" class="form-control" placeholder=""/>
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="center-menu">
+                        <h1 ui-sref="front.profile" translate="front.IMABUYER">I'm a <b>Buyer</b></h1>
+                        <p class="usd"><span>$</span></p>
+                        <ul>
+                            <li class="publish"><a translate="front.PUBLICATION">Publication</a></li>
+                            <li class="tender"><a translate="front.CONSULTTENDER">Consult TENDER</a></li>
+                            <li class="proposal"><a translate="front.CONSULTPROPOSAL">Consult PROPOSAL</a></li>
+                            <li class="advertiser"><a translate="front.CONSULTADVERTISER">Consult ADVERTISER</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row nav-menu">
+                        <div class="col-md-8 pl-0 pr-0">
+                            <ul class="pull-left">
+                                <li class="active"><a translate="front.CONSULTATIONS">Consultations</a></li>
+                                <li><a translate="front.TENDERS">Tenders </a></li>
+                                <li><a translate="front.BUYERS">Buyers</a></li>
+                                <li><a translate="front.SUPPLIERS">Suppliers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 pl-0 pr-0">
+                            <div class="form-group row pull-right sort-by">
+                                <label class="col-xs-4 col-form-label pr-0" translate="front.SORTBY">Sort By</label>
+                                <div class="col-xs-8 pr-0">
+                                    <div class="input-group nice-select">
+                                        <select class="form-control" class="select" ng-model="list.sorting" ng-options="sorting_options">
+                                            <option translate="front.STARTDATEASC">Start Date Asc</option>
+                                            <option translate="front.STARTDATEDESC">Start Date Desc</option>
+                                            <option translate="front.DUEDATEASC">Due Date Asc</option>
+                                            <option translate="front.DUEDATEDESC">Due Date Desc</option>
+                                            <option translate="front.TOPASC">Top Asc</option>
+                                            <option translate="front.TOPDESC">Top Desc</option>
+                                        </select>
+                                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tender-preview">
+                        <a class="name">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus</a>
+                        <p class="reference"><span translate="front.REFNUMBER">Ref number</span> : A0-1421</p>
+                        <p class="description">Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.</p>
+                        <div class="dates row">
+                            <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : 10/05/2016</p>
+                            <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : 31/12/2016</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><button class="btn btn-sm" translate="front.READMORE">Read more</button></div>
+                            <div class="col-md-6">
+                                <button class="btn btn-sm pull-right" translate="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                                <button class="btn btn-sm pull-right mr-1" translate="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tender-preview">
+                        <a class="name">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus</a>
+                        <p class="reference"><span translate="front.REFNUMBER">Ref number</span> : A0-1421</p>
+                        <p class="description">Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.</p>
+                        <div class="dates row">
+                            <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : 10/05/2016</p>
+                            <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : 31/12/2016</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><button class="btn btn-sm" translate="front.READMORE">Read more</button></div>
+                            <div class="col-md-6">
+                                <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                                <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tender-details">
+                        <h4 class="name">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus</h4>
+                        <table class="table table-striped">
+                            <tr>
+                                <th><span translate="front.TENDERNO">Tender  no</span>:</th>
+                                <td><span class="value">2019979004</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.BOND">Bond</span>:</th>
+                                <td><span class="value">Applicable</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.TENDERFEE">Tender Fee</span>:</th>
+                                <td><span class="value">30 000.00 AED</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.TENDERFEE">Due Date</span>:</th>
+                                <td><span class="value text-danger">27/11/2016 <b translate="front.TENDERCLOSED">(tender closed)</b></span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.ISSUER">Country</span>:</th>
+                                <td><span class="value"><i class="country country-ae"></i> United Arab Emirates</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.ISSUER">Issueur</span>:</th>
+                                <td><span class="value">Dubai Electricity & Water Authority</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.DESCRIPTION">Description</span>:</th>
+                                <td><span class="value">Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.</span></td>
+                            </tr>
+                            <tr>
+                                <th><span translate="front.CONTACT">Contact</span>:</th>
+                                <td>
+                                    <span class="value">
+                                        <span translate="front.TEL">Tel</span>: <span>(00971) 4315 1784</span>
+                                        -
+                                        <span translate="front.FAX">Fax</span>: <span>(00971) 4315 9780</span>
+                                        -
+                                        <span translate="front.WEBSITE">Website</span>: <span>www.dewa.gov.ae</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                        <h5 translate="front.ATTACHMENTFILES">Attachment Files</h5>
+                        <div class="mb-1">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="#"><i class="fa fa-download"></i> Cras justo odio.pdf</a></li>
+                                <li class="list-group-item"><a href="#"><i class="fa fa-download"></i> Dapibus ac facilisis.docx</a</li>
+                                <li class="list-group-item"><a href="#"><i class="fa fa-download"></i> Morbi leo risus.pdf</a></li>
+                            </ul>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <button class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+                            </div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-md-6"><a href="#"><i class="ti-arrow-left"></i> <span translate="front.PREVIOUSTENDER">Previous Tender</span></a></div>
+                            <div class="col-md-6"><a href="#" class="pull-right"><span translate="front.NEXTTENDER">Next Tender</span> <i class="ti-arrow-right"></i></a></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <h3 class="sidebar-title" translate="front.RELATEDPRODUCTS">Related Products</h3>
+                    <div class="product">
+                        <img src="/front/pics/product-1.jpg" alt="Medium voltage power transformer KYN28" class="rounded"/>
+                        <a href="#">Medium voltage power transformer KYN28</a>
+                    </div>
+                    <div class="product">
+                        <img src="/front/pics/product-2.jpg" alt="Hot sales 40w 1200ma led power transformer" class="rounded"/>
+                        <a href="#">Hot sales 40w 1200ma led power transformer</a>
+                    </div>
+                    <div class="product">
+                        <img src="/front/pics/product-3.jpg" alt="11kV Single-phase Pole-mounted Distribution Transformer" class="rounded"/>
+                        <a href="#">11kV Single-phase Pole-mounted Distribution Transformer</a>
+                    </div>
+                    <div class="product">
+                        <img src="/front/pics/product-4.jpg" alt="50 KVA Medium Voltage Dry Type Power Transformer Cast Resin" class="rounded"/>
+                        <a href="#">250 KVA Medium Voltage Dry Type Power Transformer Cast Resin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-sep" />
+
+        <footer>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-4 footer-links">
+                        <ul>
+                            <li><a ui-sref="front.tenders" translate="front.TENDERS">Tenders</a></li>
+                            <li><a ui-sref="front.products" translate="front.PRODUCTION">Products</a></li>
+                            <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
+                            <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 footer-links">
+                        <ul>
+                            <li><a ui-sref="front.post('how-does-it-work')" translate="front.HOWDOESITWORK">How does it work?</a></li>
+                            <li><a ui-sref="front.post('services')" translate="front.SERVICES">Services</a></li>
+                            <li><a ui-sref="front.post('terms-of-use')" translate="front.TERMSOFUSE">Terms of use</a></li>
+                            <li><a ui-sref="front.post('privacy-policy')" translate="front.BUYERS">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 footer-links">
+                        <ul>
+                            <li><a ui-sref="front.signin" translate="front.SIGNIN">Sign-in</a></li>
+                            <li><a ui-sref="front.registerbuyer" translate="front.REGISTERASBUYER">Register as Buyer</a></li>
+                            <li><a ui-sref="front.registersupplier" translate="front.REGISTERASSUPPLIER">Register as Supplier</a></li>
+                            <li><a ui-sref="front.contact" translate="front.CONTACTUS">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-center">
+                        <ul>
+                            <li><a href="http://facebook.com/" target="_blank" class="fb"></a></li>
+                            <li><a href="https://twitter.com/" target="_blank" class="tw"></a></li>
+                            <li><a href="https://plus.google.com/" target="_blank" class="gp"></a></li>
+                            <li><a href="https://www.linkedin.com/" target="_blank" class="li"></a></li>
+                            <li><a href="https://www.youtube.com/" target="_blank" class="yt"></a></li>
+                        </ul>
+                        <p class="keep-in-touch"><a ui-sref="front.contact" translate="front.SIGNIN">Keep <b>IN TOUCH</b></a></p>
+                    </div>
+                    <p class="copyright">Copyright &copy; E-electricity 2017. All rights reserved.</p>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="col-md-5">
+                        <span class="contact-footer" translate="front.CONTACTINFORMATIONS" class="pull-right" clas>Contact Infomations</span>
+                    </div>
+                    <div class="col-md-7 contact-infos">
+                        <ul>
+                            <li><i class="address"></i> <span translate="front.ADDRESS">Tanjanyika road berges du lac - 1000 - Tunis - Tunisia</span></li>
+                            <li><i class="tel"></i> +971 1258 4526 7</li>
+                            <li><i class="fax"></i> +971 1258 4525 9</li>
+                            <li><i class="email"></i> <a href="mailto:contact@e-electricity.com" target="_blank">contact@e-electricity.com</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+    </div>
 
 {% endblock %}
