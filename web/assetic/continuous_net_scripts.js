@@ -1833,7 +1833,7 @@ function ($stateProvider) {
             label: 'content.list.NEWCATEGORY'
         },
         params: {
-            'category_parent': null,
+            'category_parent_category': null,
             'category_product_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService')

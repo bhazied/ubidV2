@@ -85,6 +85,27 @@ INSERT INTO `product_type` (`id`, `name`, `slug`, `is_published`, `created_at`, 
 (2, 'Service', 'service', 1, '2016-12-13 13:43:07', 1, NULL, NULL),
 (3, 'Both', 'both', 1, '2016-12-13 13:43:14', 1, NULL, NULL);
 
+DELETE FROM  `buyer_type`;
+
+INSERT INTO `buyer_type` (`id`, `name`, `slug`, `is_published`, `created_at`, `creator_user_id`, `modified_at`, `modifier_user_id`) VALUES
+(1, 'Government', 'government', 1, '2016-12-13 13:45:13', 1, NULL, NULL),
+(2, 'Public company', 'public-company', 1, '2016-12-13 13:45:21', 1, NULL, NULL),
+(3, 'Private company', 'private-company', 1, '2016-12-13 13:45:28', 1, NULL, NULL);
+
+
 ALTER TABLE `category` DROP FOREIGN KEY `category_fk1` ;
 
 ALTER TABLE `category` CHANGE `parent_id` `parent_category_id` SMALLINT( 5 ) UNSIGNED NULL DEFAULT NULL COMMENT '{"prefix":"parent_"}';
+
+DELETE FROM  `category`;
+
+INSERT INTO `category` (`id`, `name`, `slug`, `picture`, `description`, `parent_category_id`, `product_type_id`, `ordering`, `status`, `created_at`, `creator_user_id`, `modified_at`, `modifier_user_id`) VALUES
+(1, 'Poles', 'poles', NULL, 'Ut velit mauris, egestas sed, gravida nec, ornare ut, mi', NULL, 1, 1, 'Online', '2016-12-13 13:54:42', 1, NULL, NULL),
+(2, 'Cables', 'cables', NULL, 'Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin.', NULL, 1, 2, 'Online', '2016-12-13 13:55:08', 1, NULL, NULL),
+(3, 'Switchgear', 'switchgear', NULL, 'Fusce varius, ligula non tempus aliquam', NULL, 1, 3, 'Online', '2016-12-13 13:55:36', 1, NULL, NULL),
+(4, 'Renewable Energy', 'renewable-energy', NULL, 'Integer id felis. Curabitur aliquet pellentesque diam.', NULL, 1, 4, 'Online', '2016-12-13 13:56:16', 1, NULL, NULL),
+(5, 'Non-Renewable Energy', 'non-renewable-energy', NULL, 'Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet', NULL, 1, 5, 'Online', '2016-12-13 13:56:59', 1, '2016-12-13 13:57:43', 1),
+(6, 'Transformers', 'transformers', NULL, 'Morbi vel erat non mauris convallis vehicula. Nulla et sapien.', NULL, 1, 6, 'Online', '2016-12-13 13:58:09', 1, NULL, NULL),
+(7, 'Electrical Industry', 'electrical-industry', NULL, 'Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam.', NULL, 1, 7, 'Online', '2016-12-13 13:58:53', 1, NULL, NULL),
+(8, 'Electrical Services', 'electrical-services', NULL, 'Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.', NULL, 1, 8, 'Online', '2016-12-13 13:59:38', 1, NULL, NULL);
+
