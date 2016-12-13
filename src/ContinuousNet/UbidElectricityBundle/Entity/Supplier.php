@@ -34,7 +34,6 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @UniqueEntity("name")
  * @UniqueEntity("phone")
- * @UniqueEntity("email")
  * @ORM\HasLifecycleCallbacks()
  * 
  * @ExclusionPolicy("none")
@@ -114,7 +113,29 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="fax", type="string", length=20, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $fax;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="website", type="string", length=100, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $website;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -591,13 +612,61 @@ class Supplier
     }
 
     /**
+     * Set fax
+     *
+     * @access public
+     * @param string $fax
+     * @return Supplier
+     */
+    public function setFax($fax = null)
+    {
+        $this->fax = $fax;
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @access public
+     * @return string 
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set website
+     *
+     * @access public
+     * @param string $website
+     * @return Supplier
+     */
+    public function setWebsite($website = null)
+    {
+        $this->website = $website;
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @access public
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
      * Set email
      *
      * @access public
      * @param string $email
      * @return Supplier
      */
-    public function setEmail($email)
+    public function setEmail($email = null)
     {
         $this->email = $email;
         return $this;
