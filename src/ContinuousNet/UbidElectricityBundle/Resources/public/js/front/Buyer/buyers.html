@@ -1,0 +1,28 @@
+[[ buyers ]]
+<section id="contentSection" ng-controller="BuyersFrontCtrl">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4" data-ng-include="'/bundles/ubidelectricity/js/front/Common/partial_profile_menu.html'"></div>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    <h5 class="list-group-item-heading" translate="content.text.TENDERLIST">Buyers List</h5>
+                    <p class="list-group-item-heading" translate="content.text.BUYERSLIST" >Buyer list.</p>
+                </a>
+                <div ng-repeat="buyer in buyers">
+                    <a ui-sref="front.buyer.details({id: [[ buyer.id ]]})" class="list-group-item list-group-item-action" >
+                        <h2 class="list-group-item-heading">[[ buyer.name ]]</h2>
+                    </a>
+                </div>
+                <div paging
+                     page="currentPage"
+                     page-size="pageSize"
+                     total="total"
+                     paging-action=" getAllBuyers(page)"
+                >
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

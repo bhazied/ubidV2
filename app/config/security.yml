@@ -38,6 +38,16 @@ security:
             stateless: true
             anonymous: true
 
+        home_tender:
+           pattern: ^/(en|fr|ar)/api/v1/homeTender
+           stateless: true
+           anonymous: true
+
+        contact:
+            pattern: ^/(en|fr|ar)/api/v1/contact
+            stateless: true
+            anonymous: true
+
         homeSectors:
             pattern: ^/(en|fr|ar)/api/v1/homeSectors
             stateless: true
@@ -69,12 +79,12 @@ security:
             anonymous: true
 
         countries:
-            pattern:  ^/api/countries
+            pattern:  ^/(en|fr|ar)/api/countries
             stateless: true
             anonymous: true
 
         languages:
-            pattern: ^/api/languages
+            pattern: ^/(en|fr|ar)/api/languages
             stateless: true
             anonymous: true
 

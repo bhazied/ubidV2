@@ -30,7 +30,7 @@ angular.module('ubid-electricity', [
 ]);
 
 'use strict'
-var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select']);
+var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
     function ($rootScope, $state, $stateParams, $localStorage) {
@@ -41,6 +41,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
+        // left right side to be shown or not
+        $rootScope.leftrightside = false;
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {
@@ -68,17 +70,16 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
                 logo: '/assets/images/big_logo.png', // relative path of the project logo
             }
         };
-        console.log( $rootScope.app);
 
         if (angular.isDefined($localStorage.user)) {
             $rootScope.user = $rootScope.currentUser = $localStorage.user;
 
         } else {
             $rootScope.user = $rootScope.currentUser = {
-                firstName: 'Guest',
-                job: 'Visitor',
-                picture: 'app/img/user/02.jpg',
-                roles: []
+                //firstName: 'Guest',
+                //job: 'Visitor',
+                //picture: 'app/img/user/02.jpg',
+                //roles: []
             };
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
@@ -461,7 +462,13 @@ app.constant('APP_JS_REQUIRES', {
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'HomeCtrl': '/bundles/ubidelectricity/js/front/Home/HomeCtrl.js',
         'tendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/tendersFrontCtrl.js',
-        'searchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/searchFormCtrl.js'
+        'searchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/searchFormCtrl.js',
+        'tenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/tenderCtrl.js',
+        'contactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/contactFormCtrl.js',
+        'profileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/profileFrontCtrl.js',
+        'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
+        'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrll.js'
     },
     modules: [{
         name: 'LoginService',
@@ -637,6 +644,12 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'SearchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
+    },{
+        name: 'contactService',
+        files: ['/bundles/ubidelectricity/js/front/Contact/ContactService.js']
+    },{
+        name: 'ProfileFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Auth/ProfileService.js']
     }]
 });
 
@@ -767,7 +780,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('front.login', {
+        }).state('auth.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
             title: 'content.list.LOGIN',
@@ -841,12 +854,12 @@ app.config(['$stateProvider',
             resolve: loadSequence('LockScreenCtrl', 'LoginService')
         }).state('front.profile', {
             url: '/profile',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/profile.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/profile.html',
             title: 'topbar.user.PROFILE',
             ncyBreadcrumb: {
                 label: 'topbar.user.PROFILE'
             },
-            resolve: loadSequence('jquery-sparkline', 'ProfileCtrl', 'ProfileService', 'countryService')
+            resolve: loadSequence('jquery-sparkline', 'profileFrontCtrl', 'ProfileFrontService', 'countryService')
         }).state('front.changepassword', {
             url: '/change-password',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
@@ -862,9 +875,9 @@ app.config(['$stateProvider',
             resolve: loadSequence('HomeCtrl' ,'HomeService')
         }).state('front.contact', {
             url:'/contact',
-            template : "<div>this is a contact page</div>",
+            templateUrl : "/bundles/ubidelectricity/js/front/Contact/contact_form.html",
             title: "Contact page",
-            resolve: loadSequence()
+            resolve: loadSequence('contactService', 'contactFormCtrl')
         }).state('front.about', {
             url:'/about-us',
             template : "<div>this is about us page</div>",
@@ -903,12 +916,47 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: "Tender description",
-            resolve: loadSequence('tendersFrontCtrl', 'HomeService')
+            resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+        }).state('front.tender.add',{
+            url: '/add',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
+            title: "Tender description",
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
         }).state('front.advanced_search', {
             url: '/advanced-search',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
             title: "Advanced Search",
             resolve: loadSequence('searchFormCtrl', 'SearchService', 'languageService', 'countryService', 'tenderfrontService', 'checklist-model', 'angular-slider')
+        }).state('front.bidder',{
+            url: "/bidder",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer',{
+            url: "/buyer",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.add',{
+            url:"/buyer/add",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/add_buyer.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyerFrontFormCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.list',{
+            url:"/buyer/list",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersCtrl' ,'BuyersFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
         })
     }]);
 

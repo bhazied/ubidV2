@@ -16,4 +16,7 @@
 /web/.htaccess
 /web/.release
 /web/release
+/web/assetic/*
+/web/css/*
+/web/js/*
 /.idea/*

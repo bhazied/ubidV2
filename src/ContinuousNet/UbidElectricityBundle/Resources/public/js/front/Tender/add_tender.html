@@ -1,0 +1,53 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TENDERS">Tenders</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TenderFrontFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.text.SUBMITPROJECT"">
+                        Submit your projet
+                    </legend>
+                    <form name="tenderForm" id="tenderForm" novalidate ng-submit="submitForm(tenderForm)">
+                        <div id="wizard-container">
+                            <div id="wizard-step-container">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li ng-repeat="step in steps" ng-class="{'active':step.step == currentStep}">
+                                        <a ng-click="gotoStep(step.step)" href="">[[step.step]]. [[step.name]]</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="wizard-content-container">
+                            <ng-include src="getStepTemplate()"></ng-include>
+                        </div>
+
+                        <div id="wizard-navigation-container">
+                            <div class="pull-right">
+                                <span class="btn-group">
+                                  <button ng-disabled="currentStep <= 1" class="btn btn-default" name="previous" type="button" ng-click="goToStep(currentStep - 1)"><i class="fa fa-arrow-left"></i> Previous step</button>
+                                  <button ng-disabled="currentStep >= steps.length" class="btn btn-primary" name="next" type="button" ng-click="goToStep(currentStep + 1)">Next step <i class="fa fa-arrow-right"></i></button>
+                                </span>
+                                <button ng-disabled="currentStep != steps.length" class="btn btn-success" name="next" type="button" ng-click="submitForm(tenderForm)"> <i class="fa fa-floppy-o"></i> Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

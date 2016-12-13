@@ -337,11 +337,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.user = {};
 
         }
-       // $scope.resetAccess();
         $scope.submit = function () {
             $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
-                cosole.log(data);
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
@@ -359,6 +357,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }, function(error) {
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                $rootScope.loggedIn = false;
             });
             return false;
         };
@@ -382,7 +381,19 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
-        $scope.anonymousStates = ['front.login', 'front.register', 'auth.resetpassword', 'auth.reset', 'auth.lockscreen', 'auth.emailconfirm', 'front.home', 'front.tenders.list', 'front.tenders.category', 'front.advanced_search'];
+        $scope.anonymousStates = [
+            'front.login',
+            'front.register',
+            'auth.resetpassword',
+            'auth.reset',
+            'auth.lockscreen',
+            'auth.emailconfirm',
+            'front.home',
+            'front.tenders.list',
+            'front.tenders.category',
+            'front.advanced_search',
+            'front.tender.details'
+        ];
         $timeout(function() {
             if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
@@ -392,6 +403,26 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
+        $scope.no_show_left_right_side_in = [
+            'front.login',
+            'front.register',
+            'auth.resetpassword',
+            'front.home',
+            'front.contact'
+        ];
+        $timeout(function() {
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin');
+                    $rootScope.leftrightside = true;
+                });
+            }
+        }, 2000);
+
+        $scope.changeLanguage = function (lang) {
+           // $translate.use(lang);
+        }
+        
         // Loading bar transition
         // -----------------------------------
         var $win = $($window);
@@ -559,7 +590,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 $('footer').show();
             }
         });
-        
+
+        $scope.add_tender = function () {
+            $state.go('front.tender.add');
+        }
 
     }]);
 

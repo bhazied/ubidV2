@@ -29,4 +29,14 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ));
     }
+
+    /**
+     * @Route("/", host="chart.ubid.com")
+     * @Template("UbidElectricityBundle:Default:chart.html.twig")
+     */
+    public function chartAction(){
+        return $this->render('UbidElectricityBundle:Default:chart.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ));
+    }
 }
