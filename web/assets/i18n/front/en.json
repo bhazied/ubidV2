@@ -60,7 +60,7 @@
                 "LANGUAGE": "Language"
             },
             "titles":{
-                "REGISTER": "Subsscribtion form",
+                "REGISTER": "Subscribtion form",
                 "ADVANCEDSEARCH": "Advanced Search",
                 "CONTACT": "Contact us",
                 "ADDBAYER": "Add bauer"
@@ -163,6 +163,9 @@
         "BAUYER": "Buyer",
         "SUPPLIER": "Supplier",
         "ELECTRICITYBOOKSEARCH" : "Electricity Book Search...",
-        "WHATYOUAREBIDDING": "What you are bidding..."
+        "WHATYOUAREBIDDING": "What you are bidding...",
+        "SLOGAN1":"Join US",
+        "SLOGAN2":"to find your service provider in",
+        "SLOGAN3":"Energy, Power, Electrical Products & Solutions..."
     }
 }

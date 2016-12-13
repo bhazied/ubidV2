@@ -112,14 +112,14 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="categoryParent" class="control-label">
-                                        <span translate="content.list.fields.PARENT">Parent</span>
+                                    <label for="categoryParentCategory" class="control-label">
+                                        <span translate="content.list.fields.PARENTCATEGORY">Parent Category</span>
                                     </label>
-                                <div class="block select-list" ng-if="parentsLoaded">
+                                <div class="block select-list" ng-if="categoriesLoaded">
                                     <span class="input-icon">
-                                        <select ng-readonly="category_parent_readonly" ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="category.parent" name="parent" id="categoryParent" class="form-control" ng-required="false">
+                                        <select ng-readonly="category_parent_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
                                         </select>
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-foolder-open-o"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->

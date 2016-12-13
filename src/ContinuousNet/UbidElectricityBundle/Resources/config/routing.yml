@@ -1,21 +1,18 @@
 
 ubid_electricity_dev:
-    resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-    type:     annotation
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:index }
     host: "ubid.com"
-    prefix:   /
 
 #ubid_electricity_test:
- #   resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-  #  type:     annotation
+ #   path:  /
+  #  defaults: { _controller: UbidElectricityBundle:Default:index }
    # host: "ubid-electricity.continuousnet.com"
-    #prefix:   /
 
 #ubid_electricity_prod:
- #   resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-  #  type:     annotation
+ #   path:  /
+  #  defaults: { _controller: UbidElectricityBundle:Default:index }
    # host: "admin.e-elctricity.com"
-    #prefix:   /
 
 thumb:
     resource: "@UbidElectricityBundle/Controller/ThumbController.php"
@@ -548,6 +545,11 @@ public_ubid_electricity_dev:
     path:  /
     defaults: { _controller: UbidElectricityBundle:Default:public }
     host: "public.ubid.com"
+
+public_ubid_electricity_chart:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:chart }
+    host: "chart.ubid.com"
 
 public_ubid_electricity_test:
     path:  /

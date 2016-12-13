@@ -63,11 +63,24 @@
     <button type="submit"></button>
 </form>
 
+<div class="float-xs-right" id="language-switcher">
+                <span class="current-language flag en" title="English">
+                    <ul class="languages">
+                        <li class="flag es" title="Español"></li>
+                        <li class="flag fr" title="Français"></li>
+                        <li class="flag it" title="Italiano"></li>
+                        <li class="flag de" title="Deutsch"></li>
+                    </ul>
+                </span>
+    <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
+</div>
+
+
 <ul class="nav navbar-nav float-xs-right">
     <li class="nav-item">
-        <a class="nav-link" ui-sref="front.registerbuyer"> [[ 'front.IM' | translate ]] <b>  [[ 'front.BAUYER' | translate]]</b></a>
+        <a class="nav-link" ui-sref="front.register"> [[ 'front.IM' | translate ]] <b>  [[ 'front.BAUYER' | translate]]</b></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" ui-sref="front.registersupplier">[[ 'front.IM' | translate ]] <b>[[ 'front.SUPPLIER' | translate]]</b></a>
+        <a class="nav-link" ui-sref="front.register">[[ 'front.IM' | translate ]] <b>[[ 'front.SUPPLIER' | translate]]</b></a>
     </li>
 </ul>

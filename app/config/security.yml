@@ -79,12 +79,12 @@ security:
             anonymous: true
 
         countries:
-            pattern:  ^/api/countries
+            pattern:  ^/(en|fr|ar)/api/countries
             stateless: true
             anonymous: true
 
         languages:
-            pattern: ^/api/languages
+            pattern: ^/(en|fr|ar)/api/languages
             stateless: true
             anonymous: true
 

@@ -12311,3 +12311,106 @@ table .img-thumbnail {
 #my-dashboard h2.StepTitle {
     min-height: 100px;
 }
+
+.dashboard-botton {
+    cursor: pointer;
+    background-color: #eee !important;
+}
+
+.form-group .select-list {
+    position: relative;
+}
+
+.form-group .select-list:after {
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    content: "\e64b";
+    backface-visibility: hidden;
+    color: #007aff;
+    right: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+
+.openedTopbar .navbar-default,
+.openedTopbar .main-content,
+.openedTopbar .navbar-collapse {
+    transition: margin-top 0.5s linear;
+}
+
+.closedTopbar .navbar-default,
+.closedTopbar .main-content,
+.closedTopbar .navbar-collapse {
+    margin-top: 0px !important;
+    transition: margin-top 0.5s linear;
+}
+
+@media (min-width: 992px) {
+    .closedTopbar .navbar-default,
+    .closedTopbar .main-content,
+    .closedTopbar .navbar-collapse {
+        margin-top: -65px !important;
+    }
+}
+
+.topbar-collapse:after {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    height: 16px;
+    line-height: 16px;
+    width: 30px;
+    text-align: center;
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    backface-visibility: hidden;
+    color: #007aff;
+    right: 1em;
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    border: 1px solid #c8c7cc;
+    border-top-color: #f1f1f1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: margin-top 0.5s linear;
+}
+
+.openedTopbar .topbar-collapse:after {
+    content: "\e648";
+}
+
+.closedTopbar .topbar-collapse:after {
+    content: "\e64b";
+}
+
+.navbar .navbar-header .navbar-brand {
+    padding-right: 10px!important;
+}
+
+.pager {
+    line-height: 30px;
+    margin: 0;
+    text-align: left;
+}
+
+.list-toolbox .col-md-2, .list-toolbox .col-md-4 {
+    min-height: 30px;
+}
+
+.list-toolbox .setting-title {
+    line-height: 30px;
+}

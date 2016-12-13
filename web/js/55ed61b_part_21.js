@@ -780,7 +780,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('front.login', {
+        }).state('auth.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
             title: 'content.list.LOGIN',

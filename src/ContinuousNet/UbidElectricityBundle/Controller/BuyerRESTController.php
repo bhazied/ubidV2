@@ -91,7 +91,7 @@ class BuyerRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'third_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.thirdMarketRegion = third_market_region.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.modifierUser = modifier_user.id');
-            $textFields = array('buyer.name', 'buyer.description', 'buyer.mainProductsServices', 'buyer.referenceNumber', 'buyer.phone', 'buyer.email', 'buyer.firstName', 'buyer.lastName', 'buyer.job', 'buyer.picture', 'buyer.address', 'buyer.zipCode', 'buyer.city', 'buyer.companyName');
+            $textFields = array('buyer.name', 'buyer.description', 'buyer.mainProductsServices', 'buyer.referenceNumber', 'buyer.phone', 'buyer.fax', 'buyer.website', 'buyer.email', 'buyer.firstName', 'buyer.lastName', 'buyer.job', 'buyer.picture', 'buyer.address', 'buyer.zipCode', 'buyer.city', 'buyer.companyName');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {

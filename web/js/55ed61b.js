@@ -68350,7 +68350,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('front.login', {
+        }).state('auth.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
             title: 'content.list.LOGIN',
@@ -71839,12 +71839,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 });
             }
         }, 2000);
-        console.log($state.current.name);
+
         $scope.no_show_left_right_side_in = [
             'front.login',
             'front.register',
             'auth.resetpassword',
-            'front.home'
+            'front.home',
+            'front.contact'
         ];
         $timeout(function() {
             if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
