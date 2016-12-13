@@ -142,10 +142,10 @@ class PostCategory
     private $modifiedAt;
 
     /**
-     * @var \ContinuousNet\UbidElectricityBundle\Entity\PostCategory
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Parent
      * @access private
      *
-     * @ORM\ManyToOne(targetEntity="PostCategory")
+     * @ORM\ManyToOne(targetEntity="Parent")
      * @ORM\JoinColumns({
      *        @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      * })
@@ -438,10 +438,10 @@ class PostCategory
      * Set parent
      *
      * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\PostCategory $parent
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Parent $parent
      * @return PostCategory
      */
-    public function setParent(PostCategory $parent = null)
+    public function setParent(Parent $parent = null)
     {
         $this->parent = $parent;
         return $this;
@@ -451,7 +451,7 @@ class PostCategory
      * Get parent
      *
      * @access public
-     * @return \ContinuousNet\UbidElectricityBundle\Entity\PostCategory 
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Parent 
      */
     public function getParent()
     {
