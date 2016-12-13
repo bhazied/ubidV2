@@ -54,6 +54,7 @@ class TenderType extends AbstractType
             ->add('title', TextType::class)
             ->add('slug', TextType::class)
             ->add('reference', TextType::class)
+            ->add('fees', TextType::class)
             ->add('description', TextareaType::class)
             ->add('status', ChoiceType::class, array('choices' => array('Draft' => 'Draft', 'Online' => 'Online', 'Deactivated' => 'Deactivated', 'Offline' => 'Offline', 'Deleted' => 'Deleted', 'Archived' => 'Archived', ), 'expanded' => false, 'multiple' => false))
             ->add('publishDate', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))

@@ -119,18 +119,42 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':buyerForm.email.$dirty && buyerForm.email.$invalid, 'has-success':buyerForm.email.$valid}">
-                                    <label for="buyerEmail" class="control-label">
-                                        <span translate="content.list.fields.EMAIL">Email</span>
-                                        <span class="symbol required"></span>
+                                <div class="form-group">
+                                    <label for="buyerFax" class="control-label">
+                                        <span translate="content.list.fields.FAX">Fax</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.email" type="email" name="email" id="buyerEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="true" my-unique-field="buyer.email" my-resource-url="buyers" my-current-id="[[ buyer.id ]]" />
+                                        <input ng-model="buyer.fax" type="text" name="fax" id="buyerFax" class="form-control" placeholder="[[ 'content.form.messages.ENTERFAX' | translate ]]" ng-required="false" />
+                                        <i class="ti-printer"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerWebsite" class="control-label">
+                                        <span translate="content.list.fields.WEBSITE">Website</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.website" type="text" name="website" id="buyerWebsite" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBSITE' | translate ]]" ng-required="false" />
+                                        <i class="ti-world"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerEmail" class="control-label">
+                                        <span translate="content.list.fields.EMAIL">Email</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.email" type="email" name="email" id="buyerEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
                                         <i class="ti-email"></i>
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="buyerForm.email.$dirty && buyerForm.email.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
-                                    <span class="error text-small block" ng-if="buyerForm.email.$dirty && buyerForm.email.$error.myUniqueField" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
-                                    <span class="success text-small block" ng-if="buyerForm.email.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

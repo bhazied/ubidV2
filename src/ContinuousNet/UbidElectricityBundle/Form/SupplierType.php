@@ -50,6 +50,8 @@ class SupplierType extends AbstractType
             ->add('mainProductsServices', TextType::class)
             ->add('referenceNumber', TextType::class)
             ->add('phone', TextType::class)
+            ->add('fax', TextType::class)
+            ->add('website', TextType::class)
             ->add('email', EmailType::class)
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)

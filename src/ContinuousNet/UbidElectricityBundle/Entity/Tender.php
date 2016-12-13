@@ -97,6 +97,17 @@ class Tender
     private $reference;
 
     /**
+     * @var float
+     * @access private
+     *
+     * @ORM\Column(name="fees", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $fees;
+
+    /**
      * @var string
      * @access private
      *
@@ -527,6 +538,30 @@ class Tender
     public function getReference()
     {
         return $this->reference;
+    }
+
+    /**
+     * Set fees
+     *
+     * @access public
+     * @param float $fees
+     * @return Tender
+     */
+    public function setFees($fees = null)
+    {
+        $this->fees = $fees;
+        return $this;
+    }
+
+    /**
+     * Get fees
+     *
+     * @access public
+     * @return float 
+     */
+    public function getFees()
+    {
+        return $this->fees;
     }
 
     /**
