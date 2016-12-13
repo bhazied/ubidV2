@@ -10,6 +10,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
+        // left right side to be shown or not
+        $rootScope.leftrightside = false;
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {

@@ -26,6 +26,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 });
             }
         }, 2000);
+        console.log($state.current.name);
+        $scope.no_show_left_right_side_in = [
+            'front.login',
+            'front.register',
+            'auth.resetpassword',
+            'front.home'
+        ];
+        $timeout(function() {
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin');
+                    $rootScope.leftrightside = true;
+                });
+            }
+        }, 2000);
 
         $scope.changeLanguage = function (lang) {
            // $translate.use(lang);

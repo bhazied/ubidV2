@@ -40,7 +40,7 @@ use ContinuousNet\UbidElectricityBundle\EventListener\UserSessionData;
 * @deprecated Nothing
 * @access    public
 */
-class UploadESTController extends FOSRestController
+class UploadRESTController extends FOSRestController
 {
     /**
      * @Post("/upload")

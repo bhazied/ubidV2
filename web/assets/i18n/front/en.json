@@ -68,7 +68,8 @@
             "buttons":{
                 "SUBMITADVANCEDSEARCH": "Search",
                 "SAVE": "Save",
-                "BACKBUYERS": "Back to profile"
+                "BACKBUYERS": "Back to profile",
+                "FIND": "Find"
             },
             "country_picker":{
                 "selectAll"       : "Select all",
@@ -140,5 +141,28 @@
         "DATE": "MM/dd/yyyy",
         "TIME": "h:mma",
         "DATETIME": "MM/dd/yyyy h:mma"
+    },
+    "front":{
+        "TENDERS": "Tenders",
+        "PRODUCTION": "Products",
+        "BUYERS":"Buyers",
+        "SUPPLIERS": "Suppliers",
+        "HOWDOESITWORK": "How does it work?",
+        "SERVICES":"Services",
+        "TERMSOFUSE":"Terms of use",
+        "BUYERS": "Privacy policy",
+        "SIGNIN": "Sign-in",
+        "REGISTERASBUYER": "Register as Buye",
+        "REGISTERASSUPPLIER": "Register as Supplier",
+        "CONTACTUS": "Contact us",
+        "KEEP": "Keep",
+        "INTOUCH": "IN TOUCH",
+        "CONTACTINFORMATIONS": "Contact Infomations",
+        "ADDRESS": "anjanyika road berges du lac - 1000 - Tunis - Tunisia",
+        "IM": "I'm a ",
+        "BAUYER": "Buyer",
+        "SUPPLIER": "Supplier",
+        "ELECTRICITYBOOKSEARCH" : "Electricity Book Search...",
+        "WHATYOUAREBIDDING": "What you are bidding..."
     }
 }

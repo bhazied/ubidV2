@@ -1,10 +1,11 @@
 <!-- toaster directive -->
 <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-<div class="container">
-    <header id="header" data-ng-include=" '/assets/views/front/header.html' "></header>
+<!--<header id="header" data-ng-include=" '/assets/views/front/header.html' "></header> -->
+<nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar" data-ng-include=" '/assets/views/front/header.html' ">
+</nav>
 
-    <section id="navArea" data-ng-include=" '/assets/views/front/nav_area.html' "></section>
-    <div ui-view class="wrap-content container fade-in-up" id="container"></div>
-    <footer id="footer" data-ng-include=" '/assets/views/front/footer.html' "></footer>
-</div>
+<!--<section id="navArea" data-ng-include=" '/assets/views/front/nav_area.html' "></section>-->
+<div ui-view class="container" id="container"></div>
+<hr class="footer-sep" />
+<footer id="footer" data-ng-include=" '/assets/views/front/footer.html' "></footer>
 
