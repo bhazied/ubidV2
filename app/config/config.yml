@@ -340,6 +340,7 @@ assetic:
                 # - "assets/bower_components/isteven-angular-multiselect/isteven-multi-select.css"
                 # - "assets/css/front/theme.css"
                 # - "assets/css/front/style.css"
+                - "assets/css/custom.css"
                 - "front/css/e-elctricity.css"
         jquery:
             inputs:

@@ -109,8 +109,20 @@ INSERT INTO `category` (`id`, `name`, `slug`, `picture`, `description`, `parent_
 (7, 'Electrical Industry', 'electrical-industry', NULL, 'Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam.', NULL, 1, 7, 'Online', '2016-12-13 13:58:53', 1, NULL, NULL),
 (8, 'Electrical Services', 'electrical-services', NULL, 'Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.', NULL, 1, 8, 'Online', '2016-12-13 13:59:38', 1, NULL, NULL);
 
+DELETE FROM  `post_type`;
+
+INSERT INTO `post_type` (`id`, `name`, `slug`, `is_published`, `created_at`, `creator_user_id`, `modified_at`, `modifier_user_id`) VALUES
+(1, 'Static Pages', 'static-pages', 1, '2016-01-22 20:48:52', 1, '2016-12-13 14:36:10', 1),
+(2, 'News', 'news', 1, '2016-12-13 14:36:20', 1, NULL, NULL),
+(3, 'FAQ', 'faq', 1, '2016-12-13 15:36:20', 1, NULL, NULL);
 
 ALTER TABLE `post_category` DROP FOREIGN KEY `post_category_fk1` ;
 
 ALTER TABLE `post_category` CHANGE `parent_id` `parent_post_category_id` SMALLINT( 6 ) UNSIGNED NULL DEFAULT NULL COMMENT '{"prefix":"parent_"}';
+
+INSERT INTO `post_category` (`id`, `name`, `slug`, `picture`, `description`, `parent_post_category_id`, `post_type_id`, `ordering`, `status`, `created_at`, `creator_user_id`, `modified_at`, `modifier_user_id`) VALUES
+(1, 'Footer Pages', 'footer-pages', NULL, 'Footer Pages Content Catgory', NULL, 1, 1, 'Online', '2016-12-13 14:51:50', 1, NULL, NULL);
+
+
+
 

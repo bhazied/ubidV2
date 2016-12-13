@@ -2340,7 +2340,7 @@ function ($stateProvider) {
             label: 'content.list.NEWPOSTCATEGORY'
         },
         params: {
-            'post_category_parent': null,
+            'post_category_parent_post_category': null,
             'post_category_post_type': null
         },
         resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'PostCategoryFormCtrl', 'postCategoryService', 'postTypeService', 'userService')
