@@ -5,17 +5,17 @@ ubid_electricity_dev:
     host: "ubid.com"
     prefix:   /
 
-ubid_electricity_test:
-    resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-    type:     annotation
-    host: "ubid-electricity.continuousnet.com"
-    prefix:   /
+#ubid_electricity_test:
+ #   resource: "@UbidElectricityBundle/Controller/DefaultController.php"
+  #  type:     annotation
+   # host: "ubid-electricity.continuousnet.com"
+    #prefix:   /
 
-ubid_electricity_prod:
-    resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-    type:     annotation
-    host: "admin.e-elctricity.com"
-    prefix:   /
+#ubid_electricity_prod:
+ #   resource: "@UbidElectricityBundle/Controller/DefaultController.php"
+  #  type:     annotation
+   # host: "admin.e-elctricity.com"
+    #prefix:   /
 
 thumb:
     resource: "@UbidElectricityBundle/Controller/ThumbController.php"
