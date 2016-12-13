@@ -24,17 +24,18 @@
                         Edit Menu Link
                     </legend>
                     <form name="menuLinkForm" id="menuLinkForm" novalidate ng-submit="submitForm(menuLinkForm)">
+                        <input type="hidden" name="id" id="menuLinkId" ng-model="menuLink.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="menuLinkId" ng-model="menuLink.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.menu.$dirty && menuLinkForm.menu.$invalid, 'has-success':menuLinkForm.menu.$valid}">
                                     <label for="menuLinkMenu" class="control-label">
                                         <span translate="content.list.fields.MENU">Menu</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block" ng-if="menusLoaded">
+                                <div class="block select-list" ng-if="menusLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="menuLink.menu" name="menu" id="menuLinkMenu" class="form-control" ng-required="true">
+                                        <select ng-readonly="menu_link_menu_readonly" ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="menuLink.menu" name="menu" id="menuLinkMenu" class="form-control" ng-required="true">
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
@@ -42,8 +43,10 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.menu.$dirty && menuLinkForm.menu.$error.required" translate="content.form.messages.MENUREQUIRED">Menu is required.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.menu.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.name.$dirty && menuLinkForm.name.$invalid, 'has-success':menuLinkForm.name.$valid}">
                                     <label for="menuLinkName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -57,35 +60,13 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.name.$dirty && menuLinkForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="menuLinkNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menuLink.name_ar" type="text" name="nameAr" id="menuLinkNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="menuLinkNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menuLink.name_fr" type="text" name="nameFr" id="menuLinkNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
                                     <slug from="menuLink.name" to="menuLink.slug"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.slug.$dirty && menuLinkForm.slug.$invalid, 'has-success':menuLinkForm.slug.$valid}">
                                     <label for="menuLinkSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -98,42 +79,20 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.slug.$dirty && menuLinkForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="menuLink.name_ar" to="menuLink.slug_ar"></slug>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="menuLinkSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menuLink.slug_ar" type="text" name="slugAr" id="menuLinkSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="menuLink.name_fr" to="menuLink.slug_fr"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="menuLinkSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="menuLink.slug_fr" type="text" name="slugFr" id="menuLinkSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="menuLink.is_published" type="checkbox" name="isPublished" id="menuLinkIsPublished" />
                                     <label for="menuLinkIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.controller.$dirty && menuLinkForm.controller.$invalid, 'has-success':menuLinkForm.controller.$valid}">
                                     <label for="menuLinkController" class="control-label">
                                         <span translate="content.list.fields.CONTROLLER">Controller</span>
@@ -146,8 +105,10 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.controller.$dirty && menuLinkForm.controller.$error.required" translate="content.form.messages.CONTROLLERREQUIRED">Controller is required.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.controller.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.action.$dirty && menuLinkForm.action.$invalid, 'has-success':menuLinkForm.action.$valid}">
                                     <label for="menuLinkAction" class="control-label">
                                         <span translate="content.list.fields.ACTION">Action</span>
@@ -160,10 +121,12 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.action.$dirty && menuLinkForm.action.$error.required" translate="content.form.messages.ACTIONREQUIRED">Action is required.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.action.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="menuLinkForeignKey" class="control-label">
                                         <span translate="content.list.fields.FOREIGNKEY">Foreign Key</span>
@@ -173,8 +136,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':menuLinkForm.ordering.$dirty && menuLinkForm.ordering.$invalid, 'has-success':menuLinkForm.ordering.$valid}">
                                     <label for="menuLinkOrdering" class="control-label">
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
@@ -187,6 +152,7 @@
                                     <span class="error text-small block" ng-if="menuLinkForm.ordering.$dirty && menuLinkForm.ordering.$error.required" translate="content.form.messages.ORDERINGREQUIRED">Ordering is required.</span>
                                     <span class="success text-small block" ng-if="menuLinkForm.ordering.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -207,6 +173,14 @@
                     <div class="table-responsive" ng-if="menuLinks.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

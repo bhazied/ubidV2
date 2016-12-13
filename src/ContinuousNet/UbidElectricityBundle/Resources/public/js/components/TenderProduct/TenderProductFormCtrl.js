@@ -4,8 +4,8 @@
  * Controller for Tender Product Form
  */
 
-app.controller('TenderProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
+app.controller('TenderProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$categoriesDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $categoriesDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -73,6 +73,31 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.getTenders();
+
+    $scope.categories = [];
+    $scope.categoriesLoaded = false;
+
+    $scope.getCategories = function() {
+        $timeout(function(){
+            $scope.categoriesLoaded = true;
+            if ($scope.categories.length == 0) {
+                $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+                var def = $q.defer();
+                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
+                });
+                return def;
+            } else {
+                return $scope.categories;
+            }
+        });
+    };
+
+    $scope.getCategories();
 
     $scope.productTypes = [];
     $scope.productTypesLoaded = false;
@@ -174,6 +199,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.tenderproducts');
     };
     
+    $scope.tender_product_tender_readonly = false;
+    $scope.tender_product_category_readonly = false;
+    $scope.tender_product_product_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $tenderProductsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -183,6 +211,18 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.tenderProduct = {id: 0, status: 'Draft'};
 
+        if (angular.isDefined($stateParams.tender_product_tender) && JSON.parse($stateParams.tender_product_tender) != null) {
+            $scope.tenderProduct.tender = $stateParams.tender_product_tender;
+            $scope.tender_product_tender_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_product_category) && JSON.parse($stateParams.tender_product_category) != null) {
+            $scope.tenderProduct.category = $stateParams.tender_product_category;
+            $scope.tender_product_category_readonly = true;
+        }
+        if (angular.isDefined($stateParams.tender_product_product_type) && JSON.parse($stateParams.tender_product_product_type) != null) {
+            $scope.tenderProduct.product_type = $stateParams.tender_product_product_type;
+            $scope.tender_product_product_type_readonly = true;
+        }
     }
 
 }]);

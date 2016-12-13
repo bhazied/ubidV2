@@ -47,6 +47,7 @@ class BuyerType extends AbstractType
             ->add('buyerType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:BuyerType', 'choice_label' => 'name'))
             ->add('name', TextType::class)
             ->add('description', TextType::class)
+            ->add('mainProductsServices', TextType::class)
             ->add('referenceNumber', TextType::class)
             ->add('phone', TextType::class)
             ->add('email', EmailType::class)
@@ -60,6 +61,18 @@ class BuyerType extends AbstractType
             ->add('companyName', TextType::class)
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
+            ->add('totalRevenu', IntegerType::class)
+            ->add('firstMarketRegion', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
+            ->add('firstMarketRate', CheckboxType::class)
+            ->add('secondMarketRegion', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
+            ->add('secondMarketRate', CheckboxType::class)
+            ->add('thirdMarketRegion', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
+            ->add('thirdMarketRate', CheckboxType::class)
+            ->add('isPublic', CheckboxType::class)
+            ->add('views', IntegerType::class)
+            ->add('enableComment', CheckboxType::class)
+            ->add('enablePrivateMessage', CheckboxType::class)
+            ->add('enableShare', CheckboxType::class)
         ;
     }
     

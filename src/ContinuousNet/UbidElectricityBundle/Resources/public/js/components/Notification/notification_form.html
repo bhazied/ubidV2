@@ -24,9 +24,10 @@
                         Edit Notification
                     </legend>
                     <form name="notificationForm" id="notificationForm" novalidate ng-submit="submitForm(notificationForm)">
+                        <input type="hidden" name="id" id="notificationId" ng-model="notification.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="notificationId" ng-model="notification.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':notificationForm.content.$dirty && notificationForm.content.$invalid, 'has-success':notificationForm.content.$valid}">
                                     <label for="notificationContent" class="control-label">
                                         <span translate="content.list.fields.CONTENT">Content</span>
@@ -39,8 +40,10 @@
                                     <span class="error text-small block" ng-if="notificationForm.content.$dirty && notificationForm.content.$error.required" translate="content.form.messages.CONTENTREQUIRED">Content is required.</span>
                                     <span class="success text-small block" ng-if="notificationForm.content.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':notificationForm.link.$dirty && notificationForm.link.$invalid, 'has-success':notificationForm.link.$valid}">
                                     <label for="notificationLink" class="control-label">
                                         <span translate="content.list.fields.LINK">Link</span>
@@ -53,14 +56,17 @@
                                     <span class="error text-small block" ng-if="notificationForm.link.$dirty && notificationForm.link.$error.required" translate="content.form.messages.LINKREQUIRED">Link is required.</span>
                                     <span class="success text-small block" ng-if="notificationForm.link.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="notification.read" type="checkbox" name="read" id="notificationRead" />
                                     <label for="notificationRead" translate="content.list.fields.READ">Read</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -81,6 +87,14 @@
                     <div class="table-responsive" ng-if="notifications.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

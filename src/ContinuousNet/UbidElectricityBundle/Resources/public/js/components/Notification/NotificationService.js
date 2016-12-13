@@ -3,15 +3,16 @@
 /**
  * Notifications Data Factory
  */
-app.factory('$notificationsDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$notificationsDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'notifications', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'notifications';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'notifications/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'notifications/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'notifications/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

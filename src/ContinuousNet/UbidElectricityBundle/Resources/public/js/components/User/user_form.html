@@ -24,9 +24,10 @@
                         Edit User
                     </legend>
                     <form name="userForm" id="userForm" novalidate ng-submit="submitForm(userForm)">
+                        <input type="hidden" name="id" id="userId" ng-model="user.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="userId" ng-model="user.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userType" class="control-label">
                                         <span translate="content.list.fields.TYPE">Type</span>
@@ -37,14 +38,15 @@
                                             [[ type.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="types.length >= 10">
+                                    <div class="block select-list" ng-if="types.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="user.type" name="type" id="userType" class="form-control" ng-required="false">
                                         </select>
-                                        <span my-enum="[[ user.type ]]" my-enum-list="[[ types ]]"></span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':userForm.username.$dirty && userForm.username.$invalid, 'has-success':userForm.username.$valid}">
                                     <label for="userUsername" class="control-label">
                                         <span translate="content.list.fields.USERNAME">Username</span>
@@ -58,10 +60,12 @@
                                     <span class="error text-small block" ng-if="userForm.username.$dirty && userForm.username.$error.myUniqueField" translate="content.form.messages.USERNAMEALREADYINUSE">This Username is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="userForm.username.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':userForm.password.$dirty && userForm.password.$invalid, 'has-success':userForm.password.$valid}">
                                     <label for="userPassword" class="control-label">
                                         <span translate="content.list.fields.PASSWORD">Password</span>
@@ -74,8 +78,10 @@
                                     <span class="error text-small block" ng-if="userForm.password.$dirty && userForm.password.$error.required" translate="content.form.messages.PASSWORDREQUIRED">Password is required.</span>
                                     <span class="success text-small block" ng-if="userForm.password.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userSalt" class="control-label">
                                         <span translate="content.list.fields.SALT">Salt</span>
@@ -85,10 +91,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userPhone" class="control-label">
                                         <span translate="content.list.fields.PHONE">Phone</span>
@@ -98,8 +106,10 @@
                                         <i class="fa fa-phone"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':userForm.email.$dirty && userForm.email.$invalid, 'has-success':userForm.email.$valid}">
                                     <label for="userEmail" class="control-label">
                                         <span translate="content.list.fields.EMAIL">Email</span>
@@ -113,10 +123,12 @@
                                     <span class="error text-small block" ng-if="userForm.email.$dirty && userForm.email.$error.myUniqueField" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="userForm.email.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userGender" class="control-label">
                                         <span translate="content.list.fields.GENDER">Gender</span>
@@ -127,14 +139,15 @@
                                             [[ gender.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="genders.length >= 10">
+                                    <div class="block select-list" ng-if="genders.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control" ng-required="false">
                                         </select>
-                                        <span my-enum="[[ user.gender ]]" my-enum-list="[[ genders ]]"></span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userFirstName" class="control-label">
                                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
@@ -144,10 +157,12 @@
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userLastName" class="control-label">
                                         <span translate="content.list.fields.LASTNAME">Last Name</span>
@@ -157,8 +172,10 @@
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -184,10 +201,12 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userAddress" class="control-label">
                                         <span translate="content.list.fields.ADDRESS">Address</span>
@@ -197,8 +216,10 @@
                                         <i class="ti-home"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userZipCode" class="control-label">
                                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
@@ -208,10 +229,12 @@
                                         <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userCompanyName" class="control-label">
                                         <span translate="content.list.fields.COMPANYNAME">Company Name</span>
@@ -221,8 +244,10 @@
                                         <i class="ti-briefcase"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userJob" class="control-label">
                                         <span translate="content.list.fields.JOB">Job</span>
@@ -232,40 +257,46 @@
                                         <i class="ti-rocket"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userCountry" class="control-label">
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                <div class="block" ng-if="countriesLoaded">
+                                <div class="block select-list" ng-if="countriesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
+                                        <select ng-readonly="user_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-globe"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userLanguage" class="control-label">
                                         <span translate="content.list.fields.LANGUAGE">Language</span>
                                     </label>
-                                <div class="block" ng-if="languagesLoaded">
+                                <div class="block select-list" ng-if="languagesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
+                                        <select ng-readonly="user_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-flag"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="userProfile" class="control-label">
                                         <span translate="content.list.fields.PROFILE">Profile</span>
@@ -275,8 +306,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':userForm.roles.$dirty && userForm.roles.$invalid, 'has-success':userForm.roles.$valid}">
                                     <label for="userRoles" class="control-label">
                                         <span translate="content.list.fields.ROLES">Roles</span>
@@ -293,34 +326,43 @@
                                     <span class="error text-small block" ng-if="userForm.roles.$dirty && userForm.roles.$error.required" translate="content.form.messages.ROLESREQUIRED">Roles is required.</span>
                                     <span class="success text-small block" ng-if="userForm.roles.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
                                     <input ng-model="user.enabled" type="checkbox" name="enabled" id="userEnabled" />
                                     <label for="userEnabled" translate="content.list.fields.ENABLED">Enabled</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
                                     <input ng-model="user.locked" type="checkbox" name="locked" id="userLocked" />
                                     <label for="userLocked" translate="content.list.fields.LOCKED">Locked</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
                                     <input ng-model="user.expired" type="checkbox" name="expired" id="userExpired" />
                                     <label for="userExpired" translate="content.list.fields.EXPIRED">Expired</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="user.credentials_expired" type="checkbox" name="credentialsExpired" id="userCredentialsExpired" />
                                     <label for="userCredentialsExpired" translate="content.list.fields.CREDENTIALSEXPIRED">Credentials Expired</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -361,6 +403,14 @@
                     <div class="table-responsive" ng-if="users.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

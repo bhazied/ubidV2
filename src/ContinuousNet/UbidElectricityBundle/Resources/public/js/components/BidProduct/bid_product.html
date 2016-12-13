@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="BidProductCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBIDPRODUCTS">Back to Bid Products list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDBIDPRODUCT">Add Bid Product</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(bidProduct)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITBIDPRODUCT">Edit Bid Product</span>
                         </button>
@@ -55,45 +55,13 @@
                                 <td><a ui-sref="app.marketplace.bidsdetails({id: bidProduct.bid.id})">[[ bidProduct.bid.title ]]</a></span></td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.NAME">Name</span></td>
-                                <td>
-                                    <div ng-bind-html="bidProduct.name"></div>
-                                </td>
+                                <td><span translate="content.list.fields.SUPPLIERPRODUCT">Supplier Product</span></td>
+                                <td><a ui-sref="app.marketplace.supplierproductsdetails({id: bidProduct.supplier_product.id})">[[ bidProduct.supplier_product.name ]]</a></span></td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td><span translate="content.list.fields.NEWUNITCOST">New Unit Cost</span></td>
                                 <td>
-                                    <div ng-bind-html="bidProduct.slug"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.BRAND">Brand</span></td>
-                                <td>
-                                    <div ng-bind-html="bidProduct.brand"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.MODEL">Model</span></td>
-                                <td>
-                                    <div ng-bind-html="bidProduct.model"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
-                                <td>
-                                    <div ng-bind-html="bidProduct.description"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.STATUS">Status</span></td>
-                                <td>
-                                    <span my-enum="[[ bidProduct.status ]]" my-enum-list="[[ statuses ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.UNITCOST">Unit Cost</span></td>
-                                <td>
-                                    <div ng-bind-html="bidProduct.unit_cost"></div>
+                                    <div ng-bind-html="bidProduct.new_unit_cost"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -136,6 +104,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

@@ -1,0 +1,277 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MESSAGES">Messages</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MessageFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWMESSAGE" ng-if="message.id == 0">
+                        New Message
+                    </legend>
+                    <legend translate="content.list.EDITMESSAGE" ng-if="message.id > 0">
+                        Edit Message
+                    </legend>
+                    <form name="messageForm" id="messageForm" novalidate ng-submit="submitForm(messageForm)">
+                        <input type="hidden" name="id" id="messageId" ng-model="message.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.fromUser.$dirty && messageForm.fromUser.$invalid, 'has-success':messageForm.fromUser.$valid}">
+                                    <label for="messageFromUser" class="control-label">
+                                        <span translate="content.list.fields.FROMUSER">From User</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="usersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_from_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.from_user" name="fromUser" id="messageFromUser" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="messageForm.fromUser.$dirty && messageForm.fromUser.$error.required" translate="content.form.messages.FROMUSERREQUIRED">From User is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.fromUser.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="messageFromBuyer" class="control-label">
+                                        <span translate="content.list.fields.FROMBUYER">From Buyer</span>
+                                    </label>
+                                <div class="block select-list" ng-if="buyersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_from_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.from_buyer" name="fromBuyer" id="messageFromBuyer" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="messageFromSupplier" class="control-label">
+                                        <span translate="content.list.fields.FROMSUPPLIER">From Supplier</span>
+                                    </label>
+                                <div class="block select-list" ng-if="suppliersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_from_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.from_supplier" name="fromSupplier" id="messageFromSupplier" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.toUser.$dirty && messageForm.toUser.$invalid, 'has-success':messageForm.toUser.$valid}">
+                                    <label for="messageToUser" class="control-label">
+                                        <span translate="content.list.fields.TOUSER">To User</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="usersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_to_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.to_user" name="toUser" id="messageToUser" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="messageForm.toUser.$dirty && messageForm.toUser.$error.required" translate="content.form.messages.TOUSERREQUIRED">To User is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.toUser.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="messageToBuyer" class="control-label">
+                                        <span translate="content.list.fields.TOBUYER">To Buyer</span>
+                                    </label>
+                                <div class="block select-list" ng-if="buyersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_to_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.to_buyer" name="toBuyer" id="messageToBuyer" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="messageToSupplier" class="control-label">
+                                        <span translate="content.list.fields.TOSUPPLIER">To Supplier</span>
+                                    </label>
+                                <div class="block select-list" ng-if="suppliersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="message_to_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.to_supplier" name="toSupplier" id="messageToSupplier" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.subject.$dirty && messageForm.subject.$invalid, 'has-success':messageForm.subject.$valid}">
+                                    <label for="messageSubject" class="control-label">
+                                        <span translate="content.list.fields.SUBJECT">Subject</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="message.subject" type="text" name="subject" id="messageSubject" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUBJECT' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="messageForm.subject.$dirty && messageForm.subject.$error.required" translate="content.form.messages.SUBJECTREQUIRED">Subject is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.subject.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="messageBody" class="control-label">
+                                        <span translate="content.list.fields.BODY">Body</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="message.body" name="body" id="messageBody" class="form-control" placeholder="[[ 'content.form.messages.ENTERBODY' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.status.$dirty && messageForm.status.$invalid, 'has-success':messageForm.status.$valid}">
+                                    <label for="messageStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="message.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="message.status" name="status" id="messageStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="messageForm.status.$dirty && messageForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="message.is_read" type="checkbox" name="isRead" id="messageIsRead" />
+                                    <label for="messageIsRead" translate="content.list.fields.ISREAD">Is Read</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.sendingTime.$dirty && messageForm.sendingTime.$invalid, 'has-success':messageForm.sendingTime.$valid}">
+                                    <label for="messageSendingTime" class="control-label">
+                                        <span translate="content.list.fields.SENDINGTIME">Sending Time</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <input ng-model="message.sending_time" type="text" name="sendingTime" id="messageSendingTime" class="form-control" placeholder="[[ 'content.form.messages.SELECTSENDINGTIME' | translate ]]" is-open="sendingTimeOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="true" />
+                                            <i class="ti-alarm-clock"></i>
+                                        </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="sendingTimeToggle($event)">
+                                            <i class="fa fa-calendar"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="messageForm.sendingTime.$dirty && messageForm.sendingTime.$error.required" translate="content.form.messages.SENDINGTIMEREQUIRED">Sending Time is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.sendingTime.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':messageForm.readingTime.$dirty && messageForm.readingTime.$invalid, 'has-success':messageForm.readingTime.$valid}">
+                                    <label for="messageReadingTime" class="control-label">
+                                        <span translate="content.list.fields.READINGTIME">Reading Time</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <input ng-model="message.reading_time" type="text" name="readingTime" id="messageReadingTime" class="form-control" placeholder="[[ 'content.form.messages.SELECTREADINGTIME' | translate ]]" is-open="readingTimeOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="true" />
+                                            <i class="ti-alarm-clock"></i>
+                                        </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="readingTimeToggle($event)">
+                                            <i class="fa fa-calendar"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="messageForm.readingTime.$dirty && messageForm.readingTime.$error.required" translate="content.form.messages.READINGTIMEREQUIRED">Reading Time is required.</span>
+                                    <span class="success text-small block" ng-if="messageForm.readingTime.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMESSAGES">Back to Messages list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(messageForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="messageForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="messages.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

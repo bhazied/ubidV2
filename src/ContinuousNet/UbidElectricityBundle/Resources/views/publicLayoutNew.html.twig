@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="UbidElectricityFront">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico" />
+
+    <title data-ng-bind="pageTitle()">{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+
+        <!-- Bootstrap core CSS -->
+        {% stylesheets
+        '@bootstrap_4_css'
+        '@bootstrap'
+        '@font_awesome'
+        '@themify_icons'
+        '@loading_bar_css'
+        '@animate_css'
+        '@angular_table_css'
+        '@bootstrap_colorpicker_css'
+        '@toaster_css'
+        '@jqueryui_css'
+        '@elfinder_css'
+        '@color_picker_css'
+        '@multirange_slider_css'
+        '@site_front_css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+    {% endblock %}
+    <link href="/front/css/e-elctricity.css" rel="stylesheet" />
+
+</head>
+
+<body>
+{% block body %}
+{% endblock %}
+
+<nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar">
+
+    <a class="navbar-logo-icon" ui-sref="front.home"></a>
+
+    <a class="navbar-logo-text" ui-sref="front.home"></a>
+
+    <form class="float-xs-left">
+        <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" />
+        <button type="submit"></button>
+    </form>
+
+    <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+            <a class="nav-link" ui-sref="front.registerbuyer" translate="front.IMABUYER">I'm a <b>Buyer</b></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" ui-sref="front.registersupplier" translate="front.IMASUPPLIER">I'm a <b>Supplier</b></a>
+        </li>
+    </ul>
+
+</nav>
+
+<div class="container" id="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="search-box">
+                <ul>
+                    <li><a class="plus"></a></li>
+                    <li><a class="flash"></a></li>
+                    <li><a class="microship"></a></li>
+                    <li><a class="pole"></a></li>
+                </ul>
+                <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
+                <button type="submit" translate="front.FIND">Find</button>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>
+
+<hr class="footer-sep" />
+
+<footer>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-4 footer-links">
+                <ul>
+                    <li><a ui-sref="front.tenders" translate="front.TENDERS">Tenders</a></li>
+                    <li><a ui-sref="front.products" translate="front.PRODUCTION">Products</a></li>
+                    <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
+                    <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 footer-links">
+                <ul>
+                    <li><a ui-sref="front.post('how-does-it-work')" translate="front.HOWDOESITWORK">How does it work?</a></li>
+                    <li><a ui-sref="front.post('services')" translate="front.SERVICES">Services</a></li>
+                    <li><a ui-sref="front.post('terms-of-use')" translate="front.TERMSOFUSE">Terms of use</a></li>
+                    <li><a ui-sref="front.post('privacy-policy')" translate="front.BUYERS">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 footer-links">
+                <ul>
+                    <li><a ui-sref="front.signin" translate="front.SIGNIN">Sign-in</a></li>
+                    <li><a ui-sref="front.registerbuyer" translate="front.REGISTERASBUYER">Register as Buyer</a></li>
+                    <li><a ui-sref="front.registersupplier" translate="front.REGISTERASSUPPLIER">Register as Supplier</a></li>
+                    <li><a ui-sref="front.contact" translate="front.CONTACTUS">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="footer-center">
+                <ul>
+                    <li><a href="http://facebook.com/" target="_blank" class="fb"></a></li>
+                    <li><a href="https://twitter.com/" target="_blank" class="tw"></a></li>
+                    <li><a href="https://plus.google.com/" target="_blank" class="gp"></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank" class="li"></a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank" class="yt"></a></li>
+                </ul>
+                <p class="keep-in-touch"><a ui-sref="front.contact" translate="front.SIGNIN">Keep <b>IN TOUCH</b></a></p>
+            </div>
+            <p class="copyright">Copyright &copy; E-electricity 2017. All rights reserved.</p>
+        </div>
+        <div class="col-md-4">
+
+            <div class="col-md-5">
+                <span class="contact-footer" translate="front.CONTACTINFORMATIONS" class="pull-right" clas>Contact Infomations</span>
+            </div>
+            <div class="col-md-7 contact-infos">
+                <ul>
+                    <li><i class="address"></i> <span translate="front.ADDRESS">Tanjanyika road berges du lac - 1000 - Tunis - Tunisia</span></li>
+                    <li><i class="tel"></i> +971 1258 4526 7</li>
+                    <li><i class="fax"></i> +971 1258 4525 9</li>
+                    <li><i class="email"></i> <a href="mailto:contact@e-electricity.com" target="_blank">contact@e-electricity.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+
+{% block javascripts %}
+    {% javascripts
+    '@jquery'
+    '@bootstrap_4_js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+
+</body>
+</html>
+

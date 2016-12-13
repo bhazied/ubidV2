@@ -44,6 +44,7 @@ class TenderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('section', ChoiceType::class, array('choices' => array('Consultation' => 'Consultation', 'Tender' => 'Tender', ), 'expanded' => false, 'multiple' => false))
             ->add('buyer', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Buyer', 'choice_label' => 'name'))
             ->add('region', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
@@ -66,7 +67,8 @@ class TenderType extends AbstractType
             ->add('attachmentFile3', TextType::class)
             ->add('attachmentFile4', TextType::class)
             ->add('source', TextType::class)
-            ->add('tenderCategories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:TenderCategory', 'choice_label' => 'name'))
+            ->add('views', IntegerType::class)
+            ->add('categories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
         ;
     }
     

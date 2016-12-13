@@ -50,6 +50,7 @@ class PostCategoryRESTController extends BaseRESTController
      */
     public function getAction(PostCategory $entity)
     {
+        $entity = $this->translateEntity($entity);
         $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
@@ -87,7 +88,7 @@ class PostCategoryRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostType', 'post_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.postType = post_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.modifierUser = modifier_user.id');
-            $textFields = array('postCategory.name', 'postCategory.nameAr', 'postCategory.nameFr', 'postCategory.slug', 'postCategory.slugAr', 'postCategory.slugFr', 'postCategory.picture', 'postCategory.description', 'postCategory.descriptionAr', 'postCategory.descriptionFr');
+            $textFields = array('postCategory.name', 'postCategory.slug', 'postCategory.picture', 'postCategory.description');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
@@ -118,6 +119,7 @@ class PostCategoryRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('pc_.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
@@ -197,9 +199,6 @@ class PostCategoryRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeStatus) {
-                    $entity->setStatus('Draft');
-                }
                 $em->flush();
                 return $entity;
             }
@@ -246,13 +245,5 @@ class PostCategoryRESTController extends BaseRESTController
         }
     }
     
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

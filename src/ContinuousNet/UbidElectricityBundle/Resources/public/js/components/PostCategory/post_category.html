@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="PostCategoryCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPOSTCATEGORIES">Back to Post Categories list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDPOSTCATEGORY">Add Post Category</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(postCategory)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPOSTCATEGORY">Edit Post Category</span>
                         </button>
@@ -53,33 +53,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.NAMEAR">Name Ar</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.name_ar"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.NAMEFR">Name Fr</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.name_fr"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.SLUG">Slug</span></td>
                                 <td>
                                     <div ng-bind-html="postCategory.slug"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.SLUGAR">Slug Ar</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.slug_ar"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.SLUGFR">Slug Fr</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.slug_fr"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -99,18 +75,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.description_ar"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span></td>
-                                <td>
-                                    <div ng-bind-html="postCategory.description_fr"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.PARENT">Parent</span></td>
                                 <td><a ui-sref="app.news.postcategoriesdetails({id: postCategory.parent.id})">[[ postCategory.parent.name ]]</a></span></td>
                             </tr>
@@ -124,7 +88,7 @@
                                     <div ng-bind-html="postCategory.ordering"></div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
                                 <td><span translate="content.list.fields.STATUS">Status</span></td>
                                 <td>
                                     <span my-enum="[[ postCategory.status ]]" my-enum-list="[[ statuses ]]"></span>
@@ -152,6 +116,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

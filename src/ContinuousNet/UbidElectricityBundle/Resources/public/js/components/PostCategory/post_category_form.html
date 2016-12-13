@@ -24,9 +24,10 @@
                         Edit Post Category
                     </legend>
                     <form name="postCategoryForm" id="postCategoryForm" novalidate ng-submit="submitForm(postCategoryForm)">
+                        <input type="hidden" name="id" id="postCategoryId" ng-model="postCategory.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="postCategoryId" ng-model="postCategory.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postCategoryForm.name.$dirty && postCategoryForm.name.$invalid, 'has-success':postCategoryForm.name.$valid}">
                                     <label for="postCategoryName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -40,33 +41,11 @@
                                     <span class="error text-small block" ng-if="postCategoryForm.name.$dirty && postCategoryForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategoryNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.name_ar" type="text" name="nameAr" id="postCategoryNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategoryNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.name_fr" type="text" name="nameFr" id="postCategoryNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
                                     <slug from="postCategory.name" to="postCategory.slug"></slug>
-                            <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':postCategoryForm.slug.$dirty && postCategoryForm.slug.$invalid, 'has-success':postCategoryForm.slug.$valid}">
                                     <label for="postCategorySlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -79,36 +58,12 @@
                                     <span class="error text-small block" ng-if="postCategoryForm.slug.$dirty && postCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="postCategory.name_ar" to="postCategory.slug_ar"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategorySlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.slug_ar" type="text" name="slugAr" id="postCategorySlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="postCategory.name_fr" to="postCategory.slug_fr"></slug>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategorySlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.slug_fr" type="text" name="slugFr" id="postCategorySlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postCategoryPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -134,8 +89,10 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postCategoryForm.description.$dirty && postCategoryForm.description.$invalid, 'has-success':postCategoryForm.description.$valid}">
                                     <label for="postCategoryDescription" class="control-label">
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
@@ -148,56 +105,36 @@
                                     <span class="error text-small block" ng-if="postCategoryForm.description.$dirty && postCategoryForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategoryDescriptionAr" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.description_ar" type="text" name="descriptionAr" id="postCategoryDescriptionAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postCategoryDescriptionFr" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="postCategory.description_fr" type="text" name="descriptionFr" id="postCategoryDescriptionFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postCategoryParent" class="control-label">
                                         <span translate="content.list.fields.PARENT">Parent</span>
                                     </label>
-                                <div class="block" ng-if="parentsLoaded">
+                                <div class="block select-list" ng-if="parentsLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="postCategory.parent" name="parent" id="postCategoryParent" class="form-control" ng-required="false">
+                                        <select ng-readonly="post_category_parent_readonly" ng-options="item.id as item.name for item in parents | filter:{ hidden : false }" ng-model="postCategory.parent" name="parent" id="postCategoryParent" class="form-control" ng-required="false">
                                         </select>
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postCategoryForm.postType.$dirty && postCategoryForm.postType.$invalid, 'has-success':postCategoryForm.postType.$valid}">
                                     <label for="postCategoryPostType" class="control-label">
                                         <span translate="content.list.fields.POSTTYPE">Post Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block" ng-if="postTypesLoaded">
+                                <div class="block select-list" ng-if="postTypesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
+                                        <select ng-readonly="post_category_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -205,10 +142,12 @@
                                     <span class="error text-small block" ng-if="postCategoryForm.postType.$dirty && postCategoryForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postCategoryOrdering" class="control-label">
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
@@ -218,8 +157,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':postCategoryForm.status.$dirty && postCategoryForm.status.$invalid, 'has-success':postCategoryForm.status.$valid}">
                                     <label for="postCategoryStatus" class="control-label">
                                         <span translate="content.list.fields.STATUS">Status</span>
@@ -231,14 +172,14 @@
                                             [[ status.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="statuses.length >= 10">
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="postCategory.status" name="status" id="postCategoryStatus" class="form-control" ng-required="true">
                                         </select>
-                                        <span my-enum="[[ postCategory.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>
                                     <span class="error text-small block" ng-if="postCategoryForm.status.$dirty && postCategoryForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -259,6 +200,14 @@
                     <div class="table-responsive" ng-if="postCategories.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

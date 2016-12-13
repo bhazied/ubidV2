@@ -3,15 +3,16 @@
 /**
  * Tenders Data Factory
  */
-app.factory('$tendersDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$tendersDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'tenders', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'tenders';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'tenders/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'tenders/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'tenders/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

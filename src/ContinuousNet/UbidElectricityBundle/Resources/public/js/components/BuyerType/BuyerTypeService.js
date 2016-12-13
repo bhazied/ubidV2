@@ -3,15 +3,16 @@
 /**
  * Buyer Types Data Factory
  */
-app.factory('$buyerTypesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$buyerTypesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'buyertypes', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'buyertypes';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'buyertypes/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'buyertypes/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'buyertypes/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

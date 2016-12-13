@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-12" ng-controller="BuyerCtrl">
             <div>
-                <div class="row margin-bottom-10">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
                            </button>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <button type="button" ng-click="add()" class="btn btn-primary">
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
                             <i class="ti-plus"></i> <span translate="content.list.ADDBUYER">Add Buyer</span>
                         </button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 margin-bottom-10">
                         <button type="button" ng-click="edit(buyer)" class="btn btn-primary pull-right">
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITBUYER">Edit Buyer</span>
                         </button>
@@ -48,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BUYERTYPE">Buyer Type</span></td>
-                                <td><a ui-sref="app.tenders.buyertypesdetails({id: buyer.buyer_type.id})">[[ buyer.buyer_type.name ]]</a></span></td>
+                                <td><a ui-sref="app.lists.buyertypesdetails({id: buyer.buyer_type.id})">[[ buyer.buyer_type.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -60,6 +60,12 @@
                                 <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
                                 <td>
                                     <div ng-bind-html="buyer.description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.main_products_services"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -141,6 +147,72 @@
                                 <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.total revenu"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.first_market_region.id})">[[ buyer.first_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.first_market_rate ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.second_market_region.id})">[[ buyer.second_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.second_market_rate ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.third_market_region.id})">[[ buyer.third_market_region.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.third_market_rate ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISPUBLIC">Is Public</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.is_public ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VIEWS">Views</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.views"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLECOMMENT">Enable Comment</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_comment ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_private_message ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLESHARE">Enable Share</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_share ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
                                 <td>
                                     <span>[[ buyer.created_at | date: datetimeFormat ]]</span>
@@ -162,6 +234,13 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
                 </div>
             </div>
         </div><!--/col-md-12-->

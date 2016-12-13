@@ -149,6 +149,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.adserving.clicks');
     };
     
+    $scope.click_visit_readonly = false;
+    $scope.click_banner_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $clicksDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -158,6 +160,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.click = {id: 0};
 
+        if (angular.isDefined($stateParams.click_visit) && JSON.parse($stateParams.click_visit) != null) {
+            $scope.click.visit = $stateParams.click_visit;
+            $scope.click_visit_readonly = true;
+        }
+        if (angular.isDefined($stateParams.click_banner) && JSON.parse($stateParams.click_banner) != null) {
+            $scope.click.banner = $stateParams.click_banner;
+            $scope.click_banner_readonly = true;
+        }
     }
 
 }]);

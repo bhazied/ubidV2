@@ -1,0 +1,164 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.ALERTS">Alerts</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="AlertFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWALERT" ng-if="alert.id == 0">
+                        New Alert
+                    </legend>
+                    <legend translate="content.list.EDITALERT" ng-if="alert.id > 0">
+                        Edit Alert
+                    </legend>
+                    <form name="alertForm" id="alertForm" novalidate ng-submit="submitForm(alertForm)">
+                        <input type="hidden" name="id" id="alertId" ng-model="alert.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.type.$dirty && alertForm.type.$invalid, 'has-success':alertForm.type.$valid}">
+                                    <label for="alertType" class="control-label">
+                                        <span translate="content.list.fields.TYPE">Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="types.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="type in types" ng-model="alert.type" type="radio" id="type[[ type.id ]]" value="[[ type.id ]]" name="type" ng-required="true" />
+                                        <label ng-repeat-end for="type[[ type.id ]]">
+                                            [[ type.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="types.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="alert.type" name="type" id="alertType" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="alertForm.type.$dirty && alertForm.type.$error.required" translate="content.form.messages.TYPEREQUIRED">Type is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.type.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="alertCategory" class="control-label">
+                                        <span translate="content.list.fields.CATEGORY">Category</span>
+                                    </label>
+                                <div class="block select-list" ng-if="categoriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="alert_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="alert.category" name="category" id="alertCategory" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-foolder-open-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.name.$dirty && alertForm.name.$invalid, 'has-success':alertForm.name.$valid}">
+                                    <label for="alertName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="alert.name" type="text" name="name" id="alertName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="alertForm.name.$dirty && alertForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="alertDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="alert.description" type="text" name="description" id="alertDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.status.$dirty && alertForm.status.$invalid, 'has-success':alertForm.status.$valid}">
+                                    <label for="alertStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="alert.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="alert.status" name="status" id="alertStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="alertForm.status.$dirty && alertForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="alertUnitCost" class="control-label">
+                                        <span translate="content.list.fields.UNITCOST">Unit Cost</span>
+                                    </label>
+                                        <input ng-model="alert.unit_cost" type="text" name="unitCost" id="alertUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKALERTS">Back to Alerts list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(alertForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="alerts.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

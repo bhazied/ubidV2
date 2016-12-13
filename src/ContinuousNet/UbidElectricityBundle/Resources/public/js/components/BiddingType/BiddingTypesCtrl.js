@@ -4,8 +4,8 @@
  * Controller for Bidding Types List
  */
 
-app.controller('BiddingTypesCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$biddingTypesDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $biddingTypesDataFactory) {
+app.controller('BiddingTypesCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$biddingTypesDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $biddingTypesDataFactory) {
 
 
     $scope.booleanOptions = [{
@@ -22,6 +22,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         css: 'danger'
     }];
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -66,7 +67,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -75,7 +81,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -91,6 +101,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.biddingTypesParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -98,9 +109,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.biddingTypesParams)) {
            $localStorage.biddingTypesParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.biddingTypesParams[param])) {
+        } else if (angular.isDefined($localStorage.biddingTypesParams[param]) && $localStorage.biddingTypesParams[param] != null) {
             return $localStorage.biddingTypesParams[param];
         } else {
             $localStorage.biddingTypesParams[param] = defaultValue;
@@ -112,15 +125,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'biddingType.id', filter: { 'biddingType.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'biddingType.name', filter: { 'biddingType.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
-            { field: 'name_ar', title: $filter('translate')('content.list.fields.NAMEAR'), sortable: 'biddingType.nameAr', filter: { 'biddingType.nameAr': 'text' }, show: $scope.getParamValue('name_ar_show_filed', true), getValue: $scope.textValue },
-            { field: 'name_fr', title: $filter('translate')('content.list.fields.NAMEFR'), sortable: 'biddingType.nameFr', filter: { 'biddingType.nameFr': 'text' }, show: $scope.getParamValue('name_fr_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'biddingType.slug', filter: { 'biddingType.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
-            { field: 'slug_ar', title: $filter('translate')('content.list.fields.SLUGAR'), sortable: 'biddingType.slugAr', filter: { 'biddingType.slugAr': 'text' }, show: $scope.getParamValue('slug_ar_show_filed', true), getValue: $scope.textValue },
-            { field: 'slug_fr', title: $filter('translate')('content.list.fields.SLUGFR'), sortable: 'biddingType.slugFr', filter: { 'biddingType.slugFr': 'text' }, show: $scope.getParamValue('slug_fr_show_filed', true), getValue: $scope.textValue },
-            { field: 'is_published', title: $filter('translate')('content.list.fields.ISPUBLISHED'), sortable: 'biddingType.isPublished', filter: { 'biddingType.isPublished': 'select' }, show: $scope.getParamValue('is_published_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_published ]]"></span>') },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'biddingType.createdAt', filter: { 'biddingType.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'biddingType.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'biddingType.modifiedAt', filter: { 'biddingType.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'is_published', title: $filter('translate')('content.list.fields.ISPUBLISHED'), sortable: 'biddingType.isPublished', filter: { 'biddingType.isPublished': 'select' }, show: $scope.getParamValue('is_published_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_published ]]"></span>') },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'biddingType.createdAt', filter: { 'biddingType.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', true), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'biddingType.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', true), displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'biddingType.modifiedAt', filter: { 'biddingType.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', true), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'biddingType.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
@@ -145,15 +154,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('biddingTypesPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('biddingTypesCount', $scope.count);
     $scope.sorting = {'biddingType.name': 'asc'};
+    $scope.sorting = $scope.getParamValue('biddingTypesSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('biddingTypesFilter', $scope.filter);
+    $scope.setParamValue('biddingTypesPage', $scope.page);
+    $scope.setParamValue('biddingTypesCount', $scope.count);
+    $scope.setParamValue('biddingTypesSorting', $scope.sorting);
+    $scope.setParamValue('biddingTypesFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('biddingTypesPage', $scope.page),
-        count: $scope.getParamValue('biddingTypesCount', $scope.count),
-        sorting: $scope.getParamValue('biddingTypesSorting', $scope.sorting),
-        filter: $scope.getParamValue('biddingTypesFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -182,7 +199,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $biddingTypesDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -203,7 +222,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $biddingTypesDataFactory.remove(row).$promise.then(function(data) {
+                $biddingTypesDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.BIDDINGTYPEDELETED'), 
@@ -231,15 +250,15 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     };
 
     $scope.add = function() {
-        $state.go('app.tenders.biddingtypesnew');
+        $state.go('app.lists.biddingtypesnew');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.tenders.biddingtypesedit', {id: row.id});
+        $state.go('app.lists.biddingtypesedit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.tenders.biddingtypesdetails', {id: row.id});
+        $state.go('app.lists.biddingtypesdetails', {id: row.id});
     };
 }]);
 

@@ -50,6 +50,7 @@ class ProductTypeRESTController extends BaseRESTController
      */
     public function getAction(ProductType $entity)
     {
+        $entity = $this->translateEntity($entity);
         $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
@@ -85,7 +86,7 @@ class ProductTypeRESTController extends BaseRESTController
             $qb->from('UbidElectricityBundle:ProductType', 'pt_');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.modifierUser = modifier_user.id');
-            $textFields = array('productType.name', 'productType.nameAr', 'productType.nameFr', 'productType.slug', 'productType.slugAr', 'productType.slugFr');
+            $textFields = array('productType.name', 'productType.slug');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
@@ -116,6 +117,7 @@ class ProductTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('pt_.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
@@ -216,13 +218,5 @@ class ProductTypeRESTController extends BaseRESTController
         }
     }
     
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

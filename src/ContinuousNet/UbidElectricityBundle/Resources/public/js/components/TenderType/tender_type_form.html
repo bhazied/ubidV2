@@ -24,9 +24,10 @@
                         Edit Tender Type
                     </legend>
                     <form name="tenderTypeForm" id="tenderTypeForm" novalidate ng-submit="submitForm(tenderTypeForm)">
+                        <input type="hidden" name="id" id="tenderTypeId" ng-model="tenderType.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="tenderTypeId" ng-model="tenderType.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':tenderTypeForm.name.$dirty && tenderTypeForm.name.$invalid, 'has-success':tenderTypeForm.name.$valid}">
                                     <label for="tenderTypeName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -40,33 +41,11 @@
                                     <span class="error text-small block" ng-if="tenderTypeForm.name.$dirty && tenderTypeForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="tenderTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tenderTypeNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="tenderType.name_ar" type="text" name="nameAr" id="tenderTypeNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tenderTypeNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="tenderType.name_fr" type="text" name="nameFr" id="tenderTypeNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
                                     <slug from="tenderType.name" to="tenderType.slug"></slug>
-                            <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':tenderTypeForm.slug.$dirty && tenderTypeForm.slug.$invalid, 'has-success':tenderTypeForm.slug.$valid}">
                                     <label for="tenderTypeSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -79,40 +58,17 @@
                                     <span class="error text-small block" ng-if="tenderTypeForm.slug.$dirty && tenderTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="tenderTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="tenderType.name_ar" to="tenderType.slug_ar"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tenderTypeSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="tenderType.slug_ar" type="text" name="slugAr" id="tenderTypeSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="tenderType.name_fr" to="tenderType.slug_fr"></slug>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tenderTypeSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="tenderType.slug_fr" type="text" name="slugFr" id="tenderTypeSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="tenderType.is_published" type="checkbox" name="isPublished" id="tenderTypeIsPublished" />
                                     <label for="tenderTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -133,6 +89,14 @@
                     <div class="table-responsive" ng-if="tenderTypes.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

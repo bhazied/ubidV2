@@ -4,8 +4,8 @@
  * Controller for Menus List
  */
 
-app.controller('MenusCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$menusDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $menusDataFactory) {
+app.controller('MenusCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$menusDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $menusDataFactory) {
 
     $scope.modesOptions = [{
         id: '',
@@ -121,6 +121,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         css: 'danger'
     }];
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -165,7 +166,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -174,7 +180,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -193,6 +203,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.menusParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -200,9 +211,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.menusParams)) {
            $localStorage.menusParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.menusParams[param])) {
+        } else if (angular.isDefined($localStorage.menusParams[param]) && $localStorage.menusParams[param] != null) {
             return $localStorage.menusParams[param];
         } else {
             $localStorage.menusParams[param] = defaultValue;
@@ -214,15 +227,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'menu.id', filter: { 'menu.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'menu.name', filter: { 'menu.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
-            { field: 'name_ar', title: $filter('translate')('content.list.fields.NAMEAR'), sortable: 'menu.nameAr', filter: { 'menu.nameAr': 'text' }, show: $scope.getParamValue('name_ar_show_filed', true), getValue: $scope.textValue },
-            { field: 'name_fr', title: $filter('translate')('content.list.fields.NAMEFR'), sortable: 'menu.nameFr', filter: { 'menu.nameFr': 'text' }, show: $scope.getParamValue('name_fr_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'menu.slug', filter: { 'menu.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
-            { field: 'slug_ar', title: $filter('translate')('content.list.fields.SLUGAR'), sortable: 'menu.slugAr', filter: { 'menu.slugAr': 'text' }, show: $scope.getParamValue('slug_ar_show_filed', true), getValue: $scope.textValue },
-            { field: 'slug_fr', title: $filter('translate')('content.list.fields.SLUGFR'), sortable: 'menu.slugFr', filter: { 'menu.slugFr': 'text' }, show: $scope.getParamValue('slug_fr_show_filed', true), getValue: $scope.textValue },
-            { field: 'mode', title: $filter('translate')('content.list.fields.MODE'), sortable: 'menu.mode', filter: { 'menu.mode': 'select' }, show: $scope.getParamValue('mode_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.modesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.mode ]]" my-enum-list=\'[[ modes ]]\'></span>') },
-            { field: 'menu_css', title: $filter('translate')('content.list.fields.MENUCSS'), sortable: 'menu.menuCss', filter: { 'menu.menuCss': 'text' }, show: $scope.getParamValue('menu_css_show_filed', false), getValue: $scope.textValue },
-            { field: 'item_css', title: $filter('translate')('content.list.fields.ITEMCSS'), sortable: 'menu.itemCss', filter: { 'menu.itemCss': 'text' }, show: $scope.getParamValue('item_css_show_filed', false), getValue: $scope.textValue },
-            { field: 'active_css', title: $filter('translate')('content.list.fields.ACTIVECSS'), sortable: 'menu.activeCss', filter: { 'menu.activeCss': 'text' }, show: $scope.getParamValue('active_css_show_filed', false), getValue: $scope.textValue },
+            { field: 'mode', title: $filter('translate')('content.list.fields.MODE'), sortable: 'menu.mode', filter: { 'menu.mode': 'select' }, show: $scope.getParamValue('mode_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.modesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.mode ]]" my-enum-list=\'[[ modes ]]\'></span>') },
+            { field: 'menu_css', title: $filter('translate')('content.list.fields.MENUCSS'), sortable: 'menu.menuCss', filter: { 'menu.menuCss': 'text' }, show: $scope.getParamValue('menu_css_show_filed', true), getValue: $scope.textValue },
+            { field: 'item_css', title: $filter('translate')('content.list.fields.ITEMCSS'), sortable: 'menu.itemCss', filter: { 'menu.itemCss': 'text' }, show: $scope.getParamValue('item_css_show_filed', true), getValue: $scope.textValue },
+            { field: 'active_css', title: $filter('translate')('content.list.fields.ACTIVECSS'), sortable: 'menu.activeCss', filter: { 'menu.activeCss': 'text' }, show: $scope.getParamValue('active_css_show_filed', true), getValue: $scope.textValue },
             { field: 'not_active_css', title: $filter('translate')('content.list.fields.NOTACTIVECSS'), sortable: 'menu.notActiveCss', filter: { 'menu.notActiveCss': 'text' }, show: $scope.getParamValue('not_active_css_show_filed', false), getValue: $scope.textValue },
             { field: 'first_css', title: $filter('translate')('content.list.fields.FIRSTCSS'), sortable: 'menu.firstCss', filter: { 'menu.firstCss': 'text' }, show: $scope.getParamValue('first_css_show_filed', false), getValue: $scope.textValue },
             { field: 'last_css', title: $filter('translate')('content.list.fields.LASTCSS'), sortable: 'menu.lastCss', filter: { 'menu.lastCss': 'text' }, show: $scope.getParamValue('last_css_show_filed', false), getValue: $scope.textValue },
@@ -260,15 +269,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('menusPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('menusCount', $scope.count);
     $scope.sorting = {'menu.name': 'asc'};
+    $scope.sorting = $scope.getParamValue('menusSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('menusFilter', $scope.filter);
+    $scope.setParamValue('menusPage', $scope.page);
+    $scope.setParamValue('menusCount', $scope.count);
+    $scope.setParamValue('menusSorting', $scope.sorting);
+    $scope.setParamValue('menusFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('menusPage', $scope.page),
-        count: $scope.getParamValue('menusCount', $scope.count),
-        sorting: $scope.getParamValue('menusSorting', $scope.sorting),
-        filter: $scope.getParamValue('menusFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -297,7 +314,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $menusDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -318,7 +337,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $menusDataFactory.remove(row).$promise.then(function(data) {
+                $menusDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.MENUDELETED'), 

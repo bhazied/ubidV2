@@ -45,6 +45,7 @@ class TenderProductType extends AbstractType
     {
         $builder
             ->add('tender', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Tender', 'choice_label' => 'title'))
+            ->add('category', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
             ->add('productType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:ProductType', 'choice_label' => 'name'))
             ->add('title', TextType::class)
             ->add('slug', TextType::class)

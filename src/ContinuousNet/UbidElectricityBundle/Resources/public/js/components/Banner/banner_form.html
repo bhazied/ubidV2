@@ -24,17 +24,18 @@
                         Edit Banner
                     </legend>
                     <form name="bannerForm" id="bannerForm" novalidate ng-submit="submitForm(bannerForm)">
+                        <input type="hidden" name="id" id="bannerId" ng-model="banner.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="bannerId" ng-model="banner.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerForm.bannerType.$dirty && bannerForm.bannerType.$invalid, 'has-success':bannerForm.bannerType.$valid}">
                                     <label for="bannerBannerType" class="control-label">
                                         <span translate="content.list.fields.BANNERTYPE">Banner Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block" ng-if="bannerTypesLoaded">
+                                <div class="block select-list" ng-if="bannerTypesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
+                                        <select ng-readonly="banner_banner_type_readonly" ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -42,8 +43,10 @@
                                     <span class="error text-small block" ng-if="bannerForm.bannerType.$dirty && bannerForm.bannerType.$error.required" translate="content.form.messages.BANNERTYPEREQUIRED">Banner Type is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.bannerType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerForm.name.$dirty && bannerForm.name.$invalid, 'has-success':bannerForm.name.$valid}">
                                     <label for="bannerName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -56,10 +59,12 @@
                                     <span class="error text-small block" ng-if="bannerForm.name.$dirty && bannerForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -85,16 +90,20 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="banner.closable" type="checkbox" name="closable" id="bannerClosable" />
                                     <label for="bannerClosable" translate="content.list.fields.CLOSABLE">Closable</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerCountDown" class="control-label">
                                         <span translate="content.list.fields.COUNTDOWN">Count Down</span>
@@ -104,8 +113,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerForm.iphoneAction.$dirty && bannerForm.iphoneAction.$invalid, 'has-success':bannerForm.iphoneAction.$valid}">
                                     <label for="bannerIphoneAction" class="control-label">
                                         <span translate="content.list.fields.IPHONEACTION">Iphone Action</span>
@@ -118,10 +129,12 @@
                                     <span class="error text-small block" ng-if="bannerForm.iphoneAction.$dirty && bannerForm.iphoneAction.$error.required" translate="content.form.messages.IPHONEACTIONREQUIRED">Iphone Action is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.iphoneAction.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerForm.androidAction.$dirty && bannerForm.androidAction.$invalid, 'has-success':bannerForm.androidAction.$valid}">
                                     <label for="bannerAndroidAction" class="control-label">
                                         <span translate="content.list.fields.ANDROIDACTION">Android Action</span>
@@ -134,8 +147,10 @@
                                     <span class="error text-small block" ng-if="bannerForm.androidAction.$dirty && bannerForm.androidAction.$error.required" translate="content.form.messages.ANDROIDACTIONREQUIRED">Android Action is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.androidAction.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':bannerForm.webAction.$dirty && bannerForm.webAction.$invalid, 'has-success':bannerForm.webAction.$valid}">
                                     <label for="bannerWebAction" class="control-label">
                                         <span translate="content.list.fields.WEBACTION">Web Action</span>
@@ -148,10 +163,12 @@
                                     <span class="error text-small block" ng-if="bannerForm.webAction.$dirty && bannerForm.webAction.$error.required" translate="content.form.messages.WEBACTIONREQUIRED">Web Action is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.webAction.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerGender" class="control-label">
                                         <span translate="content.list.fields.GENDER">Gender</span>
@@ -162,14 +179,15 @@
                                             [[ gender.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="genders.length >= 10">
+                                    <div class="block select-list" ng-if="genders.length >= 10">
                                         <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="banner.gender" name="gender" id="bannerGender" class="form-control" ng-required="false">
                                         </select>
-                                        <span my-enum="[[ banner.gender ]]" my-enum-list="[[ genders ]]"></span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMinAge" class="control-label">
                                         <span translate="content.list.fields.MINAGE">Min Age</span>
@@ -179,10 +197,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMaxAge" class="control-label">
                                         <span translate="content.list.fields.MAXAGE">Max Age</span>
@@ -192,8 +212,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerPriority" class="control-label">
                                         <span translate="content.list.fields.PRIORITY">Priority</span>
@@ -203,10 +225,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerWebUrl" class="control-label">
                                         <span translate="content.list.fields.WEBURL">Web Url</span>
@@ -216,8 +240,10 @@
                                         <i class="ti-link"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerPhoneNumberToCall" class="control-label">
                                         <span translate="content.list.fields.PHONENUMBERTOCALL">Phone Number To Call</span>
@@ -227,10 +253,12 @@
                                         <i class="fa fa-phone"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerSmsMobileNumber" class="control-label">
                                         <span translate="content.list.fields.SMSMOBILENUMBER">Sms Mobile Number</span>
@@ -240,8 +268,10 @@
                                         <i class="ti-mobile"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerSmsBody" class="control-label">
                                         <span translate="content.list.fields.SMSBODY">Sms Body</span>
@@ -251,10 +281,12 @@
                                         <i class="fa fa-calculator"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerEmailAdress" class="control-label">
                                         <span translate="content.list.fields.EMAILADRESS">Email Adress</span>
@@ -264,8 +296,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerEmailSubject" class="control-label">
                                         <span translate="content.list.fields.EMAILSUBJECT">Email Subject</span>
@@ -275,10 +309,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerEmailBody" class="control-label">
                                         <span translate="content.list.fields.EMAILBODY">Email Body</span>
@@ -288,8 +324,10 @@
                                         <i class="fa fa-calculator"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerAndroidAppUrl" class="control-label">
                                         <span translate="content.list.fields.ANDROIDAPPURL">Android App Url</span>
@@ -299,10 +337,12 @@
                                         <i class="ti-android"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerIphoneAppUrl" class="control-label">
                                         <span translate="content.list.fields.IPHONEAPPURL">Iphone App Url</span>
@@ -312,8 +352,10 @@
                                         <i class="ti-apple"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerYoutubeUrl" class="control-label">
                                         <span translate="content.list.fields.YOUTUBEURL">Youtube Url</span>
@@ -323,28 +365,34 @@
                                         <i class="ti-youtube"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMapLatitude" class="control-label">
                                         <span translate="content.list.fields.MAPLATITUDE">Map Latitude</span>
                                     </label>
-                                        <input ng-model="banner.map_latitude" type="text" name="mapLatitude" id="bannerMapLatitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLATITUDE' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="banner.map_latitude" type="text" name="mapLatitude" id="bannerMapLatitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLATITUDE' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMapLongitude" class="control-label">
                                         <span translate="content.list.fields.MAPLONGITUDE">Map Longitude</span>
                                     </label>
-                                        <input ng-model="banner.map_longitude" type="text" name="mapLongitude" id="bannerMapLongitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLONGITUDE' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="banner.map_longitude" type="text" name="mapLongitude" id="bannerMapLongitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLONGITUDE' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerScreen" class="control-label">
                                         <span translate="content.list.fields.SCREEN">Screen</span>
@@ -354,8 +402,10 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerScreenParameters" class="control-label">
                                         <span translate="content.list.fields.SCREENPARAMETERS">Screen Parameters</span>
@@ -365,10 +415,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTotalHits" class="control-label">
                                         <span translate="content.list.fields.TOTALHITS">Total Hits</span>
@@ -378,8 +430,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTodayHits" class="control-label">
                                         <span translate="content.list.fields.TODAYHITS">Today Hits</span>
@@ -389,10 +443,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTotalClicks" class="control-label">
                                         <span translate="content.list.fields.TOTALCLICKS">Total Clicks</span>
@@ -402,8 +458,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTodayClicks" class="control-label">
                                         <span translate="content.list.fields.TODAYCLICKS">Today Clicks</span>
@@ -413,10 +471,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTemplate" class="control-label">
                                         <span translate="content.list.fields.TEMPLATE">Template</span>
@@ -426,8 +486,10 @@
                                         <i class="ti-layout"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerAdText" class="control-label">
                                         <span translate="content.list.fields.ADTEXT">Ad Text</span>
@@ -437,10 +499,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerTextColor" class="control-label">
                                         <span translate="content.list.fields.TEXTCOLOR">Text Color</span>
@@ -450,8 +514,10 @@
                                         <i class="ti-palette"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerBackgroundColor" class="control-label">
                                         <span translate="content.list.fields.BACKGROUNDCOLOR">Background Color</span>
@@ -461,16 +527,20 @@
                                         <i class="ti-palette"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="banner.auto_publishing" type="checkbox" name="autoPublishing" id="bannerAutoPublishing" />
                                     <label for="bannerAutoPublishing" translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerStartPublishing" class="control-label">
                                         <span translate="content.list.fields.STARTPUBLISHING">Start Publishing</span>
@@ -487,10 +557,12 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerEndPublishing" class="control-label">
                                         <span translate="content.list.fields.ENDPUBLISHING">End Publishing</span>
@@ -507,8 +579,10 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerStartPublishingTime" class="control-label">
                                         <span translate="content.list.fields.STARTPUBLISHINGTIME">Start Publishing Time</span>
@@ -518,10 +592,12 @@
                                         <i class="ti-alarm-clock"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerEndPublishingTime" class="control-label">
                                         <span translate="content.list.fields.ENDPUBLISHINGTIME">End Publishing Time</span>
@@ -531,8 +607,10 @@
                                         <i class="ti-alarm-clock"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMaxClicksPerDay" class="control-label">
                                         <span translate="content.list.fields.MAXCLICKSPERDAY">Max Clicks Per Day</span>
@@ -542,10 +620,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMaxTotalClicks" class="control-label">
                                         <span translate="content.list.fields.MAXTOTALCLICKS">Max Total Clicks</span>
@@ -555,8 +635,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMaxHitsPerDay" class="control-label">
                                         <span translate="content.list.fields.MAXHITSPERDAY">Max Hits Per Day</span>
@@ -566,10 +648,12 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="bannerMaxTotalHits" class="control-label">
                                         <span translate="content.list.fields.MAXTOTALHITS">Max Total Hits</span>
@@ -579,8 +663,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':bannerForm.status.$dirty && bannerForm.status.$invalid, 'has-success':bannerForm.status.$valid}">
                                     <label for="bannerStatus" class="control-label">
                                         <span translate="content.list.fields.STATUS">Status</span>
@@ -592,14 +678,14 @@
                                             [[ status.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="statuses.length >= 10">
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="banner.status" name="status" id="bannerStatus" class="form-control" ng-required="true">
                                         </select>
-                                        <span my-enum="[[ banner.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>
                                     <span class="error text-small block" ng-if="bannerForm.status.$dirty && bannerForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -640,6 +726,14 @@
                     <div class="table-responsive" ng-if="banners.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

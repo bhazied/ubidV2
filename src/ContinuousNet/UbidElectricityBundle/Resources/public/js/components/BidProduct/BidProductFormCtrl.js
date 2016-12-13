@@ -4,8 +4,8 @@
  * Controller for Bid Product Form
  */
 
-app.controller('BidProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderProductsDataFactory', '$bidsDataFactory', '$usersDataFactory', '$bidProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderProductsDataFactory, $bidsDataFactory, $usersDataFactory, $bidProductsDataFactory) {
+app.controller('BidProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderProductsDataFactory', '$bidsDataFactory', '$supplierProductsDataFactory', '$usersDataFactory', '$bidProductsDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderProductsDataFactory, $bidsDataFactory, $supplierProductsDataFactory, $usersDataFactory, $bidProductsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -23,31 +23,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         
     };
 
-    $scope.statuses = [{
-        id: 'Draft',
-        title: $filter('translate')('content.list.fields.statuses.DRAFT'),
-        css: 'primary'
-    }, {
-        id: 'Online',
-        title: $filter('translate')('content.list.fields.statuses.ONLINE'),
-        css: 'success'
-    }, {
-        id: 'Deactivated',
-        title: $filter('translate')('content.list.fields.statuses.DEACTIVATED'),
-        css: 'warning'
-    }, {
-        id: 'Offline',
-        title: $filter('translate')('content.list.fields.statuses.OFFLINE'),
-        css: 'danger'
-    }, {
-        id: 'Deleted',
-        title: $filter('translate')('content.list.fields.statuses.DELETED'),
-        css: 'default'
-    }, {
-        id: 'Archived',
-        title: $filter('translate')('content.list.fields.statuses.ARCHIVED'),
-        css: 'info'
-    }];
 
     $scope.tenderProducts = [];
     $scope.tenderProductsLoaded = false;
@@ -98,6 +73,31 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.getBids();
+
+    $scope.supplierProducts = [];
+    $scope.supplierProductsLoaded = false;
+
+    $scope.getSupplierProducts = function() {
+        $timeout(function(){
+            $scope.supplierProductsLoaded = true;
+            if ($scope.supplierProducts.length == 0) {
+                $scope.supplierProducts.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIERPRODUCT')});
+                var def = $q.defer();
+                $supplierProductsDataFactory.query({offset: 0, limit: 10000, 'order_by[supplierProduct.name]': 'asc'}).$promise.then(function(data) {
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.supplierProducts = data.results;
+                    def.resolve($scope.supplierProducts);
+                });
+                return def;
+            } else {
+                return $scope.supplierProducts;
+            }
+        });
+    };
+
+    $scope.getSupplierProducts();
 
     $scope.users = [];
     $scope.usersLoaded = false;
@@ -174,6 +174,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.marketplace.bidproducts');
     };
     
+    $scope.bid_product_tender_product_readonly = false;
+    $scope.bid_product_bid_readonly = false;
+    $scope.bid_product_supplier_product_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $bidProductsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -181,8 +184,20 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
             });
         });
     } else {
-        $scope.bidProduct = {id: 0, status: 'Draft'};
+        $scope.bidProduct = {id: 0};
 
+        if (angular.isDefined($stateParams.bid_product_tender_product) && JSON.parse($stateParams.bid_product_tender_product) != null) {
+            $scope.bidProduct.tender_product = $stateParams.bid_product_tender_product;
+            $scope.bid_product_tender_product_readonly = true;
+        }
+        if (angular.isDefined($stateParams.bid_product_bid) && JSON.parse($stateParams.bid_product_bid) != null) {
+            $scope.bidProduct.bid = $stateParams.bid_product_bid;
+            $scope.bid_product_bid_readonly = true;
+        }
+        if (angular.isDefined($stateParams.bid_product_supplier_product) && JSON.parse($stateParams.bid_product_supplier_product) != null) {
+            $scope.bidProduct.supplier_product = $stateParams.bid_product_supplier_product;
+            $scope.bid_product_supplier_product_readonly = true;
+        }
     }
 
 }]);

@@ -4,10 +4,25 @@
  * Controller for Buyers List
  */
 
-app.controller('BuyersCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$usersDataFactory', '$buyersDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $usersDataFactory, $buyersDataFactory) {
+app.controller('BuyersCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$buyersDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $buyersDataFactory) {
 
 
+    $scope.booleanOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+     }, {
+        id: '1',
+        title: $filter('translate')('content.common.YES'),
+        css: 'success'
+     }, {
+        id: '0',
+        title: $filter('translate')('content.common.NO'),
+        css: 'danger'
+    }];
+
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -98,6 +113,35 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.getLanguages();
 
+    $scope.regions = [];
+    $scope.regionsLoaded = false;
+
+    $scope.getRegions = function() {
+        $scope.regionsLoaded = true;
+        if ($scope.regions.length == 0) {
+            $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTFIRSTMARKETREGION')});
+            var def = $q.defer();
+            $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        for (var i in data.results) {
+                            $scope.regions.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.regions);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.regions;
+        }
+    };
+
+    $scope.getRegions();
+
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -139,7 +183,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -148,7 +197,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -164,6 +217,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.buyersParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -171,9 +225,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.buyersParams)) {
            $localStorage.buyersParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.buyersParams[param])) {
+        } else if (angular.isDefined($localStorage.buyersParams[param]) && $localStorage.buyersParams[param] != null) {
             return $localStorage.buyersParams[param];
         } else {
             $localStorage.buyersParams[param] = defaultValue;
@@ -184,12 +240,13 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     $scope.setCols = function() {
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'buyer.id', filter: { 'buyer.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
-            { field: 'buyer_type', title: $filter('translate')('content.list.fields.BUYERTYPE'), sortable: 'buyer_type.name', filter: { 'buyer.buyerType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBuyerTypes(), show: $scope.getParamValue('buyer_type_id_show_filed', true), displayField: 'name', state: 'app.tenders.buyertypesdetails' },
+            { field: 'buyer_type', title: $filter('translate')('content.list.fields.BUYERTYPE'), sortable: 'buyer_type.name', filter: { 'buyer.buyerType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBuyerTypes(), show: $scope.getParamValue('buyer_type_id_show_filed', true), displayField: 'name', state: 'app.lists.buyertypesdetails' },
             { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'buyer.name', filter: { 'buyer.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'buyer.description', filter: { 'buyer.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), getValue: $scope.textValue },
+            { field: 'main_products_services', title: $filter('translate')('content.list.fields.MAINPRODUCTSSERVICES'), sortable: 'buyer.mainProductsServices', filter: { 'buyer.mainProductsServices': 'text' }, show: $scope.getParamValue('main_products_services_show_filed', true), getValue: $scope.textValue },
             { field: 'reference_number', title: $filter('translate')('content.list.fields.REFERENCENUMBER'), sortable: 'buyer.referenceNumber', filter: { 'buyer.referenceNumber': 'text' }, show: $scope.getParamValue('reference_number_show_filed', true), getValue: $scope.textValue },
             { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'buyer.phone', filter: { 'buyer.phone': 'text' }, show: $scope.getParamValue('phone_show_filed', true), getValue: $scope.textValue },
-            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'buyer.email', filter: { 'buyer.email': 'text' }, show: $scope.getParamValue('email_show_filed', true), getValue: $scope.textValue },
+            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'buyer.email', filter: { 'buyer.email': 'text' }, show: $scope.getParamValue('email_show_filed', false), getValue: $scope.textValue },
             { field: 'first_name', title: $filter('translate')('content.list.fields.FIRSTNAME'), sortable: 'buyer.firstName', filter: { 'buyer.firstName': 'text' }, show: $scope.getParamValue('first_name_show_filed', false), getValue: $scope.textValue },
             { field: 'last_name', title: $filter('translate')('content.list.fields.LASTNAME'), sortable: 'buyer.lastName', filter: { 'buyer.lastName': 'text' }, show: $scope.getParamValue('last_name_show_filed', false), getValue: $scope.textValue },
             { field: 'job', title: $filter('translate')('content.list.fields.JOB'), sortable: 'buyer.job', filter: { 'buyer.job': 'text' }, show: $scope.getParamValue('job_show_filed', false), getValue: $scope.textValue },
@@ -200,9 +257,21 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             { field: 'company_name', title: $filter('translate')('content.list.fields.COMPANYNAME'), sortable: 'buyer.companyName', filter: { 'buyer.companyName': 'text' }, show: $scope.getParamValue('company_name_show_filed', false), getValue: $scope.textValue },
             { field: 'country', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'buyer.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_id_show_filed', false), displayField: 'name', state: 'app.settings.countriesdetails' },
             { field: 'language', title: $filter('translate')('content.list.fields.LANGUAGE'), sortable: 'language.name', filter: { 'buyer.language': 'select' }, getValue: $scope.linkValue, filterData: $scope.getLanguages(), show: $scope.getParamValue('language_id_show_filed', false), displayField: 'name', state: 'app.settings.languagesdetails' },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'buyer.createdAt', filter: { 'buyer.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'total revenu', title: $filter('translate')('content.list.fields.TOTALREVENU'), sortable: 'buyer.totalRevenu', filter: { 'buyer.totalRevenu': 'number' }, show: $scope.getParamValue('total revenu_show_filed', false), getValue: $scope.textValue },
+            { field: 'first_market_region', title: $filter('translate')('content.list.fields.FIRSTMARKETREGION'), sortable: 'first_market_region.name', filter: { 'buyer.firstMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('first_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'first_market_rate', title: $filter('translate')('content.list.fields.FIRSTMARKETRATE'), sortable: 'buyer.firstMarketRate', filter: { 'buyer.firstMarketRate': 'select' }, show: $scope.getParamValue('first_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.first_market_rate ]]"></span>') },
+            { field: 'second_market_region', title: $filter('translate')('content.list.fields.SECONDMARKETREGION'), sortable: 'second_market_region.name', filter: { 'buyer.secondMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('second_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'second_market_rate', title: $filter('translate')('content.list.fields.SECONDMARKETRATE'), sortable: 'buyer.secondMarketRate', filter: { 'buyer.secondMarketRate': 'select' }, show: $scope.getParamValue('second_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.second_market_rate ]]"></span>') },
+            { field: 'third_market_region', title: $filter('translate')('content.list.fields.THIRDMARKETREGION'), sortable: 'third_market_region.name', filter: { 'buyer.thirdMarketRegion': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('third_market_region_id_show_filed', false), displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'third_market_rate', title: $filter('translate')('content.list.fields.THIRDMARKETRATE'), sortable: 'buyer.thirdMarketRate', filter: { 'buyer.thirdMarketRate': 'select' }, show: $scope.getParamValue('third_market_rate_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.third_market_rate ]]"></span>') },
+            { field: 'is_public', title: $filter('translate')('content.list.fields.ISPUBLIC'), sortable: 'buyer.isPublic', filter: { 'buyer.isPublic': 'select' }, show: $scope.getParamValue('is_public_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_public ]]"></span>') },
+            { field: 'views', title: $filter('translate')('content.list.fields.VIEWS'), sortable: 'buyer.views', filter: { 'buyer.views': 'number' }, show: $scope.getParamValue('views_show_filed', false), getValue: $scope.textValue },
+            { field: 'enable_comment', title: $filter('translate')('content.list.fields.ENABLECOMMENT'), sortable: 'buyer.enableComment', filter: { 'buyer.enableComment': 'select' }, show: $scope.getParamValue('enable_comment_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_comment ]]"></span>') },
+            { field: 'enable_private_message', title: $filter('translate')('content.list.fields.ENABLEPRIVATEMESSAGE'), sortable: 'buyer.enablePrivateMessage', filter: { 'buyer.enablePrivateMessage': 'select' }, show: $scope.getParamValue('enable_private_message_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_private_message ]]"></span>') },
+            { field: 'enable_share', title: $filter('translate')('content.list.fields.ENABLESHARE'), sortable: 'buyer.enableShare', filter: { 'buyer.enableShare': 'select' }, show: $scope.getParamValue('enable_share_show_filed', false), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enable_share ]]"></span>') },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'buyer.createdAt', filter: { 'buyer.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'buyer.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'buyer.modifiedAt', filter: { 'buyer.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'buyer.modifiedAt', filter: { 'buyer.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'buyer.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
@@ -227,15 +296,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('buyersPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('buyersCount', $scope.count);
     $scope.sorting = {'buyer.id': 'asc'};
+    $scope.sorting = $scope.getParamValue('buyersSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('buyersFilter', $scope.filter);
+    $scope.setParamValue('buyersPage', $scope.page);
+    $scope.setParamValue('buyersCount', $scope.count);
+    $scope.setParamValue('buyersSorting', $scope.sorting);
+    $scope.setParamValue('buyersFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('buyersPage', $scope.page),
-        count: $scope.getParamValue('buyersCount', $scope.count),
-        sorting: $scope.getParamValue('buyersSorting', $scope.sorting),
-        filter: $scope.getParamValue('buyersFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -264,7 +341,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $buyersDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -285,7 +364,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $buyersDataFactory.remove(row).$promise.then(function(data) {
+                $buyersDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.BUYERDELETED'), 

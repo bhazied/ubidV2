@@ -174,6 +174,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.news.postcategories');
     };
     
+    $scope.post_category_parent_readonly = false;
+    $scope.post_category_post_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $postCategoriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -183,6 +185,14 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.postCategory = {id: 0, status: 'Draft'};
 
+        if (angular.isDefined($stateParams.post_category_parent) && JSON.parse($stateParams.post_category_parent) != null) {
+            $scope.postCategory.parent = $stateParams.post_category_parent;
+            $scope.post_category_parent_readonly = true;
+        }
+        if (angular.isDefined($stateParams.post_category_post_type) && JSON.parse($stateParams.post_category_post_type) != null) {
+            $scope.postCategory.post_type = $stateParams.post_category_post_type;
+            $scope.post_category_post_type_readonly = true;
+        }
     }
 
     $scope.showFileManager = function(field) {

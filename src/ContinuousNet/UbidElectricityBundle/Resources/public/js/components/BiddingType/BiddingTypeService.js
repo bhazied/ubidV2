@@ -3,15 +3,16 @@
 /**
  * Bidding Types Data Factory
  */
-app.factory('$biddingTypesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$biddingTypesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'biddingtypes', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'biddingtypes';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'biddingtypes/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'biddingtypes/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'biddingtypes/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

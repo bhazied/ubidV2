@@ -68,28 +68,6 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="name_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameFr;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
@@ -250,54 +228,6 @@ class Country
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set nameAr
-     *
-     * @access public
-     * @param string $nameAr
-     * @return Country
-     */
-    public function setNameAr($nameAr = null)
-    {
-        $this->nameAr = $nameAr;
-        return $this;
-    }
-
-    /**
-     * Get nameAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameAr()
-    {
-        return $this->nameAr;
-    }
-
-    /**
-     * Set nameFr
-     *
-     * @access public
-     * @param string $nameFr
-     * @return Country
-     */
-    public function setNameFr($nameFr = null)
-    {
-        $this->nameFr = $nameFr;
-        return $this;
-    }
-
-    /**
-     * Get nameFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameFr()
-    {
-        return $this->nameFr;
     }
 
     /**

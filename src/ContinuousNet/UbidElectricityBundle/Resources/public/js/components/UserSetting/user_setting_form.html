@@ -24,9 +24,10 @@
                         Edit User Setting
                     </legend>
                     <form name="userSettingForm" id="userSettingForm" novalidate ng-submit="submitForm(userSettingForm)">
+                        <input type="hidden" name="id" id="userSettingId" ng-model="userSetting.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="userSettingId" ng-model="userSetting.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':userSettingForm.key.$dirty && userSettingForm.key.$invalid, 'has-success':userSettingForm.key.$valid}">
                                     <label for="userSettingKey" class="control-label">
                                         <span translate="content.list.fields.KEY">Key</span>
@@ -39,8 +40,10 @@
                                     <span class="error text-small block" ng-if="userSettingForm.key.$dirty && userSettingForm.key.$error.required" translate="content.form.messages.KEYREQUIRED">Key is required.</span>
                                     <span class="success text-small block" ng-if="userSettingForm.key.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-12">
+
                                 <div class="form-group" ng-class="{'has-error':userSettingForm.value.$dirty && userSettingForm.value.$invalid, 'has-success':userSettingForm.value.$valid}">
                                     <label for="userSettingValue" class="control-label">
                                         <span translate="content.list.fields.VALUE">Value</span>
@@ -52,7 +55,8 @@
                                     <span class="error text-small block" ng-if="userSettingForm.value.$dirty && userSettingForm.value.$error.required" translate="content.form.messages.VALUEREQUIRED">Value is required.</span>
                                     <span class="success text-small block" ng-if="userSettingForm.value.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">
@@ -72,6 +76,14 @@
                     <div class="table-responsive" ng-if="userSettings.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

@@ -3,15 +3,16 @@
 /**
  * Sectors Data Factory
  */
-app.factory('$sectorsDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$sectorsDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'sectors', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'sectors';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'sectors/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'sectors/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'sectors/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);

@@ -68,56 +68,12 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="name_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $nameFr;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
     private $slug;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="slug_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slugFr;
 
     /**
      * @var string
@@ -140,28 +96,6 @@ class PostCategory
      * 
      */
     private $description;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="description_ar", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $descriptionAr;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="description_fr", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $descriptionFr;
 
     /**
      * @var integer
@@ -333,54 +267,6 @@ class PostCategory
     }
 
     /**
-     * Set nameAr
-     *
-     * @access public
-     * @param string $nameAr
-     * @return PostCategory
-     */
-    public function setNameAr($nameAr = null)
-    {
-        $this->nameAr = $nameAr;
-        return $this;
-    }
-
-    /**
-     * Get nameAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameAr()
-    {
-        return $this->nameAr;
-    }
-
-    /**
-     * Set nameFr
-     *
-     * @access public
-     * @param string $nameFr
-     * @return PostCategory
-     */
-    public function setNameFr($nameFr = null)
-    {
-        $this->nameFr = $nameFr;
-        return $this;
-    }
-
-    /**
-     * Get nameFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getNameFr()
-    {
-        return $this->nameFr;
-    }
-
-    /**
      * Set slug
      *
      * @access public
@@ -402,54 +288,6 @@ class PostCategory
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set slugAr
-     *
-     * @access public
-     * @param string $slugAr
-     * @return PostCategory
-     */
-    public function setSlugAr($slugAr = null)
-    {
-        $this->slugAr = $slugAr;
-        return $this;
-    }
-
-    /**
-     * Get slugAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugAr()
-    {
-        return $this->slugAr;
-    }
-
-    /**
-     * Set slugFr
-     *
-     * @access public
-     * @param string $slugFr
-     * @return PostCategory
-     */
-    public function setSlugFr($slugFr = null)
-    {
-        $this->slugFr = $slugFr;
-        return $this;
-    }
-
-    /**
-     * Get slugFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlugFr()
-    {
-        return $this->slugFr;
     }
 
     /**
@@ -498,54 +336,6 @@ class PostCategory
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set descriptionAr
-     *
-     * @access public
-     * @param string $descriptionAr
-     * @return PostCategory
-     */
-    public function setDescriptionAr($descriptionAr = null)
-    {
-        $this->descriptionAr = $descriptionAr;
-        return $this;
-    }
-
-    /**
-     * Get descriptionAr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getDescriptionAr()
-    {
-        return $this->descriptionAr;
-    }
-
-    /**
-     * Set descriptionFr
-     *
-     * @access public
-     * @param string $descriptionFr
-     * @return PostCategory
-     */
-    public function setDescriptionFr($descriptionFr = null)
-    {
-        $this->descriptionFr = $descriptionFr;
-        return $this;
-    }
-
-    /**
-     * Get descriptionFr
-     *
-     * @access public
-     * @return string 
-     */
-    public function getDescriptionFr()
-    {
-        return $this->descriptionFr;
     }
 
     /**

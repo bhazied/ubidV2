@@ -12,9 +12,9 @@ security:
 
     role_hierarchy:
         ROLE_API:         ROLE_API
-        ROLE_SUBSCRIBER:  [ROLE_API, ROLE_SUBSCRIBER]
-        ROLE_ADMIN:  [ROLE_API, ROLE_ADMIN]
-        ROLE_ADMIN_PUBLISHER:       [ROLE_API, ROLE_ADMIN_PUBLISHER]
+        ROLE_SUBSCRIBER:  [ROLE_API, ROLE_ACCOUNT_MANAGER]
+        ROLE_SUBSCRIBER:  [ROLE_API, ROLE_ACCOUNT_USER]
+        ROLE_ADMIN:       [ROLE_API, ROLE_ADMIN]
         ROLE_SUPER_ADMIN: [ROLE_API, ROLE_SUPER_ADMIN]
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
@@ -73,18 +73,8 @@ security:
             stateless: true
             anonymous: true
 
-        register_social:
-            pattern:  ^/(en|fr|ar)/api/v1/socialRegister
-            stateless: true
-            anonymous: true
-
         checkEmail:
             pattern:  ^/(en|fr|ar)/api/v1/checkEmail
-            stateless: true
-            anonymous: true
-
-        checkPhone:
-            pattern:  ^/(en|fr|ar)/api/v1/checkPhone
             stateless: true
             anonymous: true
 
@@ -95,16 +85,6 @@ security:
 
         languages:
             pattern: ^/api/languages
-            stateless: true
-            anonymous: true
-
-        stores:
-            pattern:  ^/(en|fr|ar)/api/v1/stores
-            stateless: true
-            anonymous: true
-
-        storesCount:
-            pattern:  ^/(en|fr|ar)/api/v1/storesCount
             stateless: true
             anonymous: true
 
@@ -139,42 +119,6 @@ security:
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
-
-        login_en:
-            pattern:  ^/en/api/login
-            stateless: true
-            anonymous: true
-            form_login:
-                check_path:               /en/api/login_check
-                username_parameter:       email
-                password_parameter:       password
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-
-        login_fr:
-            pattern:  ^/fr/api/login
-            stateless: true
-            anonymous: true
-            form_login:
-                check_path:               /fr/api/login_check
-                username_parameter:       email
-                password_parameter:       password
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
-
-        login_ar:
-            pattern:  ^/ar/api/login
-            stateless: true
-            anonymous: true
-            form_login:
-                check_path:               /ar/api/login_check
-                username_parameter:       email
-                password_parameter:       password
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
         api:
             pattern:   ^/api/
             stateless: true
@@ -195,7 +139,46 @@ security:
                 authentication_provider: lexik_jwt_authentication.security.authentication.provider
                 authentication_listener: lexik_jwt_authentication.security.authentication.listener
         api_lang:
+            pattern:   ^/(en|fr|ar)/api/
+            stateless: true
+            provider: fos_userbundle
+            anonymous: false
+            lexik_jwt:
+                authorization_header:
+                    enabled: true
+                    prefix:  Bearer
+                cookie:               # check token in a cookie
+                    enabled: false
+                    name:    BEARER
+                query_parameter:
+                    enabled: true
+                    name:    bearer
+                throw_exceptions:        false
+                create_entry_point:      true
+                authentication_provider: lexik_jwt_authentication.security.authentication.provider
+                authentication_listener: lexik_jwt_authentication.security.authentication.listener
+        api_v1_lang:
             pattern:   ^/(en|fr|ar)/api/v1/
+            stateless: true
+            provider: fos_userbundle
+            anonymous: false
+            lexik_jwt:
+                authorization_header:
+                    enabled: true
+                    prefix:  Bearer
+                cookie:               # check token in a cookie
+                    enabled: false
+                    name:    BEARER
+                query_parameter:
+                    enabled: true
+                    name:    bearer
+                throw_exceptions:        false
+                create_entry_point:      true
+                authentication_provider: lexik_jwt_authentication.security.authentication.provider
+                authentication_listener: lexik_jwt_authentication.security.authentication.listener
+
+        api_dashboard:
+            pattern:   ^/(en|fr|ar)/api/dashboard/
             stateless: true
             provider: fos_userbundle
             anonymous: false
@@ -218,21 +201,21 @@ security:
             stateless: true
             provider: fos_userbundle
             anonymous: false
-            lexik_jwt: 
-                authorization_header: 
+            lexik_jwt:
+                authorization_header:
                     enabled: true
                     prefix:  Bearer
                 cookie:               # check token in a cookie
                     enabled: false
                     name:    BEARER
-                query_parameter:      
+                query_parameter:
                     enabled: true
                     name:    bearer
-                throw_exceptions:        false   
-                create_entry_point:      true 
+                throw_exceptions:        false
+                create_entry_point:      true
                 authentication_provider: lexik_jwt_authentication.security.authentication.provider
                 authentication_listener: lexik_jwt_authentication.security.authentication.listener
-        
+
         main:
             pattern: ^/
             form_login:

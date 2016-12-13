@@ -24,9 +24,10 @@
                         Edit Product Type
                     </legend>
                     <form name="productTypeForm" id="productTypeForm" novalidate ng-submit="submitForm(productTypeForm)">
+                        <input type="hidden" name="id" id="productTypeId" ng-model="productType.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="productTypeId" ng-model="productType.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':productTypeForm.name.$dirty && productTypeForm.name.$invalid, 'has-success':productTypeForm.name.$valid}">
                                     <label for="productTypeName" class="control-label">
                                         <span translate="content.list.fields.NAME">Name</span>
@@ -40,33 +41,11 @@
                                     <span class="error text-small block" ng-if="productTypeForm.name.$dirty && productTypeForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
                                     <span class="success text-small block" ng-if="productTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="productTypeNameAr" class="control-label">
-                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="productType.name_ar" type="text" name="nameAr" id="productTypeNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="productTypeNameFr" class="control-label">
-                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="productType.name_fr" type="text" name="nameFr" id="productTypeNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
                                     <slug from="productType.name" to="productType.slug"></slug>
-                            <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':productTypeForm.slug.$dirty && productTypeForm.slug.$invalid, 'has-success':productTypeForm.slug.$valid}">
                                     <label for="productTypeSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -79,40 +58,17 @@
                                     <span class="error text-small block" ng-if="productTypeForm.slug.$dirty && productTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="productTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="productType.name_ar" to="productType.slug_ar"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="productTypeSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="productType.slug_ar" type="text" name="slugAr" id="productTypeSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="productType.name_fr" to="productType.slug_fr"></slug>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="productTypeSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="productType.slug_fr" type="text" name="slugFr" id="productTypeSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="productType.is_published" type="checkbox" name="isPublished" id="productTypeIsPublished" />
                                     <label for="productTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -133,6 +89,14 @@
                     <div class="table-responsive" ng-if="productTypes.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

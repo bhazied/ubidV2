@@ -4,8 +4,8 @@
  * Controller for Tender Products List
  */
 
-app.controller('TenderProductsCtrl', ['$scope', '$rootScope', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
-function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
+app.controller('TenderProductsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$categoriesDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $categoriesDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
 
     $scope.statusesOptions = [{
         id: '',
@@ -37,6 +37,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         css: 'info'
     }];
 
+    $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
@@ -68,6 +69,35 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     };
 
     $scope.getTenders();
+
+    $scope.categories = [];
+    $scope.categoriesLoaded = false;
+
+    $scope.getCategories = function() {
+        $scope.categoriesLoaded = true;
+        if ($scope.categories.length == 0) {
+            $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+            var def = $q.defer();
+            $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        for (var i in data.results) {
+                            $scope.categories.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.categories);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.categories;
+        }
+    };
+
+    $scope.getCategories();
 
     $scope.productTypes = [];
     $scope.productTypesLoaded = false;
@@ -139,7 +169,12 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">' + value[this.displayField] + '</a>';
+        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+        var displayFields = this.displayField.split(' ');
+        for (var i in displayFields) {
+            html += value[displayFields[i]] + ' ';
+        }
+        html += '</a>';
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -148,7 +183,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        return $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        var evaluatedValue = $scope.$eval('\'' + value + '\' | ' + this.valueFormatter);
+        if (this.field == 'birth_date') {
+            evaluatedValue += ' ('+$scope.$eval('\'' + value + '\' | age')+')';
+        }
+        return evaluatedValue;
     };
 
     $scope.interpolatedValue = function($scope, row) {
@@ -165,6 +204,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
 
     $scope.setParamValue = function(param, newValue) {
         $localStorage.tenderProductsParams[param] = newValue;
+        $stateParams[param] = newValue;
         $location.search(param, JSON.stringify(newValue));
     };
 
@@ -172,9 +212,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         if (!angular.isDefined($localStorage.tenderProductsParams)) {
            $localStorage.tenderProductsParams = {};
         }
-        if (angular.isDefined($location.search()[param])) {
+        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+            return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
-        } else if (angular.isDefined($localStorage.tenderProductsParams[param])) {
+        } else if (angular.isDefined($localStorage.tenderProductsParams[param]) && $localStorage.tenderProductsParams[param] != null) {
             return $localStorage.tenderProductsParams[param];
         } else {
             $localStorage.tenderProductsParams[param] = defaultValue;
@@ -186,11 +228,11 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'tenderProduct.id', filter: { 'tenderProduct.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
             { field: 'tender', title: $filter('translate')('content.list.fields.TENDER'), sortable: 'tender.title', filter: { 'tenderProduct.tender': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenders(), show: $scope.getParamValue('tender_id_show_filed', true), displayField: 'title', state: 'app.marketplace.tendersdetails' },
-            { field: 'product_type', title: $filter('translate')('content.list.fields.PRODUCTTYPE'), sortable: 'product_type.name', filter: { 'tenderProduct.productType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getProductTypes(), show: $scope.getParamValue('product_type_id_show_filed', true), displayField: 'name', state: 'app.tenders.producttypesdetails' },
+            { field: 'category', title: $filter('translate')('content.list.fields.CATEGORY'), sortable: 'category.name', filter: { 'tenderProduct.category': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCategories(), show: $scope.getParamValue('category_id_show_filed', true), displayField: 'name', state: 'app.lists.categoriesdetails' },
+            { field: 'product_type', title: $filter('translate')('content.list.fields.PRODUCTTYPE'), sortable: 'product_type.name', filter: { 'tenderProduct.productType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getProductTypes(), show: $scope.getParamValue('product_type_id_show_filed', true), displayField: 'name', state: 'app.lists.producttypesdetails' },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tenderProduct.title', filter: { 'tenderProduct.title': 'text' }, show: $scope.getParamValue('title_show_filed', true), getValue: $scope.textValue },
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tenderProduct.slug', filter: { 'tenderProduct.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'tenderProduct.description', filter: { 'tenderProduct.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tenderProduct.status', filter: { 'tenderProduct.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'unit_cost', title: $filter('translate')('content.list.fields.UNITCOST'), sortable: 'tenderProduct.unitCost', filter: { 'tenderProduct.unitCost': 'number' }, show: $scope.getParamValue('unit_cost_show_filed', false), getValue: $scope.textValue },
             { field: 'quantity', title: $filter('translate')('content.list.fields.QUANTITY'), sortable: 'tenderProduct.quantity', filter: { 'tenderProduct.quantity': 'number' }, show: $scope.getParamValue('quantity_show_filed', false), getValue: $scope.textValue },
             { field: 'duration', title: $filter('translate')('content.list.fields.DURATION'), sortable: 'tenderProduct.duration', filter: { 'tenderProduct.duration': 'number' }, show: $scope.getParamValue('duration_show_filed', false), getValue: $scope.textValue },
@@ -222,15 +264,23 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
     });
 
     $scope.page = 1; // show first page
+    $scope.page = $scope.getParamValue('tenderProductsPage', $scope.page);
     $scope.count = 50; // count per page
+    $scope.count = $scope.getParamValue('tenderProductsCount', $scope.count);
     $scope.sorting = {'tenderProduct.createdAt': 'desc'};
+    $scope.sorting = $scope.getParamValue('tenderProductsSorting', $scope.sorting);
     $scope.filter = {
     };
+    $scope.filter = $scope.getParamValue('tenderProductsFilter', $scope.filter);
+    $scope.setParamValue('tenderProductsPage', $scope.page);
+    $scope.setParamValue('tenderProductsCount', $scope.count);
+    $scope.setParamValue('tenderProductsSorting', $scope.sorting);
+    $scope.setParamValue('tenderProductsFilter', $scope.filter);
     $scope.tableParams = {
-        page: $scope.getParamValue('tenderProductsPage', $scope.page),
-        count: $scope.getParamValue('tenderProductsCount', $scope.count),
-        sorting: $scope.getParamValue('tenderProductsSorting', $scope.sorting),
-        filter: $scope.getParamValue('tenderProductsFilter', $scope.filter)
+        page: $scope.page,
+        count: $scope.count,
+        sorting: $scope.sorting,
+        filter: $scope.filter
     };
     $scope.tableParams = new ngTableParams($scope.tableParams, {
         getData: function ($defer, params) {
@@ -259,7 +309,9 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
                     http_params['filters['+field+']'] = filters[field];
                 }
             }
+            $scope.isLoading = true;
             return $tenderProductsDataFactory.query(http_params).$promise.then(function(data) {
+                $scope.isLoading = false;
                 params.total(data.inlineCount);
                 return data.results;
             });
@@ -280,7 +332,7 @@ function($scope, $rootScope, $location, $sce, $timeout, $filter, ngTableParams, 
             showLoaderOnConfirm: true
         }, function (isConfirm) {
             if (isConfirm) {
-                $tenderProductsDataFactory.remove(row).$promise.then(function(data) {
+                $tenderProductsDataFactory.remove({id: row.id}).$promise.then(function(data) {
                     SweetAlert.swal({
                         title: $filter('translate')('content.common.DELETED'), 
                         text: $filter('translate')('content.list.TENDERPRODUCTDELETED'), 

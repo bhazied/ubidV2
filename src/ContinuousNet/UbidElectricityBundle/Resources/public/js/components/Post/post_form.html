@@ -24,17 +24,18 @@
                         Edit Post
                     </legend>
                     <form name="postForm" id="postForm" novalidate ng-submit="submitForm(postForm)">
+                        <input type="hidden" name="id" id="postId" ng-model="post.id" />
                         <div class="row">
-                            <input type="hidden" name="id" id="postId" ng-model="post.id" />
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postForm.postType.$dirty && postForm.postType.$invalid, 'has-success':postForm.postType.$valid}">
                                     <label for="postPostType" class="control-label">
                                         <span translate="content.list.fields.POSTTYPE">Post Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block" ng-if="postTypesLoaded">
+                                <div class="block select-list" ng-if="postTypesLoaded">
                                     <span class="input-icon">
-                                        <select ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="post.post_type" name="postType" id="postPostType" class="form-control" ng-required="true">
+                                        <select ng-readonly="post_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="post.post_type" name="postType" id="postPostType" class="form-control" ng-required="true">
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->
@@ -42,8 +43,10 @@
                                     <span class="error text-small block" ng-if="postForm.postType.$dirty && postForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
                                     <span class="success text-small block" ng-if="postForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postForm.title.$dirty && postForm.title.$invalid, 'has-success':postForm.title.$valid}">
                                     <label for="postTitle" class="control-label">
                                         <span translate="content.list.fields.TITLE">Title</span>
@@ -56,35 +59,13 @@
                                     <span class="error text-small block" ng-if="postForm.title.$dirty && postForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
                                     <span class="success text-small block" ng-if="postForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postTitleAr" class="control-label">
-                                        <span translate="content.list.fields.TITLEAR">Title Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.title_ar" type="text" name="titleAr" id="postTitleAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLEAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postTitleFr" class="control-label">
-                                        <span translate="content.list.fields.TITLEFR">Title Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.title_fr" type="text" name="titleFr" id="postTitleFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLEFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
                                     <slug from="post.title" to="post.slug"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':postForm.slug.$dirty && postForm.slug.$invalid, 'has-success':postForm.slug.$valid}">
                                     <label for="postSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -97,34 +78,10 @@
                                     <span class="error text-small block" ng-if="postForm.slug.$dirty && postForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
                                     <span class="success text-small block" ng-if="postForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="post.title_ar" to="post.slug_ar"></slug>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postSlugAr" class="control-label">
-                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.slug_ar" type="text" name="slugAr" id="postSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                                    <slug from="post.title_fr" to="post.slug_fr"></slug>
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postSlugFr" class="control-label">
-                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="post.slug_fr" type="text" name="slugFr" id="postSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
@@ -150,10 +107,12 @@
                                         </div>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-12">
+
                                 <div class="form-group" ng-class="{'has-error':postForm.content.$dirty && postForm.content.$invalid, 'has-success':postForm.content.$valid}">
                                     <label for="postContent" class="control-label">
                                         <span translate="content.list.fields.CONTENT">Content</span>
@@ -165,48 +124,30 @@
                                     <span class="error text-small block" ng-if="postForm.content.$dirty && postForm.content.$error.required" translate="content.form.messages.CONTENTREQUIRED">Content is required.</span>
                                     <span class="success text-small block" ng-if="postForm.content.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="postContentAr" class="control-label">
-                                        <span translate="content.list.fields.CONTENTAR">Content Ar</span>
-                                    </label>
-                                    <div class="note-editor">
-                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="post.content_ar" name="contentAr" id="postContentAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTENTAR' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
-                                    </div>
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="postContentFr" class="control-label">
-                                        <span translate="content.list.fields.CONTENTFR">Content Fr</span>
-                                    </label>
-                                    <div class="note-editor">
-                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="post.content_fr" name="contentFr" id="postContentFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTENTFR' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
-                                    </div>
-                                </div><!--/form-group-->
-                            </div><!--/col-md-6-->
+
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="post.is_headline" type="checkbox" name="isHeadline" id="postIsHeadline" />
                                     <label for="postIsHeadline" translate="content.list.fields.ISHEADLINE">Is Headline</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="post.auto_publishing" type="checkbox" name="autoPublishing" id="postAutoPublishing" />
                                     <label for="postAutoPublishing" translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postStartPublishing" class="control-label">
                                         <span translate="content.list.fields.STARTPUBLISHING">Start Publishing</span>
@@ -223,8 +164,10 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postEndPublishing" class="control-label">
                                         <span translate="content.list.fields.ENDPUBLISHING">End Publishing</span>
@@ -241,10 +184,12 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':postForm.publishDate.$dirty && postForm.publishDate.$invalid, 'has-success':postForm.publishDate.$valid}">
                                     <label for="postPublishDate" class="control-label">
                                         <span translate="content.list.fields.PUBLISHDATE">Publish Date</span>
@@ -264,8 +209,10 @@
                                     <span class="error text-small block" ng-if="postForm.publishDate.$dirty && postForm.publishDate.$error.required" translate="content.form.messages.PUBLISHDATEREQUIRED">Publish Date is required.</span>
                                     <span class="success text-small block" ng-if="postForm.publishDate.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postMetaTitle" class="control-label">
                                         <span translate="content.list.fields.METATITLE">Meta Title</span>
@@ -277,10 +224,12 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postMetaDescription" class="control-label">
                                         <span translate="content.list.fields.METADESCRIPTION">Meta Description</span>
@@ -292,8 +241,10 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postMetaKeywords" class="control-label">
                                         <span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span>
@@ -305,10 +256,12 @@
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':postForm.status.$dirty && postForm.status.$invalid, 'has-success':postForm.status.$valid}">
                                     <label for="postStatus" class="control-label">
                                         <span translate="content.list.fields.STATUS">Status</span>
@@ -320,16 +273,17 @@
                                             [[ status.title ]]
                                         </label>
                                     </div>
-                                    <div class="block" ng-if="statuses.length >= 10">
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
                                         <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="post.status" name="status" id="postStatus" class="form-control" ng-required="true">
                                         </select>
-                                        <span my-enum="[[ post.status ]]" my-enum-list="[[ statuses ]]"></span>
                                     </div>
                                     <span class="error text-small block" ng-if="postForm.status.$dirty && postForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="postForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalPrints" class="control-label">
                                         <span translate="content.list.fields.TOTALPRINTS">Total Prints</span>
@@ -339,10 +293,12 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalHits" class="control-label">
                                         <span translate="content.list.fields.TOTALHITS">Total Hits</span>
@@ -352,8 +308,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalComments" class="control-label">
                                         <span translate="content.list.fields.TOTALCOMMENTS">Total Comments</span>
@@ -363,10 +321,12 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalRatings" class="control-label">
                                         <span translate="content.list.fields.TOTALRATINGS">Total Ratings</span>
@@ -376,18 +336,22 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postAverageRatings" class="control-label">
                                         <span translate="content.list.fields.AVERAGERATINGS">Average Ratings</span>
                                     </label>
-                                        <input ng-model="post.average_ratings" type="text" name="averageRatings" id="postAverageRatings" class="form-control" placeholder="[[ 'content.form.messages.ENTERAVERAGERATINGS' | translate ]]" touchspin data-min="0" data-max="10000000"  data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="post.average_ratings" type="text" name="averageRatings" id="postAverageRatings" class="form-control" placeholder="[[ 'content.form.messages.ENTERAVERAGERATINGS' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalLikes" class="control-label">
                                         <span translate="content.list.fields.TOTALLIKES">Total Likes</span>
@@ -397,8 +361,10 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalDislikes" class="control-label">
                                         <span translate="content.list.fields.TOTALDISLIKES">Total Dislikes</span>
@@ -408,10 +374,12 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postTotalBookmarks" class="control-label">
                                         <span translate="content.list.fields.TOTALBOOKMARKS">Total Bookmarks</span>
@@ -421,22 +389,28 @@
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="post.is_top" type="checkbox" name="isTop" id="postIsTop" />
                                     <label for="postIsTop" translate="content.list.fields.ISTOP">Is Top</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
+
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="post.is_new" type="checkbox" name="isNew" id="postIsNew" />
                                     <label for="postIsNew" translate="content.list.fields.ISNEW">Is New</label>
                                 </div><!--/checkbox continuous-check check-primary-->
+
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
+
                                 <div class="form-group">
                                     <label for="postOrdering" class="control-label">
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
@@ -446,6 +420,7 @@
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
+
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
@@ -486,6 +461,14 @@
                     <div class="table-responsive" ng-if="posts.length > 0">
                     </div>
                 </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

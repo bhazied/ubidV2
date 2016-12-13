@@ -50,8 +50,8 @@ class UserRESTController extends BaseRESTController
      */
     public function getAction(User $entity)
     {
-        $entity->dir = $this->getCompanySubDirectory($entity, false);
-        $this->createCompanySubDirectory($entity);
+        $entity->dir = $this->getSubDirectory($entity, false);
+        $this->createSubDirectory($entity);
         return $entity;
     }
 
@@ -331,9 +331,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeEnabled) {
-                    $entity->setEnabled(false);
-                }
                 $authorizedChangeConfirmationToken = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -342,9 +339,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeConfirmationToken = true;
                         }
                     }
-                }
-                if (!$authorizedChangeConfirmationToken) {
-                    $entity->setConfirmationToken(null);
                 }
                 $authorizedChangePasswordRequestedAt = false;
                 $roles = $this->getUser()->getRoles();
@@ -355,9 +349,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangePasswordRequestedAt) {
-                    $entity->setPasswordRequestedAt(null);
-                }
                 $authorizedChangeLocked = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -366,9 +357,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeLocked = true;
                         }
                     }
-                }
-                if (!$authorizedChangeLocked) {
-                    $entity->setLocked(false);
                 }
                 $authorizedChangeExpired = false;
                 $roles = $this->getUser()->getRoles();
@@ -379,9 +367,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeExpired) {
-                    $entity->setExpired(false);
-                }
                 $authorizedChangeExpiresAt = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -390,9 +375,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeExpiresAt = true;
                         }
                     }
-                }
-                if (!$authorizedChangeExpiresAt) {
-                    $entity->setExpiresAt(null);
                 }
                 $authorizedChangeCredentialsExpireAt = false;
                 $roles = $this->getUser()->getRoles();
@@ -403,9 +385,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeCredentialsExpireAt) {
-                    $entity->setCredentialsExpireAt(null);
-                }
                 $authorizedChangeLastLogin = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -414,9 +393,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeLastLogin = true;
                         }
                     }
-                }
-                if (!$authorizedChangeLastLogin) {
-                    $entity->setLastLogin(null);
                 }
                 $authorizedChangeLastFailedLogin = false;
                 $roles = $this->getUser()->getRoles();
@@ -427,9 +403,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeLastFailedLogin) {
-                    $entity->setLastFailedLogin(null);
-                }
                 $authorizedChangeLoginCount = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -438,9 +411,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeLoginCount = true;
                         }
                     }
-                }
-                if (!$authorizedChangeLoginCount) {
-                    $entity->setLoginCount(null);
                 }
                 $authorizedChangeFailedLoginCount = false;
                 $roles = $this->getUser()->getRoles();
@@ -451,9 +421,6 @@ class UserRESTController extends BaseRESTController
                         }
                     }
                 }
-                if (!$authorizedChangeFailedLoginCount) {
-                    $entity->setFailedLoginCount(null);
-                }
                 $authorizedChangeLastFailedLoginCount = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
@@ -462,9 +429,6 @@ class UserRESTController extends BaseRESTController
                             $authorizedChangeLastFailedLoginCount = true;
                         }
                     }
-                }
-                if (!$authorizedChangeLastFailedLoginCount) {
-                    $entity->setLastFailedLoginCount(null);
                 }
                 $entity = $this->process($entity, false);
                 $em->flush();
@@ -515,9 +479,6 @@ class UserRESTController extends BaseRESTController
     
     private function process(User $entity, $isNew)
     {
-        if (is_null($entity->getCompanyName()) && !is_null($this->getUser()->getCompanyName())) {
-            $entity->setCompanyName($this->getUser()->getCompanyName());
-        }
         if (is_null($entity->getSalt()) || empty($entity->getSalt())) {
             $entity->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
         }
@@ -533,13 +494,5 @@ class UserRESTController extends BaseRESTController
         return $entity;
     }
 
-    private function getConfig($path) {
-        $config = $this->container->getParameter('ubid_electricity');
-        $paths = explode('.', $path);
-        foreach ($paths as $index) {
-            $config = $config[$index];
-        }
-        return $config;
-    }
 
 }

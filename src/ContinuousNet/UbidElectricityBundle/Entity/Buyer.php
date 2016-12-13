@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`buyer`", indexes={@ORM\Index(name="buyer_type_id", columns={"buyer_type_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="language_id", columns={"language_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`buyer`", indexes={@ORM\Index(name="buyer_type_id", columns={"buyer_type_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="language_id", columns={"language_id"}), @ORM\Index(name="first_market_region_id", columns={"first_market_region_id"}), @ORM\Index(name="second_market_region_id", columns={"second_market_region_id"}), @ORM\Index(name="third_market_region_id", columns={"third_market_region_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @UniqueEntity("name")
  * @UniqueEntity("phone")
@@ -76,6 +76,17 @@ class Buyer
      * 
      */
     private $description;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="main_products_services", type="string", length=512, nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $mainProductsServices;
 
     /**
      * @var string
@@ -199,6 +210,105 @@ class Buyer
     private $companyName;
 
     /**
+     * @var integer
+     * @access private
+     *
+     * @ORM\Column(name="total revenu", type="integer", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $totalRevenu;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="first_market_rate", type="boolean", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $firstMarketRate;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="second_market_rate", type="boolean", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $secondMarketRate;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="third_market_rate", type="boolean", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $thirdMarketRate;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="is_public", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $isPublic;
+
+    /**
+     * @var integer
+     * @access private
+     *
+     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $views;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_comment", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enableComment;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_private_message", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enablePrivateMessage;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="enable_share", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $enableShare;
+
+    /**
      * @var \DateTime
      * @access private
      *
@@ -264,6 +374,51 @@ class Buyer
      * 
      */
     private $language;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Region
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="first_market_region_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $firstMarketRegion;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Region
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="second_market_region_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $secondMarketRegion;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Region
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="third_market_region_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $thirdMarketRegion;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
@@ -361,6 +516,30 @@ class Buyer
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set mainProductsServices
+     *
+     * @access public
+     * @param string $mainProductsServices
+     * @return Buyer
+     */
+    public function setMainProductsServices($mainProductsServices = null)
+    {
+        $this->mainProductsServices = $mainProductsServices;
+        return $this;
+    }
+
+    /**
+     * Get mainProductsServices
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMainProductsServices()
+    {
+        return $this->mainProductsServices;
     }
 
     /**
@@ -628,6 +807,222 @@ class Buyer
     }
 
     /**
+     * Set totalRevenu
+     *
+     * @access public
+     * @param integer $totalRevenu
+     * @return Buyer
+     */
+    public function setTotalRevenu($totalRevenu = null)
+    {
+        $this->totalRevenu = $totalRevenu;
+        return $this;
+    }
+
+    /**
+     * Get totalRevenu
+     *
+     * @access public
+     * @return integer 
+     */
+    public function getTotalRevenu()
+    {
+        return $this->totalRevenu;
+    }
+
+    /**
+     * Set firstMarketRate
+     *
+     * @access public
+     * @param boolean $firstMarketRate
+     * @return Buyer
+     */
+    public function setFirstMarketRate($firstMarketRate = null)
+    {
+        $this->firstMarketRate = $firstMarketRate;
+        return $this;
+    }
+
+    /**
+     * Get firstMarketRate
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getFirstMarketRate()
+    {
+        return $this->firstMarketRate;
+    }
+
+    /**
+     * Set secondMarketRate
+     *
+     * @access public
+     * @param boolean $secondMarketRate
+     * @return Buyer
+     */
+    public function setSecondMarketRate($secondMarketRate = null)
+    {
+        $this->secondMarketRate = $secondMarketRate;
+        return $this;
+    }
+
+    /**
+     * Get secondMarketRate
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getSecondMarketRate()
+    {
+        return $this->secondMarketRate;
+    }
+
+    /**
+     * Set thirdMarketRate
+     *
+     * @access public
+     * @param boolean $thirdMarketRate
+     * @return Buyer
+     */
+    public function setThirdMarketRate($thirdMarketRate = null)
+    {
+        $this->thirdMarketRate = $thirdMarketRate;
+        return $this;
+    }
+
+    /**
+     * Get thirdMarketRate
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getThirdMarketRate()
+    {
+        return $this->thirdMarketRate;
+    }
+
+    /**
+     * Set isPublic
+     *
+     * @access public
+     * @param boolean $isPublic
+     * @return Buyer
+     */
+    public function setIsPublic($isPublic)
+    {
+        $this->isPublic = $isPublic;
+        return $this;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getIsPublic()
+    {
+        return $this->isPublic;
+    }
+
+    /**
+     * Set views
+     *
+     * @access public
+     * @param integer $views
+     * @return Buyer
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @access public
+     * @return integer 
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * Set enableComment
+     *
+     * @access public
+     * @param boolean $enableComment
+     * @return Buyer
+     */
+    public function setEnableComment($enableComment)
+    {
+        $this->enableComment = $enableComment;
+        return $this;
+    }
+
+    /**
+     * Get enableComment
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnableComment()
+    {
+        return $this->enableComment;
+    }
+
+    /**
+     * Set enablePrivateMessage
+     *
+     * @access public
+     * @param boolean $enablePrivateMessage
+     * @return Buyer
+     */
+    public function setEnablePrivateMessage($enablePrivateMessage)
+    {
+        $this->enablePrivateMessage = $enablePrivateMessage;
+        return $this;
+    }
+
+    /**
+     * Get enablePrivateMessage
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnablePrivateMessage()
+    {
+        return $this->enablePrivateMessage;
+    }
+
+    /**
+     * Set enableShare
+     *
+     * @access public
+     * @param boolean $enableShare
+     * @return Buyer
+     */
+    public function setEnableShare($enableShare)
+    {
+        $this->enableShare = $enableShare;
+        return $this;
+    }
+
+    /**
+     * Get enableShare
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getEnableShare()
+    {
+        return $this->enableShare;
+    }
+
+    /**
      * Set createdAt
      *
      * @access public
@@ -745,6 +1140,78 @@ class Buyer
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * Set firstMarketRegion
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Region $firstMarketRegion
+     * @return Buyer
+     */
+    public function setFirstMarketRegion(Region $firstMarketRegion = null)
+    {
+        $this->firstMarketRegion = $firstMarketRegion;
+        return $this;
+    }
+
+    /**
+     * Get firstMarketRegion
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Region 
+     */
+    public function getFirstMarketRegion()
+    {
+        return $this->firstMarketRegion;
+    }
+
+    /**
+     * Set secondMarketRegion
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Region $secondMarketRegion
+     * @return Buyer
+     */
+    public function setSecondMarketRegion(Region $secondMarketRegion = null)
+    {
+        $this->secondMarketRegion = $secondMarketRegion;
+        return $this;
+    }
+
+    /**
+     * Get secondMarketRegion
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Region 
+     */
+    public function getSecondMarketRegion()
+    {
+        return $this->secondMarketRegion;
+    }
+
+    /**
+     * Set thirdMarketRegion
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Region $thirdMarketRegion
+     * @return Buyer
+     */
+    public function setThirdMarketRegion(Region $thirdMarketRegion = null)
+    {
+        $this->thirdMarketRegion = $thirdMarketRegion;
+        return $this;
+    }
+
+    /**
+     * Get thirdMarketRegion
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Region 
+     */
+    public function getThirdMarketRegion()
+    {
+        return $this->thirdMarketRegion;
     }
 
     /**

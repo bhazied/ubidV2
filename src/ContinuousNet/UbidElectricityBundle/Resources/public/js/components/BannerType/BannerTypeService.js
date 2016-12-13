@@ -3,15 +3,16 @@
 /**
  * Banner Types Data Factory
  */
-app.factory('$bannerTypesDataFactory', ['$resource', '$rootScope', 
-function($resource, $rootScope) {
+app.factory('$bannerTypesDataFactory', ['$resource', '$rootScope', '$localStorage', 
+function($resource, $rootScope, $localStorage) {
 
-   return $resource($rootScope.app.apiURL + 'bannertypes', {id: '@id'}, {
+   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'bannertypes';
+   return $resource(baseURL, {id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: $rootScope.app.apiURL + 'bannertypes/:id' },
-        remove: { method: 'DELETE', url: $rootScope.app.apiURL + 'bannertypes/:id' },
-        update: { method: 'PUT', url: $rootScope.app.apiURL + 'bannertypes/:id' }
+        get: { method: 'GET', url: baseURL + '/:id' },
+        remove: { method: 'DELETE', url: baseURL + '/:id' },
+        update: { method: 'PUT', url: baseURL + '/:id' }
     });
    
 }]);
