@@ -1832,23 +1832,23 @@ body {
 }
 
 .en {
-    background-image: url('/front/img/flags/United-Kingdom.png');
+    background-image: url('/front/img/circle-flags/United-Kingdom.png');
 }
 
 .es {
-    background-image: url('/front/img/flags/Spain.png');
+    background-image: url('/front/img/circle-flags/Spain.png');
 }
 
 .fr {
-    background-image: url('/front/img/flags/France.png');
+    background-image: url('/front/img/circle-flags/France.png');
 }
 
 .it {
-    background-image: url('/front/img/flags/Italy.png');
+    background-image: url('/front/img/circle-flags/Italy.png');
 }
 
 .de {
-    background-image: url('/front/img/flags/Germany.png');
+    background-image: url('/front/img/circle-flags/Germany.png');
 }
 
 .languages {
@@ -2238,6 +2238,10 @@ p.copyright {
     padding-top: 0.6rem;
 }
 
+input.form-control {
+    padding: 0.7rem 0.75rem;
+}
+
 .notification {
     display: inline-block;
     height: 36px;
@@ -2499,5 +2503,56 @@ p.copyright {
 .tender-preview button {
     background-color: #1D69AD;
     color: #ffffff!important;
+}
 
+.tender-preview button:hover {
+    background-color: #eeeeee;
+    color: #1D69AD!important;
+}
+
+.tender-details .name {
+    font-size: 1.5rem;
+    color: #013486!important;
+    cursor: pointer;
+    font-family: Arial!important;
+}
+
+.tender-details table tr th {
+    min-width: 150px;
+   border-bottom: 1px solid #ccc;
+}
+
+.tender-details table tr td {
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.tender-details table tr td span.value {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+
+.tender-details button {
+    background-color: #1D69AD;
+    color: #ffffff!important;
+}
+
+.tender-details button:hover {
+    background-color: #eeeeee;
+    color: #1D69AD!important;
+}
+
+.tender-details .country {
+    height: 23.5px;
+    width: 35px;
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    vertical-align: middle;
+}
+
+.tender-details .country-ae {
+    background-image: url('/front/img/flags/United-Arab-Emirates.png');
 }

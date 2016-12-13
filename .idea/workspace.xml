@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e19f8dd-0812-4a6a-809f-f3bb92a4c692" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/db_updates_20161211.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Default/public.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Default/public.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/db_updates_20161211.sql" afterPath="$PROJECT_DIR$/database/db_updates_20161211.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_1.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_1.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297.css" afterPath="$PROJECT_DIR$/web/css/b9d5297.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" afterPath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +44,8 @@
       <file leaf-file-name="db_updates_20161211.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/db_updates_20161211.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21818182">
-              <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.24545455">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -647,8 +652,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/db_updates_20161211.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21818182">
-          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.24545455">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
