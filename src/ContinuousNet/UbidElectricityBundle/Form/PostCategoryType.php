@@ -48,7 +48,7 @@ class PostCategoryType extends AbstractType
             ->add('slug', TextType::class)
             ->add('picture', TextType::class)
             ->add('description', TextType::class)
-            ->add('parent', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Parent', 'choice_label' => ''))
+            ->add('parentPostCategory', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:PostCategory', 'choice_label' => 'name'))
             ->add('postType', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:PostType', 'choice_label' => 'name'))
             ->add('ordering', IntegerType::class)
             ->add('status', ChoiceType::class, array('choices' => array('Draft' => 'Draft', 'Online' => 'Online', 'Deactivated' => 'Deactivated', 'Offline' => 'Offline', 'Deleted' => 'Deleted', 'Archived' => 'Archived', ), 'expanded' => false, 'multiple' => false))

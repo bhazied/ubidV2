@@ -44,10 +44,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.postCategories = [];
     $scope.postCategoriesLoaded = false;
 
-    $scope.getParents = function() {
+    $scope.getPostCategories = function() {
         $scope.postCategoriesLoaded = true;
         if ($scope.postCategories.length == 0) {
-            $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
+            $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENTPOSTCATEGORY')});
             var def = $q.defer();
             $postCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[postCategory.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
@@ -68,7 +68,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         }
     };
 
-    $scope.getParents();
+    $scope.getPostCategories();
 
     $scope.postTypes = [];
     $scope.postTypesLoaded = false;
@@ -202,7 +202,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'postCategory.slug', filter: { 'postCategory.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), getValue: $scope.textValue },
             { field: 'picture', title: $filter('translate')('content.list.fields.PICTURE'), sortable: 'postCategory.picture', filter: { 'postCategory.picture': 'text' }, show: $scope.getParamValue('picture_show_filed', true), getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<img ng-src="'+$rootScope.app.thumbURL+'[[ (row.picture)?row.picture:\'/assets/images/picturenotavailable.'+$scope.locale+'.png\' ]]" alt="" class="img-thumbnail" />') },
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'postCategory.description', filter: { 'postCategory.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), getValue: $scope.textValue },
-            { field: 'parent', title: $filter('translate')('content.list.fields.PARENT'), sortable: 'parent.', filter: { 'postCategory.parent': 'select' }, getValue: $scope.linkValue, filterData: $scope.getParents(), show: $scope.getParamValue('parent_id_show_filed', true), displayField: '', state: 'app..details' },
+            { field: 'parent_post_category', title: $filter('translate')('content.list.fields.PARENTPOSTCATEGORY'), sortable: 'parent_post_category.name', filter: { 'postCategory.parentPostCategory': 'select' }, getValue: $scope.linkValue, filterData: $scope.getPostCategories(), show: $scope.getParamValue('parent_post_category_id_show_filed', true), displayField: 'name', state: 'app.news.postcategoriesdetails' },
             { field: 'post_type', title: $filter('translate')('content.list.fields.POSTTYPE'), sortable: 'post_type.name', filter: { 'postCategory.postType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getPostTypes(), show: $scope.getParamValue('post_type_id_show_filed', true), displayField: 'name', state: 'app.news.posttypesdetails' },
             { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'postCategory.ordering', filter: { 'postCategory.ordering': 'number' }, show: $scope.getParamValue('ordering_show_filed', false), getValue: $scope.textValue },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'postCategory.createdAt', filter: { 'postCategory.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},

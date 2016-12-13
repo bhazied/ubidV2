@@ -52,11 +52,11 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.postCategories = [];
     $scope.postCategoriesLoaded = false;
 
-    $scope.getParents = function() {
+    $scope.getPostCategories = function() {
         $timeout(function(){
             $scope.postCategoriesLoaded = true;
             if ($scope.postCategories.length == 0) {
-                $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
+                $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENTPOSTCATEGORY')});
                 var def = $q.defer();
                 $postCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -72,7 +72,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         });
     };
 
-    $scope.getParents();
+    $scope.getPostCategories();
 
     $scope.postTypes = [];
     $scope.postTypesLoaded = false;
@@ -174,7 +174,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.news.postcategories');
     };
     
-    $scope.post_category_parent_readonly = false;
+    $scope.post_category_parent_post_category_readonly = false;
     $scope.post_category_post_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $postCategoriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
@@ -185,9 +185,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.postCategory = {id: 0, status: 'Draft'};
 
-        if (angular.isDefined($stateParams.post_category_parent) && JSON.parse($stateParams.post_category_parent) != null) {
-            $scope.postCategory.parent = $stateParams.post_category_parent;
-            $scope.post_category_parent_readonly = true;
+        if (angular.isDefined($stateParams.post_category_parent_post_category) && JSON.parse($stateParams.post_category_parent_post_category) != null) {
+            $scope.postCategory.parent_post_category = $stateParams.post_category_parent_post_category;
+            $scope.post_category_parent_post_category_readonly = true;
         }
         if (angular.isDefined($stateParams.post_category_post_type) && JSON.parse($stateParams.post_category_post_type) != null) {
             $scope.postCategory.post_type = $stateParams.post_category_post_type;
