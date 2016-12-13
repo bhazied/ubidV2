@@ -1300,6 +1300,14 @@ span.input-help > input {
     color: #ffffff!important;
 }
 
-.legend {
+fieldset legend {
     color: #013486 !important;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
 }
