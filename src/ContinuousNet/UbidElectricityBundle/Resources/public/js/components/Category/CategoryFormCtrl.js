@@ -52,11 +52,11 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.categories = [];
     $scope.categoriesLoaded = false;
 
-    $scope.getParents = function() {
+    $scope.getCategories = function() {
         $timeout(function(){
             $scope.categoriesLoaded = true;
             if ($scope.categories.length == 0) {
-                $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENT')});
+                $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENTCATEGORY')});
                 var def = $q.defer();
                 $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
@@ -72,7 +72,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         });
     };
 
-    $scope.getParents();
+    $scope.getCategories();
 
     $scope.productTypes = [];
     $scope.productTypesLoaded = false;
@@ -174,7 +174,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.lists.categories');
     };
     
-    $scope.category_parent_readonly = false;
+    $scope.category_parent_category_readonly = false;
     $scope.category_product_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $categoriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
@@ -185,9 +185,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     } else {
         $scope.category = {id: 0, status: 'Draft'};
 
-        if (angular.isDefined($stateParams.category_parent) && JSON.parse($stateParams.category_parent) != null) {
-            $scope.category.parent = $stateParams.category_parent;
-            $scope.category_parent_readonly = true;
+        if (angular.isDefined($stateParams.category_parent_category) && JSON.parse($stateParams.category_parent_category) != null) {
+            $scope.category.parent_category = $stateParams.category_parent_category;
+            $scope.category_parent_category_readonly = true;
         }
         if (angular.isDefined($stateParams.category_product_type) && JSON.parse($stateParams.category_product_type) != null) {
             $scope.category.product_type = $stateParams.category_product_type;

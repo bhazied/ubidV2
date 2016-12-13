@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`category`", indexes={@ORM\Index(name="parent_id", columns={"parent_id"}), @ORM\Index(name="product_type_id", columns={"product_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`category`", indexes={@ORM\Index(name="parent_category_id", columns={"parent_category_id"}), @ORM\Index(name="product_type_id", columns={"product_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @UniqueEntity("name")
  * @ORM\HasLifecycleCallbacks()
@@ -147,14 +147,14 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="parent_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
      * @MaxDepth(1)
      * 
      */
-    private $parent;
+    private $parentCategory;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\ProductType
@@ -435,27 +435,27 @@ class Category
     }
 
     /**
-     * Set parent
+     * Set parentCategory
      *
      * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\Category $parent
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Category $parentCategory
      * @return Category
      */
-    public function setParent(Category $parent = null)
+    public function setParentCategory(Category $parentCategory = null)
     {
-        $this->parent = $parent;
+        $this->parentCategory = $parentCategory;
         return $this;
     }
 
     /**
-     * Get parent
+     * Get parentCategory
      *
      * @access public
      * @return \ContinuousNet\UbidElectricityBundle\Entity\Category 
      */
-    public function getParent()
+    public function getParentCategory()
     {
-        return $this->parent;
+        return $this->parentCategory;
     }
 
     /**

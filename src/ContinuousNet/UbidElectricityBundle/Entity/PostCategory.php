@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`post_category`", indexes={@ORM\Index(name="parent_id", columns={"parent_id"}), @ORM\Index(name="post_type_id", columns={"post_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`post_category`", indexes={@ORM\Index(name="parent_post_category_id", columns={"parent_post_category_id"}), @ORM\Index(name="post_type_id", columns={"post_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @UniqueEntity("name")
  * @ORM\HasLifecycleCallbacks()
@@ -147,14 +147,14 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostCategory")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="parent_post_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
      * @MaxDepth(1)
      * 
      */
-    private $parent;
+    private $parentPostCategory;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\PostType
@@ -435,27 +435,27 @@ class PostCategory
     }
 
     /**
-     * Set parent
+     * Set parentPostCategory
      *
      * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\PostCategory $parent
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\PostCategory $parentPostCategory
      * @return PostCategory
      */
-    public function setParent(PostCategory $parent = null)
+    public function setParentPostCategory(PostCategory $parentPostCategory = null)
     {
-        $this->parent = $parent;
+        $this->parentPostCategory = $parentPostCategory;
         return $this;
     }
 
     /**
-     * Get parent
+     * Get parentPostCategory
      *
      * @access public
      * @return \ContinuousNet\UbidElectricityBundle\Entity\PostCategory 
      */
-    public function getParent()
+    public function getParentPostCategory()
     {
-        return $this->parent;
+        return $this->parentPostCategory;
     }
 
     /**

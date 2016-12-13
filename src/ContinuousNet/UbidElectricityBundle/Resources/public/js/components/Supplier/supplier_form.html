@@ -119,18 +119,42 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':supplierForm.email.$dirty && supplierForm.email.$invalid, 'has-success':supplierForm.email.$valid}">
-                                    <label for="supplierEmail" class="control-label">
-                                        <span translate="content.list.fields.EMAIL">Email</span>
-                                        <span class="symbol required"></span>
+                                <div class="form-group">
+                                    <label for="supplierFax" class="control-label">
+                                        <span translate="content.list.fields.FAX">Fax</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplier.email" type="email" name="email" id="supplierEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="true" my-unique-field="supplier.email" my-resource-url="suppliers" my-current-id="[[ supplier.id ]]" />
+                                        <input ng-model="supplier.fax" type="text" name="fax" id="supplierFax" class="form-control" placeholder="[[ 'content.form.messages.ENTERFAX' | translate ]]" ng-required="false" />
+                                        <i class="ti-printer"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierWebsite" class="control-label">
+                                        <span translate="content.list.fields.WEBSITE">Website</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.website" type="text" name="website" id="supplierWebsite" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBSITE' | translate ]]" ng-required="false" />
+                                        <i class="ti-world"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierEmail" class="control-label">
+                                        <span translate="content.list.fields.EMAIL">Email</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.email" type="email" name="email" id="supplierEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
                                         <i class="ti-email"></i>
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="supplierForm.email.$dirty && supplierForm.email.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
-                                    <span class="error text-small block" ng-if="supplierForm.email.$dirty && supplierForm.email.$error.myUniqueField" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
-                                    <span class="success text-small block" ng-if="supplierForm.email.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

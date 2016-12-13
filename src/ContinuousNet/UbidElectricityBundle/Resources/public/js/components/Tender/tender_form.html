@@ -221,6 +221,16 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="tenderFees" class="control-label">
+                                        <span translate="content.list.fields.FEES">Fees</span>
+                                    </label>
+                                        <input ng-model="tender.fees" type="text" name="fees" id="tenderFees" class="form-control" placeholder="[[ 'content.form.messages.ENTERFEES' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
                             <div class="col-md-12">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.description.$dirty && tenderForm.description.$invalid, 'has-success':tenderForm.description.$valid}">
