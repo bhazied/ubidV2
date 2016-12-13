@@ -426,9 +426,6 @@
                         <legend translate="content.list.NEWTENDER" ng-if="tender.id == 0">
                             New Tender
                         </legend>
-                        <legend translate="content.list.EDITTENDER" ng-if="tender.id > 0">
-                            Edit Tender
-                        </legend>
                         <form name="tenderForm" id="tenderForm" novalidate ng-submit="submitForm(tenderForm)">
                             <input type="hidden" name="id" id="tenderId" ng-model="tender.id" />
                             <div class="row">
