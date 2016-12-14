@@ -189,5 +189,13 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
+        }).state('front.post',{
+            url:"/post/:slug",
+            templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
+            title: 'post',
+            resolve: loadSequence('PostCtrl', 'postService', 'PostFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
         })
     }]);

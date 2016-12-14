@@ -1,3 +1,202 @@
-<div data-ng-show="leftrightside">
-    specific_search_page
+<div ng-show="leftrightside">
+    <h3 class="sidebar-title" translate="front.SPECIFICSEARCH" >Specific Search</h3>
+
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.RELATEDCATEGORIES">Related Categories</label>
+        <div class="categories-checkbox">
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 1</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 2</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 3</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 4</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 5</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 6</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Category 7</span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.REGIONCOUNTRY">Region/Country</label>
+        <div class="countries-checkbox">
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 1</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 2</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 3</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 4</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 5</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 6</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Country 7</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group nice-select">
+                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="date_rages">
+                        <option translate="front.MORETHAN">More Than</option>
+                        <option translate="front.LESSTHAN">Less Than</option>
+                        <option translate="front.EQUALTO">Equal To</option>
+                    </select>
+                    <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 pl-0">
+                <div class="input-group">
+                    <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
+                    <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.CATEGORIES">Publication Date</label>
+        <div class="input-group nice-select">
+            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="date_rages">
+                <option translate="front.TODAY">Today</option>
+                <option translate="front.YESTERDAY">Yesterday</option>
+                <option translate="front.LAST7DAYS">Last 7 days</option>
+                <option translate="front.LAST30DAYS">Last 30 days</option>
+                <option translate="front.THISMONTH">This month</option>
+                <option translate="front.LASTMONTH">Last month</option>
+                <option translate="front.CUSTOMDATE">Custom Date</option>
+            </select>
+            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input ng-model="search.publish_date_from" type="text" class="form-control" placeholder=""/>
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" translate="front.TO">To</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input ng-model="search.publish_date_to" type="text" class="form-control" placeholder=""/>
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.CATEGORIES">Due Date</label>
+        <div class="input-group nice-select">
+            <select class="form-control" class="select" ng-model="search.deadline" ng-options="date_rages">
+                <option translate="front.TODAY">Today</option>
+                <option translate="front.YESTERDAY">Yesterday</option>
+                <option translate="front.LAST7DAYS">Last 7 days</option>
+                <option translate="front.LAST30DAYS">Last 30 days</option>
+                <option translate="front.THISMONTH">This month</option>
+                <option translate="front.LASTMONTH">Last month</option>
+                <option translate="front.CUSTOMDATE">Custom Date</option>
+            </select>
+            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input ng-model="search.deadline_from" type="text" class="form-control" placeholder=""/>
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" translate="front.TO">To</label>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input ng-model="search.deadline_to" type="text" class="form-control" placeholder=""/>
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
 </div>
