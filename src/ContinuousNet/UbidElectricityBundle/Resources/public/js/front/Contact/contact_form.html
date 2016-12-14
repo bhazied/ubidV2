@@ -1,25 +1,25 @@
-<div class="col-md-6 offset-md-2" ng-controller="contactFormCtrl">
+<div class="col-md-6 offset-md-3" ng-controller="contactFormCtrl">
     <fieldset>
         <legend translate="content.form.titles.CONTACT"></legend>
             <form  name="contactForm" id="contactForm" class="form" data-ng-submit="submitForm(contactForm)">
                 <div class="form-group" ng-class="{'has-error':contactForm.firstName.$dirty && contactForm.firstName.$invalid, 'has-success':contactForm.firstName.$valid}">
                     <label for="firstName" class="control-label">
-                        <span translate="content.form.fields.FIRST_NAME">First Name</span>
+                        <span translate="content.form.fields.FIRSTNAME">First Name</span>
                     </label>
                     <span class="input-icon">
-                        <input name="firstName" id= "firstName" ng-model="contact.firstName" type="text" class="form-control" name="email" placeholder="[[ 'content.form.fields.FIRST_NAME' | translate ]]" ng-required="true">
-                        <i class="ti-marker-alt"></i>
+                        <input name="firstName" id= "firstName" ng-model="contact.firstName" type="text" class="form-control" name="email" placeholder="[[ 'content.form.fields.FIRSTNAME' | translate ]]" ng-required="true">
+                        <i class="fa fa-user"></i>
                     </span>
                     <span class="error text-small block" ng-if="contactForm.firstName.$dirty && contactForm.firstName.$error.required" translate="content.form.messages.FIRSTNAMEREQUIRED">FirstName is required.</span>
                 </div>
 
                 <div class="form-group" ng-class="{'has-error':contactForm.lastName.$dirty && contactForm.lastName.$invalid, 'has-success':contactForm.lastName.$valid}">
                     <label for="lastName" class="control-label">
-                        <span translate="content.form.fields.LAST_NAME">Last Name</span>
+                        <span translate="content.form.fields.LASTNAME">Last Name</span>
                     </label>
                     <span class="input-icon">
-                        <input name="lastNname" id= "lastName" ng-model="contact.lastName" type="text" class="form-control" placeholder="[[ 'content.form.fields.LAST_NAME' | translate ]]" ng-required="true">
-                        <i class="ti-marker-alt"></i>
+                        <input name="lastNname" id= "lastName" ng-model="contact.lastName" type="text" class="form-control" placeholder="[[ 'content.form.fields.LASTNAME' | translate ]]" ng-required="true">
+                        <i class="fa fa-user-o"></i>
                     </span>
                     <span class="error text-small block" ng-if="contactForm.lastName.$dirty && contactForm.lastName.$error.required" translate="content.form.messages.LASTNAMEREQUIRED">LastName is required.</span>
                 </div>
@@ -30,7 +30,7 @@
                     </label>
                     <span class="input-icon">
                         <input name="contactEmail" id= "contactEmail" ng-model="contact.email" type="text" class="form-control" name="email" placeholder="[[ 'content.form.fields.EMAIL' | translate ]]" ng-required="true">
-                        <i class="fa fa-envelope"></i>
+                        <i class="fa fa-envelope-o"></i>
                     </span>
                     <span class="error text-small block" ng-if="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.required" translate="content.form.messages.USEREMAILREQUIRED">User Email is required.</span>
                 </div>
@@ -52,7 +52,7 @@
                     </label>
                     <span class="input-icon">
                         <textarea name="contactMessage" id= "contactMessage" ng-model="contact.message" type="text" class="form-control"  placeholder="[[ 'content.form.fields.MESSAGE' | translate ]]" ng-required="true">
-                        <i class="ti-briefcase"></i>
+                        <i class="fa fa-message-o"></i>
                         </textarea>
                     </span>
                     <span class="error text-small block" ng-if="contactForm.contactMessage.$dirty && contactForm.contactMessage.$error.required" translate="content.form.messages.CONTACTMESSAGEREQUIRED">Message is required.</span>

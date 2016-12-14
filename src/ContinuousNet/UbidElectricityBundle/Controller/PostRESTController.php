@@ -7,6 +7,7 @@ use ContinuousNet\UbidElectricityBundle\Form\PostType;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View as FOSView;
@@ -40,6 +41,29 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
  */
 class PostRESTController extends BaseRESTController
 {
+    /**
+     * Get a Post entity By slug
+     *
+     * @Get("/getBySlug/{slug}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function getBySlugAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Post', 'p_');
+        $qb->andWhere('p_.slug = :slug')->setParameter('slug', $slug);
+        $qb->setMaxResults(1);
+        $entity = $qb->getQuery()->getOneOrNullResult();
+        $entity = $this->translateEntity($entity);
+        $entity->dir = $this->getSubDirectory($entity, false);
+        $this->createSubDirectory($entity);
+        return $entity;
+    }
+
     /**
      * Get a Post entity
      *

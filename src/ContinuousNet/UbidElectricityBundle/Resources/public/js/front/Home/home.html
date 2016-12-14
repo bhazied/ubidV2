@@ -1,4 +1,4 @@
-<!--<section id="contentSection" ng-controller="HomeCtrl">
+<!--<section id="contentSection">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
@@ -42,22 +42,21 @@
         </div>
     </div>
 </section>-->
-<div class="row mt-2">
+
+<div class="row mt-2" ng-controller="HomeCtrl">
 
     <div class="col-md-8 offset-md-2">
-        <div class="search-box">
+        <div class="search-box-home">
+            <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
+            <button class="btn" type="submit" translate="content.form.buttons.FIND">Find</button>
             <ul>
                 <li><a class="plus"></a></li>
                 <li><a class="flash"></a></li>
                 <li><a class="microship"></a></li>
                 <li><a class="pole"></a></li>
             </ul>
-            <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
-            <button class="btn" type="submit" translate="content.form.buttons.FIND">Find</button>
         </div>
     </div>
-    <div class="col-md-2" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'">
 
-    </div>
 </div>
 

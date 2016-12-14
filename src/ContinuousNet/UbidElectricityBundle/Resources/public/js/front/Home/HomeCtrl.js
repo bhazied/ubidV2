@@ -2,6 +2,8 @@
 app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$q', '$HomeDataFactory','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $q, $HomeDataFactory, $filter) {
 
+        $rootScope.showSlogan = true;
+
         $scope.tendersLoaded = false;
         $scope.tendersList = [];
         $scope.sectorsLoaded = false;

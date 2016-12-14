@@ -30,8 +30,19 @@ angular.module('ubid-electricity', [
 ]);
 
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
-function ($rootScope, $state, $stateParams, $localStorage) {
+
+var languages = {
+    'en' : 'English',
+    'fr' : 'Français',
+    'es' : 'Español',
+    'it' : 'Italiano',
+    'de' : 'Deutsch'
+};
+
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
+    function ($rootScope, $state, $stateParams, $localStorage, $timeout) {
+
+    $rootScope.languages = languages;
 
     // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
     FastClick.attach(document.body);
@@ -95,7 +106,7 @@ function ($translateProvider) {
 
     // Since you've now registered more then one translation table, angular-translate has to know which one to use.
     // This is where preferredLanguage(langKey) comes in.
-    $translateProvider.preferredLanguage('fr');
+    $translateProvider.preferredLanguage('en');
 
     // Store the language in the local storage
     $translateProvider.useLocalStorage();
@@ -457,14 +468,15 @@ app.constant('APP_JS_REQUIRES', {
         'LoginFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js',
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'HomeCtrl': '/bundles/ubidelectricity/js/front/Home/HomeCtrl.js',
-        'tendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/tendersFrontCtrl.js',
-        'searchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/searchFormCtrl.js',
-        'tenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/tenderCtrl.js',
-        'contactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/contactFormCtrl.js',
-        'profileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/profileFrontCtrl.js',
+        'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
+        'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
+        'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
+        'ContactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/ContactFormCtrl.js',
+        'ProfileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/ProfileFrontCtrl.js',
         'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
-        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrll.js'
+        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrl.js',
+        'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -632,20 +644,23 @@ app.constant('APP_JS_REQUIRES', {
         name: 'visitService',
         files: ['/bundles/ubidelectricity/js/components/Visit/VisitService.js']
     },{
-        name: 'HomeService',
+        name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
-        name: 'tenderfrontService',
+        name: 'tenderFrontService',
         files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
     },{
-        name: 'SearchService',
+        name: 'searchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
     },{
         name: 'contactService',
         files: ['/bundles/ubidelectricity/js/front/Contact/ContactService.js']
     },{
-        name: 'ProfileFrontService',
+        name: 'profileFrontService',
         files: ['/bundles/ubidelectricity/js/front/Auth/ProfileService.js']
+    },{
+        name: 'postFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
     }]
 });
 

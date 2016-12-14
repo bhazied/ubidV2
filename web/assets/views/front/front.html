@@ -9,7 +9,7 @@
     <div class="row mt-2">
         <div class="col-md-4">
 
-            <span class="slogan"><b>[[ 'front.SLOGAN1' | translate ]]</b> [[ 'front.SLOGAN2' | translate ]]<br />[[ 'front.SLOGAN3' | translate ]]</span>
+            <span ng-show="showSlogan" class="slogan" ng-bind-html-unsafe="'front.SLOGAN' | translate"><b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...</span>
 
         </div>
         <div class="col-md-4">
@@ -18,7 +18,7 @@
         <div class="col-md-4" data-ng-include="'/bundles/ubidelectricity/js/front/Auth/user_header.html'">
         </div>
     </div>
-    <div class="row mt-2" ui-view >
+    <div class="row mt-2" ui-view>
     </div>
     <div class="row">
         <div class="col-md-2">
