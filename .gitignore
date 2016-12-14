@@ -17,3 +17,4 @@
 /web/.release
 /web/release
 /.idea/*
+/nbproject/private/
