@@ -1,5 +1,5 @@
 'use strict'
-var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select']);
+var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
     function ($rootScope, $state, $stateParams, $localStorage) {
@@ -10,6 +10,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
+        // left right side to be shown or not
+        $rootScope.leftrightside = false;
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {
@@ -37,17 +39,16 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
                 logo: '/assets/images/big_logo.png', // relative path of the project logo
             }
         };
-        console.log( $rootScope.app);
 
         if (angular.isDefined($localStorage.user)) {
             $rootScope.user = $rootScope.currentUser = $localStorage.user;
 
         } else {
             $rootScope.user = $rootScope.currentUser = {
-                firstName: 'Guest',
-                job: 'Visitor',
-                picture: 'app/img/user/02.jpg',
-                roles: []
+                //firstName: 'Guest',
+                //job: 'Visitor',
+                //picture: 'app/img/user/02.jpg',
+                //roles: []
             };
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);

@@ -12,7 +12,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('front.login', {
+        }).state('auth.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
             title: 'content.list.LOGIN',
@@ -86,12 +86,12 @@ app.config(['$stateProvider',
             resolve: loadSequence('LockScreenCtrl', 'LoginService')
         }).state('front.profile', {
             url: '/profile',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/profile.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/profile.html',
             title: 'topbar.user.PROFILE',
             ncyBreadcrumb: {
                 label: 'topbar.user.PROFILE'
             },
-            resolve: loadSequence('jquery-sparkline', 'ProfileCtrl', 'ProfileService', 'countryService')
+            resolve: loadSequence('jquery-sparkline', 'profileFrontCtrl', 'ProfileFrontService', 'countryService')
         }).state('front.changepassword', {
             url: '/change-password',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
@@ -107,9 +107,9 @@ app.config(['$stateProvider',
             resolve: loadSequence('HomeCtrl' ,'HomeService')
         }).state('front.contact', {
             url:'/contact',
-            template : "<div>this is a contact page</div>",
+            templateUrl : "/bundles/ubidelectricity/js/front/Contact/contact_form.html",
             title: "Contact page",
-            resolve: loadSequence()
+            resolve: loadSequence('contactService', 'contactFormCtrl')
         }).state('front.about', {
             url:'/about-us',
             template : "<div>this is about us page</div>",
@@ -148,11 +148,54 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: "Tender description",
-            resolve: loadSequence('tendersFrontCtrl', 'HomeService')
+            resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+        }).state('front.tender.add',{
+            url: '/add',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
+            title: "Tender description",
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
         }).state('front.advanced_search', {
             url: '/advanced-search',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
             title: "Advanced Search",
             resolve: loadSequence('searchFormCtrl', 'SearchService', 'languageService', 'countryService', 'tenderfrontService', 'checklist-model', 'angular-slider')
+        }).state('front.bidder',{
+            url: "/bidder",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer',{
+            url: "/buyer",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.add',{
+            url:"/buyer/add",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/add_buyer.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyerFrontFormCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.buyer.list',{
+            url:"/buyer/list",
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
+            title: 'ADD buyer',
+            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersCtrl' ,'BuyersFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.post',{
+            url:"/post/:slug",
+            templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
+            title: 'post',
+            resolve: loadSequence('PostCtrl', 'postService', 'PostFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
         })
     }]);

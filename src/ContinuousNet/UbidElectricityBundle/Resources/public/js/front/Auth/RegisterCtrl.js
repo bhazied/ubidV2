@@ -166,7 +166,6 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
 
         $scope.submitForm = function(form) {
-            console.log($scope.user);
             var firstError = null;
             if (form.$invalid) {
                 var field = null, firstError = null;

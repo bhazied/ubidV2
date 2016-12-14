@@ -1,10 +1,29 @@
 <!-- toaster directive -->
 <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-    <div class="container">
-    <header id="header" data-ng-include=" '/assets/views/front/header.html' "></header>
+<!--<header id="header" data-ng-include=" '/assets/views/front/header.html' "></header> -->
+<nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar" data-ng-include=" '/assets/views/front/header.html' ">
+</nav>
 
-    <section id="navArea" data-ng-include=" '/assets/views/front/nav_area.html' "></section>
-    <div ui-view class="wrap-content container fade-in-up" id="container"></div>
-    <footer id="footer" data-ng-include=" '/assets/views/front/footer.html' "></footer>
+<!--<section id="navArea" data-ng-include=" '/assets/views/front/nav_area.html' "></section>-->
+<div class="container" id="container">
+    <div class="row mt-2">
+        <div class="col-md-4">
+
+            <span class="slogan"><b>[[ 'front.SLOGAN1' | translate ]]</b> [[ 'front.SLOGAN2' | translate ]]<br />[[ 'front.SLOGAN3' | translate ]]</span>
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4" data-ng-include="'/bundles/ubidelectricity/js/front/Auth/user_header.html'">
+        </div>
+    </div>
+    <div class="row mt-2"  >
+        <div class="col-md-3" id="specific_search" data-ng-include="'/bundles/ubidelectricity/js/front/Common/specific_search.html'"></div>
+        <div class="col-md-6" ui-view></div>
+        <div class="col-md-3" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'"></div>
+    </div>
 </div>
+<hr class="footer-sep" />
+<footer id="footer" data-ng-include=" '/assets/views/front/footer.html' "></footer>
 

@@ -1,4 +1,4 @@
-<section id="contentSection" ng-controller="HomeCtrl">
+<!--<section id="contentSection" ng-controller="HomeCtrl">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
@@ -7,7 +7,7 @@
                     <div class="single_post_content">
                         <ul class="spost_nav">
                             <li ng-repeat="sector in sectorsList">
-                                <div class="media wow fadeInDown"> <!--<a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>-->
+                                <div class="media wow fadeInDown">
                                     <div class="media-body"> <a ui-sref="front.tenders.sector({ id: [[ sector.id ]] })" class="catg_title"> [[ sector.name ]]  ( [[ sector.tenderCount ]] )</a> </div>
                                 </div>
                             </li>
@@ -30,7 +30,7 @@
                     <h2><span>Last bids</span></h2>
                     <ul class="spost_nav">
                         <li ng-repeat="tender in tendersList">
-                            <div class="media wow fadeInDown"> <!--<a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a> -->
+                            <div class="media wow fadeInDown">
                                 <div class="media-body"> <a ui-sref="front.tender.details({id:[[ tender.id ]]})" class="catg_title"> [[ tender.title ]]</a> </div>
                             </div>
                         </li>
@@ -41,4 +41,21 @@
             </aside>
         </div>
     </div>
-</section>
+</section>-->
+<div class="row mt-2">
+
+    <div>
+        <div class="search-box">
+            <ul>
+                <li><a class="plus"></a></li>
+                <li><a class="flash"></a></li>
+                <li><a class="microship"></a></li>
+                <li><a class="pole"></a></li>
+            </ul>
+            <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
+            <button class="btn" type="submit" translate="content.form.buttons.FIND">Find</button>
+        </div>
+    </div>
+    <!--<div class="col-md-2" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'"></div>-->
+</div>
+

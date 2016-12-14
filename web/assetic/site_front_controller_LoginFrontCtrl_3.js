@@ -15,11 +15,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.user = {};
 
         }
-       // $scope.resetAccess();
         $scope.submit = function () {
             $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
-                cosole.log(data);
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
@@ -37,6 +35,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }, function(error) {
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                $rootScope.loggedIn = false;
             });
             return false;
         };

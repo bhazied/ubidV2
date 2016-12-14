@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_top">
             <div class="header_top_left">
@@ -10,6 +10,15 @@
                 </ul>
             </div>
             <div class="header_top_right ">
+                <ul class="top_nav_right top_nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">switch language</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" ng-click="changeLanguage('fr')">Français</a></li>
+                            <li><a href="#" ng-click="changeLanguage('en')">Anglais</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="top_nav_right top_nav" ng-if="!loggedIn">
                     <li><a  href="#/register" translate="header.menu.SIGNUP"></a></li>
                     <li class="dropdown" id="menuLogin">
@@ -37,8 +46,41 @@
                 <p>Join us
                 to find your service provider in</p>
                 <p>Energy, Power, Electrical products & Solutions,...</p>
-                <button type="button" class="btn btn-warning" translate="header.menu.SUBMITPROJRCT"></button>
+                <button type="button" class="btn btn-warning" translate="header.menu.SUBMITPROJRCT" ng-click="add_tender()"></button>
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+<a class="navbar-logo-icon" ui-sref="front.home"></a>
+
+<a class="navbar-logo-text" ui-sref="front.home"></a>
+
+<form class="float-xs-left">
+    <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" />
+    <button type="submit"></button>
+</form>
+
+<div class="float-xs-right" id="language-switcher">
+                <span class="current-language flag en" title="English">
+                    <ul class="languages">
+                        <li class="flag es" title="Español"></li>
+                        <li class="flag fr" title="Français"></li>
+                        <li class="flag it" title="Italiano"></li>
+                        <li class="flag de" title="Deutsch"></li>
+                    </ul>
+                </span>
+    <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
 </div>
+
+
+<ul class="nav navbar-nav float-xs-right">
+    <li class="nav-item">
+        <a class="nav-link" ui-sref="front.register"> [[ 'front.IM' | translate ]] <b>  [[ 'front.BAUYER' | translate]]</b></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" ui-sref="front.register">[[ 'front.IM' | translate ]] <b>[[ 'front.SUPPLIER' | translate]]</b></a>
+    </li>
+</ul>

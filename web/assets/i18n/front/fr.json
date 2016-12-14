@@ -42,11 +42,28 @@
                 "USERNAME": "nom d'utilisateur",
                 "PASSWORD": "Mot de passe",
                 "TITLE": "Titre",
-                "REFERENCE": "Référence"
+                "REFERENCE": "Référence",
+                "PUBLISHDATE": "Date de publication",
+                "SUBJECT": "Sujet",
+                "MESSAGE": "Message",
+                "BUYERTYPE": "Type d'acheteur",
+                "NAME": "Nom",
+                "DESCRIPTION": "Description",
+                "REFERENCENUMBER": "Référence",
+                "PHONE": "Téléphone",
+                "JOB": "Métier",
+                "PICTURE": "Image",
+                "ADDRESS": "Addresse",
+                "ZIPCODE": "Code postal",
+                "CITY": "Ville",
+                "COMPANYNAME": "Noom de l'entreprise",
+                "COUNTRY": "Pays",
+                "LANGUAGE": "Langue"
             },
             "titles":{
                 "REGISTER": "Inscription",
-                "ADVANCEDSEARCH": "Recherche avancées"
+                "ADVANCEDSEARCH": "Recherche avancées",
+                "CONTACT": "Contactez nous"
             },
             "buttons":{
               "SUBMITADVANCEDSEARCH": "Recherche"
@@ -66,8 +83,55 @@
                 "SELECTDATE": "Séléctinner une date",
                 "SELECTCOUNTRY": "Séléctinner payes",
                 "ADVANCEDRESEARCHNORESULTHEADER": "Pas des résultats",
-                "ADVANCEDRESEARCHNORESULTTEXT":"Aucun appel d'offre trouvé avec les paramètres entrées"
+                "ADVANCEDRESEARCHNORESULTTEXT":"No tender found with the input parameters",
+                "SUBJECTREQUIRED": "Le sujet est requis",
+                "CONTACTMESSAGEREQUIRED": "Le message est requis",
+                "ENTERNAME": "Entrez le nom",
+                "NAMEREQUIRED": "Le nom est requis",
+                "NAMEALREADYINUSE": "Le nom est déjç pris",
+                "OK" : "OK",
+                "ENTERDESCRIPTION": "Enterez la desreption",
+                "ENTERREFERENCENUMBER": "Enterez la reference",
+                "ENTERPHONE": "Enterez le numéro de téléphone",
+                "ENTEREMAIL": "Enterez l'E-mail",
+                "EMAILREQUIRED": "E-mail est requis",
+                "EMAILALREADYINUSE": "E-mail est déjà pris",
+                "ENTERFIRSTNAME": "Enterez le prénom",
+                "ENTERLASTNAME": "Enterez le nom",
+                "ENTERJOB": "Enterez la métier",
+                "ENTERPICTURE": "Enterer l'image",
+                "ENTERADDRESS": "Enterez l'address",
+                "ENTERZIPCODE": "Enterez le code postale",
+                "ENTERCITY": "Enterez la ville",
+                "ENTERCOMPANYNAME": "Enterez le nom de l'entreprise"
             }
+        },
+        "common":{
+            "SEND": "Envoi"
+        },
+        "text":{
+            "TENDERLIST": "Lite des appels d'offre",
+            "ALLCATEGORIES": "Toutes les catégories",
+            "TENDERLISTCATEGORY" : "Les appel d'offres de la catégorie ([[category_name]])",
+            "TENDERINCATEGORY" : "appartient à [[category_count]] categories"
+        }
+    },
+    "errors":{
+        "titles":{
+            "CONTACT": "Echec d'envoi",
+            "CONTACTFORMFAILEDTITLE": "Champs manquant"
+        },
+        "messages":{
+            "CONTACT":"",
+            "CONTACTFORMFAILEDMESSAGE": "Merci de remplir tous les champs"
+        }
+    },
+    "infos":{
+        "titles":{
+            "CONTACT" : "Succees d'envoi"
+        },
+        "messages":{
+
         }
     },
     "formats": {
