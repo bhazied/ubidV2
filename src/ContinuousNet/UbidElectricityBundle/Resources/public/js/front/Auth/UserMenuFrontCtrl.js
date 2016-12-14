@@ -6,7 +6,10 @@
 app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$userMenuDataFactory','toaster','$filter','$uibModal','$q','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $userMenuDataFactory, toaster, $filter, $uibModal, $q, SweetAlert) {
 
-        $rootScope.showSlogan = false;
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showUserMenu = true;
+        });
 
     }
 ]);

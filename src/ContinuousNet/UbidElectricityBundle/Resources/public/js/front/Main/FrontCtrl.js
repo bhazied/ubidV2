@@ -34,6 +34,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }, 2000);
 
         $scope.hide_left_right_side_in = [
+            'front.home',
+            'front.post',
             'front.register',
             'front.resetpassword',
             'front.login',
@@ -41,21 +43,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.profile'
         ];
 
-        /*$timeout(function() {
-            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
-                    $scope.leftrightside = true;
-                });
-            }
-            else{
-                $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $scope.leftrightside = false;
-                });
-            }
-        });
-        */
         $scope.changeLanguage = function (lang) {
            // $translate.use(lang);
         }
@@ -79,15 +66,15 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             //show or hide left & right side
-            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
+            if ($scope.hide_left_right_side_in.indexOf($state.current.name) == -1) {
                 $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
+                    console.warn('left and right side must be showen in '+ $state.current.name);
                     $rootScope.showLeftSide = true;
                     $rootScope.showRihtSide = true;
                 });
             } else {
                 $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
+                    console.warn('left and right side must be hidden in '+ $state.current.name);
                     $rootScope.showLeftSide = false;
                     $rootScope.showRihtSide = false;
                 });
