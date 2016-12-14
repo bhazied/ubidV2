@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Controller for user login
+ * Controller for user profile
  */
-app.controller('profileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert',
+app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert) {
 
         $scope.disableSubmit = false;

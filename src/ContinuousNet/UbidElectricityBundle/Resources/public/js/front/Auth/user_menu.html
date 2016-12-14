@@ -1,0 +1,14 @@
+
+<div ng-controller="UserMenuFrontCtrl">
+    <div class="center-menu">
+        <h1 ng-if="user.type == 'Buyer'" ui-sref="front.profile" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></h1>
+        <h1 ng-if="user.type == 'Supplier'" ui-sref="front.profile" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>Supplier</b></h1>
+        <p class="usd"><span>$</span></p>
+        <ul>
+            <li class="publish"><a ui-sref="front.profile" translate="front.PUBLICATION">Publication</a></li>
+            <li class="tender"><a ui-sref="front.profile" translate="front.CONSULTTENDER">Consult TENDER</a></li>
+            <li class="proposal"><a ui-sref="front.profile" translate="front.CONSULTPROPOSAL">Consult PROPOSAL</a></li>
+            <li class="advertiser"><a ui-sref="front.profile" translate="front.CONSULTADVERTISER">Consult ADVERTISER</a></li>
+        </ul>
+    </div>
+</div>

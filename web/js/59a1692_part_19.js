@@ -477,6 +477,7 @@ app.constant('APP_JS_REQUIRES', {
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'ContactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/ContactFormCtrl.js',
         'ProfileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/ProfileFrontCtrl.js',
+        'UserMenuFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/UserMenuFrontCtrl.js',
         'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
         'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrl.js',
@@ -663,6 +664,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'profileFrontService',
         files: ['/bundles/ubidelectricity/js/front/Auth/ProfileService.js']
     },{
+        name: 'userMenuFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Auth/UserMenuService.js']
+    },{
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
     }]
@@ -819,9 +823,9 @@ app.config(['$stateProvider',
                 contentClasses: 'full-height'
             },
             resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService', 'RegisterService')
-        }).state('auth.resetpassword', {
+        }).state('front.resetpassword', {
             url: '/reset-password',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset_password.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset_password.html',
             title: 'content.list.RESETPAWSSWORD',
             ncyBreadcrumb: {
                 label: 'content.list.RESETPAWSSWORD'
@@ -831,9 +835,9 @@ app.config(['$stateProvider',
                 contentClasses: 'full-height'
             },
             resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
-        }).state('auth.emailconfirm', {
+        }).state('front.emailconfirm', {
             url: '/email-confirm/:token/:language',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/email_confirm.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/email_confirm.html',
             title: 'content.list.EMAILCONFIRM',
             ncyBreadcrumb: {
                 label: 'content.list.EMAILCONFIRM'
@@ -843,9 +847,9 @@ app.config(['$stateProvider',
                 contentClasses: 'full-height'
             },
             resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
-        }).state('auth.reset', {
+        }).state('front.reset', {
             url: '/reset/:token/:language',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/reset.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset.html',
             title: 'content.list.RESET',
             ncyBreadcrumb: {
                 label: 'content.list.RESET'
@@ -855,9 +859,9 @@ app.config(['$stateProvider',
                 contentClasses: 'full-height'
             },
             resolve: loadSequence('ResetCtrl', 'ResetPasswordService')
-        }).state('auth.lockscreen', {
+        }).state('front.lockscreen', {
             url: '/lock-screen',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/lock_screen.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/lock_screen.html',
             title: 'content.list.LOCKSCREEN',
             ncyBreadcrumb: {
                 label: 'content.list.LOCKSCREEN'
@@ -874,15 +878,23 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'topbar.user.PROFILE'
             },
-            resolve: loadSequence('jquery-sparkline', 'profileFrontCtrl', 'ProfileFrontService', 'countryService')
+            resolve: loadSequence('jquery-sparkline', 'ProfileFrontCtrl', 'profileFrontService', 'countryService')
+        }).state('front.usermenu', {
+            url: '/user-menu',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/user_menu.html',
+            title: 'topbar.user.PROFILE',
+            ncyBreadcrumb: {
+                label: 'topbar.user.PROFILE'
+            },
+            resolve: loadSequence('UserMenuFrontCtrl', 'userMenuFrontService')
         }).state('front.changepassword', {
             url: '/change-password',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/change_password.html',
             title: 'topbar.user.CHANGEPASSWORD',
             ncyBreadcrumb: {
                 label: 'topbar.user.CHANGEPASSWORD'
             },
-            resolve: loadSequence('jquery-sparkline', 'ChangePasswordCtrl', 'ProfileService')
+            resolve: loadSequence('jquery-sparkline', 'ChangePasswordCtrl', 'profileFrontService')
         }).state('front.home', {
             url:'/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',

@@ -68029,6 +68029,7 @@ app.constant('APP_JS_REQUIRES', {
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'ContactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/ContactFormCtrl.js',
         'ProfileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/ProfileFrontCtrl.js',
+        'UserMenuFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/UserMenuFrontCtrl.js',
         'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
         'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrl.js',
@@ -68214,6 +68215,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'profileFrontService',
         files: ['/bundles/ubidelectricity/js/front/Auth/ProfileService.js']
+    },{
+        name: 'userMenuFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Auth/UserMenuService.js']
     },{
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']

@@ -1,3 +1,5 @@
-<span class="user-name pull-right">Sahbi KHALFALLAH</span>
-<span class="user-photo pull-right user.gender Male"></span>
-<span class="notification pull-right"><span class="badge">5</span></span>
+<div ng-if="user.email">
+    <a ui-sref="front.usermenu" class="user-name pull-right">[[ user.name ]]</a>
+    <a ui-sref="front.usermenu" class="user-photo pull-right [[ user.gender ]]"></a>
+    <a ui-sref="front.usermenu" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
+</div>

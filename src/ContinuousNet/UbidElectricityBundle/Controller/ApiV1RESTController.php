@@ -567,17 +567,17 @@ class ApiV1RESTController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $page = $request->query->get('page');
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Tender", "t_");
+        $qb->from('UbidElectricityBundle:Tender', 't_');
 
-        $qb->andwhere("t_.status = :status")
+        $qb->andwhere('t_.status = :status')
             ->setParameters(array('status' => 'Online'));
         if(!is_null($category)){
-            $qb->andWhere(":category MEMBER OF t_.tenderCategories")->setParameter('category', $category);
+            $qb->andWhere(':category MEMBER OF t_.tenderCategories')->setParameter('category', $category);
         }
         if(!is_null($sector)){
-            $qb->andWhere("t_.sector = :sector")->setParameter("sector", $sector);
+            $qb->andWhere('t_.sector = :sector')->setParameter('sector', $sector);
         }
-        $qb->select("t_");
+        $qb->select('t_');
         $qb->setMaxResults(10);
         if($page != null){
             $qb->setFirstResult((10*$page));
@@ -585,8 +585,8 @@ class ApiV1RESTController extends FOSRestController
             $qb->setFirstResult(0);
         }
 
-        $qb->groupBy("t_.id");
-        $qb->orderBy("t_.id", "DESC");
+        $qb->groupBy('t_.id');
+        $qb->orderBy('t_.id', 'DESC');
         $results  = $qb->getQuery()->getResult();
         $tenders = null;
         if($results){
@@ -604,7 +604,7 @@ class ApiV1RESTController extends FOSRestController
         $page = $request->query->get('page');
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Sector", "s_");
+        $qb->from('UbidElectricityBundle:Sector', 's_');
             //->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Tender', 'tender', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.tender= tender.id')
 
         $qbList = clone $qb;
@@ -622,7 +622,7 @@ class ApiV1RESTController extends FOSRestController
             $i=0;
             foreach ($results as $r ){
                 //return $r->getId();
-                $tenders = $this->getDoctrine()->getRepository("UbidElectricityBundle:Tender")->findBy(array('sector' => $r->getId()));
+                $tenders = $this->getDoctrine()->getRepository('UbidElectricityBundle:Tender')->findBy(array('sector' => $r->getId()));
                 //return $tenders;
                 $data['tender_count'][$i] = count($tenders);
                 $i++;
@@ -640,7 +640,7 @@ class ApiV1RESTController extends FOSRestController
         $data = [];
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:TenderCategory", "tc_")
+        $qb->from('UbidElectricityBundle:TenderCategory', 'tc_')
             ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderCategory', 'parent', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.parent = parent.id')
             ->select('tc_');
         $results = $qb->getQuery()->getResult();
@@ -678,26 +678,26 @@ class ApiV1RESTController extends FOSRestController
                 ->setTo($this->container->getParameter('email_contact'))
                 ->setFrom($email)
                 ->setBody(
-                    $this->renderView("UbidElectricityBundle:Emails:contact.html.twig", array(
-                        "subject" => $subject,
-                        "lastName" => $lastName,
-                        "firstName" => $firstName,
-                        "email" => $email,
-                        "message" => $message
+                    $this->renderView('UbidElectricityBundle:Emails:contact.html.twig', array(
+                        'subject' => $subject,
+                        'lastName' => $lastName,
+                        'firstName' => $firstName,
+                        'email' => $email,
+                        'message' => $message
                     )),
-                    "text/html"
+                    'text/html'
                 );
             $sent = $this->get('mailer')->send($message);
             if($sent){
                 $response =  array(
-                    "status" => "0",
-                    'message' => "Message envoyé avec succée"
+                    'status' => '0',
+                    'message' => 'Message envoyé avec succée'
                 );
             }
             else{
                 $response =  array(
-                    "status" => "1",
-                    'message' => "Message non envoyé"
+                    'status' => '1',
+                    'message' => 'Message non envoyé'
                 );
             }
             return $response;
@@ -756,13 +756,13 @@ class ApiV1RESTController extends FOSRestController
         if($encoded_pass == $user->getPassword()){
             $data = [
                 'status' => true,
-                'message' => "OK"
+                'message' => 'OK'
             ];
         }
         else{
             $data = [
                 'status' => false,
-                'message' => "NOT OK"
+                'message' => 'NOT OK'
             ];
         }
         return $data;

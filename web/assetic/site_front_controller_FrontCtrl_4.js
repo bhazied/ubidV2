@@ -6,6 +6,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
         $rootScope.showSlogan = false;
+        $rootScope.showUserMenu = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
 
         $scope.anonymousStates = [
             'front.login',
@@ -30,14 +33,16 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
-        $scope.no_show_left_right_side_in = [
+        $scope.hide_left_right_side_in = [
             'front.register',
-            'auth.resetpassword',
-            'front.contact'
+            'front.resetpassword',
+            'front.login',
+            'front.usermenu',
+            'front.profile'
         ];
 
         /*$timeout(function() {
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
                 $timeout(function() {
                     console.warn('left and right side must be showin in '+ $state.current.name);
                     $scope.leftrightside = true;
@@ -74,16 +79,17 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             //show or hide left & right side
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
                 $timeout(function() {
                     console.warn('left and right side must be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = true;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRihtSide = true;
                 });
-            }
-            else{
+            } else {
                 $timeout(function() {
                     console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRihtSide = false;
                 });
             }
 
@@ -237,5 +243,56 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.add_tender = function () {
             $state.go('front.tender.add');
         }
+
+
+        $rootScope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $rootScope.dateRanges = [
+            {
+                label: $filter('translate')('front.ANY'),
+                value: 'any'
+            },
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
 
     }]);
