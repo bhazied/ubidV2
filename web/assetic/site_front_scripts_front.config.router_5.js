@@ -97,7 +97,29 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
         // Set up the states
         $stateProvider.state('front', {
             templateUrl: '/assets/views/front/front.html',
-            resolve: loadSequence('modernizr', 'moment', 'angularMoment', 'uiSwitch', 'perfect-scrollbar-plugin', 'toaster', 'ngAside', 'vAccordion', 'sweet-alert', 'chartjs', 'tc.chartjs', 'oitozero.ngSweetAlert', 'truncate', 'htmlToPlaintext', 'angular-notification-icons'),
+            resolve: loadSequence(
+                'modernizr',
+                'moment', 
+                'angularMoment', 
+                'uiSwitch', 
+                'perfect-scrollbar-plugin', 
+                'toaster', 
+                'ngAside', 
+                'vAccordion', 
+                'sweet-alert', 
+                'chartjs', 
+                'tc.chartjs', 
+                'oitozero.ngSweetAlert',
+                'truncate', 
+                'htmlToPlaintext', 
+                'angular-notification-icons',
+                'searchFormCtrl',
+                'SearchService',
+                'languageService',
+                'countryService',
+                'tenderfrontService',
+                'checklist-model'
+            ),
             abstract: true
         }).state('error', {
             url: '/error',
