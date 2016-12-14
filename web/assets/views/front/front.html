@@ -18,18 +18,10 @@
         <div class="col-md-4" data-ng-include="'/bundles/ubidelectricity/js/front/Auth/user_header.html'">
         </div>
     </div>
-    <div class="row mt-2" ui-view>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-8">
-
-        </div>
-        <div class="col-md-2">
-
-        </div>
+    <div class="row mt-2">
+        <div class="col-md-3" id="specific_search" data-ng-include="'/bundles/ubidelectricity/js/front/Common/specific_search.html'"></div>
+        <div class="col-md-6" ui-view></div>
+        <div class="col-md-3" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'"></div>
     </div>
 </div>
 <hr class="footer-sep" />

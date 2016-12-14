@@ -146,7 +146,6 @@
                 <span class="success text-small block" ng-if="registerForm.password2.$valid" translate="content.form.messages.PASSWORDSMATCH">Passwords match!</span>
             </div>
 
-
             <button type="button" ng-click="submitForm(registerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
                 <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SAVE">Save</span>
             </button>
