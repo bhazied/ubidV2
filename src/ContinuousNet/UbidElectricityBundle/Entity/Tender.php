@@ -259,7 +259,7 @@ class Tender
      * @Expose
      * 
      */
-    private $views;
+    //private $views;
 
     /**
      * @var \DateTime
@@ -883,23 +883,23 @@ class Tender
      * @param integer $views
      * @return Tender
      */
-    public function setViews($views)
+   /* public function setViews($views)
     {
         $this->views = $views;
         return $this;
     }
-
+*/
     /**
      * Get views
      *
      * @access public
      * @return integer 
      */
-    public function getViews()
+  /*  public function getViews()
     {
         return $this->views;
     }
-
+*/
     /**
      * Set createdAt
      *

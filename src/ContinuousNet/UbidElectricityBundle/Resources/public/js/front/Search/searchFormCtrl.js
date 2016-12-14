@@ -93,7 +93,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;
 
-        $scope.getPresentMaxEstimatedCost = function () {
+       /* $scope.getPresentMaxEstimatedCost = function () {
             $timeout(function () {
                 $scope.maxEstimatedCostLoaded = true;
                 if($scope.maxEstimatedCost == 0){
@@ -108,11 +108,11 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.maxEstimatedCost
                 }
             });
-        }
+        }*/
 
         $scope.getCountries();
         $scope.getTenderCategories();
-        $scope.val = $scope.getPresentMaxEstimatedCost();
+        //$scope.val = $scope.getPresentMaxEstimatedCost();
 
         $scope.price = {
             minValue: 0,
