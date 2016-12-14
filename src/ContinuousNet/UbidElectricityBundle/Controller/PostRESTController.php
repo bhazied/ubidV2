@@ -41,28 +41,6 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
  */
 class PostRESTController extends BaseRESTController
 {
-    /**
-     * Get a Post entity By slug
-     *
-     * @Get("/getBySlug/{slug}")
-     * @View(serializerEnableMaxDepthChecks=true)
-     *
-     * @return Response
-     *
-     */
-    public function getBySlugAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $qb = $em->createQueryBuilder();
-        $qb->from('UbidElectricityBundle:Post', 'p_');
-        $qb->andWhere('p_.slug = :slug')->setParameter('slug', $slug);
-        $qb->setMaxResults(1);
-        $entity = $qb->getQuery()->getOneOrNullResult();
-        $entity = $this->translateEntity($entity);
-        $entity->dir = $this->getSubDirectory($entity, false);
-        $this->createSubDirectory($entity);
-        return $entity;
-    }
 
     /**
      * Get a Post entity

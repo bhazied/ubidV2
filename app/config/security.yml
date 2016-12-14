@@ -108,6 +108,11 @@ security:
             stateless: true
             anonymous: true
 
+        post:
+            pattern:  ^/(en|fr|ar)/api/v1/getPostBySlug
+            stateless: true
+            anonymous: true
+
         login:
             pattern:  ^/api/login
             stateless: true

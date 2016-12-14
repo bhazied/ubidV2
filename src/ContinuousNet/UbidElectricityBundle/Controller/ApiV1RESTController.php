@@ -809,5 +809,31 @@ class ApiV1RESTController extends FOSRestController
         return $code;
     }
 
-    
+    /**
+     * Get a Post entity By slug
+     *
+     * @Get("/getPostBySlug/{slug}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function getPostBySlugAction($slug)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Post', 'p_');
+            $qb->select('p_');
+            $qb->andWhere('p_.slug = :slug')->setParameter('slug', $slug);
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            //$entity = $this->translateEntity($entity);
+            //$entity->dir = $this->getSubDirectory($entity, false);
+            //$this->createSubDirectory($entity);
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

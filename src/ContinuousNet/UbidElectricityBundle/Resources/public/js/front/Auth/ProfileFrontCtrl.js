@@ -8,7 +8,8 @@ app.controller('profileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
         $scope.disableSubmit = false;
         $scope.disablePasswordSubmit = false;
-        $scope.locale = (angular.isDefined($localStorage.language)) ? $localStorage.language : 'fr';
+        $scope.locale = (angular.isDefined($localStorage.language)) ? $localStorage.language : 'en';
+
         $scope.genders = [{
             id: 'Male',
             title: $filter('translate')('content.list.fields.genders.MALE'),
