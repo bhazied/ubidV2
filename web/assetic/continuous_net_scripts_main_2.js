@@ -1,6 +1,17 @@
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
-function ($rootScope, $state, $stateParams, $localStorage) {
+
+var languages = {
+    'en' : 'English',
+    'fr' : 'Français',
+    'es' : 'Español',
+    'it' : 'Italiano',
+    'de' : 'Deutsch'
+};
+
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
+    function ($rootScope, $state, $stateParams, $localStorage, $timeout) {
+
+    $rootScope.languages = languages;
 
     // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
     FastClick.attach(document.body);
@@ -64,7 +75,7 @@ function ($translateProvider) {
 
     // Since you've now registered more then one translation table, angular-translate has to know which one to use.
     // This is where preferredLanguage(langKey) comes in.
-    $translateProvider.preferredLanguage('fr');
+    $translateProvider.preferredLanguage('en');
 
     // Store the language in the local storage
     $translateProvider.useLocalStorage();

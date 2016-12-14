@@ -12,9 +12,9 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('auth.login', {
+        }).state('front.login', {
             url: '/login',
-            templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'content.list.LOGIN',
             ncyBreadcrumb: {
                 label: 'content.list.LOGIN'
@@ -25,7 +25,7 @@ app.config(['$stateProvider',
             },
             resolve: loadSequence('LoginCtrl', 'LoginService')
         }).state('front.register', {
-            url: '/register',
+            url: '/register/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/register.html',
             title: 'content.list.REGISTER',
             ncyBreadcrumb: {
@@ -104,12 +104,12 @@ app.config(['$stateProvider',
             url:'/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: "HOME PAGE UBID",
-            resolve: loadSequence('HomeCtrl' ,'HomeService')
+            resolve: loadSequence('HomeCtrl' ,'homeService')
         }).state('front.contact', {
             url:'/contact',
             templateUrl : "/bundles/ubidelectricity/js/front/Contact/contact_form.html",
             title: "Contact page",
-            resolve: loadSequence('contactService', 'contactFormCtrl')
+            resolve: loadSequence('contactService', 'ContactFormCtrl')
         }).state('front.about', {
             url:'/about-us',
             template : "<div>this is about us page</div>",
@@ -131,12 +131,12 @@ app.config(['$stateProvider',
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: "Tenders list",
-            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
         }).state('front.tenders.category',{
             url: '/category/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'Tenders list filtred by category',
-            resolve: loadSequence('tendersFrontCtrl', 'HomeService', 'tenderfrontService')
+            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
         }).state('front.tender',{
             url: "/tender",
             template: '<div ui-view class="fade-in-up"></div>',
@@ -148,7 +148,7 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: "Tender description",
-            resolve: loadSequence('tenderFrontCtrl', 'tenderfrontService')
+            resolve: loadSequence('TenderFrontCtrl', 'tenderFrontService')
         }).state('front.tender.add',{
             url: '/add',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/add_tender.html',
@@ -156,9 +156,9 @@ app.config(['$stateProvider',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
         }).state('front.advanced_search', {
             url: '/advanced-search',
-            templateUrl: '/bundles/ubidelectricity/js/front/Search/searchForm.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/search_form.html',
             title: "Advanced Search",
-            resolve: loadSequence('searchFormCtrl', 'SearchService', 'languageService', 'countryService', 'tenderfrontService', 'checklist-model', 'angular-slider')
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.bidder',{
             url: "/bidder",
             template: '<div ui-view class="fade-in-up"></div>',
@@ -189,13 +189,46 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        }).state('front.post',{
-            url:"/post/:slug",
-            templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
-            title: 'post',
-            resolve: loadSequence('PostCtrl', 'postService', 'PostFrontCtrl'),
+        }).state('front.buyers',{
+            url: "/buyers",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
+        }).state('front.buyers.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
+            title: "Buyers list",
+            resolve: loadSequence('BuyersFrontCtrl', 'homeService', 'BuyerFrontService')
+        }).state('front.suppliers',{
+            url: "/buyers",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.suppliers.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
+            title: "Suppliers list",
+            resolve: loadSequence('SuppliersFrontCtrl', 'homeService', 'SupplierFrontService')
+        }).state('front.product',{
+            url: "/products",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.products.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
+            title: "Products list",
+            resolve: loadSequence('ProductsFrontCtrl', 'homeService', 'ProductFrontService')
+        }).state('front.post',{
+            url: '/post/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
+            title: "Post",
+            resolve: loadSequence('PostFrontCtrl', 'postFrontService')
         })
     }]);

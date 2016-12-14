@@ -754,7 +754,7 @@ p.copyright {
     content: "\f0e0";
 }
 
-.search-box {
+.search-box, .search-box-home {
     background-position: left center;
     background-repeat: no-repeat;
     background-image: url('/front/img/workman.png');
@@ -765,7 +765,14 @@ p.copyright {
     max-width: 520px;
 }
 
-.search-box ul {
+.search-box-home {
+    background-position: center top;
+    height: 230px;
+    padding: 140px 0 0 0;
+    margin-bottom: 200px;
+}
+
+.search-box ul, .search-box-home ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -775,7 +782,12 @@ p.copyright {
     background-color: transparent;
 }
 
-.search-box ul li {
+.search-box-home ul {
+    margin-top: 10px;
+    width: 520px;
+}
+
+.search-box ul li, .search-box-home ul li {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -785,7 +797,7 @@ p.copyright {
     text-align: center;
 }
 
-.search-box ul li a {
+.search-box ul li a, .search-box-home ul li a  {
     height: 31px;
     width: 31px;
     margin: auto;
@@ -796,30 +808,34 @@ p.copyright {
     background-size: 100% auto;
 }
 
-.search-box ul li a.plus {
+.search-box ul li a.plus, .search-box-home ul li a.plus {
     background-image: url('/front/img/plus.svg');
 }
 
-.search-box ul li a.flash {
+.search-box ul li a.flash, .search-box-home ul li a.flash {
     background-image: url('/front/img/flash.svg');
 }
 
-.search-box ul li a.microship {
+.search-box ul li a.microship, .search-box-home ul li a.microship {
     background-image: url('/front/img/microship.svg');
 }
 
-.search-box ul li a.pole {
+.search-box ul li a.pole, .search-box-home ul li a.pole {
     background-image: url('/front/img/pole.svg');
 }
 
-.search-box input {
+.search-box input, .search-box-home input {
     border-color: #1D69AD;
     max-width: 320px;
     display: inline;
     border-radius: 6px;
 }
 
-.search-box button {
+.search-box-home input {
+    max-width: 390px;
+}
+
+.search-box button, .search-box-home button {
     background-color: #1D69AD;
     border: 1px solid #1D69AD;
     color: #ffffff;

@@ -1,58 +1,3 @@
-<!--<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="header_top">
-            <div class="header_top_left">
-                <ul class="top_nav top_nav_left">
-                    <li><a ui-sref="front.home" translate="header.menu.HOME">Home</a></li>
-                    <li><a ui-sref="front.about" translate="header.menu.ABOUT">About</a></li>
-                    <li><a ui-sref="front.contact" translate="header.menu.CONTACT">Contact</a></li>
-                    <li><a ui-sref="front.advanced_search">Search</a></li>
-                </ul>
-            </div>
-            <div class="header_top_right ">
-                <ul class="top_nav_right top_nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">switch language</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" ng-click="changeLanguage('fr')">Français</a></li>
-                            <li><a href="#" ng-click="changeLanguage('en')">Anglais</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="top_nav_right top_nav" ng-if="!loggedIn">
-                    <li><a  href="#/register" translate="header.menu.SIGNUP"></a></li>
-                    <li class="dropdown" id="menuLogin">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin" translate="header.menu.SIGNIN"></a>
-                        <div class="dropdown-menu" data-ng-include=" '/bundles/ubidelectricity/js/front/Auth/login.html' "></div>
-                    </li>
-                </ul>
-                <ul class="top_nav_right top_nav" ng-if="loggedIn">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Hi   [[ user.firstName ]] [[ user.lastName ]] ! </a>
-                        <ul class="dropdown-menu">
-                            <li><a  ui-sref="front.profile" translate="header.user.PROFILE"></a></li>
-                            <li><a  ui-sref="front.mybids" translate="header.user.MYBIDS"></a></li>
-                            <li><a   ng-controller="LoginFrontCtrl" ng-href='#' ng-click="logout()" translate="header.user.LOGOUT"></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="header_bottom">
-            <div class="logo_area col-lg-6 col-md-6 col-sm-6"><a ui-sref="front.home" class="logo"><img  ng-src = "[[app.layout.logo]]" alt="[[app.name]]"/></a></div>
-            <div class="add_banner col-lg-6 col-md-6 col-sm-6">
-                <p>Join us
-                to find your service provider in</p>
-                <p>Energy, Power, Electrical products & Solutions,...</p>
-                <button type="button" class="btn btn-warning" translate="header.menu.SUBMITPROJRCT" ng-click="add_tender()"></button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
 
 <a class="navbar-logo-icon" ui-sref="front.home"></a>
 
@@ -64,23 +9,20 @@
 </form>
 
 <div class="float-xs-right" id="language-switcher">
-                <span class="current-language flag en" title="English">
-                    <ul class="languages">
-                        <li class="flag es" title="Español"></li>
-                        <li class="flag fr" title="Français"></li>
-                        <li class="flag it" title="Italiano"></li>
-                        <li class="flag de" title="Deutsch"></li>
-                    </ul>
-                </span>
+    <span class="current-language flag [[currentLanguage]]" title="[[ languages[currentLanguage] ]]">
+        <ul class="languages">
+            <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]"></li>
+        </ul>
+    </span>
     <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
 </div>
 
 
 <ul class="nav navbar-nav float-xs-right">
     <li class="nav-item">
-        <a class="nav-link" ui-sref="front.register"> [[ 'front.IM' | translate ]] <b>  [[ 'front.BAUYER' | translate]]</b></a>
+        <a class="nav-link" ui-sref="front.register({type: 'Buyer'})" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" ui-sref="front.register">[[ 'front.IM' | translate ]] <b>[[ 'front.SUPPLIER' | translate]]</b></a>
+        <a class="nav-link" ui-sref="front.register({type: 'Supplier'})" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>Supplier</b></a>
     </li>
 </ul>

@@ -7,6 +7,7 @@ use ContinuousNet\UbidElectricityBundle\Form\PostType;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View as FOSView;
@@ -40,6 +41,7 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
  */
 class PostRESTController extends BaseRESTController
 {
+
     /**
      * Get a Post entity
      *

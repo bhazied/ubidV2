@@ -184,6 +184,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 return false;
             } else {
                 $scope.user.locale = $localStorage.language;
+                $scope.user.type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                    if(data.status == true){
                         $state.go("front.profile");
@@ -219,7 +220,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 });
             });
         } else {
-            $scope.user = { gender: 'Male'};
+            $scope.user = { gender: 'Male', type: $stateParams.type};
 
         }
 

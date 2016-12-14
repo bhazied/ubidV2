@@ -381,6 +381,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
+        $rootScope.showSlogan = false;
+
         $scope.anonymousStates = [
             'front.login',
             'front.register',
@@ -394,6 +396,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.advanced_search',
             'front.tender.details'
         ];
+
         $timeout(function() {
             if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
@@ -403,6 +406,27 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
+        $scope.no_show_left_right_side_in = [
+            'front.register',
+            'auth.resetpassword',
+            'front.contact'
+        ];
+
+        /*$timeout(function() {
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin in '+ $state.current.name);
+                    $scope.leftrightside = true;
+                });
+            }
+            else{
+                $timeout(function() {
+                    console.warn('left and right side must not be showin in '+ $state.current.name);
+                    $scope.leftrightside = false;
+                });
+            }
+        });
+        */
         $scope.changeLanguage = function (lang) {
            // $translate.use(lang);
         }
@@ -424,6 +448,20 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
                 cfpLoadingBar.complete();
             });
+
+            //show or hide left & right side
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin in '+ $state.current.name);
+                    $rootScope.leftrightside = true;
+                });
+            }
+            else{
+                $timeout(function() {
+                    console.warn('left and right side must not be showin in '+ $state.current.name);
+                    $rootScope.leftrightside = false;
+                });
+            }
 
             // scroll top the page on change state
             $('#app .main-content').css({
@@ -485,15 +523,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             // Handles language dropdown
             listIsOpen : false,
             // list of available languages
-            available : {
-                'en' : 'English',
-                'fr' : 'Français'
-            },
+            available : $rootScope.languages,
             // display always the current ui language
             init : function() {
                 if (angular.isDefined($stateParams.language)) {
                     $scope.language.selected = $scope.language.available[$stateParams.language];
-                    $localStorage.language = $stateParams.language;
+                    $rootScope.currentLanguage = $localStorage.language = $stateParams.language;
                 } else {
                     var proposedLanguage = $translate.proposedLanguage() || $translate.use();
                     var preferredLanguage = $translate.preferredLanguage();
@@ -504,7 +539,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     }
                     // we know we have set a preferred one in app.config
                     $scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
-                    $localStorage.language = (proposedLanguage || preferredLanguage);
+                    $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
             set : function(localeId, ev) {
@@ -516,7 +551,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         };
 
-        $scope.language.init();$localStorage.language
+        $scope.language.init();
 
         // Function that find the exact height and width of the viewport in a cross-browser way
         var viewport = function() {

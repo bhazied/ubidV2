@@ -1,8 +1,19 @@
 'use strict'
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
+var languages = {
+    'en' : 'English',
+    'fr' : 'Français',
+    'es' : 'Español',
+    'it' : 'Italiano',
+    'de' : 'Deutsch'
+};
+
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     function ($rootScope, $state, $stateParams, $localStorage) {
+
+        $rootScope.languages = languages;
+
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
 
@@ -15,7 +26,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {
-            name: 'U bid electricity', // name of your project
+            name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
@@ -68,7 +79,7 @@ app.config(['$translateProvider',
 
         // Since you've now registered more then one translation table, angular-translate has to know which one to use.
         // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('fr');
+        $translateProvider.preferredLanguage('en');
 
         // Store the language in the local storage
         $translateProvider.useLocalStorage();
