@@ -403,6 +403,27 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
+        $scope.no_show_left_right_side_in = [
+            'front.register',
+            'auth.resetpassword',
+            'front.contact'
+        ];
+
+        /*$timeout(function() {
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin in '+ $state.current.name);
+                    $scope.leftrightside = true;
+                });
+            }
+            else{
+                $timeout(function() {
+                    console.warn('left and right side must not be showin in '+ $state.current.name);
+                    $scope.leftrightside = false;
+                });
+            }
+        });
+        */
         $scope.changeLanguage = function (lang) {
            // $translate.use(lang);
         }
@@ -424,6 +445,20 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
                 cfpLoadingBar.complete();
             });
+
+            //show or hide left & right side
+            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+                $timeout(function() {
+                    console.warn('left and right side must be showin in '+ $state.current.name);
+                    $rootScope.leftrightside = true;
+                });
+            }
+            else{
+                $timeout(function() {
+                    console.warn('left and right side must not be showin in '+ $state.current.name);
+                    $rootScope.leftrightside = false;
+                });
+            }
 
             // scroll top the page on change state
             $('#app .main-content').css({

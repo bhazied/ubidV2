@@ -41,6 +41,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
+        // left right side to be shown or not
+        $rootScope.leftrightside = false;
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {
@@ -466,7 +468,8 @@ app.constant('APP_JS_REQUIRES', {
         'profileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/profileFrontCtrl.js',
         'BuyerFrontFormCtrl': '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontFormCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
-        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrll.js'
+        'TenderFrontFormCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderFrontFormCtrll.js',
+        'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -778,7 +781,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.auth.MAIN'
             }
-        }).state('front.login', {
+        }).state('auth.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/login.html',
             title: 'content.list.LOGIN',
@@ -952,6 +955,14 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'ADD buyer',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersCtrl' ,'BuyersFrontCtrl'),
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.post',{
+            url:"/post/:slug",
+            templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
+            title: 'post',
+            resolve: loadSequence('PostCtrl', 'postService', 'PostFrontCtrl'),
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
