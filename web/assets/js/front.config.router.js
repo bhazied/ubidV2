@@ -113,11 +113,11 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
                 'truncate', 
                 'htmlToPlaintext', 
                 'angular-notification-icons',
-                'searchFormCtrl',
-                'SearchService',
+                'SearchFormCtrl',
+                'searchService',
                 'languageService',
                 'countryService',
-                'tenderfrontService',
+                'tenderFrontService',
                 'checklist-model'
             ),
             abstract: true

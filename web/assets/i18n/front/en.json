@@ -456,7 +456,11 @@
     "ELECTRICITYBOOKSEARCH": "Electricity Book Search...",
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
-    "COPYRIGHT": "Copyright &copy; E-electricity 2017. All rights reserved."
+    "COPYRIGHT": "Copyright &copy; E-electricity 2017. All rights reserved.",
+    "PUBLICATION": "Publication",
+    "CONSULTTENDER": "Consult TENDER",
+    "CONSULTPROPOSAL": "Consult PROPOSAL",
+    "CONSULTADVERTISER": "Consult ADVERTISER"
   }
 
 }

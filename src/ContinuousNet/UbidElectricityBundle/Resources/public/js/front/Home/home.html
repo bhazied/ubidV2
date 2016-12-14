@@ -44,7 +44,7 @@
 </section>-->
 
 <div class="mt-2" ng-controller="HomeCtrl">
-    <div class="search-box-home">
+    <div class="search-box-home" ng-show="!loggedIn">
         <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
         <button class="btn" type="submit" translate="content.form.buttons.FIND">Find</button>
         <ul>
@@ -52,6 +52,17 @@
             <li><a class="flash"></a></li>
             <li><a class="microship"></a></li>
             <li><a class="pole"></a></li>
+        </ul>
+    </div>
+
+    <div class="center-menu" ng-show="loggedIn">
+        <h1 ui-sref="front.profile" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></h1>
+        <p class="usd"><span>$</span></p>
+        <ul>
+            <li class="publish"><a translate="front.PUBLICATION" ui-sref="front.tenders.list({section:'Consultation'})" >Publication</a></li>
+            <li class="tender"><a translate="front.CONSULTTENDER" ui-sref="front.tenders.list({section:'Tender'})">Consult TENDER</a></li>
+            <li class="proposal"><a translate="front.CONSULTPROPOSAL">Consult PROPOSAL</a></li>
+            <li class="advertiser"><a translate="front.CONSULTADVERTISER">Consult ADVERTISER</a></li>
         </ul>
     </div>
 </div>

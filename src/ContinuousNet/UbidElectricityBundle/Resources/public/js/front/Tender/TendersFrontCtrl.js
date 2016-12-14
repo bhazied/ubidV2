@@ -60,6 +60,6 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             return def;
         }
 
-        $scope.getcategories();
+        //$scope.getcategories();
         
 }]);

@@ -338,9 +338,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         }
         $scope.submit = function () {
-            $scope.user = {email: $scope.email, password: $scope.password};
+            $scope.user = {username: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
-                if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
+                if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
                     return;
@@ -428,7 +428,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
         */
         $scope.changeLanguage = function (lang) {
-           // $translate.use(lang);
+            $translate.use(lang);
+            $rootScope.currentLanguage = lang
         }
         
         // Loading bar transition

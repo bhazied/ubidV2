@@ -128,7 +128,7 @@ app.config(['$stateProvider',
             title: "sector",
             resolve: loadSequence()
         }).state('front.tenders.list',{
-            url: '/list',
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: "Tenders list",
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
