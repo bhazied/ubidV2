@@ -238,19 +238,19 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':tenderForm.status.$dirty && tenderForm.status.$invalid, 'has-success':tenderForm.status.$valid}">
+                                <div class="form-group" ng-class="{'has-error':tenderForm.status.$dirty && tenderForm.status.$invalid, 'has-success':tenderForm.status.$valid}">
                                     <label for="tenderStatus" class="control-label">
                                         <span translate="content.list.fields.STATUS">Status</span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
-                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="tender.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="tender.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
                                         <label ng-repeat-end for="status[[ status.id ]]">
                                             [[ status.title ]]
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="tender.status" name="status" id="tenderStatus" class="form-control" ng-required="true">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="tender.status" name="status" id="tenderStatus" class="form-control" ng-required="true">
                                         </select>
                                     </div>
                                     <span class="error text-small block" ng-if="tenderForm.status.$dirty && tenderForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>

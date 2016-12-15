@@ -146,10 +146,10 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         
         
         $scope.tabs = [
-            { title: $filter('translate')('font.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
-            { title: $filter('translate')('font.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
-            { title: $filter('translate')('font.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' },
-            { title: $filter('translate')('font.SETTINGS'), template:'/bundles/ubidelectricity/js/front/Auth/account_settings.html' }
+            { title: $filter('translate')('front.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
+            { title: $filter('translate')('front.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
+            { title: $filter('translate')('front.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' },
+            { title: $filter('translate')('front.SETTINGS'), template:'/bundles/ubidelectricity/js/front/Auth/account_settings.html' }
         ];
     }]);
 
