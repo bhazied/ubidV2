@@ -216,8 +216,6 @@ class ApiV1RESTController extends FOSRestController
                 $jsonData['username'] = str_replace($chars[$i], '_', $jsonData['username']);
             }
 
-            $jsonData['type'] = 'Subscriber';
-
             $jsonData['roles'] = array('ROLE_API', 'ROLE_SUBSCRIBER');
 
             //$jsonData['credentials_expired']  = false;
@@ -268,8 +266,7 @@ class ApiV1RESTController extends FOSRestController
                     $em->flush();
                 }
                 return $data;
-            }
-            else{
+            } else {
                 $data['message'] = $this->get('translator')->trans('register.failure_inscription');
                 return $data;
             }

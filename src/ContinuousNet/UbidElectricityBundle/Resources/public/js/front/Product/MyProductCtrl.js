@@ -4,56 +4,31 @@
  * Controller for Supplier Product Details
  */
 
-app.controller('SupplierProductCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$supplierProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $supplierProductsDataFactory) {
+app.controller('MyProductCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$supplierProductsDataFactory',
+function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $supplierProductsDataFactory) {
 
-    $scope.statuses = [{
-        id: 'Draft',
-        title: $filter('translate')('content.list.fields.statuses.DRAFT'),
-        css: 'primary'
-    }, {
-        id: 'Online',
-        title: $filter('translate')('content.list.fields.statuses.ONLINE'),
-        css: 'success'
-    }, {
-        id: 'Deactivated',
-        title: $filter('translate')('content.list.fields.statuses.DEACTIVATED'),
-        css: 'warning'
-    }, {
-        id: 'Offline',
-        title: $filter('translate')('content.list.fields.statuses.OFFLINE'),
-        css: 'danger'
-    }, {
-        id: 'Deleted',
-        title: $filter('translate')('content.list.fields.statuses.DELETED'),
-        css: 'default'
-    }, {
-        id: 'Archived',
-        title: $filter('translate')('content.list.fields.statuses.ARCHIVED'),
-        css: 'info'
-    }];
+    $timeout(function() {
+        $rootScope.showSlogan = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.showUserMenu = true;
+        $rootScope.contentSize = 10;
+        $rootScope.contentOffset = 0;
+    });
 
-    $scope.dateFormat = $filter('translate')('formats.DATE');
-    $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
-    $scope.timeFormat = $filter('translate')('formats.TIME');
+    angular.extend(this, $controller('SupplierProductCtrl', {$scope:$scope}));
 
     $scope.list = function() {
-        $state.go('app.marketplace.supplierproducts');
+        $state.go('front.myproducts.list');
     };
 
     $scope.add = function() {
-        $state.go('app.marketplace.supplierproductsnew');
+        $state.go('front.myproducts.new');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.supplierproductsedit', {id: row.id});
+        $state.go('front.myproducts.edit', {id: row.id});
     };
-
-    if (angular.isDefined($stateParams.id)) {
-        $supplierProductsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
-            $scope.supplierProduct = data;
-        });
-    }
 
 }]);
 

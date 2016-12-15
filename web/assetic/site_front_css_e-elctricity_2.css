@@ -938,3 +938,8 @@ fieldset legend {
 #partial_profile_menu ul li {
     margin-bottom: 1rem;
 }
+
+.list-toolbox .btn {
+    font-size: 0.8rem!important;
+    padding: 0.5rem 0.5rem!important;
+}

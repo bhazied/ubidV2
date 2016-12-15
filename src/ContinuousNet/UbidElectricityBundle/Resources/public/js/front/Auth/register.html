@@ -69,17 +69,18 @@
                 <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.userPhoneREQUIRED">User Email is required.</span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error':registerForm.userCountry.$dirty && registerForm.userCountry.$invalid, 'has-success':registerForm.userCountry.$valid}">
                 <label for="userCountry" class="control-label">
                     <span translate="content.list.fields.COUNTRY">Country</span>
                 </label>
                 <div class="block select-list" ng-if="countriesLoaded">
                     <span class="input-icon">
-                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false" ng-change="changeCountry()">
+                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="userCountry" id="userCountry" class="form-control" ng-required="true" ng-change="changeCountry()">
                         </select>
                         <i class="fa fa-globe"></i>
                     </span>
                 </div>
+                <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.userCountryREQUIRED">User Country is required.</span>
             </div>
 
             <div class="form-group" ng-class="{'has-error':registerForm.userAddress.$dirty && registerForm.userAddress.$invalid, 'has-success':registerForm.userAddress.$valid}">
@@ -87,10 +88,10 @@
                     <span translate="content.list.fields.ADDRESS">Address</span>
                 </label>
                 <span class="input-icon">
-                    <input name="userAddress" id= "userAddress" ng-model="user.address" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ADDRESS' | translate ]]">
+                    <input name="userAddress" id= "userAddress" ng-model="user.address" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ADDRESS' | translate ]]" ng-required="true">
                     <i class="fa fa-home"></i>
                 </span>
-                <span class="error text-small block" ng-if="registerForm.userAddress.$dirty && registerForm.userAddress.$error.required" translate="content.form.messages.userAddressREQUIRED">User Addressrequired.</span>
+                <span class="error text-small block" ng-if="registerForm.userAddress.$dirty && registerForm.userAddress.$error.required" translate="content.form.messages.userAddressREQUIRED">User Address required.</span>
             </div>
 
             <div class="form-group" ng-class="{'has-error':registerForm.userZipCode.$dirty && registerForm.userZipCode.$invalid, 'has-success':registerForm.userZipCode.$valid}">

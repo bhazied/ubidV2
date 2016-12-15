@@ -6,6 +6,15 @@
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 3;
+        });
+
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
                 delete $localStorage.access_token;

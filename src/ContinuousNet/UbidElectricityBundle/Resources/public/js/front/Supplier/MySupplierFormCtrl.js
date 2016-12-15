@@ -16,7 +16,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $rootScope.contentOffset = 0;
     });
 
-    angular.extend(this, $controller('BuyerSupplierCtrl', {$scope:$scope}));
+    angular.extend(this, $controller('SupplierFormCtrl', {$scope:$scope}));
 
     $scope.list = function() {
         $state.go('front.mysuppliers.list');

@@ -147,10 +147,16 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                     $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
                     var def = $q.defer();
                     $languagesDataFactory.query({offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                        var index = 0;
                         for (var i in data.results) {
                             data.results[i].hidden = false;
+                            if (data.results[i].code == $localStorage.language) {
+                                index = i;
+                            }
                         }
                         $scope.languages = data.results;
+
+                        $scope.user.language = $scope.languages[index];
                         def.resolve($scope.languages);
                     });
                     return def;
