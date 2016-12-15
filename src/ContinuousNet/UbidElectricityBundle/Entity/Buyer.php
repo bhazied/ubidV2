@@ -234,7 +234,7 @@ class Buyer
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total revenu", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="total_revenu", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
