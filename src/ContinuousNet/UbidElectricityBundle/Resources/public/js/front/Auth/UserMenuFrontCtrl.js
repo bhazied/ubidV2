@@ -9,6 +9,8 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showUserMenu = true;
+            $rootScope.contentSize = 10;
+            $rootScope.contentOffset = 0;
         });
 
     }

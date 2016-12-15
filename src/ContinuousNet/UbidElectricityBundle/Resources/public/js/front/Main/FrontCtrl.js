@@ -9,6 +9,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
+        $rootScope.contentSize = 6;
+        $rootScope.contentOffset = 0;
 
         $scope.anonymousStates = [
             'front.login',
@@ -80,6 +82,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     console.warn('left and right side must be hidden in '+ $state.current.name);
                     $rootScope.showLeftSide = false;
                     $rootScope.showRihtSide = false;
+                    $rootScope.contentOffset = 3;
                 });
             }
 

@@ -1,12 +1,7 @@
-<section ng-controller="ProfileFrontCtrl">
-    <div class="row">
-        <div class="col-md-3" data-ng-include="'/bundles/ubidelectricity/js/front/Common/partial_profile_menu.html'"></div>
-        <div class="col-md-9">
-            <uib-tabset>
-                <uib-tab ng-repeat="tab in tabs" heading="[[tab.title]]" active="tab.active">
-                    <div data-ng-include="tab.template"></div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-    </div>
-</section>
+<div ng-controller="ProfileFrontCtrl">
+    <uib-tabset>
+        <uib-tab ng-repeat="tab in tabs" heading="[[tab.title]]" active="tab.active">
+            <div data-ng-include="tab.template"></div>
+        </uib-tab>
+    </uib-tabset>
+</div>

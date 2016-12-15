@@ -6,6 +6,13 @@
 app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showUserMenu = true;
+            $rootScope.contentSize = 10;
+            $rootScope.contentOffset = 0;
+        });
+
         $scope.disableSubmit = false;
         $scope.disablePasswordSubmit = false;
         $scope.locale = (angular.isDefined($localStorage.language)) ? $localStorage.language : 'en';
@@ -17,7 +24,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         }, {
             id: 'Female',
             title: $filter('translate')('content.list.fields.genders.FEMALE'),
-            css: 'success'
+            css: 'danger'
         }];
 
         $scope.countries = [];
@@ -48,7 +55,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $scope.showFileManager = function (field) {
 
             var modalInstance = $uibModal.open({
-                templateUrl: '/bundles/publipr/js/common/FileManager/modal_content.html',
+                templateUrl: '/bundles/ubidelectricity/js/common/FileManager/modal_content.html',
                 controller: 'FileManagerCtrl',
                 size: 'lg',
                 resolve: {
@@ -116,7 +123,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORCHANGEPASSWORD'), "error");
+                SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORCHANGEPASSWORD'), 'error');
                 return false;
             } else {
                 $scope.disablePasswordSubmit = true;
@@ -139,10 +146,10 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         
         
         $scope.tabs = [
-            { title: "Informations", template:"/bundles/ubidelectricity/js/front/Auth/profile_informations.html" },
-            { title: "Update profile", template:"/bundles/ubidelectricity/js/front/Auth/update_account.html" },
-            { title: "Change password", template:"/bundles/ubidelectricity/js/front/Auth/change_password.html" },
-            { title: "Settings", template:"/bundles/ubidelectricity/js/front/Auth/account_settings.html" }
+            { title: $filter('translate')('font.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
+            { title: $filter('translate')('font.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
+            { title: $filter('translate')('font.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' },
+            { title: $filter('translate')('font.SETTINGS'), template:'/bundles/ubidelectricity/js/front/Auth/account_settings.html' }
         ];
     }]);
 
