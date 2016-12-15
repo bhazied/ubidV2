@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80ec2174-cead-4578-820a-c35798bf13dc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/login.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_controller.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_controller_FrontCtrl_4.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_controller_FrontCtrl_4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_2.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/views/front/footer.html" afterPath="$PROJECT_DIR$/web/assets/views/front/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/views/front/front.html" afterPath="$PROJECT_DIR$/web/assets/views/front/front.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/views/front/header.html" afterPath="$PROJECT_DIR$/web/assets/views/front/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297.css" afterPath="$PROJECT_DIR$/web/css/b9d5297.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" afterPath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" afterPath="$PROJECT_DIR$/web/css/cbad0a9_part_14.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/front/css/e-elctricity.css" afterPath="$PROJECT_DIR$/web/front/css/e-elctricity.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/59a1692.js" afterPath="$PROJECT_DIR$/web/js/59a1692.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/59a1692_part_19.js" afterPath="$PROJECT_DIR$/web/js/59a1692_part_19.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/59a1692_part_22.js" afterPath="$PROJECT_DIR$/web/js/59a1692_part_22.js" />
-    </list>
+    <list default="true" id="80ec2174-cead-4578-820a-c35798bf13dc" name="Default" comment="" />
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -1145,7 +1123,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31821677" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
