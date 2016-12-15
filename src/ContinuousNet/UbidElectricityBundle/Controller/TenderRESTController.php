@@ -158,18 +158,6 @@ class TenderRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
-            $authorizedChangeStatus = false;
-            $roles = $this->getUser()->getRoles();
-            if (!empty($roles)) {
-                foreach ($roles as $role) {
-                    if (substr_count($role, 'ROLE_ADMIN_PUBLISHER') > 0) {
-                        $authorizedChangeStatus = true;
-                    }
-                }
-            }
-            if (!$authorizedChangeStatus) {
-                $entity->setStatus('Draft');
-            }
             $em->persist($entity);
             $em->flush();
             return $entity;
@@ -210,15 +198,6 @@ class TenderRESTController extends BaseRESTController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $entity->setModifierUser($this->getUser());
-                $authorizedChangeStatus = false;
-                $roles = $this->getUser()->getRoles();
-                if (!empty($roles)) {
-                    foreach ($roles as $role) {
-                        if (substr_count($role, 'ROLE_ADMIN_PUBLISHER') > 0) {
-                            $authorizedChangeStatus = true;
-                        }
-                    }
-                }
                 $em->flush();
                 return $entity;
             }
