@@ -1431,7 +1431,7 @@
                 }
             },
             "fields": {
-                "CARDNUMBER" : "Carton Numéro",
+                "CARDNUMBER" : "Numéro de carte",
                 "CARDMONTHEXPR" : "Expiration Mois",
                 "CARDYEAREXPR" : "Expiration An",
                 "CARDCCV" : "CCV",
@@ -1439,7 +1439,7 @@
                 "CARDMONTHEXPRREQUIRED": "Expiry month is required",
                 "CARDYEAREXPRREQUIRED": "Expiry year is required",
                 "CARDCCVREQUIRED" : "Ccv is required",
-                "CAPTCHA": "Security check",
+                "CAPTCHA": "Vérification de sécurité",
                 "ID": "#",
                 "TYPE": "Type",
                 "CATEGORY": "Catégorie",
