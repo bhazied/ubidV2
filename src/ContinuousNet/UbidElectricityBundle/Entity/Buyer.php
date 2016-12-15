@@ -289,7 +289,7 @@ class Buyer
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -1002,7 +1002,7 @@ class Buyer
      * @param integer $views
      * @return Buyer
      */
-    public function setViews($views)
+    public function setViews($views = null)
     {
         $this->views = $views;
         return $this;

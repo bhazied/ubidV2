@@ -438,30 +438,14 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':buyerForm.views.$dirty && buyerForm.views.$invalid, 'has-success':buyerForm.views.$valid}">
-                                    <label for="buyerViews" class="control-label">
-                                        <span translate="content.list.fields.VIEWS">Views</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.views" type="text" name="views" id="buyerViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="buyerForm.views.$dirty && buyerForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
-                                    <span class="success text-small block" ng-if="buyerForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
                                     <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
@@ -470,8 +454,6 @@
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
