@@ -114,11 +114,6 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        }).state('front.tenders.sector', {
-            url:'/sector/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Sector/tenderList.html',
-            title: "sector",
-            resolve: loadSequence()
         }).state('front.tenders.list',{
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',

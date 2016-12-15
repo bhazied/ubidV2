@@ -1336,6 +1336,10 @@ fieldset legend {
     margin-bottom: 1rem;
 }
 
+.list-toolbox {
+    margin-bottom: 20px;
+}
+
 .list-toolbox .btn {
     font-size: 0.8rem!important;
     padding: 0.5rem 0.5rem!important;
