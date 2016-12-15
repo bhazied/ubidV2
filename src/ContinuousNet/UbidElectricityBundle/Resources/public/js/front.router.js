@@ -148,22 +148,22 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
             title: 'front.TENDERDETAILS',
-            resolve: loadSequence('TenderFrontCtrl', 'tenderFrontService')
+            resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService')
         }).state('front.mytenders.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
-            title: 'front.TENDERDETAILS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
-        }).state('front.mytenders.add',{
-            url: '/add',
+            title: 'front.EDITTENDER',
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+        }).state('front.mytenders.new',{
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'tenderCategoryService', 'TenderFrontFormCtrl')
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.mytenders.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderService', 'tenderTypeService', 'countryService', 'languageService', 'userService', 'TendersFrontCtrl')
+            resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         /*
          * My Products Manager routes
          */
@@ -171,26 +171,26 @@ app.config(['$stateProvider',
             url: '/my-products',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYPRODUCTS',
+            resolve: loadSequence('MyProductCtrl', 'SupplierProductCtrl', 'supplierProductService')
         }).state('front.myproducts.details',{
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
-        }).state('front.myproducts.edit',{
+            }).state('front.myproducts.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
-            title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductFormCtrl', 'productService', 'regionService', 'countryService', 'sectorService', 'productTypeService', 'biddingTypeService', 'userService', 'productCategoryService', 'ProductFrontFormCtrl')
-        }).state('front.myproducts.add',{
-            url: '/add',
+            title: 'front.EDITPRODUCT',
+            resolve: loadSequence('MyProductFromCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+        }).state('front.myproducts.new',{
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.NEWPRODUCT',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'ProductFormCtrl', 'productService', 'regionService', 'countryService', 'sectorService', 'productTypeService', 'biddingTypeService', 'userService', 'productCategoryService', 'ProductFrontFormCtrl')
+            resolve: loadSequence('MyProductFromCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         }).state('front.myproducts.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_products.html',
             title: 'front.MYPRODUCTS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'productService', 'productTypeService', 'countryService', 'languageService', 'userService', 'ProductsFrontCtrl')
+            resolve: loadSequence('MyProductsCtrl', 'SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         /*
          * My Buyers Manager routes
          */
@@ -202,22 +202,22 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
+            resolve: loadSequence('MyBuyerCtrl', 'BuyerCtrl', 'buyerService')
         }).state('front.mybuyers.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
-            title: 'front.BUYERDETAILS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'regionService', 'countryService', 'sectorService', 'buyerTypeService', 'biddingTypeService', 'userService', 'buyerCategoryService', 'BuyerFrontFormCtrl')
-        }).state('front.mybuyers.add',{
-            url: '/add',
+            title: 'front.EDITBUYER',
+            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+        }).state('front.mybuyers.new',{
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
             title: 'front.NEWBUYER',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'regionService', 'countryService', 'sectorService', 'buyerTypeService', 'biddingTypeService', 'userService', 'buyerCategoryService', 'BuyerFrontFormCtrl')
+            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
         }).state('front.mybuyers.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersFrontCtrl')
+            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
         /*
          * My Suppliers Manager routes
          */
@@ -229,22 +229,22 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('MySupplierCtrl', 'SupplierCtrl', 'supplierService')
         }).state('front.mysuppliers.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
-            title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
-        }).state('front.mysuppliers.add',{
-            url: '/add',
+            title: 'front.EDITSUPPLIER',
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
+        }).state('front.mysuppliers.new',{
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.NEWSUPPLIER',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService')
         }).state('front.mysuppliers.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_suppliers.html',
             title: 'front.MYSUPPLIERS',
-            resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'userService', 'SuppliersFrontCtrl')
+            resolve: loadSequence('MySuppliersCtrl', 'SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService')
         /*
         * Public Pages routes
         */

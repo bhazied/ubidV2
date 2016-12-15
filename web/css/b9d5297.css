@@ -2684,6 +2684,7 @@ input.form-control {
 
 .center-menu {
     max-width: 600px;
+    margin: auto;
 }
 
 .center-menu ul {
