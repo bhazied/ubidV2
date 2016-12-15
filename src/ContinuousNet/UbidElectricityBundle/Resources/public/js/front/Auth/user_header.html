@@ -1,5 +1,6 @@
-<div ng-show="loggedIn">
-    <span class="user-name pull-right">[[ user.name ]] </span>
+<div ng-show="loggedIn" ng-controller="LoginFrontCtrl">
+    <span class="user-name pull-right" ng-click="logout()">  logout </span>
+    <span class="user-name pull-right" ng-click="myProfile()">[[ user.name ]] </span>
     <span class="user-photo pull-right user.gender Male"></span>
     <span class="notification pull-right"><span class="badge">5</span></span>
 </div>

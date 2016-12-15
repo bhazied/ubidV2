@@ -13,6 +13,20 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
         };
 
+        $scope.fromPublishDateOpened = false;
+        $scope.fromPublishDateToggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.fromPublishDateOpened = !$scope.deadline1Opened;
+        };
+
+        $scope.toPublishDateOpened = false;
+        $scope.toPublishDateToggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.toPublishDateOpened = !$scope.deadline2Opened;
+        };
+
         $scope.deadline1Opened = false;
         $scope.deadline1Toggle = function($event) {
             $event.preventDefault();
@@ -26,7 +40,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $event.stopPropagation();
             $scope.deadline2Opened = !$scope.deadline2Opened;
         };
-
+        
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
@@ -112,9 +126,21 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $scope.getCountries();
         $scope.getTenderCategories();
+        $scope.search = {
+            tender_categories: [],
+            countries: [],
+            total_cost_operator: '',
+            total_cos_value: 0,
+            publish_date: '',
+            publish_date_from: '',
+            publish_date_to: '',
+            deadline: '',
+            deadline1: '',
+            deadline2: ''
+        };
         //$scope.val = $scope.getPresentMaxEstimatedCost();
 
-        $scope.price = {
+        /*$scope.price = {
             minValue: 0,
             maxValue: 1000,
             options: {
@@ -145,19 +171,20 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             else{
                 $scope.search.tender_categories = [];
             }
-        });
+        });*/
 
         $scope.searchResults = [];
         $scope.submitForm = function (form, page) {
+            console.log($scope.search);
             page = page-1;
             $scope.disableSubmit = true;
-            if($scope.price.maxValue > 0){
+            /*if($scope.price.maxValue > 0){
                 $scope.search.priceMinValue = $scope.price.minValue;
                 $scope.search.priceMaxValue = $scope.price.maxValue;
             }else{
                 $scope.search.priceMinValue = 0;
                 $scope.search.priceMaxValue = 0;
-            }
+            }*/
             $scope.search.page = page;
             $timeout(function () {
                 $advancedSearchDataFactory.getResults($scope.search).$promise.then(function (data) {

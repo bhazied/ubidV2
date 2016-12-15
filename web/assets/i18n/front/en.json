@@ -460,7 +460,15 @@
     "PUBLICATION": "Publication",
     "CONSULTTENDER": "Consult TENDER",
     "CONSULTPROPOSAL": "Consult PROPOSAL",
-    "CONSULTADVERTISER": "Consult ADVERTISER"
+    "CONSULTADVERTISER": "Consult ADVERTISER",
+    "RELATEDCATEGORIES": "Related Categories",
+    "REGIONCOUNTRY": "Region/Country",
+    "OPPORTUNITYSIZE": "Opportunity Size",
+    "PUBLICATIONDATE": "Publication Date",
+    "DUEDATE":"Due Date",
+    "FROM": "From",
+    "TO": "To",
+    "SPECIFICSEARCH": "Specific Search"
   }
 
 }

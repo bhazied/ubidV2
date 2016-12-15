@@ -33,7 +33,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.no_show_left_right_side_in = [
             'front.register',
             'auth.resetpassword',
-            'front.contact'
+            'front.contact',
+            'front.profile'
         ];
 
         /*$timeout(function() {

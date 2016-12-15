@@ -896,7 +896,7 @@ app.config(['$stateProvider',
             ncyBreadcrumb: {
                 label: 'topbar.user.PROFILE'
             },
-            resolve: loadSequence('jquery-sparkline', 'profileFrontCtrl', 'ProfileFrontService', 'countryService')
+            resolve: loadSequence('jquery-sparkline', 'ProfileFrontCtrl', 'profileFrontService', 'countryService')
         }).state('front.changepassword', {
             url: '/change-password',
             templateUrl: '/bundles/ubidelectricity/js/components/Auth/change_password.html',

@@ -16,7 +16,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         }
         $scope.submit = function () {
-            $scope.user = {username: $scope.email, password: $scope.password};
+            $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
@@ -49,5 +49,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $state.go('front.home');
             }, 1000);
         };
+
+        $scope.myProfile = function () {
+            $state.go('front.profile');
+        }
 
     }]);
