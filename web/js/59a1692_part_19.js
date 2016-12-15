@@ -792,12 +792,17 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
  */
 app.config(['$stateProvider',
     function ($stateProvider) {
-
+        /*
+         * Main route
+        */
         $stateProvider.state('front.home', {
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
             resolve: loadSequence('HomeCtrl' ,'homeService')
+        /*
+         *  User Service routes
+         */
         }).state('front.login', {
             url: '/login',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
@@ -848,31 +853,58 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/change_password.html',
             title: 'front.CHANGEPASSWORD',
             resolve: loadSequence('jquery-sparkline', 'ProfileFrontCtrl', 'profileFrontService', 'countryService')
-        }).state('front.contact', {
-            url: '/contact',
-            templateUrl : '/bundles/ubidelectricity/js/front/Contact/contact_form.html',
-            title: 'front.CONTACT',
-            resolve: loadSequence('contactService', 'ContactFormCtrl')
+        /*
+         * Public Buyer List & Details routes
+         */
         }).state('front.buyers',{
             url: '/buyers',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
             resolve: loadSequence('BuyersFrontCtrl', 'homeService', 'buyerFrontService')
+        }).state('front.buyer', {
+            url: '/buyer/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
+            title: 'front.BUYERDETAILS',
+            resolve: loadSequence('BuyerFrontCtrl', 'homeService', 'buyerFrontService')
+        /*
+         * Public Supplier List & Details routes
+         */
         }).state('front.suppliers',{
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
             resolve: loadSequence('SuppliersFrontCtrl', 'homeService', 'supplierFrontService')
+        }).state('front.supplier', {
+            url: '/supplier/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
+            title: 'front.SUPPLIERDETAILS',
+            resolve: loadSequence('SupplierFrontCtrl', 'homeService', 'supplierFrontService')
+        /*
+         * Public Product List & Details routes
+         */
         }).state('front.products',{
             url: '/products',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
             title: 'front.PRODUCTS',
             resolve: loadSequence('ProductsFrontCtrl', 'homeService', 'productFrontService')
+        }).state('front.product', {
+            url: '/product/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
+            title: 'front.PRODUCTDETAILS',
+            resolve: loadSequence('ProductFrontCtrl', 'homeService', 'productFrontService')
+        /*
+         * Public Tender Lists & Details routes
+         */
         }).state('front.tenders',{
             url: '/tenders',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
+        }).state('front.tender', {
+            url: '/tender/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
+            title: 'front.TENDERDETAILS',
+            resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService')
         }).state('front.tenders.sector', {
             url: '/sector/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/sector.html',
@@ -893,6 +925,9 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/search_form.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+        /*
+         * My Tenders Manager routes
+         */
         }).state('front.mytenders',{
             url: '/my-tenders',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -917,6 +952,9 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderService', 'tenderTypeService', 'countryService', 'languageService', 'userService', 'TendersFrontCtrl')
+        /*
+         * My Products Manager routes
+         */
         }).state('front.myproducts',{
             url: '/my-products',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -941,6 +979,9 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_products.html',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'productService', 'productTypeService', 'countryService', 'languageService', 'userService', 'ProductsFrontCtrl')
+        /*
+         * My Buyers Manager routes
+         */
         }).state('front.mybuyers',{
             url: '/my-buyers',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -965,6 +1006,9 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'userService', 'BuyersFrontCtrl')
+        /*
+         * My Suppliers Manager routes
+         */
         }).state('front.mysuppliers',{
             url: '/my-suppliers',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -989,6 +1033,14 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_suppliers.html',
             title: 'front.MYSUPPLIERS',
             resolve: loadSequence('ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'userService', 'SuppliersFrontCtrl')
+        /*
+        * Public Pages routes
+        */
+        }).state('front.contact', {
+            url: '/contact',
+            templateUrl : '/bundles/ubidelectricity/js/front/Contact/contact_form.html',
+            title: 'front.CONTACT',
+            resolve: loadSequence('contactService', 'ContactFormCtrl')
         }).state('front.post',{
             url: '/post/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',

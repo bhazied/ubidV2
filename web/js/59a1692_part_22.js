@@ -417,7 +417,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.login',
             'front.logout',
             'front.usermenu',
-            'front.profile'
+            'front.profile',
+            'front.contact'
         ];
 
         $scope.changeLanguage = function (lang) {
