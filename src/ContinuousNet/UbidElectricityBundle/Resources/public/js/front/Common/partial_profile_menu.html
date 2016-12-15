@@ -1,5 +1,5 @@
 
-<div>
+<div ng-if="user.email">
 
     <ul ng-if="user.type == 'Buyer'">
         <li><a ui-sref="front.mybuyers.list"><i class="fa fa-building"></i> <span translate="front.MYBUYERS">My Buyers</span></a></li>
