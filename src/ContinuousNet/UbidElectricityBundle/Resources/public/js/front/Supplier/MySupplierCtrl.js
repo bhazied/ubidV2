@@ -4,31 +4,32 @@
  * Controller for Supplier Details
  */
 
-app.controller('SupplierCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$suppliersDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $suppliersDataFactory) {
+app.controller('MySupplierCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$suppliersDataFactory',
+function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $suppliersDataFactory) {
 
 
-    $scope.dateFormat = $filter('translate')('formats.DATE');
-    $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
-    $scope.timeFormat = $filter('translate')('formats.TIME');
+    $timeout(function() {
+        $rootScope.showSlogan = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.showUserMenu = true;
+        $rootScope.contentSize = 10;
+        $rootScope.contentOffset = 0;
+    });
+
+    angular.extend(this, $controller('SupplierCtrl', {$scope:$scope}));
 
     $scope.list = function() {
-        $state.go('app.marketplace.suppliers');
+        $state.go('front.mysuppliers.list');
     };
 
     $scope.add = function() {
-        $state.go('app.marketplace.suppliersnew');
+        $state.go('front.mysuppliers.new');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.suppliersedit', {id: row.id});
+        $state.go('front.mysuppliers.edit', {id: row.id});
     };
-
-    if (angular.isDefined($stateParams.id)) {
-        $suppliersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
-            $scope.supplier = data;
-        });
-    }
 
 }]);
 

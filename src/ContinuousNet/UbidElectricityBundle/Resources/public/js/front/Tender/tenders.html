@@ -17,8 +17,8 @@
                 <div ng-repeat="tender in tendersList">
                     <a ui-sref="front.tender.details({id: [[ tender.id ]]})" class="list-group-item list-group-item-action" >
                         <h2 class="list-group-item-heading">[[ tender.title ]]</h2>
-                        <h5 class="list-group-item-heading"> [[ "content.form.fields.PUBLISHDATE" | translate ]] : [[ tender.publish_date | date : formats.DATE  | translate ]] </h5>
-                        <h5 class="list-group-item-heading"> [[ "content.form.fields.REFERENCE" | translate ]] : [[ tender.reference ]]</h5>
+                        <h5 class="list-group-item-heading"> [[ "content.list.fields.PUBLISHDATE" | translate ]] : [[ tender.publish_date | date : formats.DATE  | translate ]] </h5>
+                        <h5 class="list-group-item-heading"> [[ "content.list.fields.REFERENCE" | translate ]] : [[ tender.reference ]]</h5>
                     </a>
                 </div>
                 <div paging

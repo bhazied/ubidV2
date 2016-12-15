@@ -25,11 +25,11 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
         $scope.genders = [{
             id: 'Male',
-            title: $filter('translate')('content.form.fields.genders.MALE'),
+            title: $filter('translate')('content.list.fields.genders.MALE'),
             css: 'primary'
         }, {
             id: 'Female',
-            title: $filter('translate')('content.form.fields.genders.FEMALE'),
+            title: $filter('translate')('content.list.fields.genders.FEMALE'),
             css: 'success'
         }];
         $scope.authenticationModes = [{

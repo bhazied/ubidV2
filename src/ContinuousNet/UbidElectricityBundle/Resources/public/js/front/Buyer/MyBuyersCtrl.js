@@ -9,6 +9,8 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
 
     $timeout(function() {
         $rootScope.showSlogan = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;

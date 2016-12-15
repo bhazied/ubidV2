@@ -14,7 +14,7 @@
 <!-- start: FORM -->
 <div class="container-fluid container-fullw bg-white">
     <div class="row">
-        <div class="col-md-12" ng-controller="SupplierFormCtrl">
+        <div class="col-md-12" ng-controller="MySupplierFormCtrl">
             <div>
                 <fieldset>
                     <legend translate="content.list.NEWSUPPLIER" ng-if="supplier.id == 0">
@@ -327,7 +327,7 @@
                                         <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplier.total revenu" type="text" name="totalRevenu" id="supplierTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="supplier.total_revenu" type="text" name="totalRevenu" id="supplierTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
