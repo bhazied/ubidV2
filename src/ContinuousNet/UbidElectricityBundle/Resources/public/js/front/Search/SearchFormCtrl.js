@@ -1,6 +1,21 @@
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert, $stateParams) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = true;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 0;
+        }, 1000);
+
+        if(angular.isDefined($stateParams.tenders)){
+                $scope.tensers = tenders;
+                $scope.pageSize = pageSize;
+                $scope.total = total;
+                $scope.page = page;
+        }
         $scope.col = 8;
         $scope.selectListCountries = [];
         $scope.selectedListCountries = [];
@@ -107,23 +122,6 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;
 
-       /* $scope.getPresentMaxEstimatedCost = function () {
-            $timeout(function () {
-                $scope.maxEstimatedCostLoaded = true;
-                if($scope.maxEstimatedCost == 0){
-                    var def = $q.defer();
-                    $advancedSearchDataFactory.getMaxEstimatedCost().$promise.then(function (data) {
-                        $scope.maxEstimatedCost = parseInt(data.value);
-                        def.resolve($scope.maxEstimatedCost);
-                    });
-                    return def;
-                }
-                else{
-                    return $scope.maxEstimatedCost
-                }
-            });
-        }*/
-
         $scope.getCountries();
         $scope.getTenderCategories();
         $scope.search = {
@@ -138,53 +136,14 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             deadline1: '',
             deadline2: ''
         };
-        //$scope.val = $scope.getPresentMaxEstimatedCost();
-
-        /*$scope.price = {
-            minValue: 0,
-            maxValue: 1000,
-            options: {
-                floor: 0,
-                ceil: 150000,
-                step: 1,
-                noSwitching: true
-            }
-        };
-        
-        $scope.search = {
-            tender_categories: [],
-            countries: []
-        };
-
-        $scope.addSelectedCountries = function(data){
-            $scope.search.countries.push(data.marker);
-        }
-
-        $scope.selectedAllCategories = false;
-        $scope.$watch('selectedAllCategories', function () {
-            if($scope.selectedAllCategories){
-                $scope.search.tender_categories = [];
-                $scope.search.tender_categories = $scope.tenderCategories.map(function(cat){
-                    return cat.id;
-                });
-            }
-            else{
-                $scope.search.tender_categories = [];
-            }
-        });*/
 
         $scope.searchResults = [];
         $scope.submitForm = function (form, page) {
-            console.log($scope.search);
             page = page-1;
             $scope.disableSubmit = true;
-            /*if($scope.price.maxValue > 0){
-                $scope.search.priceMinValue = $scope.price.minValue;
-                $scope.search.priceMaxValue = $scope.price.maxValue;
-            }else{
-                $scope.search.priceMinValue = 0;
-                $scope.search.priceMaxValue = 0;
-            }*/
+            $scope.search.deadline = $scope.search.deadline ? $scope.search.deadline.value : '';
+            $scope.search.publish_date = $scope.search.publish_date ? $scope.search.publish_date.value : '';
+            $scope.search.total_cost_operator = $scope.search.total_cost_operator ? $scope.search.total_cost_operator.value : '';
             $scope.search.page = page;
             $timeout(function () {
                 $advancedSearchDataFactory.getResults($scope.search).$promise.then(function (data) {
@@ -193,9 +152,15 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                         $scope.pageSize = 10;
                         $scope.total = data.inlineCount;
                         $scope.currentPage = page;
-                        $scope.col = 4;
+                        $state.go('front.advanced_search', {
+                            tenders : $scope.searchResults,
+                            pageSize : $scope.pageSize,
+                            total:  $scope.total,
+                            page:  $scope.currentPage
+                        });
                     }
                     else {
+                        $rootScope.searchLoaded = true;
                         SweetAlert.swal($filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTHEADER'), $filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTTEXT'), "info");
                     }
                     $scope.disableSubmit = false;

@@ -47,21 +47,25 @@ class UserSessionData
             'name' => $user->getFirstName().' '.$user->getLastName(),
             'firstName' => $user->getFirstName(),
             'lastName' => $user->getLastName(),
+            'picture' => $user->getPicture(),
+            'job' => $user->getJob(),
             'roles' => $roles
         );
 
         if (in_array('ROLE_SUBSCRIBER', $roles)) {
-
-            $data['gender'] = $user->getGender();
             $data['country'] = $user->getCountry()->getId();
             $data['countryName'] = $user->getCountry()->getName();
             $data['phone'] = $user->getPhone();
-
-        } else {
-
-            $data['job'] = $user->getJob();
+            $data['gender'] = $user->getGender();
             $data['picture'] = $user->getPicture();
+            $data['type'] = $user->getType();
 
+            $qb = $this->em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Notification', 'n_');
+            $qb->select('count(n_.id)');
+            $qb->andWhere('n_.read = :read')->setParameter('read', false);
+            $qb->andWhere('n_.creatorUser = :user')->setParameter('user', $user->getId());
+            $data['notificationsCount'] = $qb->getQuery()->getSingleScalarResult();
         }
 
         return $data;

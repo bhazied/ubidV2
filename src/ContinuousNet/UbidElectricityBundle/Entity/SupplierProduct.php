@@ -155,7 +155,7 @@ class SupplierProduct
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -487,7 +487,7 @@ class SupplierProduct
      * @param integer $views
      * @return SupplierProduct
      */
-    public function setViews($views)
+    public function setViews($views = null)
     {
         $this->views = $views;
         return $this;

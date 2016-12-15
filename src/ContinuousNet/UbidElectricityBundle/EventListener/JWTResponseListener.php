@@ -57,9 +57,13 @@ class JWTResponseListener
      */
     public function onAuthenticationFailureResponse(AuthenticationFailureEvent $event)
     {
-        $username = $event->getRequest()->get('username');
+        if (!($request = $event->getRequest())) {
+            return;
+        }
+        $request = $event->getRequest();
+        $email = $request->request->get('email');
         $userRepository = $this->em->getRepository('UbidElectricityBundle:User');
-        $user = $userRepository->findOneByUsername($username);
+        $user = $userRepository->findOneByEmail($email);
         if ($user) {
             $user->setFailedLoginCount($user->getFailedLoginCount()+1);
             $user->setLastFailedLogin(new \DateTime('now'));

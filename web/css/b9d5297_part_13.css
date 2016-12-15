@@ -672,8 +672,6 @@ p.keep-in-touch {
     text-align: center;
     background-image: linear-gradient(180deg, #1D69AD 1px, #ffffff 1px);
     background-position: center 10px;
-    background-color: red;
-    height: 36px;
     margin-top: 10px;
 }
 
@@ -769,7 +767,6 @@ p.copyright {
     background-position: center top;
     height: 230px;
     padding: 140px 0 0 0;
-    margin-bottom: 200px;
 }
 
 .search-box ul, .search-box-home ul {
@@ -1037,6 +1034,7 @@ input.form-control {
 
 .center-menu {
     max-width: 600px;
+    margin: auto;
 }
 
 .center-menu ul {
@@ -1326,4 +1324,19 @@ fieldset legend {
 
 .success {
     color: green;
+}
+
+#partial_profile_menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#partial_profile_menu ul li {
+    margin-bottom: 1rem;
+}
+
+.list-toolbox .btn {
+    font-size: 0.8rem!important;
+    padding: 0.5rem 0.5rem!important;
 }

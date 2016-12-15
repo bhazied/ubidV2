@@ -1,0 +1,254 @@
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MyProductFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWSUPPLIERPRODUCT" ng-if="supplierProduct.id == 0">
+                        New Supplier Product
+                    </legend>
+                    <legend translate="content.list.EDITSUPPLIERPRODUCT" ng-if="supplierProduct.id > 0">
+                        Edit Supplier Product
+                    </legend>
+                    <form name="supplierProductForm" id="supplierProductForm" novalidate ng-submit="submitForm(supplierProductForm)">
+                        <input type="hidden" name="id" id="supplierProductId" ng-model="supplierProduct.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.supplier.$dirty && supplierProductForm.supplier.$invalid, 'has-success':supplierProductForm.supplier.$valid}">
+                                    <label for="supplierProductSupplier" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="suppliersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="supplier_product_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="supplierProduct.supplier" name="supplier" id="supplierProductSupplier" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="supplierProductForm.supplier.$dirty && supplierProductForm.supplier.$error.required" translate="content.form.messages.SUPPLIERREQUIRED">Supplier is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.supplier.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.category.$dirty && supplierProductForm.category.$invalid, 'has-success':supplierProductForm.category.$valid}">
+                                    <label for="supplierProductCategory" class="control-label">
+                                        <span translate="content.list.fields.CATEGORY">Category</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="categoriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="supplier_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplierProduct.category" name="category" id="supplierProductCategory" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-foolder-open-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="supplierProductForm.category.$dirty && supplierProductForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.name.$dirty && supplierProductForm.name.$invalid, 'has-success':supplierProductForm.name.$valid}">
+                                    <label for="supplierProductName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.name" type="text" name="name" id="supplierProductName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="supplierProductForm.name.$dirty && supplierProductForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="supplierProduct.name" to="supplierProduct.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.slug.$dirty && supplierProductForm.slug.$invalid, 'has-success':supplierProductForm.slug.$valid}">
+                                    <label for="supplierProductSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.slug" type="text" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductBrand" class="control-label">
+                                        <span translate="content.list.fields.BRAND">Brand</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.brand" type="text" name="brand" id="supplierProductBrand" class="form-control" placeholder="[[ 'content.form.messages.ENTERBRAND' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductModel" class="control-label">
+                                        <span translate="content.list.fields.MODEL">Model</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.model" type="text" name="model" id="supplierProductModel" class="form-control" placeholder="[[ 'content.form.messages.ENTERMODEL' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.description" type="text" name="description" id="supplierProductDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductPicture" class="control-label">
+                                        <span translate="content.list.fields.PICTURE">Picture</span>
+                                    </label>
+                                    <div class="input-group">
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.picture" type="text" name="picture" id="supplierProductPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <i class="ti-image"></i>
+                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="supplierProduct.picture != '' && supplierProduct.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + supplierProduct.picture ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="supplierProduct.picture = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':supplierProductForm.status.$dirty && supplierProductForm.status.$invalid, 'has-success':supplierProductForm.status.$valid}">
+                                    <label for="supplierProductStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="supplierProduct.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="supplierProduct.status" name="status" id="supplierProductStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="supplierProductForm.status.$dirty && supplierProductForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductUnitCost" class="control-label">
+                                        <span translate="content.list.fields.UNITCOST">Unit Cost</span>
+                                    </label>
+                                        <input ng-model="supplierProduct.unit_cost" type="text" name="unitCost" id="supplierProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="supplierProduct.is_public" type="checkbox" name="isPublic" id="supplierProductIsPublic" />
+                                    <label for="supplierProductIsPublic" translate="content.list.fields.ISPUBLIC">Is Public</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':supplierProductForm.views.$dirty && supplierProductForm.views.$invalid, 'has-success':supplierProductForm.views.$valid}">
+                                    <label for="supplierProductViews" class="control-label">
+                                        <span translate="content.list.fields.VIEWS">Views</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplierProduct.views" type="text" name="views" id="supplierProductViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="supplierProductForm.views.$dirty && supplierProductForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERPRODUCTS">Back to Supplier Products list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(supplierProductForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierProductForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="supplierProducts.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

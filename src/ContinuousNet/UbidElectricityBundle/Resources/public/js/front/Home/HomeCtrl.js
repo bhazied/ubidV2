@@ -2,9 +2,16 @@
 app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$q', '$HomeDataFactory','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $q, $HomeDataFactory, $filter) {
 
-        $rootScope.showSlogan = true;
+        $timeout(function() {
+            $rootScope.showSlogan = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 3;
+        });
 
-        $scope.tendersLoaded = false;
+/*        $scope.tendersLoaded = false;
         $scope.tendersList = [];
         $scope.sectorsLoaded = false;
         $scope.sectorsList = [];
@@ -61,4 +68,5 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
         }
 
         $scope.getBidsBySector(1);
+        */
 }]);

@@ -1,8 +1,8 @@
-<div ng-show="leftrightside" ng-controller="searchFormCtrl">
+<div ng-controller="searchFormCtrl">
     <h3 class="sidebar-title" translate="front.SPECIFICSEARCH" >Specific Search</h3>
     <form name="searchform" id="searchform" ng-submit="submitForm(searchform, 1)">
     <div class="form-group">
-        <label class="sidebar-label" translate="front.RELATEDCATEGORIES">Related Categories</label>
+        <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
         <div class="categories-checkbox">
             <div class="form-group" ng-repeat="tenderCategory in tenderCategories" ng-if="tenderCategory.id">
                 <label class="custom-control custom-checkbox">
@@ -15,7 +15,7 @@
 
     </div>
     <div class="form-group">
-        <label class="sidebar-label" translate="front.REGIONCOUNTRY">Region/Country</label>
+        <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
         <div class="countries-checkbox">
             <div class="form-group" ng-repeat="country in countries">
                 <label class="custom-control custom-checkbox">
@@ -30,11 +30,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group nice-select">
-                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="date_rages">
-                        <option  value="morethan" translate="front.MORETHAN">More Than</option>
-                        <option  value="lessthan" translate="front.LESSTHAN">Less Than</option>
-                        <option  value="equalto" translate="front.EQUALTO">Equal To</option>
-                    </select>
+                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="item as item.label for item in operators track by item.value"></select>
                     <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
                 </div>
             </div>
@@ -49,15 +45,7 @@
     <div class="form-group">
         <label class="sidebar-label" translate="front.PUBLICATIONDATE">Publication Date</label>
         <div class="input-group nice-select">
-            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="date_rages">
-                <option value = "today" translate="front.TODAY">Today</option>
-                <option value = "yesterday" translate="front.YESTERDAY">Yesterday</option>
-                <option value = "last7days" translate="front.LAST7DAYS">Last 7 days</option>
-                <option value = "last30days" translate="front.LAST30DAYS">Last 30 days</option>
-                <option value = "thismonth" translate="front.THISMONTH">This month</option>
-                <option value = "lastmont" translate="front.LASTMONTH">Last month</option>
-                <option value = "custom" translate="front.CUSTOMDATE">Custom Date</option>
-            </select>
+            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="item as item.label for item in dateRanges track by item.value"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
     </div>
@@ -82,15 +70,7 @@
     <div class="form-group">
         <label class="sidebar-label" translate="front.DUEDATE">Due Date</label>
         <div class="input-group nice-select">
-            <select class="form-control" class="select" ng-model="search.deadline" ng-options="date_rages">
-                <option value = "today" translate="front.TODAY">Today</option>
-                <option value = "yesterday" translate="front.YESTERDAY">Yesterday</option>
-                <option value = "last7days" translate="front.LAST7DAYS">Last 7 days</option>
-                <option value = "last30days" translate="front.LAST30DAYS">Last 30 days</option>
-                <option value = "thismonth" translate="front.THISMONTH">This month</option>
-                <option value = "lastmont" translate="front.LASTMONTH">Last month</option>
-                <option value = "custom" translate="front.CUSTOMDATE">Custom Date</option>
-            </select>
+            <select class="form-control" class="select" ng-model="search.deadline" ng-options="item as item.label for item in dateRanges track by item.value"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
     </div>

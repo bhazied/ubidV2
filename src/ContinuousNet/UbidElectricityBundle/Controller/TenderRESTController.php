@@ -110,6 +110,14 @@ class TenderRESTController extends BaseRESTController
                    }
                 }
             }
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       $qb->andWhere('t_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                   }
+                }
+            }
             $qbList = clone $qb;
             $qb->select('count(t_.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
@@ -187,6 +195,16 @@ class TenderRESTController extends BaseRESTController
             foreach ($previousCategories as $previousCategory) {
                 $entity->removeCategory($previousCategory);
             }
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       if ($entity->getCreatorUser()->getId() != $this->getUser()->getId()) {
+                           return FOSView::create('Not authorized', Codes::HTTP_FORBIDDEN);
+                       }
+                   }
+                }
+            }
             $form = $this->createForm(new TenderType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
@@ -238,6 +256,16 @@ class TenderRESTController extends BaseRESTController
     public function deleteAction(Request $request, Tender $entity)
     {
         try {
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       if ($entity->getCreatorUser()->getId() != $this->getUser()->getId()) {
+                           return FOSView::create('Not authorized', Codes::HTTP_FORBIDDEN);
+                       }
+                   }
+                }
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);
             $em->flush();

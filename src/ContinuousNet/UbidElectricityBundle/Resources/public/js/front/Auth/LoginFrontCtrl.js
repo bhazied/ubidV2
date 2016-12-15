@@ -6,6 +6,15 @@
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 3;
+        });
+
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
                 delete $localStorage.access_token;
@@ -23,14 +32,13 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
                     return;
                 }
+                toaster.pop('success', $filter('translate')('title.success.LOGIN'), $filter('translate')('message.success.LOGIN'));
                 $scope.status = 'welcome';
                 $localStorage.access_token = data.token;
                 $scope.user = $localStorage.user = $rootScope.user = data.user;
                 $timeout(function() {
-
-                        $rootScope.loggedIn = true;
-
-                    $state.go('front.home');
+                    $rootScope.loggedIn = true;
+                    $state.go('front.usermenu');
                 }, 1000);
             }, function(error) {
                 $scope.status = 'error';

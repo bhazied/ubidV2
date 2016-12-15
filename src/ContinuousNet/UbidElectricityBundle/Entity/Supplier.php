@@ -234,7 +234,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total revenu", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="total_revenu", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -242,10 +242,10 @@ class Supplier
     private $totalRevenu;
 
     /**
-     * @var boolean
+     * @var integer
      * @access private
      *
-     * @ORM\Column(name="first_market_rate", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="first_market_rate", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -253,10 +253,10 @@ class Supplier
     private $firstMarketRate;
 
     /**
-     * @var boolean
+     * @var integer
      * @access private
      *
-     * @ORM\Column(name="second_market_rate", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="second_market_rate", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -264,10 +264,10 @@ class Supplier
     private $secondMarketRate;
 
     /**
-     * @var boolean
+     * @var integer
      * @access private
      *
-     * @ORM\Column(name="third_market_rate", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="third_market_rate", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -289,7 +289,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -903,7 +903,7 @@ class Supplier
      * Set firstMarketRate
      *
      * @access public
-     * @param boolean $firstMarketRate
+     * @param integer $firstMarketRate
      * @return Supplier
      */
     public function setFirstMarketRate($firstMarketRate = null)
@@ -916,7 +916,7 @@ class Supplier
      * Get firstMarketRate
      *
      * @access public
-     * @return boolean 
+     * @return integer 
      */
     public function getFirstMarketRate()
     {
@@ -927,7 +927,7 @@ class Supplier
      * Set secondMarketRate
      *
      * @access public
-     * @param boolean $secondMarketRate
+     * @param integer $secondMarketRate
      * @return Supplier
      */
     public function setSecondMarketRate($secondMarketRate = null)
@@ -940,7 +940,7 @@ class Supplier
      * Get secondMarketRate
      *
      * @access public
-     * @return boolean 
+     * @return integer 
      */
     public function getSecondMarketRate()
     {
@@ -951,7 +951,7 @@ class Supplier
      * Set thirdMarketRate
      *
      * @access public
-     * @param boolean $thirdMarketRate
+     * @param integer $thirdMarketRate
      * @return Supplier
      */
     public function setThirdMarketRate($thirdMarketRate = null)
@@ -964,7 +964,7 @@ class Supplier
      * Get thirdMarketRate
      *
      * @access public
-     * @return boolean 
+     * @return integer 
      */
     public function getThirdMarketRate()
     {
@@ -1002,7 +1002,7 @@ class Supplier
      * @param integer $views
      * @return Supplier
      */
-    public function setViews($views)
+    public function setViews($views = null)
     {
         $this->views = $views;
         return $this;

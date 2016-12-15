@@ -6,6 +6,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
 
         $rootScope.showSlogan = false;
+        $rootScope.showUserMenu = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.contentSize = 6;
+        $rootScope.contentOffset = 0;
+
+        $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
             'front.login',
@@ -30,28 +37,19 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
-        $scope.no_show_left_right_side_in = [
+        $scope.hide_left_right_side_in = [
+            'front.home',
+            'front.post',
             'front.register',
-            'auth.resetpassword',
-            'front.contact',
-            'front.profile'
+            'front.resetpassword',
+            'front.changepassword',
+            'front.login',
+            'front.logout',
+            'front.usermenu',
+            'front.profile',
+            'front.contact'
         ];
 
-        /*$timeout(function() {
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
-                    $scope.leftrightside = true;
-                });
-            }
-            else{
-                $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $scope.leftrightside = false;
-                });
-            }
-        });
-        */
         $scope.changeLanguage = function (lang) {
             $translate.use(lang);
             $rootScope.currentLanguage = lang
@@ -69,6 +67,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
+            //reset the search loaded result
+            $rootScope.searchLoaded = false;
+            
             //stop loading bar on stateChangeSuccess
             event.targetScope.$watch("$viewContentLoaded", function() {
 
@@ -76,16 +77,19 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             //show or hide left & right side
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
                 $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = true;
+                    console.warn('left and right side must be showen in '+ $state.current.name);
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = true;
+                    $rootScope.contentOffset = 0;
                 });
-            }
-            else{
+            } else {
                 $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = false;
+                    console.warn('left and right side must be hidden in '+ $state.current.name);
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.contentOffset = 3;
                 });
             }
 
@@ -239,5 +243,52 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.add_tender = function () {
             $state.go('front.tender.add');
         }
+
+
+        $rootScope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $rootScope.dateRanges = [
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
 
     }]);
