@@ -140,25 +140,33 @@
                             <tr>
                                 <td><span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span></td>
                                 <td>
-                                    <div ng-bind-html="tender.attachment_file1"></div>
+                                    <div ng-if="tender.attachment_file1 != '' && tender.attachment_file1 != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_file1 ]]" alt=""><i class="ti-download"></i> [[tender.attachment_file1]]</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span></td>
                                 <td>
-                                    <div ng-bind-html="tender.attachment_file2"></div>
+                                    <div ng-if="tender.attachment_file2 != '' && tender.attachment_file2 != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_file2 ]]" alt=""><i class="ti-download"></i> [[tender.attachment_file2]]</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span></td>
                                 <td>
-                                    <div ng-bind-html="tender.attachment_file3"></div>
+                                    <div ng-if="tender.attachment_file3 != '' && tender.attachment_file3 != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_file3 ]]" alt=""><i class="ti-download"></i> [[tender.attachment_file3]]</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span></td>
                                 <td>
-                                    <div ng-bind-html="tender.attachment_file4"></div>
+                                    <div ng-if="tender.attachment_file4 != '' && tender.attachment_file4 != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_file4 ]]" alt=""><i class="ti-download"></i> [[tender.attachment_file4]]</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>

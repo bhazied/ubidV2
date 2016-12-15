@@ -359,10 +359,26 @@
                                     <label for="tenderAttachmentFile1" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file1" type="text" name="attachmentFile1" id="tenderAttachmentFile1" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE1' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file1')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file1 != '' && tender.attachment_file1 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file1 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file1')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file1 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -374,10 +390,26 @@
                                     <label for="tenderAttachmentFile2" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file2" type="text" name="attachmentFile2" id="tenderAttachmentFile2" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE2' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file2')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file2 != '' && tender.attachment_file2 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file2 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file2')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file2 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -387,10 +419,26 @@
                                     <label for="tenderAttachmentFile3" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file3" type="text" name="attachmentFile3" id="tenderAttachmentFile3" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE3' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file3')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file3 != '' && tender.attachment_file3 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file3 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file3')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file3 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -402,10 +450,26 @@
                                     <label for="tenderAttachmentFile4" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file4" type="text" name="attachmentFile4" id="tenderAttachmentFile4" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE4' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file4')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file4 != '' && tender.attachment_file4 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file4 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file4')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file4 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
