@@ -211,5 +211,35 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         }
     }
 
+    $scope.showFileManager = function(field) {
+    
+        var modalInstance = $uibModal.open({
+            templateUrl: '/bundles/ubidelectricity/js/common/FileManager/modal_content.html',
+            controller: 'FileManagerCtrl',
+            size: 'lg',
+            resolve: {
+                field: function() {
+                    return field;
+                },
+                value: function() {
+                    return $scope.bid[field];
+                },
+                instance: function() {
+                    return 'default';
+                },
+                folder: function() {
+                    return 'bids';
+                }
+            }
+        });
+
+        modalInstance.result.then(function (url) {
+            $scope.bid[field] = url;
+        }, function () {
+            
+        });
+    
+    };
+
 }]);
 
