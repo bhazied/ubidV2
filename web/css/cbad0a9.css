@@ -3035,3 +3035,13 @@ fieldset legend {
 .success {
     color: green;
 }
+
+#partial_profile_menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#partial_profile_menu ul li {
+    margin-bottom: 1rem;
+}

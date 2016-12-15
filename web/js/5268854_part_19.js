@@ -466,6 +466,7 @@ app.constant('APP_JS_REQUIRES', {
         'VisitFormCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitFormCtrl.js',
         'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js',
         'LoginFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js',
+        'LogoutFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LogoutFrontCtrl.js',
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'HomeCtrl': '/bundles/ubidelectricity/js/front/Home/HomeCtrl.js',
         'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',

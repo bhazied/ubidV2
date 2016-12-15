@@ -413,7 +413,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.post',
             'front.register',
             'front.resetpassword',
+            'front.changepassword',
             'front.login',
+            'front.logout',
             'front.usermenu',
             'front.profile'
         ];
