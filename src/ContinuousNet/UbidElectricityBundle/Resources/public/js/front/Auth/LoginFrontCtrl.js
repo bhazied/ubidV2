@@ -58,4 +58,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }, 1000);
         };
 
+        $scope.myProfile = function () {
+            $state.go('front.profile');
+        }
+
     }]);

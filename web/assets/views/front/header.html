@@ -12,12 +12,11 @@
     <div class="float-xs-right" id="language-switcher">
         <span class="current-language flag [[currentLanguage]]" title="[[ languages[currentLanguage] ]]">
             <ul class="languages">
-                <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]"></li>
+                <li ng-click="language.set(langCode)" ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]"></li>
             </ul>
         </span>
         <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
     </div>
-
 
     <ul class="nav navbar-nav float-xs-right">
         <li class="nav-item" ng-if="!user.email">

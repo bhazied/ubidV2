@@ -37,22 +37,29 @@ class SearchRestController extends FOSRestController {
     public function srAction(Request $request){
 
         try{
-            $reference = !is_null($request->request->get('reference')) ? $request->request->get('reference') : null;
-            $searchText = !is_null($request->request->get('searchText')) ? $request->request->get('searchText') : null;
             $countries = $request->request->get('countries') ? $request->request->get('countries') : array();
-            $priceMaxValue =  !is_null($request->request->get('priceMaxValue'))? $request->request->get('priceMaxValue') : 0;
-            $priceMinValue = !is_null($request->request->get('priceMinValue'))? $request->request->get('priceMinValue') : 0;
+            $totalCosvalue =  !is_null($request->request->get('priceMaxValue'))? $request->request->get('total_cos_value') : 0;
+            $totalCostOperator = ! !is_null($request->request->get('total_cost_operator'))? $request->request->get('total_cost_operator') : "equalto";
+            $publisDate = !is_null($request->request->get('publish_date')) ? $request->request->get('publish_date') : 'today';
+            $publisDateFrom = !is_null($request->request->get('publish_date_from')) ? $request->request->get('publish_date_from') : null;
+            $publisDateTo = !is_null($request->request->get('publish_date_to')) ? $request->request->get('publish_date_to') : null;
             $deadline1 = !is_null($request->request->get('deadline1')) ? $request->request->get('deadline1') : null;
             $deadline2 = !is_null($request->request->get('deadline2')) ? $request->request->get('deadline2') : null;
             $tender_categories = $request->request->get('tenderCategories') ? $request->request->get('tenderCategories') : array();
+            $operator = array(
+                "morethan" => ">",
+                "lessthan" => "<",
+                "equalto" => "="
+            );
             $data = [
                 'inlineCount' => 0,
                 'queries' => [
-                    'reference' => $reference,
-                    'searchText' => $searchText,
                     'countries' => $countries,
-                    'priceMinvalue' => $priceMinValue,
-                    'priceMaxValue' => $priceMaxValue,
+                    'total_cos_value' => $totalCosvalue,
+                    'total_cost_operator' => $totalCostOperator,
+                    'publish_date' => $publisDate,
+                    'publish_date_from' => $publisDateFrom,
+                    'publish_date_to' => $publisDateTo,
                     'deadline1' => $deadline1,
                     'deadline2' => $deadline2,
                     'tender_categories' => $tender_categories
@@ -61,21 +68,13 @@ class SearchRestController extends FOSRestController {
             ];
             $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
             $qb->from("UbidElectricityBundle:Tender", "t_");
-            if(!is_null($reference)){
-                $qb->andWhere("t_.reference = :reference")
-                    ->setParameter("reference", $reference);
-            }
-            if(!is_null($searchText)){
-                $qb->andWhere($qb->expr()->like('t_.title', ':searchText'))
-                    ->setParameter("searchText", $qb->expr()->literal("%".$searchText."%"));
-            }
+
             if(count($countries) > 0){
                 $qb->andWhere($qb->expr()->in("t_.country", ":countries"))->setParameter("countries", $countries);
             }
-            if($priceMaxValue > 0){
-                $qb->andWhere("t_.estimatedCost BETWEEN :priceMinvalue AND :priceMaxValue")
-                    ->setParameter("priceMinvalue", $priceMinValue)
-                    ->setParameter("priceMaxValue", $priceMaxValue);
+            if(!is_null($totalCostOperator)){
+                $qb->andWhere("t_.estimatedCost ".$operator[$totalCostOperator]." :totalCosvalue")
+                    ->setParameter("totalCosvalue", $totalCosvalue);
             }
             if(!is_null($deadline1)){
                 $qb->andWhere("t_.publishDate > :deadline1")
@@ -86,7 +85,7 @@ class SearchRestController extends FOSRestController {
                     ->setParameter("deadline2", $deadline2);
             }
             if(count($tender_categories) > 0){
-                $qb->andWhere(":tender_categories MEMBER OF t_.tenderCategories")
+                $qb->andWhere(":tender_categories MEMBER OF t_.categories")
                     ->setParameter("tender_categories", $tender_categories);
             }
 
@@ -131,4 +130,9 @@ class SearchRestController extends FOSRestController {
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    private function getWhereDateClause($interval, $date1, $date2){
+        
+    }
+
 }

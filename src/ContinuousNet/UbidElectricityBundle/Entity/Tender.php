@@ -259,7 +259,7 @@ class Tender
      * @Expose
      * 
      */
-    private $views;
+    //private $views;
 
     /**
      * @var \DateTime

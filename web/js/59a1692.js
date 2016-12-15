@@ -68349,7 +68349,29 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
         // Set up the states
         $stateProvider.state('front', {
             templateUrl: '/assets/views/front/front.html',
-            resolve: loadSequence('modernizr', 'moment', 'angularMoment', 'uiSwitch', 'perfect-scrollbar-plugin', 'toaster', 'ngAside', 'vAccordion', 'sweet-alert', 'chartjs', 'tc.chartjs', 'oitozero.ngSweetAlert', 'truncate', 'htmlToPlaintext', 'angular-notification-icons'),
+            resolve: loadSequence(
+                'modernizr',
+                'moment', 
+                'angularMoment', 
+                'uiSwitch', 
+                'perfect-scrollbar-plugin', 
+                'toaster', 
+                'ngAside', 
+                'vAccordion', 
+                'sweet-alert', 
+                'chartjs', 
+                'tc.chartjs', 
+                'oitozero.ngSweetAlert',
+                'truncate', 
+                'htmlToPlaintext', 
+                'angular-notification-icons',
+                'SearchFormCtrl',
+                'searchService',
+                'languageService',
+                'countryService',
+                'tenderFrontService',
+                'checklist-model'
+            ),
             abstract: true
         }).state('error', {
             url: '/error',
@@ -68473,7 +68495,19 @@ app.config(['$stateProvider',
          * Public Tender Lists & Details routes
          */
         }).state('front.tenders',{
-            url: '/tenders',
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.sector', {
+            url:'/sector/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Sector/tenderList.html',
+            title: "sector",
+            resolve: loadSequence()
+        }).state('front.tenders.list',{
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
@@ -71913,6 +71947,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }, 1000);
         };
 
+        $scope.myProfile = function () {
+            $state.go('front.profile');
+        }
+
     }]);
 
 'use strict';
@@ -71966,7 +72004,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $scope.changeLanguage = function (lang) {
-           // $translate.use(lang);
+            $translate.use(lang);
+            $rootScope.currentLanguage = lang
         }
         
         // Loading bar transition
@@ -72082,7 +72121,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
-            set : function(localeId, ev) {
+            set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;

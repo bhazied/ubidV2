@@ -637,9 +637,9 @@ class ApiV1RESTController extends FOSRestController
         $data = [];
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from('UbidElectricityBundle:TenderCategory', 'tc_')
-            ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderCategory', 'parent', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.parent = parent.id')
-            ->select('tc_');
+        $qb->from("UbidElectricityBundle:Category", "c_")
+            ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id')
+            ->select('c_');
         $results = $qb->getQuery()->getResult();
         if($results){
             $data['results'] = $results;

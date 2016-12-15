@@ -1698,6 +1698,12 @@
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
     "COPYRIGHT": "Copyright &copy; E-electricity 2017. All rights reserved.",
-    "YOUHAVEBEENLOGGEDOUT":"You have been logged out"
+    "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
+    "PUBLICATION": "Publication",
+    "CONSULTTENDER": "Consult TENDER",
+    "CONSULTPROPOSAL": "Consult PROPOSAL",
+    "CONSULTADVERTISER": "Consult ADVERTISER",
+    "RELATEDCATEGORIES": "Related Categories",
+    "REGIONCOUNTRY": "Region/Country"
   }
 }

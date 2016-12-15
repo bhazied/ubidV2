@@ -108,7 +108,19 @@ app.config(['$stateProvider',
          * Public Tender Lists & Details routes
          */
         }).state('front.tenders',{
-            url: '/tenders',
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.sector', {
+            url:'/sector/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Sector/tenderList.html',
+            title: "sector",
+            resolve: loadSequence()
+        }).state('front.tenders.list',{
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')

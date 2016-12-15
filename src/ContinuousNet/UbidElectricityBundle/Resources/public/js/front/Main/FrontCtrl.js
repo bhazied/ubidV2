@@ -49,7 +49,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $scope.changeLanguage = function (lang) {
-           // $translate.use(lang);
+            $translate.use(lang);
+            $rootScope.currentLanguage = lang
         }
         
         // Loading bar transition
