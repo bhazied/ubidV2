@@ -23,16 +23,17 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.status = '';
             $scope.user = {};
 
-        }
+        };
+
         $scope.submit = function () {
             $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
-                    toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
                 }
-                toaster.pop('success', $filter('translate')('title.success.LOGIN'), $filter('translate')('message.success.LOGIN'));
+                toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
                 $scope.status = 'welcome';
                 $localStorage.access_token = data.token;
                 $scope.user = $localStorage.user = $rootScope.user = data.user;
@@ -42,14 +43,14 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 }, 1000);
             }, function(error) {
                 $scope.status = 'error';
-                toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('message.error.LOGIN'));
                 $rootScope.loggedIn = false;
             });
             return false;
         };
 
         $scope.logout = function(){
-                $scope.resetAccess();
+            $scope.resetAccess();
             $timeout(function() {
 
                 $rootScope.loggedIn = false;
@@ -60,6 +61,6 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $scope.myProfile = function () {
             $state.go('front.profile');
-        }
+        };
 
     }]);

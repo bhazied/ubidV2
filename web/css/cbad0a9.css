@@ -2282,6 +2282,7 @@ body {
 }
 
 #container {
+    min-height: 500px;
 }
 
 .footer-sep {
@@ -2881,6 +2882,10 @@ input.form-control {
 
 .sort-by label .input-group {
     width: auto;
+}
+
+.sort-by select {
+    min-width: 120px;
 }
 
 .tender-preview {

@@ -674,8 +674,17 @@ app.constant('APP_JS_REQUIRES', {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
+        name: 'buyerFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Buyer/BuyerFrontService.js']
+    },{
+        name: 'supplierFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Supplier/SupplierFrontService.js']
+    },{
+        name: 'productFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Product/ProductFrontService.js']
+    },{
         name: 'tenderFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
+        files: ['/bundles/ubidelectricity/js/front/Tender/TenderFrontService.js']
     },{
         name: 'searchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
@@ -709,11 +718,11 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
             responseError: function (response) {
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
-                    $location.path('/login/signin');
+                    $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
                     $timeout(function(){
-                        $location.path('/app/dashboard');
+                        $location.path('/user-menu');
                     }, 1000);
                 }
                 return $q.reject(response);
@@ -903,12 +912,12 @@ app.config(['$stateProvider',
             url: '/buyers',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
-            resolve: loadSequence('BuyersFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService')
         }).state('front.buyer', {
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
         /*
          * Public Supplier List & Details routes
          */
@@ -916,12 +925,12 @@ app.config(['$stateProvider',
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
         /*
          * Public Product List & Details routes
          */
@@ -929,12 +938,12 @@ app.config(['$stateProvider',
             url: '/products',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
             title: 'front.PRODUCTS',
-            resolve: loadSequence('ProductsFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductsFrontCtrl', 'productFrontService')
         }).state('front.product', {
             url: '/product/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
         /*
          * Public Tender Lists & Details routes
          */

@@ -68226,8 +68226,17 @@ app.constant('APP_JS_REQUIRES', {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
+        name: 'buyerFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Buyer/BuyerFrontService.js']
+    },{
+        name: 'supplierFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Supplier/SupplierFrontService.js']
+    },{
+        name: 'productFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Product/ProductFrontService.js']
+    },{
         name: 'tenderFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
+        files: ['/bundles/ubidelectricity/js/front/Tender/TenderFrontService.js']
     },{
         name: 'searchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']

@@ -19,9 +19,12 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
 class BaseRESTController extends VoryxController
 {
 
-    public $locales = array(
+    private $locales = array(
         'en' => 'en_US',
-        'fr' => 'fr_FR'
+        'fr' => 'fr_FR',
+        'es' => 'es_ES',
+        'de' => 'de_DE',
+        'it' => 'it_IT',
     );
 
     public function getConfig($path)

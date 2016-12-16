@@ -23,7 +23,11 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.tenders.list',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender.details'
+            'front.tender.details',
+            'front.tenders',
+            'front.buyers',
+            'front.suppliers',
+            'front.post'
         ];
 
         $timeout(function() {

@@ -21,7 +21,7 @@
     "DONTHAVEACCOUNT": "Don't have an account yet?",
     "CREATEACCOUNT": "Create an account",
     "ERROR": "Incorrect Email or Password",
-    "WELCOME": "Welcome [[user.firstName]]",
+    "WELCOME": "Welcome",
     "ACCESSDENEID": "Access denied"
   },
   "register": {
@@ -1663,6 +1663,7 @@
     "LASTMONTH":"Last month",
     "CUSTOMDATE":"Custom Date",
     "TENDERS": "Tenders",
+    "CONSULTATIONS": "Consultations",
     "TENDER": "Tender",
     "PRODUCTS": "Products",
     "PRODUCT": "Product",
@@ -1704,6 +1705,13 @@
     "CONSULTPROPOSAL": "Consult PROPOSAL",
     "CONSULTADVERTISER": "Consult ADVERTISER",
     "RELATEDCATEGORIES": "Related Categories",
-    "REGIONCOUNTRY": "Region/Country"
+    "REGIONCOUNTRY": "Region/Country",
+    "SORTBY": "Sort By","NAMEASC": "Name ASC",
+    "NAMEDESC": "Name DESC",
+    "VIEWSASC": "Views ASC",
+    "VIEWSDESC": "Views DESC",
+    "READMORE": "Read More",
+    "SHARE": "Share",
+    "COMMENTS": "Comments"
   }
 }
