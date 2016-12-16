@@ -1710,6 +1710,20 @@
     "FROM": "From",
     "TO": "To",
     "SPECIFICSEARCH": "Specific Search",
-    "YOUHAVEBEENLOGGEDOUT":"You have been logged out"
+    "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
+    "REFNUMBER": "Ref number",
+    "STARTDATE" : "Start Date",
+    "READMORE" : "Read more",
+    "SHARE" : "Share",
+    "COMMENTS": "Comments",
+    "TENDERCLOSED": "(tender closed)",
+    "ATTACHMENTFILES": "Attachment Files",
+    "APPLYNOW": "Apply Now",
+    "PREVIOUSTENDER": "Previous Tender",
+    "NEXTTENDER": "Next Tender",
+    "TEL": "Tel",
+    "FAX": "Fax",
+    "WEBSITE": "Website",
+    "CONTACT": "Contact"
   }
 }

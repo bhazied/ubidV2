@@ -71979,10 +71979,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender.details'
+            'front.tender'
         ];
 
         $timeout(function() {
@@ -72034,7 +72034,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             //show or hide left & right side
-            if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
+            /*if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
                 $timeout(function() {
                     console.warn('left and right side must be showen in '+ $state.current.name);
                     $rootScope.showLeftSide = true;
@@ -72048,7 +72048,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.showRightSide = false;
                     $rootScope.contentOffset = 3;
                 });
-            }
+            }*/
 
             // scroll top the page on change state
             $('#app .main-content').css({

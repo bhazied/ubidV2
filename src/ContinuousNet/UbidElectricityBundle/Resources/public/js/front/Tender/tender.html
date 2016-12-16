@@ -1,4 +1,4 @@
-<section id="contentSection" ng-controller="tenderCtrl">
+<!--<section id="contentSection" ng-controller="tenderCtrl">
         <div class="row">
             <h2>[[ tender.title ]]</h2>
         </div>
@@ -56,4 +56,72 @@
                 <my-tender-show tenderinfo="tender"></my-tender-show>
             </div>
         </div>
-</section>
+</section>-->
+
+<div class="tender-details" ng-controller="tenderCtrl">
+    <h4 class="name">[[ tender.title ]]</h4>
+    <table class="table table-striped">
+        <tr>
+            <th><span translate="front.REFNUMBER">Tender  no</span>:</th>
+            <td><span class="value">[[ tender.reference ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.BOND">Bond</span>:</th>
+            <td><span class="value">Applicable</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.TENDERFEE">Tender Fee</span>:</th>
+            <td><span class="value">[[ tender.fees ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.DUEDATE">Due Date</span>:</th>
+            <td><span  ng-class="{'text-danger': currentDate > tender.deadline, 'text-success': currentDate < tender.deadline}" class="value"> [[ tender.deadline | date : formats.DATE  | translate  ]] <b ng-if="currentDate > tender.deadline" translate="front.TENDERCLOSED">(tender closed)</b></span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.REGIONCOUNTRY">Country</span>:</th>
+            <td><span class="value"><i class="country"><img src="[[ tender.country.picture ]]"></i> [[ tender.country.name ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.ISSUER">Issueur</span>:</th>
+            <td><span class="value">Dubai Electricity & Water Authority</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.INDUSTRY">Industry</span>:</th>
+            <td><span class="value">Ut velit mauris</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.DESCRIPTION">Description</span>:</th>
+            <td><span class="value" ng-bind-html="[[ tender.description ]]"></span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.CONTACT">Contact</span>:</th>
+            <td>
+                                    <span class="value">
+                                        <span translate="front.TEL">Tel</span>: <span>[[ tender.buyer.phone ]]</span>
+                                        -
+                                        <span translate="front.FAX">Fax</span>: <span>[[ tender.buyer.fax ]]</span>
+                                        -
+                                        <span translate="front.WEBSITE">Website</span>: <span>[[ tender.buter.website ]]</span>
+                                    </span>
+            </td>
+        </tr>
+    </table>
+    <h5 translate="front.ATTACHMENTFILES" ng-if="tender.attachment_file1 != ''">Attachment Files</h5>
+    <div class="mb-1">
+        <ul class="list-group">
+            <li class="list-group-item"  ng-if="tender.attachment_file1"><a href="#"><i class="fa fa-download"></i> Cras justo odio.pdf</a></li>
+            <li class="list-group-item" ng-if="tender.attachment_file2"><a href="#"><i class="fa fa-download"></i> Dapibus ac facilisis.docx</a</li>
+            <li class="list-group-item" ng-if="tender.attachment_file3"><a href="#"><i class="fa fa-download"></i> Morbi leo risus.pdf</a></li>
+        </ul>
+    </div>
+    <div class="row mb-1">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <button class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col-md-6"><a href="#"><i class="ti-arrow-left"></i> <span translate="front.PREVIOUSTENDER">Previous Tender</span></a></div>
+        <div class="col-md-6"><a href="#" class="pull-right"><span translate="front.NEXTTENDER">Next Tender</span> <i class="ti-arrow-right"></i></a></div>
+    </div>
+</div>

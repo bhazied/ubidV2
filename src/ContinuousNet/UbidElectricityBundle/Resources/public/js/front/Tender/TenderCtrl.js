@@ -2,6 +2,17 @@
 app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 8;
+            $rootScope.contentOffset = 2;
+        }, 1000);
+
+        $scope.currentDate = new Date();
+
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
