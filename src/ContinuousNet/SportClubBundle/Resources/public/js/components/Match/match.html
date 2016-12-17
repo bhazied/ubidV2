@@ -1,0 +1,655 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MATCHES">Matches</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MatchCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMATCHES">Back to Matches list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDMATCH">Add Match</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(match)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITMATCH">Edit Match</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.MATCHDETAILS">Match Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="match.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAME">Name</span></td>
+                                <td>
+                                    <div ng-bind-html="match.name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAMEAR">Name Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="match.name_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAMEFR">Name Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="match.name_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.GALLERY">Gallery</span></td>
+                                <td><a ui-sref="app.photos.galleriesdetails({id: match.gallery.id})">[[ match.gallery.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOW">Show</span></td>
+                                <td><a ui-sref="app.webtv.showsdetails({id: match.show.id})">[[ match.show.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DAY">Day</span></td>
+                                <td><a ui-sref="app.events.daysdetails({id: match.day.id})">[[ match.day.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TEAMHOME">Team Home</span></td>
+                                <td><a ui-sref="app.events.teamsdetails({id: match.team_home.id})">[[ match.team_home.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TEAMAWAY">Team Away</span></td>
+                                <td><a ui-sref="app.events.teamsdetails({id: match.team_away.id})">[[ match.team_away.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.GOALSHOME">Goals Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.goals_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.GOALSAWAY">Goals Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.goals_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DATETIME">Date Time</span></td>
+                                <td>
+                                    <span>[[ match.date_time | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POSTPONED">Postponed</span></td>
+                                <td>
+                                    <span my-boolean="[[ match.postponed ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTED">Started</span></td>
+                                <td>
+                                    <span my-boolean="[[ match.started ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDED">Ended</span></td>
+                                <td>
+                                    <span my-boolean="[[ match.ended ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.COUNTRY">Country</span></td>
+                                <td><a ui-sref="app.settings.countriesdetails({id: match.country.id})">[[ match.country.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CITY">City</span></td>
+                                <td><a ui-sref="app.settings.citiesdetails({id: match.city.id})">[[ match.city.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STADIUM">Stadium</span></td>
+                                <td><a ui-sref="app.events.stadiadetails({id: match.stadium.id})">[[ match.stadium.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REFEREE">Referee</span></td>
+                                <td>
+                                    <div ng-bind-html="match.referee"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REFEREEAR">Referee Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="match.referee_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REFEREEFR">Referee Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="match.referee_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALSHOTSHOME">Total Shots Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_shots_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALSHOTSAWAY">Total Shots Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_shots_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSONTARGETHOME">Shots On Target Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_on_target_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSONTARGETAWAY">Shots On Target Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_on_target_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BLOCKEDSHOTSHOME">Blocked Shots Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.blocked_shots_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BLOCKEDSHOTSAWAY">Blocked Shots Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.blocked_shots_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSFROMOUTSIDETHEBOXHOME">Shots From Outside The Box Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_from_outside_the_box_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSFROMOUTSIDETHEBOXAWAY">Shots From Outside The Box Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_from_outside_the_box_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSFROMINSIDETHEBOXHOME">Shots From Inside The Box Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_from_inside_the_box_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTSFROMINSIDETHEBOXAWAY">Shots From Inside The Box Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shots_from_inside_the_box_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTACCURACYHOME">Shot Accuracy Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shot_accuracy_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOTACCURACYAWAY">Shot Accuracy Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.shot_accuracy_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DUELSWONHOME">Duels Won Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.duels_won_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DUELSWONAWAY">Duels Won Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.duels_won_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AERIALDUELSWONHOME">Aerial Duels Won Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.aerial_duels_won_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AERIALDUELSWONAWAY">Aerial Duels Won Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.aerial_duels_won_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.INTERCEPTIONSHOME">Interceptions Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.interceptions_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.INTERCEPTIONSAWAY">Interceptions Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.interceptions_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALPASSESHOME">Total Passes Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_passes_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALPASSESAWAY">Total Passes Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_passes_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSESLONGHOME">Passes Long Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passes_long_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSESLONGAWAY">Passes Long Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passes_long_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSINGACCURACYHOME">Passing Accuracy Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passing_accuracy_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSINGACCURACYAWAY">Passing Accuracy Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passing_accuracy_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSINGACCURACYOPPOSITIONHALFHOME">Passing Accuracy Opposition Half Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passing_accuracy_opposition_half_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PASSINGACCURACYOPPOSITIONHALFAWAY">Passing Accuracy Opposition Half Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.passing_accuracy_opposition_half_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALCROSSESHOME">Total Crosses Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_crosses_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALCROSSESAWAY">Total Crosses Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.total_crosses_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUCCESSFULCROSSESHOME">Successful Crosses Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.successful_crosses_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUCCESSFULCROSSESAWAY">Successful Crosses Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.successful_crosses_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TACKLESHOME">Tackles Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.tackles_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TACKLESAWAY">Tackles Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.tackles_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TACKLESWONHOME">Tackles Won Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.tackles_won_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TACKLESWONAWAY">Tackles Won Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.tackles_won_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CLEARANCESHOME">Clearances Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.clearances_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CLEARANCESAWAY">Clearances Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.clearances_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FOULSWONHOME">Fouls Won Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.fouls_won_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FOULSWONAWAY">Fouls Won Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.fouls_won_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FOULSCONCEDEDHOME">Fouls Conceded Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.fouls_conceded_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FOULSCONCEDEDAWAY">Fouls Conceded Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.fouls_conceded_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POSSESSIONHOME">Possession Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.possession_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POSSESSIONAWAY">Possession Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.possession_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUBSTITUTIONSHOME">Substitutions Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.substitutions_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUBSTITUTIONSAWAY">Substitutions Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.substitutions_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PENALTYGOALSHOME">Penalty Goals Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.penalty_goals_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PENALTYGOALSAWAY">Penalty Goals Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.penalty_goals_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.OFFSIDESHOME">Offsides Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.offsides_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.OFFSIDESAWAY">Offsides Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.offsides_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CORNERSHOME">Corners Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.corners_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CORNERSAWAY">Corners Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.corners_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PENALTIESWONHOME">Penalties Won Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.penalties_won_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PENALTIESWONAWAY">Penalties Won Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.penalties_won_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.INJUREDHOME">Injured Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.injured_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.INJUREDAWAY">Injured Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.injured_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CARDSHOME">Cards Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.cards_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CARDSAWAY">Cards Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.cards_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.YELLOWCARDSHOME">Yellow Cards Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.yellow_cards_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.YELLOWCARDSAWAY">Yellow Cards Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.yellow_cards_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DOUBLEYELLOWCARDSHOME">Double Yellow Cards Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.double_yellow_cards_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DOUBLEYELLOWCARDSAWAY">Double Yellow Cards Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.double_yellow_cards_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REDCARDSHOME">Red Cards Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.red_cards_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REDCARDSAWAY">Red Cards Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.red_cards_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.RECOVEREDBALLSHOME">Recovered Balls Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.recovered_balls_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.RECOVEREDBALLSAWAY">Recovered Balls Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.recovered_balls_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TURNOVERSHOME">Turnovers Home</span></td>
+                                <td>
+                                    <div ng-bind-html="match.turnovers_home"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TURNOVERSAWAY">Turnovers Away</span></td>
+                                <td>
+                                    <div ng-bind-html="match.turnovers_away"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PREVIOUS">Previous</span></td>
+                                <td>
+                                    <div ng-bind-html="match.previous"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PREVIOUSAR">Previous Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="match.previous_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PREVIOUSFR">Previous Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="match.previous_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REPORT">Report</span></td>
+                                <td>
+                                    <div ng-bind-html="match.report"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REPORTAR">Report Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="match.report_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REPORTFR">Report Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="match.report_fr"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ match.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISHEADLINE">Is Headline</span></td>
+                                <td>
+                                    <span my-boolean="[[ match.is_headline ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LIVE">Live</span></td>
+                                <td>
+                                    <span my-boolean="[[ match.live ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LASTMINUTE">Last Minute</span></td>
+                                <td>
+                                    <div ng-bind-html="match.last_minute"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TICKETINGLINK">Ticketing Link</span></td>
+                                <td>
+                                    <div ng-bind-html="match.ticketing_link"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LIVESTREAM">Live Stream</span></td>
+                                <td>
+                                    <div ng-bind-html="match.live_stream"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ match.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: match.creator_user.id})">[[ match.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ match.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: match.modifier_user.id})">[[ match.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

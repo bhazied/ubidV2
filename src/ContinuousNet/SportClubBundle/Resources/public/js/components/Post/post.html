@@ -1,0 +1,277 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.POSTS">Posts</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PostCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPOSTS">Back to Posts list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDPOST">Add Post</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(post)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPOST">Edit Post</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.POSTDETAILS">Post Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="post.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POSTTYPE">Post Type</span></td>
+                                <td><a ui-sref="app.news.posttypesdetails({id: post.post_type.id})">[[ post.post_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLE">Title</span></td>
+                                <td>
+                                    <div ng-bind-html="post.title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLEAR">Title Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="post.title_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLEFR">Title Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="post.title_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td>
+                                    <div ng-bind-html="post.slug"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUGAR">Slug Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="post.slug_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUGFR">Slug Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="post.slug_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PICTURE">Picture</span></td>
+                                <td>
+                                    <div class="user-image margin-top-10" ng-if="post.picture != '' && post.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ app.thumbURL + post.picture ]]" alt="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONTENT">Content</span></td>
+                                <td>
+                                    <div ng-bind-html="post.content"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONTENTAR">Content Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="post.content_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONTENTFR">Content Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="post.content_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISHEADLINE">Is Headline</span></td>
+                                <td>
+                                    <span my-boolean="[[ post.is_headline ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</span></td>
+                                <td>
+                                    <span my-boolean="[[ post.auto_publishing ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTPUBLISHING">Start Publishing</span></td>
+                                <td>
+                                    <span>[[ post.start_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDPUBLISHING">End Publishing</span></td>
+                                <td>
+                                    <span>[[ post.end_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PUBLISHDATE">Publish Date</span></td>
+                                <td>
+                                    <span>[[ post.publish_date | date: dateFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.METATITLE">Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="post.meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.METADESCRIPTION">Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="post.meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="post.meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ post.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALPRINTS">Total Prints</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_prints"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALHITS">Total Hits</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_hits"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALCOMMENTS">Total Comments</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_comments"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALRATINGS">Total Ratings</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_ratings"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AVERAGERATINGS">Average Ratings</span></td>
+                                <td>
+                                    <div ng-bind-html="post.average_ratings"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALLIKES">Total Likes</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_likes"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALDISLIKES">Total Dislikes</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_dislikes"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALBOOKMARKS">Total Bookmarks</span></td>
+                                <td>
+                                    <div ng-bind-html="post.total_bookmarks"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISTOP">Is Top</span></td>
+                                <td>
+                                    <span my-boolean="[[ post.is_top ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISNEW">Is New</span></td>
+                                <td>
+                                    <span my-boolean="[[ post.is_new ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ORDERING">Ordering</span></td>
+                                <td>
+                                    <div ng-bind-html="post.ordering"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ post.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: post.creator_user.id})">[[ post.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ post.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: post.modifier_user.id})">[[ post.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POSTCATEGORIES">Post Categories</span></td>
+                                <td>
+                                    <a ng-repeat="postCategory in post.post_categories" ui-sref="app.news.postcategoriesdetails({id: postCategory.id})">[[ postCategory.name ]]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

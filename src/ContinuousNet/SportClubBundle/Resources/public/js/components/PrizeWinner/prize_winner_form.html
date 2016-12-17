@@ -1,0 +1,188 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PRIZEWINNERS">Prize Winners</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PrizeWinnerFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWPRIZEWINNER" ng-if="prizeWinner.id == 0">
+                        New Prize Winner
+                    </legend>
+                    <legend translate="content.list.EDITPRIZEWINNER" ng-if="prizeWinner.id > 0">
+                        Edit Prize Winner
+                    </legend>
+                    <form name="prizeWinnerForm" id="prizeWinnerForm" novalidate ng-submit="submitForm(prizeWinnerForm)">
+                        <input type="hidden" name="id" id="prizeWinnerId" ng-model="prizeWinner.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.sportEvent.$dirty && prizeWinnerForm.sportEvent.$invalid, 'has-success':prizeWinnerForm.sportEvent.$valid}">
+                                    <label for="prizeWinnerSportEvent" class="control-label">
+                                        <span translate="content.list.fields.SPORTEVENT">Sport Event</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="sportEventsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="prize_winner_sport_event_readonly" ng-options="item.id as item.name for item in sportEvents | filter:{ hidden : false }" ng-model="prizeWinner.sport_event" name="sportEvent" id="prizeWinnerSportEvent" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-trophy"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.sportEvent.$dirty && prizeWinnerForm.sportEvent.$error.required" translate="content.form.messages.SPORTEVENTREQUIRED">Sport Event is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.sportEvent.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.year.$dirty && prizeWinnerForm.year.$invalid, 'has-success':prizeWinnerForm.year.$valid}">
+                                    <label for="prizeWinnerYear" class="control-label">
+                                        <span translate="content.list.fields.YEAR">Year</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <input ng-model="prizeWinner.year" type="text" name="year" id="prizeWinnerYear" class="form-control" placeholder="[[ 'content.form.messages.ENTERYEAR' | translate ]]" touchspin data-min="1900" data-max="2100" ng-required="true" />
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.year.$dirty && prizeWinnerForm.year.$error.required" translate="content.form.messages.YEARREQUIRED">Year is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.year.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.teamHome.$dirty && prizeWinnerForm.teamHome.$invalid, 'has-success':prizeWinnerForm.teamHome.$valid}">
+                                    <label for="prizeWinnerTeamHome" class="control-label">
+                                        <span translate="content.list.fields.TEAMHOME">Team Home</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="prize_winner_team_home_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="prizeWinner.team_home" name="teamHome" id="prizeWinnerTeamHome" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.teamHome.$dirty && prizeWinnerForm.teamHome.$error.required" translate="content.form.messages.TEAMHOMEREQUIRED">Team Home is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.teamHome.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.teamAway.$dirty && prizeWinnerForm.teamAway.$invalid, 'has-success':prizeWinnerForm.teamAway.$valid}">
+                                    <label for="prizeWinnerTeamAway" class="control-label">
+                                        <span translate="content.list.fields.TEAMAWAY">Team Away</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="prize_winner_team_away_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="prizeWinner.team_away" name="teamAway" id="prizeWinnerTeamAway" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.teamAway.$dirty && prizeWinnerForm.teamAway.$error.required" translate="content.form.messages.TEAMAWAYREQUIRED">Team Away is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.teamAway.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.scoreHome.$dirty && prizeWinnerForm.scoreHome.$invalid, 'has-success':prizeWinnerForm.scoreHome.$valid}">
+                                    <label for="prizeWinnerScoreHome" class="control-label">
+                                        <span translate="content.list.fields.SCOREHOME">Score Home</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="prizeWinner.score_home" type="text" name="scoreHome" id="prizeWinnerScoreHome" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCOREHOME' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.scoreHome.$dirty && prizeWinnerForm.scoreHome.$error.required" translate="content.form.messages.SCOREHOMEREQUIRED">Score Home is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.scoreHome.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.scoreAway.$dirty && prizeWinnerForm.scoreAway.$invalid, 'has-success':prizeWinnerForm.scoreAway.$valid}">
+                                    <label for="prizeWinnerScoreAway" class="control-label">
+                                        <span translate="content.list.fields.SCOREAWAY">Score Away</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="prizeWinner.score_away" type="text" name="scoreAway" id="prizeWinnerScoreAway" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCOREAWAY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.scoreAway.$dirty && prizeWinnerForm.scoreAway.$error.required" translate="content.form.messages.SCOREAWAYREQUIRED">Score Away is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.scoreAway.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':prizeWinnerForm.country.$dirty && prizeWinnerForm.country.$invalid, 'has-success':prizeWinnerForm.country.$valid}">
+                                    <label for="prizeWinnerCountry" class="control-label">
+                                        <span translate="content.list.fields.COUNTRY">Country</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="countriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="prize_winner_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="prizeWinner.country" name="country" id="prizeWinnerCountry" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-globe"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="prizeWinnerForm.country.$dirty && prizeWinnerForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                                    <span class="success text-small block" ng-if="prizeWinnerForm.country.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPRIZEWINNERS">Back to Prize Winners list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(prizeWinnerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="prizeWinnerForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="prizeWinners.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

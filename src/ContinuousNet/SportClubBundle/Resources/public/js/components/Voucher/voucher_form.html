@@ -1,0 +1,138 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.VOUCHERS">Vouchers</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="VoucherFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWVOUCHER" ng-if="voucher.id == 0">
+                        New Voucher
+                    </legend>
+                    <legend translate="content.list.EDITVOUCHER" ng-if="voucher.id > 0">
+                        Edit Voucher
+                    </legend>
+                    <form name="voucherForm" id="voucherForm" novalidate ng-submit="submitForm(voucherForm)">
+                        <input type="hidden" name="id" id="voucherId" ng-model="voucher.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':voucherForm.code.$dirty && voucherForm.code.$invalid, 'has-success':voucherForm.code.$valid}">
+                                    <label for="voucherCode" class="control-label">
+                                        <span translate="content.list.fields.CODE">Code</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="voucher.code" type="text" name="code" id="voucherCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERCODE' | translate ]]" ng-required="true" my-unique-field="voucher.code" my-resource-url="vouchers" my-current-id="[[ voucher.id ]]" />
+                                        <i class="ti-shortcode"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="voucherForm.code.$dirty && voucherForm.code.$error.required" translate="content.form.messages.CODEREQUIRED">Code is required.</span>
+                                    <span class="error text-small block" ng-if="voucherForm.code.$dirty && voucherForm.code.$error.myUniqueField" translate="content.form.messages.CODEALREADYINUSE">This Code is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="voucherForm.code.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="voucherSerialNumber" class="control-label">
+                                        <span translate="content.list.fields.SERIALNUMBER">Serial Number</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="voucher.serial_number" type="text" name="serialNumber" id="voucherSerialNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERSERIALNUMBER' | translate ]]" ng-required="false" my-unique-field="voucher.serialNumber" my-resource-url="vouchers" my-current-id="[[ voucher.id ]]" />
+                                        <i class="fa fa-barcode"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':voucherForm.price.$dirty && voucherForm.price.$invalid, 'has-success':voucherForm.price.$valid}">
+                                    <label for="voucherPrice" class="control-label">
+                                        <span translate="content.list.fields.PRICE">Price</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="pricesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="voucher_price_readonly" ng-options="item.id as item.name for item in prices | filter:{ hidden : false }" ng-model="voucher.price" name="price" id="voucherPrice" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="voucherForm.price.$dirty && voucherForm.price.$error.required" translate="content.form.messages.PRICEREQUIRED">Price is required.</span>
+                                    <span class="success text-small block" ng-if="voucherForm.price.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="voucherUser" class="control-label">
+                                        <span translate="content.list.fields.USER">User</span>
+                                    </label>
+                                <div class="block select-list" ng-if="usersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="voucher_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="voucher.user" name="user" id="voucherUser" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="voucher.is_delivered" type="checkbox" name="isDelivered" id="voucherIsDelivered" />
+                                    <label for="voucherIsDelivered" translate="content.list.fields.ISDELIVERED">Is Delivered</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKVOUCHERS">Back to Vouchers list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(voucherForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="voucherForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="vouchers.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

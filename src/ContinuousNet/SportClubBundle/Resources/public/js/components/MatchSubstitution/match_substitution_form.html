@@ -1,0 +1,157 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MATCHSUBSTITUTIONS">Match Substitutions</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MatchSubstitutionFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWMATCHSUBSTITUTION" ng-if="matchSubstitution.id == 0">
+                        New Match Substitution
+                    </legend>
+                    <legend translate="content.list.EDITMATCHSUBSTITUTION" ng-if="matchSubstitution.id > 0">
+                        Edit Match Substitution
+                    </legend>
+                    <form name="matchSubstitutionForm" id="matchSubstitutionForm" novalidate ng-submit="submitForm(matchSubstitutionForm)">
+                        <input type="hidden" name="id" id="matchSubstitutionId" ng-model="matchSubstitution.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchSubstitutionForm.match.$dirty && matchSubstitutionForm.match.$invalid, 'has-success':matchSubstitutionForm.match.$valid}">
+                                    <label for="matchSubstitutionMatch" class="control-label">
+                                        <span translate="content.list.fields.MATCH">Match</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="matchesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_substitution_match_readonly" ng-options="item.id as item.name for item in matches | filter:{ hidden : false }" ng-model="matchSubstitution.match" name="match" id="matchSubstitutionMatch" class="form-control" ng-required="true" ng-change="changeMatch()">
+                                        </select>
+                                        <i class="fa fa-futbol-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchSubstitutionForm.match.$dirty && matchSubstitutionForm.match.$error.required" translate="content.form.messages.MATCHREQUIRED">Match is required.</span>
+                                    <span class="success text-small block" ng-if="matchSubstitutionForm.match.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchSubstitutionForm.team.$dirty && matchSubstitutionForm.team.$invalid, 'has-success':matchSubstitutionForm.team.$valid}">
+                                    <label for="matchSubstitutionTeam" class="control-label">
+                                        <span translate="content.list.fields.TEAM">Team</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_substitution_team_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="matchSubstitution.team" name="team" id="matchSubstitutionTeam" class="form-control" ng-required="true" ng-change="changeTeam()">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchSubstitutionForm.team.$dirty && matchSubstitutionForm.team.$error.required" translate="content.form.messages.TEAMREQUIRED">Team is required.</span>
+                                    <span class="success text-small block" ng-if="matchSubstitutionForm.team.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchSubstitutionForm.playerIn.$dirty && matchSubstitutionForm.playerIn.$invalid, 'has-success':matchSubstitutionForm.playerIn.$valid}">
+                                    <label for="matchSubstitutionPlayerIn" class="control-label">
+                                        <span translate="content.list.fields.PLAYERIN">Player In</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="playersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_substitution_player_in_readonly" ng-options="item.id as item.name for item in players | filter:{ hidden : false }" ng-model="matchSubstitution.player_in" name="playerIn" id="matchSubstitutionPlayerIn" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-user"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchSubstitutionForm.playerIn.$dirty && matchSubstitutionForm.playerIn.$error.required" translate="content.form.messages.PLAYERINREQUIRED">Player In is required.</span>
+                                    <span class="success text-small block" ng-if="matchSubstitutionForm.playerIn.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchSubstitutionForm.playerOut.$dirty && matchSubstitutionForm.playerOut.$invalid, 'has-success':matchSubstitutionForm.playerOut.$valid}">
+                                    <label for="matchSubstitutionPlayerOut" class="control-label">
+                                        <span translate="content.list.fields.PLAYEROUT">Player Out</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="playersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_substitution_player_out_readonly" ng-options="item.id as item.name for item in players | filter:{ hidden : false }" ng-model="matchSubstitution.player_out" name="playerOut" id="matchSubstitutionPlayerOut" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-user"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchSubstitutionForm.playerOut.$dirty && matchSubstitutionForm.playerOut.$error.required" translate="content.form.messages.PLAYEROUTREQUIRED">Player Out is required.</span>
+                                    <span class="success text-small block" ng-if="matchSubstitutionForm.playerOut.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchSubstitutionForm.minute.$dirty && matchSubstitutionForm.minute.$invalid, 'has-success':matchSubstitutionForm.minute.$valid}">
+                                    <label for="matchSubstitutionMinute" class="control-label">
+                                        <span translate="content.list.fields.MINUTE">Minute</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="matchSubstitution.minute" type="text" name="minute" id="matchSubstitutionMinute" class="form-control" placeholder="[[ 'content.form.messages.ENTERMINUTE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="matchSubstitutionForm.minute.$dirty && matchSubstitutionForm.minute.$error.required" translate="content.form.messages.MINUTEREQUIRED">Minute is required.</span>
+                                    <span class="success text-small block" ng-if="matchSubstitutionForm.minute.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMATCHSUBSTITUTIONS">Back to Match Substitutions list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(matchSubstitutionForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="matchSubstitutionForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="matchSubstitutions.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

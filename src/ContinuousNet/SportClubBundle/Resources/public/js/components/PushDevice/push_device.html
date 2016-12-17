@@ -1,0 +1,173 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PUSHDEVICES">Push Devices</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PushDeviceCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPUSHDEVICES">Back to Push Devices list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDPUSHDEVICE">Add Push Device</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(pushDevice)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPUSHDEVICE">Edit Push Device</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.PUSHDEVICEDETAILS">Push Device Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.APPNAME">App Name</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.app_name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.APPVERSION">App Version</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.app_version"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICEUID">Device Uid</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_uid"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICEREG">Device Reg</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_reg"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICETOKEN">Device Token</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_token"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICENAME">Device Name</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICEEMAIL">Device Email</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_email"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICEMODEL">Device Model</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_model"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVICEVERSION">Device Version</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.device_version"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISENABLEDBADGE">Is Enabled Badge</span></td>
+                                <td>
+                                    <span my-boolean="[[ pushDevice.is_enabled_badge ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISENABLEDALERT">Is Enabled Alert</span></td>
+                                <td>
+                                    <span my-boolean="[[ pushDevice.is_enabled_alert ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISENABLEDSOUND">Is Enabled Sound</span></td>
+                                <td>
+                                    <span my-boolean="[[ pushDevice.is_enabled_sound ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DEVELOPMENT">Development</span></td>
+                                <td>
+                                    <span my-enum="[[ pushDevice.development ]]" my-enum-list="[[ developments ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ pushDevice.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.IP">Ip</span></td>
+                                <td>
+                                    <div ng-bind-html="pushDevice.ip"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ pushDevice.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushDevice.creator_user.id})">[[ pushDevice.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ pushDevice.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushDevice.modifier_user.id})">[[ pushDevice.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

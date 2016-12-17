@@ -1,0 +1,294 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.STADIA">Stadia</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="StadiumFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWSTADIUM" ng-if="stadium.id == 0">
+                        New Stadium
+                    </legend>
+                    <legend translate="content.list.EDITSTADIUM" ng-if="stadium.id > 0">
+                        Edit Stadium
+                    </legend>
+                    <form name="stadiumForm" id="stadiumForm" novalidate ng-submit="submitForm(stadiumForm)">
+                        <input type="hidden" name="id" id="stadiumId" ng-model="stadium.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.sportEvent.$dirty && stadiumForm.sportEvent.$invalid, 'has-success':stadiumForm.sportEvent.$valid}">
+                                    <label for="stadiumSportEvent" class="control-label">
+                                        <span translate="content.list.fields.SPORTEVENT">Sport Event</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="sportEventsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="stadium_sport_event_readonly" ng-options="item.id as item.name for item in sportEvents | filter:{ hidden : false }" ng-model="stadium.sport_event" name="sportEvent" id="stadiumSportEvent" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-trophy"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="stadiumForm.sportEvent.$dirty && stadiumForm.sportEvent.$error.required" translate="content.form.messages.SPORTEVENTREQUIRED">Sport Event is required.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.sportEvent.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.name.$dirty && stadiumForm.name.$invalid, 'has-success':stadiumForm.name.$valid}">
+                                    <label for="stadiumName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.name" type="text" name="name" id="stadiumName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="stadium.name" my-resource-url="stadia" my-current-id="[[ stadium.id ]]" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="stadiumForm.name.$dirty && stadiumForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="error text-small block" ng-if="stadiumForm.name.$dirty && stadiumForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.name_ar" type="text" name="nameAr" id="stadiumNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.name_fr" type="text" name="nameFr" id="stadiumNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumPicture" class="control-label">
+                                        <span translate="content.list.fields.PICTURE">Picture</span>
+                                    </label>
+                                    <div class="input-group">
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.picture" type="text" name="picture" id="stadiumPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <i class="ti-image"></i>
+                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="stadium.picture != '' && stadium.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + stadium.picture ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="stadium.picture = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.address.$dirty && stadiumForm.address.$invalid, 'has-success':stadiumForm.address.$valid}">
+                                    <label for="stadiumAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.address" type="text" name="address" id="stadiumAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="true" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="stadiumForm.address.$dirty && stadiumForm.address.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address is required.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.address.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumAddressAr" class="control-label">
+                                        <span translate="content.list.fields.ADDRESSAR">Address Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.address_ar" type="text" name="addressAr" id="stadiumAddressAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESSAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumAddressFr" class="control-label">
+                                        <span translate="content.list.fields.ADDRESSFR">Address Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.address_fr" type="text" name="addressFr" id="stadiumAddressFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESSFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.country.$dirty && stadiumForm.country.$invalid, 'has-success':stadiumForm.country.$valid}">
+                                    <label for="stadiumCountry" class="control-label">
+                                        <span translate="content.list.fields.COUNTRY">Country</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="countriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="stadium_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="stadium.country" name="country" id="stadiumCountry" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-globe"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="stadiumForm.country.$dirty && stadiumForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.country.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumCity" class="control-label">
+                                        <span translate="content.list.fields.CITY">City</span>
+                                    </label>
+                                <div class="block select-list" ng-if="citiesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="stadium_city_readonly" ng-options="item.id as item.name for item in cities | filter:{ hidden : false }" ng-model="stadium.city" name="city" id="stadiumCity" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-direction"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="stadiumCapacity" class="control-label">
+                                        <span translate="content.list.fields.CAPACITY">Capacity</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.capacity" type="text" name="capacity" id="stadiumCapacity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCAPACITY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-direction"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="stadium.is_published" type="checkbox" name="isPublished" id="stadiumIsPublished" />
+                                    <label for="stadiumIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.latitude.$dirty && stadiumForm.latitude.$invalid, 'has-success':stadiumForm.latitude.$valid}">
+                                    <label for="stadiumLatitude" class="control-label">
+                                        <span translate="content.list.fields.LATITUDE">Latitude</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.latitude" type="text" name="latitude" id="stadiumLatitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERLATITUDE' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="stadiumForm.latitude.$dirty && stadiumForm.latitude.$error.required" translate="content.form.messages.LATITUDEREQUIRED">Latitude is required.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.latitude.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':stadiumForm.longitude.$dirty && stadiumForm.longitude.$invalid, 'has-success':stadiumForm.longitude.$valid}">
+                                    <label for="stadiumLongitude" class="control-label">
+                                        <span translate="content.list.fields.LONGITUDE">Longitude</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stadium.longitude" type="text" name="longitude" id="stadiumLongitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERLONGITUDE' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="stadiumForm.longitude.$dirty && stadiumForm.longitude.$error.required" translate="content.form.messages.LONGITUDEREQUIRED">Longitude is required.</span>
+                                    <span class="success text-small block" ng-if="stadiumForm.longitude.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSTADIA">Back to Stadia list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(stadiumForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="stadiumForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="stadia.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

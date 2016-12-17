@@ -1,0 +1,205 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MATCHGOALS">Match Goals</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MatchGoalFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWMATCHGOAL" ng-if="matchGoal.id == 0">
+                        New Match Goal
+                    </legend>
+                    <legend translate="content.list.EDITMATCHGOAL" ng-if="matchGoal.id > 0">
+                        Edit Match Goal
+                    </legend>
+                    <form name="matchGoalForm" id="matchGoalForm" novalidate ng-submit="submitForm(matchGoalForm)">
+                        <input type="hidden" name="id" id="matchGoalId" ng-model="matchGoal.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchGoalForm.match.$dirty && matchGoalForm.match.$invalid, 'has-success':matchGoalForm.match.$valid}">
+                                    <label for="matchGoalMatch" class="control-label">
+                                        <span translate="content.list.fields.MATCH">Match</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="matchesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_goal_match_readonly" ng-options="item.id as item.name for item in matches | filter:{ hidden : false }" ng-model="matchGoal.match" name="match" id="matchGoalMatch" class="form-control" ng-required="true" ng-change="changeMatch()">
+                                        </select>
+                                        <i class="fa fa-futbol-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchGoalForm.match.$dirty && matchGoalForm.match.$error.required" translate="content.form.messages.MATCHREQUIRED">Match is required.</span>
+                                    <span class="success text-small block" ng-if="matchGoalForm.match.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchGoalForm.team.$dirty && matchGoalForm.team.$invalid, 'has-success':matchGoalForm.team.$valid}">
+                                    <label for="matchGoalTeam" class="control-label">
+                                        <span translate="content.list.fields.TEAM">Team</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_goal_team_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="matchGoal.team" name="team" id="matchGoalTeam" class="form-control" ng-required="true" ng-change="changeTeam()">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchGoalForm.team.$dirty && matchGoalForm.team.$error.required" translate="content.form.messages.TEAMREQUIRED">Team is required.</span>
+                                    <span class="success text-small block" ng-if="matchGoalForm.team.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchGoalForm.player.$dirty && matchGoalForm.player.$invalid, 'has-success':matchGoalForm.player.$valid}">
+                                    <label for="matchGoalPlayer" class="control-label">
+                                        <span translate="content.list.fields.PLAYER">Player</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="playersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_goal_player_readonly" ng-options="item.id as item.name for item in players | filter:{ hidden : false }" ng-model="matchGoal.player" name="player" id="matchGoalPlayer" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-user"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchGoalForm.player.$dirty && matchGoalForm.player.$error.required" translate="content.form.messages.PLAYERREQUIRED">Player is required.</span>
+                                    <span class="success text-small block" ng-if="matchGoalForm.player.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchGoalForm.minute.$dirty && matchGoalForm.minute.$invalid, 'has-success':matchGoalForm.minute.$valid}">
+                                    <label for="matchGoalMinute" class="control-label">
+                                        <span translate="content.list.fields.MINUTE">Minute</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="matchGoal.minute" type="text" name="minute" id="matchGoalMinute" class="form-control" placeholder="[[ 'content.form.messages.ENTERMINUTE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="matchGoalForm.minute.$dirty && matchGoalForm.minute.$error.required" translate="content.form.messages.MINUTEREQUIRED">Minute is required.</span>
+                                    <span class="success text-small block" ng-if="matchGoalForm.minute.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="matchGoalScoredWith" class="control-label">
+                                        <span translate="content.list.fields.SCOREDWITH">Scored With</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="scoredWiths.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="scoredWith in scoredWiths" ng-model="matchGoal.scored_with" type="radio" id="scored_with[[ scoredWith.id ]]" value="[[ scoredWith.id ]]" name="scoredWith" ng-required="false" />
+                                        <label ng-repeat-end for="scored_with[[ scoredWith.id ]]">
+                                            [[ scoredWith.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="scoredWiths.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in scoredWiths" ng-model="matchGoal.scored_with" name="scored_with" id="matchGoalScoredWith" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="matchGoalZone" class="control-label">
+                                        <span translate="content.list.fields.ZONE">Zone</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="zones.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="zone in zones" ng-model="matchGoal.zone" type="radio" id="zone[[ zone.id ]]" value="[[ zone.id ]]" name="zone" ng-required="false" />
+                                        <label ng-repeat-end for="zone[[ zone.id ]]">
+                                            [[ zone.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="zones.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in zones" ng-model="matchGoal.zone" name="zone" id="matchGoalZone" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="matchGoalStadiumZone" class="control-label">
+                                        <span translate="content.list.fields.STADIUMZONE">Stadium Zone</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="stadiumZones.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="stadiumZone in stadiumZones" ng-model="matchGoal.stadium_zone" type="radio" id="stadium_zone[[ stadiumZone.id ]]" value="[[ stadiumZone.id ]]" name="stadiumZone" ng-required="false" />
+                                        <label ng-repeat-end for="stadium_zone[[ stadiumZone.id ]]">
+                                            [[ stadiumZone.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="stadiumZones.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in stadiumZones" ng-model="matchGoal.stadium_zone" name="stadium_zone" id="matchGoalStadiumZone" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="matchGoal.penalty" type="checkbox" name="penalty" id="matchGoalPenalty" />
+                                    <label for="matchGoalPenalty" translate="content.list.fields.PENALTY">Penalty</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMATCHGOALS">Back to Match Goals list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(matchGoalForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="matchGoalForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="matchGoals.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

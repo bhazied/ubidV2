@@ -1,0 +1,111 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.RATINGS">Ratings</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="RatingFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWRATING" ng-if="rating.id == 0">
+                        New Rating
+                    </legend>
+                    <legend translate="content.list.EDITRATING" ng-if="rating.id > 0">
+                        Edit Rating
+                    </legend>
+                    <form name="ratingForm" id="ratingForm" novalidate ng-submit="submitForm(ratingForm)">
+                        <input type="hidden" name="id" id="ratingId" ng-model="rating.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':ratingForm.entity.$dirty && ratingForm.entity.$invalid, 'has-success':ratingForm.entity.$valid}">
+                                    <label for="ratingEntity" class="control-label">
+                                        <span translate="content.list.fields.ENTITY">Entity</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="rating.entity" type="text" name="entity" id="ratingEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="ratingForm.entity.$dirty && ratingForm.entity.$error.required" translate="content.form.messages.ENTITYREQUIRED">Entity is required.</span>
+                                    <span class="success text-small block" ng-if="ratingForm.entity.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':ratingForm.foreignKey.$dirty && ratingForm.foreignKey.$invalid, 'has-success':ratingForm.foreignKey.$valid}">
+                                    <label for="ratingForeignKey" class="control-label">
+                                        <span translate="content.list.fields.FOREIGNKEY">Foreign Key</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="rating.foreign_key" type="text" name="foreignKey" id="ratingForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="ratingForm.foreignKey.$dirty && ratingForm.foreignKey.$error.required" translate="content.form.messages.FOREIGNKEYREQUIRED">Foreign Key is required.</span>
+                                    <span class="success text-small block" ng-if="ratingForm.foreignKey.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':ratingForm.value.$dirty && ratingForm.value.$invalid, 'has-success':ratingForm.value.$valid}">
+                                    <label for="ratingValue" class="control-label">
+                                        <span translate="content.list.fields.VALUE">Value</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="rating.value" type="text" name="value" id="ratingValue" class="form-control" placeholder="[[ 'content.form.messages.ENTERVALUE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="ratingForm.value.$dirty && ratingForm.value.$error.required" translate="content.form.messages.VALUEREQUIRED">Value is required.</span>
+                                    <span class="success text-small block" ng-if="ratingForm.value.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKRATINGS">Back to Ratings list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(ratingForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="ratingForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="ratings.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

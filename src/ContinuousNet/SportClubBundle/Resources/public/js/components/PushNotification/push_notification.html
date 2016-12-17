@@ -1,0 +1,183 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PUSHNOTIFICATIONS">Push Notifications</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PushNotificationCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPUSHNOTIFICATIONS">Back to Push Notifications list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDPUSHNOTIFICATION">Add Push Notification</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(pushNotification)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPUSHNOTIFICATION">Edit Push Notification</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.PUSHNOTIFICATIONDETAILS">Push Notification Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLE">Title</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLEAR">Title Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.title_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TITLEFR">Title Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.title_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MESSAGE">Message</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.message"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MESSAGEAR">Message Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.message_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MESSAGEFR">Message Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.message_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TYPE">Type</span></td>
+                                <td>
+                                    <span my-enum="[[ pushNotification.type ]]" my-enum-list="[[ types ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CATEGORY">Category</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.category"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BADGE">Badge</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.badge"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SOUND">Sound</span></td>
+                                <td>
+                                    <div ng-bind-html="pushNotification.sound"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MATCH">Match</span></td>
+                                <td><a ui-sref="app.matchday.matchesdetails({id: pushNotification.match.id})">[[ pushNotification.match.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MATCHSUBSTITUTION">Match Substitution</span></td>
+                                <td><a ui-sref="app.matchday.matchsubstitutionsdetails({id: pushNotification.match_substitution.id})">[[ pushNotification.match_substitution.id ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MATCHGOAL">Match Goal</span></td>
+                                <td><a ui-sref="app.matchday.matchgoalsdetails({id: pushNotification.match_goal.id})">[[ pushNotification.match_goal.id ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.POST">Post</span></td>
+                                <td><a ui-sref="app.news.postsdetails({id: pushNotification.post.id})">[[ pushNotification.post.title ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VIDEO">Video</span></td>
+                                <td><a ui-sref="app.webtv.videosdetails({id: pushNotification.video.id})">[[ pushNotification.video.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AUDIO">Audio</span></td>
+                                <td><a ui-sref="app.webradio.audiosdetails({id: pushNotification.audio.id})">[[ pushNotification.audio.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.GALLERY">Gallery</span></td>
+                                <td><a ui-sref="app.photos.galleriesdetails({id: pushNotification.gallery.id})">[[ pushNotification.gallery.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SENDING">Sending</span></td>
+                                <td>
+                                    <span my-boolean="[[ pushNotification.sending ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SENDINGTIME">Sending Time</span></td>
+                                <td>
+                                    <span>[[ pushNotification.sending_time | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ pushNotification.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushNotification.creator_user.id})">[[ pushNotification.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ pushNotification.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushNotification.modifier_user.id})">[[ pushNotification.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

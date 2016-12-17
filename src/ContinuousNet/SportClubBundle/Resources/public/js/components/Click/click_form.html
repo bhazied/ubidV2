@@ -1,0 +1,96 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.CLICKS">Clicks</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="ClickFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWCLICK" ng-if="click.id == 0">
+                        New Click
+                    </legend>
+                    <legend translate="content.list.EDITCLICK" ng-if="click.id > 0">
+                        Edit Click
+                    </legend>
+                    <form name="clickForm" id="clickForm" novalidate ng-submit="submitForm(clickForm)">
+                        <input type="hidden" name="id" id="clickId" ng-model="click.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="clickVisit" class="control-label">
+                                        <span translate="content.list.fields.VISIT">Visit</span>
+                                    </label>
+                                <div class="block select-list" ng-if="visitsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="click_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="click.visit" name="visit" id="clickVisit" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':clickForm.banner.$dirty && clickForm.banner.$invalid, 'has-success':clickForm.banner.$valid}">
+                                    <label for="clickBanner" class="control-label">
+                                        <span translate="content.list.fields.BANNER">Banner</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="bannersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="click_banner_readonly" ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="click.banner" name="banner" id="clickBanner" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="clickForm.banner.$dirty && clickForm.banner.$error.required" translate="content.form.messages.BANNERREQUIRED">Banner is required.</span>
+                                    <span class="success text-small block" ng-if="clickForm.banner.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKCLICKS">Back to Clicks list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(clickForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="clickForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="clicks.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+
