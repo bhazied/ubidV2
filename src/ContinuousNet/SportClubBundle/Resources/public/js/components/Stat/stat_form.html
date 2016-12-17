@@ -1,0 +1,281 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.STATS">Stats</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="StatFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWSTAT" ng-if="stat.id == 0">
+                        New Stat
+                    </legend>
+                    <legend translate="content.list.EDITSTAT" ng-if="stat.id > 0">
+                        Edit Stat
+                    </legend>
+                    <form name="statForm" id="statForm" novalidate ng-submit="submitForm(statForm)">
+                        <input type="hidden" name="id" id="statId" ng-model="stat.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.table.$dirty && statForm.table.$invalid, 'has-success':statForm.table.$valid}">
+                                    <label for="statTable" class="control-label">
+                                        <span translate="content.list.fields.TABLE">Table</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="tablesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="stat_table_readonly" ng-options="item.id as item.id for item in tables | filter:{ hidden : false }" ng-model="stat.table" name="table" id="statTable" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="statForm.table.$dirty && statForm.table.$error.required" translate="content.form.messages.TABLEREQUIRED">Table is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.table.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.team.$dirty && statForm.team.$invalid, 'has-success':statForm.team.$valid}">
+                                    <label for="statTeam" class="control-label">
+                                        <span translate="content.list.fields.TEAM">Team</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="stat_team_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="stat.team" name="team" id="statTeam" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="statForm.team.$dirty && statForm.team.$error.required" translate="content.form.messages.TEAMREQUIRED">Team is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.team.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.position.$dirty && statForm.position.$invalid, 'has-success':statForm.position.$valid}">
+                                    <label for="statPosition" class="control-label">
+                                        <span translate="content.list.fields.POSITION">Position</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.position" type="text" name="position" id="statPosition" class="form-control" placeholder="[[ 'content.form.messages.ENTERPOSITION' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.position.$dirty && statForm.position.$error.required" translate="content.form.messages.POSITIONREQUIRED">Position is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.position.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="statLastPosition" class="control-label">
+                                        <span translate="content.list.fields.LASTPOSITION">Last Position</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.last_position" type="text" name="lastPosition" id="statLastPosition" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTPOSITION' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.played.$dirty && statForm.played.$invalid, 'has-success':statForm.played.$valid}">
+                                    <label for="statPlayed" class="control-label">
+                                        <span translate="content.list.fields.PLAYED">Played</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.played" type="text" name="played" id="statPlayed" class="form-control" placeholder="[[ 'content.form.messages.ENTERPLAYED' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.played.$dirty && statForm.played.$error.required" translate="content.form.messages.PLAYEDREQUIRED">Played is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.played.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.won.$dirty && statForm.won.$invalid, 'has-success':statForm.won.$valid}">
+                                    <label for="statWon" class="control-label">
+                                        <span translate="content.list.fields.WON">Won</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.won" type="text" name="won" id="statWon" class="form-control" placeholder="[[ 'content.form.messages.ENTERWON' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.won.$dirty && statForm.won.$error.required" translate="content.form.messages.WONREQUIRED">Won is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.won.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.drawn.$dirty && statForm.drawn.$invalid, 'has-success':statForm.drawn.$valid}">
+                                    <label for="statDrawn" class="control-label">
+                                        <span translate="content.list.fields.DRAWN">Drawn</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.drawn" type="text" name="drawn" id="statDrawn" class="form-control" placeholder="[[ 'content.form.messages.ENTERDRAWN' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.drawn.$dirty && statForm.drawn.$error.required" translate="content.form.messages.DRAWNREQUIRED">Drawn is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.drawn.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.lost.$dirty && statForm.lost.$invalid, 'has-success':statForm.lost.$valid}">
+                                    <label for="statLost" class="control-label">
+                                        <span translate="content.list.fields.LOST">Lost</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.lost" type="text" name="lost" id="statLost" class="form-control" placeholder="[[ 'content.form.messages.ENTERLOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.lost.$dirty && statForm.lost.$error.required" translate="content.form.messages.LOSTREQUIRED">Lost is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.lost.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="statGoalsFor" class="control-label">
+                                        <span translate="content.list.fields.GOALSFOR">Goals For</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.goals_for" type="text" name="goalsFor" id="statGoalsFor" class="form-control" placeholder="[[ 'content.form.messages.ENTERGOALSFOR' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="statGoalsAgainst" class="control-label">
+                                        <span translate="content.list.fields.GOALSAGAINST">Goals Against</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.goals_against" type="text" name="goalsAgainst" id="statGoalsAgainst" class="form-control" placeholder="[[ 'content.form.messages.ENTERGOALSAGAINST' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="statGoalDifference" class="control-label">
+                                        <span translate="content.list.fields.GOALDIFFERENCE">Goal Difference</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.goal_difference" type="text" name="goalDifference" id="statGoalDifference" class="form-control" placeholder="[[ 'content.form.messages.ENTERGOALDIFFERENCE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.points.$dirty && statForm.points.$invalid, 'has-success':statForm.points.$valid}">
+                                    <label for="statPoints" class="control-label">
+                                        <span translate="content.list.fields.POINTS">Points</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="stat.points" type="text" name="points" id="statPoints" class="form-control" placeholder="[[ 'content.form.messages.ENTERPOINTS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="statForm.points.$dirty && statForm.points.$error.required" translate="content.form.messages.POINTSREQUIRED">Points is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.points.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':statForm.mouvement.$dirty && statForm.mouvement.$invalid, 'has-success':statForm.mouvement.$valid}">
+                                    <label for="statMouvement" class="control-label">
+                                        <span translate="content.list.fields.MOUVEMENT">Mouvement</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="mouvements.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="mouvement in mouvements" ng-model="stat.mouvement" type="radio" id="mouvement[[ mouvement.id ]]" value="[[ mouvement.id ]]" name="mouvement" ng-required="true" />
+                                        <label ng-repeat-end for="mouvement[[ mouvement.id ]]">
+                                            [[ mouvement.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="mouvements.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in mouvements" ng-model="stat.mouvement" name="mouvement" id="statMouvement" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="statForm.mouvement.$dirty && statForm.mouvement.$error.required" translate="content.form.messages.MOUVEMENTREQUIRED">Mouvement is required.</span>
+                                    <span class="success text-small block" ng-if="statForm.mouvement.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSTATS">Back to Stats list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(statForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="statForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="stats.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

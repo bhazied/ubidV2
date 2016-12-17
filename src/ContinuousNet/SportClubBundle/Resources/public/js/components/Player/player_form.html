@@ -1,0 +1,833 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PLAYERS">Players</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PlayerFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWPLAYER" ng-if="player.id == 0">
+                        New Player
+                    </legend>
+                    <legend translate="content.list.EDITPLAYER" ng-if="player.id > 0">
+                        Edit Player
+                    </legend>
+                    <form name="playerForm" id="playerForm" novalidate ng-submit="submitForm(playerForm)">
+                        <input type="hidden" name="id" id="playerId" ng-model="player.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':playerForm.ordering.$dirty && playerForm.ordering.$invalid, 'has-success':playerForm.ordering.$valid}">
+                                    <label for="playerOrdering" class="control-label">
+                                        <span translate="content.list.fields.ORDERING">Ordering</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.ordering" type="text" name="ordering" id="playerOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="playerForm.ordering.$dirty && playerForm.ordering.$error.required" translate="content.form.messages.ORDERINGREQUIRED">Ordering is required.</span>
+                                    <span class="success text-small block" ng-if="playerForm.ordering.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':playerForm.position.$dirty && playerForm.position.$invalid, 'has-success':playerForm.position.$valid}">
+                                    <label for="playerPosition" class="control-label">
+                                        <span translate="content.list.fields.POSITION">Position</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="positions.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="position in positions" ng-model="player.position" type="radio" id="position[[ position.id ]]" value="[[ position.id ]]" name="position" ng-required="true" />
+                                        <label ng-repeat-end for="position[[ position.id ]]">
+                                            [[ position.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="positions.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in positions" ng-model="player.position" name="position" id="playerPosition" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="playerForm.position.$dirty && playerForm.position.$error.required" translate="content.form.messages.POSITIONREQUIRED">Position is required.</span>
+                                    <span class="success text-small block" ng-if="playerForm.position.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':playerForm.name.$dirty && playerForm.name.$invalid, 'has-success':playerForm.name.$valid}">
+                                    <label for="playerName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.name" type="text" name="name" id="playerName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="playerForm.name.$dirty && playerForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="playerForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.name_ar" type="text" name="nameAr" id="playerNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.name_fr" type="text" name="nameFr" id="playerNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerPicture" class="control-label">
+                                        <span translate="content.list.fields.PICTURE">Picture</span>
+                                    </label>
+                                    <div class="input-group">
+                                    <span class="input-icon">
+                                        <input ng-model="player.picture" type="text" name="picture" id="playerPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <i class="ti-image"></i>
+                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="player.picture != '' && player.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + player.picture ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="player.picture = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':playerForm.firstName.$dirty && playerForm.firstName.$invalid, 'has-success':playerForm.firstName.$valid}">
+                                    <label for="playerFirstName" class="control-label">
+                                        <span translate="content.list.fields.FIRSTNAME">First Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.first_name" type="text" name="firstName" id="playerFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="playerForm.firstName.$dirty && playerForm.firstName.$error.required" translate="content.form.messages.FIRSTNAMEREQUIRED">First Name is required.</span>
+                                    <span class="success text-small block" ng-if="playerForm.firstName.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFirstNameAr" class="control-label">
+                                        <span translate="content.list.fields.FIRSTNAMEAR">First Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.first_name_ar" type="text" name="firstNameAr" id="playerFirstNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFirstNameFr" class="control-label">
+                                        <span translate="content.list.fields.FIRSTNAMEFR">First Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.first_name_fr" type="text" name="firstNameFr" id="playerFirstNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerLastName" class="control-label">
+                                        <span translate="content.list.fields.LASTNAME">Last Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.last_name" type="text" name="lastName" id="playerLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerLastNameAr" class="control-label">
+                                        <span translate="content.list.fields.LASTNAMEAR">Last Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.last_name_ar" type="text" name="lastNameAr" id="playerLastNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerLastNameFr" class="control-label">
+                                        <span translate="content.list.fields.LASTNAMEFR">Last Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.last_name_fr" type="text" name="lastNameFr" id="playerLastNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBirthDate" class="control-label">
+                                        <span translate="content.list.fields.BIRTHDATE">Birth Date</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <input ng-model="player.birth_date" type="text" name="birthDate" id="playerBirthDate" class="form-control" placeholder="[[ 'content.form.messages.SELECTBIRTHDATE' | translate ]]" is-open="birthDateOpened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
+                                            <i class="ti-gift"></i>
+                                        </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="birthDateToggle($event)">
+                                            <i class="fa fa-calendar"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBirthPlace" class="control-label">
+                                        <span translate="content.list.fields.BIRTHPLACE">Birth Place</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.birth_place" type="text" name="birthPlace" id="playerBirthPlace" class="form-control" placeholder="[[ 'content.form.messages.ENTERBIRTHPLACE' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBirthPlaceAr" class="control-label">
+                                        <span translate="content.list.fields.BIRTHPLACEAR">Birth Place Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.birth_place_ar" type="text" name="birthPlaceAr" id="playerBirthPlaceAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERBIRTHPLACEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBirthPlaceFr" class="control-label">
+                                        <span translate="content.list.fields.BIRTHPLACEFR">Birth Place Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.birth_place_fr" type="text" name="birthPlaceFr" id="playerBirthPlaceFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERBIRTHPLACEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBirthCountry" class="control-label">
+                                        <span translate="content.list.fields.BIRTHCOUNTRY">Birth Country</span>
+                                    </label>
+                                <div class="block select-list" ng-if="countriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="player_birth_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="player.birth_country" name="birthCountry" id="playerBirthCountry" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-globe"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerNationalityCountry" class="control-label">
+                                        <span translate="content.list.fields.NATIONALITYCOUNTRY">Nationality Country</span>
+                                    </label>
+                                <div class="block select-list" ng-if="countriesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="player_nationality_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="player.nationality_country" name="nationalityCountry" id="playerNationalityCountry" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-globe"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerHeight" class="control-label">
+                                        <span translate="content.list.fields.HEIGHT">Height</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.height" type="text" name="height" id="playerHeight" class="form-control" placeholder="[[ 'content.form.messages.ENTERHEIGHT' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-ruler"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerWeight" class="control-label">
+                                        <span translate="content.list.fields.WEIGHT">Weight</span>
+                                    </label>
+                                        <input ng-model="player.weight" type="text" name="weight" id="playerWeight" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEIGHT' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerShoeSize" class="control-label">
+                                        <span translate="content.list.fields.SHOESIZE">Shoe Size</span>
+                                    </label>
+                                        <input ng-model="player.shoe_size" type="text" name="shoeSize" id="playerShoeSize" class="form-control" placeholder="[[ 'content.form.messages.ENTERSHOESIZE' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerWritingHand" class="control-label">
+                                        <span translate="content.list.fields.WRITINGHAND">Writing Hand</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="writingHands.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="writingHand in writingHands" ng-model="player.writing_hand" type="radio" id="writing_hand[[ writingHand.id ]]" value="[[ writingHand.id ]]" name="writingHand" ng-required="false" />
+                                        <label ng-repeat-end for="writing_hand[[ writingHand.id ]]">
+                                            [[ writingHand.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="writingHands.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in writingHands" ng-model="player.writing_hand" name="writing_hand" id="playerWritingHand" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerStrongerFoot" class="control-label">
+                                        <span translate="content.list.fields.STRONGERFOOT">Stronger Foot</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="strongerFoots.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="strongerFoot in strongerFoots" ng-model="player.stronger_foot" type="radio" id="stronger_foot[[ strongerFoot.id ]]" value="[[ strongerFoot.id ]]" name="strongerFoot" ng-required="false" />
+                                        <label ng-repeat-end for="stronger_foot[[ strongerFoot.id ]]">
+                                            [[ strongerFoot.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="strongerFoots.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in strongerFoots" ng-model="player.stronger_foot" name="stronger_foot" id="playerStrongerFoot" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerMaritalStatus" class="control-label">
+                                        <span translate="content.list.fields.MARITALSTATUS">Marital Status</span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="maritalStatuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="maritalStatus in maritalStatuses" ng-model="player.marital_status" type="radio" id="marital_status[[ maritalStatus.id ]]" value="[[ maritalStatus.id ]]" name="maritalStatus" ng-required="false" />
+                                        <label ng-repeat-end for="marital_status[[ maritalStatus.id ]]">
+                                            [[ maritalStatus.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="maritalStatuses.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in maritalStatuses" ng-model="player.marital_status" name="marital_status" id="playerMaritalStatus" class="form-control" ng-required="false">
+                                        </select>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerWivesNames" class="control-label">
+                                        <span translate="content.list.fields.WIVESNAMES">Wives Names</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.wives_names" type="text" name="wivesNames" id="playerWivesNames" class="form-control" placeholder="[[ 'content.form.messages.ENTERWIVESNAMES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerSonsNames" class="control-label">
+                                        <span translate="content.list.fields.SONSNAMES">Sons Names</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.sons_names" type="text" name="sonsNames" id="playerSonsNames" class="form-control" placeholder="[[ 'content.form.messages.ENTERSONSNAMES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerDaughtersNames" class="control-label">
+                                        <span translate="content.list.fields.DAUGHTERSNAMES">Daughters Names</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.daughters_names" type="text" name="daughtersNames" id="playerDaughtersNames" class="form-control" placeholder="[[ 'content.form.messages.ENTERDAUGHTERSNAMES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFatherName" class="control-label">
+                                        <span translate="content.list.fields.FATHERNAME">Father Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.father_name" type="text" name="fatherName" id="playerFatherName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFATHERNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerMotherName" class="control-label">
+                                        <span translate="content.list.fields.MOTHERNAME">Mother Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.mother_name" type="text" name="motherName" id="playerMotherName" class="form-control" placeholder="[[ 'content.form.messages.ENTERMOTHERNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerBrothersNames" class="control-label">
+                                        <span translate="content.list.fields.BROTHERSNAMES">Brothers Names</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.brothers_names" type="text" name="brothersNames" id="playerBrothersNames" class="form-control" placeholder="[[ 'content.form.messages.ENTERBROTHERSNAMES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerSistersNames" class="control-label">
+                                        <span translate="content.list.fields.SISTERSNAMES">Sisters Names</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.sisters_names" type="text" name="sistersNames" id="playerSistersNames" class="form-control" placeholder="[[ 'content.form.messages.ENTERSISTERSNAMES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerEducation" class="control-label">
+                                        <span translate="content.list.fields.EDUCATION">Education</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.education" type="text" name="education" id="playerEducation" class="form-control" placeholder="[[ 'content.form.messages.ENTEREDUCATION' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerPersonalAttributes" class="control-label">
+                                        <span translate="content.list.fields.PERSONALATTRIBUTES">Personal Attributes</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.personal_attributes" type="text" name="personalAttributes" id="playerPersonalAttributes" class="form-control" placeholder="[[ 'content.form.messages.ENTERPERSONALATTRIBUTES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerHobbies" class="control-label">
+                                        <span translate="content.list.fields.HOBBIES">Hobbies</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.hobbies" type="text" name="hobbies" id="playerHobbies" class="form-control" placeholder="[[ 'content.form.messages.ENTERHOBBIES' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFavouriteFood" class="control-label">
+                                        <span translate="content.list.fields.FAVOURITEFOOD">Favourite Food</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.favourite_food" type="text" name="favouriteFood" id="playerFavouriteFood" class="form-control" placeholder="[[ 'content.form.messages.ENTERFAVOURITEFOOD' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFavouriteDrink" class="control-label">
+                                        <span translate="content.list.fields.FAVOURITEDRINK">Favourite Drink</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.favourite_drink" type="text" name="favouriteDrink" id="playerFavouriteDrink" class="form-control" placeholder="[[ 'content.form.messages.ENTERFAVOURITEDRINK' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFirstReplicaKit" class="control-label">
+                                        <span translate="content.list.fields.FIRSTREPLICAKIT">First Replica Kit</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.first_replica_kit" type="text" name="firstReplicaKit" id="playerFirstReplicaKit" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTREPLICAKIT' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTvShowRarelyMiss" class="control-label">
+                                        <span translate="content.list.fields.TVSHOWRARELYMISS">Tv Show Rarely Miss</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.tv_show_rarely_miss" type="text" name="tvShowRarelyMiss" id="playerTvShowRarelyMiss" class="form-control" placeholder="[[ 'content.form.messages.ENTERTVSHOWRARELYMISS' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTeamClub" class="control-label">
+                                        <span translate="content.list.fields.TEAMCLUB">Team Club</span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="player_team_club_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="player.team_club" name="teamClub" id="playerTeamClub" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTeamClubNumber" class="control-label">
+                                        <span translate="content.list.fields.TEAMCLUBNUMBER">Team Club Number</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.team_club_number" type="text" name="teamClubNumber" id="playerTeamClubNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEAMCLUBNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTeamNational" class="control-label">
+                                        <span translate="content.list.fields.TEAMNATIONAL">Team National</span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="player_team_national_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="player.team_national" name="teamNational" id="playerTeamNational" class="form-control" ng-required="false">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTeamNationalNumber" class="control-label">
+                                        <span translate="content.list.fields.TEAMNATIONALNUMBER">Team National Number</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.team_national_number" type="text" name="teamNationalNumber" id="playerTeamNationalNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEAMNATIONALNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="playerPersonalBiography" class="control-label">
+                                        <span translate="content.list.fields.PERSONALBIOGRAPHY">Personal Biography</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="player.personal_biography" name="personalBiography" id="playerPersonalBiography" class="form-control" placeholder="[[ 'content.form.messages.ENTERPERSONALBIOGRAPHY' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="playerTechnicalProfile" class="control-label">
+                                        <span translate="content.list.fields.TECHNICALPROFILE">Technical Profile</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="player.technical_profile" name="technicalProfile" id="playerTechnicalProfile" class="form-control" placeholder="[[ 'content.form.messages.ENTERTECHNICALPROFILE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerFacebook" class="control-label">
+                                        <span translate="content.list.fields.FACEBOOK">Facebook</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.facebook" type="text" name="facebook" id="playerFacebook" class="form-control" placeholder="[[ 'content.form.messages.ENTERFACEBOOK' | translate ]]" ng-required="false" />
+                                        <i class="ti-facebook"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerTwitter" class="control-label">
+                                        <span translate="content.list.fields.TWITTER">Twitter</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.twitter" type="text" name="twitter" id="playerTwitter" class="form-control" placeholder="[[ 'content.form.messages.ENTERTWITTER' | translate ]]" ng-required="false" />
+                                        <i class="ti-twitter"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerWebsite" class="control-label">
+                                        <span translate="content.list.fields.WEBSITE">Website</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.website" type="text" name="website" id="playerWebsite" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBSITE' | translate ]]" ng-required="false" />
+                                        <i class="ti-world"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':playerForm.status.$dirty && playerForm.status.$invalid, 'has-success':playerForm.status.$valid}">
+                                    <label for="playerStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="player.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="player.status" name="status" id="playerStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="playerForm.status.$dirty && playerForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="playerForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerEurosport" class="control-label">
+                                        <span translate="content.list.fields.EUROSPORT">Eurosport</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.eurosport" type="text" name="eurosport" id="playerEurosport" class="form-control" placeholder="[[ 'content.form.messages.ENTEREUROSPORT' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="playerLequipe" class="control-label">
+                                        <span translate="content.list.fields.LEQUIPE">Lequipe</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="player.lequipe" type="text" name="lequipe" id="playerLequipe" class="form-control" placeholder="[[ 'content.form.messages.ENTERLEQUIPE' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPLAYERS">Back to Players list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(playerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="playerForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="players.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

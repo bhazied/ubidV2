@@ -1,0 +1,109 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PUSHMESSAGES">Push Messages</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PushMessageCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPUSHMESSAGES">Back to Push Messages list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDPUSHMESSAGE">Add Push Message</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(pushMessage)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITPUSHMESSAGE">Edit Push Message</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.PUSHMESSAGEDETAILS">Push Message Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="pushMessage.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PUSHDEVICE">Push Device</span></td>
+                                <td><a ui-sref="app.mobile.pushdevicesdetails({id: pushMessage.push_device.id})">[[ pushMessage.push_device.appName ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PUSHNOTIFICATION">Push Notification</span></td>
+                                <td><a ui-sref="app.mobile.pushnotificationsdetails({id: pushMessage.push_notification.id})">[[ pushMessage.push_notification.title ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DELIVERY">Delivery</span></td>
+                                <td>
+                                    <span>[[ pushMessage.delivery | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LANGUAGECODE">Language Code</span></td>
+                                <td>
+                                    <div ng-bind-html="pushMessage.language_code"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SENDINGSTATUS">Sending Status</span></td>
+                                <td>
+                                    <span my-enum="[[ pushMessage.sending_status ]]" my-enum-list="[[ sendingStatuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ pushMessage.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushMessage.creator_user.id})">[[ pushMessage.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ pushMessage.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: pushMessage.modifier_user.id})">[[ pushMessage.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

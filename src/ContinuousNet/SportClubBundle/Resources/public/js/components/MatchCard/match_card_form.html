@@ -1,0 +1,160 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.MATCHCARDS">Match Cards</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MatchCardFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWMATCHCARD" ng-if="matchCard.id == 0">
+                        New Match Card
+                    </legend>
+                    <legend translate="content.list.EDITMATCHCARD" ng-if="matchCard.id > 0">
+                        Edit Match Card
+                    </legend>
+                    <form name="matchCardForm" id="matchCardForm" novalidate ng-submit="submitForm(matchCardForm)">
+                        <input type="hidden" name="id" id="matchCardId" ng-model="matchCard.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchCardForm.match.$dirty && matchCardForm.match.$invalid, 'has-success':matchCardForm.match.$valid}">
+                                    <label for="matchCardMatch" class="control-label">
+                                        <span translate="content.list.fields.MATCH">Match</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="matchesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_card_match_readonly" ng-options="item.id as item.name for item in matches | filter:{ hidden : false }" ng-model="matchCard.match" name="match" id="matchCardMatch" class="form-control" ng-required="true" ng-change="changeMatch()">
+                                        </select>
+                                        <i class="fa fa-futbol-o"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchCardForm.match.$dirty && matchCardForm.match.$error.required" translate="content.form.messages.MATCHREQUIRED">Match is required.</span>
+                                    <span class="success text-small block" ng-if="matchCardForm.match.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchCardForm.team.$dirty && matchCardForm.team.$invalid, 'has-success':matchCardForm.team.$valid}">
+                                    <label for="matchCardTeam" class="control-label">
+                                        <span translate="content.list.fields.TEAM">Team</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="teamsLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_card_team_readonly" ng-options="item.id as item.name for item in teams | filter:{ hidden : false }" ng-model="matchCard.team" name="team" id="matchCardTeam" class="form-control" ng-required="true" ng-change="changeTeam()">
+                                        </select>
+                                        <i class="fa fa-users"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchCardForm.team.$dirty && matchCardForm.team.$error.required" translate="content.form.messages.TEAMREQUIRED">Team is required.</span>
+                                    <span class="success text-small block" ng-if="matchCardForm.team.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchCardForm.player.$dirty && matchCardForm.player.$invalid, 'has-success':matchCardForm.player.$valid}">
+                                    <label for="matchCardPlayer" class="control-label">
+                                        <span translate="content.list.fields.PLAYER">Player</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="playersLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="match_card_player_readonly" ng-options="item.id as item.name for item in players | filter:{ hidden : false }" ng-model="matchCard.player" name="player" id="matchCardPlayer" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-user"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="matchCardForm.player.$dirty && matchCardForm.player.$error.required" translate="content.form.messages.PLAYERREQUIRED">Player is required.</span>
+                                    <span class="success text-small block" ng-if="matchCardForm.player.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchCardForm.minute.$dirty && matchCardForm.minute.$invalid, 'has-success':matchCardForm.minute.$valid}">
+                                    <label for="matchCardMinute" class="control-label">
+                                        <span translate="content.list.fields.MINUTE">Minute</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="matchCard.minute" type="text" name="minute" id="matchCardMinute" class="form-control" placeholder="[[ 'content.form.messages.ENTERMINUTE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="matchCardForm.minute.$dirty && matchCardForm.minute.$error.required" translate="content.form.messages.MINUTEREQUIRED">Minute is required.</span>
+                                    <span class="success text-small block" ng-if="matchCardForm.minute.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':matchCardForm.card.$dirty && matchCardForm.card.$invalid, 'has-success':matchCardForm.card.$valid}">
+                                    <label for="matchCardCard" class="control-label">
+                                        <span translate="content.list.fields.CARD">Card</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="cards.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="card in cards" ng-model="matchCard.card" type="radio" id="card[[ card.id ]]" value="[[ card.id ]]" name="card" ng-required="true" />
+                                        <label ng-repeat-end for="card[[ card.id ]]">
+                                            [[ card.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="cards.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in cards" ng-model="matchCard.card" name="card" id="matchCardCard" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="matchCardForm.card.$dirty && matchCardForm.card.$error.required" translate="content.form.messages.CARDREQUIRED">Card is required.</span>
+                                    <span class="success text-small block" ng-if="matchCardForm.card.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMATCHCARDS">Back to Match Cards list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(matchCardForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="matchCardForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="matchCards.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

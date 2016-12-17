@@ -1,0 +1,196 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.IMAGETYPES">Image Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="ImageTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWIMAGETYPE" ng-if="imageType.id == 0">
+                        New Image Type
+                    </legend>
+                    <legend translate="content.list.EDITIMAGETYPE" ng-if="imageType.id > 0">
+                        Edit Image Type
+                    </legend>
+                    <form name="imageTypeForm" id="imageTypeForm" novalidate ng-submit="submitForm(imageTypeForm)">
+                        <input type="hidden" name="id" id="imageTypeId" ng-model="imageType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':imageTypeForm.name.$dirty && imageTypeForm.name.$invalid, 'has-success':imageTypeForm.name.$valid}">
+                                    <label for="imageTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.name" type="text" name="name" id="imageTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="imageTypeForm.name.$dirty && imageTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="imageTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="imageTypeNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.name_ar" type="text" name="nameAr" id="imageTypeNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="imageTypeNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.name_fr" type="text" name="nameFr" id="imageTypeNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="imageType.name" to="imageType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':imageTypeForm.slug.$dirty && imageTypeForm.slug.$invalid, 'has-success':imageTypeForm.slug.$valid}">
+                                    <label for="imageTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.slug" type="text" name="slug" id="imageTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="imageTypeForm.slug.$dirty && imageTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="imageTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                    <slug from="imageType.name_ar" to="imageType.slug_ar"></slug>
+                                <div class="form-group">
+                                    <label for="imageTypeSlugAr" class="control-label">
+                                        <span translate="content.list.fields.SLUGAR">Slug Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.slug_ar" type="text" name="slugAr" id="imageTypeSlugAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="imageType.name_fr" to="imageType.slug_fr"></slug>
+                                <div class="form-group">
+                                    <label for="imageTypeSlugFr" class="control-label">
+                                        <span translate="content.list.fields.SLUGFR">Slug Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.slug_fr" type="text" name="slugFr" id="imageTypeSlugFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUGFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':imageTypeForm.extensions.$dirty && imageTypeForm.extensions.$invalid, 'has-success':imageTypeForm.extensions.$valid}">
+                                    <label for="imageTypeExtensions" class="control-label">
+                                        <span translate="content.list.fields.EXTENSIONS">Extensions</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.extensions" type="text" name="extensions" id="imageTypeExtensions" class="form-control" placeholder="[[ 'content.form.messages.ENTEREXTENSIONS' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="imageTypeForm.extensions.$dirty && imageTypeForm.extensions.$error.required" translate="content.form.messages.EXTENSIONSREQUIRED">Extensions is required.</span>
+                                    <span class="success text-small block" ng-if="imageTypeForm.extensions.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':imageTypeForm.mimeTypes.$dirty && imageTypeForm.mimeTypes.$invalid, 'has-success':imageTypeForm.mimeTypes.$valid}">
+                                    <label for="imageTypeMimeTypes" class="control-label">
+                                        <span translate="content.list.fields.MIMETYPES">Mime Types</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="imageType.mime_types" type="text" name="mimeTypes" id="imageTypeMimeTypes" class="form-control" placeholder="[[ 'content.form.messages.ENTERMIMETYPES' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="imageTypeForm.mimeTypes.$dirty && imageTypeForm.mimeTypes.$error.required" translate="content.form.messages.MIMETYPESREQUIRED">Mime Types is required.</span>
+                                    <span class="success text-small block" ng-if="imageTypeForm.mimeTypes.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="imageType.is_published" type="checkbox" name="isPublished" id="imageTypeIsPublished" />
+                                    <label for="imageTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKIMAGETYPES">Back to Image Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(imageTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="imageTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="imageTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

@@ -1,0 +1,138 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.BANNERTYPES">Banner Types</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="BannerTypeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWBANNERTYPE" ng-if="bannerType.id == 0">
+                        New Banner Type
+                    </legend>
+                    <legend translate="content.list.EDITBANNERTYPE" ng-if="bannerType.id > 0">
+                        Edit Banner Type
+                    </legend>
+                    <form name="bannerTypeForm" id="bannerTypeForm" novalidate ng-submit="submitForm(bannerTypeForm)">
+                        <input type="hidden" name="id" id="bannerTypeId" ng-model="bannerType.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':bannerTypeForm.name.$dirty && bannerTypeForm.name.$invalid, 'has-success':bannerTypeForm.name.$valid}">
+                                    <label for="bannerTypeName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bannerType.name" type="text" name="name" id="bannerTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bannerTypeForm.name.$dirty && bannerTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="bannerTypeForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                    <slug from="bannerType.name" to="bannerType.slug"></slug>
+                                <div class="form-group" ng-class="{'has-error':bannerTypeForm.slug.$dirty && bannerTypeForm.slug.$invalid, 'has-success':bannerTypeForm.slug.$valid}">
+                                    <label for="bannerTypeSlug" class="control-label">
+                                        <span translate="content.list.fields.SLUG">Slug</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bannerType.slug" type="text" name="slug" id="bannerTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <i class="ti-anchor"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bannerTypeForm.slug.$dirty && bannerTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="bannerTypeForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':bannerTypeForm.extensions.$dirty && bannerTypeForm.extensions.$invalid, 'has-success':bannerTypeForm.extensions.$valid}">
+                                    <label for="bannerTypeExtensions" class="control-label">
+                                        <span translate="content.list.fields.EXTENSIONS">Extensions</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bannerType.extensions" type="text" name="extensions" id="bannerTypeExtensions" class="form-control" placeholder="[[ 'content.form.messages.ENTEREXTENSIONS' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bannerTypeForm.extensions.$dirty && bannerTypeForm.extensions.$error.required" translate="content.form.messages.EXTENSIONSREQUIRED">Extensions is required.</span>
+                                    <span class="success text-small block" ng-if="bannerTypeForm.extensions.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':bannerTypeForm.mimeTypes.$dirty && bannerTypeForm.mimeTypes.$invalid, 'has-success':bannerTypeForm.mimeTypes.$valid}">
+                                    <label for="bannerTypeMimeTypes" class="control-label">
+                                        <span translate="content.list.fields.MIMETYPES">Mime Types</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bannerType.mime_types" type="text" name="mimeTypes" id="bannerTypeMimeTypes" class="form-control" placeholder="[[ 'content.form.messages.ENTERMIMETYPES' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bannerTypeForm.mimeTypes.$dirty && bannerTypeForm.mimeTypes.$error.required" translate="content.form.messages.MIMETYPESREQUIRED">Mime Types is required.</span>
+                                    <span class="success text-small block" ng-if="bannerTypeForm.mimeTypes.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="bannerType.is_published" type="checkbox" name="isPublished" id="bannerTypeIsPublished" />
+                                    <label for="bannerTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBANNERTYPES">Back to Banner Types list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(bannerTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="bannerTypes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

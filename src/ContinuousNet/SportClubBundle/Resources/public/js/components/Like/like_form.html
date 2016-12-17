@@ -1,0 +1,111 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.LIKES">Likes</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="LikeFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWLIKE" ng-if="like.id == 0">
+                        New Like
+                    </legend>
+                    <legend translate="content.list.EDITLIKE" ng-if="like.id > 0">
+                        Edit Like
+                    </legend>
+                    <form name="likeForm" id="likeForm" novalidate ng-submit="submitForm(likeForm)">
+                        <input type="hidden" name="id" id="likeId" ng-model="like.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':likeForm.entity.$dirty && likeForm.entity.$invalid, 'has-success':likeForm.entity.$valid}">
+                                    <label for="likeEntity" class="control-label">
+                                        <span translate="content.list.fields.ENTITY">Entity</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="like.entity" type="text" name="entity" id="likeEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="likeForm.entity.$dirty && likeForm.entity.$error.required" translate="content.form.messages.ENTITYREQUIRED">Entity is required.</span>
+                                    <span class="success text-small block" ng-if="likeForm.entity.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':likeForm.foreignKey.$dirty && likeForm.foreignKey.$invalid, 'has-success':likeForm.foreignKey.$valid}">
+                                    <label for="likeForeignKey" class="control-label">
+                                        <span translate="content.list.fields.FOREIGNKEY">Foreign Key</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="like.foreign_key" type="text" name="foreignKey" id="likeForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="likeForm.foreignKey.$dirty && likeForm.foreignKey.$error.required" translate="content.form.messages.FOREIGNKEYREQUIRED">Foreign Key is required.</span>
+                                    <span class="success text-small block" ng-if="likeForm.foreignKey.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':likeForm.value.$dirty && likeForm.value.$invalid, 'has-success':likeForm.value.$valid}">
+                                    <label for="likeValue" class="control-label">
+                                        <span translate="content.list.fields.VALUE">Value</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="like.value" type="text" name="value" id="likeValue" class="form-control" placeholder="[[ 'content.form.messages.ENTERVALUE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="likeForm.value.$dirty && likeForm.value.$error.required" translate="content.form.messages.VALUEREQUIRED">Value is required.</span>
+                                    <span class="success text-small block" ng-if="likeForm.value.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKLIKES">Back to Likes list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(likeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="likeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="likes.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

@@ -1,0 +1,321 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.VIDEOS">Videos</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="VideoCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKVIDEOS">Back to Videos list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDVIDEO">Add Video</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(video)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITVIDEO">Edit Video</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.VIDEODETAILS">Video Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="video.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VIDEOTYPE">Video Type</span></td>
+                                <td><a ui-sref="app.webtv.videotypesdetails({id: video.video_type.id})">[[ video.video_type.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PRICE">Price</span></td>
+                                <td><a ui-sref="app.offer.pricesdetails({id: video.price.id})">[[ video.price.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHARING">Sharing</span></td>
+                                <td><a ui-sref="app.offer.sharingsdetails({id: video.sharing.id})">[[ video.sharing.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAME">Name</span></td>
+                                <td>
+                                    <div ng-bind-html="video.name"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAMEAR">Name Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="video.name_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NAMEFR">Name Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="video.name_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
+                                <td>
+                                    <div ng-bind-html="video.slug"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUGAR">Slug Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="video.slug_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SLUGFR">Slug Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="video.slug_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PICTURE">Picture</span></td>
+                                <td>
+                                    <div class="user-image margin-top-10" ng-if="video.picture != '' && video.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ app.thumbURL + video.picture ]]" alt="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.FILE">File</span></td>
+                                <td>
+                                    <div ng-if="video.file != '' && video.file != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ video.file ]]" alt=""><i class="ti-download"></i> [[video.file]]</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.WATERMARKTEXT">Watermark Text</span></td>
+                                <td>
+                                    <div ng-bind-html="video.watermark_text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
+                                <td>
+                                    <div ng-bind-html="video.description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span></td>
+                                <td>
+                                    <div ng-bind-html="video.description_ar"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span></td>
+                                <td>
+                                    <div ng-bind-html="video.description_fr"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SHOW">Show</span></td>
+                                <td><a ui-sref="app.webtv.showsdetails({id: video.show.id})">[[ video.show.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SEASONNUMBER">Season Number</span></td>
+                                <td>
+                                    <div ng-bind-html="video.season_number"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.EPISODENUMBER">Episode Number</span></td>
+                                <td>
+                                    <div ng-bind-html="video.episode_number"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DURATION">Duration</span></td>
+                                <td>
+                                    <div ng-bind-html="video.duration"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REMOTESOURCE">Remote Source</span></td>
+                                <td>
+                                    <span my-boolean="[[ video.remote_source ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.URL">Url</span></td>
+                                <td>
+                                    <div ng-bind-html="video.url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ALTERNATIVEURL">Alternative Url</span></td>
+                                <td>
+                                    <div ng-bind-html="video.alternative_url"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.COPYRIGHT">Copyright</span></td>
+                                <td>
+                                    <div ng-bind-html="video.copyright"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISTOP">Is Top</span></td>
+                                <td>
+                                    <span my-boolean="[[ video.is_top ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISNEW">Is New</span></td>
+                                <td>
+                                    <span my-boolean="[[ video.is_new ]]"></span>
+                                </td>
+                            </tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1" >
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ video.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALPREVIEWED">Total Previewed</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_previewed"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALDOWNLOADS">Total Downloads</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_downloads"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALHITS">Total Hits</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_hits"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALCOMMENTS">Total Comments</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_comments"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALRATINGS">Total Ratings</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_ratings"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AVERAGERATINGS">Average Ratings</span></td>
+                                <td>
+                                    <div ng-bind-html="video.average_ratings"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALLIKES">Total Likes</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_likes"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALDISLIKES">Total Dislikes</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_dislikes"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOTALBOOKMARKS">Total Bookmarks</span></td>
+                                <td>
+                                    <div ng-bind-html="video.total_bookmarks"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLESTREAMING">Enable Streaming</span></td>
+                                <td>
+                                    <span my-boolean="[[ video.enable_streaming ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</span></td>
+                                <td>
+                                    <span my-boolean="[[ video.auto_publishing ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTPUBLISHING">Start Publishing</span></td>
+                                <td>
+                                    <span>[[ video.start_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDPUBLISHING">End Publishing</span></td>
+                                <td>
+                                    <span>[[ video.end_publishing | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ video.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: video.creator_user.id})">[[ video.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ video.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: video.modifier_user.id})">[[ video.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VIDEOCATEGORIES">Video Categories</span></td>
+                                <td>
+                                    <a ng-repeat="videoCategory in video.video_categories" ui-sref="app.webtv.videocategoriesdetails({id: videoCategory.id})">[[ videoCategory.name ]]</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

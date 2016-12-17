@@ -1,0 +1,284 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PACKAGES">Packages</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PackageFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWPACKAGE" ng-if="package.id == 0">
+                        New Package
+                    </legend>
+                    <legend translate="content.list.EDITPACKAGE" ng-if="package.id > 0">
+                        Edit Package
+                    </legend>
+                    <form name="packageForm" id="packageForm" novalidate ng-submit="submitForm(packageForm)">
+                        <input type="hidden" name="id" id="packageId" ng-model="package.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.packageType.$dirty && packageForm.packageType.$invalid, 'has-success':packageForm.packageType.$valid}">
+                                    <label for="packagePackageType" class="control-label">
+                                        <span translate="content.list.fields.PACKAGETYPE">Package Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="packageTypesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="package_package_type_readonly" ng-options="item.id as item.name for item in packageTypes | filter:{ hidden : false }" ng-model="package.package_type" name="packageType" id="packagePackageType" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="packageForm.packageType.$dirty && packageForm.packageType.$error.required" translate="content.form.messages.PACKAGETYPEREQUIRED">Package Type is required.</span>
+                                    <span class="success text-small block" ng-if="packageForm.packageType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.name.$dirty && packageForm.name.$invalid, 'has-success':packageForm.name.$valid}">
+                                    <label for="packageName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.name" type="text" name="name" id="packageName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="package.name" my-resource-url="packages" my-current-id="[[ package.id ]]" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="packageForm.name.$dirty && packageForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="error text-small block" ng-if="packageForm.name.$dirty && packageForm.name.$error.myUniqueField" translate="content.form.messages.NAMEALREADYINUSE">This Name is already in use. Please choose another one.</span>
+                                    <span class="success text-small block" ng-if="packageForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packageNameAr" class="control-label">
+                                        <span translate="content.list.fields.NAMEAR">Name Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.name_ar" type="text" name="nameAr" id="packageNameAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packageNameFr" class="control-label">
+                                        <span translate="content.list.fields.NAMEFR">Name Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.name_fr" type="text" name="nameFr" id="packageNameFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAMEFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packagePicture" class="control-label">
+                                        <span translate="content.list.fields.PICTURE">Picture</span>
+                                    </label>
+                                    <div class="input-group">
+                                    <span class="input-icon">
+                                        <input ng-model="package.picture" type="text" name="picture" id="packagePicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <i class="ti-image"></i>
+                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="package.picture != '' && package.picture != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + package.picture ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="package.picture = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packageDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.description" type="text" name="description" id="packageDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packageDescriptionAr" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTIONAR">Description Ar</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.description_ar" type="text" name="descriptionAr" id="packageDescriptionAr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONAR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="packageDescriptionFr" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTIONFR">Description Fr</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.description_fr" type="text" name="descriptionFr" id="packageDescriptionFr" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTIONFR' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.price.$dirty && packageForm.price.$invalid, 'has-success':packageForm.price.$valid}">
+                                    <label for="packagePrice" class="control-label">
+                                        <span translate="content.list.fields.PRICE">Price</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="pricesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="package_price_readonly" ng-options="item.id as item.name for item in prices | filter:{ hidden : false }" ng-model="package.price" name="price" id="packagePrice" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="packageForm.price.$dirty && packageForm.price.$error.required" translate="content.form.messages.PRICEREQUIRED">Price is required.</span>
+                                    <span class="success text-small block" ng-if="packageForm.price.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.operatorKey.$dirty && packageForm.operatorKey.$invalid, 'has-success':packageForm.operatorKey.$valid}">
+                                    <label for="packageOperatorKey" class="control-label">
+                                        <span translate="content.list.fields.OPERATORKEY">Operator Key</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.operator_key" type="text" name="operatorKey" id="packageOperatorKey" class="form-control" placeholder="[[ 'content.form.messages.ENTEROPERATORKEY' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="packageForm.operatorKey.$dirty && packageForm.operatorKey.$error.required" translate="content.form.messages.OPERATORKEYREQUIRED">Operator Key is required.</span>
+                                    <span class="success text-small block" ng-if="packageForm.operatorKey.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.mode.$dirty && packageForm.mode.$invalid, 'has-success':packageForm.mode.$valid}">
+                                    <label for="packageMode" class="control-label">
+                                        <span translate="content.list.fields.MODE">Mode</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="modes.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="mode in modes" ng-model="package.mode" type="radio" id="mode[[ mode.id ]]" value="[[ mode.id ]]" name="mode" ng-required="true" />
+                                        <label ng-repeat-end for="mode[[ mode.id ]]">
+                                            [[ mode.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="modes.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in modes" ng-model="package.mode" name="mode" id="packageMode" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="packageForm.mode.$dirty && packageForm.mode.$error.required" translate="content.form.messages.MODEREQUIRED">Mode is required.</span>
+                                    <span class="success text-small block" ng-if="packageForm.mode.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="package.is_published" type="checkbox" name="isPublished" id="packageIsPublished" />
+                                    <label for="packageIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':packageForm.duration.$dirty && packageForm.duration.$invalid, 'has-success':packageForm.duration.$valid}">
+                                    <label for="packageDuration" class="control-label">
+                                        <span translate="content.list.fields.DURATION">Duration</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="package.duration" type="text" name="duration" id="packageDuration" class="form-control" placeholder="[[ 'content.form.messages.ENTERDURATION' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-timer"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="packageForm.duration.$dirty && packageForm.duration.$error.required" translate="content.form.messages.DURATIONREQUIRED">Duration is required.</span>
+                                    <span class="success text-small block" ng-if="packageForm.duration.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPACKAGES">Back to Packages list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(packageForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="packageForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="packages.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

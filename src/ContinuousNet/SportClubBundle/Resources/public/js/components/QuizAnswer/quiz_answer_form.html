@@ -1,0 +1,114 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.QUIZANSWERS">Quiz Answers</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="QuizAnswerFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWQUIZANSWER" ng-if="quizAnswer.id == 0">
+                        New Quiz Answer
+                    </legend>
+                    <legend translate="content.list.EDITQUIZANSWER" ng-if="quizAnswer.id > 0">
+                        Edit Quiz Answer
+                    </legend>
+                    <form name="quizAnswerForm" id="quizAnswerForm" novalidate ng-submit="submitForm(quizAnswerForm)">
+                        <input type="hidden" name="id" id="quizAnswerId" ng-model="quizAnswer.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':quizAnswerForm.quiz.$dirty && quizAnswerForm.quiz.$invalid, 'has-success':quizAnswerForm.quiz.$valid}">
+                                    <label for="quizAnswerQuiz" class="control-label">
+                                        <span translate="content.list.fields.QUIZ">Quiz</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                <div class="block select-list" ng-if="quizzesLoaded">
+                                    <span class="input-icon">
+                                        <select ng-readonly="quiz_answer_quiz_readonly" ng-options="item.id as item.title for item in quizzes | filter:{ hidden : false }" ng-model="quizAnswer.quiz" name="quiz" id="quizAnswerQuiz" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div>
+                                    <span class="error text-small block" ng-if="quizAnswerForm.quiz.$dirty && quizAnswerForm.quiz.$error.required" translate="content.form.messages.QUIZREQUIRED">Quiz is required.</span>
+                                    <span class="success text-small block" ng-if="quizAnswerForm.quiz.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':quizAnswerForm.answer.$dirty && quizAnswerForm.answer.$invalid, 'has-success':quizAnswerForm.answer.$valid}">
+                                    <label for="quizAnswerAnswer" class="control-label">
+                                        <span translate="content.list.fields.ANSWER">Answer</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="quizAnswer.answer" type="text" name="answer" id="quizAnswerAnswer" class="form-control" placeholder="[[ 'content.form.messages.ENTERANSWER' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="quizAnswerForm.answer.$dirty && quizAnswerForm.answer.$error.required" translate="content.form.messages.ANSWERREQUIRED">Answer is required.</span>
+                                    <span class="success text-small block" ng-if="quizAnswerForm.answer.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="quizAnswer.is_correct" type="checkbox" name="isCorrect" id="quizAnswerIsCorrect" />
+                                    <label for="quizAnswerIsCorrect" translate="content.list.fields.ISCORRECT">Is Correct</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="quizAnswer.is_winner" type="checkbox" name="isWinner" id="quizAnswerIsWinner" />
+                                    <label for="quizAnswerIsWinner" translate="content.list.fields.ISWINNER">Is Winner</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKQUIZANSWERS">Back to Quiz Answers list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(quizAnswerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="quizAnswerForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="quizAnswers.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

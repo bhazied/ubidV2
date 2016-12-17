@@ -1,0 +1,273 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PUSHDEVICES">Push Devices</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PushDeviceFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWPUSHDEVICE" ng-if="pushDevice.id == 0">
+                        New Push Device
+                    </legend>
+                    <legend translate="content.list.EDITPUSHDEVICE" ng-if="pushDevice.id > 0">
+                        Edit Push Device
+                    </legend>
+                    <form name="pushDeviceForm" id="pushDeviceForm" novalidate ng-submit="submitForm(pushDeviceForm)">
+                        <input type="hidden" name="id" id="pushDeviceId" ng-model="pushDevice.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceAppName" class="control-label">
+                                        <span translate="content.list.fields.APPNAME">App Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.app_name" type="text" name="appName" id="pushDeviceAppName" class="form-control" placeholder="[[ 'content.form.messages.ENTERAPPNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceAppVersion" class="control-label">
+                                        <span translate="content.list.fields.APPVERSION">App Version</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.app_version" type="text" name="appVersion" id="pushDeviceAppVersion" class="form-control" placeholder="[[ 'content.form.messages.ENTERAPPVERSION' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceUid" class="control-label">
+                                        <span translate="content.list.fields.DEVICEUID">Device Uid</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_uid" type="text" name="deviceUid" id="pushDeviceDeviceUid" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICEUID' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceReg" class="control-label">
+                                        <span translate="content.list.fields.DEVICEREG">Device Reg</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_reg" type="text" name="deviceReg" id="pushDeviceDeviceReg" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICEREG' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceToken" class="control-label">
+                                        <span translate="content.list.fields.DEVICETOKEN">Device Token</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_token" type="text" name="deviceToken" id="pushDeviceDeviceToken" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICETOKEN' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceName" class="control-label">
+                                        <span translate="content.list.fields.DEVICENAME">Device Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_name" type="text" name="deviceName" id="pushDeviceDeviceName" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICENAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceEmail" class="control-label">
+                                        <span translate="content.list.fields.DEVICEEMAIL">Device Email</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_email" type="text" name="deviceEmail" id="pushDeviceDeviceEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICEEMAIL' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceModel" class="control-label">
+                                        <span translate="content.list.fields.DEVICEMODEL">Device Model</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_model" type="text" name="deviceModel" id="pushDeviceDeviceModel" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICEMODEL' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceDeviceVersion" class="control-label">
+                                        <span translate="content.list.fields.DEVICEVERSION">Device Version</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.device_version" type="text" name="deviceVersion" id="pushDeviceDeviceVersion" class="form-control" placeholder="[[ 'content.form.messages.ENTERDEVICEVERSION' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="pushDevice.is_enabled_badge" type="checkbox" name="isEnabledBadge" id="pushDeviceIsEnabledBadge" />
+                                    <label for="pushDeviceIsEnabledBadge" translate="content.list.fields.ISENABLEDBADGE">Is Enabled Badge</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="pushDevice.is_enabled_alert" type="checkbox" name="isEnabledAlert" id="pushDeviceIsEnabledAlert" />
+                                    <label for="pushDeviceIsEnabledAlert" translate="content.list.fields.ISENABLEDALERT">Is Enabled Alert</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="pushDevice.is_enabled_sound" type="checkbox" name="isEnabledSound" id="pushDeviceIsEnabledSound" />
+                                    <label for="pushDeviceIsEnabledSound" translate="content.list.fields.ISENABLEDSOUND">Is Enabled Sound</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':pushDeviceForm.development.$dirty && pushDeviceForm.development.$invalid, 'has-success':pushDeviceForm.development.$valid}">
+                                    <label for="pushDeviceDevelopment" class="control-label">
+                                        <span translate="content.list.fields.DEVELOPMENT">Development</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="developments.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="development in developments" ng-model="pushDevice.development" type="radio" id="development[[ development.id ]]" value="[[ development.id ]]" name="development" ng-required="true" />
+                                        <label ng-repeat-end for="development[[ development.id ]]">
+                                            [[ development.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="developments.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in developments" ng-model="pushDevice.development" name="development" id="pushDeviceDevelopment" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="pushDeviceForm.development.$dirty && pushDeviceForm.development.$error.required" translate="content.form.messages.DEVELOPMENTREQUIRED">Development is required.</span>
+                                    <span class="success text-small block" ng-if="pushDeviceForm.development.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':pushDeviceForm.status.$dirty && pushDeviceForm.status.$invalid, 'has-success':pushDeviceForm.status.$valid}">
+                                    <label for="pushDeviceStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="pushDevice.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="pushDevice.status" name="status" id="pushDeviceStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="pushDeviceForm.status.$dirty && pushDeviceForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="pushDeviceForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="pushDeviceIp" class="control-label">
+                                        <span translate="content.list.fields.IP">Ip</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="pushDevice.ip" type="text" name="ip" id="pushDeviceIp" class="form-control" placeholder="[[ 'content.form.messages.ENTERIP' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPUSHDEVICES">Back to Push Devices list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(pushDeviceForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="pushDeviceForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="pushDevices.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

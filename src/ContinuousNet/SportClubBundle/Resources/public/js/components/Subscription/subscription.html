@@ -1,0 +1,173 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.SUBSCRIPTIONS">Subscriptions</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="SubscriptionCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                           <button ng-click="list()" class="btn btn-primary pull-left">
+                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUBSCRIPTIONS">Back to Subscriptions list</span>
+                           </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                        <button  type="button" ng-click="add()" class="btn btn-primary pull-right">
+                            <i class="ti-plus"></i> <span translate="content.list.ADDSUBSCRIPTION">Add Subscription</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                        <button type="button" ng-click="edit(subscription)" class="btn btn-primary pull-right">
+                            <i class="ti-pencil-alt"></i> <span translate="content.list.EDITSUBSCRIPTION">Edit Subscription</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" translate="content.list.SUBSCRIPTIONDETAILS">Subscription Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VISIT">Visit</span></td>
+                                <td><a ui-sref="app.statistics.visitsdetails({id: subscription.visit.id})">[[ subscription.visit.ip ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PACKAGE">Package</span></td>
+                                <td><a ui-sref="app.offer.packagesdetails({id: subscription.package.id})">[[ subscription.package.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td>
+                                    <span my-enum="[[ subscription.status ]]" my-enum-list="[[ statuses ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.reference"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TOKEN">Token</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.token"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MSISDN">Msisdn</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.msisdn"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.VOUCHER">Voucher</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.voucher"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SERIALNUMBER">Serial Number</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.serial_number"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.AMOUNT">Amount</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.amount"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CURRENCY">Currency</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.currency"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.DURATION">Duration</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.duration"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.STARTDATE">Start Date</span></td>
+                                <td>
+                                    <span>[[ subscription.start_date | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENDDATE">End Date</span></td>
+                                <td>
+                                    <span>[[ subscription.end_date | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PRICE">Price</span></td>
+                                <td><a ui-sref="app.offer.pricesdetails({id: subscription.price.id})">[[ subscription.price.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.PRICEVALUE">Price Value</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.price_value"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.USERAGENT">User Agent</span></td>
+                                <td>
+                                    <div ng-bind-html="subscription.user_agent"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ subscription.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: subscription.creator_user.id})">[[ subscription.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ subscription.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: subscription.modifier_user.id})">[[ subscription.modifier_user.username ]]</a></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->
