@@ -282,15 +282,13 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.tenderCategories = false;
     $scope.$watch('tenderCategories', function() {
-        if (angular.isDefined($scope.tender)) {
-            if ($scope.tenderCategories) {
-                $scope.tender.categories = [];
-                for (var i in $scope.categories) {
-                    $scope.tender.categories.push($scope.categories[i].id);
-                }
-            } else {
-                $scope.tender.categories = [];
+        if ($scope.tenderCategories) {
+            $scope.tender.categories = [];
+            for (var i in $scope.categories) {
+                $scope.tender.categories.push($scope.categories[i].id);
             }
+        } else {
+            $scope.tender.categories = [];
         }
     });
 

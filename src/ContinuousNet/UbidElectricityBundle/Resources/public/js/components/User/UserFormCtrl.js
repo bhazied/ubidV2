@@ -233,15 +233,13 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.userGroups = false;
     $scope.$watch('userGroups', function() {
-        if (angular.isDefined($scope.user)) {
-            if ($scope.userGroups) {
-                $scope.user.groups = [];
-                for (var i in $scope.groups) {
-                    $scope.user.groups.push($scope.groups[i].id);
-                }
-            } else {
-                $scope.user.groups = [];
+        if ($scope.userGroups) {
+            $scope.user.groups = [];
+            for (var i in $scope.groups) {
+                $scope.user.groups.push($scope.groups[i].id);
             }
+        } else {
+            $scope.user.groups = [];
         }
     });
 
