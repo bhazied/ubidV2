@@ -70,6 +70,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
 app.config(['$translateProvider',
     function ($translateProvider) {
 
+
     // prefix and suffix information  is required to specify a pattern
     // You can simply use the static-files loader with this pattern:
     $translateProvider.useStaticFilesLoader({
