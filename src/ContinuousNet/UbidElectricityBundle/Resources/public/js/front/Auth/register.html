@@ -1,10 +1,24 @@
 <div ng-controller="RegisterCtrl">
     <fieldset>
-        <legend ng-if="user.type == 'Buyer'" translate="front.REGISTERASBUYER">Register as Buyer</legend>
-        <legend ng-if="user.type == 'Supplier'" translate="front.REGISTERASSUPPLIER">Register as Supplier</legend>
+        <legend ng-if="current_type == 'Buyer'" translate="front.REGISTERASBUYER">Register as Buyer</legend>
+        <legend ng-if="current_type == 'Supplier'" translate="front.REGISTERASSUPPLIER">Register as Supplier</legend>
 
         <form  name="registerForm" id="registerForm" class="form" data-ng-submit="submitForm(registerForm)">
             <input type="hidden" ng-model="user.roles" name="roles" id="roles" value="[[ roles.id ]]">
+
+            <div class="form-group" ng-class="{'has-error':tenderForm.section.$dirty && tenderForm.section.$invalid, 'has-success':tenderForm.section.$valid}">
+                <label for="userType" class="control-label">
+                    <span translate="content.list.fields.USERTYPE">Type</span>
+                    <span class="symbol required"></span>
+                </label>
+                <div class="continuous-radio radio-primary">
+                    <input ng-disabled="false" ng-repeat-start="type in types" ng-model="user.type" type="radio" id="type[[ type.id ]]" value="[[ type.id ]]" name="userType" ng-required="true" ng-selected="type.id == current_type"/>
+                    <label ng-repeat-end for="type[[ type.id ]]">
+                        [[ type.title ]]
+                    </label>
+                </div>
+            </div><!--/form-group-->
+
             <div class="form-group" ng-class="{'has-error':registerForm.firstName.$dirty && registerForm.firstName.$invalid, 'has-success':registerForm.firstName.$valid}">
                 <label for="firstName" class="control-label">
                     <span translate="content.list.fields.FIRSTNAME">First Name</span>

@@ -51,6 +51,17 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
             css: 'success'
         };
 
+        $scope.types = [{
+            id: 'Buyer',
+            title: $filter('translate')('content.list.fields.types.BUYER')
+        },{
+            id: 'Supplier',
+            title: $filter('translate')('content.list.fields.types.SUPPLIER')
+        },{
+            id: 'Both',
+            title: $filter('translate')('content.list.fields.types.BOTH')
+        }];
+
         $scope.passwordRequestedAtOpened = false;
         $scope.passwordRequestedAtToggle = function($event) {
             $event.preventDefault();
@@ -190,7 +201,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 return false;
             } else {
                 $scope.user.locale = $localStorage.language;
-                $scope.user.type = $stateParams.type;
+                $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                    if(data.status == true){
                         $state.go("front.profile");

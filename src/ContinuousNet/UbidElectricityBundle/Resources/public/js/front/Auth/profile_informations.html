@@ -1,14 +1,45 @@
-<dl>
-    <dt>First name : [[ user.firstName ]]</dt>
-    <dt>Last name : [[ user.lastName ]]</dt>
-    <dt>E-mail : [[ user.email ]]</dt>
-    <dt>Type : [[ user.type ]]</dt>
-    <dt>Phone : [[ user.phone ]]</dt>
-    <dt>Job : [[ user.job ]]</dt>
-    <dt>Phone: [[ user.phone ]]</dt>
-    <dt>Inscription data : [[ user.inscriptionDate ]]</dt>
-    <dt>Localisation </dt>
-    <dd>Address : [[ user.address ]]</dd>
-    <dd>Zip code : [[ user.zipCode ]]</dd>
-    <dd>Country : [[ user.country.name ]]</dd>
-</dl>
+<div class="tender-details">
+    <h4 class="name">[[ user.name ]]</h4>
+    <table class="table table-striped">
+        <tr>
+            <th><span translate="front.profile.FIRSTNAME"> First name :</span>:</th>
+            <td><span class="value">[[ user.firstName ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.LASTNAME">Last name :</span>:</th>
+            <td><span class="value">[[ user.lastName ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.EMAIL">E-mail :</span>:</th>
+            <td><span class="value">[[ user.email ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.TYPE">Type :</span>:</th>
+            <td><span class="value">[[ user.type ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.JOB">Job :</span>:</th>
+            <td><span class="value">[[ user.job ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.INSCRIPTIONDATE">Inscription date :</span>:</th>
+            <td><span class="value">[[ user.inscriptionDate | date : formats.DATE  | translate ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.profile.COUNTRY">Country</span>:</th>
+            <td><span class="value"><i class="country "><img src="[[ user.country.picture ]]"></i> [[ user.country.name ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.CONTACT">Contact</span>:</th>
+            <td>
+                    <span class="value">
+                        <span translate="front.TEL">Tel</span>: <span>[[ user.phone ]]</span>
+                        -
+                        <span  translate="front.profile.ADDRESS">Address</span>: <span>[[ user.address]]</span>
+                        -
+                        <span  translate="front.profile.ZIPCODE">Zip code</span>: <span>[[ user.zipCode ]]</span>
+                    </span>
+            </td>
+        </tr>
+    </table>
+</div>

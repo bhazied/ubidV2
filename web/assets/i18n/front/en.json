@@ -46,7 +46,11 @@
   },
   "profile": {
     "PROFILEUPDATED": "Your profile has been updated.",
-    "PROFILENOTUPDATED": "Your profile not updated"
+    "PROFILENOTUPDATED": "Your profile not updated",
+    "INFORMATIONS": "Informations",
+    "UPDATEPROFILE": "Update profile",
+    "CHANGEPASSWORD" : "Change password",
+    "SETTINGS": "Settings"
   },
   "resetpassword": {
     "FORGET": "Forget Password?",
@@ -1157,6 +1161,8 @@
         "VALUE": "Value",
         "IP": "Ip",
         "ISVALID": "Is Valid",
+        "USERTYPE": "Type",
+        "ALIAS": "Alias",
         "types": {
           "TENDER": "Tender",
           "SUPPLIER": "Supplier",
@@ -1540,7 +1546,8 @@
         "ENTERVALUE": "Enter the Value",
         "VALUEREQUIRED": "The Value is required",
         "ENTERIP": "Enter the Ip",
-        "IPREQUIRED": "The Ip is required"
+        "IPREQUIRED": "The Ip is required",
+        "ENTERALIAS": "Enter the alias"
       }
     },
     "common": {
@@ -1738,6 +1745,18 @@
     "NORESULTSFORSUPPLIERS": "No results for suppliers",
     "NORESULTSFORTENDERS": "No results for tenders",
     "NORESULTSFORBUYERS":"No results for buyers",
-    "FILTERCOUNTRIES": "Search in countries..."
+    "FILTERCOUNTRIES": "Search in countries...",
+    "RELATEDPRODUCTS": "Related products",
+    "profile":{
+      "FIRSTNAME": "First name",
+      "LASTNAME": "Last name",
+      "EMAIL": "E-mail",
+      "TYPE": "Type",
+      "JOB": "Job",
+      "INSCRIPTIONDATE": "Inscription date",
+      "COUNTRY": "Country",
+      "ADDRESS": "Address",
+      "ZIPCODE": "Zip code"
+    }
   }
 }
