@@ -421,6 +421,10 @@ body {
     height: 86px;
     padding: 14px;
     border-radius: 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
 }
 
 #electricity-navbar form {
