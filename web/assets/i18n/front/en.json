@@ -1737,6 +1737,7 @@
     "COMMENTS": "Comments",
     "NORESULTSFORSUPPLIERS": "No results for suppliers",
     "NORESULTSFORTENDERS": "No results for tenders",
-    "NORESULTSFORBUYERS":"No results for buyers"
+    "NORESULTSFORBUYERS":"No results for buyers",
+    "FILTERCOUNTRIES": "Search in countries..."
   }
 }
