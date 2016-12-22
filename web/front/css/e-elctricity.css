@@ -181,6 +181,7 @@ body {
 
 #container {
     min-height: 500px;
+    margin-top: 86px;
 }
 
 .footer-sep {
