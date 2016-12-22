@@ -109,6 +109,81 @@ class SearchRestController extends FOSRestController {
 
 
     /**
+     * @POST("/genericSearch")
+     * @View(serializerEnableMaxDepthChecks=true)
+     * @param Request $request
+     */
+    public function genericSearchAction(Request $request){
+        try{
+            $searchText = $request->request->get('searchText');
+            $data = [];
+            $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+            $qb_buyer = clone $qb;
+            $qb_supplier = clone $qb;
+            $qb_tender = clone $qb;
+            //get Tenders
+            $qb_tender->from("UbidElectricityBundle:Tender", 't_')
+                ->where($qb_tender->expr()->like(
+                    $qb_tender->expr()->upper( $qb_tender->expr()->concat('t_.title', 't_.slug', 't_.reference', 't_.description') ),
+                    $qb_tender->expr()->upper( $qb_tender->expr()->literal('%'. $searchText .'%') )
+                ));
+            $qb_tender_count = clone $qb_tender;
+            $tenders = $qb_tender->select('t_')->getQuery()->getResult();
+
+            $tenderCount = $qb_tender_count->select('count(t_.id)')->getQuery()->getSingleScalarResult();
+
+            //get Suppliers
+            $qb_supplier->from("UbidElectricityBundle:Supplier", 's_')
+                ->where($qb_supplier->expr()->like(
+                    $qb_supplier->expr()->upper( $qb_supplier->expr()->concat('s_.name', 's_.firstName', 's_.lastName', 's_.job', 's_.companyName') ),
+                    $qb_supplier->expr()->upper( $qb_supplier->expr()->literal('%'. $searchText .'%'))
+                ));
+            $qb_supplier_count = clone $qb_supplier;
+            $suppliers = $qb_supplier->select('s_')->getQuery()->getResult();
+
+            $supplierCount = $qb_supplier_count->select('count(s_.id)')->getQuery()->getSingleScalarResult();
+
+            //get Buyers
+            $qb_buyer->from("UbidElectricityBundle:Buyer", 'b_')
+                ->where($qb_buyer->expr()->like(
+                    $qb_buyer->expr()->upper( $qb_buyer->expr()->concat('b_.name', 'b_.firstName', 'b_.lastName', 'b_.job','b_.companyNames') ),
+                    $qb_buyer->expr()->upper( $qb_buyer->expr()->literal('%'. $searchText .'%') )
+                ));
+            $qb_buyer_count = clone $qb_buyer;
+            $buyers = $qb_buyer->select('b_')->getQuery()->getResult();
+
+            $buyerCount = $qb_buyer_count->select('count(b_.id)')->getQuery()->getSingleScalarResult();
+
+            $data = [
+                'inlineCount' => ($buyerCount + $supplierCount + $tenderCount),
+                "tenders" => [
+                    'inlineCount' => $tenderCount,
+                    'data' => $tenders
+                ],
+                "suppliers" => [
+                    'inlineCount' => $supplierCount,
+                    'data' => $suppliers
+                ],
+                "buyers" => [
+                    'inlineCount' => $buyerCount,
+                    'data' => $buyers
+                ]
+            ];
+
+            /*$data = [
+                "tenders" => $qb_tender->getQuery()->getSql(),
+                "supplier" => $qb_supplier->getQuery()->getSql(),
+                "buyers" => $qb_buyer->getQuery()->getSql()
+            ];*/
+            return $data;
+        }
+        catch(\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    /**
      * @GET("/maxCost")
      * @View(serializerEnableMaxDepthChecks=true)
      */
@@ -177,5 +252,7 @@ class SearchRestController extends FOSRestController {
             }
         }
     }
+
+
 
 }

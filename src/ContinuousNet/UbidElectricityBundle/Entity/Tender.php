@@ -888,6 +888,7 @@ class Tender
         $this->views = $views;
         return $this;
     }
+    
     /**
      * Get views
      *

@@ -345,16 +345,17 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.status = '';
             $scope.user = {};
 
-        }
+        };
+
         $scope.submit = function () {
             $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
-                    toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
                 }
-                toaster.pop('success', $filter('translate')('title.success.LOGIN'), $filter('translate')('message.success.LOGIN'));
+                toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
                 $scope.status = 'welcome';
                 $localStorage.access_token = data.token;
                 $scope.user = $localStorage.user = $rootScope.user = data.user;
@@ -364,20 +365,24 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 }, 1000);
             }, function(error) {
                 $scope.status = 'error';
-                toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('message.error.LOGIN'));
                 $rootScope.loggedIn = false;
             });
             return false;
         };
 
         $scope.logout = function(){
-                $scope.resetAccess();
+            $scope.resetAccess();
             $timeout(function() {
 
                 $rootScope.loggedIn = false;
 
                 $state.go('front.home');
             }, 1000);
+        };
+
+        $scope.myProfile = function () {
+            $state.go('front.profile');
         };
 
     }]);
@@ -407,7 +412,11 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.tenders.list',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender.details'
+            'front.tender.details',
+            'front.tenders',
+            'front.buyers',
+            'front.suppliers',
+            'front.post'
         ];
 
         $timeout(function() {
@@ -433,7 +442,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $scope.changeLanguage = function (lang) {
-           // $translate.use(lang);
+            $translate.use(lang);
+            $rootScope.currentLanguage = lang
         }
         
         // Loading bar transition
@@ -549,7 +559,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
-            set : function(localeId, ev) {
+            set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;

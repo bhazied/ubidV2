@@ -573,6 +573,7 @@ body {
 }
 
 #container {
+    min-height: 500px;
 }
 
 .footer-sep {
@@ -1174,6 +1175,10 @@ input.form-control {
     width: auto;
 }
 
+.sort-by select {
+    min-width: 120px;
+}
+
 .tender-preview {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
@@ -1334,6 +1339,10 @@ fieldset legend {
 
 #partial_profile_menu ul li {
     margin-bottom: 1rem;
+}
+
+.list-toolbox {
+    margin-bottom: 20px;
 }
 
 .list-toolbox .btn {

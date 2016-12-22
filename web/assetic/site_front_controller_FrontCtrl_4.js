@@ -2,8 +2,8 @@
 /**
  * Ubid electricity Main Controller
  */
-app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
-    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
+app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
+    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
         $rootScope.showSlogan = false;
         $rootScope.showUserMenu = false;
@@ -25,7 +25,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender'
+            'front.tender',
+            'front.tender.details',
+            'front.tenders',
+            'front.buyers',
+            'front.suppliers',
+            'front.post',
+            'front.generic_search'
         ];
 
         $timeout(function() {
@@ -172,7 +178,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
-            set : function(localeId, ev) {
+            set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;
@@ -244,6 +250,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $state.go('front.tender.add');
         }
 
+        $scope.show_tender = function (id) {
+            $state.go('front.tender', {id: id})
+        }
 
         $rootScope.operators = [
             {

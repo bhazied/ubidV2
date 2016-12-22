@@ -12,7 +12,6 @@
                 </label>
             </div>
         </div>
-
     </div>
     <div class="form-group">
         <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
@@ -24,6 +23,7 @@
                     <span class="custom-control-description">[[ country.name ]]</span>
                 </label>
             </div>
+        </div>
     </div>
     <div class="form-group">
         <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
@@ -34,36 +34,51 @@
                     <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
                 </div>
             </div>
-            <div class="col-md-6 pl-0">
-                <div class="input-group">
-                    <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
-                    <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+        </div>
+        <div class="form-group">
+            <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group nice-select">
+
+                        <select class="form-control" class="select" ng-model="search.total_cost_operator">
+                            <option  value="morethan" translate="front.MORETHAN">More Than</option>
+                            <option  value="lessthan" translate="front.LESSTHAN">Less Than</option>
+                            <option  value="equalto" translate="front.EQUALTO">Equal To</option>
+                        </select>
+                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-6 pl-0">
+                    <div class="input-group">
+                        <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
+                        <div class="input-group-addon"><i class="fa fa-usd"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="form-group">
         <label class="sidebar-label" translate="front.PUBLICATIONDATE">Publication Date</label>
         <div class="input-group nice-select">
             <select class="form-control" class="select" ng-model="search.publish_date" ng-options="item as item.label for item in dateRanges track by item.value"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
-        <div class="col-md-9">
-            <div class="input-group">
-                <input ng-model="search.publish_date_from" type="text" class="form-control" name="fromPublishDate" id="searchFromPublishDate" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="fromPublishDateOpened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
-                <div class="input-group-addon" ng-click="fromPublishDateToggle($event)"><i class="fa fa-calendar"></i></div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input ng-model="search.publish_date_from" type="text" class="form-control" name="fromPublishDate" id="searchFromPublishDate" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="fromPublishDateOpened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
+                    <div class="input-group-addon" ng-click="fromPublishDateToggle($event)"><i class="fa fa-calendar"></i></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-3 col-form-label" translate="front.TO">To</label>
-        <div class="col-md-9">
-            <div class="input-group">
-                <input ng-model="search.publish_date_to" type="text" class="form-control" name="toPublishDate" id="searchToPublishDate" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="toPublishDateOpened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false"/>
-                <div class="input-group-addon" ng-click="toPublishDateToggle($event)"><i class="fa fa-calendar"></i></div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" translate="front.TO">To</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input ng-model="search.publish_date_to" type="text" class="form-control" name="toPublishDate" id="searchToPublishDate" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="toPublishDateOpened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false"/>
+                    <div class="input-group-addon" ng-click="toPublishDateToggle($event)"><i class="fa fa-calendar"></i></div>
+                </div>
             </div>
         </div>
     </div>
@@ -73,17 +88,16 @@
             <select class="form-control" class="select" ng-model="search.deadline" ng-options="item as item.label for item in dateRanges track by item.value"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
-        <div class="col-md-9">
-            <div class="input-group">
-                <input ng-model="search.deadline1" type="text" class="form-control" name="deadline1" id="searchDeadLine1" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="deadline1Opened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" //>
-                <div class="input-group-addon" ng-click="deadline1Toggle($event)"><i class="fa fa-calendar"></i></div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input ng-model="search.deadline1" type="text" class="form-control" name="deadline1" id="searchDeadLine1" class="form-control" placeholder="[[ 'content.form.messages.SELECTDATE' | translate ]]" is-open="deadline1Opened" uib-datepicker-popup="[[dateFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" //>
+                    <div class="input-group-addon" ng-click="deadline1Toggle($event)"><i class="fa fa-calendar"></i></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form-group row">
+        <div class="form-group row">
         <label class="col-md-3 col-form-label" translate="front.TO">To</label>
         <div class="col-md-9">
             <div class="input-group">
@@ -95,6 +109,5 @@
         <button type="button" ng-click="submitForm(searchform, 1)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
             <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-search" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SUBMITADVANCEDSEARCH">Search</span>
         </button>
-    </div>
     </form>
 </div>

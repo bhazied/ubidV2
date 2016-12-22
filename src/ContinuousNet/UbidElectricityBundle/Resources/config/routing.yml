@@ -564,7 +564,7 @@ public_ubid_electricity_prod:
 ubid_advanced_search:
     resource: "@UbidElectricityBundle/Controller/SearchRestController.php"
     type:   rest
-    prefix: /api
+    prefix:   /{_locale}/api
 
 ubid_upload_api:
     resource: "@UbidElectricityBundle/Controller/UploadRESTController.php"

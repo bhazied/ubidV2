@@ -1,0 +1,71 @@
+
+<div ng-controller="SuppliersFrontCtrl">
+
+    <div class="row nav-menu">
+        <div class="col-md-8 pl-0 pr-0">
+            <ul class="pull-left">
+                <li><a ui-sref="front.tenders" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li><a ui-sref="front.tenders" translate="front.TENDERS">Tenders </a></li>
+                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
+                <li class="active"><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4 pl-0 pr-0">
+            <div class="form-group row pull-right sort-by">
+                <label class="col-xs-4 col-form-label pl-0 pr-0" translate="front.SORTBY">Sort By</label>
+                <div class="col-xs-8 pr-0">
+                    <div class="input-group nice-select">
+                        <select class="form-control" class="select" ng-model="sortingOption" ng-options="item as item.label for item in sortingOptions" ng-change="getBuyers()"></select>
+                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="supplier in suppliers" class="tender-preview">
+        <a ui-sref="front.supplier({id: supplier.id})" class="name" ng-bind="supplier.name"></a>
+        <div class="pb-1 clearfix">
+            <img ng-if="supplier.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
+            <div ng-bind-html="supplier.description"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+            <div class="col-md-6">
+                <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li ng-if="showPrevPage" class="page-item" ng-click="prevPage()" >
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only" translate="content.common.PREVIOUS">Previous</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="p in pages" ng-click="setPage(p)" ng-class="{'page-item': page != p, 'page-item active': page == p}"><a class="page-link">[[ p ]]</a></li>
+                    <li ng-if="showNextPage" class="page-item" ng-click="nextPage()">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" translate="content.common.NEXT">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            <nav aria-label="Page navigation" class="pull-right">
+                <ul class="pagination">
+                    <li ng-repeat="c in pageCounts" ng-click="setPageCount(c)" ng-class="{'page-item': pageCount != c, 'page-item active': pageCount == c}"><a class="page-link">[[ c ]]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>

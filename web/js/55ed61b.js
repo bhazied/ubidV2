@@ -67668,25 +67668,40 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     }]);
 
 // translate config
-app.config(['$translateProvider',
+app.config(['$translateProvider',   
     function ($translateProvider) {
 
-        // prefix and suffix information  is required to specify a pattern
-        // You can simply use the static-files loader with this pattern:
-        $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/i18n/front/',
-            suffix: '.json'
-        });
+    // prefix and suffix information  is required to specify a pattern
+    // You can simply use the static-files loader with this pattern:
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/assets/i18n/front/',
+        suffix: '.json'
+    });
 
-        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-        // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('en');
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
-        // Store the language in the local storage
-        $translateProvider.useLocalStorage();
+    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+    // This is where preferredLanguage(langKey) comes in.
+    $translateProvider.preferredLanguage(currentLanguage);
 
-        // Enable sanitize
-        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
+    
+    // Enable sanitize
+    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
 
     }]);
 
@@ -68244,8 +68259,17 @@ app.constant('APP_JS_REQUIRES', {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
+        name: 'buyerFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Buyer/BuyerFrontService.js']
+    },{
+        name: 'supplierFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Supplier/SupplierFrontService.js']
+    },{
+        name: 'productFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Product/ProductFrontService.js']
+    },{
         name: 'tenderFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
+        files: ['/bundles/ubidelectricity/js/front/Tender/TenderFrontService.js']
     },{
         name: 'searchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
@@ -68279,7 +68303,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
             responseError: function (response) {
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
-                    $location.path('/login/signin');
+                    $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
                     $timeout(function(){
@@ -68473,12 +68497,12 @@ app.config(['$stateProvider',
             url: '/buyers',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
-            resolve: loadSequence('BuyersFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService')
         }).state('front.buyer', {
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
         /*
          * Public Supplier List & Details routes
          */
@@ -68486,12 +68510,12 @@ app.config(['$stateProvider',
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
         /*
          * Public Product List & Details routes
          */
@@ -68499,17 +68523,24 @@ app.config(['$stateProvider',
             url: '/products',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
             title: 'front.PRODUCTS',
-            resolve: loadSequence('ProductsFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductsFrontCtrl', 'productFrontService')
         }).state('front.product', {
             url: '/product/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
         /*
          * Public Tender Lists & Details routes
          */
         }).state('front.tenders',{
-            url: '/tenders',
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.list',{
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
@@ -68536,6 +68567,11 @@ app.config(['$stateProvider',
         }).state('front.advanced_search', {
             url: '/advanced-search-results',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/search_results.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+        }).state('front.generic_search', {
+            url: '/generic-search-results',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         /*
@@ -71491,8 +71527,8 @@ function ($rootScope, ToggleHelper) {
 /**
  * Check if field is unique or not
  */
-app.directive('myUniqueField', ['$resource', '$rootScope',
-function($resource, $rootScope) {
+app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
+function($resource, $rootScope, $localStorage) {
     var timeoutId;
     return {
         restrict: 'A',
@@ -71510,7 +71546,7 @@ function($resource, $rootScope) {
                     var fieldName = attrs.myUniqueField;
                     var resourceURL = attrs.myResourceUrl;
                     var currentId = attrs.myCurrentId;
-                    var resource = $resource($rootScope.app.apiURL + resourceURL, {id: '@id'}, {
+                    var resource = $resource('/' + $localStorage.language + $rootScope.app.apiURL + resourceURL, {id: '@id'}, {
                         query: { method: 'GET' }
                     });
                     var http_params = {
@@ -71532,6 +71568,7 @@ function($resource, $rootScope) {
         }
     }
 }]);
+
 'use strict';
 
 app.directive('recompile', function($compile, $parse) {
@@ -71914,16 +71951,17 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.status = '';
             $scope.user = {};
 
-        }
+        };
+
         $scope.submit = function () {
             $scope.user = {email: $scope.email, password: $scope.password};
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
-                    toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
                 }
-                toaster.pop('success', $filter('translate')('title.success.LOGIN'), $filter('translate')('message.success.LOGIN'));
+                toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
                 $scope.status = 'welcome';
                 $localStorage.access_token = data.token;
                 $scope.user = $localStorage.user = $rootScope.user = data.user;
@@ -71933,14 +71971,14 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 }, 1000);
             }, function(error) {
                 $scope.status = 'error';
-                toaster.pop('error', $filter('translate')('title.error.LOGIN'), $filter('translate')('message.error.LOGIN'));
+                toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('message.error.LOGIN'));
                 $rootScope.loggedIn = false;
             });
             return false;
         };
 
         $scope.logout = function(){
-                $scope.resetAccess();
+            $scope.resetAccess();
             $timeout(function() {
 
                 $rootScope.loggedIn = false;
@@ -71951,7 +71989,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $scope.myProfile = function () {
             $state.go('front.profile');
-        }
+        };
 
     }]);
 
@@ -71959,8 +71997,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 /**
  * Ubid electricity Main Controller
  */
-app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
-    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
+app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
+    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
         $rootScope.showSlogan = false;
         $rootScope.showUserMenu = false;
@@ -71982,7 +72020,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender'
+            'front.tender',
+            'front.tender.details',
+            'front.tenders',
+            'front.buyers',
+            'front.suppliers',
+            'front.post',
+            'front.generic_search'
         ];
 
         $timeout(function() {
@@ -72129,7 +72173,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
-            set : function(localeId, ev) {
+            set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;
@@ -72201,6 +72245,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $state.go('front.tender.add');
         }
 
+        $scope.show_tender = function (id) {
+            $state.go('front.tender', {id: id})
+        }
 
         $rootScope.operators = [
             {
@@ -72247,6 +72294,253 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 value: 'customdate'
             }
         ];
+
+    }]);
+
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert, $stateParams) {
+
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = true;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 0;
+        }, 1000);
+
+        if(angular.isDefined($localStorage.searchResult)){
+            console.log($localStorage.searchResult);
+                $scope.tensers = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
+                $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
+                $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
+                $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
+        }
+
+        if(angular.isDefined($localStorage.genericSearchResults)){
+            //$state.reload();
+            $scope.totalCount = $localStorage.genericSearchResults.inlineCount ? $localStorage.genericSearchResults.inlineCount : 0;
+            $scope.tenders = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.tenders.data : [];
+            $scope.tenderCount = $localStorage.genericSearchResults.tenders.inlineCount ? $localStorage.genericSearchResults.tenders.inlineCount : 0;
+            $scope.suppliers = $localStorage.genericSearchResults.suppliers.data ? $localStorage.genericSearchResults.suppliers.data : [];
+            $scope.supplierCount = $localStorage.genericSearchResults.suppliers.inlineCount ? $localStorage.genericSearchResults.suppliers.inlineCount : 0;
+            $scope.buyers = $localStorage.genericSearchResults.buyers.data ? $localStorage.genericSearchResults.buyers.data : 0;
+            $scope.buyerCount = $localStorage.genericSearchResults.buyers.inlineCount ? $localStorage.genericSearchResults.buyers.inlineCount : [];
+
+            $scope.tabs = [
+                {
+                    title: $filter('translate')('front.TENDERS'),
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html'
+                },
+                {
+                    title: $filter('translate')('front.SUPPLIERS'),
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html'
+                },
+                {
+                    title: $filter('translate')('front.BUYER'),
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html'
+                },
+            ];
+        }
+
+        $scope.col = 8;
+        $scope.selectListCountries = [];
+        $scope.selectedListCountries = [];
+
+        $scope.labels = {
+            selectAll       : $filter('translate')("content.form.country_picker.selectAll"),
+            selectNone      : $filter('translate')("content.form.country_picker.selectNone"),
+            reset           : $filter('translate')("content.form.country_picker.reset"),
+            search          : $filter('translate')("content.form.country_picker.search"),
+            nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
+        };
+
+        $scope.fromPublishDateOpened = false;
+        $scope.fromPublishDateToggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.fromPublishDateOpened = !$scope.deadline1Opened;
+        };
+
+        $scope.toPublishDateOpened = false;
+        $scope.toPublishDateToggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.toPublishDateOpened = !$scope.deadline2Opened;
+        };
+
+        $scope.deadline1Opened = false;
+        $scope.deadline1Toggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.deadline1Opened = !$scope.deadline1Opened;
+        };
+
+        $scope.deadline2Opened = false;
+        $scope.deadline2Toggle = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.deadline2Opened = !$scope.deadline2Opened;
+        };
+        
+        $scope.dateFormat = $filter('translate')('formats.DATE');
+        $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
+        $scope.timeFormat = $filter('translate')('formats.TIME');
+        $scope.minDate = new Date(2010, 0, 1);
+        $scope.maxDate = new Date(2050, 11, 31);
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+        $scope.disabled = function (date, mode) {
+            return (mode === 'day' && (date.getDay() === -1));
+        };
+
+        $scope.disableSubmit = false;
+        $scope.countriesLoaded = false;
+        $scope.countries = [];
+
+        $scope.getCountries = function(){
+            $timeout(function(){
+                $scope.countriesLoaded = true;
+                if ($scope.countries.length == 0) {
+                    $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
+                    var def = $q.defer();
+                    $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
+                        for (var i in data.results) {
+                            data.results[i].hidden = false;
+                            $scope.selectListCountries.push({
+                                icon: '<img src="' + data.results[i].picture + '">',
+                                name: data.results[i].name,
+                                marker: data.results[i].id,
+                                ticked: false
+                            });
+                        }
+                        $scope.countries = data.results;
+                        def.resolve($scope.countries);
+                    });
+                    return def;
+                } else {
+                    return $scope.countries;
+                }
+            });
+        }
+
+        $scope.tenderCAtegoriesLoaded = false;
+        $scope.tenderCategories = [];
+
+        $scope.getTenderCategories = function () {
+            $timeout(function () {
+                $scope.tenderCAtegoriesLoaded = true;
+                if($scope.tenderCategories.length == 0){
+                    var def = $q.defer();
+                    $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                        $scope.tenderCategories = data.results;
+                        def.resolve($scope.tenderCategories);
+                    });
+                    return def;
+                }
+                else {
+                    return $scope.tenderCategories;
+                }
+            });
+        }
+
+        $scope.maxEstimatedCostLoaded = false;
+        $scope.maxEstimatedCost = 0;
+
+        $scope.getCountries();
+        $scope.getTenderCategories();
+        $scope.search = {
+            tender_categories: [],
+            countries: [],
+            total_cost_operator: '',
+            total_cos_value: 0,
+            publish_date: '',
+            publish_date_from: '',
+            publish_date_to: '',
+            deadline: '',
+            deadline1: '',
+            deadline2: ''
+        };
+
+        $scope.searchResults = [];
+        $scope.submitForm = function (form, page) {
+            page = page-1;
+            $scope.disableSubmit = true;
+            $scope.search.deadline = $scope.search.deadline ? $scope.search.deadline.value : '';
+            $scope.search.publish_date = $scope.search.publish_date ? $scope.search.publish_date.value : '';
+            $scope.search.total_cost_operator = $scope.search.total_cost_operator ? $scope.search.total_cost_operator.value : '';
+            $scope.search.page = page;
+            $scope.search.locale = $localStorage.language;
+            var $params = $scope.search;
+            delete $localStorage.searchResult;
+            $timeout(function () {
+                $advancedSearchDataFactory.getResults($params).$promise.then(function (data) {
+                    if(data.inlineCount > 0){
+                        $scope.searchResults = data.results;
+                        $scope.pageSize = 10;
+                        $scope.total = data.inlineCount;
+                        $scope.currentPage = page;
+                        var  searchResult = {
+                            tenders : $scope.searchResults,
+                            pageSize : $scope.pageSize,
+                            total:  $scope.total,
+                            page:  $scope.currentPage
+                        };
+                        $localStorage.searchResult = searchResult;
+                        $state.transitionTo('front.advanced_search', {}, {reload:true, notify:true});
+                    }
+                    else {
+                        $rootScope.searchLoaded = true;
+                        SweetAlert.swal($filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTHEADER'), $filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTTEXT'), "info");
+                    }
+                    $scope.disableSubmit = false;
+                });
+            });
+        }
+
+        $scope.genericSearchResults = [];
+        $scope.submitSearch = function (searchText) {
+            if(!angular.isDefined(searchText)){
+                toaster.pop('error', "You must enter some word to search", 'search info');
+                return false;
+            }
+            else {
+                delete $localStorage.genericSearchResults;
+                $timeout(function () {
+                    //var def = $q.defer();
+                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
+                    var $params = {locale: $scope.locale, searchText: searchText};
+                    $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
+                        if (data.inlineCount > 0) {
+                            $localStorage.genericSearchResults = data;
+                            $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
+                        } else {
+                            toaster.pop('error', "no result for this search", 'search info');
+                            return false;
+                        }
+                    });
+                });
+            }
+        }
+
+    }]);
+
+'use strict';
+
+/**
+ * advanced search  Data Factory
+ */
+app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
+    function($resource, $rootScope) {
+        var url = $rootScope.app.apiURL ;
+        return $resource(url, {
+            locale: '@locale'
+        }, {
+            getResults: { method: 'POST', url: '/:locale' + url + 'sr' , isArray: false},
+            genericSearch: {method: 'POST', url: +'/:locale'+ url + 'genericSearch', isArray : false }
+        });
 
     }]);
 

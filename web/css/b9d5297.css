@@ -2223,6 +2223,7 @@ body {
 }
 
 #container {
+    min-height: 500px;
 }
 
 .footer-sep {
@@ -2815,6 +2816,12 @@ input.form-control {
     color: #ffffff!important;
 }
 
+.nav-tabs ul li.active a {
+    background-color: #1D69AD;
+    color: #ffffff!important;
+}
+
+
 .sort-by label {
     color: #1D69AD;
     text-transform: uppercase;
@@ -2822,6 +2829,10 @@ input.form-control {
 
 .sort-by label .input-group {
     width: auto;
+}
+
+.sort-by select {
+    min-width: 120px;
 }
 
 .tender-preview {
@@ -2984,6 +2995,10 @@ fieldset legend {
 
 #partial_profile_menu ul li {
     margin-bottom: 1rem;
+}
+
+.list-toolbox {
+    margin-bottom: 20px;
 }
 
 .list-toolbox .btn {

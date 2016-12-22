@@ -21,7 +21,7 @@
     "DONTHAVEACCOUNT": "Don't have an account yet?",
     "CREATEACCOUNT": "Create an account",
     "ERROR": "Incorrect Email or Password",
-    "WELCOME": "Welcome [[user.firstName]]",
+    "WELCOME": "Welcome",
     "ACCESSDENEID": "Access denied"
   },
   "register": {
@@ -1663,6 +1663,7 @@
     "LASTMONTH":"Last month",
     "CUSTOMDATE":"Custom Date",
     "TENDERS": "Tenders",
+    "CONSULTATIONS": "Consultations",
     "TENDER": "Tender",
     "PRODUCTS": "Products",
     "PRODUCT": "Product",
@@ -1698,6 +1699,7 @@
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
     "COPYRIGHT": "Copyright &copy; E-electricity 2017. All rights reserved.",
+    "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
     "PUBLICATION": "Publication",
     "CONSULTTENDER": "Consult TENDER",
     "CONSULTPROPOSAL": "Consult PROPOSAL",
@@ -1724,6 +1726,17 @@
     "TEL": "Tel",
     "FAX": "Fax",
     "WEBSITE": "Website",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "SORTBY": "Sort By",
+    "NAMEASC": "Name ASC",
+    "NAMEDESC": "Name DESC",
+    "VIEWSASC": "Views ASC",
+    "VIEWSDESC": "Views DESC",
+    "READMORE": "Read More",
+    "SHARE": "Share",
+    "COMMENTS": "Comments",
+    "NORESULTSFORSUPPLIERS": "No results for suppliers",
+    "NORESULTSFORTENDERS": "No results for tenders",
+    "NORESULTSFORBUYERS":"No results for buyers"
   }
 }

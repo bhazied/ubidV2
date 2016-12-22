@@ -5,10 +5,12 @@
  */
 app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
-        var url = $rootScope.app.apiURL;
-        return $resource(url, {}, {
-            getResults: { method: 'POST', url: url + 'sr' , isArray: false},
-            getMaxEstimatedCost : {method: 'GET', url: url + 'maxCost', isArray: false}
+        var url = $rootScope.app.apiURL ;
+        return $resource(url, {
+            locale: '@locale'
+        }, {
+            getResults: { method: 'POST', url: '/:locale' + url + 'sr' , isArray: false},
+            genericSearch: {method: 'POST', url: +'/:locale'+ url + 'genericSearch', isArray : false }
         });
 
     }]);

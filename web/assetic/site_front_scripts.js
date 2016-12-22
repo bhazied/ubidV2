@@ -98,25 +98,40 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     }]);
 
 // translate config
-app.config(['$translateProvider',
+app.config(['$translateProvider',   
     function ($translateProvider) {
 
-        // prefix and suffix information  is required to specify a pattern
-        // You can simply use the static-files loader with this pattern:
-        $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/i18n/front/',
-            suffix: '.json'
-        });
+    // prefix and suffix information  is required to specify a pattern
+    // You can simply use the static-files loader with this pattern:
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/assets/i18n/front/',
+        suffix: '.json'
+    });
 
-        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-        // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('en');
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
-        // Store the language in the local storage
-        $translateProvider.useLocalStorage();
+    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+    // This is where preferredLanguage(langKey) comes in.
+    $translateProvider.preferredLanguage(currentLanguage);
 
-        // Enable sanitize
-        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
+    
+    // Enable sanitize
+    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
 
     }]);
 
@@ -674,8 +689,17 @@ app.constant('APP_JS_REQUIRES', {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
+        name: 'buyerFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Buyer/BuyerFrontService.js']
+    },{
+        name: 'supplierFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Supplier/SupplierFrontService.js']
+    },{
+        name: 'productFrontService',
+        files: ['/bundles/ubidelectricity/js/front/Product/ProductFrontService.js']
+    },{
         name: 'tenderFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Tender/TenderService.js']
+        files: ['/bundles/ubidelectricity/js/front/Tender/TenderFrontService.js']
     },{
         name: 'searchService',
         files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
@@ -709,7 +733,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
             responseError: function (response) {
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
-                    $location.path('/login/signin');
+                    $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
                     $timeout(function(){
@@ -903,12 +927,12 @@ app.config(['$stateProvider',
             url: '/buyers',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
-            resolve: loadSequence('BuyersFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService')
         }).state('front.buyer', {
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'homeService', 'buyerFrontService')
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
         /*
          * Public Supplier List & Details routes
          */
@@ -916,12 +940,12 @@ app.config(['$stateProvider',
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'homeService', 'supplierFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
         /*
          * Public Product List & Details routes
          */
@@ -929,17 +953,24 @@ app.config(['$stateProvider',
             url: '/products',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
             title: 'front.PRODUCTS',
-            resolve: loadSequence('ProductsFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductsFrontCtrl', 'productFrontService')
         }).state('front.product', {
             url: '/product/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'homeService', 'productFrontService')
+            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
         /*
          * Public Tender Lists & Details routes
          */
         }).state('front.tenders',{
-            url: '/tenders',
+            url: "/tenders",
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'sidebar.nav.adserving.MAIN',
+            ncyBreadcrumb: {
+                label: 'sidebar.nav.adserving.MAIN'
+            }
+        }).state('front.tenders.list',{
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
@@ -966,6 +997,11 @@ app.config(['$stateProvider',
         }).state('front.advanced_search', {
             url: '/advanced-search-results',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/search_results.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+        }).state('front.generic_search', {
+            url: '/generic-search-results',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         /*

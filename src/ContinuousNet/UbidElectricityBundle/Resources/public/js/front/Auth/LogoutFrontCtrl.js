@@ -22,12 +22,11 @@ app.controller('LogoutFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             delete  $localStorage.user;
             $scope.status = '';
             $scope.user = $rootScope.user = {};
-
+            $rootScope.loggedIn = false;
         };
 
         $scope.resetAccess();
         $timeout(function() {
-            $rootScope.loggedIn = false;
             $state.go('front.home');
         }, 5000);
 

@@ -7,7 +7,6 @@
 app.controller('MySupplierCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$suppliersDataFactory',
 function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $suppliersDataFactory) {
 
-
     $timeout(function() {
         $rootScope.showSlogan = false;
         $rootScope.showLeftSide = false;

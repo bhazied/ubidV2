@@ -1,20 +1,8 @@
 
-<!-- start: PAGE TITLE -->
-<section id="page-title">
-    <div class="row">
-        <div class="col-sm-8">
-            <h1 class="mainTitle" translate="content.list.TENDERS">Tenders</h1>
-            <span class="mainDescription"></span>
-        </div>
-        <div ncy-breadcrumb></div>
-    </div>
-</section>
-<!-- end: PAGE TITLE -->
-
 <!-- start: FORM -->
 <div class="container-fluid container-fullw bg-white">
     <div class="row">
-        <div class="col-md-12" ng-controller="TenderFormCtrl">
+        <div class="col-md-12" ng-controller="MyTenderFormCtrl">
             <div>
                 <fieldset>
                     <legend translate="content.list.NEWTENDER" ng-if="tender.id == 0">
@@ -250,19 +238,19 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':tenderForm.status.$dirty && tenderForm.status.$invalid, 'has-success':tenderForm.status.$valid}">
+                                <div class="form-group" ng-class="{'has-error':tenderForm.status.$dirty && tenderForm.status.$invalid, 'has-success':tenderForm.status.$valid}">
                                     <label for="tenderStatus" class="control-label">
                                         <span translate="content.list.fields.STATUS">Status</span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
-                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-repeat-start="status in statuses" ng-model="tender.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="tender.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
                                         <label ng-repeat-end for="status[[ status.id ]]">
                                             [[ status.title ]]
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="tender.status" name="status" id="tenderStatus" class="form-control" ng-required="true">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="tender.status" name="status" id="tenderStatus" class="form-control" ng-required="true">
                                         </select>
                                     </div>
                                     <span class="error text-small block" ng-if="tenderForm.status.$dirty && tenderForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
@@ -371,10 +359,26 @@
                                     <label for="tenderAttachmentFile1" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file1" type="text" name="attachmentFile1" id="tenderAttachmentFile1" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE1' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file1')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file1 != '' && tender.attachment_file1 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file1 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file1')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file1 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -386,10 +390,26 @@
                                     <label for="tenderAttachmentFile2" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file2" type="text" name="attachmentFile2" id="tenderAttachmentFile2" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE2' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file2')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file2 != '' && tender.attachment_file2 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file2 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file2')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file2 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -399,10 +419,26 @@
                                     <label for="tenderAttachmentFile3" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file3" type="text" name="attachmentFile3" id="tenderAttachmentFile3" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE3' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file3')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file3 != '' && tender.attachment_file3 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file3 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file3')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file3 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -414,10 +450,26 @@
                                     <label for="tenderAttachmentFile4" class="control-label">
                                         <span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
                                         <input ng-model="tender.attachment_file4" type="text" name="attachmentFile4" id="tenderAttachmentFile4" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE4' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file4')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_file4 != '' && tender.attachment_file4 != null">
+                                        <div class="thumbnail">
+                                            <img ng-src="[[ thumbURL + tender.attachment_file4 ]]" alt="" />
+                                        </div>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file4')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_file4 = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -431,24 +483,6 @@
                                         <input ng-model="tender.source" type="text" name="source" id="tenderSource" class="form-control" placeholder="[[ 'content.form.messages.ENTERSOURCE' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group" ng-class="{'has-error':tenderForm.views.$dirty && tenderForm.views.$invalid, 'has-success':tenderForm.views.$valid}">
-                                    <label for="tenderViews" class="control-label">
-                                        <span translate="content.list.fields.VIEWS">Views</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="tender.views" type="text" name="views" id="tenderViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="tenderForm.views.$dirty && tenderForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
-                                    <span class="success text-small block" ng-if="tenderForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
