@@ -15,6 +15,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         //header searchForm show
         $rootScope.SearchFormHeader = false;
 
+        $rootScope.showLogo = false;
+        $rootScope.showBrandName = false;
+
         $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
@@ -87,9 +90,18 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             if($state.current.name == "front.home"){
                 $rootScope.SearchFormHeader = false;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
+            }
+            else if($state.current.name == "front.usermenu"){
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
             }
             else{
                 $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
 
             // scroll top the page on change state
