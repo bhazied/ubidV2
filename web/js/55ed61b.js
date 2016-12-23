@@ -71990,6 +71990,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.myProfile = function () {
             $state.go('front.profile');
         };
+        
+        $scope.register = function (type) {
+            $state.go('front.register', {type: type});
+        }
 
     }]);
 

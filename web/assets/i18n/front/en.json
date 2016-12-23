@@ -22,7 +22,8 @@
     "CREATEACCOUNT": "Create an account",
     "ERROR": "Incorrect Email or Password",
     "WELCOME": "Welcome",
-    "ACCESSDENEID": "Access denied"
+    "ACCESSDENEID": "Access denied",
+    "SUBSCRIBE": "Subscribe"
   },
   "register": {
     "CREATEYOURACCOUNT": "Create your account",
