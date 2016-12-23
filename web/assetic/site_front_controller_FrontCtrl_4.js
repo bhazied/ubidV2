@@ -12,6 +12,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.contentSize = 6;
         $rootScope.contentOffset = 0;
 
+        //header searchForm show
+        $rootScope.SearchFormHeader = false;
+
         $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
@@ -82,22 +85,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 cfpLoadingBar.complete();
             });
 
-            //show or hide left & right side
-            /*if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showen in '+ $state.current.name);
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRightSide = true;
-                    $rootScope.contentOffset = 0;
-                });
-            } else {
-                $timeout(function() {
-                    console.warn('left and right side must be hidden in '+ $state.current.name);
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRightSide = false;
-                    $rootScope.contentOffset = 3;
-                });
-            }*/
+            if($state.current.name == "front.home"){
+                $rootScope.SearchFormHeader = false;
+            }
+            else{
+                $rootScope.SearchFormHeader = true;
+            }
 
             // scroll top the page on change state
             $('#app .main-content').css({
@@ -299,5 +292,31 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 value: 'customdate'
             }
         ];
+
+
+        $scope.genericSearchResults = [];
+        $scope.submitSearch = function (searchText) {
+            if(!angular.isDefined(searchText)){
+                toaster.pop('error', "You must enter some word to search", 'search info');
+                return false;
+            }
+            else {
+                delete $localStorage.genericSearchResults;
+                $timeout(function () {
+                    //var def = $q.defer();
+                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
+                    var $params = {locale: $scope.locale, searchText: searchText};
+                    $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
+                        if (data.inlineCount > 0) {
+                            $localStorage.genericSearchResults = data;
+                            $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
+                        } else {
+                            toaster.pop('error', "no result for this search", 'search info');
+                            return false;
+                        }
+                    });
+                });
+            }
+        }
 
     }]);

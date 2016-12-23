@@ -4,7 +4,7 @@
 
     <a class="navbar-logo-text" ui-sref="front.home"></a>
 
-    <form ng-controller="searchFormCtrl" class="float-xs-left" name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
+    <form ng-if="SearchFormHeader" ng-controller="searchFormCtrl" class="float-xs-left" name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
         <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
         <button type="submit" ng-submit="submitSearch(searchText)"></button>
     </form>
