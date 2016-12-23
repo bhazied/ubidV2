@@ -4,15 +4,15 @@ ubid_electricity_dev:
     defaults: { _controller: UbidElectricityBundle:Default:index }
     host: "ubid.com"
 
-#ubid_electricity_test:
- #   path:  /
-  #  defaults: { _controller: UbidElectricityBundle:Default:index }
-   # host: "ubid-electricity.continuousnet.com"
+ubid_electricity_test:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:index }
+    host: "ubid-electricity.continuousnet.com"
 
-#ubid_electricity_prod:
- #   path:  /
-  #  defaults: { _controller: UbidElectricityBundle:Default:index }
-   # host: "admin.e-elctricity.com"
+ubid_electricity_prod:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:index }
+    host: "admin.e-electricity.com"
 
 thumb:
     resource: "@UbidElectricityBundle/Controller/ThumbController.php"
@@ -554,17 +554,17 @@ public_ubid_electricity_chart:
 public_ubid_electricity_test:
     path:  /
     defaults: { _controller: UbidElectricityBundle:Default:public }
-    host: "e-elctricity.continuousnet.com"
+    host: "e-electricity.continuousnet.com"
 
 public_ubid_electricity_prod:
     path:  /
     defaults: { _controller: UbidElectricityBundle:Default:public }
-    host: "www.e-elctricity.com"
+    host: "www.e-electricity.com"
 
 ubid_advanced_search:
     resource: "@UbidElectricityBundle/Controller/SearchRestController.php"
     type:   rest
-    prefix: /api
+    prefix:   /{_locale}/api
 
 ubid_upload_api:
     resource: "@UbidElectricityBundle/Controller/UploadRESTController.php"

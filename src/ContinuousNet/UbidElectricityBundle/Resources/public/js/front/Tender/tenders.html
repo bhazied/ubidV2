@@ -1,36 +1,25 @@
-<section id="contentSection" ng-controller="tendersFrontCtrl">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="list-group">
-                <a href="#" class="list-group-item active" translate="content.text.ALLCATEGORIES"></a>
-                <div ng-repeat="category in categoriesList">
-                    <a ng-click="getTenders(1,category.id)" class="list-group-item list-group-item-action"> [[ category.name ]] ( [[ category.tender_count]] )</a>
-                </div>
-            </div>
+<div ng-controller="tendersFrontCtrl">
+    <div class="tender-preview"  ng-repeat="tender in tendersList">
+        <a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a>
+        <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>
+        <p class="description" ng-bind-html="[[ tender.description ]]"></p>
+        <div class="dates row">
+            <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : [[ tender.publish_date | date : formats.DATE  | translate  ]]</p>
+            <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : [[ tender.deadline | date : formats.DATE  | translate  ]]</p>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">
-                    <h5 class="list-group-item-heading" translate="content.text.TENDERLIST">Tender List</h5>
-                    <p class="list-group-item-heading" translate="content.text.TENDERLISTCATEGORY" translate-values="{category_name: category_name}">Tender List (All category).</p>
-                </a>
-                <div ng-repeat="tender in tendersList">
-                    <a ui-sref="front.tender.details({id: [[ tender.id ]]})" class="list-group-item list-group-item-action" >
-                        <h2 class="list-group-item-heading">[[ tender.title ]]</h2>
-                        <h5 class="list-group-item-heading"> [[ "content.form.fields.PUBLISHDATE" | translate ]] : [[ tender.publish_date | date : formats.DATE  | translate ]] </h5>
-                        <h5 class="list-group-item-heading"> [[ "content.form.fields.REFERENCE" | translate ]] : [[ tender.reference ]]</h5>
-                    </a>
-                </div>
-                <div paging
-                     page="currentPage"
-                     page-size="pageSize"
-                     total="total"
-                     paging-action=" getTenders(page)"
-                >
-                </div>
-
-
+        <div class="row">
+            <div class="col-md-6"><button class="btn btn-sm" translate="front.READMORE">Read more</button></div>
+            <div class="col-md-6">
+                <button class="btn btn-sm pull-right" translate="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                <button class="btn btn-sm pull-right mr-1" translate="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
             </div>
         </div>
     </div>
-</section>
+    <div paging
+         page="currentPage"
+         page-size="pageSize"
+         total="total"
+         paging-action=" getTenders(page)"
+    >
+    </div>
+</div>

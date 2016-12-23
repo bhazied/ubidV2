@@ -110,6 +110,14 @@ class MessageRESTController extends BaseRESTController
                    }
                 }
             }
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       $qb->andWhere('m_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                   }
+                }
+            }
             $qbList = clone $qb;
             $qb->select('count(m_.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
@@ -171,6 +179,16 @@ class MessageRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       if ($entity->getCreatorUser()->getId() != $this->getUser()->getId()) {
+                           return FOSView::create('Not authorized', Codes::HTTP_FORBIDDEN);
+                       }
+                   }
+                }
+            }
             $form = $this->createForm(new MessageType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
@@ -213,6 +231,16 @@ class MessageRESTController extends BaseRESTController
     public function deleteAction(Request $request, Message $entity)
     {
         try {
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       if ($entity->getCreatorUser()->getId() != $this->getUser()->getId()) {
+                           return FOSView::create('Not authorized', Codes::HTTP_FORBIDDEN);
+                       }
+                   }
+                }
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);
             $em->flush();

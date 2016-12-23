@@ -68,7 +68,6 @@ class DashboardRESTController extends BaseRESTController {
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Tender', 't_');
             $qb->select('count(t_.id)');
-            $qb->andWhere('t_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
@@ -82,7 +81,6 @@ class DashboardRESTController extends BaseRESTController {
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Bid', 'b_');
             $qb->select('count(b_.id)');
-            $qb->andWhere('b_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
@@ -96,7 +94,6 @@ class DashboardRESTController extends BaseRESTController {
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('count(sp_.id)');
-            $qb->andWhere('sp_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
@@ -110,7 +107,6 @@ class DashboardRESTController extends BaseRESTController {
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Buyer', 'b_');
             $qb->select('count(b_.id)');
-            $qb->andWhere('b_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
@@ -124,7 +120,6 @@ class DashboardRESTController extends BaseRESTController {
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Supplier', 's_');
             $qb->select('count(s_.id)');
-            $qb->andWhere('s_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {

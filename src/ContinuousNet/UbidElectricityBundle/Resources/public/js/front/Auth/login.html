@@ -1,20 +1,25 @@
-<form class="form-login form-actions" id="formLogin"  ng-controller="LoginFrontCtrl" ng-submit="submit()">
-    <div class="form-group">
-        <span class="input-icon">
-            <input ng-model="email" type="text" class="form-control" name="email" placeholder="[[ 'content.list.fields.EMAIL' | translate ]]">
-            <i class="fa fa-envelope"></i>
-        </span>
-    </div>
-    <div class="form-group form-actions">
-        <span class="input-icon">
-            <input ng-model="password" type="password" class="form-control password" name="password" placeholder="[[ 'content.list.fields.PASSWORD' | translate ]]">
-            <i class="fa fa-lock"></i>
-            <a class="forgot" ui-sref="auth.resetpassword" translate="login.FORGOTPASSWORD">
-                I forgot my password
-            </a>
-        </span>
-    </div>
-    <button type="submit" class="btn btn-primary pull-right bg_brand">
-        <span translate="login.LOGIN">Login</span> <i class="fa fa-arrow-circle-right"></i>
-    </button>
-</form>
+<div class="mt-3 mb-3 pb-3" ng-controller="LoginFrontCtrl">
+    <form class="form-login form-actions" id="formLogin" ng-submit="submit()">
+        <fieldset>
+            <legend translate="front.SIGNIN">Sign-in</legend>
+            <div class="form-group">
+                <span class="input-icon">
+                    <input ng-model="email" type="text" class="form-control" name="email" placeholder="[[ 'content.list.fields.EMAIL' | translate ]]">
+                    <i class="fa fa-envelope"></i>
+                </span>
+            </div>
+            <div class="form-group form-actions">
+                <span class="input-icon">
+                    <input ng-model="password" type="password" class="form-control password" name="password" placeholder="[[ 'content.list.fields.PASSWORD' | translate ]]">
+                    <i class="fa fa-lock"></i>
+                    <a class="forgot" ui-sref="front.resetpassword" translate="login.FORGOTPASSWORD">
+                        I forgot my password
+                    </a>
+                </span>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right bg_brand">
+                <span translate="login.LOGIN">Login</span> <i class="fa fa-arrow-circle-right"></i>
+            </button>
+        </fieldset>
+    </form>
+</div>

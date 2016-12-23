@@ -1,29 +1,23 @@
 <!-- toaster directive -->
 <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-<!--<header id="header" data-ng-include=" '/assets/views/front/header.html' "></header> -->
-<nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar" data-ng-include=" '/assets/views/front/header.html' ">
-</nav>
 
-<!--<section id="navArea" data-ng-include=" '/assets/views/front/nav_area.html' "></section>-->
+<div data-ng-include="'/assets/views/front/header.html'"></div>
+
 <div class="container" id="container">
     <div class="row mt-2">
         <div class="col-md-4">
-
-            <span class="slogan"><b>[[ 'front.SLOGAN1' | translate ]]</b> [[ 'front.SLOGAN2' | translate ]]<br />[[ 'front.SLOGAN3' | translate ]]</span>
-
+            <span ng-if="showSlogan" class="slogan" ng-bind-html-unsafe="'front.SLOGAN' | translate"><b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...</span>
         </div>
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4" data-ng-include="'/bundles/ubidelectricity/js/front/Auth/user_header.html'">
-        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4" data-ng-include="'/bundles/ubidelectricity/js/front/Auth/user_header.html'"></div>
     </div>
-    <div class="row mt-2"  >
-        <div class="col-md-3" id="specific_search" data-ng-include="'/bundles/ubidelectricity/js/front/Common/specific_search.html'"></div>
-        <div class="col-md-6" ui-view></div>
-        <div class="col-md-3" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'"></div>
+    <div class="row mt-2">
+        <div ng-if="showLeftSide" class="col-md-3" id="specific_search" data-ng-include="'/bundles/ubidelectricity/js/front/Common/specific_search.html'"></div>
+        <div ng-if="showUserMenu" class="col-md-2" id="partial_profile_menu" data-ng-include="'/bundles/ubidelectricity/js/front/Common/partial_profile_menu.html'"></div>
+        <div class="col-md-[[contentSize]] offset-md-[[contentOffset]]" ui-view></div>
+        <div ng-if="showRightSide" class="col-md-3" id="related_products" data-ng-include="'/bundles/ubidelectricity/js/front/Common/related_products.html'"></div>
     </div>
 </div>
-<hr class="footer-sep" />
-<footer id="footer" data-ng-include=" '/assets/views/front/footer.html' "></footer>
+
+<div data-ng-include=" '/assets/views/front/footer.html'"></div>
 

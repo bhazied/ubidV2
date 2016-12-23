@@ -54,7 +54,12 @@ security:
             anonymous: true
 
         advanced_search:
-            pattern: ^/api/sr
+            pattern: ^/(en|fr|ar)/api/sr
+            stateless: true
+            anonymous: true
+
+        generic_search:
+            pattern: ^/(en|fr|ar)/api/genericSearch
             stateless: true
             anonymous: true
 
@@ -105,6 +110,51 @@ security:
 
         reset:
             pattern:  ^/(en|fr|ar)/api/v1/reset
+            stateless: true
+            anonymous: true
+
+        post:
+            pattern:  ^/(en|fr|ar)/api/v1/getPostBySlug
+            stateless: true
+            anonymous: true
+
+        buyers:
+            pattern:  ^/(en|fr|ar)/api/v1/buyers
+            stateless: true
+            anonymous: true
+
+        buyer:
+            pattern:  ^/(en|fr|ar)/api/v1/buyerDetails
+            stateless: true
+            anonymous: true
+
+        suppliers:
+            pattern:  ^/(en|fr|ar)/api/v1/suppliers
+            stateless: true
+            anonymous: true
+
+        supplier:
+            pattern:  ^/(en|fr|ar)/api/v1/supplierDetails
+            stateless: true
+            anonymous: true
+
+        products:
+            pattern:  ^/(en|fr|ar)/api/v1/products
+            stateless: true
+            anonymous: true
+
+        product:
+            pattern:  ^/(en|fr|ar)/api/v1/productDetails
+            stateless: true
+            anonymous: true
+
+        tenders:
+            pattern:  ^/(en|fr|ar)/api/v1/tenders
+            stateless: true
+            anonymous: true
+
+        tender:
+            pattern:  ^/(en|fr|ar)/api/v1/tenderDetails
             stateless: true
             anonymous: true
 

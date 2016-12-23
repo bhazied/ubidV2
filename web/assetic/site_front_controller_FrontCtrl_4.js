@@ -2,8 +2,17 @@
 /**
  * Ubid electricity Main Controller
  */
-app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
-    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
+app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
+    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
+
+        $rootScope.showSlogan = false;
+        $rootScope.showUserMenu = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.contentSize = 6;
+        $rootScope.contentOffset = 0;
+
+        $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
             'front.login',
@@ -13,11 +22,18 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender.details'
+            'front.tender',
+            'front.tender.details',
+            'front.tenders',
+            'front.buyers',
+            'front.suppliers',
+            'front.post',
+            'front.generic_search'
         ];
+
         $timeout(function() {
             if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
@@ -27,29 +43,22 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         }, 2000);
 
-        $scope.no_show_left_right_side_in = [
+        $scope.hide_left_right_side_in = [
+            'front.home',
+            'front.post',
             'front.register',
-            'auth.resetpassword',
+            'front.resetpassword',
+            'front.changepassword',
+            'front.login',
+            'front.logout',
+            'front.usermenu',
+            'front.profile',
             'front.contact'
         ];
 
-        /*$timeout(function() {
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
-                    $scope.leftrightside = true;
-                });
-            }
-            else{
-                $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $scope.leftrightside = false;
-                });
-            }
-        });
-        */
         $scope.changeLanguage = function (lang) {
-           // $translate.use(lang);
+            $translate.use(lang);
+            $rootScope.currentLanguage = lang
         }
         
         // Loading bar transition
@@ -64,6 +73,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
+            //reset the search loaded result
+            $rootScope.searchLoaded = false;
+            
             //stop loading bar on stateChangeSuccess
             event.targetScope.$watch("$viewContentLoaded", function() {
 
@@ -71,18 +83,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             //show or hide left & right side
-            if ($scope.no_show_left_right_side_in.indexOf($state.current.name) != -1) {
+            /*if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
                 $timeout(function() {
-                    console.warn('left and right side must be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = true;
+                    console.warn('left and right side must be showen in '+ $state.current.name);
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = true;
+                    $rootScope.contentOffset = 0;
                 });
-            }
-            else{
+            } else {
                 $timeout(function() {
-                    console.warn('left and right side must not be showin in '+ $state.current.name);
-                    $rootScope.leftrightside = false;
+                    console.warn('left and right side must be hidden in '+ $state.current.name);
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.contentOffset = 3;
                 });
-            }
+            }*/
 
             // scroll top the page on change state
             $('#app .main-content').css({
@@ -144,15 +159,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             // Handles language dropdown
             listIsOpen : false,
             // list of available languages
-            available : {
-                'en' : 'English',
-                'fr' : 'Français'
-            },
+            available : $rootScope.languages,
             // display always the current ui language
             init : function() {
                 if (angular.isDefined($stateParams.language)) {
                     $scope.language.selected = $scope.language.available[$stateParams.language];
-                    $localStorage.language = $stateParams.language;
+                    $rootScope.currentLanguage = $localStorage.language = $stateParams.language;
                 } else {
                     var proposedLanguage = $translate.proposedLanguage() || $translate.use();
                     var preferredLanguage = $translate.preferredLanguage();
@@ -163,10 +175,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     }
                     // we know we have set a preferred one in app.config
                     $scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
-                    $localStorage.language = (proposedLanguage || preferredLanguage);
+                    $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
-            set : function(localeId, ev) {
+            set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;
@@ -175,7 +187,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         };
 
-        $scope.language.init();$localStorage.language
+        $scope.language.init();
 
         // Function that find the exact height and width of the viewport in a cross-browser way
         var viewport = function() {
@@ -237,5 +249,55 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.add_tender = function () {
             $state.go('front.tender.add');
         }
+
+        $scope.show_tender = function (id) {
+            $state.go('front.tender', {id: id})
+        }
+
+        $rootScope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $rootScope.dateRanges = [
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
 
     }]);

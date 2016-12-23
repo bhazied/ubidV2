@@ -1,6 +1,17 @@
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
-function ($rootScope, $state, $stateParams, $localStorage) {
+
+var languages = {
+    'en' : 'English',
+    'fr' : 'Français',
+    'es' : 'Español',
+    'it' : 'Italiano',
+    'de' : 'Deutsch'
+};
+
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
+    function ($rootScope, $state, $stateParams, $localStorage, $timeout) {
+
+    $rootScope.languages = languages;
 
     // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
     FastClick.attach(document.body);
@@ -55,6 +66,7 @@ function ($rootScope, $state, $stateParams, $localStorage) {
 app.config(['$translateProvider',
 function ($translateProvider) {
 
+
     // prefix and suffix information  is required to specify a pattern
     // You can simply use the static-files loader with this pattern:
     $translateProvider.useStaticFilesLoader({
@@ -62,9 +74,24 @@ function ($translateProvider) {
         suffix: '.json'
     });
 
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
+
     // Since you've now registered more then one translation table, angular-translate has to know which one to use.
     // This is where preferredLanguage(langKey) comes in.
-    $translateProvider.preferredLanguage('fr');
+    $translateProvider.preferredLanguage(currentLanguage);
 
     // Store the language in the local storage
     $translateProvider.useLocalStorage();

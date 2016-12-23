@@ -25,11 +25,11 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
         $scope.genders = [{
             id: 'Male',
-            title: $filter('translate')('content.form.fields.genders.MALE'),
+            title: $filter('translate')('content.list.fields.genders.MALE'),
             css: 'primary'
         }, {
             id: 'Female',
-            title: $filter('translate')('content.form.fields.genders.FEMALE'),
+            title: $filter('translate')('content.list.fields.genders.FEMALE'),
             css: 'success'
         }];
         $scope.authenticationModes = [{
@@ -50,6 +50,17 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
             title: $filter('translate')('content.list.fields.rolesoptions.ROLE_SUBSCRIBER'),
             css: 'success'
         };
+
+        $scope.types = [{
+            id: 'Buyer',
+            title: $filter('translate')('content.list.fields.types.BUYER')
+        },{
+            id: 'Supplier',
+            title: $filter('translate')('content.list.fields.types.SUPPLIER')
+        },{
+            id: 'Both',
+            title: $filter('translate')('content.list.fields.types.BOTH')
+        }];
 
         $scope.passwordRequestedAtOpened = false;
         $scope.passwordRequestedAtToggle = function($event) {
@@ -147,10 +158,16 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                     $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
                     var def = $q.defer();
                     $languagesDataFactory.query({offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                        var index = 0;
                         for (var i in data.results) {
                             data.results[i].hidden = false;
+                            if (data.results[i].code == $localStorage.language) {
+                                index = i;
+                            }
                         }
                         $scope.languages = data.results;
+
+                        $scope.user.language = $scope.languages[index];
                         def.resolve($scope.languages);
                     });
                     return def;
@@ -184,6 +201,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 return false;
             } else {
                 $scope.user.locale = $localStorage.language;
+                $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                    if(data.status == true){
                         $state.go("front.profile");
@@ -219,7 +237,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 });
             });
         } else {
-            $scope.user = { gender: 'Male'};
+            $scope.user = { gender: 'Male', type: $stateParams.type};
 
         }
 

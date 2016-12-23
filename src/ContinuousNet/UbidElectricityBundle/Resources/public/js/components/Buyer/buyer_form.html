@@ -327,7 +327,7 @@
                                         <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.total revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -353,10 +353,15 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.first_market_rate" type="checkbox" name="firstMarketRate" id="buyerFirstMarketRate" />
-                                    <label for="buyerFirstMarketRate" translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                <div class="form-group">
+                                    <label for="buyerFirstMarketRate" class="control-label">
+                                        <span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.first_market_rate" type="text" name="firstMarketRate" id="buyerFirstMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
@@ -379,10 +384,15 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.second_market_rate" type="checkbox" name="secondMarketRate" id="buyerSecondMarketRate" />
-                                    <label for="buyerSecondMarketRate" translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                <div class="form-group">
+                                    <label for="buyerSecondMarketRate" class="control-label">
+                                        <span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.second_market_rate" type="text" name="secondMarketRate" id="buyerSecondMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERSECONDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
@@ -405,10 +415,15 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.third_market_rate" type="checkbox" name="thirdMarketRate" id="buyerThirdMarketRate" />
-                                    <label for="buyerThirdMarketRate" translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                <div class="form-group">
+                                    <label for="buyerThirdMarketRate" class="control-label">
+                                        <span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.third_market_rate" type="text" name="thirdMarketRate" id="buyerThirdMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTHIRDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
@@ -423,30 +438,14 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':buyerForm.views.$dirty && buyerForm.views.$invalid, 'has-success':buyerForm.views.$valid}">
-                                    <label for="buyerViews" class="control-label">
-                                        <span translate="content.list.fields.VIEWS">Views</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.views" type="text" name="views" id="buyerViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="buyerForm.views.$dirty && buyerForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
-                                    <span class="success text-small block" ng-if="buyerForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
                                     <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
@@ -455,8 +454,6 @@
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">

@@ -25,7 +25,7 @@ class RegistrationType extends AbstractType
             //->add('email', TextType::class)
             //->add('username', TextType::class)
             //->add('password', TextType::class)
-            ->add('type', ChoiceType::class, array('choices' => array('Guest' => 'Guest', 'Subscriber' => 'Subscriber', 'Administrator' => 'Administrator', 'Publisher' => 'Publisher', 'ContentProvider' => 'ContentProvider', 'ServiceProvider' => 'ServiceProvider', ), 'expanded' => false, 'multiple' => false))
+            ->add('type', ChoiceType::class, array('choices' => array('Guest' => 'Guest', 'Buyer' => 'Buyer', 'Supplier' => 'Supplier', 'Administrator' => 'Administrator'), 'expanded' => false, 'multiple' => false))
             ->add('phone', TextType::class)
             ->add('gender', ChoiceType::class, array('choices' => array('Male' => 'Male', 'Female' => 'Female', ), 'expanded' => false, 'multiple' => false))
             ->add('firstName', TextType::class)

@@ -254,12 +254,12 @@ class Tender
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
      */
-    //private $views;
+    private $views;
 
     /**
      * @var \DateTime
@@ -883,23 +883,23 @@ class Tender
      * @param integer $views
      * @return Tender
      */
-   /* public function setViews($views)
+    public function setViews($views = null)
     {
         $this->views = $views;
         return $this;
     }
-*/
+    
     /**
      * Get views
      *
      * @access public
      * @return integer 
      */
-  /*  public function getViews()
+    public function getViews()
     {
         return $this->views;
     }
-*/
+
     /**
      * Set createdAt
      *

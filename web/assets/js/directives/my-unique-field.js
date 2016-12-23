@@ -2,8 +2,8 @@
 /**
  * Check if field is unique or not
  */
-app.directive('myUniqueField', ['$resource', '$rootScope',
-function($resource, $rootScope) {
+app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
+function($resource, $rootScope, $localStorage) {
     var timeoutId;
     return {
         restrict: 'A',
@@ -21,7 +21,7 @@ function($resource, $rootScope) {
                     var fieldName = attrs.myUniqueField;
                     var resourceURL = attrs.myResourceUrl;
                     var currentId = attrs.myCurrentId;
-                    var resource = $resource($rootScope.app.apiURL + resourceURL, {id: '@id'}, {
+                    var resource = $resource('/' + $localStorage.language + $rootScope.app.apiURL + resourceURL, {id: '@id'}, {
                         query: { method: 'GET' }
                     });
                     var http_params = {

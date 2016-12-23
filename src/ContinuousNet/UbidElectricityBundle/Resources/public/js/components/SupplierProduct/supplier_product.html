@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-12" ng-controller="SupplierProductCtrl">
             <div>
-                <div class="row">
+                <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
                                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERPRODUCTS">Back to Supplier Products list</span>
@@ -113,12 +113,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.VIEWS">Views</span></td>
-                                <td>
-                                    <div ng-bind-html="supplierProduct.views"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
                                 <td>
                                     <span>[[ supplierProduct.created_at | date: datetimeFormat ]]</span>
@@ -141,7 +135,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">
+                <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
                     </div>
                     <div class="col-md-4  margin-bottom-10 text-center">

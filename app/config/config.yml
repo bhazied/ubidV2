@@ -474,6 +474,8 @@ assetic:
                  - "bundles/ubidelectricity/js/components/Auth/LoginService.js"
                  - "bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js"
                  - "bundles/ubidelectricity/js/front/Main/FrontCtrl.js"
+                 - "bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js"
+                 - "bundles/ubidelectricity/js/front/Search/SearchService.js"
                  - "bundles/ubidelectricity/js/common/FileManager/FileManagerCtrl.js"
                  - "bundles/ubidelectricity/js/common/LocationPicker/LocationPickerCtrl.js"
                  - "assets/bower_components/bootstrap/dist/js/bootstrap.min.js"

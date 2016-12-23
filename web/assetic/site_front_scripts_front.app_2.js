@@ -1,8 +1,19 @@
 'use strict'
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
+var languages = {
+    'en' : 'English',
+    'fr' : 'Français',
+    'es' : 'Español',
+    'it' : 'Italiano',
+    'de' : 'Deutsch'
+};
+
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     function ($rootScope, $state, $stateParams, $localStorage) {
+
+        $rootScope.languages = languages;
+
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
 
@@ -15,7 +26,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
         // GLOBAL APP SCOPE
         // set below basic information
         $rootScope.app = {
-            name: 'U bid electricity', // name of your project
+            name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
@@ -56,25 +67,40 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage',
     }]);
 
 // translate config
-app.config(['$translateProvider',
+app.config(['$translateProvider',   
     function ($translateProvider) {
 
-        // prefix and suffix information  is required to specify a pattern
-        // You can simply use the static-files loader with this pattern:
-        $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/i18n/front/',
-            suffix: '.json'
-        });
+    // prefix and suffix information  is required to specify a pattern
+    // You can simply use the static-files loader with this pattern:
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/assets/i18n/front/',
+        suffix: '.json'
+    });
 
-        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-        // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('fr');
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
-        // Store the language in the local storage
-        $translateProvider.useLocalStorage();
+    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+    // This is where preferredLanguage(langKey) comes in.
+    $translateProvider.preferredLanguage(currentLanguage);
 
-        // Enable sanitize
-        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
+    
+    // Enable sanitize
+    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
 
     }]);
 

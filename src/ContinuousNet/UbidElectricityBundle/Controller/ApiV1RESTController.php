@@ -47,9 +47,11 @@ class ApiV1RESTController extends FOSRestController
     const SESSION_EMAIL = 'fos_user_send_resetting_email/email';
 
     private $locales = array(
+        'en' => 'en_US',
         'fr' => 'fr_FR',
-        'ar' => 'ar_DZ',
-        'en' => 'en_US'
+        'es' => 'es_ES',
+        'de' => 'de_DE',
+        'it' => 'it_IT',
     );
 
     private function setTranslator($code) {
@@ -59,6 +61,70 @@ class ApiV1RESTController extends FOSRestController
         $translator->addResource('yaml', $this->container->getParameter('kernel.root_dir').'/Resources/translations/messages.'.$code.'.yaml', $this->locales[$code]);
         $this->container->register('translator', $translator);
         $this->get('session')->setLocale($this->locales[$code]);
+    }
+
+    public function translateEntity($entity, $level = 0)
+    {
+        $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
+        $entityName = str_replace($ns, '', get_class($entity));
+        $translationEntityName = 'Translation' . $entityName;
+        $translationEntityFullName = $ns . $translationEntityName;
+        if (class_exists($translationEntityFullName)) {
+            $entityField = lcfirst($entityName);
+            $request = $this->get('request');
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->select('t');
+            $qb->from('UbidElectricityBundle:' . $translationEntityName, 't');
+            $qb->andWhere('t.locale = :locale')->setParameter('locale', $request->getLocale());
+            $qb->andWhere('t.validated = :validated')->setParameter('validated', true);
+            $qb->andWhere('t.' . $entityField . ' = :' . $entityField)->setParameter($entityField, $entity->getId());
+            $qb->setMaxResults(1);
+            $translation = $qb->getQuery()->getOneOrNullResult();
+            if (!is_null($translation)) {
+                $notTranslatableFields = array('Id', 'Locale', 'Validated', 'CreatorUser', 'CreatedAt', 'ModifierUser', 'ModifiedAt', $entityName);
+                $translatableFields = array();
+                $methods = get_class_methods($translation);
+                foreach ($methods as $method) {
+                    if (substr($method, 0, 3) == 'get') {
+                        $field = str_replace('get', '', $method);
+                        if (!in_array($field, $notTranslatableFields)) {
+                            array_push($translatableFields, $field);
+                        }
+                    }
+                }
+                foreach ($translatableFields as $field) {
+                    $setMethod = 'set' . $field;
+                    $getMethod = 'get' . $field;
+                    $entity->$setMethod($translation->$getMethod());
+                }
+            }
+        }
+        if ($level < 1) {
+            $methods = get_class_methods($entity);
+            foreach ($methods as $method) {
+                if (substr($method, 0, 3) == 'get') {
+                    $field = str_replace('get', '', $method);
+                    $setMethod = 'set' . $field;
+                    $fieldValue = $entity->$method();
+                    if (is_object($fieldValue)) {
+                        if (substr(get_class($fieldValue), 0, strlen($ns)) == $ns) {
+                            $entity->$setMethod($this->translateEntity($fieldValue, $level + 1));
+                        }
+                    }
+                }
+            }
+        }
+        return $entity;
+
+    }
+
+    public function translateEntities($entities)
+    {
+        foreach ($entities as $i => $entity) {
+            $entities[$i] = $this->translateEntity($entity);
+        }
+        return $entities;
     }
 
     private function getConfig($path) {
@@ -216,8 +282,6 @@ class ApiV1RESTController extends FOSRestController
                 $jsonData['username'] = str_replace($chars[$i], '_', $jsonData['username']);
             }
 
-            $jsonData['type'] = 'Subscriber';
-
             $jsonData['roles'] = array('ROLE_API', 'ROLE_SUBSCRIBER');
 
             //$jsonData['credentials_expired']  = false;
@@ -268,8 +332,7 @@ class ApiV1RESTController extends FOSRestController
                     $em->flush();
                 }
                 return $data;
-            }
-            else{
+            } else {
                 $data['message'] = $this->get('translator')->trans('register.failure_inscription');
                 return $data;
             }
@@ -567,29 +630,29 @@ class ApiV1RESTController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $page = $request->query->get('page');
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Tender", "t_");
+        $qb->from('UbidElectricityBundle:Tender', 't_');
 
-        $qb->andwhere("t_.status = :status")
+        $qb->andwhere('t_.status = :status')
             ->setParameters(array('status' => 'Online'));
-        if(!is_null($category)){
-            $qb->andWhere(":category MEMBER OF t_.tenderCategories")->setParameter('category', $category);
+        if (!is_null($category)) {
+            $qb->andWhere(':category MEMBER OF t_.tenderCategories')->setParameter('category', $category);
         }
-        if(!is_null($sector)){
-            $qb->andWhere("t_.sector = :sector")->setParameter("sector", $sector);
+        if (!is_null($sector)) {
+            $qb->andWhere('t_.sector = :sector')->setParameter('sector', $sector);
         }
-        $qb->select("t_");
+        $qb->select('t_');
         $qb->setMaxResults(10);
-        if($page != null){
+        if ($page != null) {
             $qb->setFirstResult((10*$page));
-        }else{
+        } else {
             $qb->setFirstResult(0);
         }
 
-        $qb->groupBy("t_.id");
-        $qb->orderBy("t_.id", "DESC");
+        $qb->groupBy('t_.id');
+        $qb->orderBy('t_.id', 'DESC');
         $results  = $qb->getQuery()->getResult();
         $tenders = null;
-        if($results){
+        if ($results) {
             $data['results'] = $results;
         }
         return $data;
@@ -604,7 +667,7 @@ class ApiV1RESTController extends FOSRestController
         $page = $request->query->get('page');
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Sector", "s_");
+        $qb->from('UbidElectricityBundle:Sector', 's_');
             //->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Tender', 'tender', \Doctrine\ORM\Query\Expr\Join::WITH, 's_.tender= tender.id')
 
         $qbList = clone $qb;
@@ -617,12 +680,12 @@ class ApiV1RESTController extends FOSRestController
             ->orderBy('s_.id', 'ASC');
         $results = $qbList->getQuery()->getResult();
         
-        if($results){
+        if ($results) {
             $data['results'] = $results;
             $i=0;
             foreach ($results as $r ){
                 //return $r->getId();
-                $tenders = $this->getDoctrine()->getRepository("UbidElectricityBundle:Tender")->findBy(array('sector' => $r->getId()));
+                $tenders = $this->getDoctrine()->getRepository('UbidElectricityBundle:Tender')->findBy(array('sector' => $r->getId()));
                 //return $tenders;
                 $data['tender_count'][$i] = count($tenders);
                 $i++;
@@ -643,9 +706,8 @@ class ApiV1RESTController extends FOSRestController
         $qb->from("UbidElectricityBundle:Category", "c_")
             ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id')
             ->select('c_');
-      //  return $qb->getQuery()->getSql();
         $results = $qb->getQuery()->getResult();
-        if($results){
+        if ($results) {
             $data['results'] = $results;
         }
         return $data;
@@ -679,26 +741,26 @@ class ApiV1RESTController extends FOSRestController
                 ->setTo($this->container->getParameter('email_contact'))
                 ->setFrom($email)
                 ->setBody(
-                    $this->renderView("UbidElectricityBundle:Emails:contact.html.twig", array(
-                        "subject" => $subject,
-                        "lastName" => $lastName,
-                        "firstName" => $firstName,
-                        "email" => $email,
-                        "message" => $message
+                    $this->renderView('UbidElectricityBundle:Emails:contact.html.twig', array(
+                        'subject' => $subject,
+                        'lastName' => $lastName,
+                        'firstName' => $firstName,
+                        'email' => $email,
+                        'message' => $message
                     )),
-                    "text/html"
+                    'text/html'
                 );
             $sent = $this->get('mailer')->send($message);
             if($sent){
                 $response =  array(
-                    "status" => "0",
-                    'message' => "Message envoyé avec succée"
+                    'status' => '0',
+                    'message' => 'Message envoyé avec succée'
                 );
             }
             else{
                 $response =  array(
-                    "status" => "1",
-                    'message' => "Message non envoyé"
+                    'status' => '1',
+                    'message' => 'Message non envoyé'
                 );
             }
             return $response;
@@ -757,13 +819,13 @@ class ApiV1RESTController extends FOSRestController
         if($encoded_pass == $user->getPassword()){
             $data = [
                 'status' => true,
-                'message' => "OK"
+                'message' => 'OK'
             ];
         }
         else{
             $data = [
                 'status' => false,
-                'message' => "NOT OK"
+                'message' => 'NOT OK'
             ];
         }
         return $data;
@@ -810,5 +872,281 @@ class ApiV1RESTController extends FOSRestController
         return $code;
     }
 
-    
+    /**
+     * Get a Post entity By slug
+     *
+     * @Get("/getPostBySlug/{slug}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function getPostBySlugAction($slug)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Post', 'p_');
+            $qb->select('p_');
+            $qb->andWhere('p_.slug = :slug')->setParameter('slug', $slug);
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            $data = $this->translateEntity($data);
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get public Buyers List
+     *
+     * @Get("/buyers/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function buyersAction($page, $pageCount, $sortField, $sortDirection)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $data = array();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Buyer', 'b_');
+            $qb->select('count(b_.id)');
+            $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Buyer', 'b_');
+            $qb->select('b_');
+            $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->addOrderBy('b_.'.$sortField, $sortDirection);
+            $qb->setMaxResults($pageCount);
+            $offset = ($page - 1) * $pageCount;
+            $qb->setFirstResult($offset);
+            $data['results'] = $qb->getQuery()->getResult();
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get a Buyer entity By id
+     *
+     * @Get("/buyerDetails/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function buyerDetailsAction($id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Buyer', 'b_');
+            $qb->select('b_');
+            $qb->andWhere('b_.id = :id')->setParameter('id', $id);
+            $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get public Suppliers List
+     *
+     * @Get("/suppliers/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function suppliersAction($page, $pageCount, $sortField, $sortDirection)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $data = array();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Supplier', 's_');
+            $qb->select('count(s_.id)');
+            $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Supplier', 's_');
+            $qb->select('s_');
+            $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->addOrderBy('s_.'.$sortField, $sortDirection);
+            $qb->setMaxResults($pageCount);
+            $offset = ($page - 1) * $pageCount;
+            $qb->setFirstResult($offset);
+            $data['results'] = $qb->getQuery()->getResult();
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get a Supplier entity By id
+     *
+     * @Get("/supplierDetails/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function supplierDetailsAction($id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Supplier', 's_');
+            $qb->select('s_');
+            $qb->andWhere('s_.id = :id')->setParameter('id', $id);
+            $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get public Supplier Products List
+     *
+     * @Get("/supplierProducts/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function supplierProductsAction($page, $pageCount, $sortField, $sortDirection)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $data = array();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
+            $qb->select('count(sp_.id)');
+            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
+            $qb->select('sp_');
+            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->addOrderBy('sp_.'.$sortField, $sortDirection);
+            $qb->setMaxResults($pageCount);
+            $offset = ($page - 1) * $pageCount;
+            $qb->setFirstResult($offset);
+            $data['results'] = $qb->getQuery()->getResult();
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get a Supplier Product entity By id
+     *
+     * @Get("/supplierProductDetails/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function supplierProductDetailsAction($id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
+            $qb->select('sp_');
+            $qb->andWhere('sp_.id = :id')->setParameter('id', $id);
+            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get public Tenders List
+     *
+     * @Get("/tenders/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function tendersAction($page, $pageCount, $sortField, $sortDirection)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $data = array();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('count(t_.id)');
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('t_');
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $qb->addOrderBy('t_.'.$sortField, $sortDirection);
+            $qb->setMaxResults($pageCount);
+            $offset = ($page - 1) * $pageCount;
+            $qb->setFirstResult($offset);
+            $data['results'] = $qb->getQuery()->getResult();
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get a Tender entity By id
+     *
+     * @Get("/tenderDetails/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function tenderDetailsAction($id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('t_');
+            $qb->andWhere('t_.id = :id')->setParameter('id', $id);
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
