@@ -871,7 +871,7 @@ app.config(['$stateProvider',
          *  User Service routes
          */
         }).state('front.login', {
-            url: '/login',
+            url: '/login/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'front.LOGIN',
             resolve: loadSequence('LoginFrontCtrl', 'LoginService')

@@ -3,8 +3,8 @@
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter','$stateParams',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter,$stateParams) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -49,6 +49,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             return false;
         };
 
+        $scope.user_type = angular.isDefined($stateParams.type) ? $stateParams.type : '';
+        
         $scope.logout = function(){
             $scope.resetAccess();
             $timeout(function() {

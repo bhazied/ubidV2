@@ -27,7 +27,8 @@ app.controller('LogoutFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
 
         $scope.resetAccess();
         $timeout(function() {
+            toaster.pop('suucess', "front.YOUHAVEBEENLOGGEDOUT");
             $state.go('front.home');
-        }, 5000);
+        });
 
     }]);

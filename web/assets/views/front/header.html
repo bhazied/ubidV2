@@ -20,13 +20,13 @@
 
     <ul class="nav navbar-nav float-xs-right">
         <li class="nav-item" ng-if="!user.email">
-            <a class="nav-link" ui-sref="front.register({type: 'Buyer'})" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></a>
+            <a class="nav-link" ui-sref="front.login({type: 'Buyer'})" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></a>
         </li>
         <li class="nav-item" ng-if="user.type == 'Buyer'">
             <a class="nav-link" ui-sref="front.usermenu" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>Buyer</b></a>
         </li>
         <li class="nav-item" ng-if="!user.email">
-            <a class="nav-link" ui-sref="front.register({type: 'Supplier'})" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>Supplier</b></a>
+            <a class="nav-link" ui-sref="front.login({type: 'Supplier'})" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>Supplier</b></a>
         </li>
         <li class="nav-item" ng-if="user.type == 'Supplier'">
             <a class="nav-link" ui-sref="front.usermenu" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>Supplier</b></a>

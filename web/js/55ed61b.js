@@ -68441,7 +68441,7 @@ app.config(['$stateProvider',
          *  User Service routes
          */
         }).state('front.login', {
-            url: '/login',
+            url: '/login/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'front.LOGIN',
             resolve: loadSequence('LoginFrontCtrl', 'LoginService')
@@ -71931,8 +71931,8 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter','$stateParams',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter,$stateParams) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -71977,6 +71977,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             return false;
         };
 
+        $scope.user_type = angular.isDefined($stateParams.type) ? $stateParams.type : '';
+        
         $scope.logout = function(){
             $scope.resetAccess();
             $timeout(function() {
@@ -72089,18 +72091,18 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             if($state.current.name == "front.home"){
                 $rootScope.SearchFormHeader = false;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else if($state.current.name == "front.usermenu"){
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else{
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = false;
-                $rootScope.showBrandName = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
             }
 
             // scroll top the page on change state
@@ -72306,8 +72308,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
     }]);
 
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert, $stateParams) {
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;

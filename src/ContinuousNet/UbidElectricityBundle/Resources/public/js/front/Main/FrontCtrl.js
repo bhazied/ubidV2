@@ -90,18 +90,18 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             if($state.current.name == "front.home"){
                 $rootScope.SearchFormHeader = false;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else if($state.current.name == "front.usermenu"){
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else{
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = false;
-                $rootScope.showBrandName = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
             }
 
             // scroll top the page on change state
