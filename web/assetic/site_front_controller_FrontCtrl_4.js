@@ -293,30 +293,4 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         ];
 
-
-        $scope.genericSearchResults = [];
-        $scope.submitSearch = function (searchText) {
-            if(!angular.isDefined(searchText)){
-                toaster.pop('error', "You must enter some word to search", 'search info');
-                return false;
-            }
-            else {
-                delete $localStorage.genericSearchResults;
-                $timeout(function () {
-                    //var def = $q.defer();
-                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
-                    var $params = {locale: $scope.locale, searchText: searchText};
-                    $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
-                        if (data.inlineCount > 0) {
-                            $localStorage.genericSearchResults = data;
-                            $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
-                        } else {
-                            toaster.pop('error', "no result for this search", 'search info');
-                            return false;
-                        }
-                    });
-                });
-            }
-        }
-
     }]);

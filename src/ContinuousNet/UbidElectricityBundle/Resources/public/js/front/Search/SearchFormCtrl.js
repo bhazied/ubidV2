@@ -31,15 +31,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.tabs = [
                 {
                     title: $filter('translate')('front.TENDERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
+                    inlineCount: $scope.tenderCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html',
+                    inlineCount: $scope.supplierCount
                 },
                 {
                     title: $filter('translate')('front.BUYER'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
+                    inlineCount: $scope.buyerCount
                 },
             ];
         }

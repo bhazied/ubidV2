@@ -72292,32 +72292,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         ];
 
-
-        $scope.genericSearchResults = [];
-        $scope.submitSearch = function (searchText) {
-            if(!angular.isDefined(searchText)){
-                toaster.pop('error', "You must enter some word to search", 'search info');
-                return false;
-            }
-            else {
-                delete $localStorage.genericSearchResults;
-                $timeout(function () {
-                    //var def = $q.defer();
-                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
-                    var $params = {locale: $scope.locale, searchText: searchText};
-                    $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
-                        if (data.inlineCount > 0) {
-                            $localStorage.genericSearchResults = data;
-                            $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
-                        } else {
-                            toaster.pop('error', "no result for this search", 'search info');
-                            return false;
-                        }
-                    });
-                });
-            }
-        }
-
     }]);
 
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
@@ -72353,15 +72327,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.tabs = [
                 {
                     title: $filter('translate')('front.TENDERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
+                    inlineCount: $scope.tenderCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html',
+                    inlineCount: $scope.supplierCount
                 },
                 {
                     title: $filter('translate')('front.BUYER'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
+                    inlineCount: $scope.buyerCount
                 },
             ];
         }
