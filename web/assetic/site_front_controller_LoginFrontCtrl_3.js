@@ -13,7 +13,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        });
+        }, 1000);
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {

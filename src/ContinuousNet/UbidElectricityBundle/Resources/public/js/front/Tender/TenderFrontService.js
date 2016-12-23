@@ -17,6 +17,7 @@ function($resource, $rootScope) {
     }, {
         buyers: { method: 'GET', url: '/:locale' + url + 'tenders/:page/:pageCount/:sortField/:sortDirection', isArray: false},
         buyer : { methof: 'GET', url:'/:locale' + url +  'tenders/:id', isArray: false},
+        homeTenders: {method: 'GET', url:'/:locale' + url +  'homeTenders', isArray: false},
         categoriesTenders: { method: 'GET', url: '/:locale' + url + 'categoriesTenders', isArray: false},
         getTender : { methof: 'GET', url:'/:locale' + url +  'homeTender/:id', isArray: false}
     });

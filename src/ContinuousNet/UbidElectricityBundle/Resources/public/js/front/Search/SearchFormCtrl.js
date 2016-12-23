@@ -3,10 +3,10 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
+            $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         }, 1000);
 

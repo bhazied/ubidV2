@@ -335,7 +335,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        });
+        }, 1000);
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
@@ -707,10 +707,10 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
+            $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         }, 1000);
 
