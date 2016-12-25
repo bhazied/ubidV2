@@ -17,7 +17,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
                     $timeout(function(){
-                        $location.path('/user-menu');
+                        $location.path('/');
                     }, 1000);
                 }
                 return $q.reject(response);

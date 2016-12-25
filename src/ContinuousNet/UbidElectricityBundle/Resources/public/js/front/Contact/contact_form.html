@@ -51,9 +51,8 @@
                     <span translate="content.list.fields.MESSAGE">Message</span>
                 </label>
                 <span class="input-icon">
-                    <textarea name="contactMessage" id= "contactMessage" ng-model="contact.message" type="text" class="form-control"  placeholder="[[ 'content.list.fields.MESSAGE' | translate ]]" ng-required="true">
+                    <textarea name="contactMessage" id= "contactMessage" ng-model="contact.message" rows="10" class="form-control"  placeholder="[[ 'content.list.fields.MESSAGE' | translate ]]" ng-required="true"></textarea>
                     <i class="fa fa-message-o"></i>
-                    </textarea>
                 </span>
                 <span class="error text-small block" ng-if="contactForm.contactMessage.$dirty && contactForm.contactMessage.$error.required" translate="content.form.messages.CONTACTMESSAGEREQUIRED">Message is required.</span>
             </div>

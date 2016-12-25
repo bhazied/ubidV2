@@ -144,8 +144,8 @@ fos_user:
         confirmation:
             from_email: # Use this node only if you don"t want the global email address for the confirmation email
                 address:        registration@continuousnet.com
-                sender_name:    Ubid Electricity Registration
-            enabled:    false # change to true for required email confirmation
+                sender_name:    E-electricity Registration
+            enabled:    true # change to true for required email confirmation
             template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type:               ContinuousNet\UbidElectricityBundle\Form\RegistrationType # or "fos_user_registration" on Symfony < 2.8
@@ -156,7 +156,7 @@ fos_user:
         email:
             from_email: # Use this node only if you don"t want the global email address for the resetting email
                 address:        resetting@continuousnet.com
-                sender_name:    Ubid Electricity Resetting
+                sender_name:    E-electricity Resetting
             template:   FOSUserBundle:Resetting:email.txt.twig
         form:
             type:               FOS\UserBundle\Form\Type\ResettingFormType # or "fos_user_resetting" on Symfony < 2.8
@@ -474,6 +474,8 @@ assetic:
                  - "bundles/ubidelectricity/js/components/Auth/LoginService.js"
                  - "bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js"
                  - "bundles/ubidelectricity/js/front/Main/FrontCtrl.js"
+                 - "bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js"
+                 - "bundles/ubidelectricity/js/front/Search/SearchService.js"
                  - "bundles/ubidelectricity/js/common/FileManager/FileManagerCtrl.js"
                  - "bundles/ubidelectricity/js/common/LocationPicker/LocationPickerCtrl.js"
                  - "assets/bower_components/bootstrap/dist/js/bootstrap.min.js"

@@ -1,28 +1,38 @@
-
-<div ng-controller="SearchFormCtrl">
+<div ng-controller="searchFormCtrl">
     <h3 class="sidebar-title" translate="front.SPECIFICSEARCH" >Specific Search</h3>
     <form name="searchform" id="searchform" ng-submit="submitForm(searchform, 1)">
-        <div class="form-group">
-            <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
-            <div class="categories-checkbox">
-                <div class="form-group" ng-repeat="tenderCategory in tenderCategories" ng-if="tenderCategory.id">
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.id]]">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">[[ tenderCategory.name ]]</span>
-                    </label>
-                </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
+        <div class="categories-checkbox">
+            <div class="form-group" ng-repeat="tenderCategory in tenderCategories" ng-if="tenderCategory.id">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.id]]">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">[[ tenderCategory.name ]]</span>
+                </label>
             </div>
         </div>
-        <div class="form-group">
-            <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
-            <div class="countries-checkbox">
-                <div class="form-group" ng-repeat="country in countries">
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" checklist-model="search.countries" checklist-value="country.id" name="countries[]" id="searchCountries[[country.id]]">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">[[ country.name ]]</span>
-                    </label>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
+        <div class="countries-checkbox">
+            <input type="text" ng-model="filterCountries" placeholder="[['front.FILTERCOUNTRIES' | translate]]">
+            <div class="form-group" ng-repeat="country in countries | filter:filterCountries ">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" checklist-model="search.countries" checklist-value="country.id" name="countries[]" id="searchCountries[[country.id]]">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">[[ country.name ]]</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group nice-select">
+                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="item as item.label for item in operators track by item.value"></select>
+                    <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
                 </div>
             </div>
         </div>
@@ -48,20 +58,11 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="sidebar-label" translate="front.PUBLICATIONDATE">Publication Date</label>
-            <div class="input-group nice-select">
-                <select class="form-control" class="select" ng-model="search.publish_date">
-                    <option value = "today" translate="front.TODAY">Today</option>
-                    <option value = "yesterday" translate="front.YESTERDAY">Yesterday</option>
-                    <option value = "last7days" translate="front.LAST7DAYS">Last 7 days</option>
-                    <option value = "last30days" translate="front.LAST30DAYS">Last 30 days</option>
-                    <option value = "thismonth" translate="front.THISMONTH">This month</option>
-                    <option value = "lastmont" translate="front.LASTMONTH">Last month</option>
-                    <option value = "custom" translate="front.CUSTOMDATE">Custom Date</option>
-                </select>
-                <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
-            </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.PUBLICATIONDATE">Publication Date</label>
+        <div class="form-group nice-select">
+            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="item as item.label for item in dateRanges track by item.value"></select>
+            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
@@ -81,20 +82,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="sidebar-label" translate="front.DUEDATE">Due Date</label>
-            <div class="input-group nice-select">
-                <select class="form-control" class="select" ng-model="search.deadline">
-                    <option value = "today" translate="front.TODAY">Today</option>
-                    <option value = "yesterday" translate="front.YESTERDAY">Yesterday</option>
-                    <option value = "last7days" translate="front.LAST7DAYS">Last 7 days</option>
-                    <option value = "last30days" translate="front.LAST30DAYS">Last 30 days</option>
-                    <option value = "thismonth" translate="front.THISMONTH">This month</option>
-                    <option value = "lastmont" translate="front.LASTMONTH">Last month</option>
-                    <option value = "custom" translate="front.CUSTOMDATE">Custom Date</option>
-                </select>
-                <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
-            </div>
+    </div>
+    <div class="form-group">
+        <label class="sidebar-label" translate="front.DUEDATE">Due Date</label>
+        <div class="form-group nice-select">
+            <select class="form-control" class="select" ng-model="search.deadline" ng-options="item as item.label for item in dateRanges track by item.value"></select>
+            <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 col-form-label" translate="front.FROM">From</label>

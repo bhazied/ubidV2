@@ -54,7 +54,12 @@ security:
             anonymous: true
 
         advanced_search:
-            pattern: ^/api/sr
+            pattern: ^/(en|fr|ar)/api/sr
+            stateless: true
+            anonymous: true
+
+        generic_search:
+            pattern: ^/(en|fr|ar)/api/genericSearch
             stateless: true
             anonymous: true
 

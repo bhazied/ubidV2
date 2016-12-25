@@ -2071,6 +2071,15 @@ body {
     height: 86px;
     padding: 14px;
     border-radius: 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    top: 0;
+}
+
+#electricity-navbar .header-container {
+    width: 80%;
+    margin: auto;
 }
 
 #electricity-navbar form {
@@ -2224,6 +2233,7 @@ body {
 
 #container {
     min-height: 500px;
+    margin-top: 86px;
 }
 
 .footer-sep {
@@ -2677,10 +2687,45 @@ input.form-control {
     line-height: 36px;
     font-weight: bold;
     vertical-align: top;
+    position: relative;
 }
 
 .user-name:hover {
-    text-decoration: underline;
+}
+
+.user-name .submenu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #1D69AD;
+    min-width: 130px;
+    position: absolute;
+    left: 0;
+    top: 36px;
+    z-index: 1000;
+}
+
+.user-name .submenu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.user-name .submenu li a {
+    display: block;
+    line-height: 24px;
+    padding: 0 10px;
+    background: #eee;
+}
+
+.user-name .submenu li a:hover {
+    background: #ccc;
+    color: #333;
+}
+
+.user-name:hover .submenu {
+    display: block;
 }
 
 .center-menu {
@@ -2785,11 +2830,12 @@ input.form-control {
 
 .nav-menu {
     height: 3rem;
+    border-bottom: 2px solid #1D69AD;
 }
 
 .nav-menu ul {
     display: inline;
-    margin: 0;
+    margin: 8px 0 0 0;
     padding: 0;
     list-style: none;
     vertical-align: bottom;
@@ -2798,13 +2844,15 @@ input.form-control {
 .nav-menu ul li {
     display: inline;
     cursor: pointer;
+    margin: 0 0.5rem 0 0;
 }
 
 .nav-menu ul li a {
-    color: #AFAFAF!important;
+    color: #999999!important;
     font-weight: bold;
     display: inline-block;
-    padding: 0.6rem;
+    padding: 0.6rem 1rem;
+    background-color: #eee;
 }
 
 .nav-menu ul li:hover a {
@@ -2815,6 +2863,12 @@ input.form-control {
     background-color: #1D69AD;
     color: #ffffff!important;
 }
+
+.nav-tabs ul li.active a {
+    background-color: #1D69AD;
+    color: #ffffff!important;
+}
+
 
 .sort-by label {
     color: #1D69AD;
@@ -2871,6 +2925,7 @@ input.form-control {
     color: #013486!important;
     cursor: pointer;
     font-family: Arial!important;
+    margin-top: 2rem;
 }
 
 .tender-details table tr th {
@@ -2981,14 +3036,26 @@ fieldset legend {
     color: green;
 }
 
+#partial_profile_menu {
+    border-right: 1px solid #1D69AD;
+}
+
 #partial_profile_menu ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    margin-top: 1rem;
 }
 
 #partial_profile_menu ul li {
+    margin: 0;
+    padding: 0;
     margin-bottom: 1rem;
+}
+
+#partial_profile_menu ul li a {
+    font-size: 1rem;
+    display: block;
 }
 
 .list-toolbox {

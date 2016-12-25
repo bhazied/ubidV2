@@ -98,7 +98,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     }]);
 
 // translate config
-app.config(['$translateProvider',
+app.config(['$translateProvider',   
     function ($translateProvider) {
 
     // prefix and suffix information  is required to specify a pattern
@@ -737,7 +737,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
                     $timeout(function(){
-                        $location.path('/user-menu');
+                        $location.path('/');
                     }, 1000);
                 }
                 return $q.reject(response);
@@ -962,14 +962,14 @@ app.config(['$stateProvider',
         /*
          * Public Tender Lists & Details routes
          */
-        }).state('front.tenders',{
+        })/*.state('front.tenders',{
             url: "/tenders",
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'sidebar.nav.adserving.MAIN',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        }).state('front.tenders.list',{
+        })*/.state('front.tenders',{
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
@@ -995,8 +995,13 @@ app.config(['$stateProvider',
             title: 'front.TENDERSBYCOUNTRY',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
         }).state('front.advanced_search', {
-            url: '/advanced-search',
-            templateUrl: '/bundles/ubidelectricity/js/front/Search/search_form.html',
+            url: '/advanced-search-results',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/search_results.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+        }).state('front.generic_search', {
+            url: '/generic-search-results',
+            templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         /*

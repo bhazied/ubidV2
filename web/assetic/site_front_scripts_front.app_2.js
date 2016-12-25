@@ -67,7 +67,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     }]);
 
 // translate config
-app.config(['$translateProvider',
+app.config(['$translateProvider',   
     function ($translateProvider) {
 
     // prefix and suffix information  is required to specify a pattern

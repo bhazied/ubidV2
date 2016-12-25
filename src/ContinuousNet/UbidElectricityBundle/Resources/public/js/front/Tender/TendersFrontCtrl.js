@@ -2,6 +2,15 @@
 app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$HomeDataFactory','$filter','$tendersFrontDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $HomeDataFactory, $filter, $tendersFrontDataFactory) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = true;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 8;
+            $rootScope.contentOffset = 2;
+        }, 1000);
+
         $scope.category_name = $filter('translate')('content.text.ALLCATEGORIES');
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
@@ -20,7 +29,8 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $timeout(function () {
                 $scope.tendersLoaded = true;
                 var def = $q.defer();
-                    $HomeDataFactory.homeTenders($params).$promise.then(function(data){
+                $tendersFrontDataFactory.homeTenders($params).$promise.then(function(data){
+                    console.log(data);
                         if(data.results.length > 0){
                             $scope.tendersList = data.results;
                             $scope.pageSize = 10;

@@ -1,6 +1,18 @@
 'use strict';
 app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$contactDataFactory','SweetAlert','toaster',
     function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $contactDataFactory, SweetAlert, toaster) {
+        
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = true;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 0;
+        }, 1000);
+
+        console.log("showLeftSide   "+ $rootScope.showLeftSide);
+        console.log("showRightSide  " + $rootScope.showRightSide);
 
         $scope.disableSubmit = false;
         $scope.submitForm = function (form) {

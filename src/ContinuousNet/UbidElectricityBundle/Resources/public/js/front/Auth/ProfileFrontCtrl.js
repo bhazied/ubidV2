@@ -9,9 +9,15 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showUserMenu = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         });
+
+        $scope.dateFormat = $filter('translate')('formats.DATE');
+        $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
+        $scope.timeFormat = $filter('translate')('formats.TIME');
 
         $scope.disableSubmit = false;
         $scope.disablePasswordSubmit = false;
@@ -146,10 +152,10 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         
         
         $scope.tabs = [
-            { title: $filter('translate')('front.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
-            { title: $filter('translate')('front.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
-            { title: $filter('translate')('front.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' },
-            { title: $filter('translate')('front.SETTINGS'), template:'/bundles/ubidelectricity/js/front/Auth/account_settings.html' }
+            { title: $filter('translate')('profile.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
+            { title: $filter('translate')('profile.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
+            { title: $filter('translate')('profile.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' },
+            { title: $filter('translate')('profile.SETTINGS'), template:'/bundles/ubidelectricity/js/front/Auth/account_settings.html' }
         ];
     }]);
 

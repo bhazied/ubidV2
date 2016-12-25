@@ -22,7 +22,8 @@
     "CREATEACCOUNT": "Create an account",
     "ERROR": "Incorrect Email or Password",
     "WELCOME": "Welcome",
-    "ACCESSDENEID": "Access denied"
+    "ACCESSDENEID": "Access denied",
+    "SUBSCRIBE": "Subscribe"
   },
   "register": {
     "CREATEYOURACCOUNT": "Create your account",
@@ -46,7 +47,11 @@
   },
   "profile": {
     "PROFILEUPDATED": "Your profile has been updated.",
-    "PROFILENOTUPDATED": "Your profile not updated"
+    "PROFILENOTUPDATED": "Your profile not updated",
+    "INFORMATIONS": "Informations",
+    "UPDATEPROFILE": "Update profile",
+    "CHANGEPASSWORD" : "Change password",
+    "SETTINGS": "Settings"
   },
   "resetpassword": {
     "FORGET": "Forget Password?",
@@ -913,6 +918,8 @@
           "DEFAULT" : "Default"
         },
         "USER" : {
+          "A" : "Your account information",
+          "B" : "Your personal information",
           "DEFAULT" : "Default"
         },
         "USERSETTING" : {
@@ -923,6 +930,7 @@
         }
       },
       "fields": {
+        "MESSAGE" : "Message",
         "CARDNUMBER" : "Card Number",
         "CARDMONTHEXPR" : "Expiration Month",
         "CARDYEAREXPR" : "Expiration Year",
@@ -1157,13 +1165,15 @@
         "VALUE": "Value",
         "IP": "Ip",
         "ISVALID": "Is Valid",
+        "USERTYPE": "I'm a",
+        "ALIAS": "Alias",
         "types": {
           "TENDER": "Tender",
           "SUPPLIER": "Supplier",
           "BUYER": "Buyer",
           "SUPPLIERPRODUCT": "Supplier Product",
           "GUEST": "Guest",
-          "BOTH": "Both",
+          "BOTH": "Both Buyer & Supplier",
           "ADMINISTRATOR": "Administrator"
         },
         "statuses": {
@@ -1540,7 +1550,8 @@
         "ENTERVALUE": "Enter the Value",
         "VALUEREQUIRED": "The Value is required",
         "ENTERIP": "Enter the Ip",
-        "IPREQUIRED": "The Ip is required"
+        "IPREQUIRED": "The Ip is required",
+        "ENTERALIAS": "Enter the alias"
       }
     },
     "common": {
@@ -1690,6 +1701,7 @@
     "SIGNUP": "Sign up",
     "ALREADYHAVEANACCOUNT": "Already have an account?",
     "DONTHAVEANACCOUNT": "Don't have an account?",
+    "REGISTER": "Register",
     "REGISTERASBUYER": "Register as Buyer",
     "REGISTERASSUPPLIER": "Register as Supplier",
     "CONTACTUS": "Contact us",
@@ -1709,12 +1721,50 @@
     "CONSULTADVERTISER": "Consult ADVERTISER",
     "RELATEDCATEGORIES": "Related Categories",
     "REGIONCOUNTRY": "Region/Country",
-    "SORTBY": "Sort By","NAMEASC": "Name ASC",
+    "OPPORTUNITYSIZE": "Opportunity Size",
+    "PUBLICATIONDATE": "Publication Date",
+    "DUEDATE":"Due Date",
+    "FROM": "From",
+    "TO": "To",
+    "SPECIFICSEARCH": "Specific Search",
+    "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
+    "REFNUMBER": "Ref number",
+    "STARTDATE" : "Start Date",
+    "READMORE" : "Read more",
+    "SHARE" : "Share",
+    "COMMENTS": "Comments",
+    "TENDERCLOSED": "(tender closed)",
+    "ATTACHMENTFILES": "Attachment Files",
+    "APPLYNOW": "Apply Now",
+    "PREVIOUSTENDER": "Previous Tender",
+    "NEXTTENDER": "Next Tender",
+    "TEL": "Tel",
+    "FAX": "Fax",
+    "WEBSITE": "Website",
+    "CONTACT": "Contact",
+    "SORTBY": "Sort By",
+    "NAMEASC": "Name ASC",
     "NAMEDESC": "Name DESC",
     "VIEWSASC": "Views ASC",
     "VIEWSDESC": "Views DESC",
     "READMORE": "Read More",
     "SHARE": "Share",
-    "COMMENTS": "Comments"
+    "COMMENTS": "Comments",
+    "NORESULTSFORSUPPLIERS": "No results for suppliers",
+    "NORESULTSFORTENDERS": "No results for tenders",
+    "NORESULTSFORBUYERS":"No results for buyers",
+    "FILTERCOUNTRIES": "Search in countries...",
+    "RELATEDPRODUCTS": "Related products",
+    "profile":{
+      "FIRSTNAME": "First name",
+      "LASTNAME": "Last name",
+      "EMAIL": "E-mail",
+      "TYPE": "Type",
+      "JOB": "Job",
+      "INSCRIPTIONDATE": "Inscription date",
+      "COUNTRY": "Country",
+      "ADDRESS": "Address",
+      "ZIPCODE": "Zip code"
+    }
   }
 }

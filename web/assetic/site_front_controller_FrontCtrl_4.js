@@ -2,8 +2,8 @@
 /**
  * Ubid electricity Main Controller
  */
-app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster',
-    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster) {
+app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
+    function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
         $rootScope.showSlogan = false;
         $rootScope.showUserMenu = false;
@@ -11,6 +11,14 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showRightSide = false;
         $rootScope.contentSize = 6;
         $rootScope.contentOffset = 0;
+
+        //header searchForm show
+        $rootScope.SearchFormHeader = false;
+
+        $rootScope.showLogo = false;
+        $rootScope.showBrandName = false;
+
+        $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
             'front.login',
@@ -20,14 +28,16 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
+            'front.tender',
             'front.tender.details',
             'front.tenders',
             'front.buyers',
             'front.suppliers',
-            'front.post'
+            'front.post',
+            'front.generic_search'
         ];
 
         $timeout(function() {
@@ -69,26 +79,29 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
+            //reset the search loaded result
+            $rootScope.searchLoaded = false;
+            
             //stop loading bar on stateChangeSuccess
             event.targetScope.$watch("$viewContentLoaded", function() {
 
                 cfpLoadingBar.complete();
             });
 
-            //show or hide left & right side
-            if ($scope.hide_left_right_side_in.indexOf($state.current.name) == -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showen in '+ $state.current.name);
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRihtSide = true;
-                });
-            } else {
-                $timeout(function() {
-                    console.warn('left and right side must be hidden in '+ $state.current.name);
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRihtSide = false;
-                    $rootScope.contentOffset = 3;
-                });
+            if($state.current.name == "front.home"){
+                $rootScope.SearchFormHeader = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else if($state.current.name == "front.usermenu"){
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else{
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
             }
 
             // scroll top the page on change state
@@ -242,6 +255,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $state.go('front.tender.add');
         }
 
+        $scope.show_tender = function (id) {
+            $state.go('front.tender', {id: id})
+        }
 
         $rootScope.operators = [
             {
@@ -259,10 +275,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $rootScope.dateRanges = [
-            {
-                label: $filter('translate')('front.ANY'),
-                value: 'any'
-            },
             {
                 label: $filter('translate')('front.TODAY'),
                 value: 'today'

@@ -1,54 +1,9 @@
-<!--<section id="contentSection">
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="left_content">
-                <div class="single_post_content">
-                    <h2><span>What are you bidding</span></h2>
-                    <div class="single_post_content">
-                        <ul class="spost_nav">
-                            <li ng-repeat="sector in sectorsList">
-                                <div class="media wow fadeInDown">
-                                    <div class="media-body"> <a ui-sref="front.tenders.sector({ id: [[ sector.id ]] })" class="catg_title"> [[ sector.name ]]  ( [[ sector.tenderCount ]] )</a> </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                        <div paging
-                             page="currentPage"
-                             page-size="pageSize"
-                             total="total"
-                             paging-action=" getBidsBySector(page)"
-                        >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-            <aside class="right_content">
-                <div class="single_sidebar">
-                    <h2><span>Last bids</span></h2>
-                    <ul class="spost_nav">
-                        <li ng-repeat="tender in tendersList">
-                            <div class="media wow fadeInDown">
-                                <div class="media-body"> <a ui-sref="front.tender.details({id:[[ tender.id ]]})" class="catg_title"> [[ tender.title ]]</a> </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                    <a ui-sref="front.tenders.list" class="catg_title">All tenders</a>
-                </div>
-            </aside>
-        </div>
-    </div>
-</section>-->
-
-
-<div class="mt-2 mb-3 pb-3" ng-controller="HomeCtrl">
-
+<div class="mt-2 mb-3 pb-3" ng-controller="searchFormCtrl">
     <div class="search-box-home" ng-show="!loggedIn">
-        <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" />
-        <button class="btn" type="submit" translate="content.form.buttons.FIND">Find</button>
+        <form name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
+            <input class="form-control" translate-attr-placeholder="front.WHATYOUAREBIDDING" placeholder="What you are bidding..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
+            <button class="btn" type="submit" translate="content.form.buttons.FIND" ng-submit="submitSearch(searchText)">Find</button>
+        </form>
         <ul>
             <li><a class="plus"></a></li>
             <li><a class="flash"></a></li>
