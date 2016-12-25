@@ -70,22 +70,37 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
 app.config(['$translateProvider',
     function ($translateProvider) {
 
-        // prefix and suffix information  is required to specify a pattern
-        // You can simply use the static-files loader with this pattern:
-        $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/i18n/front/',
-            suffix: '.json'
-        });
+    // prefix and suffix information  is required to specify a pattern
+    // You can simply use the static-files loader with this pattern:
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/assets/i18n/front/',
+        suffix: '.json'
+    });
 
-        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-        // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('en');
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
-        // Store the language in the local storage
-        $translateProvider.useLocalStorage();
+    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+    // This is where preferredLanguage(langKey) comes in.
+    $translateProvider.preferredLanguage(currentLanguage);
 
-        // Enable sanitize
-        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
+    
+    // Enable sanitize
+    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
 
     }]);
 

@@ -325,8 +325,8 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$loginDataFactory','toaster','$filter',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $loginDataFactory, toaster, $filter) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -336,6 +336,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
         });
+
+        $scope.type = 'Both';
+        if (typeof $stateParams.type != 'undefined') {
+            $scope.type = $stateParams.type;
+        }
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {

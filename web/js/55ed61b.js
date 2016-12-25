@@ -67671,22 +67671,37 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
 app.config(['$translateProvider',
     function ($translateProvider) {
 
-        // prefix and suffix information  is required to specify a pattern
-        // You can simply use the static-files loader with this pattern:
-        $translateProvider.useStaticFilesLoader({
-            prefix: '/assets/i18n/front/',
-            suffix: '.json'
-        });
+    // prefix and suffix information  is required to specify a pattern
+    // You can simply use the static-files loader with this pattern:
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/assets/i18n/front/',
+        suffix: '.json'
+    });
 
-        // Since you've now registered more then one translation table, angular-translate has to know which one to use.
-        // This is where preferredLanguage(langKey) comes in.
-        $translateProvider.preferredLanguage('en');
+    var currentLanguage = null;
+    if (typeof localStorage['ngStorage-language'] != 'undefined') {
+        currentLanguage = JSON.parse(localStorage['ngStorage-language']);
+    }
+    for (var languageKey in languages) {
+        if (currentLanguage == null) {
+            currentLanguage = languageKey;
+        }
+        if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        }
+    }
+    localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
+    localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
-        // Store the language in the local storage
-        $translateProvider.useLocalStorage();
+    // Since you've now registered more then one translation table, angular-translate has to know which one to use.
+    // This is where preferredLanguage(langKey) comes in.
+    $translateProvider.preferredLanguage(currentLanguage);
 
-        // Enable sanitize
-        $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    // Store the language in the local storage
+    $translateProvider.useLocalStorage();
+    
+    // Enable sanitize
+    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
 
     }]);
 
@@ -68426,7 +68441,7 @@ app.config(['$stateProvider',
          *  User Service routes
          */
         }).state('front.login', {
-            url: '/login',
+            url: '/login/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'front.LOGIN',
             resolve: loadSequence('LoginFrontCtrl', 'LoginService')
@@ -71507,8 +71522,8 @@ function ($rootScope, ToggleHelper) {
 /**
  * Check if field is unique or not
  */
-app.directive('myUniqueField', ['$resource', '$rootScope',
-function($resource, $rootScope) {
+app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
+function($resource, $rootScope, $localStorage) {
     var timeoutId;
     return {
         restrict: 'A',
@@ -71526,7 +71541,7 @@ function($resource, $rootScope) {
                     var fieldName = attrs.myUniqueField;
                     var resourceURL = attrs.myResourceUrl;
                     var currentId = attrs.myCurrentId;
-                    var resource = $resource($rootScope.app.apiURL + resourceURL, {id: '@id'}, {
+                    var resource = $resource('/' + $localStorage.language + $rootScope.app.apiURL + resourceURL, {id: '@id'}, {
                         query: { method: 'GET' }
                     });
                     var http_params = {
@@ -71548,6 +71563,7 @@ function($resource, $rootScope) {
         }
     }
 }]);
+
 'use strict';
 
 app.directive('recompile', function($compile, $parse) {
@@ -71910,8 +71926,8 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$loginDataFactory','toaster','$filter',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $loginDataFactory, toaster, $filter) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -71921,6 +71937,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
         });
+
+        $scope.type = 'Both';
+        if (typeof $stateParams.type != 'undefined') {
+            $scope.type = $stateParams.type;
+        }
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
