@@ -72266,53 +72266,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.show_tender = function (id) {
             $state.go('front.tender', {id: id})
         }
-        $scope.value = $filter('translate')('front.EQUALTO');
-        $scope.operators = [
-            {
-                label: $filter('translate')('front.MORETHAN'),
-                value: '>'
-            },
-            {
-                label: $filter('translate')('front.EQUALTO'),
-                value: '='
-            },
-            {
-                label: $filter('translate')('front.LESSTHAN'),
-                value: '<'
-            }
-        ];
-
-        $scope.dateRanges = [
-            {
-                label: $filter('translate')('front.TODAY'),
-                value: 'today'
-            },
-            {
-                label: $filter('translate')('front.YESTERDAY'),
-                value: 'yesterday'
-            },
-            {
-                label: $filter('translate')('front.LAST7DAYS'),
-                value: 'last7days'
-            },
-            {
-                label: $filter('translate')('front.LAST30DAYS'),
-                value: 'last30days'
-            },
-            {
-                label: $filter('translate')('front.THISMONTH'),
-                value: 'thismonth'
-            },
-            {
-                label: $filter('translate')('front.LASTMONTH'),
-                value: 'lastmonth'
-            },
-            {
-                label: $filter('translate')('front.CUSTOMDATE'),
-                value: 'customdate'
-            }
-        ];
-
+        
     }]);
 
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
@@ -72545,6 +72499,68 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 });
             }
         }
+
+        $scope.dueDateIsShowen = false;
+        $scope.publishDateIsShowen = false;
+
+        $scope.toggleDueDate = function(){
+            if($scope.search.deadline.value == 'customdate') {
+                $scope.dueDateIsShowen = !$scope.dueDateIsShowen;
+            }
+        }
+
+        $scope.togglePublishDate = function () {
+            if($scope.search.publish_date.value == 'customdate'){
+                $scope.publishDateIsShowen = !$scope.publishDateIsShowen;
+            }
+        }
+
+        $scope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $scope.dateRanges = [
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
+
 
     }]);
 
