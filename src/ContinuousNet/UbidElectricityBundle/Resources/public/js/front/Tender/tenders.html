@@ -8,7 +8,7 @@
             <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : [[ tender.deadline | date : formats.DATE  | translate  ]]</p>
         </div>
         <div class="row">
-            <div class="col-md-6"><button class="btn btn-sm" translate="front.READMORE">Read more</button></div>
+            <div class="col-md-6"><button class="btn btn-sm" translate="front.READMORE" ng-click="show_tender(tender.id)">Read more</button></div>
             <div class="col-md-6">
                 <button class="btn btn-sm pull-right" translate="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
                 <button class="btn btn-sm pull-right mr-1" translate="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>

@@ -1004,9 +1004,14 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
-        /*
-         * My Tenders Manager routes
-         */
+        }).state('front.applay_tender', {
+            url: '/applay_tender/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            /*
+             * My Tenders Manager routes
+             */
         }).state('front.mytenders',{
             url: '/my-tenders',
             template: '<div ui-view class="fade-in-up"></div>',
