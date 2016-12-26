@@ -462,6 +462,7 @@ assetic:
                 - "assets/js/directives/my-enum.js"
                 - "assets/js/directives/my-unique-field.js"
                 - "assets/js/directives/recompile.js"
+                - "assets/js/directives/my-tooltip.js"
         continuous_net_controllers:
             inputs:
                 - "assets/js/controllers/bootstrapCtrl.js"
