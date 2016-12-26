@@ -895,12 +895,16 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.toggleDueDate = function(){
             if($scope.search.deadline.value == 'customdate') {
                 $scope.dueDateIsShowen = !$scope.dueDateIsShowen;
+            }else{
+                $scope.dueDateIsShowen = false;
             }
         }
 
         $scope.togglePublishDate = function () {
             if($scope.search.publish_date.value == 'customdate'){
                 $scope.publishDateIsShowen = !$scope.publishDateIsShowen;
+            }else{
+                $scope.publishDateIsShowen = false;
             }
         }
 
