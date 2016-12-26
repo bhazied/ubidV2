@@ -196,6 +196,7 @@ app.constant('APP_MEDIAQUERY', {
     'mobile': 480
 });
 
+app.constant('DIAL_COUNTRIES', '/assets/js/resources/country-dial-code.json');
 app.constant('JS_REQUIRES', {   
     //*** Scripts
     scripts: {
@@ -1064,8 +1065,34 @@ app.config(['$stateProvider',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductsCtrl', 'SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         /*
-         * My Buyers Manager routes
+         * My Bids Manager routes
          */
+        }).state('front.mybids',{
+            url: '/my-bids',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+        }).state('front.mybids.list',{
+            url: '/my-bids/list',
+            templateUrl: '',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+            /*
+             * My BookmarkProject Manager routes
+             */
+        }).state('front.bookmarkproject',{
+            url: '/bookmark-project',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+        }).state('front.bookmarkproject.list',{
+            url: '/bookmark-project/list',
+            template: '',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+            /*
+             * My Buyers Manager routes
+             */
         }).state('front.mybuyers',{
             url: '/my-buyers',
             template: '<div ui-view class="fade-in-up"></div>',

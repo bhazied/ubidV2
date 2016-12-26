@@ -1756,6 +1756,8 @@
     "FILTERCOUNTRIES": "Search in countries...",
     "FILTERCATEGORIES": "Search in categories...",
     "RELATEDPRODUCTS": "Related products",
+    "MYBIDS": "My Bids",
+    "BOOKMARKPROJECT": "BookMark project",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",

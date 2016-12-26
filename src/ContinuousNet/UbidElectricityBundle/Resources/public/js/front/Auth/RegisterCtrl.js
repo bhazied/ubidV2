@@ -4,9 +4,8 @@
  * Controller for User Form
  */
 
-app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory',
-    function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory) {
-
+app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory','$http','DIAL_COUNTRIES',
+    function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory, $http, DIAL_COUNTRIES) {
         $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
         $scope.disableSubmit = false;
@@ -135,17 +134,11 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
         $scope.getCountries();
 
         $scope.changeCountry = function() {
-            /*for (var i=0;i<$scope.cities.length;i++) {
-                for (var j=0;j<$scope.countries.length;j++) {
-                    if ($scope.countries[j].id == $scope.user.country) {
-                        if (($scope.cities[i].country != null && $scope.cities[i].country.id == $scope.countries[j].id)) {
-                            $scope.cities[i].hidden = false;
-                        } else {
-                            $scope.cities[i].hidden = true;
-                        }
-                    }
+            angular.forEach($scope.dialCountries, function (value, key) {
+                if(value.code == $scope.user.country.code){
+                    $scope.user.phone = value.dial_code;
                 }
-            }*/
+            });
         };
 
         $scope.languages = [];
@@ -200,6 +193,7 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                 SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
                 return false;
             } else {
+                $scope.user.country = $scope.user.country.id;
                 $scope.user.locale = $localStorage.language;
                 $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
@@ -273,5 +267,19 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
 
         };
 
+        $scope.dialCountries = [];
+        $scope.getDialCountries = function () {
+            if($scope.dialCountries.length == 0){
+                var def = $q.defer();
+                $http.get(DIAL_COUNTRIES).then(function (response) {
+                    $scope.dialCountries = response.data;
+                });
+                return def.resolve($scope.dialCountries);
+            }
+            else{
+                return $scope.dialCountries;
+            }
+        }
+        $scope.getDialCountries();
     }]);
 
