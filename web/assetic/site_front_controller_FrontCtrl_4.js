@@ -37,7 +37,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.buyers',
             'front.suppliers',
             'front.post',
-            'front.generic_search'
+            'front.generic_search',
+            'front.contact'
         ];
 
         $timeout(function() {
@@ -258,8 +259,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.show_tender = function (id) {
             $state.go('front.tender', {id: id})
         }
-
-        $rootScope.operators = [
+        $scope.value = $filter('translate')('front.EQUALTO');
+        $scope.operators = [
             {
                 label: $filter('translate')('front.MORETHAN'),
                 value: '>'
@@ -274,7 +275,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         ];
 
-        $rootScope.dateRanges = [
+        $scope.dateRanges = [
             {
                 label: $filter('translate')('front.TODAY'),
                 value: 'today'

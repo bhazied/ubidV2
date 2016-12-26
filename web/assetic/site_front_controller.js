@@ -433,7 +433,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.buyers',
             'front.suppliers',
             'front.post',
-            'front.generic_search'
+            'front.generic_search',
+            'front.contact'
         ];
 
         $timeout(function() {
@@ -654,8 +655,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.show_tender = function (id) {
             $state.go('front.tender', {id: id})
         }
-
-        $rootScope.operators = [
+        $scope.value = $filter('translate')('front.EQUALTO');
+        $scope.operators = [
             {
                 label: $filter('translate')('front.MORETHAN'),
                 value: '>'
@@ -670,7 +671,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         ];
 
-        $rootScope.dateRanges = [
+        $scope.dateRanges = [
             {
                 label: $filter('translate')('front.TODAY'),
                 value: 'today'
@@ -706,14 +707,14 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
             console.log($localStorage.searchResult);
