@@ -280,16 +280,29 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getCategories();
 
+    $scope.categoriesSearchText = '';
     $scope.tenderCategories = false;
     $scope.$watch('tenderCategories', function() {
         if (angular.isDefined($scope.tender)) {
+            var categoriesFiltred = $filter('filter)($scope.categories), $scope.categoriesSearchText);
             if ($scope.tenderCategories) {
-                $scope.tender.categories = [];
-                for (var i in $scope.categories) {
-                    $scope.tender.categories.push($scope.categories[i].id);
+                //$scope.tender.categories = [];
+                for (var i in categoriesFiltred) {
+                    var id = categoriesFiltred[i].id;
+                    var index = $scope.tender.categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.tender.categories.push(id);
+                    }
                 }
             } else {
-                $scope.tender.categories = [];
+                //$scope.tender.categories = [];
+                for (var i in categoriesFiltred) {
+                    var id = categoriesFiltred[i].id;
+                    var index = $scope.tender.categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.tender.categories.splice(index, 1);
+                    }
+                }
             }
         }
     });
