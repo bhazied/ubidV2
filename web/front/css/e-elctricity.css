@@ -978,6 +978,13 @@ span.input-help > input {
 }
 
 fieldset legend {
+    font-size: 2rem;
+    color: #013486 !important;
+    border-bottom: 1px solid #eee;
+}
+
+fieldset h2 {
+    font-size: 1.5rem;
     color: #013486 !important;
 }
 
