@@ -302,8 +302,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     }
                 }
             }
-        } else {
-            $scope.tender.categories = [];
         }
     });
 

@@ -156,12 +156,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.postCategoriesSearchText = '';
     $scope.postPostCategories = false;
     $scope.$watch('postPostCategories', function() {
-<<<<<<< HEAD
-        if ($scope.postPostCategories) {
-            $scope.post.post_categories = [];
-            for (var i in $scope.postCategories) {
-                $scope.post.post_categories.push($scope.postCategories[i].id);
-=======
         if (angular.isDefined($scope.post)) {
             var post_categories = $filter('filter')($scope.postCategories, $scope.postCategoriesSearchText);
             if ($scope.postPostCategories) {
@@ -180,10 +174,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                         $scope.post.post_categories.splice(index, 1);
                     }
                 }
->>>>>>> generator
             }
-        } else {
-            $scope.post.post_categories = [];
         }
     });
 
