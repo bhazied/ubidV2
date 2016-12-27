@@ -169,18 +169,18 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $scope.banner.banner_positions.push($scope.bannerPositions[i].id);
 =======
         if (angular.isDefined($scope.banner)) {
-            var banner_positionsFiltred = $filter('filter')($scope.bannerPositions, $scope.bannerPositionsSearchText);
+            var banner_positions = $filter('filter')($scope.bannerPositions, $scope.bannerPositionsSearchText);
             if ($scope.bannerBannerPositions) {
-                for (var i in banner_positionsFiltred) {
-                    var id = banner_positionsFiltred[i].id;
+                for (var i in banner_positions) {
+                    var id = banner_positions[i].id;
                     var index = $scope.banner.banner_positions.indexOf(id);
                     if (index == -1) {
                         $scope.banner.banner_positions.push(id);
                     }
                 }
             } else {
-                for (var i in banner_positionsFiltred) {
-                    var id = banner_positionsFiltred[i].id;
+                for (var i in banner_positions) {
+                    var id = banner_positions[i].id;
                     var index = $scope.banner.banner_positions.indexOf(id);
                     if (index > -1) {
                         $scope.banner.banner_positions.splice(index, 1);

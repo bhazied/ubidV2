@@ -241,18 +241,18 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $scope.user.groups.push($scope.groups[i].id);
 =======
         if (angular.isDefined($scope.user)) {
-            var groupsFiltred = $filter('filter')($scope.groups, $scope.groupsSearchText);
+            var groups = $filter('filter')($scope.groups, $scope.groupsSearchText);
             if ($scope.userGroups) {
-                for (var i in groupsFiltred) {
-                    var id = groupsFiltred[i].id;
+                for (var i in groups) {
+                    var id = groups[i].id;
                     var index = $scope.user.groups.indexOf(id);
                     if (index == -1) {
                         $scope.user.groups.push(id);
                     }
                 }
             } else {
-                for (var i in groupsFiltred) {
-                    var id = groupsFiltred[i].id;
+                for (var i in groups) {
+                    var id = groups[i].id;
                     var index = $scope.user.groups.indexOf(id);
                     if (index > -1) {
                         $scope.user.groups.splice(index, 1);
