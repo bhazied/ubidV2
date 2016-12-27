@@ -4,7 +4,8 @@
     <div class="form-group">
         <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
         <div class="categories-checkbox">
-            <div class="form-group" ng-repeat="tenderCategory in tenderCategories" ng-if="tenderCategory.id">
+            <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
+            <div class="form-group" ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.id">
                 <label class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.id]]">
                     <span class="custom-control-indicator"></span>
@@ -31,40 +32,30 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group nice-select">
-                    <select class="form-control" class="select" ng-model="search.total_cost_operator" ng-options="item as item.label for item in operators track by item.value"></select>
+
+                    <select class="form-control" class="select" ng-model="search.total_cost_operator">
+                        <option  value="morethan" translate="front.MORETHAN">More Than</option>
+                        <option  value="lessthan" translate="front.LESSTHAN">Less Than</option>
+                        <option  value="equalto" translate="front.EQUALTO">Equal To</option>
+                    </select>
                     <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group nice-select">
-
-                        <select class="form-control" class="select" ng-model="search.total_cost_operator">
-                            <option  value="morethan" translate="front.MORETHAN">More Than</option>
-                            <option  value="lessthan" translate="front.LESSTHAN">Less Than</option>
-                            <option  value="equalto" translate="front.EQUALTO">Equal To</option>
-                        </select>
-                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
-                    </div>
-                </div>
-                <div class="col-md-6 pl-0">
-                    <div class="input-group">
-                        <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
-                        <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-                    </div>
+            <div class="col-md-6 pl-0">
+                <div class="input-group">
+                    <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
+                    <div class="input-group-addon"><i class="fa fa-usd"></i></div>
                 </div>
             </div>
         </div>
+    </div>
     <div class="form-group">
         <label class="sidebar-label" translate="front.PUBLICATIONDATE">Publication Date</label>
         <div class="form-group nice-select">
-            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="item as item.label for item in dateRanges track by item.value"></select>
+            <select class="form-control" class="select" ng-model="search.publish_date" ng-options="item as item.label for item in dateRanges track by item.value" ng-change="togglePublishDate()"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" ng-if="publishDateIsShowen">
             <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
             <div class="col-md-9">
                 <div class="input-group">
@@ -73,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" ng-if="publishDateIsShowen">
             <label class="col-md-3 col-form-label" translate="front.TO">To</label>
             <div class="col-md-9">
                 <div class="input-group">
@@ -86,10 +77,10 @@
     <div class="form-group">
         <label class="sidebar-label" translate="front.DUEDATE">Due Date</label>
         <div class="form-group nice-select">
-            <select class="form-control" class="select" ng-model="search.deadline" ng-options="item as item.label for item in dateRanges track by item.value"></select>
+            <select class="form-control" class="select" ng-model="search.deadline" ng-options="item as item.label for item in dateRanges track by item.value" ng-change="toggleDueDate()"></select>
             <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" ng-if="dueDateIsShowen">
             <label class="col-md-3 col-form-label" translate="front.FROM">From</label>
             <div class="col-md-9">
                 <div class="input-group">
@@ -98,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" ng-if="dueDateIsShowen">
         <label class="col-md-3 col-form-label" translate="front.TO">To</label>
         <div class="col-md-9">
             <div class="input-group">

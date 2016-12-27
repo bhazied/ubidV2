@@ -67749,6 +67749,7 @@ app.constant('APP_MEDIAQUERY', {
     'mobile': 480
 });
 
+app.constant('DIAL_COUNTRIES', '/assets/js/resources/country-dial-code.json');
 app.constant('JS_REQUIRES', {   
     //*** Scripts
     scripts: {
@@ -72407,6 +72408,23 @@ app.directive('recompile', function($compile, $parse) {
 
 });
 
+'use strict';
+/**
+ * Make icon for boolena values
+ */
+app.directive('myTooltip', [
+    function ($rootScope) {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
+                $(elem).hover(function () {
+                    $(elem).tooltip('show');
+                }, function () {
+                    $(elem).tooltip('hide');
+                });
+            }
+        };
+    }]);
 'use strict';
 /**
  * controllers for UI Bootstrap components

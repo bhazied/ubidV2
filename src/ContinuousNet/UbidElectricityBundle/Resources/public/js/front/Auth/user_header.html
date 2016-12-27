@@ -1,6 +1,17 @@
 <div ng-show="loggedIn" ng-controller="LoginFrontCtrl">
-    <!--span class="user-name pull-right" ng-click="logout()">  logout </span-->
-    <span class="user-name pull-right" ng-click="myProfile()">[[ user.name ]] </span>
-    <a ui-sref="front.usermenu" class="user-photo pull-right [[ user.gender ]]"></a>
+    <!--span class="user-name pull-right">  logout </span-->
+    <span class="user-name pull-right">
+        [[ user.name ]]
+        <ul class="submenu">
+            <li ng-click="myProfile()"><a><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
+            <li ng-click="logout()"><a><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
+        </ul>
+    </span>
+    <a class="user-photo pull-right [[ user.gender ]]"></a>
     <a ui-sref="front.usermenu" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
+</div>
+
+<div ng-show="!loggedIn">
+    <a ui-sref="front.login" class="user-photo pull-right Male"></a>
+    <a class="notification pull-right"></a>
 </div>

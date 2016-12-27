@@ -7,9 +7,9 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
-            $rootScope.contentOffset = 3;
-        });
+            $rootScope.contentSize = 10;
+            $rootScope.contentOffset = 0;
+        }, 1000);
 
 /*        $scope.tendersLoaded = false;
         $scope.tendersList = [];

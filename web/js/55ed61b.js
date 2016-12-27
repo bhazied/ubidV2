@@ -67766,6 +67766,7 @@ app.constant('APP_MEDIAQUERY', {
     'mobile': 480
 });
 
+app.constant('DIAL_COUNTRIES', '/assets/js/resources/country-dial-code.json');
 app.constant('JS_REQUIRES', {   
     //*** Scripts
     scripts: {
@@ -68441,7 +68442,7 @@ app.config(['$stateProvider',
          *  User Service routes
          */
         }).state('front.login', {
-            url: '/login',
+            url: '/login/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'front.LOGIN',
             resolve: loadSequence('LoginFrontCtrl', 'LoginService')
@@ -68532,14 +68533,14 @@ app.config(['$stateProvider',
         /*
          * Public Tender Lists & Details routes
          */
-        }).state('front.tenders',{
+        })/*.state('front.tenders',{
             url: "/tenders",
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'sidebar.nav.adserving.MAIN',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        }).state('front.tenders.list',{
+        })*/.state('front.tenders',{
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
@@ -68574,9 +68575,14 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
-        /*
-         * My Tenders Manager routes
-         */
+        }).state('front.applay_tender', {
+            url: '/applay_tender/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            /*
+             * My Tenders Manager routes
+             */
         }).state('front.mytenders',{
             url: '/my-tenders',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -68629,8 +68635,34 @@ app.config(['$stateProvider',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductsCtrl', 'SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         /*
-         * My Buyers Manager routes
+         * My Bids Manager routes
          */
+        }).state('front.mybids',{
+            url: '/my-bids',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+        }).state('front.mybids.list',{
+            url: '/my-bids/list',
+            templateUrl: '',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+            /*
+             * My BookmarkProject Manager routes
+             */
+        }).state('front.bookmarkproject',{
+            url: '/bookmark-project',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+        }).state('front.bookmarkproject.list',{
+            url: '/bookmark-project/list',
+            template: '',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+            /*
+             * My Buyers Manager routes
+             */
         }).state('front.mybuyers',{
             url: '/my-buyers',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -71606,6 +71638,23 @@ app.directive('recompile', function($compile, $parse) {
 
 'use strict';
 /**
+ * Make icon for boolena values
+ */
+app.directive('myTooltip', [
+    function ($rootScope) {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
+                $(elem).hover(function () {
+                    $(elem).tooltip('show');
+                }, function () {
+                    $(elem).tooltip('hide');
+                });
+            }
+        };
+    }]);
+'use strict';
+/**
  * controllers for UI Bootstrap components
  */
 app.controller('AlertDemoCtrl', ["$scope", function ($scope) {
@@ -71931,8 +71980,8 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -71941,7 +71990,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        });
+        }, 1000);
+
+        $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
@@ -71949,7 +72000,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
             delete  $localStorage.user;
             $scope.status = '';
-            $scope.user = {};
+            $scope.user = $rootScope.user = {};
+            $rootScope.loggedIn = false;
 
         };
 
@@ -71990,6 +72042,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.myProfile = function () {
             $state.go('front.profile');
         };
+        
+        $scope.register = function (type) {
+            $state.go('front.register', {type: type});
+        }
 
     }]);
 
@@ -72006,6 +72062,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showRightSide = false;
         $rootScope.contentSize = 6;
         $rootScope.contentOffset = 0;
+
+        //header searchForm show
+        $rootScope.SearchFormHeader = false;
+
+        $rootScope.showLogo = false;
+        $rootScope.showBrandName = false;
 
         $rootScope.searchLoaded = false;
 
@@ -72026,7 +72088,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.buyers',
             'front.suppliers',
             'front.post',
-            'front.generic_search'
+            'front.generic_search',
+            'front.contact'
         ];
 
         $timeout(function() {
@@ -72077,22 +72140,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 cfpLoadingBar.complete();
             });
 
-            //show or hide left & right side
-            /*if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showen in '+ $state.current.name);
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRightSide = true;
-                    $rootScope.contentOffset = 0;
-                });
-            } else {
-                $timeout(function() {
-                    console.warn('left and right side must be hidden in '+ $state.current.name);
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRightSide = false;
-                    $rootScope.contentOffset = 3;
-                });
-            }*/
+            if($state.current.name == "front.home"){
+                $rootScope.SearchFormHeader = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else if($state.current.name == "front.usermenu"){
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else{
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
+            }
 
             // scroll top the page on change state
             $('#app .main-content').css({
@@ -72248,66 +72310,20 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.show_tender = function (id) {
             $state.go('front.tender', {id: id})
         }
-
-        $rootScope.operators = [
-            {
-                label: $filter('translate')('front.MORETHAN'),
-                value: '>'
-            },
-            {
-                label: $filter('translate')('front.EQUALTO'),
-                value: '='
-            },
-            {
-                label: $filter('translate')('front.LESSTHAN'),
-                value: '<'
-            }
-        ];
-
-        $rootScope.dateRanges = [
-            {
-                label: $filter('translate')('front.TODAY'),
-                value: 'today'
-            },
-            {
-                label: $filter('translate')('front.YESTERDAY'),
-                value: 'yesterday'
-            },
-            {
-                label: $filter('translate')('front.LAST7DAYS'),
-                value: 'last7days'
-            },
-            {
-                label: $filter('translate')('front.LAST30DAYS'),
-                value: 'last30days'
-            },
-            {
-                label: $filter('translate')('front.THISMONTH'),
-                value: 'thismonth'
-            },
-            {
-                label: $filter('translate')('front.LASTMONTH'),
-                value: 'lastmonth'
-            },
-            {
-                label: $filter('translate')('front.CUSTOMDATE'),
-                value: 'customdate'
-            }
-        ];
-
+        
     }]);
 
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert, $stateParams) {
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
+            $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
             console.log($localStorage.searchResult);
@@ -72330,15 +72346,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.tabs = [
                 {
                     title: $filter('translate')('front.TENDERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
+                    inlineCount: $scope.tenderCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html',
+                    inlineCount: $scope.supplierCount
                 },
                 {
                     title: $filter('translate')('front.BUYER'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
+                    inlineCount: $scope.buyerCount
                 },
             ];
         }
@@ -72524,6 +72543,72 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 });
             }
         }
+
+        $scope.dueDateIsShowen = false;
+        $scope.publishDateIsShowen = false;
+
+        $scope.toggleDueDate = function(){
+            if($scope.search.deadline.value == 'customdate') {
+                $scope.dueDateIsShowen = !$scope.dueDateIsShowen;
+            }else{
+                $scope.dueDateIsShowen = false;
+            }
+        }
+
+        $scope.togglePublishDate = function () {
+            if($scope.search.publish_date.value == 'customdate'){
+                $scope.publishDateIsShowen = !$scope.publishDateIsShowen;
+            }else{
+                $scope.publishDateIsShowen = false;
+            }
+        }
+
+        $scope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $scope.dateRanges = [
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
+
 
     }]);
 

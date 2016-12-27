@@ -10,9 +10,9 @@
                 <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
             </ul>
         </div>
-        <div class="col-md-4 pl-0 pr-0">
+        <div class="col-md-4 pl-0">
             <div class="form-group row pull-right sort-by">
-                <label class="col-xs-4 col-form-label pl-0 pr-0" translate="front.SORTBY">Sort By</label>
+                <label class="col-xs-4 col-form-label pl-0" translate="front.SORTBY">Sort By</label>
                 <div class="col-xs-8 pr-0">
                     <div class="input-group nice-select">
                         <select class="form-control" class="select" ng-model="sortingOption" ng-options="item as item.label for item in sortingOptions" ng-change="getBuyers()"></select>

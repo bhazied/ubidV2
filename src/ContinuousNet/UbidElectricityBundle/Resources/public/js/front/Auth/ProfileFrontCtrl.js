@@ -9,6 +9,8 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showUserMenu = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         });

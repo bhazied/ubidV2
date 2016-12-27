@@ -12,6 +12,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.contentSize = 6;
         $rootScope.contentOffset = 0;
 
+        //header searchForm show
+        $rootScope.SearchFormHeader = false;
+
+        $rootScope.showLogo = false;
+        $rootScope.showBrandName = false;
+
         $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
@@ -31,7 +37,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.buyers',
             'front.suppliers',
             'front.post',
-            'front.generic_search'
+            'front.generic_search',
+            'front.contact'
         ];
 
         $timeout(function() {
@@ -82,22 +89,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 cfpLoadingBar.complete();
             });
 
-            //show or hide left & right side
-            /*if ($scope.hide_left_right_side_in.indexOf($state.current.name) != -1) {
-                $timeout(function() {
-                    console.warn('left and right side must be showen in '+ $state.current.name);
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRightSide = true;
-                    $rootScope.contentOffset = 0;
-                });
-            } else {
-                $timeout(function() {
-                    console.warn('left and right side must be hidden in '+ $state.current.name);
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRightSide = false;
-                    $rootScope.contentOffset = 3;
-                });
-            }*/
+            if($state.current.name == "front.home"){
+                $rootScope.SearchFormHeader = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else if($state.current.name == "front.usermenu"){
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
+            }
+            else{
+                $rootScope.SearchFormHeader = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
+            }
 
             // scroll top the page on change state
             $('#app .main-content').css({
@@ -253,51 +259,5 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.show_tender = function (id) {
             $state.go('front.tender', {id: id})
         }
-
-        $rootScope.operators = [
-            {
-                label: $filter('translate')('front.MORETHAN'),
-                value: '>'
-            },
-            {
-                label: $filter('translate')('front.EQUALTO'),
-                value: '='
-            },
-            {
-                label: $filter('translate')('front.LESSTHAN'),
-                value: '<'
-            }
-        ];
-
-        $rootScope.dateRanges = [
-            {
-                label: $filter('translate')('front.TODAY'),
-                value: 'today'
-            },
-            {
-                label: $filter('translate')('front.YESTERDAY'),
-                value: 'yesterday'
-            },
-            {
-                label: $filter('translate')('front.LAST7DAYS'),
-                value: 'last7days'
-            },
-            {
-                label: $filter('translate')('front.LAST30DAYS'),
-                value: 'last30days'
-            },
-            {
-                label: $filter('translate')('front.THISMONTH'),
-                value: 'thismonth'
-            },
-            {
-                label: $filter('translate')('front.LASTMONTH'),
-                value: 'lastmonth'
-            },
-            {
-                label: $filter('translate')('front.CUSTOMDATE'),
-                value: 'customdate'
-            }
-        ];
-
+        
     }]);

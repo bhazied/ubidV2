@@ -1,14 +1,14 @@
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert','$stateParams',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert, $stateParams) {
+app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
+            $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
             console.log($localStorage.searchResult);
@@ -31,15 +31,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.tabs = [
                 {
                     title: $filter('translate')('front.TENDERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
+                    inlineCount: $scope.tenderCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/suppliers.html',
+                    inlineCount: $scope.supplierCount
                 },
                 {
                     title: $filter('translate')('front.BUYER'),
-                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html'
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
+                    inlineCount: $scope.buyerCount
                 },
             ];
         }
@@ -225,5 +228,71 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 });
             }
         }
+
+        $scope.dueDateIsShowen = false;
+        $scope.publishDateIsShowen = false;
+
+        $scope.toggleDueDate = function(){
+            if($scope.search.deadline.value == 'customdate') {
+                $scope.dueDateIsShowen = !$scope.dueDateIsShowen;
+            }else{
+                $scope.dueDateIsShowen = false;
+            }
+        }
+
+        $scope.togglePublishDate = function () {
+            if($scope.search.publish_date.value == 'customdate'){
+                $scope.publishDateIsShowen = !$scope.publishDateIsShowen;
+            }else{
+                $scope.publishDateIsShowen = false;
+            }
+        }
+
+        $scope.operators = [
+            {
+                label: $filter('translate')('front.MORETHAN'),
+                value: '>'
+            },
+            {
+                label: $filter('translate')('front.EQUALTO'),
+                value: '='
+            },
+            {
+                label: $filter('translate')('front.LESSTHAN'),
+                value: '<'
+            }
+        ];
+
+        $scope.dateRanges = [
+            {
+                label: $filter('translate')('front.TODAY'),
+                value: 'today'
+            },
+            {
+                label: $filter('translate')('front.YESTERDAY'),
+                value: 'yesterday'
+            },
+            {
+                label: $filter('translate')('front.LAST7DAYS'),
+                value: 'last7days'
+            },
+            {
+                label: $filter('translate')('front.LAST30DAYS'),
+                value: 'last30days'
+            },
+            {
+                label: $filter('translate')('front.THISMONTH'),
+                value: 'thismonth'
+            },
+            {
+                label: $filter('translate')('front.LASTMONTH'),
+                value: 'lastmonth'
+            },
+            {
+                label: $filter('translate')('front.CUSTOMDATE'),
+                value: 'customdate'
+            }
+        ];
+
 
     }]);

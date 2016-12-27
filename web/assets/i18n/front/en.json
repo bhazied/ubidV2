@@ -22,7 +22,8 @@
     "CREATEACCOUNT": "Create an account",
     "ERROR": "Incorrect Email or Password",
     "WELCOME": "Welcome",
-    "ACCESSDENEID": "Access denied"
+    "ACCESSDENEID": "Access denied",
+    "SUBSCRIBE": "Subscribe"
   },
   "register": {
     "CREATEYOURACCOUNT": "Create your account",
@@ -917,6 +918,8 @@
           "DEFAULT" : "Default"
         },
         "USER" : {
+          "A" : "Your account information",
+          "B" : "Your personal information",
           "DEFAULT" : "Default"
         },
         "USERSETTING" : {
@@ -927,6 +930,7 @@
         }
       },
       "fields": {
+        "MESSAGE" : "Message",
         "CARDNUMBER" : "Card Number",
         "CARDMONTHEXPR" : "Expiration Month",
         "CARDYEAREXPR" : "Expiration Year",
@@ -1161,7 +1165,7 @@
         "VALUE": "Value",
         "IP": "Ip",
         "ISVALID": "Is Valid",
-        "USERTYPE": "Type",
+        "USERTYPE": "I'm a",
         "ALIAS": "Alias",
         "types": {
           "TENDER": "Tender",
@@ -1169,7 +1173,7 @@
           "BUYER": "Buyer",
           "SUPPLIERPRODUCT": "Supplier Product",
           "GUEST": "Guest",
-          "BOTH": "Both",
+          "BOTH": "Both Buyer & Supplier",
           "ADMINISTRATOR": "Administrator"
         },
         "statuses": {
@@ -1692,8 +1696,12 @@
     "NEWPRODUCT":"New Product",
     "MYPROFILE":"My Profile",
     "CHANGEPASSWORD":"Change Password",
-    "SIGNIN": "Sign-in",
-    "SIGNOUT":"Sign-out",
+    "SIGNIN": "Sign in",
+    "SIGNOUT":"Sign out",
+    "SIGNUP": "Sign up",
+    "ALREADYHAVEANACCOUNT": "Already have an account?",
+    "DONTHAVEANACCOUNT": "Don't have an account?",
+    "REGISTER": "Register",
     "REGISTERASBUYER": "Register as Buyer",
     "REGISTERASSUPPLIER": "Register as Supplier",
     "CONTACTUS": "Contact us",
@@ -1746,7 +1754,10 @@
     "NORESULTSFORTENDERS": "No results for tenders",
     "NORESULTSFORBUYERS":"No results for buyers",
     "FILTERCOUNTRIES": "Search in countries...",
+    "FILTERCATEGORIES": "Search in categories...",
     "RELATEDPRODUCTS": "Related products",
+    "MYBIDS": "My Bids",
+    "BOOKMARKPROJECT": "BookMark project",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",

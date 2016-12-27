@@ -10,6 +10,7 @@ app.constant('APP_MEDIAQUERY', {
     'mobile': 480
 });
 
+app.constant('DIAL_COUNTRIES', '/assets/js/resources/country-dial-code.json');
 app.constant('JS_REQUIRES', {   
     //*** Scripts
     scripts: {

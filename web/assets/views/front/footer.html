@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-4 col-xs-4 footer-links">
             <ul>
-                <li><a ng-if="!user.email" ui-sref="front.login" translate="front.SIGNIN">Sign-in</a></li>
+                <li><a ng-if="!user.email" ui-sref="front.login({type: 'Both'})" translate="front.SIGNIN">Sign in</a></li>
                 <li><a ng-if="!user.email" ui-sref="front.register({type: 'Buyer'})" translate="front.REGISTERASBUYER">Register as Buyer</a></li>
                 <li><a ng-if="!user.email" ui-sref="front.register({type: 'Supplier'})" translate="front.REGISTERASSUPPLIER">Register as Supplier</a></li>
                 <li><a ng-if="user.email" ui-sref="front.logout" translate="front.SIGNOUT">Sign-out</a></li>

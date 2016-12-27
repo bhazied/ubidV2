@@ -196,6 +196,7 @@ app.constant('APP_MEDIAQUERY', {
     'mobile': 480
 });
 
+app.constant('DIAL_COUNTRIES', '/assets/js/resources/country-dial-code.json');
 app.constant('JS_REQUIRES', {   
     //*** Scripts
     scripts: {
@@ -871,7 +872,7 @@ app.config(['$stateProvider',
          *  User Service routes
          */
         }).state('front.login', {
-            url: '/login',
+            url: '/login/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/login.html',
             title: 'front.LOGIN',
             resolve: loadSequence('LoginFrontCtrl', 'LoginService')
@@ -962,14 +963,14 @@ app.config(['$stateProvider',
         /*
          * Public Tender Lists & Details routes
          */
-        }).state('front.tenders',{
+        })/*.state('front.tenders',{
             url: "/tenders",
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'sidebar.nav.adserving.MAIN',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        }).state('front.tenders.list',{
+        })*/.state('front.tenders',{
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
@@ -1004,9 +1005,14 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
-        /*
-         * My Tenders Manager routes
-         */
+        }).state('front.applay_tender', {
+            url: '/applay_tender/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
+            title: 'Advanced Search',
+            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            /*
+             * My Tenders Manager routes
+             */
         }).state('front.mytenders',{
             url: '/my-tenders',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -1059,8 +1065,34 @@ app.config(['$stateProvider',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductsCtrl', 'SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         /*
-         * My Buyers Manager routes
+         * My Bids Manager routes
          */
+        }).state('front.mybids',{
+            url: '/my-bids',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+        }).state('front.mybids.list',{
+            url: '/my-bids/list',
+            templateUrl: '',
+            title: 'front.MYBIDS',
+            resolve: loadSequence()
+            /*
+             * My BookmarkProject Manager routes
+             */
+        }).state('front.bookmarkproject',{
+            url: '/bookmark-project',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+        }).state('front.bookmarkproject.list',{
+            url: '/bookmark-project/list',
+            template: '',
+            title: 'front.BOOKMARKPROJECT',
+            resolve: loadSequence()
+            /*
+             * My Buyers Manager routes
+             */
         }).state('front.mybuyers',{
             url: '/my-buyers',
             template: '<div ui-view class="fade-in-up"></div>',
