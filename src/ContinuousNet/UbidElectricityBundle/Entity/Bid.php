@@ -166,45 +166,12 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="attachment_file_1", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
      * 
      */
-    private $attachmentFile1;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_2", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile2;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_3", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile3;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_4", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile4;
+    private $attachmentFiles;
 
     /**
      * @var \DateTime
@@ -549,99 +516,27 @@ class Bid
     }
 
     /**
-     * Set attachmentFile1
+     * Set attachmentFiles
      *
      * @access public
-     * @param string $attachmentFile1
+     * @param string $attachmentFiles
      * @return Bid
      */
-    public function setAttachmentFile1($attachmentFile1 = null)
+    public function setAttachmentFiles($attachmentFiles = null)
     {
-        $this->attachmentFile1 = $attachmentFile1;
+        $this->attachmentFiles = $attachmentFiles;
         return $this;
     }
 
     /**
-     * Get attachmentFile1
+     * Get attachmentFiles
      *
      * @access public
      * @return string 
      */
-    public function getAttachmentFile1()
+    public function getAttachmentFiles()
     {
-        return $this->attachmentFile1;
-    }
-
-    /**
-     * Set attachmentFile2
-     *
-     * @access public
-     * @param string $attachmentFile2
-     * @return Bid
-     */
-    public function setAttachmentFile2($attachmentFile2 = null)
-    {
-        $this->attachmentFile2 = $attachmentFile2;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile2
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile2()
-    {
-        return $this->attachmentFile2;
-    }
-
-    /**
-     * Set attachmentFile3
-     *
-     * @access public
-     * @param string $attachmentFile3
-     * @return Bid
-     */
-    public function setAttachmentFile3($attachmentFile3 = null)
-    {
-        $this->attachmentFile3 = $attachmentFile3;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile3
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile3()
-    {
-        return $this->attachmentFile3;
-    }
-
-    /**
-     * Set attachmentFile4
-     *
-     * @access public
-     * @param string $attachmentFile4
-     * @return Bid
-     */
-    public function setAttachmentFile4($attachmentFile4 = null)
-    {
-        $this->attachmentFile4 = $attachmentFile4;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile4
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile4()
-    {
-        return $this->attachmentFile4;
+        return $this->attachmentFiles;
     }
 
     /**

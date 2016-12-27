@@ -152,10 +152,10 @@ class Tender
     private $deadline;
 
     /**
-     * @var float
+     * @var integer
      * @access private
      *
-     * @ORM\Column(name="estimated_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="estimated_cost", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -199,45 +199,12 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="attachment_file_1", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
      * 
      */
-    private $attachmentFile1;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_2", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile2;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_3", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile3;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="attachment_file_4", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $attachmentFile4;
+    private $attachmentFiles;
 
     /**
      * @var string
@@ -249,6 +216,17 @@ class Tender
      * 
      */
     private $source;
+
+    /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="validated", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $validated;
 
     /**
      * @var integer
@@ -664,7 +642,7 @@ class Tender
      * Set estimatedCost
      *
      * @access public
-     * @param float $estimatedCost
+     * @param integer $estimatedCost
      * @return Tender
      */
     public function setEstimatedCost($estimatedCost = null)
@@ -677,7 +655,7 @@ class Tender
      * Get estimatedCost
      *
      * @access public
-     * @return float 
+     * @return integer 
      */
     public function getEstimatedCost()
     {
@@ -757,99 +735,27 @@ class Tender
     }
 
     /**
-     * Set attachmentFile1
+     * Set attachmentFiles
      *
      * @access public
-     * @param string $attachmentFile1
+     * @param string $attachmentFiles
      * @return Tender
      */
-    public function setAttachmentFile1($attachmentFile1 = null)
+    public function setAttachmentFiles($attachmentFiles = null)
     {
-        $this->attachmentFile1 = $attachmentFile1;
+        $this->attachmentFiles = $attachmentFiles;
         return $this;
     }
 
     /**
-     * Get attachmentFile1
+     * Get attachmentFiles
      *
      * @access public
      * @return string 
      */
-    public function getAttachmentFile1()
+    public function getAttachmentFiles()
     {
-        return $this->attachmentFile1;
-    }
-
-    /**
-     * Set attachmentFile2
-     *
-     * @access public
-     * @param string $attachmentFile2
-     * @return Tender
-     */
-    public function setAttachmentFile2($attachmentFile2 = null)
-    {
-        $this->attachmentFile2 = $attachmentFile2;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile2
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile2()
-    {
-        return $this->attachmentFile2;
-    }
-
-    /**
-     * Set attachmentFile3
-     *
-     * @access public
-     * @param string $attachmentFile3
-     * @return Tender
-     */
-    public function setAttachmentFile3($attachmentFile3 = null)
-    {
-        $this->attachmentFile3 = $attachmentFile3;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile3
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile3()
-    {
-        return $this->attachmentFile3;
-    }
-
-    /**
-     * Set attachmentFile4
-     *
-     * @access public
-     * @param string $attachmentFile4
-     * @return Tender
-     */
-    public function setAttachmentFile4($attachmentFile4 = null)
-    {
-        $this->attachmentFile4 = $attachmentFile4;
-        return $this;
-    }
-
-    /**
-     * Get attachmentFile4
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAttachmentFile4()
-    {
-        return $this->attachmentFile4;
+        return $this->attachmentFiles;
     }
 
     /**
@@ -874,6 +780,30 @@ class Tender
     public function getSource()
     {
         return $this->source;
+    }
+
+    /**
+     * Set validated
+     *
+     * @access public
+     * @param boolean $validated
+     * @return Tender
+     */
+    public function setValidated($validated)
+    {
+        $this->validated = $validated;
+        return $this;
+    }
+
+    /**
+     * Get validated
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getValidated()
+    {
+        return $this->validated;
     }
 
     /**
