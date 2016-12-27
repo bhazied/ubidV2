@@ -26,11 +26,13 @@
                     <form name="tenderForm" id="tenderForm" novalidate ng-submit="submitForm(tenderForm)">
                         <input type="hidden" name="id" id="tenderId" ng-model="tender.id" />
                         <div class="row">
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-12">
                                 <h2 translate="content.list.fieldsets.TENDER.A"></h2>
                             </div><!--/col-md-12-->
                         </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.buyer.$dirty && tenderForm.buyer.$invalid, 'has-success':tenderForm.buyer.$valid}">
