@@ -1758,6 +1758,8 @@
     "RELATEDPRODUCTS": "Related products",
     "MYBIDS": "My Bids",
     "BOOKMARKPROJECT": "BookMark project",
+    "PROJECTBIDS": "Project bids",
+    "PROJECTBIDSSHORTLIST":"Short list bids",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",

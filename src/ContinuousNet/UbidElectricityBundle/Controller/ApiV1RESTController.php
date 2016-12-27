@@ -1149,4 +1149,68 @@ class ApiV1RESTController extends FOSRestController
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+
+    /**
+     * Get public Bids List
+     *
+     * @Get("/bids/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function bidsAction($page, $pageCount, $sortField, $sortDirection)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $data = array();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('count(t_.id)');
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('t_');
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $qb->addOrderBy('t_.'.$sortField, $sortDirection);
+            $qb->setMaxResults($pageCount);
+            $offset = ($page - 1) * $pageCount;
+            $qb->setFirstResult($offset);
+            $data['results'] = $qb->getQuery()->getResult();
+
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Get a Bid entity By id
+     *
+     * @Get("/bidDetails/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function bidDetailsAction($id)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('t_');
+            $qb->andWhere('t_.id = :id')->setParameter('id', $id);
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $qb->setMaxResults(1);
+            $data = $qb->getQuery()->getOneOrNullResult();
+            return $data;
+        } catch (\Exception $e) {
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
