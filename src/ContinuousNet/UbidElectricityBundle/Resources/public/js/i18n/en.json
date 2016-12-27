@@ -537,6 +537,7 @@
                 "ENTERFEES": "Enter the Fees",
                 "SELECTDEADLINE": "Select Deadline",
                 "ENTERESTIMATEDCOST": "Enter the Estimated Cost",
+                "ENTERATTACHMENTFILES": "Enter the Attachment Files",
                 "ENTERSOURCE": "Enter the Source",
                 "SELECTMENULINK": "Select Menu Link",
                 "MENULINKREQUIRED": "The Menu Link is required",
@@ -1382,7 +1383,11 @@
                     "DEFAULT" : "Default"
                 },
                 "TENDER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "TENDERPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1638,6 +1643,7 @@
                 "FEES": "Fees",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Estimated Cost",
+                "ATTACHMENTFILES": "Attachment Files",
                 "SOURCE": "Source",
                 "CATEGORIES": "Categories",
                 "VALIDATED": "Validated",

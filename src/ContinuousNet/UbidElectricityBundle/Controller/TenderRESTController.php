@@ -91,7 +91,7 @@ class TenderRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BiddingType', 'bidding_type', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.biddingType = bidding_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.modifierUser = modifier_user.id');
-            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.address', 'tender.email', 'tender.phone', 'tender.attachmentFile1', 'tender.attachmentFile2', 'tender.attachmentFile3', 'tender.attachmentFile4', 'tender.source');
+            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.address', 'tender.email', 'tender.phone', 'tender.attachmentFiles', 'tender.source');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {

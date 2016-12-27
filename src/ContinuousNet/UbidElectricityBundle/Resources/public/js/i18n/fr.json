@@ -537,6 +537,7 @@
                 "ENTERFEES": "Entrer une valeur pour Françaisais",
                 "SELECTDEADLINE": "Sélectionner une valeur pour Deadline",
                 "ENTERESTIMATEDCOST": "Entrer une valeur pour Coût estimé",
+                "ENTERATTACHMENTFILES": "Entrer une valeur pour Fichier Joint s",
                 "ENTERSOURCE": "Entrer une valeur pour Source",
                 "SELECTMENULINK": "Sélectionner une valeur pour Menu Lien",
                 "MENULINKREQUIRED": "Le champs Menu Lien est obligatoire",
@@ -1382,7 +1383,11 @@
                     "DEFAULT" : "Default"
                 },
                 "TENDER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "TENDERPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1638,6 +1643,7 @@
                 "FEES": "Frais",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Coût estimé",
+                "ATTACHMENTFILES": "Fichier Joint s",
                 "SOURCE": "Source",
                 "CATEGORIES": "Catégories",
                 "VALIDATED": "Validé",
