@@ -40,13 +40,13 @@
                                         <span translate="content.list.fields.BUYER">Buyer</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="buyersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="tender.buyer" name="buyer" id="tenderBuyer" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="buyersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="tender.buyer" name="buyer" id="tenderBuyer" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.buyer.$dirty && tenderForm.buyer.$error.required" translate="content.form.messages.BUYERREQUIRED">Buyer is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.buyer.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -59,13 +59,13 @@
                                         <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="tenderTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="tender.tender_type" name="tenderType" id="tenderTenderType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="tenderTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="tender.tender_type" name="tenderType" id="tenderTenderType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.tenderType.$dirty && tenderForm.tenderType.$error.required" translate="content.form.messages.TENDERTYPEREQUIRED">Tender Type is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.tenderType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -80,13 +80,13 @@
                                         <span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="biddingTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="tender.bidding_type" name="biddingType" id="tenderBiddingType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="biddingTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="tender.bidding_type" name="biddingType" id="tenderBiddingType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.biddingType.$dirty && tenderForm.biddingType.$error.required" translate="content.form.messages.BIDDINGTYPEREQUIRED">Bidding Type is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.biddingType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -263,13 +263,13 @@
                                         <span translate="content.list.fields.SECTOR">Sector</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="sectorsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_sector_readonly" ng-options="item.id as item.name for item in sectors | filter:{ hidden : false }" ng-model="tender.sector" name="sector" id="tenderSector" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="sectorsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_sector_readonly" ng-options="item.id as item.name for item in sectors | filter:{ hidden : false }" ng-model="tender.sector" name="sector" id="tenderSector" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.sector.$dirty && tenderForm.sector.$error.required" translate="content.form.messages.SECTORREQUIRED">Sector is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.sector.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -289,13 +289,13 @@
                                         <span translate="content.list.fields.REGION">Region</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="tender.region" name="region" id="tenderRegion" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="tender.region" name="region" id="tenderRegion" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.region.$dirty && tenderForm.region.$error.required" translate="content.form.messages.REGIONREQUIRED">Region is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.region.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -308,13 +308,13 @@
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="countriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="tender_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="tender.country" name="country" id="tenderCountry" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-globe"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="countriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="tender.country" name="country" id="tenderCountry" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-globe"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="tenderForm.country.$dirty && tenderForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
                                     <span class="success text-small block" ng-if="tenderForm.country.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

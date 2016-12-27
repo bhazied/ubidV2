@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.FROMUSER">From User</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="usersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_from_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.from_user" name="fromUser" id="messageFromUser" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="usersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_from_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.from_user" name="fromUser" id="messageFromUser" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="messageForm.fromUser.$dirty && messageForm.fromUser.$error.required" translate="content.form.messages.FROMUSERREQUIRED">From User is required.</span>
                                     <span class="success text-small block" ng-if="messageForm.fromUser.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -51,13 +51,13 @@
                                     <label for="messageFromBuyer" class="control-label">
                                         <span translate="content.list.fields.FROMBUYER">From Buyer</span>
                                     </label>
-                                <div class="block select-list" ng-if="buyersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_from_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.from_buyer" name="fromBuyer" id="messageFromBuyer" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="buyersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_from_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.from_buyer" name="fromBuyer" id="messageFromBuyer" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -69,13 +69,13 @@
                                     <label for="messageFromSupplier" class="control-label">
                                         <span translate="content.list.fields.FROMSUPPLIER">From Supplier</span>
                                     </label>
-                                <div class="block select-list" ng-if="suppliersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_from_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.from_supplier" name="fromSupplier" id="messageFromSupplier" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="suppliersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_from_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.from_supplier" name="fromSupplier" id="messageFromSupplier" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -86,13 +86,13 @@
                                         <span translate="content.list.fields.TOUSER">To User</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="usersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_to_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.to_user" name="toUser" id="messageToUser" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="usersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_to_user_readonly" ng-options="item.id as item.username for item in users | filter:{ hidden : false }" ng-model="message.to_user" name="toUser" id="messageToUser" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="messageForm.toUser.$dirty && messageForm.toUser.$error.required" translate="content.form.messages.TOUSERREQUIRED">To User is required.</span>
                                     <span class="success text-small block" ng-if="messageForm.toUser.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -106,13 +106,13 @@
                                     <label for="messageToBuyer" class="control-label">
                                         <span translate="content.list.fields.TOBUYER">To Buyer</span>
                                     </label>
-                                <div class="block select-list" ng-if="buyersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_to_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.to_buyer" name="toBuyer" id="messageToBuyer" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="buyersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_to_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="message.to_buyer" name="toBuyer" id="messageToBuyer" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -122,13 +122,13 @@
                                     <label for="messageToSupplier" class="control-label">
                                         <span translate="content.list.fields.TOSUPPLIER">To Supplier</span>
                                     </label>
-                                <div class="block select-list" ng-if="suppliersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="message_to_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.to_supplier" name="toSupplier" id="messageToSupplier" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="suppliersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="message_to_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="message.to_supplier" name="toSupplier" id="messageToSupplier" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

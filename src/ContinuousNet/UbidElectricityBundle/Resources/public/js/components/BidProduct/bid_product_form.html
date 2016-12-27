@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.TENDERPRODUCT">Tender Product</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="tenderProductsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="bid_product_tender_product_readonly" ng-options="item.id as item.title for item in tenderProducts | filter:{ hidden : false }" ng-model="bidProduct.tender_product" name="tenderProduct" id="bidProductTenderProduct" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-control-skip-backward"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="tenderProductsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="bid_product_tender_product_readonly" ng-options="item.id as item.title for item in tenderProducts | filter:{ hidden : false }" ng-model="bidProduct.tender_product" name="tenderProduct" id="bidProductTenderProduct" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-control-skip-backward"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="bidProductForm.tenderProduct.$dirty && bidProductForm.tenderProduct.$error.required" translate="content.form.messages.TENDERPRODUCTREQUIRED">Tender Product is required.</span>
                                     <span class="success text-small block" ng-if="bidProductForm.tenderProduct.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -52,13 +52,13 @@
                                         <span translate="content.list.fields.BID">Bid</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="bidsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="bid_product_bid_readonly" ng-options="item.id as item.title for item in bids | filter:{ hidden : false }" ng-model="bidProduct.bid" name="bid" id="bidProductBid" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="bidsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="bid_product_bid_readonly" ng-options="item.id as item.title for item in bids | filter:{ hidden : false }" ng-model="bidProduct.bid" name="bid" id="bidProductBid" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="bidProductForm.bid.$dirty && bidProductForm.bid.$error.required" translate="content.form.messages.BIDREQUIRED">Bid is required.</span>
                                     <span class="success text-small block" ng-if="bidProductForm.bid.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -73,13 +73,13 @@
                                         <span translate="content.list.fields.SUPPLIERPRODUCT">Supplier Product</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="supplierProductsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="bid_product_supplier_product_readonly" ng-options="item.id as item.name for item in supplierProducts | filter:{ hidden : false }" ng-model="bidProduct.supplier_product" name="supplierProduct" id="bidProductSupplierProduct" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="supplierProductsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="bid_product_supplier_product_readonly" ng-options="item.id as item.name for item in supplierProducts | filter:{ hidden : false }" ng-model="bidProduct.supplier_product" name="supplierProduct" id="bidProductSupplierProduct" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="bidProductForm.supplierProduct.$dirty && bidProductForm.supplierProduct.$error.required" translate="content.form.messages.SUPPLIERPRODUCTREQUIRED">Supplier Product is required.</span>
                                     <span class="success text-small block" ng-if="bidProductForm.supplierProduct.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

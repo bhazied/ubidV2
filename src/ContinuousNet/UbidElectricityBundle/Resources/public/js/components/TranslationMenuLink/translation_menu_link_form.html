@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.MENULINK">Menu Link</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="menuLinksLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_menu_link_menu_link_readonly" ng-options="item.id as item.name for item in menuLinks | filter:{ hidden : false }" ng-model="translationMenuLink.menu_link" name="menuLink" id="translationMenuLinkMenuLink" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-link"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="menuLinksLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_menu_link_menu_link_readonly" ng-options="item.id as item.name for item in menuLinks | filter:{ hidden : false }" ng-model="translationMenuLink.menu_link" name="menuLink" id="translationMenuLinkMenuLink" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-link"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationMenuLinkForm.menuLink.$dirty && translationMenuLinkForm.menuLink.$error.required" translate="content.form.messages.MENULINKREQUIRED">Menu Link is required.</span>
                                     <span class="success text-small block" ng-if="translationMenuLinkForm.menuLink.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

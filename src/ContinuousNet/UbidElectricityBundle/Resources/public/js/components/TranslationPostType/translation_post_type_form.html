@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.POSTTYPE">Post Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="postTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_post_type_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="translationPostType.post_type" name="postType" id="translationPostTypePostType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_post_type_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="translationPostType.post_type" name="postType" id="translationPostTypePostType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationPostTypeForm.postType.$dirty && translationPostTypeForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
                                     <span class="success text-small block" ng-if="translationPostTypeForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

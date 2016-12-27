@@ -115,13 +115,13 @@
                                     <label for="postCategoryParentPostCategory" class="control-label">
                                         <span translate="content.list.fields.PARENTPOSTCATEGORY">Parent Post Category</span>
                                     </label>
-                                <div class="block select-list" ng-if="postCategoriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="post_category_parent_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="postCategory.parent_post_category" name="parentPostCategory" id="postCategoryParentPostCategory" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-foolder-open-o"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postCategoriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="post_category_parent_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="postCategory.parent_post_category" name="parentPostCategory" id="postCategoryParentPostCategory" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-foolder-open-o"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -132,13 +132,13 @@
                                         <span translate="content.list.fields.POSTTYPE">Post Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="postTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="post_category_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="post_category_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="postCategoryForm.postType.$dirty && postCategoryForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

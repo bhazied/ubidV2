@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.SUPPLIERTYPE">Supplier Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="supplierTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_supplier_type_supplier_type_readonly" ng-options="item.id as item.name for item in supplierTypes | filter:{ hidden : false }" ng-model="translationSupplierType.supplier_type" name="supplierType" id="translationSupplierTypeSupplierType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="supplierTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_supplier_type_supplier_type_readonly" ng-options="item.id as item.name for item in supplierTypes | filter:{ hidden : false }" ng-model="translationSupplierType.supplier_type" name="supplierType" id="translationSupplierTypeSupplierType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationSupplierTypeForm.supplierType.$dirty && translationSupplierTypeForm.supplierType.$error.required" translate="content.form.messages.SUPPLIERTYPEREQUIRED">Supplier Type is required.</span>
                                     <span class="success text-small block" ng-if="translationSupplierTypeForm.supplierType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

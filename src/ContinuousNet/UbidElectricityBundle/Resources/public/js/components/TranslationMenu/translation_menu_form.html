@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.MENU">Menu</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="menusLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_menu_menu_readonly" ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="translationMenu.menu" name="menu" id="translationMenuMenu" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="menusLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_menu_menu_readonly" ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="translationMenu.menu" name="menu" id="translationMenuMenu" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationMenuForm.menu.$dirty && translationMenuForm.menu.$error.required" translate="content.form.messages.MENUREQUIRED">Menu is required.</span>
                                     <span class="success text-small block" ng-if="translationMenuForm.menu.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
