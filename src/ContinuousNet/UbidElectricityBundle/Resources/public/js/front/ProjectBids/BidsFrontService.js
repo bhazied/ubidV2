@@ -10,13 +10,14 @@ app.factory('$bidsFrontDataFactory', ['$resource', '$rootScope',
         return $resource(url, {
             locale: '@locale',
             id: '@id',
-            page: '@page',
-            pageCount: '@pageCount',
-            sortField: '@sortField',
-            sortDirection: '@sortDirection'
+            projectId: '@projectId'
+            //page: '@page',
+            //pageCount: '@pageCount',
+            //sortField: '@sortField',
+            //sortDirection: '@sortDirection'
         }, {
-            bids: { method: 'GET', url: '/:locale' + url + 'bids/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            bid : { methof: 'GET', url:'/:locale' + url +  'bids/:id', isArray: false},
+            //tender: { method: 'GET', url: '/:locale' + url + 'tenders/:page/:pageCount/:sortField/:sortDirection', isArray: false},
+            bids : { methof: 'GET', url:'/:locale' + url +  'bids/:projectId', isArray: false},
             bookmark: {method: 'GET', url:'/:locale' + url +  'bookmark/:id', isArray: false},
         });
 

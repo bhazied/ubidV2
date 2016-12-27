@@ -320,7 +320,12 @@ app.config(['$stateProvider',
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
             title: 'front.PROJECTBIDS',
-            resolve: loadSequence()
+            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+        }).state('front.projectbids.bids', {
+            url: '/bids-by-project/:projectId',
+            templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
+            title: 'front.BIDSBYPROJECT',
+            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.projectbids.shortlist', {
             url: '/short-list',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids_short_list.html',

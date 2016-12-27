@@ -1760,6 +1760,8 @@
     "BOOKMARKPROJECT": "BookMark project",
     "PROJECTBIDS": "Project bids",
     "PROJECTBIDSSHORTLIST":"Short list bids",
+    "BIDS": "Bids",
+    "BIDSBYPROJECT": "Bids by project",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",
