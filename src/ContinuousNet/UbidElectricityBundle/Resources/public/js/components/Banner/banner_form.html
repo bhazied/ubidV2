@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.BANNERTYPE">Banner Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="bannerTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="banner_banner_type_readonly" ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="bannerTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="banner_banner_type_readonly" ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="bannerForm.bannerType.$dirty && bannerForm.bannerType.$error.required" translate="content.form.messages.BANNERTYPEREQUIRED">Banner Type is required.</span>
                                     <span class="success text-small block" ng-if="bannerForm.bannerType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.REGION">Region</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_region_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="translationRegion.region" name="region" id="translationRegionRegion" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_region_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="translationRegion.region" name="region" id="translationRegionRegion" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationRegionForm.region.$dirty && translationRegionForm.region.$error.required" translate="content.form.messages.REGIONREQUIRED">Region is required.</span>
                                     <span class="success text-small block" ng-if="translationRegionForm.region.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
