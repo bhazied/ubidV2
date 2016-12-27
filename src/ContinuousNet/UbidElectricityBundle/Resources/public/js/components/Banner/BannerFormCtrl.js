@@ -163,9 +163,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.bannerBannerPositions = false;
     $scope.$watch('bannerBannerPositions', function() {
         if (angular.isDefined($scope.banner)) {
-            var banner_positionsFiltred = $filter('filter)($scope.bannerPositions), $scope.bannerPositionsSearchText);
+            var banner_positionsFiltred = $filter('filter')($scope.bannerPositions, $scope.bannerPositionsSearchText);
             if ($scope.bannerBannerPositions) {
-                //$scope.banner.banner_positions = [];
                 for (var i in banner_positionsFiltred) {
                     var id = banner_positionsFiltred[i].id;
                     var index = $scope.banner.banner_positions.indexOf(id);
@@ -174,7 +173,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     }
                 }
             } else {
-                //$scope.banner.banner_positions = [];
                 for (var i in banner_positionsFiltred) {
                     var id = banner_positionsFiltred[i].id;
                     var index = $scope.banner.banner_positions.indexOf(id);

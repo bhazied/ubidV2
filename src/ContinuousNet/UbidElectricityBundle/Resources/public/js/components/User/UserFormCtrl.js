@@ -235,9 +235,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.userGroups = false;
     $scope.$watch('userGroups', function() {
         if (angular.isDefined($scope.user)) {
-            var groupsFiltred = $filter('filter)($scope.groups), $scope.groupsSearchText);
+            var groupsFiltred = $filter('filter')($scope.groups, $scope.groupsSearchText);
             if ($scope.userGroups) {
-                //$scope.user.groups = [];
                 for (var i in groupsFiltred) {
                     var id = groupsFiltred[i].id;
                     var index = $scope.user.groups.indexOf(id);
@@ -246,7 +245,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     }
                 }
             } else {
-                //$scope.user.groups = [];
                 for (var i in groupsFiltred) {
                     var id = groupsFiltred[i].id;
                     var index = $scope.user.groups.indexOf(id);
