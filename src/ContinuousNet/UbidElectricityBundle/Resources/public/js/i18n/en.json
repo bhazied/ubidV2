@@ -1303,7 +1303,12 @@
                     "DEFAULT" : "Default"
                 },
                 "BUYER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "D" : "D",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "BUYERTYPE" : {
                     "DEFAULT" : "Default"
@@ -1363,7 +1368,12 @@
                     "DEFAULT" : "Default"
                 },
                 "SUPPLIER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "D" : "D",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "SUPPLIERPRODUCT" : {
                     "DEFAULT" : "Default"

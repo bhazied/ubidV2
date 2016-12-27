@@ -33,7 +33,6 @@ use JMS\Serializer\Annotation\Groups;
  * @ORM\Table(name="`buyer`", indexes={@ORM\Index(name="buyer_type_id", columns={"buyer_type_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="language_id", columns={"language_id"}), @ORM\Index(name="first_market_region_id", columns={"first_market_region_id"}), @ORM\Index(name="second_market_region_id", columns={"second_market_region_id"}), @ORM\Index(name="third_market_region_id", columns={"third_market_region_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @UniqueEntity("name")
- * @UniqueEntity("phone")
  * @ORM\HasLifecycleCallbacks()
  * 
  * @ExclusionPolicy("none")
@@ -102,7 +101,7 @@ class Buyer
      * @var string
      * @access private
      *
-     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=true)
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=false)
      * 
      * @Expose
      * 
