@@ -439,7 +439,7 @@
                             <div class="col-md-12">
                                 <label for="tenderCategories" class="control-label">
                                     <span translate="content.list.fields.CATEGORIES">Categories</span>
-                                    <input type="text" ng-model="categoriesSearchText" class="form-control underline" />
+                                    <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
                                 </label>
                             </div><!--/col-md-12-->
                             <div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
