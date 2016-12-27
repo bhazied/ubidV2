@@ -163,9 +163,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $scope.post.post_categories.push($scope.postCategories[i].id);
 =======
         if (angular.isDefined($scope.post)) {
-            var post_categoriesFiltred = $filter('filter)($scope.postCategories), $scope.postCategoriesSearchText);
+            var post_categoriesFiltred = $filter('filter')($scope.postCategories, $scope.postCategoriesSearchText);
             if ($scope.postPostCategories) {
-                //$scope.post.post_categories = [];
                 for (var i in post_categoriesFiltred) {
                     var id = post_categoriesFiltred[i].id;
                     var index = $scope.post.post_categories.indexOf(id);
@@ -174,7 +173,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     }
                 }
             } else {
-                //$scope.post.post_categories = [];
                 for (var i in post_categoriesFiltred) {
                     var id = post_categoriesFiltred[i].id;
                     var index = $scope.post.post_categories.indexOf(id);

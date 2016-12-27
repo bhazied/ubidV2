@@ -290,9 +290,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $scope.tender.categories.push($scope.categories[i].id);
 =======
         if (angular.isDefined($scope.tender)) {
-            var categoriesFiltred = $filter('filter)($scope.categories), $scope.categoriesSearchText);
+            var categoriesFiltred = $filter('filter')($scope.categories, $scope.categoriesSearchText);
             if ($scope.tenderCategories) {
-                //$scope.tender.categories = [];
                 for (var i in categoriesFiltred) {
                     var id = categoriesFiltred[i].id;
                     var index = $scope.tender.categories.indexOf(id);
@@ -301,7 +300,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     }
                 }
             } else {
-                //$scope.tender.categories = [];
                 for (var i in categoriesFiltred) {
                     var id = categoriesFiltred[i].id;
                     var index = $scope.tender.categories.indexOf(id);
