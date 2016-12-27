@@ -1073,10 +1073,17 @@ app.config(['$stateProvider',
             title: 'front.MYBIDS',
             resolve: loadSequence()
         }).state('front.mybids.list',{
-            url: '/my-bids/list',
-            templateUrl: '',
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bids.html',
             title: 'front.MYBIDS',
-            resolve: loadSequence()
+            params: {
+                'bidsIsFiltersVisible': null,
+                'bidsPage': null,
+                'bidsCount': null,
+                'bidsSorting': null,
+                'bidsFilter': null
+            },
+            resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
             /*
              * My BookmarkProject Manager routes
              */
@@ -1086,7 +1093,7 @@ app.config(['$stateProvider',
             title: 'front.BOOKMARKPROJECT',
             resolve: loadSequence()
         }).state('front.bookmarkproject.list',{
-            url: '/bookmark-project/list',
+            url: '/list',
             template: '',
             title: 'front.BOOKMARKPROJECT',
             resolve: loadSequence()
@@ -1157,6 +1164,24 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
             title: 'front.POST',
             resolve: loadSequence('PostFrontCtrl', 'postFrontService')
+            /*
+            * Project Bids manager routes
+            */
+        }).state('front.projectbids',{
+            url: '/project-bids',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.PROJECTBIDS',
+            resolve: loadSequence()
+        }).state('front.projectbids.list', {
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
+            title: 'front.PROJECTBIDS',
+            resolve: loadSequence()
+        }).state('front.projectbids.shortlist', {
+            url: '/short-list',
+            templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids_short_list.html',
+            title: 'front.PROJECTBIDSSHORTLIST',
+            resolve: loadSequence()
         })
     }]);
 
