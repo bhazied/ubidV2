@@ -44,12 +44,6 @@
                                 <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.A"></h3></th>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.SECTION">Section</span></td>
-                                <td>
-                                    <span my-enum="[[ tender.section ]]" my-enum-list="[[ sections ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.BUYER">Buyer</span></td>
                                 <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></span></td>
                             </tr>
@@ -152,9 +146,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.SOURCE">Source</span></td>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.D"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
                                 <td>
-                                    <div ng-bind-html="tender.source"></div>
+                                    <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-if="currentUser.roles.join('').indexOf('ADM') > -1" >
+                                <td><span translate="content.list.fields.VALIDATED">Validated</span></td>
+                                <td>
+                                    <span my-boolean="[[ tender.validated ]]"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -185,17 +190,6 @@
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
                                 <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.E"></h3></th>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
-                                <td>
-                                    <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a>
-                                    </div>
-                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>

@@ -409,10 +409,7 @@
                 "ENTERADDRESS": "Entrer une valeur pour Adresse",
                 "ENTEREMAIL": "Entrer une valeur pour Email",
                 "ENTERPHONE": "Entrer une valeur pour Téléphone",
-                "ENTERATTACHMENTFILE1": "Entrer une valeur pour Fichier Joint 1",
-                "ENTERATTACHMENTFILE2": "Entrer une valeur pour Fichier Joint 2",
-                "ENTERATTACHMENTFILE3": "Entrer une valeur pour Fichier Joint 3",
-                "ENTERATTACHMENTFILE4": "Entrer une valeur pour Fichier Joint 4",
+                "ENTERATTACHMENTFILES": "Entrer une valeur pour Fichier Joint s",
                 "SELECTTENDERPRODUCT": "Sélectionner une valeur pour Produit d'appel d'offres",
                 "TENDERPRODUCTREQUIRED": "Le champs Produit d'appel d'offres est obligatoire",
                 "SELECTBID": "Sélectionner une valeur pour Réponse",
@@ -543,7 +540,6 @@
                 "ENTERFEES": "Entrer une valeur pour Françaisais",
                 "SELECTDEADLINE": "Sélectionner une valeur pour Deadline",
                 "ENTERESTIMATEDCOST": "Entrer une valeur pour Coût estimé",
-                "ENTERATTACHMENTFILES": "Entrer une valeur pour Fichier Joint s",
                 "ENTERSOURCE": "Entrer une valeur pour Source",
                 "FILTERCATEGORIES": "Filter Catégories",
                 "SELECTMENULINK": "Sélectionner une valeur pour Menu Lien",
@@ -1303,7 +1299,8 @@
                     "DEFAULT" : "Default"
                 },
                 "BID" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "E" : "E"
                 },
                 "BIDPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1395,7 +1392,7 @@
                     "A" : "A",
                     "C" : "C",
                     "B" : "B",
-                    "E" : "E"
+                    "D" : "D"
                 },
                 "TENDERPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1537,10 +1534,7 @@
                 "ADDRESS": "Adresse",
                 "EMAIL": "Email",
                 "PHONE": "Téléphone",
-                "ATTACHMENTFILE1": "Fichier Joint 1",
-                "ATTACHMENTFILE2": "Fichier Joint 2",
-                "ATTACHMENTFILE3": "Fichier Joint 3",
-                "ATTACHMENTFILE4": "Fichier Joint 4",
+                "ATTACHMENTFILES": "Fichier Joint s",
                 "TENDERPRODUCT": "Produit d'appel d'offres",
                 "BID": "Réponse",
                 "SUPPLIERPRODUCT": "Produit de fournisseurs",
@@ -1651,10 +1645,9 @@
                 "FEES": "Frais",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Coût estimé",
-                "ATTACHMENTFILES": "Fichier Joint s",
                 "SOURCE": "Source",
-                "CATEGORIES": "Catégories",
                 "VALIDATED": "Validé",
+                "CATEGORIES": "Catégories",
                 "MENULINK": "Menu Lien",
                 "POST": "Article",
                 "POSTCATEGORY": "Catégorie d'articles",

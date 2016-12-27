@@ -218,6 +218,17 @@ class Tender
     private $source;
 
     /**
+     * @var boolean
+     * @access private
+     *
+     * @ORM\Column(name="validated", type="boolean", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $validated;
+
+    /**
      * @var integer
      * @access private
      *
@@ -769,6 +780,30 @@ class Tender
     public function getSource()
     {
         return $this->source;
+    }
+
+    /**
+     * Set validated
+     *
+     * @access public
+     * @param boolean $validated
+     * @return Tender
+     */
+    public function setValidated($validated)
+    {
+        $this->validated = $validated;
+        return $this;
+    }
+
+    /**
+     * Get validated
+     *
+     * @access public
+     * @return boolean 
+     */
+    public function getValidated()
+    {
+        return $this->validated;
     }
 
     /**

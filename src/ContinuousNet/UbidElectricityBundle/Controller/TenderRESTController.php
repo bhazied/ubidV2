@@ -158,6 +158,42 @@ class TenderRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
+            $authorizedChangeSection = false;
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                    if (substr_count($role, 'ADM') > 0) {
+                        $authorizedChangeSection = true;
+                    }
+                }
+            }
+            if (!$authorizedChangeSection) {
+                $entity->setSection('Consultation');
+            }
+            $authorizedChangeSource = false;
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                    if (substr_count($role, 'ADM') > 0) {
+                        $authorizedChangeSource = true;
+                    }
+                }
+            }
+            if (!$authorizedChangeSource) {
+                $entity->setSource(null);
+            }
+            $authorizedChangeValidated = false;
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                    if (substr_count($role, 'ADM') > 0) {
+                        $authorizedChangeValidated = true;
+                    }
+                }
+            }
+            if (!$authorizedChangeValidated) {
+                $entity->setValidated(false);
+            }
             $em->persist($entity);
             $em->flush();
             return $entity;
@@ -198,6 +234,33 @@ class TenderRESTController extends BaseRESTController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $entity->setModifierUser($this->getUser());
+                $authorizedChangeSection = false;
+                $roles = $this->getUser()->getRoles();
+                if (!empty($roles)) {
+                    foreach ($roles as $role) {
+                        if (substr_count($role, 'ADM') > 0) {
+                            $authorizedChangeSection = true;
+                        }
+                    }
+                }
+                $authorizedChangeSource = false;
+                $roles = $this->getUser()->getRoles();
+                if (!empty($roles)) {
+                    foreach ($roles as $role) {
+                        if (substr_count($role, 'ADM') > 0) {
+                            $authorizedChangeSource = true;
+                        }
+                    }
+                }
+                $authorizedChangeValidated = false;
+                $roles = $this->getUser()->getRoles();
+                if (!empty($roles)) {
+                    foreach ($roles as $role) {
+                        if (substr_count($role, 'ADM') > 0) {
+                            $authorizedChangeValidated = true;
+                        }
+                    }
+                }
                 $em->flush();
                 return $entity;
             }

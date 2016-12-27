@@ -409,10 +409,7 @@
                 "ENTERADDRESS": "Enter the Address",
                 "ENTEREMAIL": "Enter the Email",
                 "ENTERPHONE": "Enter the Phone",
-                "ENTERATTACHMENTFILE1": "Enter the Attachment File1",
-                "ENTERATTACHMENTFILE2": "Enter the Attachment File2",
-                "ENTERATTACHMENTFILE3": "Enter the Attachment File3",
-                "ENTERATTACHMENTFILE4": "Enter the Attachment File4",
+                "ENTERATTACHMENTFILES": "Enter the Attachment Files",
                 "SELECTTENDERPRODUCT": "Select Tender Product",
                 "TENDERPRODUCTREQUIRED": "The Tender Product is required",
                 "SELECTBID": "Select Bid",
@@ -543,7 +540,6 @@
                 "ENTERFEES": "Enter the Fees",
                 "SELECTDEADLINE": "Select Deadline",
                 "ENTERESTIMATEDCOST": "Enter the Estimated Cost",
-                "ENTERATTACHMENTFILES": "Enter the Attachment Files",
                 "ENTERSOURCE": "Enter the Source",
                 "FILTERCATEGORIES": "Filter Categories",
                 "SELECTMENULINK": "Select Menu Link",
@@ -1303,7 +1299,8 @@
                     "DEFAULT" : "Default"
                 },
                 "BID" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "E" : "E"
                 },
                 "BIDPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1395,7 +1392,7 @@
                     "A" : "A",
                     "C" : "C",
                     "B" : "B",
-                    "E" : "E"
+                    "D" : "D"
                 },
                 "TENDERPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1537,10 +1534,7 @@
                 "ADDRESS": "Address",
                 "EMAIL": "Email",
                 "PHONE": "Phone",
-                "ATTACHMENTFILE1": "Attachment File1",
-                "ATTACHMENTFILE2": "Attachment File2",
-                "ATTACHMENTFILE3": "Attachment File3",
-                "ATTACHMENTFILE4": "Attachment File4",
+                "ATTACHMENTFILES": "Attachment Files",
                 "TENDERPRODUCT": "Tender Product",
                 "BID": "Bid",
                 "SUPPLIERPRODUCT": "Supplier Product",
@@ -1651,10 +1645,9 @@
                 "FEES": "Fees",
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Estimated Cost",
-                "ATTACHMENTFILES": "Attachment Files",
                 "SOURCE": "Source",
-                "CATEGORIES": "Categories",
                 "VALIDATED": "Validated",
+                "CATEGORIES": "Categories",
                 "MENULINK": "Menu Link",
                 "POST": "Post",
                 "POSTCATEGORY": "Post Category",

@@ -56,10 +56,7 @@ class BidType extends AbstractType
             ->add('address', TextType::class)
             ->add('email', EmailType::class)
             ->add('phone', TextType::class)
-            ->add('attachmentFile1', TextType::class)
-            ->add('attachmentFile2', TextType::class)
-            ->add('attachmentFile3', TextType::class)
-            ->add('attachmentFile4', TextType::class)
+            ->add('attachmentFiles', TextType::class)
         ;
     }
     
