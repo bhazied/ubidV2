@@ -159,12 +159,36 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getBannerPositions();
 
+    $scope.bannerPositionsSearchText = '';
     $scope.bannerBannerPositions = false;
     $scope.$watch('bannerBannerPositions', function() {
+<<<<<<< HEAD
         if ($scope.bannerBannerPositions) {
             $scope.banner.banner_positions = [];
             for (var i in $scope.bannerPositions) {
                 $scope.banner.banner_positions.push($scope.bannerPositions[i].id);
+=======
+        if (angular.isDefined($scope.banner)) {
+            var banner_positionsFiltred = $filter('filter)($scope.bannerPositions), $scope.bannerPositionsSearchText);
+            if ($scope.bannerBannerPositions) {
+                //$scope.banner.banner_positions = [];
+                for (var i in banner_positionsFiltred) {
+                    var id = banner_positionsFiltred[i].id;
+                    var index = $scope.banner.banner_positions.indexOf(id);
+                    if (index == -1) {
+                        $scope.banner.banner_positions.push(id);
+                    }
+                }
+            } else {
+                //$scope.banner.banner_positions = [];
+                for (var i in banner_positionsFiltred) {
+                    var id = banner_positionsFiltred[i].id;
+                    var index = $scope.banner.banner_positions.indexOf(id);
+                    if (index > -1) {
+                        $scope.banner.banner_positions.splice(index, 1);
+                    }
+                }
+>>>>>>> generator
             }
         } else {
             $scope.banner.banner_positions = [];

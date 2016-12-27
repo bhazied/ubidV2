@@ -231,12 +231,36 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getGroups();
 
+    $scope.groupsSearchText = '';
     $scope.userGroups = false;
     $scope.$watch('userGroups', function() {
+<<<<<<< HEAD
         if ($scope.userGroups) {
             $scope.user.groups = [];
             for (var i in $scope.groups) {
                 $scope.user.groups.push($scope.groups[i].id);
+=======
+        if (angular.isDefined($scope.user)) {
+            var groupsFiltred = $filter('filter)($scope.groups), $scope.groupsSearchText);
+            if ($scope.userGroups) {
+                //$scope.user.groups = [];
+                for (var i in groupsFiltred) {
+                    var id = groupsFiltred[i].id;
+                    var index = $scope.user.groups.indexOf(id);
+                    if (index == -1) {
+                        $scope.user.groups.push(id);
+                    }
+                }
+            } else {
+                //$scope.user.groups = [];
+                for (var i in groupsFiltred) {
+                    var id = groupsFiltred[i].id;
+                    var index = $scope.user.groups.indexOf(id);
+                    if (index > -1) {
+                        $scope.user.groups.splice(index, 1);
+                    }
+                }
+>>>>>>> generator
             }
         } else {
             $scope.user.groups = [];
