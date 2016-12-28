@@ -517,7 +517,8 @@ app.constant('APP_JS_REQUIRES', {
         'MyBidCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidCtrl.js',
         'MyBidFormCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidFormCtrl.js',
         'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js',
-        'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js'
+        'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js',
+        'BidsByProjectCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsByProjectCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -714,6 +715,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
+    },{
+        name : 'projectBidsFrontService',
+        files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
     }]
 });
 

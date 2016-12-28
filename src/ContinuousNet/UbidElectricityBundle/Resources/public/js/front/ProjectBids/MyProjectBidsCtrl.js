@@ -6,7 +6,7 @@
 
 app.controller('MyProjectBidsCtrl', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$usersDataFactory',
     function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $usersDataFactory) {
-
+        
         angular.extend(this, $controller('TendersCtrl', {$scope:$scope}));
 
         $timeout(function() {
@@ -16,7 +16,7 @@ app.controller('MyProjectBidsCtrl', ['$scope','$controller', '$rootScope', '$sta
             $rootScope.showUserMenu = true;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 2000);
+        }, 500);
 
         $scope.setCols = function() {
             $scope.cols = [

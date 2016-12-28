@@ -68090,7 +68090,8 @@ app.constant('APP_JS_REQUIRES', {
         'MyBidCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidCtrl.js',
         'MyBidFormCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidFormCtrl.js',
         'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js',
-        'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js'
+        'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js',
+        'BidsByProjectCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsByProjectCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68287,6 +68288,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
+    },{
+        name : 'projectBidsFrontService',
+        files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
     }]
 });
 
@@ -68534,20 +68538,20 @@ app.config(['$stateProvider',
         /*
          * Public Tender Lists & Details routes
          */
-        })/*.state('front.tenders',{
+        }).state('front.tenders',{
             url: "/tenders",
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'sidebar.nav.adserving.MAIN',
             ncyBreadcrumb: {
                 label: 'sidebar.nav.adserving.MAIN'
             }
-        })*/.state('front.tenders',{
-            url: '/list/:section',
+        }).state('front.tenders.list',{
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.tender', {
-            url: '/tender/:id',
+        }).state('front.tenders .details', {
+            url: '/details/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService')
@@ -68752,7 +68756,12 @@ app.config(['$stateProvider',
             url: '/bids-by-project/:projectId',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
             title: 'front.BIDSBYPROJECT',
-            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('BidsByProjectCtrl', 'tenderService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')
+        }).state('front.projectbids.bid', {
+            url: '/details/:slug/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bid_details.html',
+            title: 'front.BIDSBYPROJECT',
+            resolve: loadSequence('BidsDetailsCtrl', 'tenderService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')
         }).state('front.projectbids.shortlist', {
             url: '/short-list',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids_short_list.html',
@@ -72110,12 +72119,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders',
+            'front.tenders.list',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender',
-            'front.tender.details',
-            'front.tenders',
+            'front.tenders.details',
             'front.buyers',
             'front.suppliers',
             'front.post',
@@ -72339,7 +72346,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tender', {id: id})
+            $state.go('front.tenders.details', {id: id})
         }
         
     }]);

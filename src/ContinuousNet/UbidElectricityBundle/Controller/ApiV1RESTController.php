@@ -1154,29 +1154,31 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get public Bids List
      *
-     * @Get("/bids/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @Get("/bidsbyproject/{projectId}/{page}/{pageCount}/{sortField}/{sortDirection}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function bidsAction($page, $pageCount, $sortField, $sortDirection)
+    public function bidsbyprojectAction($projectId ,$page, $pageCount, $sortField, $sortDirection)
     {
         try {
             $em = $this->getDoctrine()->getManager();
             $data = array();
 
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Tender', 't_');
-            $qb->select('count(t_.id)');
-            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $qb->from('UbidElectricityBundle:Bid', 'b_');
+            $qb->select('count(b_.id)');
+            $qb->andWhere('b_.status = :status')->setParameter('status', 'Online');
+            $qb->andWhere('b_.tender = :projectId')->setParameter('projectId', $projectId);
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
 
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Tender', 't_');
-            $qb->select('t_');
-            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
-            $qb->addOrderBy('t_.'.$sortField, $sortDirection);
+            $qb->from('UbidElectricityBundle:Bid', 'b_');
+            $qb->select('b_');
+            $qb->andWhere('b_.status = :status')->setParameter('status', 'Online');
+            $qb->andWhere('b_.tender = :projectId')->setParameter('projectId', $projectId);
+            $qb->addOrderBy('b_.'.$sortField, $sortDirection);
             $qb->setMaxResults($pageCount);
             $offset = ($page - 1) * $pageCount;
             $qb->setFirstResult($offset);

@@ -187,6 +187,7 @@
       "BUYERDELETED": "Buyer Deleted",
       "BUYERNOTDELETED": "Buyer Not Deleted",
       "BACKBUYERS": "Back To Buyers List",
+      "BACKPROJECTS": "Back to Projects list",
       "BUYERTYPES": "Buyer Types",
       "BUYERTYPE": "Buyer Type",
       "ADDBUYERTYPE": "Add New Buyer Type",
@@ -1761,7 +1762,9 @@
     "PROJECTBIDS": "Project bids",
     "PROJECTBIDSSHORTLIST":"Short list bids",
     "BIDS": "Bids",
+    "NOBIDS": "No bids for this project",
     "BIDSBYPROJECT": "Bids by project",
+    "ADDTOSHORTLIST": "Add to short list",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",

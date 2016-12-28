@@ -1,16 +1,7 @@
 'use strict';
 app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$q', '$HomeDataFactory','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $q, $HomeDataFactory, $filter) {
-
-        $timeout(function() {
-            $rootScope.showSlogan = true;
-            $rootScope.showLeftSide = false;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 10;
-            $rootScope.contentOffset = 0;
-        }, 1000);
-
+        
 /*        $scope.tendersLoaded = false;
         $scope.tendersList = [];
         $scope.sectorsLoaded = false;
