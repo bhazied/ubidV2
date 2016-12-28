@@ -227,6 +227,12 @@ ubid_electricity_tender_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_tender_bookmark_api:
+    resource: "@UbidElectricityBundle/Controller/TenderBookmarkRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_tender_product_api:
     resource: "@UbidElectricityBundle/Controller/TenderProductRESTController.php"
     type:   rest
@@ -464,6 +470,10 @@ ubid_electricity_supplier_type:
 ubid_electricity_tender:
     resource: "@UbidElectricityBundle/Resources/config/routing/tender.yml"
     prefix:   /tender
+
+ubid_electricity_tender_bookmark:
+    resource: "@UbidElectricityBundle/Resources/config/routing/tender_bookmark.yml"
+    prefix:   /tender-bookmark
 
 ubid_electricity_tender_product:
     resource: "@UbidElectricityBundle/Resources/config/routing/tender_product.yml"

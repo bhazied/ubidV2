@@ -37,7 +37,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="translation_sector_sector_readonly" ng-options="item.id as item.name for item in sectors | filter:{ hidden : false }" ng-model="translationSector.sector" name="sector" id="translationSectorSector" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-industry"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="translationSectorForm.sector.$dirty && translationSectorForm.sector.$error.required" translate="content.form.messages.SECTORREQUIRED">Sector is required.</span>

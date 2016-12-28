@@ -165,6 +165,21 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
+                                    <label for="supplierAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.address" type="text" name="address" id="supplierAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
                                     <label for="supplierDescription" class="control-label">
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
@@ -175,8 +190,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -190,6 +203,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -203,8 +218,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -215,12 +228,14 @@
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="supplier.country" name="country" id="supplierCountry" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-globe"></i>
+                                            <i class="fa fa-flag"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -230,6 +245,19 @@
                                     <span class="input-icon">
                                         <input ng-model="supplier.fax" type="text" name="fax" id="supplierFax" class="form-control" placeholder="[[ 'content.form.messages.ENTERFAX' | translate ]]" ng-required="false" />
                                         <i class="ti-printer"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierWebsite" class="control-label">
+                                        <span translate="content.list.fields.WEBSITE">Website</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.website" type="text" name="website" id="supplierWebsite" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBSITE' | translate ]]" ng-required="false" />
+                                        <i class="ti-world"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -265,34 +293,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="supplierWebsite" class="control-label">
-                                        <span translate="content.list.fields.WEBSITE">Website</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplier.website" type="text" name="website" id="supplierWebsite" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBSITE' | translate ]]" ng-required="false" />
-                                        <i class="ti-world"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="supplierAddress" class="control-label">
-                                        <span translate="content.list.fields.ADDRESS">Address</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplier.address" type="text" name="address" id="supplierAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
-                                        <i class="ti-home"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-12">
@@ -303,16 +303,13 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="supplierLanguage" class="control-label">
-                                        <span translate="content.list.fields.LANGUAGE">Language</span>
+                                    <label for="supplierMainProductsServices" class="control-label">
+                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
                                     </label>
-                                    <div class="block select-list" ng-if="languagesLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="supplier_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="supplier.language" name="language" id="supplierLanguage" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-flag"></i>
-                                        </span><!--/input-icon-->
-                                    </div>
+                                    <span class="input-icon">
+                                        <input ng-model="supplier.main_products_services" type="text" name="mainProductsServices" id="supplierMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-puzzle-piece"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -324,7 +321,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="supplier.total_revenu" type="text" name="totalRevenu" id="supplierTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-money"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -341,7 +338,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.first_market_region" name="firstMarketRegion" id="supplierFirstMarketRegion" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -355,7 +352,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="supplier.first_market_rate" type="text" name="firstMarketRate" id="supplierFirstMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -372,7 +369,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.second_market_region" name="secondMarketRegion" id="supplierSecondMarketRegion" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -386,7 +383,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="supplier.second_market_rate" type="text" name="secondMarketRate" id="supplierSecondMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERSECONDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -403,7 +400,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="supplier.third_market_region" name="thirdMarketRegion" id="supplierThirdMarketRegion" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -417,7 +414,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="supplier.third_market_rate" type="text" name="thirdMarketRate" id="supplierThirdMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTHIRDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -427,12 +424,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="supplierMainProductsServices" class="control-label">
-                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
+                                    <label for="supplierReferenceNumber" class="control-label">
+                                        <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplier.main_products_services" type="text" name="mainProductsServices" id="supplierMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <input ng-model="supplier.reference_number" type="text" name="referenceNumber" id="supplierReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-hashtag"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -440,13 +437,16 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="supplierReferenceNumber" class="control-label">
-                                        <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
+                                    <label for="supplierLanguage" class="control-label">
+                                        <span translate="content.list.fields.LANGUAGE">Language</span>
                                     </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplier.reference_number" type="text" name="referenceNumber" id="supplierReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
+                                    <div class="block select-list" ng-if="languagesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="supplier_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="supplier.language" name="language" id="supplierLanguage" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-language"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

@@ -20,7 +20,7 @@
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITSUPPLIER">Edit Supplier</span>
                         </button>
                     </div>
-                </div>
+                </div><!--/list-toolbox-->
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
                         <thead>
@@ -85,6 +85,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><span translate="content.list.fields.ADDRESS">Address</span></td>
+                            <td>
+                                <div ng-bind-html="supplier.address"></div>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
                             <td>
                                 <div ng-bind-html="supplier.description"></div>
@@ -113,6 +119,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><span translate="content.list.fields.WEBSITE">Website</span></td>
+                            <td>
+                                <div ng-bind-html="supplier.website"></div>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><span translate="content.list.fields.PICTURE">Picture</span></td>
                             <td>
                                 <div class="user-image margin-top-10" ng-if="supplier.picture != '' && supplier.picture != null">
@@ -123,23 +135,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.WEBSITE">Website</span></td>
-                            <td>
-                                <div ng-bind-html="supplier.website"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span translate="content.list.fields.ADDRESS">Address</span></td>
-                            <td>
-                                <div ng-bind-html="supplier.address"></div>
-                            </td>
-                        </tr>
-                        <tr>
                             <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.D"></h3></th>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
-                            <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></span></td>
+                            <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                            <td>
+                                <div ng-bind-html="supplier.main_products_services"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
@@ -178,16 +180,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
-                            <td>
-                                <div ng-bind-html="supplier.main_products_services"></div>
-                            </td>
-                        </tr>
-                        <tr>
                             <td><span translate="content.list.fields.REFERENCENUMBER">Reference Number</span></td>
                             <td>
                                 <div ng-bind-html="supplier.reference_number"></div>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
+                            <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></span></td>
                         </tr>
                         <tr>
                             <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.DEFAULT"></h3></th>
@@ -247,7 +247,7 @@
                         </tr>
                         </tbody>
                     </table>
-                </div>
+                </div><!--/table-responsive-->
                 <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
                     </div>
@@ -255,7 +255,7 @@
                     </div>
                     <div class="col-md-4 margin-bottom-10">
                     </div>
-                </div>
+                </div><!--/list-toolbox-->
             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->

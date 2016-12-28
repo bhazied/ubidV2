@@ -1,0 +1,30 @@
+tenderbookmark:
+    path:     /
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:index" }
+
+tenderbookmark_details:
+    path:     /{id}/details
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:show" }
+
+tenderbookmark_new:
+    path:     /new
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:new" }
+
+tenderbookmark_create:
+    path:     /create
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:create" }
+    methods:  POST
+
+tenderbookmark_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:edit" }
+
+tenderbookmark_update:
+    path:     /{id}/update
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:update" }
+    methods:  [POST, PUT]
+
+tenderbookmark_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UbidElectricityBundle:TenderBookmark:delete" }
+    methods:  [POST, DELETE]
