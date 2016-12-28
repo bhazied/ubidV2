@@ -984,7 +984,8 @@ fieldset legend {
 }
 
 fieldset h2 {
-    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
     color: #013486 !important;
 }
 
@@ -1025,4 +1026,12 @@ fieldset h2 {
 .list-toolbox .btn {
     font-size: 0.8rem!important;
     padding: 0.5rem 0.5rem!important;
+}
+
+.bootstrap-touchspin .input-group-btn-vertical > .btn {
+    padding: 10px 10px!important;
+}
+
+.bootstrap-touchspin .input-group-btn-vertical i {
+    color: #007aff;
 }
