@@ -4,8 +4,8 @@
  * Controller for Banner Form
  */
 
-app.controller('BannerFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$bannerTypesDataFactory', '$usersDataFactory', '$bannerPositionsDataFactory', '$bannersDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $bannerTypesDataFactory, $usersDataFactory, $bannerPositionsDataFactory, $bannersDataFactory) {
+app.controller('BannerFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$bannerTypesDataFactory', '$usersDataFactory', '$bannerPositionsDataFactory', '$bannersDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $bannerTypesDataFactory, $usersDataFactory, $bannerPositionsDataFactory, $bannersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

@@ -4,8 +4,8 @@
  * Controller for Bid Product Form
  */
 
-app.controller('BidProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderProductsDataFactory', '$bidsDataFactory', '$supplierProductsDataFactory', '$usersDataFactory', '$bidProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderProductsDataFactory, $bidsDataFactory, $supplierProductsDataFactory, $usersDataFactory, $bidProductsDataFactory) {
+app.controller('BidProductFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderProductsDataFactory', '$bidsDataFactory', '$supplierProductsDataFactory', '$usersDataFactory', '$bidProductsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderProductsDataFactory, $bidsDataFactory, $supplierProductsDataFactory, $usersDataFactory, $bidProductsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

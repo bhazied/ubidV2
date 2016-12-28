@@ -4,8 +4,8 @@
  * Controller for Translation Product Type Form
  */
 
-app.controller('TranslationProductTypeFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$productTypesDataFactory', '$usersDataFactory', '$translationProductTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $productTypesDataFactory, $usersDataFactory, $translationProductTypesDataFactory) {
+app.controller('TranslationProductTypeFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$productTypesDataFactory', '$usersDataFactory', '$translationProductTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $productTypesDataFactory, $usersDataFactory, $translationProductTypesDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

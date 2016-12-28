@@ -4,8 +4,8 @@
  * Controller for Translation Sector Form
  */
 
-app.controller('TranslationSectorFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$sectorsDataFactory', '$usersDataFactory', '$translationSectorsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $sectorsDataFactory, $usersDataFactory, $translationSectorsDataFactory) {
+app.controller('TranslationSectorFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$sectorsDataFactory', '$usersDataFactory', '$translationSectorsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $sectorsDataFactory, $usersDataFactory, $translationSectorsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

@@ -4,8 +4,8 @@
  * Controller for Translation Bidding Type Form
  */
 
-app.controller('TranslationBiddingTypeFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$biddingTypesDataFactory', '$usersDataFactory', '$translationBiddingTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $biddingTypesDataFactory, $usersDataFactory, $translationBiddingTypesDataFactory) {
+app.controller('TranslationBiddingTypeFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$biddingTypesDataFactory', '$usersDataFactory', '$translationBiddingTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $biddingTypesDataFactory, $usersDataFactory, $translationBiddingTypesDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
