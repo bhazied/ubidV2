@@ -293,7 +293,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="tender_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="tender.region" name="region" id="tenderRegion" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="tenderForm.region.$dirty && tenderForm.region.$error.required" translate="content.form.messages.REGIONREQUIRED">Region is required.</span>
@@ -312,7 +312,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="tender_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="tender.country" name="country" id="tenderCountry" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="fa fa-globe"></i>
+                                            <i class="fa fa-flag"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="tenderForm.country.$dirty && tenderForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>

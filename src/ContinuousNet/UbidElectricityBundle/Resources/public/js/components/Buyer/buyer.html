@@ -96,6 +96,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.ADDRESS">Address</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.address"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.DESCRIPTION">Description</span></td>
                                 <td>
                                     <div ng-bind-html="buyer.description"></div>
@@ -124,6 +130,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.WEBSITE">Website</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.website"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.PICTURE">Picture</span></td>
                                 <td>
                                     <div class="user-image margin-top-10" ng-if="buyer.picture != '' && buyer.picture != null">
@@ -134,19 +146,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.WEBSITE">Website</span></td>
-                                <td>
-                                    <div ng-bind-html="buyer.website"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ADDRESS">Address</span></td>
-                                <td>
-                                    <div ng-bind-html="buyer.address"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.D"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.main_products_services"></div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
@@ -186,12 +192,6 @@
                                 <td><span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span></td>
                                 <td>
                                     <div ng-bind-html="buyer.third_market_rate"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
-                                <td>
-                                    <div ng-bind-html="buyer.main_products_services"></div>
                                 </td>
                             </tr>
                             <tr>
