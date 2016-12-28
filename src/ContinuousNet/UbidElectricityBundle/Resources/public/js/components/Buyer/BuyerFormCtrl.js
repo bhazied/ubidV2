@@ -257,7 +257,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     return 'default';
                 },
                 folder: function() {
-                    return 'buyers';
+                    var user_id = '000000' + $scope.user.id;
+                    user_dir = '/user_'+user_.substr(user_id.length - 6);
+                    return 'users'+user_dir+'buyers';
                 }
             }
         });
