@@ -212,9 +212,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     return 'default';
                 },
                 folder: function() {
-                    var user_id = '000000' + $scope.user.id;
-                    var user_dir = '/user_'+user_.substr(user_id.length - 6);
-                    return 'users'+user_dir+'supplierproducts';
+                    var user_id = '000000' + $rootScope.user.id;
+                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
+                    return 'users' + user_dir + 'supplierproducts';
                 }
             }
         });
