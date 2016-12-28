@@ -62,7 +62,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.profile',
             'front.contact'
         ];
-
+        
         $scope.changeLanguage = function (lang) {
             $translate.use(lang);
             $rootScope.currentLanguage = lang
