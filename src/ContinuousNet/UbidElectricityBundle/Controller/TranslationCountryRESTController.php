@@ -50,7 +50,6 @@ class TranslationCountryRESTController extends BaseRESTController
      */
     public function getAction(TranslationCountry $entity)
     {
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -72,7 +71,7 @@ class TranslationCountryRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new TranslationCountry(), false);
+            $this->createSubDirectory(new TranslationCountry());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

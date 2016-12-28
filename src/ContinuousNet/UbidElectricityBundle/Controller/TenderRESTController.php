@@ -50,7 +50,6 @@ class TenderRESTController extends BaseRESTController
      */
     public function getAction(Tender $entity)
     {
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -72,7 +71,7 @@ class TenderRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new Tender(), false);
+            $this->createSubDirectory(new Tender());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

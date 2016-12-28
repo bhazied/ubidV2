@@ -50,7 +50,6 @@ class TranslationMenuLinkRESTController extends BaseRESTController
      */
     public function getAction(TranslationMenuLink $entity)
     {
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -72,7 +71,7 @@ class TranslationMenuLinkRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new TranslationMenuLink(), false);
+            $this->createSubDirectory(new TranslationMenuLink());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

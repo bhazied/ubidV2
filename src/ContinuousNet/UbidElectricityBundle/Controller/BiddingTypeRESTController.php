@@ -51,7 +51,6 @@ class BiddingTypeRESTController extends BaseRESTController
     public function getAction(BiddingType $entity)
     {
         $entity = $this->translateEntity($entity);
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -73,7 +72,7 @@ class BiddingTypeRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new BiddingType(), false);
+            $this->createSubDirectory(new BiddingType());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

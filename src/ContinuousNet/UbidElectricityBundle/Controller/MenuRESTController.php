@@ -51,7 +51,6 @@ class MenuRESTController extends BaseRESTController
     public function getAction(Menu $entity)
     {
         $entity = $this->translateEntity($entity);
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -73,7 +72,7 @@ class MenuRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new Menu(), false);
+            $this->createSubDirectory(new Menu());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

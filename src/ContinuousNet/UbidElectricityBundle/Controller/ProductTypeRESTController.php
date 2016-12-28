@@ -51,7 +51,6 @@ class ProductTypeRESTController extends BaseRESTController
     public function getAction(ProductType $entity)
     {
         $entity = $this->translateEntity($entity);
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -73,7 +72,7 @@ class ProductTypeRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new ProductType(), false);
+            $this->createSubDirectory(new ProductType());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

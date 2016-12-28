@@ -50,7 +50,6 @@ class TenderBookmarkRESTController extends BaseRESTController
      */
     public function getAction(TenderBookmark $entity)
     {
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -72,7 +71,7 @@ class TenderBookmarkRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new TenderBookmark(), false);
+            $this->createSubDirectory(new TenderBookmark());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();

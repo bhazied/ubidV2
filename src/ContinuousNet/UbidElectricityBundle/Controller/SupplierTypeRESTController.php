@@ -51,7 +51,6 @@ class SupplierTypeRESTController extends BaseRESTController
     public function getAction(SupplierType $entity)
     {
         $entity = $this->translateEntity($entity);
-        $entity->dir = $this->getSubDirectory($entity, false);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -73,7 +72,7 @@ class SupplierTypeRESTController extends BaseRESTController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         try {
-            $dir = $this->getSubDirectory(new SupplierType(), false);
+            $this->createSubDirectory(new SupplierType());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
