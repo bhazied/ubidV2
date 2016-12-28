@@ -4,8 +4,8 @@
  * Controller for Tender Product Form
  */
 
-app.controller('TenderProductFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$categoriesDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $categoriesDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
+app.controller('TenderProductFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$categoriesDataFactory', '$productTypesDataFactory', '$usersDataFactory', '$tenderProductsDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $categoriesDataFactory, $productTypesDataFactory, $usersDataFactory, $tenderProductsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

@@ -4,8 +4,8 @@
  * Controller for Translation Post Category Form
  */
 
-app.controller('TranslationPostCategoryFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$postCategoriesDataFactory', '$usersDataFactory', '$translationPostCategoriesDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $postCategoriesDataFactory, $usersDataFactory, $translationPostCategoriesDataFactory) {
+app.controller('TranslationPostCategoryFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$postCategoriesDataFactory', '$usersDataFactory', '$translationPostCategoriesDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $postCategoriesDataFactory, $usersDataFactory, $translationPostCategoriesDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

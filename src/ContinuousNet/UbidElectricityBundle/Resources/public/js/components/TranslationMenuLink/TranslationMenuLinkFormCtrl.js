@@ -4,8 +4,8 @@
  * Controller for Translation Menu Link Form
  */
 
-app.controller('TranslationMenuLinkFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$menuLinksDataFactory', '$usersDataFactory', '$translationMenuLinksDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $menuLinksDataFactory, $usersDataFactory, $translationMenuLinksDataFactory) {
+app.controller('TranslationMenuLinkFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$menuLinksDataFactory', '$usersDataFactory', '$translationMenuLinksDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $menuLinksDataFactory, $usersDataFactory, $translationMenuLinksDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 

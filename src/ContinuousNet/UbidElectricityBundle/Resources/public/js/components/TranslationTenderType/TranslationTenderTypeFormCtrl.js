@@ -4,8 +4,8 @@
  * Controller for Translation Tender Type Form
  */
 
-app.controller('TranslationTenderTypeFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderTypesDataFactory', '$usersDataFactory', '$translationTenderTypesDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderTypesDataFactory, $usersDataFactory, $translationTenderTypesDataFactory) {
+app.controller('TranslationTenderTypeFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tenderTypesDataFactory', '$usersDataFactory', '$translationTenderTypesDataFactory',
+function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tenderTypesDataFactory, $usersDataFactory, $translationTenderTypesDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
