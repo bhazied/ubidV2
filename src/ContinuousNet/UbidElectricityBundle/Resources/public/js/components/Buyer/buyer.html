@@ -155,10 +155,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
-                                <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
                                 <td>
                                     <div ng-bind-html="buyer.total_revenu"></div>
@@ -199,6 +195,10 @@
                                 <td>
                                     <div ng-bind-html="buyer.reference_number"></div>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
+                                <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.DEFAULT"></h3></th>

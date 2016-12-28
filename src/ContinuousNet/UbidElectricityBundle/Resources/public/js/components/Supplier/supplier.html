@@ -130,6 +130,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.WEBSITE">Website</span></td>
+                                <td>
+                                    <div ng-bind-html="supplier.website"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.PICTURE">Picture</span></td>
                                 <td>
                                     <div class="user-image margin-top-10" ng-if="supplier.picture != '' && supplier.picture != null">
@@ -140,17 +146,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.WEBSITE">Website</span></td>
-                                <td>
-                                    <div ng-bind-html="supplier.website"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.D"></h3></th>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
-                                <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></span></td>
+                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                                <td>
+                                    <div ng-bind-html="supplier.main_products_services"></div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
@@ -189,16 +191,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
-                                <td>
-                                    <div ng-bind-html="supplier.main_products_services"></div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.REFERENCENUMBER">Reference Number</span></td>
                                 <td>
                                     <div ng-bind-html="supplier.reference_number"></div>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
+                                <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.DEFAULT"></h3></th>

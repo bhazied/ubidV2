@@ -316,24 +316,6 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerLanguage" class="control-label">
-                                        <span translate="content.list.fields.LANGUAGE">Language</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="languagesLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-language"></i>
-                                        </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
                                     <label for="buyerTotalRevenu" class="control-label">
                                         <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                     </label>
@@ -344,6 +326,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -360,8 +344,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -375,6 +357,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -391,8 +375,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -406,6 +388,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -422,8 +406,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -437,6 +419,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -447,6 +431,22 @@
                                         <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerLanguage" class="control-label">
+                                        <span translate="content.list.fields.LANGUAGE">Language</span>
+                                    </label>
+                                    <div class="block select-list" ng-if="languagesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-language"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
