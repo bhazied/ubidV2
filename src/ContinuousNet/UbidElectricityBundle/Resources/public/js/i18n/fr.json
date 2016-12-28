@@ -1019,6 +1019,20 @@
             "TENDERDELETED": "Appel d'offres supprimé(e)",
             "TENDERNOTDELETED": "Appel d'offres non supprimé(e)",
             "BACKTENDERS": "Retour à la liste des Appels d'offres",
+            "TENDERBOOKMARKS": "Appel d'offres Bookmarks",
+            "TENDERBOOKMARK": "Appel d'offres Bookmark",
+            "ADDTENDERBOOKMARK": "Ajouter un(e) Appel d'offres Bookmark",
+            "NEWTENDERBOOKMARK": "Ajouter d'un(e) Appel d'offres Bookmark",
+            "TENDERBOOKMARKDETAILS": "Détails Appel d'offres Bookmark",
+            "EDITTENDERBOOKMARK": "Modifier ce(tte) Appel d'offres Bookmark",
+            "TENDERBOOKMARKUPDATED": "Appel d'offres Bookmark mis(e) à jour",
+            "TENDERBOOKMARKNOTUPDATED": "Appel d'offres Bookmark non mis(e) à jour",
+            "TENDERBOOKMARKCREATED": "Appel d'offres Bookmark cré(e)",
+            "TENDERBOOKMARKNOTCREATED": "Appel d'offres Bookmark non cré(e)",
+            "YOUWILLNOTBEABLETORECOVERTENDERBOOKMARK": "Vous ne serez pas en mesure de récupérer ce(tte) Appel d'offres Bookmark!",
+            "TENDERBOOKMARKDELETED": "Appel d'offres Bookmark supprimé(e)",
+            "TENDERBOOKMARKNOTDELETED": "Appel d'offres Bookmark non supprimé(e)",
+            "BACKTENDERBOOKMARKS": "Retour à la liste des Appel d'offres Bookmarks",
             "TENDERPRODUCTS": "Produits d'appel d'offres",
             "TENDERPRODUCT": "Produit d'appel d'offres",
             "ADDTENDERPRODUCT": "Ajouter un(e) Produit d'appel d'offres",
@@ -1393,6 +1407,9 @@
                     "C" : "C",
                     "B" : "B",
                     "D" : "D"
+                },
+                "TENDERBOOKMARK" : {
+                    "DEFAULT" : "Default"
                 },
                 "TENDERPRODUCT" : {
                     "DEFAULT" : "Default"

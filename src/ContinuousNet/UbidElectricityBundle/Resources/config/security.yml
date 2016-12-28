@@ -51,3 +51,5 @@ security:
         - { path: ^/(en|fr|ar)/api/users$,      roles: [ROLE_SUBSCRIBER, ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/usersettings$,      roles: [ROLE_SUBSCRIBER, ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/visits$,      roles: [ROLE_SUBSCRIBER, ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
+
