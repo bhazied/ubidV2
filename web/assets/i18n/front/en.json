@@ -1776,6 +1776,11 @@
     "NOBIDS": "No bids for this project",
     "BIDSBYPROJECT": "Bids by project",
     "ADDTOSHORTLIST": "Add to short list",
+    "PUBLISHDATE": "Publish Date",
+    "COMPANYNAME": "Company Name",
+    "NAME": "Name",
+    "JOB": "Job",
+    "DESCRIPTION": "Description",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",
