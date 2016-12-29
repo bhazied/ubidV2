@@ -67998,6 +67998,9 @@ app.constant('APP_JS_REQUIRES', {
         'TendersCtrl': '/bundles/ubidelectricity/js/components/Tender/TendersCtrl.js',
         'TenderFormCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderFormCtrl.js',
         'TenderCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderCtrl.js',
+        'TenderBookmarksCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarksCtrl.js',
+        'TenderBookmarkFormCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkFormCtrl.js',
+        'TenderBookmarkCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkCtrl.js',
         'TenderProductsCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductsCtrl.js',
         'TenderProductFormCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductFormCtrl.js',
         'TenderProductCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductCtrl.js',
@@ -68201,6 +68204,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'tenderService',
         files: ['/bundles/ubidelectricity/js/components/Tender/TenderService.js']
+    },{
+        name: 'tenderBookmarkService',
+        files: ['/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkService.js']
     },{
         name: 'tenderProductService',
         files: ['/bundles/ubidelectricity/js/components/TenderProduct/TenderProductService.js']

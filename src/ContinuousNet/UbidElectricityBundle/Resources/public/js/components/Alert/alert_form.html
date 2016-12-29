@@ -54,13 +54,13 @@
                                     <label for="alertCategory" class="control-label">
                                         <span translate="content.list.fields.CATEGORY">Category</span>
                                     </label>
-                                <div class="block select-list" ng-if="categoriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="alert_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="alert.category" name="category" id="alertCategory" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-foolder-open-o"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="categoriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="alert_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="alert.category" name="category" id="alertCategory" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-foolder-open-o"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

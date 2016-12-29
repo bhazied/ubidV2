@@ -1,0 +1,99 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TENDERBOOKMARKS">Tender Bookmarks</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TenderBookmarkFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTENDERBOOKMARK" ng-if="tenderBookmark.id == 0">
+                        New Tender Bookmark
+                    </legend>
+                    <legend translate="content.list.EDITTENDERBOOKMARK" ng-if="tenderBookmark.id > 0">
+                        Edit Tender Bookmark
+                    </legend>
+                    <form name="tenderBookmarkForm" id="tenderBookmarkForm" novalidate ng-submit="submitForm(tenderBookmarkForm)">
+                        <input type="hidden" name="id" id="tenderBookmarkId" ng-model="tenderBookmark.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="tenderBookmarkTender" class="control-label">
+                                        <span translate="content.list.fields.TENDER">Tender</span>
+                                    </label>
+                                    <div class="block select-list" ng-if="tendersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_bookmark_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="tenderBookmark.tender" name="tender" id="tenderBookmarkTender" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-control-skip-backward"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':tenderBookmarkForm.status.$dirty && tenderBookmarkForm.status.$invalid, 'has-success':tenderBookmarkForm.status.$valid}">
+                                    <label for="tenderBookmarkStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="tenderBookmark.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="tenderBookmark.status" name="status" id="tenderBookmarkStatus" class="form-control" ng-required="true">
+                                        </select>
+                                    </div>
+                                    <span class="error text-small block" ng-if="tenderBookmarkForm.status.$dirty && tenderBookmarkForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="tenderBookmarkForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERBOOKMARKS">Back to Tender Bookmarks list</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(tenderBookmarkForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderBookmarkForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="tenderBookmarks.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

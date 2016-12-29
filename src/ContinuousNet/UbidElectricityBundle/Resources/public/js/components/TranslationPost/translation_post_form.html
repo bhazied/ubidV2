@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.POST">Post</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="postsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_post_post_readonly" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_post_post_readonly" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationPostForm.post.$dirty && translationPostForm.post.$error.required" translate="content.form.messages.POSTREQUIRED">Post is required.</span>
                                     <span class="success text-small block" ng-if="translationPostForm.post.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

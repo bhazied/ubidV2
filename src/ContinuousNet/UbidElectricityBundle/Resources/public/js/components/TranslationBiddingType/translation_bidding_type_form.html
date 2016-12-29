@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="biddingTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_bidding_type_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="biddingTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_bidding_type_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationBiddingTypeForm.biddingType.$dirty && translationBiddingTypeForm.biddingType.$error.required" translate="content.form.messages.BIDDINGTYPEREQUIRED">Bidding Type is required.</span>
                                     <span class="success text-small block" ng-if="translationBiddingTypeForm.biddingType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

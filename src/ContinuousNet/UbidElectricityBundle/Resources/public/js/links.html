@@ -11,14 +11,14 @@
             </div>
         </a>
         <ul class="sub-menu">
-            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.users')}">
-                <a ui-sref="app.access.users">
-                    <span class="title" translate="content.list.USERS">Users</span>
-                </a>
-            </li>
             <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.access.notifications')}">
                 <a ui-sref="app.access.notifications">
                     <span class="title" translate="content.list.NOTIFICATIONS">Notifications</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.users')}">
+                <a ui-sref="app.access.users">
+                    <span class="title" translate="content.list.USERS">Users</span>
                 </a>
             </li>
             <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.access.messages')}">
@@ -26,14 +26,14 @@
                     <span class="title" translate="content.list.MESSAGES">Messages</span>
                 </a>
             </li>
-            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.groups')}">
-                <a ui-sref="app.access.groups">
-                    <span class="title" translate="content.list.GROUPS">Groups</span>
-                </a>
-            </li>
             <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.access.alerts')}">
                 <a ui-sref="app.access.alerts">
                     <span class="title" translate="content.list.ALERTS">Alerts</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.groups')}">
+                <a ui-sref="app.access.groups">
+                    <span class="title" translate="content.list.GROUPS">Groups</span>
                 </a>
             </li>
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.logs')}">
@@ -44,6 +44,11 @@
             <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.access.usersettings')}">
                 <a ui-sref="app.access.usersettings">
                     <span class="title" translate="content.list.USERSETTINGS">User Settings</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('') > -1" ng-class="{'active':$state.includes('app.access.tenderbookmarks')}">
+                <a ui-sref="app.access.tenderbookmarks">
+                    <span class="title" translate="content.list.TENDERBOOKMARKS">Tender Bookmarks</span>
                 </a>
             </li>
         </ul>

@@ -267,13 +267,13 @@
                                     <label for="userCountry" class="control-label">
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                <div class="block select-list" ng-if="countriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="user_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-globe"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="countriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="user_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-flag"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -283,13 +283,13 @@
                                     <label for="userLanguage" class="control-label">
                                         <span translate="content.list.fields.LANGUAGE">Language</span>
                                     </label>
-                                <div class="block select-list" ng-if="languagesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="user_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-flag"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="languagesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="user_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-language"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -369,7 +369,7 @@
                             <div class="col-md-12">
                                 <label for="userGroups" class="control-label">
                                     <span translate="content.list.fields.GROUPS">Groups</span>
-                                    <input type="text" ng-model="groupsSearchText" class="form-control underline" />
+                                    <input placeholder="[[ 'content.form.messages.FILTERGROUPS' | translate ]]" type="text" ng-model="groupsSearchText" class="form-control pull-right input-sm underline" />
                                 </label>
                             </div><!--/col-md-12-->
                             <div class="col-md-3" ng-repeat="group in groups | filter:groupsSearchText" ng-if="group.id">

@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.POSTTYPE">Post Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="postTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="post_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="post.post_type" name="postType" id="postPostType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="post_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="post.post_type" name="postType" id="postPostType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="postForm.postType.$dirty && postForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
                                     <span class="success text-small block" ng-if="postForm.postType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
@@ -427,7 +427,7 @@
                             <div class="col-md-12">
                                 <label for="postPostCategories" class="control-label">
                                     <span translate="content.list.fields.POSTCATEGORIES">Post Categories</span>
-                                    <input type="text" ng-model="postCategoriesSearchText" class="form-control underline" />
+                                    <input placeholder="[[ 'content.form.messages.FILTERPOSTCATEGORIES' | translate ]]" type="text" ng-model="postCategoriesSearchText" class="form-control pull-right input-sm underline" />
                                 </label>
                             </div><!--/col-md-12-->
                             <div class="col-md-3" ng-repeat="postCategory in postCategories | filter:postCategoriesSearchText" ng-if="postCategory.id">

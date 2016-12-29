@@ -404,6 +404,47 @@ function ($stateProvider) {
             label: 'content.list.USERSETTINGDETAILS'
         },
         resolve: loadSequence('UserSettingCtrl', 'userSettingService')
+    }).state('app.access.tenderbookmarks', {
+        url: '/tender-bookmarks',
+        templateUrl: '/bundles/ubidelectricity/js/components/TenderBookmark/tender_bookmarks.html',
+        title: 'content.list.TENDERBOOKMARKS',
+        ncyBreadcrumb: {
+            label: 'content.list.TENDERBOOKMARKS'
+        },
+        params: {
+            'tenderBookmarksIsFiltersVisible': null,
+            'tenderBookmarksPage': null,
+            'tenderBookmarksCount': null,
+            'tenderBookmarksSorting': null,
+            'tenderBookmarksFilter': null
+        },
+        resolve: loadSequence('TenderBookmarksCtrl', 'tenderBookmarkService', 'tenderService', 'userService')
+    }).state('app.access.tenderbookmarksnew', {
+        url: '/tender-bookmarks/new',
+        templateUrl: '/bundles/ubidelectricity/js/components/TenderBookmark/tender_bookmark_form.html',
+        title: 'content.list.NEWTENDERBOOKMARK',
+        ncyBreadcrumb: {
+            label: 'content.list.NEWTENDERBOOKMARK'
+        },
+        params: {
+            'tender_bookmark_tender': null
+        },
+        resolve: loadSequence('TenderBookmarkFormCtrl', 'tenderBookmarkService', 'tenderService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+    }).state('app.access.tenderbookmarksedit', {
+        url: '/tender-bookmarks/edit/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TenderBookmark/tender_bookmark_form.html',
+        title: 'content.list.EDITTENDERBOOKMARK',
+        ncyBreadcrumb: {
+            label: 'content.list.EDITTENDERBOOKMARK'
+        },
+        resolve: loadSequence('TenderBookmarkFormCtrl', 'tenderBookmarkService', 'tenderService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+    }).state('app.access.tenderbookmarksdetails', {
+        url: '/tender-bookmarks/details/:id',
+        templateUrl: '/bundles/ubidelectricity/js/components/TenderBookmark/tender_bookmark.html',
+        ncyBreadcrumb: {
+            label: 'content.list.TENDERBOOKMARKDETAILS'
+        },
+        resolve: loadSequence('TenderBookmarkCtrl', 'tenderBookmarkService')
     }).state('app.adserving', {
         url: '/adserving',
         template: '<div ui-view class="fade-in-up"></div>',

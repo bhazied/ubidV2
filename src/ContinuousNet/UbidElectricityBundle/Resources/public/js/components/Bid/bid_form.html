@@ -26,41 +26,28 @@
                     <form name="bidForm" id="bidForm" novalidate ng-submit="submitForm(bidForm)">
                         <input type="hidden" name="id" id="bidId" ng-model="bid.id" />
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
 
-                                <div class="form-group" ng-class="{'has-error':bidForm.tender.$dirty && bidForm.tender.$invalid, 'has-success':bidForm.tender.$valid}">
-                                    <label for="bidTender" class="control-label">
-                                        <span translate="content.list.fields.TENDER">Tender</span>
+                                <div class="form-group" ng-class="{'has-error':bidForm.description.$dirty && bidForm.description.$invalid, 'has-success':bidForm.description.$valid}">
+                                    <label for="bidDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="tendersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="bid_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="bid.tender" name="tender" id="bidTender" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-control-skip-backward"></i>
-                                    </span><!--/input-icon-->
-                                </div>
-                                    <span class="error text-small block" ng-if="bidForm.tender.$dirty && bidForm.tender.$error.required" translate="content.form.messages.TENDERREQUIRED">Tender is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.tender.$valid" translate="content.form.messages.OK">Ok!</span>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="bid.description" name="description" id="bidDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></div>
+                                    </div>
+                                    <span class="error text-small block" ng-if="bidForm.description.$dirty && bidForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
+                            </div><!--/col-md-12-->
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':bidForm.supplier.$dirty && bidForm.supplier.$invalid, 'has-success':bidForm.supplier.$valid}">
-                                    <label for="bidSupplier" class="control-label">
-                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
-                                        <span class="symbol required"></span>
+                                <div class="form-group">
+                                    <label for="bidTotalCost" class="control-label">
+                                        <span translate="content.list.fields.TOTALCOST">Total Cost</span>
                                     </label>
-                                <div class="block select-list" ng-if="suppliersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="bid_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="bid.supplier" name="supplier" id="bidSupplier" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
-                                    <span class="error text-small block" ng-if="bidForm.supplier.$dirty && bidForm.supplier.$error.required" translate="content.form.messages.SUPPLIERREQUIRED">Supplier is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.supplier.$valid" translate="content.form.messages.OK">Ok!</span>
+                                        <input ng-model="bid.total_cost" type="text" name="totalCost" id="bidTotalCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -68,17 +55,73 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':bidForm.title.$dirty && bidForm.title.$invalid, 'has-success':bidForm.title.$valid}">
-                                    <label for="bidTitle" class="control-label">
-                                        <span translate="content.list.fields.TITLE">Title</span>
+                                <div class="form-group">
+                                    <label for="bidAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.address" type="text" name="address" id="bidAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="bidEmail" class="control-label">
+                                        <span translate="content.list.fields.EMAIL">Email</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.email" type="email" name="email" id="bidEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
+                                        <i class="ti-email"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="bidNote" class="control-label">
+                                        <span translate="content.list.fields.NOTE">Note</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.note" type="text" name="note" id="bidNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="bidPhone" class="control-label">
+                                        <span translate="content.list.fields.PHONE">Phone</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.phone" type="text" name="phone" id="bidPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-phone"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':bidForm.reference.$dirty && bidForm.reference.$invalid, 'has-success':bidForm.reference.$valid}">
+                                    <label for="bidReference" class="control-label">
+                                        <span translate="content.list.fields.REFERENCE">Reference</span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bid.title" type="text" name="title" id="bidTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
+                                        <input ng-model="bid.reference" type="text" name="reference" id="bidReference" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCE' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-hashtag"></i>
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="bidForm.title.$dirty && bidForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
+                                    <span class="error text-small block" ng-if="bidForm.reference.$dirty && bidForm.reference.$error.required" translate="content.form.messages.REFERENCEREQUIRED">Reference is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.reference.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -99,39 +142,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group" ng-class="{'has-error':bidForm.reference.$dirty && bidForm.reference.$invalid, 'has-success':bidForm.reference.$valid}">
-                                    <label for="bidReference" class="control-label">
-                                        <span translate="content.list.fields.REFERENCE">Reference</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.reference" type="text" name="reference" id="bidReference" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCE' | translate ]]" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="bidForm.reference.$dirty && bidForm.reference.$error.required" translate="content.form.messages.REFERENCEREQUIRED">Reference is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.reference.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-12">
-
-                                <div class="form-group" ng-class="{'has-error':bidForm.description.$dirty && bidForm.description.$invalid, 'has-success':bidForm.description.$valid}">
-                                    <label for="bidDescription" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <div class="note-editor">
-                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="bid.description" name="description" id="bidDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></div>
-                                    </div>
-                                    <span class="error text-small block" ng-if="bidForm.description.$dirty && bidForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
@@ -158,14 +168,17 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="bidNote" class="control-label">
-                                        <span translate="content.list.fields.NOTE">Note</span>
+                                <div class="form-group" ng-class="{'has-error':bidForm.title.$dirty && bidForm.title.$invalid, 'has-success':bidForm.title.$valid}">
+                                    <label for="bidTitle" class="control-label">
+                                        <span translate="content.list.fields.TITLE">Title</span>
+                                        <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bid.note" type="text" name="note" id="bidNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" ng-required="false" />
+                                        <input ng-model="bid.title" type="text" name="title" id="bidTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bidForm.title.$dirty && bidForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -173,170 +186,73 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="bidTotalCost" class="control-label">
-                                        <span translate="content.list.fields.TOTALCOST">Total Cost</span>
+                                <div class="form-group" ng-class="{'has-error':bidForm.supplier.$dirty && bidForm.supplier.$invalid, 'has-success':bidForm.supplier.$valid}">
+                                    <label for="bidSupplier" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
+                                        <span class="symbol required"></span>
                                     </label>
-                                        <input ng-model="bid.total_cost" type="text" name="totalCost" id="bidTotalCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                    <div class="block select-list" ng-if="suppliersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="bid_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="bid.supplier" name="supplier" id="bidSupplier" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="bidForm.supplier.$dirty && bidForm.supplier.$error.required" translate="content.form.messages.SUPPLIERREQUIRED">Supplier is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.supplier.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="bidAddress" class="control-label">
-                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                <div class="form-group" ng-class="{'has-error':bidForm.tender.$dirty && bidForm.tender.$invalid, 'has-success':bidForm.tender.$valid}">
+                                    <label for="bidTender" class="control-label">
+                                        <span translate="content.list.fields.TENDER">Tender</span>
+                                        <span class="symbol required"></span>
                                     </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.address" type="text" name="address" id="bidAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
-                                        <i class="ti-home"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidEmail" class="control-label">
-                                        <span translate="content.list.fields.EMAIL">Email</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.email" type="email" name="email" id="bidEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
-                                        <i class="ti-email"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidPhone" class="control-label">
-                                        <span translate="content.list.fields.PHONE">Phone</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.phone" type="text" name="phone" id="bidPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" />
-                                        <i class="fa fa-phone"></i>
-                                    </span><!--/input-icon-->
+                                    <div class="block select-list" ng-if="tendersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="bid_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="bid.tender" name="tender" id="bidTender" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-control-skip-backward"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="bidForm.tender.$dirty && bidForm.tender.$error.required" translate="content.form.messages.TENDERREQUIRED">Tender is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.tender.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile1" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span>
-                                    </label>
-                                    <div class="input-group">
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file1" type="text" name="attachmentFile1" id="bidAttachmentFile1" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE1' | translate ]]" ng-required="false" />
-                                        <i class="ti-folder"></i>
-                                    </span><!--/input-icon-->
-                                        <span class="input-group-btn">
-                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file1')">
-                                                <i class="ti-cloud"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div class="user-image margin-top-10" ng-if="bid.attachment_file1 != '' && bid.attachment_file1 != null">
-                                        <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + bid.attachment_file1 ]]" alt="" />
-                                        </div>
-                                        <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file1')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="bid.attachment_file1 = ''"> <i class="fa fa-times"></i></span>
-                                        </div>
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile2" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span>
-                                    </label>
-                                    <div class="input-group">
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file2" type="text" name="attachmentFile2" id="bidAttachmentFile2" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE2' | translate ]]" ng-required="false" />
-                                        <i class="ti-folder"></i>
-                                    </span><!--/input-icon-->
-                                        <span class="input-group-btn">
-                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file2')">
-                                                <i class="ti-cloud"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div class="user-image margin-top-10" ng-if="bid.attachment_file2 != '' && bid.attachment_file2 != null">
-                                        <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + bid.attachment_file2 ]]" alt="" />
-                                        </div>
-                                        <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file2')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="bid.attachment_file2 = ''"> <i class="fa fa-times"></i></span>
-                                        </div>
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BID.E"></h2>
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="bidAttachmentFile3" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span>
+                                    <label for="bidAttachmentFiles" class="control-label">
+                                        <span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span>
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="bid.attachment_file3" type="text" name="attachmentFile3" id="bidAttachmentFile3" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE3' | translate ]]" ng-required="false" />
+                                        <input ng-model="bid.attachment_files" type="text" name="attachmentFiles" id="bidAttachmentFiles" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILES' | translate ]]" ng-required="false" />
                                         <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
-                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file3')">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_files')">
                                                 <i class="ti-cloud"></i>
                                             </a>
                                         </span>
                                     </div>
-                                    <div class="user-image margin-top-10" ng-if="bid.attachment_file3 != '' && bid.attachment_file3 != null">
+                                    <div class="user-image margin-top-10" ng-if="bid.attachment_files != '' && bid.attachment_files != null">
                                         <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + bid.attachment_file3 ]]" alt="" />
+                                            <img ng-src="[[ thumbURL + bid.attachment_files ]]" alt="" />
                                         </div>
                                         <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file3')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="bid.attachment_file3 = ''"> <i class="fa fa-times"></i></span>
-                                        </div>
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile4" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span>
-                                    </label>
-                                    <div class="input-group">
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file4" type="text" name="attachmentFile4" id="bidAttachmentFile4" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE4' | translate ]]" ng-required="false" />
-                                        <i class="ti-folder"></i>
-                                    </span><!--/input-icon-->
-                                        <span class="input-group-btn">
-                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_file4')">
-                                                <i class="ti-cloud"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div class="user-image margin-top-10" ng-if="bid.attachment_file4 != '' && bid.attachment_file4 != null">
-                                        <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + bid.attachment_file4 ]]" alt="" />
-                                        </div>
-                                        <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_file4')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="bid.attachment_file4 = ''"> <i class="fa fa-times"></i></span>
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="bid.attachment_files = ''"> <i class="fa fa-times"></i></span>
                                         </div>
                                     </div>
                                 </div><!--/form-group-->

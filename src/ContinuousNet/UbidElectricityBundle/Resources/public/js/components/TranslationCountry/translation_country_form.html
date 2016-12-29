@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="countriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_country_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="translationCountry.country" name="country" id="translationCountryCountry" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-globe"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="countriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_country_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="translationCountry.country" name="country" id="translationCountryCountry" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-flag"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationCountryForm.country.$dirty && translationCountryForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
                                     <span class="success text-small block" ng-if="translationCountryForm.country.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

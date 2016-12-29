@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.POSTCATEGORY">Post Category</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="postCategoriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_post_category_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="translationPostCategory.post_category" name="postCategory" id="translationPostCategoryPostCategory" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-foolder-open-o"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="postCategoriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_post_category_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="translationPostCategory.post_category" name="postCategory" id="translationPostCategoryPostCategory" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-foolder-open-o"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationPostCategoryForm.postCategory.$dirty && translationPostCategoryForm.postCategory.$error.required" translate="content.form.messages.POSTCATEGORYREQUIRED">Post Category is required.</span>
                                     <span class="success text-small block" ng-if="translationPostCategoryForm.postCategory.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

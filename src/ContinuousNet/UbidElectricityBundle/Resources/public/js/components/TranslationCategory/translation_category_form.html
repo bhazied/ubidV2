@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.CATEGORY">Category</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="categoriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_category_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="translationCategory.category" name="category" id="translationCategoryCategory" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-foolder-open-o"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="categoriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_category_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="translationCategory.category" name="category" id="translationCategoryCategory" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-foolder-open-o"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationCategoryForm.category.$dirty && translationCategoryForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
                                     <span class="success text-small block" ng-if="translationCategoryForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

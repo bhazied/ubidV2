@@ -32,13 +32,13 @@
                                     <label for="countryRegion" class="control-label">
                                         <span translate="content.list.fields.REGION">Region</span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="country_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="country_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-globe"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
