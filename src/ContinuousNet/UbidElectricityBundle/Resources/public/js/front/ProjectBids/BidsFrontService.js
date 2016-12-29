@@ -15,9 +15,10 @@ app.factory('$bidsFrontDataFactory', ['$resource', '$rootScope',
             sortField: '@sortField',
             sortDirection: '@sortDirection'
         }, {
-            bids: { method: 'GET', url: '/:locale' + url + 'bids/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            bid : { methof: 'GET', url:'/:locale' + url +  'bids/:id', isArray: false},
-            bookmark: {method: 'GET', url:'/:locale' + url +  'bookmark/:id', isArray: false},
+            //tender: { method: 'GET', url: '/:locale' + url + 'tenders/:page/:pageCount/:sortField/:sortDirection', isArray: false},
+            bidsByProject : { methof: 'GET', url:'/:locale' + url +  'bidsbyproject/:projectId/:page/:pageCount/:sortField/:sortDirection', isArray: false},
+            bookmarkBid: {method: 'GET', url:'/:locale' + url +  'bookmarkBid/:id', isArray: false},
+            bidsShorListed: {method: 'GET', url:'/:locale' + url +  'bidsShorListed/', isArray: false}
         });
 
     }]);

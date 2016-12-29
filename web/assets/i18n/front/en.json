@@ -358,6 +358,7 @@
       "MESSAGENOTDELETED": "Message Not Deleted",
       "BACKMESSAGES": "Back To Messages List",
       "NOTIFICATIONS": "Notifications",
+      "SHORLISTBIDNOTIFICATION": "Bid Notification",
       "NOTIFICATION": "Notification",
       "ADDNOTIFICATION": "Add New Notification",
       "NEWNOTIFICATION": "New Notification",
@@ -1785,6 +1786,20 @@
       "COUNTRY": "Country",
       "ADDRESS": "Address",
       "ZIPCODE": "Zip code"
+    },
+    "USERMENU":{
+      "MYBUYERS" : "My buyers text info ...",
+      "NEWBUYER" : "New buyers text info ...",
+      "MYTENDERS" : "My tender text info ...",
+      "NEWTENDER" : "New tender text info ...",
+      "PROJECTBIDS" : "Project bids text info ...",
+      "PROJECTBIDSSHORTLIST" : "Project bids shot list text info ...",
+      "MYSUPPLIERS" : "My supplier text info ...",
+      "NEWSUPPLIER" : "New supplier text info ...",
+      "MYPRODUCTS" : "My Product text info ...",
+      "MYBIDS" : "My bids text info ...",
+      "BOOKMARKPROJECT" : "BookMark projects text info ...",
+      "NEWPRODUCT" : "New product text info ..."
     }
   }
 }
