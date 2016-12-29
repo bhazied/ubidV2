@@ -1193,24 +1193,17 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get a Bid entity By id
      *
-     * @Get("/bidDetails/{id}")
+     * @Get("/bookmarkBid/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function bidDetailsAction($id)
+    public function bookmarkBidAction($id)
     {
         try {
-            $em = $this->getDoctrine()->getManager();
-            $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Tender', 't_');
-            $qb->select('t_');
-            $qb->andWhere('t_.id = :id')->setParameter('id', $id);
-            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
-            $qb->setMaxResults(1);
-            $data = $qb->getQuery()->getOneOrNullResult();
-            return $data;
+            $bid = $this->getDoctrine()->getRepository('UbidElectricityBundle:Bid')->find($id);
+            return $bid;
         } catch (\Exception $e) {
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }

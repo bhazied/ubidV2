@@ -7,10 +7,22 @@
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-                <button class="btn btn-sm pull-right" translate-attr-title="front.ADDTOSHORTLIST" title="Share"><i class="fa fa-share-alt"></i></button>
                 <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
                 <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a ng-click="list()" class="btn btn-primary pull-left">
+                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPROJECTS">Back to bids </span>
+            </a>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a ng-click="addToShortList()" class="btn btn-primary pull-left">
+                <i class="ti-thumb-up"></i> <span translate="front.ADDTOSHORTLIST">Add to short list</span>
+            </a>
         </div>
     </div>
 </div>
