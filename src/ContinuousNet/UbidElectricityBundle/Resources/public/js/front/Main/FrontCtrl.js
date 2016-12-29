@@ -28,12 +28,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders',
+            'front.tenders.list',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender',
-            'front.tender.details',
-            'front.tenders',
+            'front.tenders.details',
             'front.buyers',
             'front.suppliers',
             'front.post',
@@ -257,7 +255,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tender', {id: id})
+            $state.go('front.tenders.details', {id: id})
         }
         
     }]);

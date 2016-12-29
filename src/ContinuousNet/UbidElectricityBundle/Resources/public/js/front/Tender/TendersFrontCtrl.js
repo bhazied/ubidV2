@@ -7,9 +7,9 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.showLeftSide = true;
             $rootScope.showRightSide = true;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
-            $rootScope.contentOffset = 2;
-        }, 1000);
+            $rootScope.contentSize = 6;
+            $rootScope.contentOffset = 0;
+        }, 500);
 
         $scope.category_name = $filter('translate')('content.text.ALLCATEGORIES');
         $scope.dateFormat = $filter('translate')('formats.DATE');
@@ -26,11 +26,11 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $params.locale = $localStorage.language;
             $params.page = page;
             $scope.tendersList = [];
+            console.warn('params '+ $params);
             $timeout(function () {
                 $scope.tendersLoaded = true;
                 var def = $q.defer();
                 $tendersFrontDataFactory.homeTenders($params).$promise.then(function(data){
-                    console.log(data);
                         if(data.results.length > 0){
                             $scope.tendersList = data.results;
                             $scope.pageSize = 10;
@@ -38,7 +38,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
                             $scope.currentPage = page+1;
                         }
                     });
-                    def.resolve($scope.bidsList);
+                    def.resolve($scope.tendersList);
                 return def;
             });
 
@@ -47,7 +47,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $scope.getTenders(1);
 
 
-        $scope.categoriesLoaded = false;
+        /*$scope.categoriesLoaded = false;
         $scope.categoriesList = [];
         $scope.getcategories = function () {
             $scope.categoriesLoaded = true;
@@ -70,6 +70,6 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             return def;
         }
 
-        //$scope.getcategories();
+        $scope.getcategories();*/
         
 }]);

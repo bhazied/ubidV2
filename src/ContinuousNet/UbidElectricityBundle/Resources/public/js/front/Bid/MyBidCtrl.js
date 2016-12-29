@@ -54,15 +54,15 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
     $scope.timeFormat = $filter('translate')('formats.TIME');
 
     $scope.list = function() {
-        $state.go('app.marketplace.bids');
+        $state.go('front.mybids.list');
     };
 
     $scope.add = function() {
-        $state.go('app.marketplace.bidsnew');
+        $state.go('front.mybids.new');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.bidsedit', {id: row.id});
+        $state.go('front.mybids.edit', {id: row.id});
     };
 
     if (angular.isDefined($stateParams.id)) {

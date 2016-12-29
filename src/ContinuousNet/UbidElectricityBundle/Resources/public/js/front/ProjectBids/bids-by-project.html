@@ -1,0 +1,56 @@
+<div ng-controller="BidsByProjectCtrl">
+    <div ng-if="bids.length == 0" class="tender-preview">
+        <h3 class="text-center text-info" translate="front.NOBIDS">You have been logged out</h3>
+    </div>
+    <div ng-repeat="bid in bids" class="tender-preview">
+        <a ui-sref="front.projectbids.bid({slug:bid.tender.slug ,id: bid.id})" class="name" ng-bind="bid.title"></a>
+        <div class="pb-1 clearfix">
+            <div ng-bind-html="bid.description"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button ui-sref="front.projectbids.bid({slug:bid.tender.slug ,id: bid.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+            <div class="col-md-6">
+                <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row"  ng-if="bids.length > 0">
+        <div class="col-md-6">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li ng-if="showPrevPage" class="page-item" ng-click="prevPage()" >
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only" translate="content.common.PREVIOUS">Previous</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="p in pages" ng-click="setPage(p)" ng-class="{'page-item': page != p, 'page-item active': page == p}"><a class="page-link">[[ p ]]</a></li>
+                    <li ng-if="showNextPage" class="page-item" ng-click="nextPage()">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" translate="content.common.NEXT">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            <nav aria-label="Page navigation" class="pull-right">
+                <ul class="pagination">
+                    <li ng-repeat="c in pageCounts" ng-click="setPageCount(c)" ng-class="{'page-item': pageCount != c, 'page-item active': pageCount == c}"><a class="page-link">[[ c ]]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a ng-click="list()" class="btn btn-primary pull-left">
+                <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPROJECTS">Back to Projects list</span>
+            </a>
+        </div>
+    </div>
+
+</div>
