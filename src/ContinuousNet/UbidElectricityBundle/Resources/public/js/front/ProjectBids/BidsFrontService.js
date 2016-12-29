@@ -19,6 +19,7 @@ app.factory('$projectBidsFrontDataFactory', ['$resource', '$rootScope',
             //tender: { method: 'GET', url: '/:locale' + url + 'tenders/:page/:pageCount/:sortField/:sortDirection', isArray: false},
             bidsByProject : { methof: 'GET', url:'/:locale' + url +  'bidsbyproject/:projectId/:page/:pageCount/:sortField/:sortDirection', isArray: false},
             bookmarkBid: {method: 'GET', url:'/:locale' + url +  'bookmarkBid/:id', isArray: false},
+            bidsShorListed: {method: 'GET', url:'/:locale' + url +  'bidsShorListed/', isArray: false}
         });
 
     }]);

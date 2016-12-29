@@ -68095,7 +68095,8 @@ app.constant('APP_JS_REQUIRES', {
         'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js',
         'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js',
         'BidsByProjectCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsByProjectCtrl.js',
-        'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js'
+        'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js',
+        'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68773,7 +68774,14 @@ app.config(['$stateProvider',
             url: '/short-list',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids_short_list.html',
             title: 'front.PROJECTBIDSSHORTLIST',
-            resolve: loadSequence()
+            params: {
+                'bidsIsFiltersVisible': null,
+                'bidsPage': null,
+                'bidsCount': null,
+                'bidsSorting': null,
+                'bidsFilter': null
+            },
+            resolve: loadSequence('BidsShortListCtrl','BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'projectBidsFrontService')
         })
     }]);
 
