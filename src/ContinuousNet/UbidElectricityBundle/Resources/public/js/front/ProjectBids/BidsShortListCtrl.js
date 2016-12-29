@@ -91,11 +91,11 @@ app.controller('BidsShortListCtrl', ['$scope','$controller', '$rootScope', '$sta
         });
 
         $scope.list = function () {
-            $state.go('');
+            $state.go('front.projectbids.shortlist');
         }
         
         $scope.details = function(row) {
-            $state.go('app.marketplace.bidsdetails', {id: row.id});
+            $state.go('front.projectbids.bid', {slug: row.tender.slug,id: row.id});
         };
     }]);
 
