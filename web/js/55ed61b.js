@@ -68642,7 +68642,7 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYBIDS',
             resolve: loadSequence()
-        }).state('front.mybids.list',{
+        }).state('front.mybids.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bids.html',
             title: 'front.MYBIDS',
@@ -68654,9 +68654,15 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
-            /*
-             * My BookmarkProject Manager routes
-             */
+        }).state('front.mybids.new',{
+            url: '/new',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
+            title: 'front.NEWBID',
+            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+
+                    /*
+                     * My BookmarkProject Manager routes
+                     */
         }).state('front.bookmarkproject',{
             url: '/bookmark-project',
             template: '<div ui-view class="fade-in-up"></div>',
