@@ -32,13 +32,13 @@
                                     <label for="impressionVisit" class="control-label">
                                         <span translate="content.list.fields.VISIT">Visit</span>
                                     </label>
-                                <div class="block select-list" ng-if="visitsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="impression_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="impression.visit" name="visit" id="impressionVisit" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="visitsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="impression_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="impression.visit" name="visit" id="impressionVisit" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -49,13 +49,13 @@
                                         <span translate="content.list.fields.BANNER">Banner</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="bannersLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="impression_banner_readonly" ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="impression.banner" name="banner" id="impressionBanner" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="bannersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="impression_banner_readonly" ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="impression.banner" name="banner" id="impressionBanner" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="impressionForm.banner.$dirty && impressionForm.banner.$error.required" translate="content.form.messages.BANNERREQUIRED">Banner is required.</span>
                                     <span class="success text-small block" ng-if="impressionForm.banner.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

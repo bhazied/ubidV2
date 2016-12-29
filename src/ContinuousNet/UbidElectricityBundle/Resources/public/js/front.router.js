@@ -230,12 +230,12 @@ app.config(['$stateProvider',
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
         }).state('front.mybids.details',{
             url: '/details/:id',
-            templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid.html',
             title: 'front.TENDERDETAILS',
-            resolve: loadSequence('MyBidCtrl', 'TenderCtrl', 'tenderService')
+            resolve: loadSequence('MyBidCtrl', 'BidCtrl', 'bidService')
         }).state('front.mybids.edit',{
             url: '/edit/:id',
-            templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.EDITTENDER',
             resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.mybids.new',{

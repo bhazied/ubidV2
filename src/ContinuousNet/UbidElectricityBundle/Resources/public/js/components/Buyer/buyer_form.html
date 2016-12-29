@@ -26,19 +26,26 @@
                     <form name="buyerForm" id="buyerForm" novalidate ng-submit="submitForm(buyerForm)">
                         <input type="hidden" name="id" id="buyerId" ng-model="buyer.id" />
                         <div class="row">
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BUYER.A"></h2>
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
                                     <label for="buyerBuyerType" class="control-label">
                                         <span translate="content.list.fields.BUYERTYPE">Buyer Type</span>
                                     </label>
-                                <div class="block select-list" ng-if="buyerTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_buyer_type_readonly" ng-options="item.id as item.name for item in buyerTypes | filter:{ hidden : false }" ng-model="buyer.buyer_type" name="buyerType" id="buyerBuyerType" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="buyerTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_buyer_type_readonly" ng-options="item.id as item.name for item in buyerTypes | filter:{ hidden : false }" ng-model="buyer.buyer_type" name="buyerType" id="buyerBuyerType" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -64,6 +71,115 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
+                                    <label for="buyerEmail" class="control-label">
+                                        <span translate="content.list.fields.EMAIL">Email</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.email" type="email" name="email" id="buyerEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
+                                        <i class="ti-email"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerPhone" class="control-label">
+                                        <span translate="content.list.fields.PHONE">Phone</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.phone" type="text" name="phone" id="buyerPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-phone"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BUYER.B"></h2>
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerFirstName" class="control-label">
+                                        <span translate="content.list.fields.FIRSTNAME">First Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.first_name" type="text" name="firstName" id="buyerFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerLastName" class="control-label">
+                                        <span translate="content.list.fields.LASTNAME">Last Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.last_name" type="text" name="lastName" id="buyerLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-id-badge"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerJob" class="control-label">
+                                        <span translate="content.list.fields.JOB">Job</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.job" type="text" name="job" id="buyerJob" class="form-control" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" ng-required="false" />
+                                        <i class="ti-rocket"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BUYER.C"></h2>
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerCompanyName" class="control-label">
+                                        <span translate="content.list.fields.COMPANYNAME">Company Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.company_name" type="text" name="companyName" id="buyerCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-briefcase"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.address" type="text" name="address" id="buyerAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
                                     <label for="buyerDescription" class="control-label">
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
@@ -77,12 +193,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerMainProductsServices" class="control-label">
-                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
+                                    <label for="buyerZipCode" class="control-label">
+                                        <span translate="content.list.fields.ZIPCODE">Zip Code</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.main_products_services" type="text" name="mainProductsServices" id="buyerMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <input ng-model="buyer.zip_code" type="text" name="zipCode" id="buyerZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" ng-required="false" />
+                                        <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -92,12 +208,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerReferenceNumber" class="control-label">
-                                        <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
+                                    <label for="buyerCity" class="control-label">
+                                        <span translate="content.list.fields.CITY">City</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <input ng-model="buyer.city" type="text" name="city" id="buyerCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" ng-required="false" />
+                                        <i class="ti-direction"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -105,13 +221,16 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerPhone" class="control-label">
-                                        <span translate="content.list.fields.PHONE">Phone</span>
+                                    <label for="buyerCountry" class="control-label">
+                                        <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.phone" type="text" name="phone" id="buyerPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" my-unique-field="buyer.phone" my-resource-url="buyers" my-current-id="[[ buyer.id ]]" />
-                                        <i class="fa fa-phone"></i>
-                                    </span><!--/input-icon-->
+                                    <div class="block select-list" ng-if="countriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-flag"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -148,62 +267,6 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerEmail" class="control-label">
-                                        <span translate="content.list.fields.EMAIL">Email</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.email" type="email" name="email" id="buyerEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="false" />
-                                        <i class="ti-email"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerFirstName" class="control-label">
-                                        <span translate="content.list.fields.FIRSTNAME">First Name</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.first_name" type="text" name="firstName" id="buyerFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="false" />
-                                        <i class="ti-id-badge"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerLastName" class="control-label">
-                                        <span translate="content.list.fields.LASTNAME">Last Name</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.last_name" type="text" name="lastName" id="buyerLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
-                                        <i class="ti-id-badge"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerJob" class="control-label">
-                                        <span translate="content.list.fields.JOB">Job</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.job" type="text" name="job" id="buyerJob" class="form-control" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" ng-required="false" />
-                                        <i class="ti-rocket"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
                                     <label for="buyerPicture" class="control-label">
                                         <span translate="content.list.fields.PICTURE">Picture</span>
                                     </label>
@@ -230,93 +293,23 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerAddress" class="control-label">
-                                        <span translate="content.list.fields.ADDRESS">Address</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.address" type="text" name="address" id="buyerAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
-                                        <i class="ti-home"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BUYER.D"></h2>
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerZipCode" class="control-label">
-                                        <span translate="content.list.fields.ZIPCODE">Zip Code</span>
+                                    <label for="buyerMainProductsServices" class="control-label">
+                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.zip_code" type="text" name="zipCode" id="buyerZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" ng-required="false" />
-                                        <i class="ti-shortcode"></i>
+                                        <input ng-model="buyer.main_products_services" type="text" name="mainProductsServices" id="buyerMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-puzzle-piece"></i>
                                     </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerCity" class="control-label">
-                                        <span translate="content.list.fields.CITY">City</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.city" type="text" name="city" id="buyerCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" ng-required="false" />
-                                        <i class="ti-direction"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerCompanyName" class="control-label">
-                                        <span translate="content.list.fields.COMPANYNAME">Company Name</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.company_name" type="text" name="companyName" id="buyerCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" ng-required="false" />
-                                        <i class="ti-briefcase"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerCountry" class="control-label">
-                                        <span translate="content.list.fields.COUNTRY">Country</span>
-                                    </label>
-                                <div class="block select-list" ng-if="countriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-globe"></i>
-                                    </span><!--/input-icon-->
-                                </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerLanguage" class="control-label">
-                                        <span translate="content.list.fields.LANGUAGE">Language</span>
-                                    </label>
-                                <div class="block select-list" ng-if="languagesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-flag"></i>
-                                    </span><!--/input-icon-->
-                                </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -328,7 +321,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-money"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -341,13 +334,13 @@
                                     <label for="buyerFirstMarketRegion" class="control-label">
                                         <span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.first_market_region" name="firstMarketRegion" id="buyerFirstMarketRegion" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.first_market_region" name="firstMarketRegion" id="buyerFirstMarketRegion" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-globe"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -359,7 +352,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="buyer.first_market_rate" type="text" name="firstMarketRate" id="buyerFirstMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -372,13 +365,13 @@
                                     <label for="buyerSecondMarketRegion" class="control-label">
                                         <span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.second_market_region" name="secondMarketRegion" id="buyerSecondMarketRegion" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.second_market_region" name="secondMarketRegion" id="buyerSecondMarketRegion" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-globe"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -390,7 +383,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="buyer.second_market_rate" type="text" name="secondMarketRate" id="buyerSecondMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERSECONDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -403,13 +396,13 @@
                                     <label for="buyerThirdMarketRegion" class="control-label">
                                         <span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span>
                                     </label>
-                                <div class="block select-list" ng-if="regionsLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="buyer_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.third_market_region" name="thirdMarketRegion" id="buyerThirdMarketRegion" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="regionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.third_market_region" name="thirdMarketRegion" id="buyerThirdMarketRegion" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-globe"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -421,11 +414,47 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="buyer.third_market_rate" type="text" name="thirdMarketRate" id="buyerThirdMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTHIRDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-percent"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerReferenceNumber" class="control-label">
+                                        <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
+                                        <i class="fa fa-hashtag"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="buyerLanguage" class="control-label">
+                                        <span translate="content.list.fields.LANGUAGE">Language</span>
+                                    </label>
+                                    <div class="block select-list" ng-if="languagesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-language"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 translate="content.list.fieldsets.BUYER.E"></h2>
+                            </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">

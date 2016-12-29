@@ -257,7 +257,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     return 'default';
                 },
                 folder: function() {
-                    return 'suppliers';
+                    var user_id = '000000' + $localStorage.user.id;
+                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
+                    return 'data' + user_dir + '/suppliers';
                 }
             }
         });

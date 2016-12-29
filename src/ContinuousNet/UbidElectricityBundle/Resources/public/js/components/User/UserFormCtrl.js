@@ -231,15 +231,28 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getGroups();
 
+    $scope.groupsSearchText = '';
     $scope.userGroups = false;
     $scope.$watch('userGroups', function() {
-        if ($scope.userGroups) {
-            $scope.user.groups = [];
-            for (var i in $scope.groups) {
-                $scope.user.groups.push($scope.groups[i].id);
+        if (angular.isDefined($scope.user)) {
+            var groups = $filter('filter')($scope.groups, $scope.groupsSearchText);
+            if ($scope.userGroups) {
+                for (var i in groups) {
+                    var id = groups[i].id;
+                    var index = $scope.user.groups.indexOf(id);
+                    if (index == -1) {
+                        $scope.user.groups.push(id);
+                    }
+                }
+            } else {
+                for (var i in groups) {
+                    var id = groups[i].id;
+                    var index = $scope.user.groups.indexOf(id);
+                    if (index > -1) {
+                        $scope.user.groups.splice(index, 1);
+                    }
+                }
             }
-        } else {
-            $scope.user.groups = [];
         }
     });
 
@@ -345,9 +358,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                     return 'default';
                 },
                 folder: function() {
-                    var user_ = '00000' + $scope.user.id;
-                    user_ = '/user_'+user_.substr(user_.length - 5);
-                    return 'users'+user_;
+                    var user_id = '000000' + $localStorage.user.id;
+                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
+                    return 'data' + user_dir + '/users';
                 }
             }
         });

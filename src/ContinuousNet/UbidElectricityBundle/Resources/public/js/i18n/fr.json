@@ -384,12 +384,14 @@
                 "ENTERMAXTOTALCLICKS": "Entrer une valeur pour Max Total Clics",
                 "ENTERMAXHITSPERDAY": "Entrer une valeur pour Max Hits Par Jour",
                 "ENTERMAXTOTALHITS": "Entrer une valeur pour Max Total des hits",
+                "FILTERBANNERPOSITIONS": "Filter Positions de bannières",
                 "ENTERSLUG": "Entrer une valeur pour Url lisible",
                 "SLUGREQUIRED": "Le champs Url lisible est obligatoire",
                 "ENTERITEMSNUMBER": "Entrer une valeur pour Nombre d'éléments",
                 "ITEMSNUMBERREQUIRED": "Le champs Nombre d'éléments est obligatoire",
                 "ENTERDISPLAYTIME": "Entrer une valeur pour Durée d'affichage",
                 "DISPLAYTIMEREQUIRED": "Le champs Durée d'affichage est obligatoire",
+                "FILTERBANNERS": "Filter Bannières",
                 "ENTEREXTENSIONS": "Entrer une valeur pour Extensions",
                 "EXTENSIONSREQUIRED": "Le champs Extensions est obligatoire",
                 "ENTERMIMETYPES": "Entrer une valeur pour Mime Types",
@@ -407,10 +409,7 @@
                 "ENTERADDRESS": "Entrer une valeur pour Adresse",
                 "ENTEREMAIL": "Entrer une valeur pour Email",
                 "ENTERPHONE": "Entrer une valeur pour Téléphone",
-                "ENTERATTACHMENTFILE1": "Entrer une valeur pour Fichier Joint 1",
-                "ENTERATTACHMENTFILE2": "Entrer une valeur pour Fichier Joint 2",
-                "ENTERATTACHMENTFILE3": "Entrer une valeur pour Fichier Joint 3",
-                "ENTERATTACHMENTFILE4": "Entrer une valeur pour Fichier Joint 4",
+                "ENTERATTACHMENTFILES": "Entrer une valeur pour Fichier Joint s",
                 "SELECTTENDERPRODUCT": "Sélectionner une valeur pour Produit d'appel d'offres",
                 "TENDERPRODUCTREQUIRED": "Le champs Produit d'appel d'offres est obligatoire",
                 "SELECTBID": "Sélectionner une valeur pour Réponse",
@@ -445,6 +444,7 @@
                 "SELECTPARENTCATEGORY": "Sélectionner une valeur pour Catégorie Mére",
                 "SELECTPRODUCTTYPE": "Sélectionner une valeur pour Type de produits",
                 "PRODUCTTYPEREQUIRED": "Le champs Type de produits est obligatoire",
+                "FILTERTENDERS": "Filter Appels d'offres",
                 "SELECTVISIT": "Sélectionner une valeur pour Visite",
                 "SELECTBANNER": "Sélectionner une valeur pour Bannière",
                 "BANNERREQUIRED": "Le champs Bannière est obligatoire",
@@ -456,6 +456,7 @@
                 "ENTERPREFIX": "Entrer une valeur pour Préfixe",
                 "SELECTROLES": "Sélectionner une valeur pour Rôles",
                 "ROLESREQUIRED": "Le champs Rôles est obligatoire",
+                "FILTERUSERS": "Filter Utilisateurs",
                 "ENTERENTITY": "Entrer une valeur pour Entité",
                 "ENTITYREQUIRED": "Le champs Entité est obligatoire",
                 "ENTERFOREIGNKEY": "Entrer une valeur pour Référence de l'entité",
@@ -520,7 +521,9 @@
                 "ENTERTOTALLIKES": "Entrer une valeur pour Nombre des j'aime",
                 "ENTERTOTALDISLIKES": "Entrer une valeur pour Nombre des j'aime pas",
                 "ENTERTOTALBOOKMARKS": "Entrer une valeur pour Total favoris",
+                "FILTERPOSTCATEGORIES": "Filter Catégories d'articles",
                 "SELECTPARENTPOSTCATEGORY": "Sélectionner une valeur pour Catégorie Mére d'articles",
+                "FILTERPOSTS": "Filter Articles",
                 "SELECTSUPPLIERTYPE": "Sélectionner une valeur pour Fournisseur Type",
                 "ENTERBRAND": "Entrer une valeur pour Marque",
                 "ENTERMODEL": "Entrer une valeur pour Modèle",
@@ -538,6 +541,7 @@
                 "SELECTDEADLINE": "Sélectionner une valeur pour Deadline",
                 "ENTERESTIMATEDCOST": "Entrer une valeur pour Coût estimé",
                 "ENTERSOURCE": "Entrer une valeur pour Source",
+                "FILTERCATEGORIES": "Filter Catégories",
                 "SELECTMENULINK": "Sélectionner une valeur pour Menu Lien",
                 "MENULINKREQUIRED": "Le champs Menu Lien est obligatoire",
                 "SELECTPOST": "Sélectionner une valeur pour Article",
@@ -569,6 +573,7 @@
                 "ENTERLOGINCOUNT": "Entrer une valeur pour Nombre de connexions",
                 "ENTERFAILEDLOGINCOUNT": "Entrer une valeur pour Échoué Nombre de connexions",
                 "ENTERLASTFAILEDLOGINCOUNT": "Entrer une valeur pour Dernière Échoué Nombre de connexions",
+                "FILTERGROUPS": "Filter Groupes",
                 "ENTERKEY": "Entrer une valeur pour Clé",
                 "KEYREQUIRED": "Le champs Clé est obligatoire",
                 "ENTERVALUE": "Entrer une valeur pour Valeur",
@@ -1014,6 +1019,20 @@
             "TENDERDELETED": "Appel d'offres supprimé(e)",
             "TENDERNOTDELETED": "Appel d'offres non supprimé(e)",
             "BACKTENDERS": "Retour à la liste des Appels d'offres",
+            "TENDERBOOKMARKS": "Appel d'offres Bookmarks",
+            "TENDERBOOKMARK": "Appel d'offres Bookmark",
+            "ADDTENDERBOOKMARK": "Ajouter un(e) Appel d'offres Bookmark",
+            "NEWTENDERBOOKMARK": "Ajouter d'un(e) Appel d'offres Bookmark",
+            "TENDERBOOKMARKDETAILS": "Détails Appel d'offres Bookmark",
+            "EDITTENDERBOOKMARK": "Modifier ce(tte) Appel d'offres Bookmark",
+            "TENDERBOOKMARKUPDATED": "Appel d'offres Bookmark mis(e) à jour",
+            "TENDERBOOKMARKNOTUPDATED": "Appel d'offres Bookmark non mis(e) à jour",
+            "TENDERBOOKMARKCREATED": "Appel d'offres Bookmark cré(e)",
+            "TENDERBOOKMARKNOTCREATED": "Appel d'offres Bookmark non cré(e)",
+            "YOUWILLNOTBEABLETORECOVERTENDERBOOKMARK": "Vous ne serez pas en mesure de récupérer ce(tte) Appel d'offres Bookmark!",
+            "TENDERBOOKMARKDELETED": "Appel d'offres Bookmark supprimé(e)",
+            "TENDERBOOKMARKNOTDELETED": "Appel d'offres Bookmark non supprimé(e)",
+            "BACKTENDERBOOKMARKS": "Retour à la liste des Appel d'offres Bookmarks",
             "TENDERPRODUCTS": "Produits d'appel d'offres",
             "TENDERPRODUCT": "Produit d'appel d'offres",
             "ADDTENDERPRODUCT": "Ajouter un(e) Produit d'appel d'offres",
@@ -1294,7 +1313,8 @@
                     "DEFAULT" : "Default"
                 },
                 "BID" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "E" : "E"
                 },
                 "BIDPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1303,7 +1323,12 @@
                     "DEFAULT" : "Default"
                 },
                 "BUYER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "D" : "D",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "BUYERTYPE" : {
                     "DEFAULT" : "Default"
@@ -1363,7 +1388,12 @@
                     "DEFAULT" : "Default"
                 },
                 "SUPPLIER" : {
-                    "DEFAULT" : "Default"
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "D" : "D",
+                    "B" : "B",
+                    "E" : "E"
                 },
                 "SUPPLIERPRODUCT" : {
                     "DEFAULT" : "Default"
@@ -1372,6 +1402,13 @@
                     "DEFAULT" : "Default"
                 },
                 "TENDER" : {
+                    "DEFAULT" : "Default",
+                    "A" : "A",
+                    "C" : "C",
+                    "B" : "B",
+                    "D" : "D"
+                },
+                "TENDERBOOKMARK" : {
                     "DEFAULT" : "Default"
                 },
                 "TENDERPRODUCT" : {
@@ -1514,10 +1551,7 @@
                 "ADDRESS": "Adresse",
                 "EMAIL": "Email",
                 "PHONE": "Téléphone",
-                "ATTACHMENTFILE1": "Fichier Joint 1",
-                "ATTACHMENTFILE2": "Fichier Joint 2",
-                "ATTACHMENTFILE3": "Fichier Joint 3",
-                "ATTACHMENTFILE4": "Fichier Joint 4",
+                "ATTACHMENTFILES": "Fichier Joint s",
                 "TENDERPRODUCT": "Produit d'appel d'offres",
                 "BID": "Réponse",
                 "SUPPLIERPRODUCT": "Produit de fournisseurs",
@@ -1629,8 +1663,8 @@
                 "DEADLINE": "Deadline",
                 "ESTIMATEDCOST": "Coût estimé",
                 "SOURCE": "Source",
-                "CATEGORIES": "Catégories",
                 "VALIDATED": "Validé",
+                "CATEGORIES": "Catégories",
                 "MENULINK": "Menu Lien",
                 "POST": "Article",
                 "POSTCATEGORY": "Catégorie d'articles",

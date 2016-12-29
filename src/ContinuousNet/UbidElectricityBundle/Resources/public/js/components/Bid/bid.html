@@ -31,7 +31,7 @@
                             <i class="ti-pencil-alt"></i> <span translate="content.list.EDITBID">Edit Bid</span>
                         </button>
                     </div>
-                </div>
+                </div><!--/list-toolbox-->
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
                         <thead>
@@ -41,35 +41,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
                                 <td>
-                                    <div ng-bind-html="bid.id"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.TENDER">Tender</span></td>
-                                <td><a ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})">[[ bid.tender.title ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: bid.supplier.id})">[[ bid.supplier.name ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.TITLE">Title</span></td>
-                                <td>
-                                    <div ng-bind-html="bid.title"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
-                                <td>
-                                    <div ng-bind-html="bid.slug"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
-                                <td>
-                                    <div ng-bind-html="bid.reference"></div>
+                                    <span>[[ bid.created_at | date: datetimeFormat ]]</span>
                                 </td>
                             </tr>
                             <tr>
@@ -79,15 +53,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.STATUS">Status</span></td>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
                                 <td>
-                                    <span my-enum="[[ bid.status ]]" my-enum-list="[[ statuses ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.NOTE">Note</span></td>
-                                <td>
-                                    <div ng-bind-html="bid.note"></div>
+                                    <span>[[ bid.modified_at | date: datetimeFormat ]]</span>
                                 </td>
                             </tr>
                             <tr>
@@ -109,47 +77,45 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="bid.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.NOTE">Note</span></td>
+                                <td>
+                                    <div ng-bind-html="bid.note"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.PHONE">Phone</span></td>
                                 <td>
                                     <div ng-bind-html="bid.phone"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span></td>
+                                <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
                                 <td>
-                                    <div ng-if="bid.attachment_file1 != '' && bid.attachment_file1 != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_file1 ]]" alt=""><i class="ti-download"></i> [[bid.attachment_file1]]</a>
-                                    </div>
+                                    <div ng-bind-html="bid.reference"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span></td>
+                                <td><span translate="content.list.fields.SLUG">Slug</span></td>
                                 <td>
-                                    <div ng-if="bid.attachment_file2 != '' && bid.attachment_file2 != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_file2 ]]" alt=""><i class="ti-download"></i> [[bid.attachment_file2]]</a>
-                                    </div>
+                                    <div ng-bind-html="bid.slug"></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span></td>
+                                <td><span translate="content.list.fields.STATUS">Status</span></td>
                                 <td>
-                                    <div ng-if="bid.attachment_file3 != '' && bid.attachment_file3 != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_file3 ]]" alt=""><i class="ti-download"></i> [[bid.attachment_file3]]</a>
-                                    </div>
+                                    <span my-enum="[[ bid.status ]]" my-enum-list="[[ statuses ]]"></span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span></td>
+                                <td><span translate="content.list.fields.TITLE">Title</span></td>
                                 <td>
-                                    <div ng-if="bid.attachment_file4 != '' && bid.attachment_file4 != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_file4 ]]" alt=""><i class="ti-download"></i> [[bid.attachment_file4]]</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
-                                <td>
-                                    <span>[[ bid.created_at | date: datetimeFormat ]]</span>
+                                    <div ng-bind-html="bid.title"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -157,26 +123,40 @@
                                 <td><a ui-sref="app.access.usersdetails({id: bid.creator_user.id})">[[ bid.creator_user.username ]]</a></span></td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
-                                <td>
-                                    <span>[[ bid.modified_at | date: datetimeFormat ]]</span>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
                                 <td><a ui-sref="app.access.usersdetails({id: bid.modifier_user.id})">[[ bid.modifier_user.username ]]</a></span></td>
                             </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
+                                <td><a ui-sref="app.marketplace.suppliersdetails({id: bid.supplier.id})">[[ bid.supplier.name ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDER">Tender</span></td>
+                                <td><a ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})">[[ bid.tender.title ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BID.E"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
+                                <td>
+                                    <div ng-if="bid.attachment_files != '' && bid.attachment_files != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                </div>
+                </div><!--/table-responsive-->
                 <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
                     </div>
                     <div class="col-md-4  margin-bottom-10 text-center">
                     </div>
+                    <div class="col-md-4 margin-bottom-10">
                     </div>
-                </div>
-            </div>
+                </div><!--/list-toolbox-->
+             </div>
         </div><!--/col-md-12-->
     </div><!--/row-->
 </div><!--/container-fluid container-fullw-->

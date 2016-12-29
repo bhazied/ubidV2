@@ -33,13 +33,13 @@
                                         <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="tenderTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="translation_tender_type_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="translationTenderType.tender_type" name="tenderType" id="translationTenderTypeTenderType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="tenderTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_tender_type_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="translationTenderType.tender_type" name="tenderType" id="translationTenderTypeTenderType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="translationTenderTypeForm.tenderType.$dirty && translationTenderTypeForm.tenderType.$error.required" translate="content.form.messages.TENDERTYPEREQUIRED">Tender Type is required.</span>
                                     <span class="success text-small block" ng-if="translationTenderTypeForm.tenderType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

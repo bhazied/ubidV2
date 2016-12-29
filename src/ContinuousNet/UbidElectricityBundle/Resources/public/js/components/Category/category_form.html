@@ -115,13 +115,13 @@
                                     <label for="categoryParentCategory" class="control-label">
                                         <span translate="content.list.fields.PARENTCATEGORY">Parent Category</span>
                                     </label>
-                                <div class="block select-list" ng-if="categoriesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="category_parent_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
-                                        </select>
-                                        <i class="fa fa-foolder-open-o"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="categoriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="category_parent_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="fa fa-foolder-open-o"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -132,13 +132,13 @@
                                         <span translate="content.list.fields.PRODUCTTYPE">Product Type</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                <div class="block select-list" ng-if="productTypesLoaded">
-                                    <span class="input-icon">
-                                        <select ng-readonly="category_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="category.product_type" name="productType" id="categoryProductType" class="form-control" ng-required="true">
-                                        </select>
-                                        <i class="fa fa-sitemap"></i>
-                                    </span><!--/input-icon-->
-                                </div>
+                                    <div class="block select-list" ng-if="productTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="category_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="category.product_type" name="productType" id="categoryProductType" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
                                     <span class="error text-small block" ng-if="categoryForm.productType.$dirty && categoryForm.productType.$error.required" translate="content.form.messages.PRODUCTTYPEREQUIRED">Product Type is required.</span>
                                     <span class="success text-small block" ng-if="categoryForm.productType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

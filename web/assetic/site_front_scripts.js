@@ -428,6 +428,9 @@ app.constant('APP_JS_REQUIRES', {
         'TendersCtrl': '/bundles/ubidelectricity/js/components/Tender/TendersCtrl.js',
         'TenderFormCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderFormCtrl.js',
         'TenderCtrl': '/bundles/ubidelectricity/js/components/Tender/TenderCtrl.js',
+        'TenderBookmarksCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarksCtrl.js',
+        'TenderBookmarkFormCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkFormCtrl.js',
+        'TenderBookmarkCtrl': '/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkCtrl.js',
         'TenderProductsCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductsCtrl.js',
         'TenderProductFormCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductFormCtrl.js',
         'TenderProductCtrl': '/bundles/ubidelectricity/js/components/TenderProduct/TenderProductCtrl.js',
@@ -629,6 +632,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'tenderService',
         files: ['/bundles/ubidelectricity/js/components/Tender/TenderService.js']
+    },{
+        name: 'tenderBookmarkService',
+        files: ['/bundles/ubidelectricity/js/components/TenderBookmark/TenderBookmarkService.js']
     },{
         name: 'tenderProductService',
         files: ['/bundles/ubidelectricity/js/components/TenderProduct/TenderProductService.js']
@@ -1084,6 +1090,16 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
+        }).state('front.mybids.details',{
+            url: '/details/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid.html',
+            title: 'front.TENDERDETAILS',
+            resolve: loadSequence('MyBidCtrl', 'BidCtrl', 'bidService')
+        }).state('front.mybids.edit',{
+            url: '/edit/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
+            title: 'front.EDITTENDER',
+            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.mybids.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',

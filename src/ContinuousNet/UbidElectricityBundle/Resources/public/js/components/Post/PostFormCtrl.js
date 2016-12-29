@@ -153,15 +153,28 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getPostCategories();
 
+    $scope.postCategoriesSearchText = '';
     $scope.postPostCategories = false;
     $scope.$watch('postPostCategories', function() {
-        if ($scope.postPostCategories) {
-            $scope.post.post_categories = [];
-            for (var i in $scope.postCategories) {
-                $scope.post.post_categories.push($scope.postCategories[i].id);
+        if (angular.isDefined($scope.post)) {
+            var post_categories = $filter('filter')($scope.postCategories, $scope.postCategoriesSearchText);
+            if ($scope.postPostCategories) {
+                for (var i in post_categories) {
+                    var id = post_categories[i].id;
+                    var index = $scope.post.post_categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.post.post_categories.push(id);
+                    }
+                }
+            } else {
+                for (var i in post_categories) {
+                    var id = post_categories[i].id;
+                    var index = $scope.post.post_categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.post.post_categories.splice(index, 1);
+                    }
+                }
             }
-        } else {
-            $scope.post.post_categories = [];
         }
     });
 

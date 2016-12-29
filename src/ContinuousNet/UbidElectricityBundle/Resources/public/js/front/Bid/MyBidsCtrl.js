@@ -19,6 +19,9 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
 
     angular.extend(this, $controller('BidsCtrl', {$scope:$scope}));
 
+    $scope.list = function() {
+        $state.go('front.mybids.list');
+    };
 
     $scope.add = function() {
         $state.go('front.mybids.new');
@@ -29,7 +32,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     };
 
     $scope.details = function(row) {
-        $state.go('front.mybids.sdetails', {id: row.id});
+        $state.go('front.mybids.details', {id: row.id});
     };
 }]);
 
