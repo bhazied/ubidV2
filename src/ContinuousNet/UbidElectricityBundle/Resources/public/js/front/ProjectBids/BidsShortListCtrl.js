@@ -4,8 +4,8 @@
  * Controller for Bids List
  */
 
-app.controller('BidsShortListCtrl', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory', '$projectBidsFrontDataFactory',
-    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory, $projectBidsFrontDataFactory) {
+app.controller('BidsShortListCtrl', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory', '$bidsFrontDataFactory',
+    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory, $bidsFrontDataFactory) {
 
 
         $timeout(function() {
@@ -81,7 +81,7 @@ app.controller('BidsShortListCtrl', ['$scope','$controller', '$rootScope', '$sta
                 }
                 http_params.locale = $localStorage.language;
                 $scope.isLoading = true;
-                return $projectBidsFrontDataFactory.bidsShorListed(http_params).$promise.then(function(data) {
+                return $bidsFrontDataFactory.bidsShorListed(http_params).$promise.then(function(data) {
                     console.log(data);
                     $scope.isLoading = false;
                     params.total(data.inlineCount);
