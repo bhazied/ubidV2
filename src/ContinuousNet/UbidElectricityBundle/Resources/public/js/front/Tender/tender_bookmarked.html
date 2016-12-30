@@ -1,7 +1,7 @@
 <!-- start: DETAILS -->
 <div class="container-fluid container-fullw bg-white">
     <div class="row">
-        <div class="col-md-12" ng-controller="MyTenderBookmarkedDetailsCtrl">
+        <div class="col-md-12 myTenderBookmark-details" ng-controller="MyTenderBookmarkedDetailsCtrl">
             <div>
                 <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
@@ -11,7 +11,7 @@
                     </div>
                 </div><!--/list-toolbox-->
                 <div class="table-responsive">
-                    <table class="table table-condensed table-bordered">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th colspan="2" translate="content.list.TENDERBOOKMARKDETAILS">Tender Bookmark Details</th>
@@ -19,39 +19,39 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><span translate="content.list.fields.ID">Id</span></td>
+                            <th><span translate="content.list.fields.ID">Id</span></th>
                             <td>
                                 <div ng-bind-html="tenderBookmark.id"></div>
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.TENDER">Tender</span></td>
+                            <th><span translate="content.list.fields.TENDER">Tender</span></th>
                             <td><a ui-sref="app.marketplace.tendersdetails({id: tenderBookmark.tender.id})">[[ tenderBookmark.tender.title ]]</a></span></td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.STATUS">Status</span></td>
+                            <th><span translate="content.list.fields.STATUS">Status</span></th>
                             <td>
                                 <span my-enum="[[ tenderBookmark.status ]]" my-enum-list="[[ statuses ]]"></span>
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                            <th><span translate="content.list.fields.CREATEDAT">Created At</span></th>
                             <td>
                                 <span>[[ tenderBookmark.created_at | date: datetimeFormat ]]</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                            <th><span translate="content.list.fields.CREATORUSER">Creator User</span></th>
                             <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.creator_user.id})">[[ tenderBookmark.creator_user.username ]]</a></span></td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                            <th><span translate="content.list.fields.MODIFIEDAT">Modified At</span></th>
                             <td>
                                 <span>[[ tenderBookmark.modified_at | date: datetimeFormat ]]</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                            <th><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></th>
                             <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.modifier_user.id})">[[ tenderBookmark.modifier_user.username ]]</a></span></td>
                         </tr>
                         </tbody>

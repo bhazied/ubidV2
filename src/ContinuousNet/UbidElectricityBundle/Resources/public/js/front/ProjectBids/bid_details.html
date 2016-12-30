@@ -1,27 +1,53 @@
-<div ng-controller="BidDetailsCtrl">
-    <div class="tender-preview">
-        <a  class="name" ng-bind="bid.title"></a>
-        <div class="pb-1 clearfix">
-            <div ng-bind-html="bid.description"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
-                <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
-            </div>
-        </div>
-    </div>
-    <div class="row">
+<div class="tender-details" ng-controller="BidDetailsCtrl">
+    <h4 class="name">[[ bid.title ]]</h4>
+    <table class="table table-striped">
+        <tr>
+            <th><span translate="front.REFNUMBER">Tender  no</span>:</th>
+            <td><span class="value">[[ bid.reference ]]</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.PUBLISHDATE">Publish Date</span>:</th>
+            <td><span  class="value"> [[ bid.created_at | date : formats.DATE  | translate  ]] </span></td>
+        </tr>
+        <tr>
+            <th><span translate="content.field.TOTALCOST">Total Cost</span>:</th>
+            <td><span class="value">[[ bid.total_cost ]] $</span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.COMPANYNAME">Company Name</span>:</th>
+            <td><span class="value" ng-bind-html="[[ bid.supplier.company_name]]"></span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.DESCRIPTION">Description</span>:</th>
+            <td><span class="value" ng-bind-html="[[ bid.description ]]"></span></td>
+        </tr>
+        <tr>
+            <th><span translate="front.CONTACT">Contact</span>:</th>
+            <td>
+                                    <span class="value">
+                                        <span translate="front.NAME">Name</span>: <span>[[ bid.supplier.last_name ]] [[ bid.supplier.first_name ]]</span>
+                                        -
+                                         <span translate="front.JOB">Job</span>: <span>[[ bid.supplier.job ]] </span>
+                                        -
+                                        <span translate="front.TEL">Tel</span>: <span>[[ bid.supplier.phone ]]</span>
+                                        -
+                                        <span translate="front.FAX">Fax</span>: <span>[[ bid.supplier.fax ]]</span>
+                                        -
+                                        <span translate="front.ADDRESS">Website</span>: <span>[[ bid.supplier.Address ]]</span>
+                                    </span>
+            </td>
+        </tr>
+    </table>
+    <div class="row mb-1">
         <div class="col-md-4">
             <a ng-click="list()" class="btn btn-primary pull-left">
                 <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPROJECTS">Back to bids </span>
             </a>
         </div>
         <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <a ng-click="addToShortList()" class="btn btn-primary pull-left">
-                <i class="ti-thumb-up"></i> <span translate="front.ADDTOSHORTLIST">Add to short list</span>
+        <div class="col-md-4" ng-if="bid.status != 'shorlisted'">
+            <a ng-click="addToShortList()" class="btn btn-primary pull-left" ng-disabled="disableAdd">
+                <i class="fa fa-spinner fa-spin" ng-if="disableAdd"></i><i class="ti-thumb-up" ng-if="!disableAdd"></i> <span translate="front.ADDTOSHORTLIST">Add to short list</span>
             </a>
         </div>
     </div>

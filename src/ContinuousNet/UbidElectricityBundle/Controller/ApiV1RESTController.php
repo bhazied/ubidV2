@@ -14,6 +14,7 @@ use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View AS FOSView;
 use FOS\UserBundle\Model\UserManager;
+use Proxies\__CG__\ContinuousNet\UbidElectricityBundle\Entity\Bid;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
@@ -1165,7 +1166,6 @@ class ApiV1RESTController extends FOSRestController
         try {
             $em = $this->getDoctrine()->getManager();
             $data = array();
-
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Bid', 'b_');
             $qb->select('count(b_.id)');
@@ -1176,7 +1176,7 @@ class ApiV1RESTController extends FOSRestController
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Bid', 'b_');
             $qb->select('b_');
-            $qb->andWhere('b_.status = :status')->setParameter('status', 'Online');
+            //$qb->andWhere('b_.status != :status')->setParameter('status', 'Online');
             $qb->andWhere('b_.tender = :projectId')->setParameter('projectId', $projectId);
             $qb->addOrderBy('b_.'.$sortField, $sortDirection);
             $qb->setMaxResults($pageCount);
@@ -1201,11 +1201,95 @@ class ApiV1RESTController extends FOSRestController
      */
     public function bookmarkBidAction($id)
     {
+        $data['status'] = false;
+        $data['message'] = '';
         try {
-            $bid = $this->getDoctrine()->getRepository('UbidElectricityBundle:Bid')->find($id);
-            return $bid;
+            $em = $this->getDoctrine()->getManager();
+           $bid = $em->getRepository('UbidElectricityBundle:Bid')->find($id);
+           if($bid){
+               if($bid->getStatus() == 'shortlisted'){
+                   $data['status'] = false;
+                   $data['message'] = $this->get('translator')->trans('bidShortList.alreadyShortListed', array($bid->getTitle()));
+                   return $data;
+               }
+               $bid->setStatus('shortlisted');
+               //$bid->save();
+               $em->flush();
+               $message = \Swift_Message::newInstance()
+                   ->setSubject('Your Tender '. $bid->getTender()->getTitle().' ')
+                   ->setFrom('contact@continuousnet.com')
+                   ->setTo($bid->getCreatorUser()->getEmail())
+                   ->setBody(
+                       $this->renderView('UbidElectricityBundle:Emails:bidShortListes.html.twig', array('tender' => $bid->getTender(), 'bid' => $bid)),
+                       'text/html'
+                   );
+               $this->get('mailer')->send($message);
+               $data['status'] = true;
+               $data['message'] = $this->get('translator')->trans('bidShortList.shortListed', array($bid->getTitle()));
+               return $data;
+           }
+            else{
+                $data['status'] = false;
+                $data['message'] = $this->get('translator')->trans('bidShortList.shortListedError', array($bid->getTitle()));
+                return $data;
+            }
         } catch (\Exception $e) {
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    /**
+     * Get a Bid entity By id
+     *
+     * @Get("/bidsShorListed")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function bidsShorListedAction(Request $request){
+        $tender_ids = [];
+        $data = ['inlineCount' => 0, 'results' => []];
+        //get All tender ids by curren user
+
+        $offset = $request->request->get('offset');
+        $limit = $request->request->get('limit');
+        $order_by = $request->request->get('order_by') ? $request->request->get('order_by') : array();
+        $filters = !is_null($request->request->get('filters')) ? $request->request->get('filters') : array();
+        $data = array(
+            'inlineCount' => 0,
+            'results' => array()
+        );
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $qbBids = clone $qb;
+
+        $qb->from("UbidElectricityBundle:Tender", "t_")
+            ->select('t_.id')
+            ->where('t_.creatorUser = :user')
+            ->setParameter('user', $this->getUser()->getId());
+        $tenders = $qb->getQuery()->getResult();
+        $tender_ids = array_values($tenders);
+
+        //get the bids for all tenders by currenrtt user
+
+        $qbBids->from("UbidElectricityBundle:Bid", 'b_')
+            ->where('b_.tender IN (:tenders)')
+            ->setParameter('tenders', $tender_ids)
+            ->andWhere('b_.status = :status')
+            ->setParameter('status', 'shortlisted');
+        $qbListBids = clone $qbBids;
+        $qbBids->select('count(b_.id)');
+        $data['inlineCount'] = $qbBids->getQuery()->getSingleScalarResult();
+
+        $qbListBids->select('b_');
+        $qbListBids->setMaxResults($limit);
+        $qbListBids->setFirstResult($offset);
+        $qbListBids->groupBy('b_.id');
+        $results = $qbListBids->getQuery()->getResult();
+        if($results){
+            $data['results'] = $results;
+        }
+        return $data;
     }
 }

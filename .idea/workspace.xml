@@ -2,7 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b9e86f4-287f-4562-9b77-1c49eab0c0da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/bidShortListes.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/tenderBookmarked.html.twig" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/ubid_electricity.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bids.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bids.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidDetailsCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidDetailsCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsFrontService.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsFrontService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/bid_details.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/bid_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids_short_list.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids_short_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.fr.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.fr.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_2.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css_e-elctricity_2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts_constant_4.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts_constant_4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/front/en.json" afterPath="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297.css" afterPath="$PROJECT_DIR$/web/css/b9d5297.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" afterPath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/front/css/e-elctricity.css" afterPath="$PROJECT_DIR$/web/front/css/e-elctricity.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854.js" afterPath="$PROJECT_DIR$/web/js/5268854.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854_part_19.js" afterPath="$PROJECT_DIR$/web/js/5268854_part_19.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b.js" afterPath="$PROJECT_DIR$/web/js/55ed61b.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" afterPath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,210 +60,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
-              <caret line="204" column="103" selection-start-line="204" selection-start-column="103" selection-end-line="204" selection-end-column="103" />
-              <folding>
-                <marker date="1483030599030" expanded="true" signature="65:20190" ph="{&quot;LoginCtrl&quot;: '/bundles/ubidelectricity/js/components/Auth/LoginCtrl.js'...}" />
-                <marker date="1483030599030" expanded="true" signature="16791:16834" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="20205:29133" ph="[...]" />
-                <marker date="1483030599030" expanded="true" signature="20206:20322" ph="{&quot;name&quot;: 'LoginService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20323:20445" ph="{&quot;name&quot;: 'RegisterService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20446:20578" ph="{&quot;name&quot;: 'ResetPasswordService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20579:20699" ph="{&quot;name&quot;: 'ProfileService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20700:20824" ph="{&quot;name&quot;: 'DashboardService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20825:20942" ph="{&quot;name&quot;: 'alertService'...}" />
-                <marker date="1483030599030" expanded="true" signature="20943:21063" ph="{&quot;name&quot;: 'bannerService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21064:21208" ph="{&quot;name&quot;: 'bannerPositionService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21209:21341" ph="{&quot;name&quot;: 'bannerTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21342:21453" ph="{&quot;name&quot;: 'bidService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21454:21586" ph="{&quot;name&quot;: 'bidProductService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21587:21722" ph="{&quot;name&quot;: 'biddingTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21723:21840" ph="{&quot;name&quot;: 'buyerService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21841:21970" ph="{&quot;name&quot;: 'buyerTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="21971:22097" ph="{&quot;name&quot;: 'categoryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22098:22215" ph="{&quot;name&quot;: 'clickService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22216:22339" ph="{&quot;name&quot;: 'countryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22340:22457" ph="{&quot;name&quot;: 'groupService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22458:22569" ph="{&quot;name&quot;: 'hitService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22570:22702" ph="{&quot;name&quot;: 'impressionService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22703:22829" ph="{&quot;name&quot;: 'languageService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22830:22941" ph="{&quot;name&quot;: 'logService'...}" />
-                <marker date="1483030599030" expanded="true" signature="22942:23056" ph="{&quot;name&quot;: 'menuService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23057:23183" ph="{&quot;name&quot;: 'menuLinkService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23184:23307" ph="{&quot;name&quot;: 'messageService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23308:23446" ph="{&quot;name&quot;: 'notificationService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23447:23561" ph="{&quot;name&quot;: 'postService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23562:23700" ph="{&quot;name&quot;: 'postCategoryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23701:23827" ph="{&quot;name&quot;: 'postTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23828:23963" ph="{&quot;name&quot;: 'productTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="23964:24084" ph="{&quot;name&quot;: 'regionService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24085:24205" ph="{&quot;name&quot;: 'sectorService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24206:24332" ph="{&quot;name&quot;: 'supplierService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24333:24480" ph="{&quot;name&quot;: 'supplierProductService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24481:24619" ph="{&quot;name&quot;: 'supplierTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24620:24740" ph="{&quot;name&quot;: 'tenderService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24741:24885" ph="{&quot;name&quot;: 'tenderBookmarkService'...}" />
-                <marker date="1483030599030" expanded="true" signature="24886:25027" ph="{&quot;name&quot;: 'tenderProductService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25028:25160" ph="{&quot;name&quot;: 'tenderTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25161:25329" ph="{&quot;name&quot;: 'translationBiddingTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25330:25492" ph="{&quot;name&quot;: 'translationBuyerTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25493:25652" ph="{&quot;name&quot;: 'translationCategoryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25653:25809" ph="{&quot;name&quot;: 'translationCountryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25810:25957" ph="{&quot;name&quot;: 'translationMenuService'...}" />
-                <marker date="1483030599030" expanded="true" signature="25958:26117" ph="{&quot;name&quot;: 'translationMenuLinkService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26118:26265" ph="{&quot;name&quot;: 'translationPostService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26266:26437" ph="{&quot;name&quot;: 'translationPostCategoryService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26438:26597" ph="{&quot;name&quot;: 'translationPostTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26598:26766" ph="{&quot;name&quot;: 'translationProductTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26767:26920" ph="{&quot;name&quot;: 'translationRegionService'...}" />
-                <marker date="1483030599030" expanded="true" signature="26921:27074" ph="{&quot;name&quot;: 'translationSectorService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27075:27246" ph="{&quot;name&quot;: 'translationSupplierTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27247:27412" ph="{&quot;name&quot;: 'translationTenderTypeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27413:27527" ph="{&quot;name&quot;: 'userService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27528:27663" ph="{&quot;name&quot;: 'userSettingService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27664:27781" ph="{&quot;name&quot;: 'visitService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27782:27892" ph="{&quot;name&quot;: 'homeService'...}" />
-                <marker date="1483030599030" expanded="true" signature="27893:28015" ph="{&quot;name&quot;: 'buyerFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28016:28147" ph="{&quot;name&quot;: 'supplierFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28148:28276" ph="{&quot;name&quot;: 'productFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28277:28402" ph="{&quot;name&quot;: 'tenderFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28403:28518" ph="{&quot;name&quot;: 'searchService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28519:28637" ph="{&quot;name&quot;: 'contactService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28638:28758" ph="{&quot;name&quot;: 'profileFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28759:28881" ph="{&quot;name&quot;: 'userMenuFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28882:28996" ph="{&quot;name&quot;: 'postFrontService'...}" />
-                <marker date="1483030599030" expanded="true" signature="28997:29132" ph="{&quot;name&quot;: 'projectBidsFrontService'...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tenders_bookmarked.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tenders_bookmarked.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="front.router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3945">
-              <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
-              <folding>
-                <marker date="1483030599030" expanded="true" signature="187:447" ph="{&quot;url&quot;: '/'...}" />
-                <marker date="1483030599030" expanded="true" signature="391:437" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="470:694" ph="{&quot;url&quot;: '/login/:type'...}" />
-                <marker date="1483030599030" expanded="true" signature="718:924" ph="{&quot;url&quot;: '/logout'...}" />
-                <marker date="1483030599030" expanded="true" signature="950:1316" ph="{&quot;url&quot;: '/register/:type'...}" />
-                <marker date="1483030599030" expanded="true" signature="1347:1603" ph="{&quot;url&quot;: '/reset-password'...}" />
-                <marker date="1483030599030" expanded="true" signature="1633:1896" ph="{&quot;url&quot;: '/email-confirm/:token/:language'...}" />
-                <marker date="1483030599030" expanded="true" signature="1919:2157" ph="{&quot;url&quot;: '/reset/:token/:language'...}" />
-                <marker date="1483030599030" expanded="true" signature="2185:2420" ph="{&quot;url&quot;: '/lock-screen'...}" />
-                <marker date="1483030599030" expanded="true" signature="2445:2716" ph="{&quot;url&quot;: '/profile'...}" />
-                <marker date="1483030599030" expanded="true" signature="2742:2978" ph="{&quot;url&quot;: '/user-menu'...}" />
-                <marker date="1483030599030" expanded="true" signature="3010:3373" ph="{&quot;url&quot;: '/change-password'...}" />
-                <marker date="1483030599030" expanded="true" signature="3303:3363" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="3396:3624" ph="{&quot;url&quot;: '/buyers'...}" />
-                <marker date="1483030599030" expanded="true" signature="3647:3955" ph="{&quot;url&quot;: '/buyer/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="3882:3945" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="3981:4227" ph="{&quot;url&quot;: '/suppliers'...}" />
-                <marker date="1483030599030" expanded="true" signature="4253:4578" ph="{&quot;url&quot;: '/supplier/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="4506:4568" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="4603:4843" ph="{&quot;url&quot;: '/products'...}" />
-                <marker date="1483030599030" expanded="true" signature="4868:5187" ph="{&quot;url&quot;: '/product/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="5115:5177" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="5211:5459" ph="{&quot;url&quot;: &quot;/tenders&quot;...}" />
-                <marker date="1483030599030" expanded="true" signature="5382:5449" ph="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
-                <marker date="1483030599030" expanded="true" signature="5488:5734" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="5768:6026" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="6058:6318" ph="{&quot;url&quot;: '/sector/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="6351:6616" ph="{&quot;url&quot;: '/category/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="6648:6910" ph="{&quot;url&quot;: '/country/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="6943:7291" ph="{&quot;url&quot;: '/advanced-search-results'...}" />
-                <marker date="1483030599030" expanded="true" signature="7323:7677" ph="{&quot;url&quot;: '/generic-search-results'...}" />
-                <marker date="1483030599030" expanded="true" signature="7708:8121" ph="{&quot;url&quot;: '/applay_tender/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="8052:8111" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="8147:8292" ph="{&quot;url&quot;: '/my-tenders'...}" />
-                <marker date="1483030599030" expanded="true" signature="8326:8577" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="8608:9116" ph="{&quot;url&quot;: '/edit/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="9146:9648" ph="{&quot;url&quot;: '/new'...}" />
-                <marker date="1483030599030" expanded="true" signature="9679:10128" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="10066:10118" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="10155:10402" ph="{&quot;url&quot;: '/my-products'...}" />
-                <marker date="1483030599030" expanded="true" signature="10437:10614" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="10646:11084" ph="{&quot;url&quot;: '/edit/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="11115:11547" ph="{&quot;url&quot;: '/new'...}" />
-                <marker date="1483030599030" expanded="true" signature="11579:11954" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="11896:11944" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="11977:12152" ph="{&quot;url&quot;: '/my-bids'...}" />
-                <marker date="1483030599030" expanded="true" signature="12181:12681" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="12343:12545" ph="{&quot;bidsIsFiltersVisible&quot;: null...}" />
-                <marker date="1483030599030" expanded="true" signature="12712:12948" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="12976:13475" ph="{&quot;url&quot;: '/edit/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="13502:14073" ph="{&quot;url&quot;: '/new'...}" />
-                <marker date="1483030599030" expanded="true" signature="13996:14063" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="14105:14298" ph="{&quot;url&quot;: '/bookmark-project'...}" />
-                <marker date="1483030599030" expanded="true" signature="14335:14927" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="14520:14777" ph="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
-                <marker date="1483030599030" expanded="true" signature="14967:15319" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="15251:15309" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="15344:15487" ph="{&quot;url&quot;: '/my-buyers'...}" />
-                <marker date="1483030599030" expanded="true" signature="15520:15765" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="15795:16241" ph="{&quot;url&quot;: '/edit/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="16270:16710" ph="{&quot;url&quot;: '/new'...}" />
-                <marker date="1483030599030" expanded="true" signature="16740:17128" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="17065:17118" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="17156:17305" ph="{&quot;url&quot;: '/my-suppliers'...}" />
-                <marker date="1483030599030" expanded="true" signature="17341:17604" ph="{&quot;url&quot;: '/details/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="17637:18176" ph="{&quot;url&quot;: '/edit/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="18208:18669" ph="{&quot;url&quot;: '/new'...}" />
-                <marker date="1483030599030" expanded="true" signature="18702:19101" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="19048:19091" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="19126:19362" ph="{&quot;url&quot;: '/contact'...}" />
-                <marker date="1483030599030" expanded="true" signature="19383:19679" ph="{&quot;url&quot;: '/post/:slug'...}" />
-                <marker date="1483030599030" expanded="true" signature="19610:19669" ph="/*...*/" />
-                <marker date="1483030599030" expanded="true" signature="19707:19892" ph="{&quot;url&quot;: '/project-bids'...}" />
-                <marker date="1483030599030" expanded="true" signature="19926:20330" ph="{&quot;url&quot;: '/list'...}" />
-                <marker date="1483030599030" expanded="true" signature="20364:20715" ph="{&quot;url&quot;: '/bids-by-project/:projectId'...}" />
-                <marker date="1483030599030" expanded="true" signature="20748:21035" ph="{&quot;url&quot;: '/details/:slug/:id'...}" />
-                <marker date="1483030599030" expanded="true" signature="21074:21308" ph="{&quot;url&quot;: '/short-list'...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TenderBookmarksCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/TenderBookmarksCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="132" column="39" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
+            <state relative-caret-position="4155">
+              <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyBidsCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidsCtrl.js">
+      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="297">
+              <caret line="206" column="116" selection-start-line="206" selection-start-column="116" selection-end-line="206" selection-end-column="116" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyBidCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidCtrl.js">
+      <file leaf-file-name="tender.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" column="36" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="36" />
+            <state relative-caret-position="15">
+              <caret line="1" column="44" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -236,38 +93,68 @@
       <file leaf-file-name="my_bid.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="135">
+              <caret line="9" column="53" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="e-elctricity.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="1062" column="25" selection-start-line="1062" selection-start-column="25" selection-end-line="1062" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyTenderBookmarkedDetailsCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/css/front/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-31">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyBidFormCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidFormCtrl.js">
+      <file leaf-file-name="theme.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/css/front/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2835">
-              <caret line="189" column="17" selection-start-line="189" selection-start-column="15" selection-end-line="189" selection-end-column="17" />
+            <state relative-caret-position="-31">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_bid_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid_form.html">
+      <file leaf-file-name="my_bids.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bids.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4080">
-              <caret line="272" column="105" selection-start-line="272" selection-start-column="103" selection-end-line="272" selection-end-column="105" />
+            <state relative-caret-position="660">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tender_bookmarked.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tender_bookmarked.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            <state relative-caret-position="480">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -292,14 +179,18 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderBookmarkedCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/tender_bookmark.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tenders_bookmarked.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidFormCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsFrontService.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bids.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html" />
+        <option value="$PROJECT_DIR$/web/front/css/e-elctricity.css" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/tender_bookmark.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html" />
       </list>
     </option>
   </component>
@@ -341,7 +232,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -357,6 +247,86 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,6 +544,48 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectBids" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContinuousNet" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UbidElectricityBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Bid" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -613,6 +625,48 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContinuousNet" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UbidElectricityBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranslationMenu" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -703,6 +757,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -756,22 +811,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483008984190</updated>
-      <workItem from="1483008987944" duration="13634000" />
-      <workItem from="1483085228176" duration="284000" />
+      <workItem from="1483008987944" duration="13775000" />
+      <workItem from="1483086103859" duration="5156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13918000" />
+    <option name="totallyTimeSpent" value="18931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="-4" width="1327" height="772" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24943481" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24943481" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59910583" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -782,7 +838,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59910583" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -797,97 +852,83 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4155">
+          <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1483030599030" expanded="true" signature="65:20190" ph="{&quot;LoginCtrl&quot;: '/bundles/ubidelectricity/js/components/Auth/LoginCtrl.js'...}" />
-            <marker date="1483030599030" expanded="true" signature="16791:16834" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="20205:29133" ph="[...]" />
-            <marker date="1483030599030" expanded="true" signature="20206:20322" ph="{&quot;name&quot;: 'LoginService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20323:20445" ph="{&quot;name&quot;: 'RegisterService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20446:20578" ph="{&quot;name&quot;: 'ResetPasswordService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20579:20699" ph="{&quot;name&quot;: 'ProfileService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20700:20824" ph="{&quot;name&quot;: 'DashboardService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20825:20942" ph="{&quot;name&quot;: 'alertService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20943:21063" ph="{&quot;name&quot;: 'bannerService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21064:21208" ph="{&quot;name&quot;: 'bannerPositionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21209:21341" ph="{&quot;name&quot;: 'bannerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21342:21453" ph="{&quot;name&quot;: 'bidService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21454:21586" ph="{&quot;name&quot;: 'bidProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21587:21722" ph="{&quot;name&quot;: 'biddingTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21723:21840" ph="{&quot;name&quot;: 'buyerService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21841:21970" ph="{&quot;name&quot;: 'buyerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21971:22097" ph="{&quot;name&quot;: 'categoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22098:22215" ph="{&quot;name&quot;: 'clickService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22216:22339" ph="{&quot;name&quot;: 'countryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22340:22457" ph="{&quot;name&quot;: 'groupService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22458:22569" ph="{&quot;name&quot;: 'hitService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22570:22702" ph="{&quot;name&quot;: 'impressionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22703:22829" ph="{&quot;name&quot;: 'languageService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22830:22941" ph="{&quot;name&quot;: 'logService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22942:23056" ph="{&quot;name&quot;: 'menuService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23057:23183" ph="{&quot;name&quot;: 'menuLinkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23184:23307" ph="{&quot;name&quot;: 'messageService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23308:23446" ph="{&quot;name&quot;: 'notificationService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23447:23561" ph="{&quot;name&quot;: 'postService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23562:23700" ph="{&quot;name&quot;: 'postCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23701:23827" ph="{&quot;name&quot;: 'postTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23828:23963" ph="{&quot;name&quot;: 'productTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23964:24084" ph="{&quot;name&quot;: 'regionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24085:24205" ph="{&quot;name&quot;: 'sectorService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24206:24332" ph="{&quot;name&quot;: 'supplierService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24333:24480" ph="{&quot;name&quot;: 'supplierProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24481:24619" ph="{&quot;name&quot;: 'supplierTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24620:24740" ph="{&quot;name&quot;: 'tenderService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24741:24885" ph="{&quot;name&quot;: 'tenderBookmarkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24886:25027" ph="{&quot;name&quot;: 'tenderProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25028:25160" ph="{&quot;name&quot;: 'tenderTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25161:25329" ph="{&quot;name&quot;: 'translationBiddingTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25330:25492" ph="{&quot;name&quot;: 'translationBuyerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25493:25652" ph="{&quot;name&quot;: 'translationCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25653:25809" ph="{&quot;name&quot;: 'translationCountryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25810:25957" ph="{&quot;name&quot;: 'translationMenuService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25958:26117" ph="{&quot;name&quot;: 'translationMenuLinkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26118:26265" ph="{&quot;name&quot;: 'translationPostService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26266:26437" ph="{&quot;name&quot;: 'translationPostCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26438:26597" ph="{&quot;name&quot;: 'translationPostTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26598:26766" ph="{&quot;name&quot;: 'translationProductTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26767:26920" ph="{&quot;name&quot;: 'translationRegionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26921:27074" ph="{&quot;name&quot;: 'translationSectorService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27075:27246" ph="{&quot;name&quot;: 'translationSupplierTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27247:27412" ph="{&quot;name&quot;: 'translationTenderTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27413:27527" ph="{&quot;name&quot;: 'userService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27528:27663" ph="{&quot;name&quot;: 'userSettingService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27664:27781" ph="{&quot;name&quot;: 'visitService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27782:27892" ph="{&quot;name&quot;: 'homeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27893:28015" ph="{&quot;name&quot;: 'buyerFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28016:28147" ph="{&quot;name&quot;: 'supplierFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28148:28276" ph="{&quot;name&quot;: 'productFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28277:28402" ph="{&quot;name&quot;: 'tenderFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28403:28518" ph="{&quot;name&quot;: 'searchService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28519:28637" ph="{&quot;name&quot;: 'contactService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28638:28758" ph="{&quot;name&quot;: 'profileFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28759:28881" ph="{&quot;name&quot;: 'userMenuFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28882:28996" ph="{&quot;name&quot;: 'postFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28997:29132" ph="{&quot;name&quot;: 'projectBidsFrontService'...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tenders_bookmarked.html">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/TenderBookmarksCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="1980">
+          <caret line="132" column="39" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsFrontService.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="102" selection-start-line="20" selection-start-column="102" selection-end-line="20" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="36" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidFormCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2835">
+          <caret line="189" column="17" selection-start-line="189" selection-start-column="15" selection-end-line="189" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="272" column="105" selection-start-line="272" selection-start-column="103" selection-end-line="272" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -945,6 +986,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="440" column="47" selection-start-line="440" selection-start-column="14" selection-end-line="440" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -959,6 +1001,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4896">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -976,24 +1019,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/tender_bookmark.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,6 +1031,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,201 +1053,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="204" column="103" selection-start-line="204" selection-start-column="103" selection-end-line="204" selection-end-column="103" />
-          <folding>
-            <marker date="1483030599030" expanded="true" signature="65:20190" ph="{&quot;LoginCtrl&quot;: '/bundles/ubidelectricity/js/components/Auth/LoginCtrl.js'...}" />
-            <marker date="1483030599030" expanded="true" signature="16791:16834" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="20205:29133" ph="[...]" />
-            <marker date="1483030599030" expanded="true" signature="20206:20322" ph="{&quot;name&quot;: 'LoginService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20323:20445" ph="{&quot;name&quot;: 'RegisterService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20446:20578" ph="{&quot;name&quot;: 'ResetPasswordService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20579:20699" ph="{&quot;name&quot;: 'ProfileService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20700:20824" ph="{&quot;name&quot;: 'DashboardService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20825:20942" ph="{&quot;name&quot;: 'alertService'...}" />
-            <marker date="1483030599030" expanded="true" signature="20943:21063" ph="{&quot;name&quot;: 'bannerService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21064:21208" ph="{&quot;name&quot;: 'bannerPositionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21209:21341" ph="{&quot;name&quot;: 'bannerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21342:21453" ph="{&quot;name&quot;: 'bidService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21454:21586" ph="{&quot;name&quot;: 'bidProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21587:21722" ph="{&quot;name&quot;: 'biddingTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21723:21840" ph="{&quot;name&quot;: 'buyerService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21841:21970" ph="{&quot;name&quot;: 'buyerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="21971:22097" ph="{&quot;name&quot;: 'categoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22098:22215" ph="{&quot;name&quot;: 'clickService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22216:22339" ph="{&quot;name&quot;: 'countryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22340:22457" ph="{&quot;name&quot;: 'groupService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22458:22569" ph="{&quot;name&quot;: 'hitService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22570:22702" ph="{&quot;name&quot;: 'impressionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22703:22829" ph="{&quot;name&quot;: 'languageService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22830:22941" ph="{&quot;name&quot;: 'logService'...}" />
-            <marker date="1483030599030" expanded="true" signature="22942:23056" ph="{&quot;name&quot;: 'menuService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23057:23183" ph="{&quot;name&quot;: 'menuLinkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23184:23307" ph="{&quot;name&quot;: 'messageService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23308:23446" ph="{&quot;name&quot;: 'notificationService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23447:23561" ph="{&quot;name&quot;: 'postService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23562:23700" ph="{&quot;name&quot;: 'postCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23701:23827" ph="{&quot;name&quot;: 'postTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23828:23963" ph="{&quot;name&quot;: 'productTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="23964:24084" ph="{&quot;name&quot;: 'regionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24085:24205" ph="{&quot;name&quot;: 'sectorService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24206:24332" ph="{&quot;name&quot;: 'supplierService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24333:24480" ph="{&quot;name&quot;: 'supplierProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24481:24619" ph="{&quot;name&quot;: 'supplierTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24620:24740" ph="{&quot;name&quot;: 'tenderService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24741:24885" ph="{&quot;name&quot;: 'tenderBookmarkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="24886:25027" ph="{&quot;name&quot;: 'tenderProductService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25028:25160" ph="{&quot;name&quot;: 'tenderTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25161:25329" ph="{&quot;name&quot;: 'translationBiddingTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25330:25492" ph="{&quot;name&quot;: 'translationBuyerTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25493:25652" ph="{&quot;name&quot;: 'translationCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25653:25809" ph="{&quot;name&quot;: 'translationCountryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25810:25957" ph="{&quot;name&quot;: 'translationMenuService'...}" />
-            <marker date="1483030599030" expanded="true" signature="25958:26117" ph="{&quot;name&quot;: 'translationMenuLinkService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26118:26265" ph="{&quot;name&quot;: 'translationPostService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26266:26437" ph="{&quot;name&quot;: 'translationPostCategoryService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26438:26597" ph="{&quot;name&quot;: 'translationPostTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26598:26766" ph="{&quot;name&quot;: 'translationProductTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26767:26920" ph="{&quot;name&quot;: 'translationRegionService'...}" />
-            <marker date="1483030599030" expanded="true" signature="26921:27074" ph="{&quot;name&quot;: 'translationSectorService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27075:27246" ph="{&quot;name&quot;: 'translationSupplierTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27247:27412" ph="{&quot;name&quot;: 'translationTenderTypeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27413:27527" ph="{&quot;name&quot;: 'userService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27528:27663" ph="{&quot;name&quot;: 'userSettingService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27664:27781" ph="{&quot;name&quot;: 'visitService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27782:27892" ph="{&quot;name&quot;: 'homeService'...}" />
-            <marker date="1483030599030" expanded="true" signature="27893:28015" ph="{&quot;name&quot;: 'buyerFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28016:28147" ph="{&quot;name&quot;: 'supplierFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28148:28276" ph="{&quot;name&quot;: 'productFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28277:28402" ph="{&quot;name&quot;: 'tenderFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28403:28518" ph="{&quot;name&quot;: 'searchService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28519:28637" ph="{&quot;name&quot;: 'contactService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28638:28758" ph="{&quot;name&quot;: 'profileFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28759:28881" ph="{&quot;name&quot;: 'userMenuFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28882:28996" ph="{&quot;name&quot;: 'postFrontService'...}" />
-            <marker date="1483030599030" expanded="true" signature="28997:29132" ph="{&quot;name&quot;: 'projectBidsFrontService'...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tenders_bookmarked.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
+        <state relative-caret-position="435">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3945">
-          <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
-          <folding>
-            <marker date="1483030599030" expanded="true" signature="187:447" ph="{&quot;url&quot;: '/'...}" />
-            <marker date="1483030599030" expanded="true" signature="391:437" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="470:694" ph="{&quot;url&quot;: '/login/:type'...}" />
-            <marker date="1483030599030" expanded="true" signature="718:924" ph="{&quot;url&quot;: '/logout'...}" />
-            <marker date="1483030599030" expanded="true" signature="950:1316" ph="{&quot;url&quot;: '/register/:type'...}" />
-            <marker date="1483030599030" expanded="true" signature="1347:1603" ph="{&quot;url&quot;: '/reset-password'...}" />
-            <marker date="1483030599030" expanded="true" signature="1633:1896" ph="{&quot;url&quot;: '/email-confirm/:token/:language'...}" />
-            <marker date="1483030599030" expanded="true" signature="1919:2157" ph="{&quot;url&quot;: '/reset/:token/:language'...}" />
-            <marker date="1483030599030" expanded="true" signature="2185:2420" ph="{&quot;url&quot;: '/lock-screen'...}" />
-            <marker date="1483030599030" expanded="true" signature="2445:2716" ph="{&quot;url&quot;: '/profile'...}" />
-            <marker date="1483030599030" expanded="true" signature="2742:2978" ph="{&quot;url&quot;: '/user-menu'...}" />
-            <marker date="1483030599030" expanded="true" signature="3010:3373" ph="{&quot;url&quot;: '/change-password'...}" />
-            <marker date="1483030599030" expanded="true" signature="3303:3363" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="3396:3624" ph="{&quot;url&quot;: '/buyers'...}" />
-            <marker date="1483030599030" expanded="true" signature="3647:3955" ph="{&quot;url&quot;: '/buyer/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="3882:3945" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="3981:4227" ph="{&quot;url&quot;: '/suppliers'...}" />
-            <marker date="1483030599030" expanded="true" signature="4253:4578" ph="{&quot;url&quot;: '/supplier/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="4506:4568" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="4603:4843" ph="{&quot;url&quot;: '/products'...}" />
-            <marker date="1483030599030" expanded="true" signature="4868:5187" ph="{&quot;url&quot;: '/product/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="5115:5177" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="5211:5459" ph="{&quot;url&quot;: &quot;/tenders&quot;...}" />
-            <marker date="1483030599030" expanded="true" signature="5382:5449" ph="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
-            <marker date="1483030599030" expanded="true" signature="5488:5734" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="5768:6026" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="6058:6318" ph="{&quot;url&quot;: '/sector/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="6351:6616" ph="{&quot;url&quot;: '/category/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="6648:6910" ph="{&quot;url&quot;: '/country/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="6943:7291" ph="{&quot;url&quot;: '/advanced-search-results'...}" />
-            <marker date="1483030599030" expanded="true" signature="7323:7677" ph="{&quot;url&quot;: '/generic-search-results'...}" />
-            <marker date="1483030599030" expanded="true" signature="7708:8121" ph="{&quot;url&quot;: '/applay_tender/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="8052:8111" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="8147:8292" ph="{&quot;url&quot;: '/my-tenders'...}" />
-            <marker date="1483030599030" expanded="true" signature="8326:8577" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="8608:9116" ph="{&quot;url&quot;: '/edit/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="9146:9648" ph="{&quot;url&quot;: '/new'...}" />
-            <marker date="1483030599030" expanded="true" signature="9679:10128" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="10066:10118" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="10155:10402" ph="{&quot;url&quot;: '/my-products'...}" />
-            <marker date="1483030599030" expanded="true" signature="10437:10614" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="10646:11084" ph="{&quot;url&quot;: '/edit/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="11115:11547" ph="{&quot;url&quot;: '/new'...}" />
-            <marker date="1483030599030" expanded="true" signature="11579:11954" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="11896:11944" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="11977:12152" ph="{&quot;url&quot;: '/my-bids'...}" />
-            <marker date="1483030599030" expanded="true" signature="12181:12681" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="12343:12545" ph="{&quot;bidsIsFiltersVisible&quot;: null...}" />
-            <marker date="1483030599030" expanded="true" signature="12712:12948" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="12976:13475" ph="{&quot;url&quot;: '/edit/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="13502:14073" ph="{&quot;url&quot;: '/new'...}" />
-            <marker date="1483030599030" expanded="true" signature="13996:14063" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="14105:14298" ph="{&quot;url&quot;: '/bookmark-project'...}" />
-            <marker date="1483030599030" expanded="true" signature="14335:14927" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="14520:14777" ph="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
-            <marker date="1483030599030" expanded="true" signature="14967:15319" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="15251:15309" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="15344:15487" ph="{&quot;url&quot;: '/my-buyers'...}" />
-            <marker date="1483030599030" expanded="true" signature="15520:15765" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="15795:16241" ph="{&quot;url&quot;: '/edit/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="16270:16710" ph="{&quot;url&quot;: '/new'...}" />
-            <marker date="1483030599030" expanded="true" signature="16740:17128" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="17065:17118" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="17156:17305" ph="{&quot;url&quot;: '/my-suppliers'...}" />
-            <marker date="1483030599030" expanded="true" signature="17341:17604" ph="{&quot;url&quot;: '/details/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="17637:18176" ph="{&quot;url&quot;: '/edit/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="18208:18669" ph="{&quot;url&quot;: '/new'...}" />
-            <marker date="1483030599030" expanded="true" signature="18702:19101" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="19048:19091" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="19126:19362" ph="{&quot;url&quot;: '/contact'...}" />
-            <marker date="1483030599030" expanded="true" signature="19383:19679" ph="{&quot;url&quot;: '/post/:slug'...}" />
-            <marker date="1483030599030" expanded="true" signature="19610:19669" ph="/*...*/" />
-            <marker date="1483030599030" expanded="true" signature="19707:19892" ph="{&quot;url&quot;: '/project-bids'...}" />
-            <marker date="1483030599030" expanded="true" signature="19926:20330" ph="{&quot;url&quot;: '/list'...}" />
-            <marker date="1483030599030" expanded="true" signature="20364:20715" ph="{&quot;url&quot;: '/bids-by-project/:projectId'...}" />
-            <marker date="1483030599030" expanded="true" signature="20748:21035" ph="{&quot;url&quot;: '/details/:slug/:id'...}" />
-            <marker date="1483030599030" expanded="true" signature="21074:21308" ph="{&quot;url&quot;: '/short-list'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/TenderBookmarksCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="132" column="39" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidsCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1225,14 +1069,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="56" column="36" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1253,10 +1089,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/TenderBookmarksCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="132" column="39" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4155">
+          <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="206" column="116" selection-start-line="206" selection-start-column="116" selection-end-line="206" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsFrontService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="102" selection-start-line="20" selection-start-column="102" selection-end-line="20" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/front/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/front/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="44" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/tender_bookmark.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bids.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="1062" column="25" selection-start-line="1062" selection-start-column="25" selection-end-line="1062" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender_bookmarked.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        <state relative-caret-position="480">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
           <folding />
         </state>
       </provider>

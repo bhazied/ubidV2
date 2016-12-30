@@ -41,3 +41,7 @@ pushnotification.messages_not_initialized: 'Notifications non initialisées'
 pushnotification.messages_sent: '%s notifications iOS envoyées, %s notifications Android envoyées'
 pushnotification.count_messages_sent: '%s/%s notifications envoyées'
 pushnotification.messages_not_sent: 'Notifications non envoyées'
+bidShortList.shortListed: 'La réponse  %s est retenu'
+bidShortList.alreadyShortListed: 'La réponse %s est déjà retenu'
+bidShortList.shortListedError: "Erreur lors d'execution de la réponse %s"
+
