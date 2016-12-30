@@ -13,6 +13,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
             responseError: function (response) {
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
+                    delete $localStorage.user;
                     $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
