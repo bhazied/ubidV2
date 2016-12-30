@@ -2,6 +2,7 @@
 
 namespace ContinuousNet\UbidElectricityBundle\Controller;
 
+use ContinuousNet\UbidElectricityBundle\Entity\TenderBookmark;
 use ContinuousNet\UbidElectricityBundle\Entity\TenderCategory;
 use ContinuousNet\UbidElectricityBundle\Entity\Tender;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -1291,5 +1292,44 @@ class ApiV1RESTController extends FOSRestController
             $data['results'] = $results;
         }
         return $data;
+    }
+
+    /**
+     * Get Bookmark tender
+     *
+     * @Get("/bookmarkTender/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function bookmarkTenderAction($id){
+        $data = ['status' => false, 'message' => ''];
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $tender = $em->getRepository('UbidElectricityBundle:Tender')->find($id);
+            if($tender){
+                $tb = new TenderBookmark();
+                $tb->setStatus('Active')
+                    ->setTender($tender)
+                    ->setCreatorUser($this->getUser());
+                $em->persist($tb);
+                $em->flush();
+                $data = [
+                    'status' => true,
+                    'message' => $this->get('translator')->trans('tenderBookMark.addBookMark')
+                ];
+            }
+            else{
+                $data = [
+                    'status' => false,
+                    'message' => $this->get('translator')->trans('tenderBookMark.errorBookMark')
+                ];
+            }
+            return $data;
+        }
+        catch(\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }

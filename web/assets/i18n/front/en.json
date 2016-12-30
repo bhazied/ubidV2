@@ -359,6 +359,7 @@
       "BACKMESSAGES": "Back To Messages List",
       "NOTIFICATIONS": "Notifications",
       "SHORLISTBIDNOTIFICATION": "Bid Notification",
+      "BOOKMARKNOTIFICATION": "Tender Notification",
       "NOTIFICATION": "Notification",
       "ADDNOTIFICATION": "Add New Notification",
       "NEWNOTIFICATION": "New Notification",
@@ -1781,6 +1782,7 @@
     "NAME": "Name",
     "JOB": "Job",
     "DESCRIPTION": "Description",
+    "BOOKMARKTENDER": "Bookmark tender",
     "profile":{
       "FIRSTNAME": "First name",
       "LASTNAME": "Last name",

@@ -44,4 +44,6 @@ pushnotification.messages_not_sent: 'Notifications non envoyées'
 bidShortList.shortListed: 'La réponse  %s est retenu'
 bidShortList.alreadyShortListed: 'La réponse %s est déjà retenu'
 bidShortList.shortListedError: "Erreur lors d'execution de la réponse %s"
+tenderBookMark.addBookMark: 'Tender added to bookmark list'
+tenderBookMark.errorBookMark: 'erroro when try to add tender to bookmark list'
 

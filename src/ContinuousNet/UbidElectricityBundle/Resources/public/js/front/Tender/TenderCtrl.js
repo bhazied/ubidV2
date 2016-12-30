@@ -1,6 +1,6 @@
 'use strict';
-app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory) {
+app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory','toaster',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory, toaster) {
         
 
         $scope.currentDate = new Date();
@@ -26,8 +26,26 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
         }
 
         $scope.getTender();
-        console.log($rootScope.user);
+        $scope.disableBookmark = false;
+        $scope.addBookmark = function () {
+            $scope.disableBookmark = true;
+            var $params = {
+                id: $scope.tender.id,
+                locale: $localStorage.language
+            }
+            $tendersFrontDataFactory.bookmarkTender($params).$promise.then(function (data) {
+                if(data.status == true){
+                    toaster.pop('success', $filter('translate')('content.list.BOOKMARKNOTIFICATION'), data.message);
+                }
+                else{
+                    toaster.pop('error', $filter('translate')('content.list.BOOKMARKNOTIFICATION'), data.message);
+                }
+                $scope.disableBookmark = false;
+            });
+        }
+        
     }]);
+
 
 app.directive("myTenderShow",['$rootScope','$localStorage', function($rootScope, $localStorage){
     return {
