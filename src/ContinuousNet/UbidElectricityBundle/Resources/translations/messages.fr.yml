@@ -46,4 +46,5 @@ bidShortList.alreadyShortListed: 'La réponse %s est déjà retenu'
 bidShortList.shortListedError: "Erreur lors d'execution de la réponse %s"
 tenderBookMark.addBookMark: 'Tender added to bookmark list'
 tenderBookMark.errorBookMark: 'erroro when try to add tender to bookmark list'
+tenderBookMark.allreadyBookmarked: 'Tender Allready bookmarked'
 

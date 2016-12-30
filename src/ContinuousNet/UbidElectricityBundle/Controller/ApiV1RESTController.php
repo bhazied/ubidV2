@@ -1307,6 +1307,14 @@ class ApiV1RESTController extends FOSRestController
         $data = ['status' => false, 'message' => ''];
         try{
             $em = $this->getDoctrine()->getManager();
+            $Bookmarked = $em->getRepository('UbidElectricityBundle:TenderBookmark')->findOneBy(array('tender' => $id));
+            if($Bookmarked){
+                $data = [
+                    'status' => false,
+                    'message' => $this->get('translator')->trans('tenderBookMark.allreadyBookmarked')
+                ];
+                return $data;
+            }
             $tender = $em->getRepository('UbidElectricityBundle:Tender')->find($id);
             if($tender){
                 $tb = new TenderBookmark();
@@ -1319,14 +1327,15 @@ class ApiV1RESTController extends FOSRestController
                     'status' => true,
                     'message' => $this->get('translator')->trans('tenderBookMark.addBookMark')
                 ];
+                return $data;
             }
             else{
                 $data = [
                     'status' => false,
                     'message' => $this->get('translator')->trans('tenderBookMark.errorBookMark')
                 ];
+                return $data;
             }
-            return $data;
         }
         catch(\Exception $e){
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
