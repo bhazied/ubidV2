@@ -3082,3 +3082,51 @@ fieldset h2 {
 .bootstrap-touchspin .input-group-btn-vertical i {
     color: #007aff;
 }
+
+.myBid-details table tr th {
+    min-width: 150px !important;
+    border-bottom: 1px solid #ccc !important;
+}
+.myBid-details table tr td {
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+.myBid-details table tr td div {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.myBid-details table tr td span {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.myBid-details table tr td a {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+
+.myTenderBookmark-details table tr th {
+    min-width: 150px !important;
+    border-bottom: 1px solid #ccc !important;
+}
+.myTenderBookmark-details table tr td {
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+.myTenderBookmark-details table tr td div {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.myTenderBookmark-details table tr td span {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.myTenderBookmark-details table tr td a {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}

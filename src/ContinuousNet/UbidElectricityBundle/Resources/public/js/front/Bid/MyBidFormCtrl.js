@@ -187,7 +187,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     };
 
     $scope.list = function() {
-        $state.go('app.marketplace.bids');
+        $state.go('front.mybids.list');
     };
     
     $scope.bid_tender_readonly = false;

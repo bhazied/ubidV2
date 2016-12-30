@@ -3,14 +3,13 @@
 /**
  * Tenders Data Factory
  */
-app.factory('$projectBidsFrontDataFactory', ['$resource', '$rootScope',
+app.factory('$bidsFrontDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
 
         var url = $rootScope.app.apiURL + $rootScope.app.apiVersion;
         return $resource(url, {
             locale: '@locale',
             id: '@id',
-            projectId: '@projectId',
             page: '@page',
             pageCount: '@pageCount',
             sortField: '@sortField',

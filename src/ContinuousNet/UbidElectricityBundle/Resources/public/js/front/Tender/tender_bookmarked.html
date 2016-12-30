@@ -1,0 +1,74 @@
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12 myTenderBookmark-details" ng-controller="MyTenderBookmarkedDetailsCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                        <button ng-click="list()" class="btn btn-primary pull-left">
+                            <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERBOOKMARKS">Back to Tender Bookmarks list</span>
+                        </button>
+                    </div>
+                </div><!--/list-toolbox-->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th colspan="2" translate="content.list.TENDERBOOKMARKDETAILS">Tender Bookmark Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th><span translate="content.list.fields.ID">Id</span></th>
+                            <td>
+                                <div ng-bind-html="tenderBookmark.id"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.TENDER">Tender</span></th>
+                            <td><a ui-sref="app.marketplace.tendersdetails({id: tenderBookmark.tender.id})">[[ tenderBookmark.tender.title ]]</a></span></td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.STATUS">Status</span></th>
+                            <td>
+                                <span my-enum="[[ tenderBookmark.status ]]" my-enum-list="[[ statuses ]]"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.CREATEDAT">Created At</span></th>
+                            <td>
+                                <span>[[ tenderBookmark.created_at | date: datetimeFormat ]]</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.CREATORUSER">Creator User</span></th>
+                            <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.creator_user.id})">[[ tenderBookmark.creator_user.username ]]</a></span></td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.MODIFIEDAT">Modified At</span></th>
+                            <td>
+                                <span>[[ tenderBookmark.modified_at | date: datetimeFormat ]]</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></th>
+                            <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.modifier_user.id})">[[ tenderBookmark.modifier_user.username ]]</a></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!--/table-responsive-->
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div><!--/list-toolbox-->
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->
+
+

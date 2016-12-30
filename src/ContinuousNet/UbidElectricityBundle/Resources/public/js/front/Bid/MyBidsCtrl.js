@@ -18,16 +18,21 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     });
 
     angular.extend(this, $controller('BidsCtrl', {$scope:$scope}));
+
+    $scope.list = function() {
+        $state.go('front.mybids.list');
+    };
+
     $scope.add = function() {
-        $state.go('app.marketplace.bidsnew');
+        $state.go('front.mybids.new');
     };
 
     $scope.edit = function(row) {
-        $state.go('app.marketplace.bidsedit', {id: row.id});
+        $state.go('front.mybids.edit', {id: row.id});
     };
 
     $scope.details = function(row) {
-        $state.go('app.marketplace.bidsdetails', {id: row.id});
+        $state.go('front.mybids.details', {id: row.id});
     };
 }]);
 
