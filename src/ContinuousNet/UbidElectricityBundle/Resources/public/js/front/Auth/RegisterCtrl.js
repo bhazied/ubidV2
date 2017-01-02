@@ -190,7 +190,6 @@ app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$ti
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
                 return false;
             } else {
                 $scope.user.country = $scope.user.country.id;
