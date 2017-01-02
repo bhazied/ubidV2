@@ -4,9 +4,18 @@
  * Controller for User Form
  */
 
-app.controller('RegisterCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory','$http','DIAL_COUNTRIES',
-    function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory, $http, DIAL_COUNTRIES) {
+app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory','$http','DIAL_COUNTRIES',
+    function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory, $http, DIAL_COUNTRIES) {
         $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
+
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = true;
+            $rootScope.contentSize = 8;
+            $rootScope.contentOffset = 0;
+        }, 1500);
 
         $scope.disableSubmit = false;
 
