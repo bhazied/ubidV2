@@ -10,6 +10,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
     $scope.disableSubmit = false;
+    $scope.enableFormAlert = true;
 
     // Editor options.
     $scope.editorOptions = {
@@ -90,7 +91,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 }
             }
             angular.element('.ng-invalid[name=' + firstError + ']').focus();
-            SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
+            if ($scope.enableFormAlert) {
+                SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
+            }
             return false;
         } else {
             if ($scope.translationProductType.id > 0) {
