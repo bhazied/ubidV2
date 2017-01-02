@@ -27,7 +27,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
  * @category   Symfony 2 Type
  * @package    ContinuousNet\UbidElectricityBundle\Form
  * @author     Sahbi KHALFALLAH <sahbi.khalfallah@continuousnet.com>
- * @copyright  2016 CONTINUOUS NET
+ * @copyright  2017 CONTINUOUS NET
  * @license   AMINOGRAM REGULAR LICENSE
  * @version    Release: 1.0
  * @link       http://ubidelectricity.continuousnet.com/ContinuousNet\UbidElectricityBundle/Form
