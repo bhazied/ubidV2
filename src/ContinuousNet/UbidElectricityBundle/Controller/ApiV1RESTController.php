@@ -841,13 +841,16 @@ class ApiV1RESTController extends FOSRestController
 
         $data = array('status' => false, 'message' => null);
         try {
+            $em = $this->getDoctrine()->getManager();
             $user = $this->getUser();
             $jsonData = json_decode($request->getContent(), true);
             $password =  $jsonData['newPassword'];
             //$user = $user->setPlainPassword($password);
-            $user = $user->setPassword($password);
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+            $encoded_pass = $encoder->encodePassword($password, $user->getSalt());
+            $user = $user->setPassword($encoded_pass);
             $user->eraseCredentials();
-            $em = $this->getDoctrine()->getManager();
             $em->flush();
             $data['status'] = true;
             $data['message'] = $this->get('translator')->trans('Password changed');
