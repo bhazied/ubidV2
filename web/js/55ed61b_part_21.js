@@ -1074,7 +1074,7 @@ app.config(['$stateProvider',
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.NEWPRODUCT',
-            resolve: loadSequence('MyProductFromCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+            resolve: loadSequence('MyProductFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         }).state('front.myproducts.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_products.html',
