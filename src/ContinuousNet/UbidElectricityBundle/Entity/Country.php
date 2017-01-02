@@ -22,7 +22,7 @@ use JMS\Serializer\Annotation\Groups;
  * @category   Doctrine 2 Entity
  * @package    ContinuousNet\UbidElectricityBundle\Entity
  * @author     Sahbi KHALFALLAH <sahbi.khalfallah@continuousnet.com>
- * @copyright  2016 CONTINUOUS NET
+ * @copyright  2017 CONTINUOUS NET
  * @license	CONTINUOUS NET REGULAR LICENSE
  * @version    Release: 1.0
  * @link       http://ubidelectricity.continuousnet.com/ContinuousNet/UbidElectricityBundle/Entity
