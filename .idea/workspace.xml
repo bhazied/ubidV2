@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b9e86f4-287f-4562-9b77-1c49eab0c0da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" afterPath="$PROJECT_DIR$/web/assetic/continuous_net_scripts_constant_4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts_constant_4.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts_constant_4.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts_front.router_6.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854.js" afterPath="$PROJECT_DIR$/web/js/5268854.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/5268854_part_19.js" afterPath="$PROJECT_DIR$/web/js/5268854_part_19.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b.js" afterPath="$PROJECT_DIR$/web/js/55ed61b.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" afterPath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,8 +115,8 @@
       <file leaf-file-name="ApiV1RESTController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="851" column="52" selection-start-line="851" selection-start-column="52" selection-end-line="851" selection-end-column="52" />
+            <state relative-caret-position="209">
+              <caret line="839" column="59" selection-start-line="839" selection-start-column="59" selection-end-line="839" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -186,6 +192,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid-electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid-electricity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -196,6 +212,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -240,12 +257,12 @@
       <option name="presentableId" value="Default" />
       <updated>1483345070477</updated>
       <workItem from="1483345103653" duration="1141000" />
-      <workItem from="1483347621585" duration="12000" />
+      <workItem from="1483347621585" duration="252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1390000" />
+    <option name="totallyTimeSpent" value="1630000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -599,8 +616,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="851" column="52" selection-start-line="851" selection-start-column="52" selection-end-line="851" selection-end-column="52" />
+        <state relative-caret-position="209">
+          <caret line="839" column="59" selection-start-line="839" selection-start-column="59" selection-end-line="839" selection-end-column="59" />
           <folding />
         </state>
       </provider>

@@ -526,9 +526,7 @@ app.constant('APP_JS_REQUIRES', {
         'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js',
         'BidsByProjectCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsByProjectCtrl.js',
         'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js',
-        'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
-        'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
-        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js'
+        'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -1088,7 +1086,7 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYBIDS',
             resolve: loadSequence()
-        }).state('front.mybids.list', {
+        }).state('front.mybids.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bids.html',
             title: 'front.MYBIDS',
@@ -1100,22 +1098,6 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
-        }).state('front.mybids.details',{
-            url: '/details/:id',
-            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid.html',
-            title: 'front.TENDERDETAILS',
-            resolve: loadSequence('MyBidCtrl', 'BidCtrl', 'bidService')
-        }).state('front.mybids.edit',{
-            url: '/edit/:id',
-            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
-            title: 'front.EDITTENDER',
-            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
-        }).state('front.mybids.new',{
-            url: '/new',
-            templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
-            title: 'front.NEWBID',
-            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
-
             /*
              * My BookmarkProject Manager routes
              */
@@ -1126,21 +1108,9 @@ app.config(['$stateProvider',
             resolve: loadSequence()
         }).state('front.bookmarkproject.list',{
             url: '/list',
-            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders_bookmarked.html',
+            template: '',
             title: 'front.BOOKMARKPROJECT',
-            params: {
-                'tenderBookmarksIsFiltersVisible': null,
-                'tenderBookmarksPage': null,
-                'tenderBookmarksCount': null,
-                'tenderBookmarksSorting': null,
-                'tenderBookmarksFilter': null
-            },
-            resolve: loadSequence('MyTenderBookmarkedCtrl','TenderBookmarksCtrl', 'tenderBookmarkService', 'tenderService', 'userService')
-        }).state('front.bookmarkproject.details',{
-            url: '/details/:id',
-            templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender_bookmarked.html',
-            title: 'front.TENDERBOOKMARKEDDETAILS',
-            resolve: loadSequence('MyTenderBookmarkedDetailsCtrl',  'tenderBookmarkService')
+            resolve: loadSequence()
             /*
              * My Buyers Manager routes
              */
