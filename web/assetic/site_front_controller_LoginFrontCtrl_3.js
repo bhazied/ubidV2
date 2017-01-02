@@ -3,8 +3,8 @@
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory','toaster','$filter',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -13,9 +13,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1000);
-
-        $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
+        });
 
         $scope.resetAccess = function(){
             if ($localStorage.access_token) {
@@ -23,8 +21,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
             delete  $localStorage.user;
             $scope.status = '';
-            $scope.user = $rootScope.user = {};
-            $rootScope.loggedIn = false;
+            $scope.user = {};
 
         };
 
