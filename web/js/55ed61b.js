@@ -72109,7 +72109,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 }, 1000);
             }, function(error) {
                 $scope.status = 'error';
-                toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('message.error.LOGIN'));
+                toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
             });
             return false;

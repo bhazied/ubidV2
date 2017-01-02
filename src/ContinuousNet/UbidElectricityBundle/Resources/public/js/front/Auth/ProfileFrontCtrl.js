@@ -129,7 +129,6 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORCHANGEPASSWORD'), 'error');
                 return false;
             } else {
                 $scope.disablePasswordSubmit = true;

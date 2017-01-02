@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7b9e86f4-287f-4562-9b77-1c49eab0c0da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LogoutFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LogoutFrontCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_controller.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_controller_LoginFrontCtrl_3.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_controller_LoginFrontCtrl_3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/front/en.json" afterPath="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b.js" afterPath="$PROJECT_DIR$/web/js/55ed61b.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b_part_24.js" afterPath="$PROJECT_DIR$/web/js/55ed61b_part_24.js" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,41 +33,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user_menu.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="en.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="en.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="1733" column="12" selection-start-line="1733" selection-start-column="5" selection-end-line="1733" selection-end-column="12" />
+            <state relative-caret-position="149">
+              <caret line="1579" column="64" selection-start-line="1579" selection-start-column="64" selection-end-line="1579" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html">
+      <file leaf-file-name="change_password.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="94" selection-start-line="14" selection-start-column="94" selection-end-line="14" selection-end-column="94" />
+            <state relative-caret-position="494">
+              <caret line="37" column="85" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="85" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="front.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/views/front/front.html">
+      <file leaf-file-name="ProfileFrontCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="108" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="108" />
+            <state relative-caret-position="374">
+              <caret line="130" column="80" selection-start-line="130" selection-start-column="80" selection-end-line="130" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="28" selection-start-line="15" selection-start-column="20" selection-end-line="17" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -81,13 +87,17 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/RegistrationType.php" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/RegisterCtrl.js" />
-        <option value="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html" />
         <option value="$PROJECT_DIR$/web/assets/views/front/header.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LogoutFrontCtrl.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" />
+        <option value="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
       </list>
     </option>
   </component>
@@ -453,90 +463,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid-electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid-electricity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UbidElectricityBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid-electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid-electricity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UbidElectricityBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Auth" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -595,12 +521,12 @@
       <workItem from="1483347621585" duration="252000" />
       <workItem from="1483349246985" duration="337000" />
       <workItem from="1483349701721" duration="97000" />
-      <workItem from="1483349852108" duration="10405000" />
+      <workItem from="1483349852108" duration="12159000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12469000" />
+    <option name="totallyTimeSpent" value="14223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -635,41 +561,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Bid/BidCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TenderBookmark/TenderBookmarkCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="36" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/MyBidFormCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="189" column="17" selection-start-line="189" selection-start-column="15" selection-end-line="189" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4080">
@@ -921,14 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="160" column="29" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/RegistrationType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -969,14 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="1733" column="12" selection-start-line="1733" selection-start-column="5" selection-end-line="1733" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/views/front/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1011,8 +886,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        <state relative-caret-position="225">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LogoutFrontCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="48" column="118" selection-start-line="48" selection-start-column="118" selection-end-line="48" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/logout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="28" selection-start-line="15" selection-start-column="20" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="130" column="80" selection-start-line="130" selection-start-column="80" selection-end-line="130" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="37" column="85" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="1579" column="64" selection-start-line="1579" selection-start-column="64" selection-end-line="1579" selection-end-column="64" />
           <folding />
         </state>
       </provider>
