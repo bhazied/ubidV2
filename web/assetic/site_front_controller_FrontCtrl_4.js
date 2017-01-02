@@ -28,16 +28,15 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders',
+            'front.tenders.list',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tender',
-            'front.tender.details',
-            'front.tenders',
+            'front.tenders.details',
             'front.buyers',
             'front.suppliers',
             'front.post',
-            'front.generic_search'
+            'front.generic_search',
+            'front.contact'
         ];
 
         $timeout(function() {
@@ -90,18 +89,18 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             if($state.current.name == "front.home"){
                 $rootScope.SearchFormHeader = false;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else if($state.current.name == "front.usermenu"){
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = true;
-                $rootScope.showBrandName = false;
+                $rootScope.showLogo = false;
+                $rootScope.showBrandName = true;
             }
             else{
                 $rootScope.SearchFormHeader = true;
-                $rootScope.showLogo = false;
-                $rootScope.showBrandName = true;
+                $rootScope.showLogo = true;
+                $rootScope.showBrandName = false;
             }
 
             // scroll top the page on change state
@@ -256,53 +255,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tender', {id: id})
+            $state.go('front.tenders.details', {id: id})
         }
-
-        $rootScope.operators = [
-            {
-                label: $filter('translate')('front.MORETHAN'),
-                value: '>'
-            },
-            {
-                label: $filter('translate')('front.EQUALTO'),
-                value: '='
-            },
-            {
-                label: $filter('translate')('front.LESSTHAN'),
-                value: '<'
-            }
-        ];
-
-        $rootScope.dateRanges = [
-            {
-                label: $filter('translate')('front.TODAY'),
-                value: 'today'
-            },
-            {
-                label: $filter('translate')('front.YESTERDAY'),
-                value: 'yesterday'
-            },
-            {
-                label: $filter('translate')('front.LAST7DAYS'),
-                value: 'last7days'
-            },
-            {
-                label: $filter('translate')('front.LAST30DAYS'),
-                value: 'last30days'
-            },
-            {
-                label: $filter('translate')('front.THISMONTH'),
-                value: 'thismonth'
-            },
-            {
-                label: $filter('translate')('front.LASTMONTH'),
-                value: 'lastmonth'
-            },
-            {
-                label: $filter('translate')('front.CUSTOMDATE'),
-                value: 'customdate'
-            }
-        ];
-
+        
     }]);

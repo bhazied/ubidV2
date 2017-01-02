@@ -19,5 +19,6 @@
 /web/assetic/*
 /web/css/*
 /web/js/*
+/web/assetic/*
 /.idea/*
 /nbproject/private/
