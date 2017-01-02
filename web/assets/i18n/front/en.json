@@ -1188,7 +1188,7 @@
           "BUYER": "Buyer",
           "SUPPLIERPRODUCT": "Supplier Product",
           "GUEST": "Guest",
-          "BOTH": "Both Buyer & Supplier",
+          "BOTH": "Both",
           "ADMINISTRATOR": "Administrator"
         },
         "statuses": {
@@ -1564,7 +1564,15 @@
         "VALUEREQUIRED": "The Value is required",
         "ENTERIP": "Enter the Ip",
         "IPREQUIRED": "The Ip is required",
-        "ENTERALIAS": "Enter the alias"
+        "ENTERALIAS": "Enter the alias",
+        "EMAILREQUIRED": "E-mail is required",
+        "FIRSTNAMEREQUIRED": "First name is required",
+        "COMPANYREQUIRED": "Company name is required",
+        "JOBREQUIRED": "Job is required",
+        "ADDRESSREQUIRED": "Address is required",
+        "ZIPCODEREQUIRED": "Zip Code is required",
+        "COUNTRYREQUIRED": "Country is required",
+        "PHONEREQUIRED": "Phone is required"
       }
     },
     "common": {
