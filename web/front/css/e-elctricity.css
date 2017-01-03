@@ -1083,3 +1083,11 @@ fieldset h2 {
     padding-left: 0.75rem;
     display: block;
 }
+
+.menu_group {
+    color: #1D69AD;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    margin-left: -2rem;
+}
