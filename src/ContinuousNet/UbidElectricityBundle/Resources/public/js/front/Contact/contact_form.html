@@ -18,7 +18,7 @@
                     <span translate="content.list.fields.LASTNAME">Last Name</span>
                 </label>
                 <span class="input-icon">
-                    <input name="lastNname" id= "lastName" ng-model="contact.lastName" type="text" class="form-control" placeholder="[[ 'content.list.fields.LASTNAME' | translate ]]" ng-required="true">
+                    <input name="lastName" id= "lastName" ng-model="contact.lastName" type="text" class="form-control" placeholder="[[ 'content.list.fields.LASTNAME' | translate ]]" ng-required="true">
                     <i class="fa fa-user-o"></i>
                 </span>
                 <span class="error text-small block" ng-if="contactForm.lastName.$dirty && contactForm.lastName.$error.required" translate="content.form.messages.LASTNAMEREQUIRED">LastName is required.</span>
@@ -32,7 +32,7 @@
                     <input name="contactEmail" id= "contactEmail" ng-model="contact.email" type="text" class="form-control" name="email" placeholder="[[ 'content.list.fields.EMAIL' | translate ]]" ng-required="true">
                     <i class="fa fa-envelope-o"></i>
                 </span>
-                <span class="error text-small block" ng-if="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.required" translate="content.form.messages.USEREMAILREQUIRED">User Email is required.</span>
+                <span class="error text-small block" ng-if="contactForm.contactEmail.$dirty && contactForm.contactEmail.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
             </div>
 
 

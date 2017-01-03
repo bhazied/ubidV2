@@ -11,9 +11,6 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.contentOffset = 0;
         }, 1500);
 
-        console.log("showLeftSide   "+ $rootScope.showLeftSide);
-        console.log("showRightSide  " + $rootScope.showRightSide);
-
         $scope.disableSubmit = false;
         $scope.submitForm = function (form) {
             var firstError = null;

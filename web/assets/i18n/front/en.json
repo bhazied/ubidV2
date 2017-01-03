@@ -1577,7 +1577,8 @@
         "ZIPCODEREQUIRED": "Zip Code is required",
         "COUNTRYREQUIRED": "Country is required",
         "PHONEREQUIRED": "Phone is required",
-        "CURRENTPASSWORDREQUIRED": "Current password is required"
+        "CURRENTPASSWORDREQUIRED": "Current password is required",
+        "LASTNAMEREQUIRED": "Last name is required"
       }
     },
     "common": {
