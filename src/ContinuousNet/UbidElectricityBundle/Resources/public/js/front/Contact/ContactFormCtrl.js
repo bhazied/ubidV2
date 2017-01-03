@@ -9,7 +9,7 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 0;
-        }, 2000);
+        }, 1500);
 
         console.log("showLeftSide   "+ $rootScope.showLeftSide);
         console.log("showRightSide  " + $rootScope.showRightSide);
@@ -30,7 +30,6 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                SweetAlert.swal($filter('translate')('errors.titles.CONTACTFORMFAILEDTITLE'), $filter('translate')('errors.messages.CONTACTFORMFAILEDMESSAGE'), "error");
                 return false;
             } else {
                 $scope.disableSubmit = true;
