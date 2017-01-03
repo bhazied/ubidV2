@@ -29,7 +29,7 @@ use Voryx\RESTGeneratorBundle\Controller\VoryxController;
  * @category   Symfony 2 REST Controller
  * @package  ContinuousNet\UbidElectricityBundle\Controller
  * @author    Sahbi KHALFALLAH <sahbi.khalfallah@continuousnet.com>
- * @copyright  2016 CONTINUOUS NET
+ * @copyright  2017 CONTINUOUS NET
  * @license  CONTINUOUS NET REGULAR LICENSE
  * @version  Release: 1.0
  * @link    http://ubidelectricity.continuousnet.com/ContinuousNet/UbidElectricityBundle/Controller

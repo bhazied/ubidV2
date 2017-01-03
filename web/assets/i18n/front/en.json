@@ -23,7 +23,8 @@
     "ERROR": "Incorrect Email or Password",
     "WELCOME": "Welcome",
     "ACCESSDENEID": "Access denied",
-    "SUBSCRIBE": "Subscribe"
+    "SUBSCRIBE": "Subscribe",
+    "CHANGEPASSWORD": "Change password"
   },
   "register": {
     "CREATEYOURACCOUNT": "Create your account",
@@ -1253,7 +1254,10 @@
           "DATABASE": "Database",
           "ACTIVEDIRECTORY": "Active Directory",
           "WEBSERVICE": "Webservice"
-        }
+        },
+        "CURRENTPASSWORD": "Current password",
+        "NEWPASSWORD": "New password",
+        "RECESSPASSWORD":"Recess password"
       }
     },
     "form": {
@@ -1572,7 +1576,8 @@
         "ADDRESSREQUIRED": "Address is required",
         "ZIPCODEREQUIRED": "Zip Code is required",
         "COUNTRYREQUIRED": "Country is required",
-        "PHONEREQUIRED": "Phone is required"
+        "PHONEREQUIRED": "Phone is required",
+        "CURRENTPASSWORDREQUIRED": "Current password is required"
       }
     },
     "common": {
@@ -1731,6 +1736,7 @@
     "ADDRESS": "anjanyika road berges du lac - 1000 - Tunis - Tunisia",
     "IMABUYER": "I'm a <b>Buyer</b>",
     "IMASUPPLIER": "I'm a <b>Supplier</b>",
+    "IMABOTH": "I'm a <b>Buyer & Supplier</b>",
     "ELECTRICITYBOOKSEARCH": "Electricity Book Search...",
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
@@ -1748,7 +1754,6 @@
     "FROM": "From",
     "TO": "To",
     "SPECIFICSEARCH": "Specific Search",
-    "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
     "REFNUMBER": "Ref number",
     "STARTDATE" : "Start Date",
     "READMORE" : "Read more",
