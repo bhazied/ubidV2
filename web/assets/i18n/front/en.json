@@ -1820,7 +1820,12 @@
       "MYPRODUCTS" : "My Product text info ...",
       "MYBIDS" : "My bids text info ...",
       "BOOKMARKPROJECT" : "BookMark projects text info ...",
-      "NEWPRODUCT" : "New product text info ..."
-    }
+      "NEWPRODUCT" : "New product text info ...",
+      "MYALERTS": "My alerts text info ...",
+      "NEWALERT": "New Alert text info ..."
+    },
+    "MYALERTS": "My alerts",
+    "NEWALERT": "New Alert",
+    "MYACCOUNT": "My Account"
   }
 }
