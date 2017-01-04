@@ -9,7 +9,7 @@ app.controller('BuyersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        }, 500);
+        }, 1500);
 
         $scope.sortingOptions = [{
             sortField: 'name',
