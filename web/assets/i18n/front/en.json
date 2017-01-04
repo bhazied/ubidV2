@@ -1776,6 +1776,8 @@
     "NAMEDESC": "Name DESC",
     "VIEWSASC": "Views ASC",
     "VIEWSDESC": "Views DESC",
+    "TITLEASC": "Title ASC",
+    "TITLEDESC": "Title DESC",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",

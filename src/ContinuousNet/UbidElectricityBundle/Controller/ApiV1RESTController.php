@@ -622,38 +622,29 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/homeTenders")
+     * @GET("/homeTenders/{section}/{page}/{pageCount}/{sortField}/{sortDirection}")
      * @View(serializerEnableMaxDepthChecks=true)
      */
-    public function homeTendersAction(Request $request){
+    public function homeTendersAction($section, $page, $pageCount, $sortField, $sortDirection){
         $data = [];
-        $category = !is_null($request->query->get('category')) ? $request->query->get('category') : null;
-        $sector = !is_null($request->query->get('sector')) ? $request->query->get('sector') : null;
         $em = $this->getDoctrine()->getManager();
-        $page = $request->query->get('page');
         $qb = $em->createQueryBuilder();
         $qb->from('UbidElectricityBundle:Tender', 't_');
 
         $qb->andwhere('t_.status = :status')
             ->setParameters(array('status' => 'Online'));
-        if (!is_null($category)) {
-            $qb->andWhere(':category MEMBER OF t_.tenderCategories')->setParameter('category', $category);
-        }
-        if (!is_null($sector)) {
-            $qb->andWhere('t_.sector = :sector')->setParameter('sector', $sector);
-        }
+        $qb->andWhere('t_.section = :section') ->setParameter('section', $section);
         $qb->select('t_');
-        $qb->setMaxResults(10);
-        if ($page != null) {
-            $qb->setFirstResult((10*$page));
-        } else {
-            $qb->setFirstResult(0);
-        }
-
-        $qb->groupBy('t_.id');
-        $qb->orderBy('t_.id', 'DESC');
-        $results  = $qb->getQuery()->getResult();
-        $tenders = null;
+        $qbList = clone $qb;
+        $qb->select('count(t_.id)');
+        $count = $qb->getQuery()->getSingleScalarResult();
+        $data['inlineCount'] = $count;
+        $qbList->select('t_');
+        $qbList->setMaxResults($pageCount);
+        $offset = ($page - 1) * $pageCount;
+        $qbList->setFirstResult($offset);
+        $qbList->addOrderBy('t_.'.$sortField, $sortDirection);
+        $results  = $qbList->getQuery()->getResult();
         if ($results) {
             $data['results'] = $results;
         }
