@@ -5,8 +5,8 @@
             <li ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mybuyers.new"><i class="fa fa-plus"></i> <span translate="front.NEWBUYER" title="[['front.USERMENU.NEWBUYER' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Buyer</span></a></li>
             <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.mysuppliers.list"><i class="fa fa-user"></i> <span translate="front.MYSUPPLIERS" title="[['front.USERMENU.MYSUPPLIERS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Suppliers</span></a></li>
             <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.mysuppliers.new"><i class="fa fa-user-plus"></i> <span translate="front.NEWSUPPLIER" title="[['front.USERMENU.NEWSUPPLIER' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Supplier</span></a></li>
-            <li><a ui-sref="front.profile"><i class="fa fa-user-circle-o"></i> <span translate="front.MYPROFILE">My Profile</span></a></li>
-            <li><a ui-sref="front.changepassword"><i class="fa fa-key"></i> <span translate="front.CHANGEPASSWORD">Change Password</span></a></li>
+            <li><a ui-sref="front.profile"><i class="fa fa-user-circle-o"></i> <span translate="front.MYPROFILE" title="[['front.USERMENU.MYPROFILE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Profile</span></a></li>
+            <li><a ui-sref="front.changepassword"><i class="fa fa-key"></i> <span translate="front.CHANGEPASSWORD" title="[['front.USERMENU.CHANGEPASSWORD' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Change Password</span></a></li>
         </ul>
     <span class="menu_group" translate="front.MYTENDERS">My Tenders</span>
         <ul >
@@ -26,6 +26,6 @@
         </ul>
     <span class="menu_group" translate="front.MYPROFILE">My Profile</span>
         <ul>
-            <li><a ui-sref="front.logout"><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign-out</span></a></li>
+            <li><a ui-sref="front.logout"><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT" title="[['front.USERMENU.SIGNOUT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Sign-out</span></a></li>
         </ul>
 </div>
