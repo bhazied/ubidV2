@@ -1,4 +1,27 @@
 <div ng-controller="tendersFrontCtrl">
+
+    <div class="row nav-menu">
+        <div class="col-md-8 pl-0 pr-0">
+            <ul class="pull-left">
+                <li><a ui-sref="front.tenders.list({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li class="active"><a translate="front.TENDERS">Tenders </a></li>
+                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
+                <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4 pl-0">
+            <div class="form-group row pull-right sort-by">
+                <label class="col-xs-4 col-form-label pl-0" translate="front.SORTBY">Sort By</label>
+                <div class="col-xs-8 pr-0">
+                    <div class="input-group nice-select">
+                        <select class="form-control" class="select" ng-model="sortingOption" ng-options="item as item.label for item in sortingOptions" ng-change="getBuyers()"></select>
+                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="tender-preview"  ng-repeat="tender in tendersList">
         <a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a>
         <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>

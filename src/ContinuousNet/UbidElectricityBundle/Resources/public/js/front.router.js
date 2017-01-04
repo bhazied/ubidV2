@@ -115,7 +115,7 @@ app.config(['$stateProvider',
                 label: 'sidebar.nav.adserving.MAIN'
             }
         }).state('front.tenders.list',{
-            url: '/list',
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
