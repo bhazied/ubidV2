@@ -208,7 +208,7 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                    if(data.status == true){
                        toaster.pop('success', $filter('translate')('title.success.SUBSCRIBTION'), data.message);
-                        $state.go("front.login({type: '"+ $scope.user.type +"'})");
+                        $state.go("front.login");
                    }else{
                        toaster.pop('error', $filter('translate')('title.error.SUBSCRIBTION'), data.message);
                        $scope.disableSubmit = false;
