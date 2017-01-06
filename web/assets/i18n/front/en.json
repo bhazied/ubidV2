@@ -1,7 +1,11 @@
 {
   "title": {
     "error": {
-      "LOGIN": "Authentication Error"
+      "LOGIN": "Authentication Error",
+      "SUBSCRIBTION": "Subscription Error"
+    },
+    "success": {
+      "SUBSCRIBTION": "Subscription success"
     },
     "message": {
       "error": {
