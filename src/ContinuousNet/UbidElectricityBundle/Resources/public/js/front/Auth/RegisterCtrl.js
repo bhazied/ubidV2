@@ -144,7 +144,7 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
 
         $scope.changeCountry = function() {
             angular.forEach($scope.dialCountries, function (value, key) {
-                if(value.code == $scope.user.country.code){
+                if(value.code == $scope.user.countryChoise.code){
                     $scope.user.phone = value.dial_code;
                 }
             });
@@ -183,7 +183,7 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
 
         $scope.users = [];
 
-
+        $scope.disableSubmit = false;
         $scope.submitForm = function(form) {
             var firstError = null;
             if (form.$invalid) {
@@ -201,7 +201,8 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
                 return false;
             } else {
-                $scope.user.country = $scope.user.country.id;
+                $scope.disableSubmit = true;
+                $scope.user.country = $scope.user.countryChoise.id;
                 $scope.user.locale = $localStorage.language;
                 $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
@@ -209,7 +210,8 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
                        toaster.pop('success', $filter('translate')('title.success.SUBSCRIBTION'), data.message);
                         $state.go("front.login({type: '"+ $scope.user.type +"'})");
                    }else{
-                       toaster.pop('error', $filter('translate')('title.error.SUBSCRIBTION'), $filter('translate')('message.error.SUBSCRIBTION'));
+                       toaster.pop('error', $filter('translate')('title.error.SUBSCRIBTION'), data.message);
+                       $scope.disableSubmit = false;
                        return false;
                    }
                 });
