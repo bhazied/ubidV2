@@ -72199,7 +72199,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.anonymousStates = [
             'front.login',
             'front.register',
-            'auth.resetpassword',
+            'auth.reset',
             'auth.reset',
             'auth.lockscreen',
             'auth.emailconfirm',
@@ -72494,6 +72494,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             selectNone      : $filter('translate')("content.form.country_picker.selectNone"),
             reset           : $filter('translate')("content.form.country_picker.reset"),
             search          : $filter('translate')("content.form.country_picker.search"),
+            search          : $filter('translate')("content.form.country_picker.search"),
             nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
         };
 
@@ -72501,14 +72502,15 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.fromPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.fromPublishDateOpened = !$scope.deadline1Opened;
+            $scope.fromPublishDateOpened = !$scope.fromPublishDateOpened;
+            console.warn($scope.fromPublishDateOpened);
         };
 
         $scope.toPublishDateOpened = false;
         $scope.toPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.toPublishDateOpened = !$scope.deadline2Opened;
+            $scope.toPublishDateOpened = !$scope.toPublishDateOpened;
         };
 
         $scope.deadline1Opened = false;
