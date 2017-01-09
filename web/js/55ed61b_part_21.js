@@ -1167,7 +1167,7 @@ app.config(['$stateProvider',
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
-            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'profileFrontService')
         /*
          * My Suppliers Manager routes
          */
