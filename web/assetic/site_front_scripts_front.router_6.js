@@ -36,12 +36,12 @@ app.config(['$stateProvider',
             title: 'front.RESETPAWSSWORD',
             resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
         }).state('front.emailconfirm', {
-            url: '/email-confirm/:token/:language',
+            url: '/auth/email-confirm/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/email_confirm.html',
             title: 'front.EMAILCONFIRM',
             resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
         }).state('front.reset', {
-            url: '/reset/:token/:language',
+            url: '/auth/reset/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset.html',
             title: 'front.RESET',
             resolve: loadSequence('ResetCtrl', 'ResetPasswordService')

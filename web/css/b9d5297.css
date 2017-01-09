@@ -3138,3 +3138,9 @@ fieldset h2 {
     text-align: left;
     margin-left: -2rem;
 }
+
+.symbol.required:before {
+    content: "*";
+    display: inline;
+    color: #E6674A;
+}

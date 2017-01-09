@@ -5,7 +5,7 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
         $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 0;

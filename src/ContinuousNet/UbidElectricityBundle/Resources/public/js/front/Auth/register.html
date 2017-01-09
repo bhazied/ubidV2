@@ -15,6 +15,7 @@
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.emailUser.$dirty && registerForm.emailUser.$invalid, 'has-success':registerForm.emailUser.$valid}">
                     <label for="userEmail" class="control-label">
                         <span translate="content.list.fields.EMAIL">Email</span>
+                        <span class="symbol required"></span>
                     </label>
                 <span class="input-icon">
                     <input name="userEmail" id= "userEmail" ng-model="user.email" type="text" class="form-control" name="email" placeholder="[[ 'content.list.fields.EMAIL' | translate ]]" ng-required="true"  check-email-existing my-field="user.email" my-resource-url="checkEmail" my-current-id="[[ user.id ]]">

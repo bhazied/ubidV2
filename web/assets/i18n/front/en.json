@@ -46,7 +46,7 @@
   },
   "emailconfirm": {
     "EMAILCONFIRMATIONINPROGRESS": "Email confirmation in progress...",
-    "EMAILCONFIRMED": "Email confrimed, your can access to your dashboard.",
+    "EMAILCONFIRMED": "Email confrimed, your can access to your Profile.",
     "EMAILNOTCONFIRMED": "Invalid token or email already confirmed!",
     "NOTOKEN": "No token, please check url!"
   },

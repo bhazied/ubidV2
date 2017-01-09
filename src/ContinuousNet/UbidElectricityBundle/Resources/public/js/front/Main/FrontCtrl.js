@@ -23,7 +23,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.anonymousStates = [
             'front.login',
             'front.register',
-            'auth.resetpassword',
+            'auth.reset',
             'auth.reset',
             'auth.lockscreen',
             'auth.emailconfirm',
