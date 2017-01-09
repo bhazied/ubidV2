@@ -1,7 +1,7 @@
 <div ng-if="user.email">
-    <span class="menu_group" translate="front.MYACCOUNT">My Account</span>
+    <span class="menu_group" translate="front.MYACCOUNT">Account</span>
         <ul>
-            <li ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mybuyers.list"><i class="fa fa-building"></i> <span translate="front.MYBUYERS" title="[['front.USERMENU.MYBUYERS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Buyers</span></a></li>
+            <li ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mybuyers.list"><i class="fa fa-building"></i> <span translate="front.MYBUYERS" title="[['front.USERMENU.MYBUYERS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Buyers</span></a></li>
             <li ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mybuyers.new"><i class="fa fa-plus"></i> <span translate="front.NEWBUYER" title="[['front.USERMENU.NEWBUYER' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Buyer</span></a></li>
             <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.mysuppliers.list"><i class="fa fa-user"></i> <span translate="front.MYSUPPLIERS" title="[['front.USERMENU.MYSUPPLIERS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Suppliers</span></a></li>
             <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.mysuppliers.new"><i class="fa fa-user-plus"></i> <span translate="front.NEWSUPPLIER" title="[['front.USERMENU.NEWSUPPLIER' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Supplier</span></a></li>

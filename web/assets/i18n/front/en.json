@@ -1261,7 +1261,7 @@
         },
         "CURRENTPASSWORD": "Current password",
         "NEWPASSWORD": "New password",
-        "RECESSPASSWORD":"Recess password"
+        "RECESSPASSWORD":"retype password"
       }
     },
     "form": {
@@ -1717,7 +1717,7 @@
     "SERVICES": "Services",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
-    "MYBUYERS":"My Buyers",
+    "MYBUYERS":"Buyers",
     "NEWBUYER":"New Buyer",
     "CONSULTBUYERS": "Consult my buyers",
     "MYTENDERS":"My Tenders",
@@ -1837,6 +1837,6 @@
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
-    "MYACCOUNT": "My Account"
+    "MYACCOUNT": "Account"
   }
 }
