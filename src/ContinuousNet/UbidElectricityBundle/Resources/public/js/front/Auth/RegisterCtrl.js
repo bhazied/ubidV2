@@ -18,7 +18,7 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
         }, 1500);
 
         $scope.disableSubmit = false;
-
+        $scope.registerSuccess = false;
         // Editor options.
         $scope.editorOptions = {
             language: $scope.locale,
@@ -207,8 +207,7 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
                 $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){
                    if(data.status == true){
-                       toaster.pop('success', $filter('translate')('title.success.SUBSCRIBTION'), data.message);
-                        $state.go("front.login");
+                       $scope.registerSuccess = true;
                    }else{
                        toaster.pop('error', $filter('translate')('title.error.SUBSCRIBTION'), data.message);
                        $scope.disableSubmit = false;

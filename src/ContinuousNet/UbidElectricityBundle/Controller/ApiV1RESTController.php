@@ -299,7 +299,6 @@ class ApiV1RESTController extends FOSRestController
             if (isset($jsonData['providerId'])) {
                 unset($jsonData['providerId']);
             }
-
             $request->request->set('app_user_registration', $jsonData);
 
             $form = $this->container->get('fos_user.registration.form');
