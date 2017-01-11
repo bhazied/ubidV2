@@ -1838,6 +1838,12 @@
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
-    "MYACCOUNT": "Account"
+    "MYACCOUNT": "Account",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "ADDBUYERSTEP1": "Step 1",
+    "ADDBUYERSTEP2": "Step 2",
+    "DESCRIPTIONSTEP1": "Buyer informations",
+    "DESCRIPTIONSTEP2": "Comapny informations"
   }
 }

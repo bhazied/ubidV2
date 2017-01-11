@@ -3144,3 +3144,98 @@ fieldset h2 {
     display: inline;
     color: #E6674A;
 }
+
+ol.wizard, ul.wizard {
+    margin-left: 0;
+    padding-left: 0;
+    display: table;
+}
+ol.wizard li, ul.wizard li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 3em 0.75em 0.25em;
+    list-style: none;
+    background: #dedede;
+    border-left: 1px solid #bcbcbc;
+    font-size: 14.4px;
+    line-height: 16px;
+}
+ol.wizard li:first-child, ul.wizard li:first-child {
+    border-left: none;
+}
+ol.wizard li a, ul.wizard li a {
+    color: #333;
+}
+ol.wizard li:before, ul.wizard li:before {
+    content: counter(wizard-counter);
+    counter-increment: wizard-counter;
+    position: absolute;
+    left: calc(50% - 1em);
+    top: 4px;
+    height: 32px;
+    width: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+ol.wizard li.wizard-completed, ul.wizard li.wizard-completed {
+    color: #999;
+}
+ol.wizard li.wizard-completed a, ul.wizard li.wizard-completed a {
+    color: #999;
+}
+ol.wizard li.wizard-completed:before, ul.wizard li.wizard-completed:before {
+    color: #999;
+}
+ol.wizard li.wizard-active, ul.wizard li.wizard-active {
+    color: #08c;
+}
+ol.wizard li.wizard-active a, ul.wizard li.wizard-active a {
+    color: #08c;
+}
+ol.wizard li.wizard-active:before, ul.wizard li.wizard-active:before {
+    color: #08c;
+}
+ol.wizard.wizard-inverse li, ul.wizard.wizard-inverse li {
+    background: white;
+}
+ol.wizard.wizard-inverse li.wizard-completed, ul.wizard.wizard-inverse li.wizard-completed {
+    background: white;
+    color: #999;
+}
+ol.wizard.wizard-inverse li.wizard-completed a, ul.wizard.wizard-inverse li.wizard-completed a {
+    color: #999;
+}
+ol.wizard.wizard-inverse li.wizard-completed:before, ul.wizard.wizard-inverse li.wizard-completed:before {
+    background: white;
+    color: #999;
+}
+ol.wizard.wizard-inverse li.wizard-active, ul.wizard.wizard-inverse li.wizard-active {
+    background: #08c;
+    color: white;
+}
+ol.wizard.wizard-inverse li.wizard-active a, ul.wizard.wizard-inverse li.wizard-active a {
+    color: white;
+}
+ol.wizard.wizard-inverse li.wizard-active:before, ul.wizard.wizard-inverse li.wizard-active:before {
+    background: #08c;
+    color: white;
+}
+ol.wizard.wizard-circle li:before, ul.wizard.wizard-circle li:before {
+    background: #333;
+    color: white;
+    border-radius: 32px;
+}
+ol.wizard.wizard-circle li.wizard-completed:before, ul.wizard.wizard-circle li.wizard-completed:before {
+    background: #999;
+    color: white;
+}
+ol.wizard.wizard-circle li.wizard-active:before, ul.wizard.wizard-circle li.wizard-active:before {
+    background: #08c;
+    color: white;
+}

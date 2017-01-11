@@ -1,15 +1,23 @@
 
 <!-- start: FORM -->
-<div class="container-fluid container-fullw bg-white">
+<div class="container-fluid container-fullw bg-white" ng-controller="MyBuyerFormCtrl">
+    <div class="container">
     <div class="row">
-        <div class="col-md-12" ng-controller="MyBuyerFormCtrl">
+        <div class="col-xd-8">
+            <div class="col-md-4" ng-repeat="step in steps">
+                <a ng-click="goto(currentStep, buyerForm)" class="btn btn-primary pull-left" ng-class="{'disabled': currentStep == step.id}">
+                    <i ng-class="{'ti-user': step.id == 1, 'ti-briefcase': step.id == 2}"></i> <span>[[ step.description ]]</span>
+                </a>
+            </div>
+        </div>
+    </div>
+        </div>
+    <div class="row">
+        <div class="col-md-12">
             <div>
                 <fieldset>
                     <legend translate="content.list.NEWBUYER" ng-if="buyer.id == 0">
                         New Buyer
-                    </legend>
-                    <legend translate="content.list.EDITBUYER" ng-if="buyer.id > 0">
-                        Edit Buyer
                     </legend>
                     <form name="buyerForm" id="buyerForm" novalidate ng-submit="submitForm(buyerForm)">
                         <input type="hidden" name="id" id="buyerId" ng-model="buyer.id" />
@@ -20,6 +28,7 @@
                                 <h2 translate="content.list.fieldsets.BUYER.A"></h2>
                             </div><!--/col-md-12-->
                         </div><!--/row-->
+                      <div id="step1" ng-if="currentStep == 1">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -131,6 +140,7 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
+
                         <div class="row">
                             <div class="col-md-12">
                                 <h2 translate="content.list.fieldsets.BUYER.C"></h2>
@@ -282,216 +292,238 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 translate="content.list.fieldsets.BUYER.D"></h2>
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <a ng-click="goPrevious()" class="btn btn-primary pull-left">
+                                      <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                              </div>
+                              <div class="col-md-4">
+                                  <a ng-click="goNext(buyerForm)" class="btn btn-primary pull-left" ng-disabled="isNext">
+                                      <i class="ti-layout-list-thumb"></i> <span translate="front.NEXT">Next</span>
+                                  </a>
+                              </div>
+                          </div>
+                    </div>
+                        <!-- END Buyer information -- Step 1 -->
+                        <!-- Start Step 2 Company information -->
+                        <div id="step2" ng-if="currentStep == 2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 translate="content.list.fieldsets.BUYER.D"></h2>
+                                </div><!--/col-md-12-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerMainProductsServices" class="control-label">
-                                        <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.main_products_services" type="text" name="mainProductsServices" id="buyerMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
-                                        <i class="fa fa-puzzle-piece"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerTotalRevenu" class="control-label">
-                                        <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="fa fa-money"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerFirstMarketRegion" class="control-label">
-                                        <span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="regionsLoaded">
+                                    <div class="form-group">
+                                        <label for="buyerMainProductsServices" class="control-label">
+                                            <span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span>
+                                        </label>
                                         <span class="input-icon">
-                                            <select ng-readonly="buyer_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.first_market_region" name="firstMarketRegion" id="buyerFirstMarketRegion" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-globe"></i>
+                                            <input ng-model="buyer.main_products_services" type="text" name="mainProductsServices" id="buyerMainProductsServices" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAINPRODUCTSSERVICES' | translate ]]" ng-required="false" />
+                                            <i class="fa fa-puzzle-piece"></i>
                                         </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerFirstMarketRate" class="control-label">
-                                        <span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.first_market_rate" type="text" name="firstMarketRate" id="buyerFirstMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="fa fa-percent"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerSecondMarketRegion" class="control-label">
-                                        <span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="regionsLoaded">
+                                    <div class="form-group">
+                                        <label for="buyerTotalRevenu" class="control-label">
+                                            <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
+                                        </label>
                                         <span class="input-icon">
-                                            <select ng-readonly="buyer_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.second_market_region" name="secondMarketRegion" id="buyerSecondMarketRegion" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-globe"></i>
+                                            <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                            <i class="fa fa-money"></i>
                                         </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerSecondMarketRate" class="control-label">
-                                        <span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.second_market_rate" type="text" name="secondMarketRate" id="buyerSecondMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERSECONDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="fa fa-percent"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+                                    <div class="form-group">
+                                        <label for="buyerFirstMarketRegion" class="control-label">
+                                            <span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span>
+                                        </label>
+                                        <div class="block select-list" ng-if="regionsLoaded">
+                                            <span class="input-icon">
+                                                <select ng-readonly="buyer_first_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.first_market_region" name="firstMarketRegion" id="buyerFirstMarketRegion" class="form-control" ng-required="false">
+                                                </select>
+                                                <i class="fa fa-globe"></i>
+                                            </span><!--/input-icon-->
+                                        </div>
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerThirdMarketRegion" class="control-label">
-                                        <span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="regionsLoaded">
+                                    <div class="form-group">
+                                        <label for="buyerFirstMarketRate" class="control-label">
+                                            <span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span>
+                                        </label>
                                         <span class="input-icon">
-                                            <select ng-readonly="buyer_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.third_market_region" name="thirdMarketRegion" id="buyerThirdMarketRegion" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-globe"></i>
+                                            <input ng-model="buyer.first_market_rate" type="text" name="firstMarketRate" id="buyerFirstMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                            <i class="fa fa-percent"></i>
                                         </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerThirdMarketRate" class="control-label">
-                                        <span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.third_market_rate" type="text" name="thirdMarketRate" id="buyerThirdMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTHIRDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="fa fa-percent"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+                                    <div class="form-group">
+                                        <label for="buyerSecondMarketRegion" class="control-label">
+                                            <span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span>
+                                        </label>
+                                        <div class="block select-list" ng-if="regionsLoaded">
+                                            <span class="input-icon">
+                                                <select ng-readonly="buyer_second_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.second_market_region" name="secondMarketRegion" id="buyerSecondMarketRegion" class="form-control" ng-required="false">
+                                                </select>
+                                                <i class="fa fa-globe"></i>
+                                            </span><!--/input-icon-->
+                                        </div>
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label for="buyerReferenceNumber" class="control-label">
-                                        <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
-                                        <i class="fa fa-hashtag"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="buyerLanguage" class="control-label">
-                                        <span translate="content.list.fields.LANGUAGE">Language</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="languagesLoaded">
+                                    <div class="form-group">
+                                        <label for="buyerSecondMarketRate" class="control-label">
+                                            <span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span>
+                                        </label>
                                         <span class="input-icon">
-                                            <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="fa fa-language"></i>
+                                            <input ng-model="buyer.second_market_rate" type="text" name="secondMarketRate" id="buyerSecondMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERSECONDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                            <i class="fa fa-percent"></i>
                                         </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 translate="content.list.fieldsets.BUYER.E"></h2>
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.is_public" type="checkbox" name="isPublic" id="buyerIsPublic" />
-                                    <label for="buyerIsPublic" translate="content.list.fields.ISPUBLIC">Is Public</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                    <div class="form-group">
+                                        <label for="buyerThirdMarketRegion" class="control-label">
+                                            <span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span>
+                                        </label>
+                                        <div class="block select-list" ng-if="regionsLoaded">
+                                            <span class="input-icon">
+                                                <select ng-readonly="buyer_third_market_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="buyer.third_market_region" name="thirdMarketRegion" id="buyerThirdMarketRegion" class="form-control" ng-required="false">
+                                                </select>
+                                                <i class="fa fa-globe"></i>
+                                            </span><!--/input-icon-->
+                                        </div>
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
-                                    <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                    <div class="form-group">
+                                        <label for="buyerThirdMarketRate" class="control-label">
+                                            <span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span>
+                                        </label>
+                                        <span class="input-icon">
+                                            <input ng-model="buyer.third_market_rate" type="text" name="thirdMarketRate" id="buyerThirdMarketRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTHIRDMARKETRATE' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                            <i class="fa fa-percent"></i>
+                                        </span><!--/input-icon-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.enable_private_message" type="checkbox" name="enablePrivateMessage" id="buyerEnablePrivateMessage" />
-                                    <label for="buyerEnablePrivateMessage" translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                    <div class="form-group">
+                                        <label for="buyerReferenceNumber" class="control-label">
+                                            <span translate="content.list.fields.REFERENCENUMBER">Reference Number</span>
+                                        </label>
+                                        <span class="input-icon">
+                                            <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
+                                            <i class="fa fa-hashtag"></i>
+                                        </span><!--/input-icon-->
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
 
-                                <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="buyer.enable_share" type="checkbox" name="enableShare" id="buyerEnableShare" />
-                                    <label for="buyerEnableShare" translate="content.list.fields.ENABLESHARE">Enable Share</label>
-                                </div><!--/checkbox continuous-check check-primary-->
+                                    <div class="form-group">
+                                        <label for="buyerLanguage" class="control-label">
+                                            <span translate="content.list.fields.LANGUAGE">Language</span>
+                                        </label>
+                                        <div class="block select-list" ng-if="languagesLoaded">
+                                            <span class="input-icon">
+                                                <select ng-readonly="buyer_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="buyer.language" name="language" id="buyerLanguage" class="form-control" ng-required="false">
+                                                </select>
+                                                <i class="fa fa-language"></i>
+                                            </span><!--/input-icon-->
+                                        </div>
+                                    </div><!--/form-group-->
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
-                                </a>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(buyerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
-                                </button>
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 translate="content.list.fieldsets.BUYER.E"></h2>
+                                </div><!--/col-md-12-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="checkbox continuous-check check-primary">
+                                        <input ng-model="buyer.is_public" type="checkbox" name="isPublic" id="buyerIsPublic" />
+                                        <label for="buyerIsPublic" translate="content.list.fields.ISPUBLIC">Is Public</label>
+                                    </div><!--/checkbox continuous-check check-primary-->
+
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
+
+                                    <div class="checkbox continuous-check check-primary">
+                                        <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
+                                        <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
+                                    </div><!--/checkbox continuous-check check-primary-->
+
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="checkbox continuous-check check-primary">
+                                        <input ng-model="buyer.enable_private_message" type="checkbox" name="enablePrivateMessage" id="buyerEnablePrivateMessage" />
+                                        <label for="buyerEnablePrivateMessage" translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</label>
+                                    </div><!--/checkbox continuous-check check-primary-->
+
+                                </div><!--/col-md-6-->
+                                <div class="col-md-6">
+
+                                    <div class="checkbox continuous-check check-primary">
+                                        <input ng-model="buyer.enable_share" type="checkbox" name="enableShare" id="buyerEnableShare" />
+                                        <label for="buyerEnableShare" translate="content.list.fields.ENABLESHARE">Enable Share</label>
+                                    </div><!--/checkbox continuous-check check-primary-->
+
+                                </div><!--/col-md-6-->
+                            </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a ng-click="list()" class="btn btn-primary pull-left">
+                                        <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a ng-click="goPrevious()" class="btn btn-primary pull-left">
+                                        <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" ng-click="submitForm(buyerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
+                                        <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
