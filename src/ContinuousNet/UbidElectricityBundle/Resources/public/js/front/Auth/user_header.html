@@ -1,4 +1,4 @@
-<div ng-show="loggedIn" ng-controller="LoginFrontCtrl">
+<div ng-if="user.email" ng-controller="LoginFrontCtrl">
     <!--span class="user-name pull-right">  logout </span-->
     <span class="user-name pull-right">
         [[ user.name ]]
