@@ -1403,9 +1403,9 @@
                 },
                 "TENDER" : {
                     "DEFAULT" : "Default",
+                    "A" : "A",
                     "C" : "C",
                     "B" : "B",
-                    "A" : "A",
                     "D" : "D"
                 },
                 "TENDERBOOKMARK" : {

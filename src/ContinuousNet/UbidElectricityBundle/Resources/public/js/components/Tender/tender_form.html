@@ -35,6 +35,22 @@
                         <div class="row">
                             <div class="col-md-6">
 
+                                <div class="form-group">
+                                    <label for="tenderBuyer" class="control-label">
+                                        <span translate="content.list.fields.BUYER">Buyer</span>
+                                    </label>
+                                    <div class="block select-list" ng-if="buyersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="tender.buyer" name="buyer" id="tenderBuyer" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':tenderForm.tenderType.$dirty && tenderForm.tenderType.$invalid, 'has-success':tenderForm.tenderType.$valid}">
                                     <label for="tenderTenderType" class="control-label">
                                         <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
@@ -52,6 +68,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.biddingType.$dirty && tenderForm.biddingType.$invalid, 'has-success':tenderForm.biddingType.$valid}">
@@ -71,8 +89,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.reference.$dirty && tenderForm.reference.$invalid, 'has-success':tenderForm.reference.$valid}">
@@ -89,6 +105,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.title.$dirty && tenderForm.title.$invalid, 'has-success':tenderForm.title.$valid}">
@@ -105,8 +123,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-12">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.description.$dirty && tenderForm.description.$invalid, 'has-success':tenderForm.description.$valid}">
@@ -400,22 +416,6 @@
                             </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="tenderBuyer" class="control-label">
-                                        <span translate="content.list.fields.BUYER">Buyer</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="buyersLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="tender_buyer_readonly" ng-options="item.id as item.name for item in buyers | filter:{ hidden : false }" ng-model="tender.buyer" name="buyer" id="tenderBuyer" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="ti-marker-alt"></i>
-                                        </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
                             <div class="col-md-6">
 
                                 <div class="form-group">
