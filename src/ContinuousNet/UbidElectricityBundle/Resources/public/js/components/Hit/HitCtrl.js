@@ -4,8 +4,8 @@
  * Controller for Hit Details
  */
 
-app.controller('HitCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$hitsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $hitsDataFactory) {
+app.controller('HitCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$hitsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $hitsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

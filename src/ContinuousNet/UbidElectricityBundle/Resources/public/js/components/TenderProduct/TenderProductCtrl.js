@@ -4,8 +4,8 @@
  * Controller for Tender Product Details
  */
 
-app.controller('TenderProductCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tenderProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tenderProductsDataFactory) {
+app.controller('TenderProductCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tenderProductsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tenderProductsDataFactory) {
 
     $scope.statuses = [{
         id: 'Draft',

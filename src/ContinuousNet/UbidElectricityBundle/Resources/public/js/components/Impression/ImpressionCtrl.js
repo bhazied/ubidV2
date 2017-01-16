@@ -4,8 +4,8 @@
  * Controller for Impression Details
  */
 
-app.controller('ImpressionCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$impressionsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $impressionsDataFactory) {
+app.controller('ImpressionCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$impressionsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $impressionsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

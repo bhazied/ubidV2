@@ -4,8 +4,8 @@
  * Controller for Banner Position Details
  */
 
-app.controller('BannerPositionCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bannerPositionsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bannerPositionsDataFactory) {
+app.controller('BannerPositionCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bannerPositionsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bannerPositionsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

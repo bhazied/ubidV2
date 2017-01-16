@@ -4,8 +4,8 @@
  * Controller for Translation Buyer Type Details
  */
 
-app.controller('TranslationBuyerTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationBuyerTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationBuyerTypesDataFactory) {
+app.controller('TranslationBuyerTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationBuyerTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationBuyerTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

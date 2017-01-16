@@ -119,7 +119,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="category_parent_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-foolder-open-o"></i>
+                                            <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -136,7 +136,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="category_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="category.product_type" name="productType" id="categoryProductType" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="categoryForm.productType.$dirty && categoryForm.productType.$error.required" translate="content.form.messages.PRODUCTTYPEREQUIRED">Product Type is required.</span>
@@ -154,7 +154,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="category.ordering" type="text" name="ordering" id="categoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -173,8 +173,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="category.status" name="status" id="categoryStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="category.status" name="status" id="categoryStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="categoryForm.status.$dirty && categoryForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="categoryForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -188,10 +190,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKCATEGORIES">Back to Categories list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="category.id > 0" type="button" ng-click="submitForm(categoryForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="categoryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(categoryForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="categoryForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(categoryForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="categoryForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -201,11 +206,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

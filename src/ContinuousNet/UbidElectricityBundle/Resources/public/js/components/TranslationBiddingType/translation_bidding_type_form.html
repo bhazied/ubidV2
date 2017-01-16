@@ -37,7 +37,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="translation_bidding_type_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="translationBiddingTypeForm.biddingType.$dirty && translationBiddingTypeForm.biddingType.$error.required" translate="content.form.messages.BIDDINGTYPEREQUIRED">Bidding Type is required.</span>
@@ -53,8 +53,10 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="block select-list">
-                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationBiddingType.locale" name="locale" id="translationBiddingTypeLocale" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationBiddingType.locale" name="locale" id="translationBiddingTypeLocale" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="translationBiddingTypeForm.locale.$dirty && translationBiddingTypeForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
                                     <span class="success text-small block" ng-if="translationBiddingTypeForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -113,10 +115,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONBIDDINGTYPES">Back to Translation Bidding Types list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="translationBiddingType.id > 0" type="button" ng-click="submitForm(translationBiddingTypeForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="translationBiddingTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(translationBiddingTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationBiddingTypeForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(translationBiddingTypeForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationBiddingTypeForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -126,11 +131,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

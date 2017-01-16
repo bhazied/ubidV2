@@ -4,8 +4,8 @@
  * Controller for Translation Region Details
  */
 
-app.controller('TranslationRegionCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationRegionsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationRegionsDataFactory) {
+app.controller('TranslationRegionCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationRegionsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationRegionsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

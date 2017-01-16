@@ -4,8 +4,8 @@
  * Controller for User Setting Details
  */
 
-app.controller('UserSettingCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$userSettingsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $userSettingsDataFactory) {
+app.controller('UserSettingCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$userSettingsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $userSettingsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

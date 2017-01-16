@@ -4,8 +4,8 @@
  * Controller for Sector Details
  */
 
-app.controller('SectorCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$sectorsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $sectorsDataFactory) {
+app.controller('SectorCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$sectorsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $sectorsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');
