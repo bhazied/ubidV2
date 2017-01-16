@@ -140,12 +140,29 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 translate="content.list.fieldsets.BUYER.C"></h2>
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <a ng-click="goPrevious()" class="btn btn-primary pull-left">
+                                      <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                              </div>
+                              <div class="col-md-4">
+                                  <a ng-click="goNext(buyerForm)" class="btn btn-primary pull-left" ng-disabled="isNext">
+                                      <i class="ti-layout-list-thumb"></i> <span translate="front.NEXT">Next</span>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                        <!-- END Buyer information -- Step 1 -->
+                        <!-- Start Step 2 Company information -->
+                        <div id="step2" ng-if="currentStep == 2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 translate="content.list.fieldsets.BUYER.C"></h2>
+                                </div><!--/col-md-12-->
+                            </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
 
@@ -292,24 +309,6 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <a ng-click="goPrevious()" class="btn btn-primary pull-left">
-                                      <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
-                                  </a>
-                              </div>
-                              <div class="col-md-4">
-                              </div>
-                              <div class="col-md-4">
-                                  <a ng-click="goNext(buyerForm)" class="btn btn-primary pull-left" ng-disabled="isNext">
-                                      <i class="ti-layout-list-thumb"></i> <span translate="front.NEXT">Next</span>
-                                  </a>
-                              </div>
-                          </div>
-                    </div>
-                        <!-- END Buyer information -- Step 1 -->
-                        <!-- Start Step 2 Company information -->
-                        <div id="step2" ng-if="currentStep == 2">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 translate="content.list.fieldsets.BUYER.D"></h2>
