@@ -238,6 +238,7 @@
             "COUNTPERPAGE": "Nombre par page:",
             "ACTIONS": "Actions",
             "SAVE": "Enregistrer",
+            "APPLY": "Appliquer",
             "EDIT": "Modifier",
             "ADD": "Ajouter",
             "SHOWLIST": "Afficher List",
@@ -530,7 +531,6 @@
                 "SELECTSECTION": "Sélectionner une valeur pour Section",
                 "SECTIONREQUIRED": "Le champs Section est obligatoire",
                 "SELECTBUYER": "Sélectionner une valeur pour Acheteur",
-                "BUYERREQUIRED": "Le champs Acheteur est obligatoire",
                 "SELECTSECTOR": "Sélectionner une valeur pour Secteur",
                 "SECTORREQUIRED": "Le champs Secteur est obligatoire",
                 "SELECTTENDERTYPE": "Sélectionner une valeur pour Type d'appels d'offres",
@@ -1403,9 +1403,9 @@
                 },
                 "TENDER" : {
                     "DEFAULT" : "Default",
-                    "A" : "A",
                     "C" : "C",
                     "B" : "B",
+                    "A" : "A",
                     "D" : "D"
                 },
                 "TENDERBOOKMARK" : {

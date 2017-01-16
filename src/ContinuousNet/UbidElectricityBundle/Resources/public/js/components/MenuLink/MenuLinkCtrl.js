@@ -4,8 +4,8 @@
  * Controller for Menu Link Details
  */
 
-app.controller('MenuLinkCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$menuLinksDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $menuLinksDataFactory) {
+app.controller('MenuLinkCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$menuLinksDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $menuLinksDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

@@ -4,8 +4,8 @@
  * Controller for Tender Bookmark Details
  */
 
-app.controller('TenderBookmarkCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tenderBookmarksDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tenderBookmarksDataFactory) {
+app.controller('TenderBookmarkCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tenderBookmarksDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tenderBookmarksDataFactory) {
 
     $scope.statuses = [{
         id: 'Active',

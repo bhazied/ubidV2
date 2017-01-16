@@ -4,8 +4,8 @@
  * Controller for Translation Category Details
  */
 
-app.controller('TranslationCategoryCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationCategoriesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationCategoriesDataFactory) {
+app.controller('TranslationCategoryCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationCategoriesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationCategoriesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

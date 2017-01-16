@@ -4,8 +4,8 @@
  * Controller for Translation Menu Form
  */
 
-app.controller('TranslationMenuFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$menusDataFactory', '$usersDataFactory', '$translationMenusDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $menusDataFactory, $usersDataFactory, $translationMenusDataFactory) {
+app.controller('TranslationMenuFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$menusDataFactory', '$usersDataFactory', '$translationMenusDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $menusDataFactory, $usersDataFactory, $translationMenusDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -76,7 +76,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-    $scope.submitForm = function(form) {
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -101,7 +101,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $translationMenusDataFactory.update($scope.translationMenu).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.TRANSLATIONMENUUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.TRANSLATIONMENUNOTUPDATED'));
@@ -112,7 +114,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $translationMenusDataFactory.create($scope.translationMenu).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.TRANSLATIONMENUCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.TRANSLATIONMENUNOTCREATED'));

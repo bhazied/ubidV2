@@ -4,8 +4,8 @@
  * Controller for Translation Supplier Type Details
  */
 
-app.controller('TranslationSupplierTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationSupplierTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationSupplierTypesDataFactory) {
+app.controller('TranslationSupplierTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationSupplierTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationSupplierTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

@@ -4,8 +4,8 @@
  * Controller for Hit Form
  */
 
-app.controller('HitFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
+app.controller('HitFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$visitsDataFactory', '$usersDataFactory', '$hitsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $visitsDataFactory, $usersDataFactory, $hitsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -76,7 +76,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-    $scope.submitForm = function(form) {
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -101,7 +101,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $hitsDataFactory.update($scope.hit).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.HITUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.HITNOTUPDATED'));
@@ -112,7 +114,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $hitsDataFactory.create($scope.hit).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.HITCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.HITNOTCREATED'));

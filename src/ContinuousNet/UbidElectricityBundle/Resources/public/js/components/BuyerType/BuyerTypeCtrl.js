@@ -4,8 +4,8 @@
  * Controller for Buyer Type Details
  */
 
-app.controller('BuyerTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$buyerTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $buyerTypesDataFactory) {
+app.controller('BuyerTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$buyerTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $buyerTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

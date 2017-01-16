@@ -238,6 +238,7 @@
             "COUNTPERPAGE": "Count per page:",
             "ACTIONS": "Actions",
             "SAVE": "Save",
+            "APPLY": "Apply",
             "EDIT": "Edit",
             "ADD": "Add",
             "SHOWLIST": "Show List",
@@ -530,7 +531,6 @@
                 "SELECTSECTION": "Select Section",
                 "SECTIONREQUIRED": "The Section is required",
                 "SELECTBUYER": "Select Buyer",
-                "BUYERREQUIRED": "The Buyer is required",
                 "SELECTSECTOR": "Select Sector",
                 "SECTORREQUIRED": "The Sector is required",
                 "SELECTTENDERTYPE": "Select Tender Type",
@@ -1403,9 +1403,9 @@
                 },
                 "TENDER" : {
                     "DEFAULT" : "Default",
-                    "A" : "A",
                     "C" : "C",
                     "B" : "B",
+                    "A" : "A",
                     "D" : "D"
                 },
                 "TENDERBOOKMARK" : {

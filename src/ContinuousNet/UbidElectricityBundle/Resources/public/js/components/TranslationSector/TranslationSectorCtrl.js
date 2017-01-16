@@ -4,8 +4,8 @@
  * Controller for Translation Sector Details
  */
 
-app.controller('TranslationSectorCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationSectorsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationSectorsDataFactory) {
+app.controller('TranslationSectorCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationSectorsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationSectorsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

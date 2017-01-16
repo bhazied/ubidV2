@@ -70,7 +70,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="bannerPosition.items_number" type="text" name="itemsNumber" id="bannerPositionItemsNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERITEMSNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerPositionForm.itemsNumber.$dirty && bannerPositionForm.itemsNumber.$error.required" translate="content.form.messages.ITEMSNUMBERREQUIRED">Items Number is required.</span>
                                     <span class="success text-small block" ng-if="bannerPositionForm.itemsNumber.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -128,10 +128,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBANNERPOSITIONS">Back to Banner Positions list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="bannerPosition.id > 0" type="button" ng-click="submitForm(bannerPositionForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerPositionForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(bannerPositionForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerPositionForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(bannerPositionForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerPositionForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -141,11 +144,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

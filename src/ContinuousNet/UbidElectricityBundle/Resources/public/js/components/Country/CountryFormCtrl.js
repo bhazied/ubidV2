@@ -4,8 +4,8 @@
  * Controller for Country Form
  */
 
-app.controller('CountryFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$regionsDataFactory', '$usersDataFactory', '$countriesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $regionsDataFactory, $usersDataFactory, $countriesDataFactory) {
+app.controller('CountryFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$regionsDataFactory', '$usersDataFactory', '$countriesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $regionsDataFactory, $usersDataFactory, $countriesDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -76,7 +76,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-    $scope.submitForm = function(form) {
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -101,7 +101,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $countriesDataFactory.update($scope.country).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.COUNTRYUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.COUNTRYNOTUPDATED'));
@@ -112,7 +114,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $countriesDataFactory.create($scope.country).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.COUNTRYCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.COUNTRYNOTCREATED'));

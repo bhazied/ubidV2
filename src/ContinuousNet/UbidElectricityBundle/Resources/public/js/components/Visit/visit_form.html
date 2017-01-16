@@ -62,7 +62,7 @@
                                     <div class="note-editor">
                                         <span class="input-icon">
                                             <textarea ng-model="visit.user_agent" name="userAgent" id="visitUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></textarea>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-birthday-cake"></i>
                                         </span>
                                     </div>
                                     <span class="error text-small block" ng-if="visitForm.userAgent.$dirty && visitForm.userAgent.$error.required" translate="content.form.messages.USERAGENTREQUIRED">User Agent is required.</span>
@@ -77,10 +77,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKVISITS">Back to Visits list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="visit.id > 0" type="button" ng-click="submitForm(visitForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="visitForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(visitForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="visitForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(visitForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="visitForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -90,11 +93,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

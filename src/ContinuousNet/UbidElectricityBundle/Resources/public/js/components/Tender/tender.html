@@ -45,10 +45,6 @@
                                 <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.A"></h3></th>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.BUYER">Buyer</span></td>
-                                <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></span></td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.TENDERTYPE">Tender Type</span></td>
                                 <td><a ui-sref="app.lists.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></span></td>
                             </tr>
@@ -185,12 +181,20 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.BUYER">Buyer</span></td>
+                                <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></span></td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
                                 <td><a ui-sref="app.access.usersdetails({id: tender.creator_user.id})">[[ tender.creator_user.username ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
                                 <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
+                                <td><a ui-sref="app.marketplace.suppliersdetails({id: tender.supplier.id})">[[ tender.supplier.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>

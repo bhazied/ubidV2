@@ -56,8 +56,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="tenderBookmark.status" name="status" id="tenderBookmarkStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="tenderBookmark.status" name="status" id="tenderBookmarkStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="tenderBookmarkForm.status.$dirty && tenderBookmarkForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="tenderBookmarkForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -71,10 +73,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERBOOKMARKS">Back to Tender Bookmarks list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="tenderBookmark.id > 0" type="button" ng-click="submitForm(tenderBookmarkForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderBookmarkForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(tenderBookmarkForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderBookmarkForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(tenderBookmarkForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderBookmarkForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -84,11 +89,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>
