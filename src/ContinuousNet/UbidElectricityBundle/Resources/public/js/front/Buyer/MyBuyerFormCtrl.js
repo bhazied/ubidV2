@@ -69,7 +69,24 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         }
     }
 
-    
+    $scope.totalRevenuRange = [
+        {
+            label: $filter('translate')('front.UNDER5M'),
+            value: "Under $5 million",
+        },
+        {
+            label: $filter('translate')('front.BETWEEN5AND10M'),
+            value: "$5-$10 million"
+        },
+        {
+            label: $filter('translate')('front.BETWEEN10ANDBELION'),
+            value: "$10 million- $1 billion"
+        },
+        {
+            label: $filter('translate')('front.OVER1BILLION'),
+            value: "Over $1 billion"
+        }
+    ];
 
 }]);
 

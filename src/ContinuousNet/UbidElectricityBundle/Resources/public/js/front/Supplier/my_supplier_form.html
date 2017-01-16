@@ -1,8 +1,19 @@
 
 <!-- start: FORM -->
-<div class="container-fluid container-fullw bg-white">
+<div class="container-fluid container-fullw bg-white" ng-controller="MySupplierFormCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xd-8">
+                <div class="col-md-4" ng-repeat="step in steps">
+                    <a ng-click="goto(currentStep, supplierForm)" class="btn btn-primary pull-left" ng-class="{'disabled': currentStep == step.id}">
+                        <i ng-class="{'ti-user': step.id == 1, 'ti-briefcase': step.id == 2}"></i> <span>[[ step.description ]]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
-        <div class="col-md-12" ng-controller="MySupplierFormCtrl">
+        <div class="col-md-12">
             <div>
                 <fieldset>
                     <legend translate="content.list.NEWSUPPLIER" ng-if="supplier.id == 0">
@@ -20,6 +31,7 @@
                                 <h2 translate="content.list.fieldsets.SUPPLIER.A"></h2>
                             </div><!--/col-md-12-->
                         </div><!--/row-->
+                        <div id="step1" ng-if="currentStep == 1">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -131,11 +143,27 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 translate="content.list.fieldsets.SUPPLIER.C"></h2>
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a ng-click="goPrevious()" class="btn btn-primary pull-left">
+                                        <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                    <a ng-click="goNext(supplierForm)" class="btn btn-primary pull-left" ng-disabled="isNext">
+                                        <i class="ti-layout-list-thumb"></i> <span translate="front.NEXT">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step2" ng-if="currentStep == 2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 translate="content.list.fieldsets.SUPPLIER.C"></h2>
+                                </div><!--/col-md-12-->
+                            </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
 
@@ -307,10 +335,11 @@
                                     <label for="supplierTotalRevenu" class="control-label">
                                         <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                     </label>
-                                    <span class="input-icon">
-                                        <input ng-model="supplier.total_revenu" type="text" name="totalRevenu" id="supplierTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="fa fa-money"></i>
-                                    </span><!--/input-icon-->
+
+                                    <span class="input-icon form-group nice-select">
+                                            <select class="form-control select" ng-model="supplier.total_revenu" ng-options="item as item.label for item in totalRevenuRange track by item.value" name="totalRevenu" id="supplierTotalRevenu" ng-required="false"></select>
+                                            <i class="fa fa-money"></i>
+                                        </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -493,6 +522,7 @@
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
+                        </div>
                         </div>
                     </form>
                     <div class="table-responsive" ng-if="suppliers.length > 0">

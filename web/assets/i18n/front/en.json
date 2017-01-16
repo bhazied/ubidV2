@@ -1844,6 +1844,12 @@
     "ADDBUYERSTEP1": "Step 1",
     "ADDBUYERSTEP2": "Step 2",
     "DESCRIPTIONSTEP1": "Buyer informations",
-    "DESCRIPTIONSTEP2": "Comapny informations"
+    "DESCRIPTIONSTEP2": "Comapny informations",
+    "UNDER5M": "Under $5 million",
+    "BETWEEN5AND10M": "$5-$10 million",
+    "BETWEEN10ANDBELION": "$10 million- $1 billion",
+    "OVER1BILLION": "Over $1 billion",
+    "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
+    "SUPPLIERDESCRIPTIONSTEP2": "Company informations"
   }
 }
