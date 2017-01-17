@@ -40,8 +40,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="types.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="alert.type" name="type" id="alertType" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="alert.type" name="type" id="alertType" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="alertForm.type.$dirty && alertForm.type.$error.required" translate="content.form.messages.TYPEREQUIRED">Type is required.</span>
                                     <span class="success text-small block" ng-if="alertForm.type.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -58,7 +60,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="alert_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="alert.category" name="category" id="alertCategory" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-foolder-open-o"></i>
+                                            <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -111,8 +113,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="alert.status" name="status" id="alertStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="alert.status" name="status" id="alertStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="alertForm.status.$dirty && alertForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="alertForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -125,7 +129,10 @@
                                     <label for="alertUnitCost" class="control-label">
                                         <span translate="content.list.fields.UNITCOST">Unit Cost</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="alert.unit_cost" type="text" name="unitCost" id="alertUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-money"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -136,10 +143,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKALERTS">Back to Alerts list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="alert.id > 0" type="button" ng-click="submitForm(alertForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(alertForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(alertForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -149,11 +159,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

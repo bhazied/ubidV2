@@ -4,8 +4,8 @@
  * Controller for Post Type Details
  */
 
-app.controller('PostTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$postTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $postTypesDataFactory) {
+app.controller('PostTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$postTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $postTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

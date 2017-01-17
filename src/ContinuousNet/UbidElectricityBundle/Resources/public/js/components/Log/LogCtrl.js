@@ -4,8 +4,8 @@
  * Controller for Log Details
  */
 
-app.controller('LogCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$logsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $logsDataFactory) {
+app.controller('LogCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$logsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $logsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

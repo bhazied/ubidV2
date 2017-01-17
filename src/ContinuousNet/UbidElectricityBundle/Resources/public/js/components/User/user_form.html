@@ -39,8 +39,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="types.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="user.type" name="type" id="userType" class="form-control" ng-required="false">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in types" ng-model="user.type" name="type" id="userType" class="form-control" ng-required="false">
+                                            </select>
+                                        </span>
                                     </div>
                                 </div><!--/form-group-->
 
@@ -140,8 +142,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="genders.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control" ng-required="false">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control" ng-required="false">
+                                            </select>
+                                        </span>
                                     </div>
                                 </div><!--/form-group-->
 
@@ -369,7 +373,10 @@
                             <div class="col-md-12">
                                 <label for="userGroups" class="control-label">
                                     <span translate="content.list.fields.GROUPS">Groups</span>
-                                    <input placeholder="[[ 'content.form.messages.FILTERGROUPS' | translate ]]" type="text" ng-model="groupsSearchText" class="form-control pull-right input-sm underline" />
+                                    <span class="input-icon">
+                                        <input placeholder="[[ 'content.form.messages.FILTERGROUPS' | translate ]]" type="text" ng-model="groupsSearchText" class="form-control pull-right input-sm underline" />
+                                         <i class="ti-filter"></i>
+                                     </span><!--/input-icon-->
                                 </label>
                             </div><!--/col-md-12-->
                             <div class="col-md-3" ng-repeat="group in groups | filter:groupsSearchText" ng-if="group.id">
@@ -391,10 +398,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKUSERS">Back to Users list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="user.id > 0" type="button" ng-click="submitForm(userForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(userForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(userForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -404,11 +414,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

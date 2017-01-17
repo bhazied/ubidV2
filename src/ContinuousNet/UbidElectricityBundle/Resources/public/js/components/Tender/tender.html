@@ -193,6 +193,10 @@
                                 <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
+                                <td><a ui-sref="app.marketplace.suppliersdetails({id: tender.supplier.id})">[[ tender.supplier.name ]]</a></span></td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                                 <td>
                                     <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>

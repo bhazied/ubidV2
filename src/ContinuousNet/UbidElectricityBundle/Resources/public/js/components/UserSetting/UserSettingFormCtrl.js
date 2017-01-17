@@ -4,8 +4,8 @@
  * Controller for User Setting Form
  */
 
-app.controller('UserSettingFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$usersDataFactory', '$userSettingsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $usersDataFactory, $userSettingsDataFactory) {
+app.controller('UserSettingFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$usersDataFactory', '$userSettingsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $usersDataFactory, $userSettingsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -51,7 +51,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-    $scope.submitForm = function(form) {
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -76,7 +76,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $userSettingsDataFactory.update($scope.userSetting).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.USERSETTINGUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.USERSETTINGNOTUPDATED'));
@@ -87,7 +89,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $userSettingsDataFactory.create($scope.userSetting).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.USERSETTINGCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.USERSETTINGNOTCREATED'));

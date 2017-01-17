@@ -4,8 +4,8 @@
  * Controller for Group Details
  */
 
-app.controller('GroupCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$groupsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $groupsDataFactory) {
+app.controller('GroupCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$groupsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $groupsDataFactory) {
 
     $scope.roles = [{
         id: 'ROLE_API',

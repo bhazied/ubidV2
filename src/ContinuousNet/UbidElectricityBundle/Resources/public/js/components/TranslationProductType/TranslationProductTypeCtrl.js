@@ -4,8 +4,8 @@
  * Controller for Translation Product Type Details
  */
 
-app.controller('TranslationProductTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationProductTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationProductTypesDataFactory) {
+app.controller('TranslationProductTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationProductTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationProductTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

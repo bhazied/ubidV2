@@ -4,8 +4,8 @@
  * Controller for Click Form
  */
 
-app.controller('ClickFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$visitsDataFactory', '$bannersDataFactory', '$usersDataFactory', '$clicksDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $visitsDataFactory, $bannersDataFactory, $usersDataFactory, $clicksDataFactory) {
+app.controller('ClickFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$visitsDataFactory', '$bannersDataFactory', '$usersDataFactory', '$clicksDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $visitsDataFactory, $bannersDataFactory, $usersDataFactory, $clicksDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -101,7 +101,7 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
     $scope.getUsers();
 
 
-    $scope.submitForm = function(form) {
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -126,7 +126,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $clicksDataFactory.update($scope.click).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.CLICKUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.CLICKNOTUPDATED'));
@@ -137,7 +139,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $clicksDataFactory.create($scope.click).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.CLICKCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.CLICKNOTCREATED'));

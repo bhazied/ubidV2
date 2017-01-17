@@ -43,7 +43,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_supplier_type_readonly" ng-options="item.id as item.name for item in supplierTypes | filter:{ hidden : false }" ng-model="supplier.supplier_type" name="supplierType" id="supplierSupplierType" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -429,7 +429,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="supplier.reference_number" type="text" name="referenceNumber" id="supplierReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
-                                        <i class="fa fa-hashtag"></i>
+                                        <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -498,10 +498,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="supplier.id > 0" type="button" ng-click="submitForm(supplierForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(supplierForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(supplierForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -511,11 +514,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

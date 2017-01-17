@@ -4,8 +4,8 @@
  * Controller for Supplier Product Details
  */
 
-app.controller('SupplierProductCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$supplierProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $supplierProductsDataFactory) {
+app.controller('SupplierProductCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$supplierProductsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $supplierProductsDataFactory) {
 
     $scope.statuses = [{
         id: 'Draft',

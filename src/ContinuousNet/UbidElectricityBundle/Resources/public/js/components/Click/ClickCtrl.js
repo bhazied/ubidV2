@@ -4,8 +4,8 @@
  * Controller for Click Details
  */
 
-app.controller('ClickCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$clicksDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $clicksDataFactory) {
+app.controller('ClickCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$clicksDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $clicksDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

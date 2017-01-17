@@ -4,8 +4,8 @@
  * Controller for Visit Details
  */
 
-app.controller('VisitCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$visitsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $visitsDataFactory) {
+app.controller('VisitCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$visitsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $visitsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

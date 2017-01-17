@@ -4,8 +4,8 @@
  * Controller for Language Details
  */
 
-app.controller('LanguageCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$languagesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $languagesDataFactory) {
+app.controller('LanguageCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$languagesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $languagesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

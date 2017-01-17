@@ -4,8 +4,8 @@
  * Controller for Translation Post Type Details
  */
 
-app.controller('TranslationPostTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationPostTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationPostTypesDataFactory) {
+app.controller('TranslationPostTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationPostTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationPostTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

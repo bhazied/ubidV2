@@ -119,7 +119,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="post_category_parent_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="postCategory.parent_post_category" name="parentPostCategory" id="postCategoryParentPostCategory" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-foolder-open-o"></i>
+                                            <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -136,7 +136,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="post_category_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-newspaper-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="postCategoryForm.postType.$dirty && postCategoryForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
@@ -154,7 +154,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="postCategory.ordering" type="text" name="ordering" id="postCategoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -173,8 +173,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="postCategory.status" name="status" id="postCategoryStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="postCategory.status" name="status" id="postCategoryStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="postCategoryForm.status.$dirty && postCategoryForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="postCategoryForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -188,10 +190,13 @@
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPOSTCATEGORIES">Back to Post Categories list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="postCategory.id > 0" type="button" ng-click="submitForm(postCategoryForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="postCategoryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(postCategoryForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="postCategoryForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(postCategoryForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="postCategoryForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -201,11 +206,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>
