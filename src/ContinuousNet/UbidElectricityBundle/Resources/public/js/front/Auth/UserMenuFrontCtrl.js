@@ -34,5 +34,12 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $scope.goBuyers = function () {
             $state.go('front.buyers');
         }
+
+        $scope.oneAtATime = true;
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false,
+        };
     }
+
 ]);
