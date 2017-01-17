@@ -13,7 +13,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.showRightSide = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        });
+        }, 1500);
 
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
