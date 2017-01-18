@@ -70,8 +70,20 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             $scope.goPrevious();
         }
     }
-    
-    
+
+    $scope.currentLanguageId = 0;
+    $scope.$watch('languages', function () {
+        angular.forEach($scope.languages, function (value, key) {
+            if(value.code == $localStorage.language){
+                $scope.currentLanguageId = value.id;
+                $scope.supplier.language = value.id;
+            }
+        });
+        console.log($scope.supplier);
+    }, true);
+
+
+
     $scope.totalRevenuRange = [
         {
             label: $filter('translate')('front.UNDER5M'),

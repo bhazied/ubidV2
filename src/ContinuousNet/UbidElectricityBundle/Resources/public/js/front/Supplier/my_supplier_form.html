@@ -437,7 +437,7 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -447,10 +447,11 @@
                                     <span class="input-icon">
                                         <input ng-model="supplier.reference_number" type="text" name="referenceNumber" id="supplierReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
                                         <i class="fa fa-hashtag"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+                                    </span>
+                                </div>
 
-                            </div><!--/col-md-6-->
+                            </div>
+
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -462,12 +463,13 @@
                                             <select ng-readonly="supplier_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="supplier.language" name="language" id="supplierLanguage" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-language"></i>
-                                        </span><!--/input-icon-->
+                                        </span>
                                     </div>
-                                </div><!--/form-group-->
+                                </div>
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
+                            </div>
+                        </div> --><!--/row-->
+                            <input type="hidden"  value="[[currentLanguageId]]" ng-model="supplier.language" name="language" id="supplierLanguage">
                         <div class="row">
                             <div class="col-md-12">
                                 <h2 translate="content.list.fieldsets.SUPPLIER.E"></h2>

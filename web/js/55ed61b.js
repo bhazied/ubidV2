@@ -68754,7 +68754,7 @@ app.config(['$stateProvider',
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.EDITSUPPLIER',
-            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService')
         }).state('front.mysuppliers.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
