@@ -68,7 +68,51 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             $scope.goPrevious();
         }
     }
+    //market region dynamic filed
+    $scope.marketRegionShowed = 1;
+    $scope.marketRegions = [
+        {order: 1, model: "first_market_region", name:"firstMarketRegion", id:"buyerFirstMarketRegion", title: $filter('translate')('content.list.fields.FIRSTMARKETREGION')},
+    ]
+    $scope.marketRegionsInformations = [
+        {order: 2, model: "second_market_region", name:"secondMarketRegion", id:"buyerSecondMarketRegion", title: $filter('translate')('content.list.fields.SECONDMARKETREGION')},
+        {order: 3, model: "third_market_region", name:"thirdMarketRegion", id:"buyerThirdMarketRegion", title: $filter('translate')('content.list.fields.THIRDMARKETREGION')}
+    ];
 
+    $scope.addMarketregion = function (order) {
+        var index = order-1;
+        $scope.marketRegions.push($scope.marketRegionsInformations[index]);
+        $scope.marketRegionShowed++;
+    }
+
+    $scope.removeMarketregion = function (order) {
+        var index = order-1;
+        $scope.marketRegions.splice(index);
+        $scope.marketRegionShowed--;
+    }
+
+    // market rate dynamic field
+    $scope.marketRateShowed = 1;
+    $scope.marketRates = [
+        {order: 1, model: "first_market_rate", name:"firstMarketRate", id:"buyerFirstMarketRate", title: $filter('translate')('content.list.fields.FIRSTMARKETRATE'), placeholder:$filter('translate')('ENTERFIRSTMARKETRATE')},
+    ]
+    $scope.marketRateInformations = [
+        {order: 2, model: "second_market_rate", name:"secondMarketRate", id:"buyerSecondMarketRate", title: $filter('translate')('content.list.fields.SECONDMARKETRATE'),placeholder:$filter('translate')('ENTERSECONDMARKETRATE')},
+        {order: 3, model: "third_market_rate", name:"thirdMarketRate", id:"buyerThirdMarketRate", title: $filter('translate')('content.list.fields.THIRDMARKETRATE'), placeholder:$filter('translate')('ENTERTHIRDMARKETRATE')}
+    ];
+
+    $scope.addMarketrate = function (order) {
+        var index = order-1;
+        $scope.marketRates.push($scope.marketRateInformations[index]);
+        $scope.marketRateShowed++;
+    }
+
+    $scope.removeMarketrate = function (order) {
+        var index = order-1;
+        $scope.marketRates.splice(index);
+        $scope.marketRateShowed--;
+    }
+
+    // totale Revenu range
     $scope.totalRevenuRange = [
         {
             label: $filter('translate')('front.UNDER5M'),
