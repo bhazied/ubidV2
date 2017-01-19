@@ -68,6 +68,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             $scope.goPrevious();
         }
     }
+    
     //market region dynamic filed
     $scope.marketRegionShowed = 1;
     $scope.marketRegions = [

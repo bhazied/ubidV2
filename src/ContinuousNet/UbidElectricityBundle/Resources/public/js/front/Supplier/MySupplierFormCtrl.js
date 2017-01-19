@@ -83,6 +83,50 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     }, true);
 
 
+    //market region dynamic filed
+    $scope.marketRegionShowed = 1;
+    $scope.marketRegions = [
+        {order: 1, model: "first_market_region", name:"firstMarketRegion", id:"supplierFirstMarketRegion", title: $filter('translate')('content.list.fields.FIRSTMARKETREGION')},
+    ]
+    $scope.marketRegionsInformations = [
+        {order: 2, model: "second_market_region", name:"secondMarketRegion", id:"supplierSecondMarketRegion", title: $filter('translate')('content.list.fields.SECONDMARKETREGION')},
+        {order: 3, model: "third_market_region", name:"thirdMarketRegion", id:"supplierThirdMarketRegion", title: $filter('translate')('content.list.fields.THIRDMARKETREGION')}
+    ];
+
+    $scope.addMarketregion = function (order) {
+        var index = order-1;
+        $scope.marketRegions.push($scope.marketRegionsInformations[index]);
+        $scope.marketRegionShowed++;
+    }
+
+    $scope.removeMarketregion = function (order) {
+        var index = order-1;
+        $scope.marketRegions.splice(index);
+        $scope.marketRegionShowed--;
+    }
+
+    // market rate dynamic field
+    $scope.marketRateShowed = 1;
+    $scope.marketRates = [
+        {order: 1, model: "first_market_rate", name:"firstMarketRate", id:"supplierFirstMarketRate", title: $filter('translate')('content.list.fields.FIRSTMARKETRATE'), placeholder:$filter('translate')('ENTERFIRSTMARKETRATE')},
+    ]
+    $scope.marketRateInformations = [
+        {order: 2, model: "second_market_rate", name:"secondMarketRate", id:"supplierSecondMarketRate", title: $filter('translate')('content.list.fields.SECONDMARKETRATE'),placeholder:$filter('translate')('ENTERSECONDMARKETRATE')},
+        {order: 3, model: "third_market_rate", name:"thirdMarketRate", id:"supplierThirdMarketRate", title: $filter('translate')('content.list.fields.THIRDMARKETRATE'), placeholder:$filter('translate')('ENTERTHIRDMARKETRATE')}
+    ];
+
+    $scope.addMarketrate = function (order) {
+        var index = order-1;
+        $scope.marketRates.push($scope.marketRateInformations[index]);
+        $scope.marketRateShowed++;
+    }
+
+    $scope.removeMarketrate = function (order) {
+        var index = order-1;
+        $scope.marketRates.splice(index);
+        $scope.marketRateShowed--;
+    }
+
 
     $scope.totalRevenuRange = [
         {
