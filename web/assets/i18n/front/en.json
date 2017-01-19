@@ -1783,6 +1783,8 @@
     "VIEWSDESC": "Views DESC",
     "TITLEASC": "Title ASC",
     "TITLEDESC": "Title DESC",
+    "DUEDATEASC": "Due date ASC",
+    "DUEDATEDESC": "Due Date DESC",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",

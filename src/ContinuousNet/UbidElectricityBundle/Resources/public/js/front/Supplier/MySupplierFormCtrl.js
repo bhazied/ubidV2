@@ -97,12 +97,14 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         var index = order-1;
         $scope.marketRegions.push($scope.marketRegionsInformations[index]);
         $scope.marketRegionShowed++;
+        return false;
     }
 
     $scope.removeMarketregion = function (order) {
         var index = order-1;
         $scope.marketRegions.splice(index);
         $scope.marketRegionShowed--;
+        return false;
     }
 
     // market rate dynamic field
@@ -119,12 +121,14 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         var index = order-1;
         $scope.marketRates.push($scope.marketRateInformations[index]);
         $scope.marketRateShowed++;
+        return false;
     }
 
     $scope.removeMarketrate = function (order) {
         var index = order-1;
         $scope.marketRates.splice(index);
         $scope.marketRateShowed--;
+        return false;
     }
 
 

@@ -3185,3 +3185,20 @@ fieldset h2 {
     border-top-right-radius: 3px;
 }
 
+.add-remove{
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;
+}
+.add{
+    background: #416ac7;
+}
+.remove{
+    background: #C76868;
+}

@@ -22,7 +22,7 @@
                     <legend translate="content.list.EDITSUPPLIER" ng-if="supplier.id > 0">
                         Edit Supplier
                     </legend>
-                    <form name="supplierForm" id="supplierForm" novalidate ng-submit="submitForm(supplierForm)">
+                    <form name="supplierForm" id="supplierForm" novalidate>
                         <input type="hidden" name="id" id="supplierId" ng-model="supplier.id" />
                         <div class="row">
                         </div><!--/row-->
@@ -359,8 +359,8 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <i ng-if="marketRegionShowed < 3" class="fa fa-plus-square-o alert-success" ng-click="addMarketregion(mr.order)"></i>
-                                        <i ng-if="mr.order  > 1" class="fa fa-times  alert-danger" ng-click="removeMarketregion(mr.order)"></i>
+                                        <button class="add-remove add" ng-if="marketRegionShowed < 3" ng-click="addMarketregion(mr.order)">+</button>
+                                        <button class="add-remove remove" ng-if="mr.order  > 1" ng-click="removeMarketregion(mr.order)">-</button>
                                        </div>
                                     </div>
                                 </div>
@@ -377,8 +377,8 @@
                                                 <i class="fa fa-percent"></i>
                                             </span>
                                         </div>
-                                        <i ng-if="marketRateShowed < 3" class="fa fa-plus-square-o alert-success" ng-click="addMarketrate(mrate.order)"></i>
-                                        <i ng-if="mrate.order  > 1" class="fa fa-times  alert-danger" ng-click="removeMarketrate(mrate.order)"></i>
+                                        <button class="add-remove add" ng-if="marketRateShowed < 3" ng-click="addMarketrate(mrate.order)">+</button>
+                                        <button class="add-remove remove" ng-if="mrate.order  > 1" ng-click="removeMarketrate(mrate.order)">-</button>
                                         </div>
                                     </div>
                                 </div>
