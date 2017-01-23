@@ -1326,7 +1326,7 @@
         "PASSWORDSDONOTMATCH": "Passwords do not match!",
         "PASSWORDSMATCH": "Passwords match!",
         "EMAILINVALID": "Email invalid!",
-        "EMAILALREADYINUSE": "Email already used by another user!",
+        "EMAILALREADYINUSE": "Bad email or already used by another user",
         "VALIDEMAIL": "It's a valid e-mail!",
         "INVALIDEMAIL": "Please, enter a valid email address.",
         "SELECTTYPE": "Select Type",

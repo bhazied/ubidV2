@@ -961,10 +961,12 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 var selectedVariable = tcid + '_checked';
                 if (angular.isUndefined($scope[selectedVariable])) {
                     $scope[selectedVariable] = false;
+                    return $scope[selectedVariable];
                 }
                 if (tcid == tsc.parent_category.id) {
-                    $scope[selectedVariable] = !$scope[selectedVariable];
+                    return $scope[selectedVariable];
                 }
+                return false;
             }
 
     }]);
