@@ -160,6 +160,20 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
 
     $scope.getRegions();
 
+    $scope.changeRegion = function() {
+        for (var i=0;i<$scope.countries.length;i++) {
+            for (var j=0;j<$scope.regions.length;j++) {
+                if ($scope.regions[j].id == $scope.tender.region) {
+                    if (($scope.countries[i].region != null && $scope.countries[i].region.id == $scope.regions[j].id)) {
+                        $scope.countries[i].hidden = false;
+                    } else {
+                        $scope.countries[i].hidden = true;
+                    }
+                }
+            }
+        }
+    };
+    
     $scope.countries = [];
     $scope.countriesLoaded = false;
 

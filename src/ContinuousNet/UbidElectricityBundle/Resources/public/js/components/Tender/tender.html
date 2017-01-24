@@ -45,6 +45,12 @@
                                 <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.A"></h3></th>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.SECTION">Section</span></td>
+                                <td>
+                                    <span my-enum="[[ tender.section ]]" my-enum-list="[[ sections ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.BUYER">Buyer</span></td>
                                 <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></span></td>
                             </tr>
@@ -186,12 +192,6 @@
                                 <td><span translate="content.list.fields.ID">Id</span></td>
                                 <td>
                                     <div ng-bind-html="tender.id"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.SECTION">Section</span></td>
-                                <td>
-                                    <span my-enum="[[ tender.section ]]" my-enum-list="[[ sections ]]"></span>
                                 </td>
                             </tr>
                             <tr>
