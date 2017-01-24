@@ -19,7 +19,7 @@
                 <div class="row list-toolbox">
                     <div class="col-md-4 margin-bottom-10">
                            <button ng-click="list()" class="btn btn-primary pull-left">
-                               <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
+                               <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTENDERS">Back to Tenders list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                            </button>
                     </div>
                     <div class="col-md-4 margin-bottom-10 text-center">
@@ -164,13 +164,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.DEFAULT"></h3></th>
+                                <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                                <td>
+                                    <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
-                                <td>
-                                    <span>[[ tender.created_at | date: datetimeFormat ]]</span>
-                                </td>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.DEFAULT"></h3></th>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -195,12 +195,6 @@
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
                                 <td><a ui-sref="app.marketplace.suppliersdetails({id: tender.supplier.id})">[[ tender.supplier.name ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
-                                <td>
-                                    <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

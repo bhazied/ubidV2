@@ -133,6 +133,9 @@
         "dashboard": {
             "MAIN": "Dashboard"
         },
+        "reporting": {
+            "MAIN": "Reporting"
+        },
         "logout": {
             "MAIN": "Logout"
         },
@@ -213,6 +216,7 @@
     },
    "content": {
         "common": {
+            "NA": "NA",
             "DOWNLOAD": "Download",
             "CUSTOMIZE": "Customize",
             "CUSTOMIZINGDASHBOARD": "Customizing Dashboard",

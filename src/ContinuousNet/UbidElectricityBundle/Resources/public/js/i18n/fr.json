@@ -133,6 +133,9 @@
         "dashboard": {
             "MAIN": "Tableau de bord"
         },
+        "reporting": {
+            "MAIN": "Rapporting"
+        },
         "logout": {
             "MAIN": "Déconnexion"
         },
@@ -213,6 +216,7 @@
     },
    "content": {
         "common": {
+            "NA": "NA",
             "DOWNLOAD": "Télécharger",
             "CUSTOMIZE": "Parsonnaliser",
             "CUSTOMIZINGDASHBOARD": "Customizing Tableau de bord",
