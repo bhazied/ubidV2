@@ -48,14 +48,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.TYPE">Type</span></td>
+                                <td><span translate="content.list.fields.TYPES">Types</span></td>
                                 <td>
-                                    <span my-enum="[[ alert.type ]]" my-enum-list="[[ types ]]"></span>
+                                    <div ng-bind-html="alert.types"></div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.CATEGORY">Category</span></td>
-                                <td><a ui-sref="app.lists.categoriesdetails({id: alert.category.id})">[[ alert.category.name ]]</a></span></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -73,12 +69,6 @@
                                 <td><span translate="content.list.fields.STATUS">Status</span></td>
                                 <td>
                                     <span my-enum="[[ alert.status ]]" my-enum-list="[[ statuses ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.UNITCOST">Unit Cost</span></td>
-                                <td>
-                                    <div ng-bind-html="alert.unit_cost"></div>
                                 </td>
                             </tr>
                             <tr>

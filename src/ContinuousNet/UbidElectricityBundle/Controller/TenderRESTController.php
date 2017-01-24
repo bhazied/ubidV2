@@ -159,18 +159,6 @@ class TenderRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
-            $authorizedChangeSection = false;
-            $roles = $this->getUser()->getRoles();
-            if (!empty($roles)) {
-                foreach ($roles as $role) {
-                    if (substr_count($role, 'ADM') > 0) {
-                        $authorizedChangeSection = true;
-                    }
-                }
-            }
-            if (!$authorizedChangeSection) {
-                $entity->setSection('Consultation');
-            }
             $authorizedChangeSource = false;
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
@@ -235,15 +223,6 @@ class TenderRESTController extends BaseRESTController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $entity->setModifierUser($this->getUser());
-                $authorizedChangeSection = false;
-                $roles = $this->getUser()->getRoles();
-                if (!empty($roles)) {
-                    foreach ($roles as $role) {
-                        if (substr_count($role, 'ADM') > 0) {
-                            $authorizedChangeSection = true;
-                        }
-                    }
-                }
                 $authorizedChangeSource = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {
