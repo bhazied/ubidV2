@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ubid-electricity.iml" filepath="$PROJECT_DIR$/.idea/ubid-electricity.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ubid_electricity.iml" filepath="$PROJECT_DIR$/.idea/ubid_electricity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ubid_electricity.iml" filepath="$PROJECT_DIR$/.idea/ubid_electricity.iml" />
     </modules>
   </component>
 </project>
