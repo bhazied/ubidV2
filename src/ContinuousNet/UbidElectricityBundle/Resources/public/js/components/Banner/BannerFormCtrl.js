@@ -25,6 +25,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
 
     $scope.genders = [{
+        id: null,
+        title: $filter('translate')('content.common.NA'),
+    }, {
         id: 'All',
         title: $filter('translate')('content.list.fields.genders.ALL'),
         css: 'primary'

@@ -108,6 +108,14 @@ function ($stateProvider) {
             label: 'content.list.DASHBOARD'
         },
         resolve: loadSequence('DashboardCtrl', 'DashboardService')
+    }).state('app.reporting', {
+        url: '/reporting',
+        templateUrl: '/bundles/ubidelectricity/js/components/Reporting/reporting.html',
+        title: 'content.list.REPORTING',
+        ncyBreadcrumb: {
+            label: 'content.list.REPORTING'
+        },
+        resolve: loadSequence('ReportingCtrl', 'ReportingService')
     }).state('app.access', {
         url: '/access',
         template: '<div ui-view class="fade-in-up"></div>',

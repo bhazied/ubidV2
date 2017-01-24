@@ -51,6 +51,24 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
+                                <div class="form-group">
+                                    <label for="tenderSupplier" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
+                                    </label>
+                                    <div class="block select-list" ng-if="suppliersLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="tender.supplier" name="supplier" id="tenderSupplier" class="form-control" ng-required="false">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
                                 <div class="form-group" ng-class="{'has-error':tenderForm.tenderType.$dirty && tenderForm.tenderType.$invalid, 'has-success':tenderForm.tenderType.$valid}">
                                     <label for="tenderTenderType" class="control-label">
                                         <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
@@ -68,8 +86,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.biddingType.$dirty && tenderForm.biddingType.$invalid, 'has-success':tenderForm.biddingType.$valid}">
@@ -89,6 +105,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.reference.$dirty && tenderForm.reference.$invalid, 'has-success':tenderForm.reference.$valid}">
@@ -105,8 +123,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.title.$dirty && tenderForm.title.$invalid, 'has-success':tenderForm.title.$valid}">
@@ -123,6 +139,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-12">
 
                                 <div class="form-group" ng-class="{'has-error':tenderForm.description.$dirty && tenderForm.description.$invalid, 'has-success':tenderForm.description.$valid}">
@@ -389,15 +407,6 @@
                                             </a>
                                         </span>
                                     </div>
-                                    <div class="user-image margin-top-10" ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-                                        <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + tender.attachment_files ]]" alt="" />
-                                        </div>
-                                        <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="tender.attachment_files = ''"> <i class="fa fa-times"></i></span>
-                                        </div>
-                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -407,29 +416,6 @@
                                     <input ng-model="tender.validated" type="checkbox" name="validated" id="tenderValidated" />
                                     <label for="tenderValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 translate="content.list.fieldsets.TENDER.DEFAULT"></h2>
-                            </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="tenderSupplier" class="control-label">
-                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
-                                    </label>
-                                    <div class="block select-list" ng-if="suppliersLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="tender_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="tender.supplier" name="supplier" id="tenderSupplier" class="form-control" ng-required="false">
-                                            </select>
-                                            <i class="ti-marker-alt"></i>
-                                        </span><!--/input-icon-->
-                                    </div>
-                                </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
@@ -452,14 +438,14 @@
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="tenderCategories" type="checkbox" id="tenderCategories" />
-                                    <label for="tenderCategories" translate="content.common.SELECTALL">Select All</label>
+                                    <label class="all" for="tenderCategories" translate="content.common.SELECTALL">Select All</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTENDERS">Back to Tenders list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
                             <div class="col-md-4 text-center">

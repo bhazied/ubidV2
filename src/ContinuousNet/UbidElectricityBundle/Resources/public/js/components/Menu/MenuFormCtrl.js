@@ -25,6 +25,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
 
     $scope.modes = [{
+        id: null,
+        title: $filter('translate')('content.common.NA'),
+    }, {
         id: 'Link',
         title: $filter('translate')('content.list.fields.modes.LINK'),
         css: 'primary'

@@ -25,6 +25,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
 
     $scope.types = [{
+        id: null,
+        title: $filter('translate')('content.common.NA'),
+    }, {
         id: 'Guest',
         title: $filter('translate')('content.list.fields.types.GUEST'),
         css: 'primary'
@@ -46,6 +49,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         css: 'default'
     }];
     $scope.genders = [{
+        id: null,
+        title: $filter('translate')('content.common.NA'),
+    }, {
         id: 'Male',
         title: $filter('translate')('content.list.fields.genders.MALE'),
         css: 'primary'
@@ -55,6 +61,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         css: 'success'
     }];
     $scope.authenticationModes = [{
+        id: null,
+        title: $filter('translate')('content.common.NA'),
+    }, {
         id: 'Database',
         title: $filter('translate')('content.list.fields.authenticationmodes.DATABASE'),
         css: 'primary'

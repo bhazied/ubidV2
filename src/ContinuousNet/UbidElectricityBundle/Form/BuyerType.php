@@ -63,7 +63,7 @@ class BuyerType extends AbstractType
             ->add('companyName', TextType::class)
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('language', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
-            ->add('totalRevenu', IntegerType::class)
+            ->add('totalRevenu', TextType::class)
             ->add('firstMarketRegion', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
             ->add('firstMarketRate', IntegerType::class)
             ->add('secondMarketRegion', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))

@@ -230,10 +230,10 @@ class Supplier
     private $companyName;
 
     /**
-     * @var integer
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="total_revenu", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="total_revenu", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -878,7 +878,7 @@ class Supplier
      * Set totalRevenu
      *
      * @access public
-     * @param integer $totalRevenu
+     * @param string $totalRevenu
      * @return Supplier
      */
     public function setTotalRevenu($totalRevenu = null)
@@ -891,7 +891,7 @@ class Supplier
      * Get totalRevenu
      *
      * @access public
-     * @return integer 
+     * @return string 
      */
     public function getTotalRevenu()
     {
