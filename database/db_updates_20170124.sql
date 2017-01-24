@@ -1,0 +1,2 @@
+ALTER TABLE `buyer` CHANGE `total_revenu` `total_revenu` VARCHAR( 100 ) NULL DEFAULT NULL COMMENT '{"fs":"d","pos":2}';
+ALTER TABLE `supplier` CHANGE `total_revenu` `total_revenu` VARCHAR( 100 ) NULL DEFAULT NULL COMMENT '{"fs":"d","pos":2}';
