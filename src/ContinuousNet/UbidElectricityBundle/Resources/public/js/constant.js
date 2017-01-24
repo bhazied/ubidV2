@@ -15,6 +15,12 @@ app.constant('APP_JS_REQUIRES', {
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
+        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
+        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
+        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
+        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
+        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
+        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
         'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
         'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
@@ -39,15 +45,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
-        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
-        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
-        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
         'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
         'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
         'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
-        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
-        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
-        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'GroupsCtrl': '/bundles/ubidelectricity/js/components/Group/GroupsCtrl.js',
         'GroupFormCtrl': '/bundles/ubidelectricity/js/components/Group/GroupFormCtrl.js',
         'GroupCtrl': '/bundles/ubidelectricity/js/components/Group/GroupCtrl.js',
@@ -188,6 +188,12 @@ app.constant('APP_JS_REQUIRES', {
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
     },{
+        name: 'categoryService',
+        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
+    },{
+        name: 'countryService',
+        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
+    },{
         name: 'bannerService',
         files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
     },{
@@ -212,14 +218,8 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
-        name: 'categoryService',
-        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
-    },{
         name: 'clickService',
         files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
-    },{
-        name: 'countryService',
-        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
     },{
         name: 'groupService',
         files: ['/bundles/ubidelectricity/js/components/Group/GroupService.js']
