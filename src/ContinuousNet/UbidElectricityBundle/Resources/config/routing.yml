@@ -37,6 +37,18 @@ ubid_electricity_alert_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_category_api:
+    resource: "@UbidElectricityBundle/Controller/CategoryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
+ubid_electricity_country_api:
+    resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_banner_api:
     resource: "@UbidElectricityBundle/Controller/BannerRESTController.php"
     type:   rest
@@ -85,20 +97,8 @@ ubid_electricity_buyer_type_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
-ubid_electricity_category_api:
-    resource: "@UbidElectricityBundle/Controller/CategoryRESTController.php"
-    type:   rest
-    prefix:   /{_locale}/api
-    requirements:
-        _locale: en|fr|ar
 ubid_electricity_click_api:
     resource: "@UbidElectricityBundle/Controller/ClickRESTController.php"
-    type:   rest
-    prefix:   /{_locale}/api
-    requirements:
-        _locale: en|fr|ar
-ubid_electricity_country_api:
-    resource: "@UbidElectricityBundle/Controller/CountryRESTController.php"
     type:   rest
     prefix:   /{_locale}/api
     requirements:
@@ -341,6 +341,14 @@ ubid_electricity_alert:
     resource: "@UbidElectricityBundle/Resources/config/routing/alert.yml"
     prefix:   /alert
 
+ubid_electricity_category:
+    resource: "@UbidElectricityBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+ubid_electricity_country:
+    resource: "@UbidElectricityBundle/Resources/config/routing/country.yml"
+    prefix:   /country
+
 ubid_electricity_banner:
     resource: "@UbidElectricityBundle/Resources/config/routing/banner.yml"
     prefix:   /banner
@@ -373,17 +381,9 @@ ubid_electricity_buyer_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/buyer_type.yml"
     prefix:   /buyer-type
 
-ubid_electricity_category:
-    resource: "@UbidElectricityBundle/Resources/config/routing/category.yml"
-    prefix:   /category
-
 ubid_electricity_click:
     resource: "@UbidElectricityBundle/Resources/config/routing/click.yml"
     prefix:   /click
-
-ubid_electricity_country:
-    resource: "@UbidElectricityBundle/Resources/config/routing/country.yml"
-    prefix:   /country
 
 ubid_electricity_group:
     resource: "@UbidElectricityBundle/Resources/config/routing/group.yml"
