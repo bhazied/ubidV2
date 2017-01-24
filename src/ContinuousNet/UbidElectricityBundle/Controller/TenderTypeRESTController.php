@@ -105,16 +105,6 @@ class TenderTypeRESTController extends BaseRESTController
                    }
                 }
             }
-
-            $roles = $this->getUser()->getRoles();
-            if (!empty($roles)) {
-                foreach ($roles as $role) {
-                    if (substr_count($role, 'SUB') > 0) {
-                        $qb->andWhere('tt_.isPublished = :published')->setParameter('published', true);
-                    }
-                }
-            }
-
             $qbList = clone $qb;
             $qb->select('count(tt_.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();

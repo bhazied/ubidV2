@@ -78,7 +78,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="slug", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -492,7 +492,7 @@ class Tender
      * @param string $slug
      * @return Tender
      */
-    public function setSlug($slug)
+    public function setSlug($slug = null)
     {
         $this->slug = $slug;
         return $this;
@@ -833,7 +833,7 @@ class Tender
         $this->views = $views;
         return $this;
     }
-    
+
     /**
      * Get views
      *
