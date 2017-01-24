@@ -700,9 +700,52 @@ class ApiV1RESTController extends FOSRestController
             ->select('c_');
         $results = $qb->getQuery()->getResult();
         if ($results) {
-            $data['results'] = $results;
+            //$data['results'] = $results;
+            $data['results'] = $this->prepareDataToBeTree($results);
         }
         return $data;
+    }
+
+
+    private function prepareDataToBeTree($categories){
+        $new = [];
+        foreach ($categories as $cat){
+            if(!is_null($cat->getParentCategory())){
+                $new[$cat->getParentCategory()->getId()] = $cat->getParentCategory();
+            }
+            else{
+                $new[0][] = $cat;
+            }
+        }
+        $tree = $this->treeBuilderCategories($categories, $new);
+        return $tree;
+    }
+
+    private function treeBuilderCategories($categories, $new){
+       $tree = [];
+        $i=0;
+        $j=0;
+        foreach ($new as $key => $val){
+            if($key != 0){
+                $tree[$i]['node'] = $val;
+                foreach ($categories as $cat){
+                    $parentId = !(is_null($cat->getParentCategory())) ? $cat->getParentCategory()->getId() : 0;
+                    if($parentId == $key){
+                        $tree[$i]['children'][] = $cat;
+                    }
+                }
+            }
+            else if($key == 0){
+                foreach($val as $node){
+                    $tree[$j+$i]['node'] = $node;
+                    $tree[$j+$i]['children'] = array();
+                    $j++;
+                }
+            }
+            $i++;
+        }
+
+        return $tree;
     }
 
     /**

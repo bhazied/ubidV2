@@ -13,7 +13,7 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.showRightSide = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        });
+        }, 1000);
 
         $scope.goPublication = function () {
             $state.go('front.mytenders.new');
@@ -34,5 +34,12 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $scope.goBuyers = function () {
             $state.go('front.buyers');
         }
+
+        $scope.oneAtATime = true;
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false,
+        };
     }
+
 ]);

@@ -1,7 +1,7 @@
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        /*$timeout(function() {
+       /* $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
@@ -11,7 +11,6 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
-            console.log($localStorage.searchResult);
                 $scope.tensers = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
                 $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
@@ -65,7 +64,6 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $event.preventDefault();
             $event.stopPropagation();
             $scope.fromPublishDateOpened = !$scope.fromPublishDateOpened;
-            console.warn($scope.fromPublishDateOpened);
         };
 
         $scope.toPublishDateOpened = false;
@@ -296,5 +294,21 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
         ];
 
+        $scope.changeParentStatus = function(tcid){
+            var selectedVariable = tcid + '_checked';
+            $scope[selectedVariable] = !$scope[selectedVariable];
+        }
+
+        $scope.parentChecked = function (tcid, tsc) {
+                var selectedVariable = tcid + '_checked';
+                if (angular.isUndefined($scope[selectedVariable])) {
+                    $scope[selectedVariable] = false;
+                    return $scope[selectedVariable];
+                }
+                if (tcid == tsc.parent_category.id) {
+                    return $scope[selectedVariable];
+                }
+                return false;
+            }
 
     }]);

@@ -22,7 +22,7 @@
                     <i class="fa fa-envelope-o"></i>
                 </span>
                     <span class="error text-small block" ng-if="registerForm.userEmail.$dirty && registerForm.userEmail.$error.required" translate="content.form.messages.EMAILREQUIRED">User Email is required.</span>
-                    <span class="error text-small block" ng-if="registerForm.userEmail.$dirty && registerForm.userEmail.$error.checkEmailExisting" translate="content.form.messages.EMAILALREADYINUSE">This Email is already in use. Please choose another one.</span>
+                    <span class="error text-small block" ng-if="registerForm.userEmail.$dirty && registerForm.userEmail.$error.checkEmailExisting" translate="content.form.messages.EMAILALREADYINUSE">Bad email or already used by another user</span>
                 </div>
 
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.password.$dirty && registerForm.password.$invalid, 'has-success':registerForm.password.$valid}">

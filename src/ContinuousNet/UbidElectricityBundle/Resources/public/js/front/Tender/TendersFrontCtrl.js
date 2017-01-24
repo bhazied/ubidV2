@@ -9,9 +9,17 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
-        }, 500);
+        }, 1000);
 
         $scope.sortingOptions = [{
+            sortField: 'deadline',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.DUEDATEASC')
+        },{
+            sortField: 'deadline',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.DUEDATEDESC')
+        },{
             sortField: 'title',
             sortDirection: 'ASC',
             label: $filter('translate')('front.TITLEASC')

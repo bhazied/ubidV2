@@ -23,6 +23,25 @@
                         <div class="row">
                             <div class="col-md-6">
 
+                                <div class="form-group" ng-class="{'has-error':tenderForm.tenderType.$dirty && tenderForm.tenderType.$invalid, 'has-success':tenderForm.tenderType.$valid}">
+                                    <label for="tenderTenderType" class="control-label">
+                                        <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list" ng-if="tenderTypesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="tender_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="tender.tender_type" name="tenderType" id="tenderTenderType" class="form-control" ng-required="true" ng-change="loadProfile()"  ng-disabled="disableTenderType">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="tenderForm.tenderType.$dirty && tenderForm.tenderType.$error.required" translate="content.form.messages.TENDERTYPEREQUIRED">Tender Type is required.</span>
+                                    <span class="success text-small block" ng-if="tenderForm.tenderType.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6" ng-if="showBuyer">
+
                                 <div class="form-group" ng-class="{'has-error':tenderForm.buyer.$dirty && tenderForm.buyer.$invalid, 'has-success':tenderForm.buyer.$valid}">
                                     <label for="tenderBuyer" class="control-label">
                                         <span translate="content.list.fields.BUYER">Buyer</span>
@@ -40,25 +59,25 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':tenderForm.tenderType.$dirty && tenderForm.tenderType.$invalid, 'has-success':tenderForm.tenderType.$valid}">
-                                    <label for="tenderTenderType" class="control-label">
-                                        <span translate="content.list.fields.TENDERTYPE">Tender Type</span>
+                            <div class="col-md-6" ng-if="showSupplier">
+
+                                <div class="form-group">
+                                    <label for="tenderSupplier" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIER">Supplier</span>
                                         <span class="symbol required"></span>
                                     </label>
-                                    <div class="block select-list" ng-if="tenderTypesLoaded">
+                                    <div class="block select-list" ng-if="suppliersLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_tender_type_readonly" ng-options="item.id as item.name for item in tenderTypes | filter:{ hidden : false }" ng-model="tender.tender_type" name="tenderType" id="tenderTenderType" class="form-control" ng-required="true">
+                                            <select ng-readonly="tender_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="tender.supplier" name="supplier" id="tenderSupplier" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->
                                     </div>
-                                    <span class="error text-small block" ng-if="tenderForm.tenderType.$dirty && tenderForm.tenderType.$error.required" translate="content.form.messages.TENDERTYPEREQUIRED">Tender Type is required.</span>
-                                    <span class="success text-small block" ng-if="tenderForm.tenderType.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">

@@ -14,7 +14,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    });
+    }, 1000);
 
     angular.extend(this, $controller('TendersCtrl', {$scope:$scope}));
 
