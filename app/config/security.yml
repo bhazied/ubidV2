@@ -124,7 +124,7 @@ security:
             anonymous: true
 
         buyer:
-            pattern:  ^/(en|fr|ar)/api/v1/buyerDetails
+            pattern:  ^/(en|fr|ar)/api/v1/buyer
             stateless: true
             anonymous: true
 

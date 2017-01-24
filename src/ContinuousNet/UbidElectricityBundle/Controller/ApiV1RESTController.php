@@ -976,13 +976,13 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get a Buyer entity By id
      *
-     * @Get("/buyerDetails/{id}")
+     * @Get("/buyer/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function buyerDetailsAction($id)
+    public function buyerAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
