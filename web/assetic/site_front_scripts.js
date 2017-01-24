@@ -335,6 +335,7 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'ReportingCtrl': '/bundles/ubidelectricity/js/components/Reporting/ReportingCtrl.js',
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
@@ -487,48 +488,7 @@ app.constant('APP_JS_REQUIRES', {
         'UserSettingCtrl': '/bundles/ubidelectricity/js/components/UserSetting/UserSettingCtrl.js',
         'VisitsCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitsCtrl.js',
         'VisitFormCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitFormCtrl.js',
-        'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js',
-        /*
-         * Front Controllers
-         */
-        'HomeCtrl': '/bundles/ubidelectricity/js/front/Home/HomeCtrl.js',
-        'LoginFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LoginFrontCtrl.js',
-        'LogoutFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/LogoutFrontCtrl.js',
-        'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
-        'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
-        'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
-        'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
-        'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
-        'BuyerFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontCtrl.js',
-        'SuppliersFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersFrontCtrl.js',
-        'SupplierFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SupplierFrontCtrl.js',
-        'ProductsFrontCtrl' : '/bundles/ubidelectricity/js/front/Product/ProductsFrontCtrl.js',
-        'ProductFrontCtrl' : '/bundles/ubidelectricity/js/front/Product/ProductFrontCtrl.js',
-        'ProfileFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/ProfileFrontCtrl.js',
-        'UserMenuFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/UserMenuFrontCtrl.js',
-        'ContactFormCtrl': '/bundles/ubidelectricity/js/front/Contact/ContactFormCtrl.js',
-        'MyTendersCtrl' : '/bundles/ubidelectricity/js/front/Tender/MyTendersCtrl.js',
-        'MyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderCtrl.js',
-        'MyTenderFormCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderFormCtrl.js',
-        'MyBuyersCtrl' : '/bundles/ubidelectricity/js/front/Buyer/MyBuyersCtrl.js',
-        'MyBuyerCtrl' : '/bundles/ubidelectricity/js/front/Buyer/MyBuyerCtrl.js',
-        'MyBuyerFormCtrl' : '/bundles/ubidelectricity/js/front/Buyer/MyBuyerFormCtrl.js',
-        'MySuppliersCtrl' : '/bundles/ubidelectricity/js/front/Supplier/MySuppliersCtrl.js',
-        'MySupplierCtrl' : '/bundles/ubidelectricity/js/front/Supplier/MySupplierCtrl.js',
-        'MySupplierFormCtrl' : '/bundles/ubidelectricity/js/front/Supplier/MySupplierFormCtrl.js',
-        'MyProductsCtrl' : '/bundles/ubidelectricity/js/front/Product/MyProductsCtrl.js',
-        'MyProductCtrl' : '/bundles/ubidelectricity/js/front/Product/MyProductCtrl.js',
-        'MyProductFormCtrl' : '/bundles/ubidelectricity/js/front/Product/MyProductFormCtrl.js',
-        'MyBidsCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidsCtrl.js',
-        'MyBidCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidCtrl.js',
-        'MyBidFormCtrl' : '/bundles/ubidelectricity/js/front/Bid/MyBidFormCtrl.js',
-        'PostFrontCtrl': '/bundles/ubidelectricity/js/front/Post/PostFrontCtrl.js',
-        'MyProjectBidsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/MyProjectBidsCtrl.js',
-        'BidsByProjectCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsByProjectCtrl.js',
-        'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js',
-        'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
-        'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
-        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js'
+        'VisitCtrl': '/bundles/ubidelectricity/js/components/Visit/VisitCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -545,6 +505,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
+    },{
+        name: 'ReportingService',
+        files: ['/bundles/ubidelectricity/js/components/Reporting/ReportingService.js']
     },{
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
@@ -698,39 +661,6 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'visitService',
         files: ['/bundles/ubidelectricity/js/components/Visit/VisitService.js']
-    },{
-        name: 'homeService',
-        files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
-    },{
-        name: 'buyerFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Buyer/BuyerFrontService.js']
-    },{
-        name: 'supplierFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Supplier/SupplierFrontService.js']
-    },{
-        name: 'productFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Product/ProductFrontService.js']
-    },{
-        name: 'tenderFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Tender/TenderFrontService.js']
-    },{
-        name: 'searchService',
-        files :['/bundles/ubidelectricity/js/front/Search/SearchService.js']
-    },{
-        name: 'contactService',
-        files: ['/bundles/ubidelectricity/js/front/Contact/ContactService.js']
-    },{
-        name: 'profileFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Auth/ProfileService.js']
-    },{
-        name: 'userMenuFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Auth/UserMenuService.js']
-    },{
-        name: 'postFrontService',
-        files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
-    },{
-        name : 'projectBidsFrontService',
-        files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
     }]
 });
 
