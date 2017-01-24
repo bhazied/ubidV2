@@ -1,4 +1,3 @@
-
 ALTER TABLE `buyer` CHANGE `total_revenu` `total_revenu` VARCHAR( 100 ) NULL DEFAULT NULL COMMENT '{"fs":"d","pos":2}';
 
 ALTER TABLE `supplier` CHANGE `total_revenu` `total_revenu` VARCHAR( 100 ) NULL DEFAULT NULL COMMENT '{"fs":"d","pos":2}';
@@ -37,4 +36,5 @@ CREATE TABLE IF NOT EXISTS `alerts_countries` (
 ALTER TABLE `alerts_countries`
   ADD CONSTRAINT `alert_country_id_fk2` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
   ADD CONSTRAINT `alert_country_id_fk1` FOREIGN KEY (`alert_id`) REFERENCES `alert` (`id`);
+
 
