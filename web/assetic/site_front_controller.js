@@ -957,7 +957,6 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }
 
         $scope.parentChecked = function (tcid, tsc) {
-            console.log(tcid);
                 var selectedVariable = tcid + '_checked';
                 if (angular.isUndefined($scope[selectedVariable])) {
                     $scope[selectedVariable] = false;
