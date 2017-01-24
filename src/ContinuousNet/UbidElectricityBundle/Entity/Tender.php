@@ -166,39 +166,6 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="address", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $address;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="email", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $email;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="phone", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $phone;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
@@ -675,78 +642,6 @@ class Tender
     public function getEstimatedCost()
     {
         return $this->estimatedCost;
-    }
-
-    /**
-     * Set address
-     *
-     * @access public
-     * @param string $address
-     * @return Tender
-     */
-    public function setAddress($address = null)
-    {
-        $this->address = $address;
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set email
-     *
-     * @access public
-     * @param string $email
-     * @return Tender
-     */
-    public function setEmail($email = null)
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @access public
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set phone
-     *
-     * @access public
-     * @param string $phone
-     * @return Tender
-     */
-    public function setPhone($phone = null)
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @access public
-     * @return string 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
     }
 
     /**

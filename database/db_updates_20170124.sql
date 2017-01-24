@@ -38,3 +38,10 @@ ALTER TABLE `alerts_countries`
   ADD CONSTRAINT `alert_country_id_fk1` FOREIGN KEY (`alert_id`) REFERENCES `alert` (`id`);
 
 
+ALTER TABLE `tender`
+  DROP `address`,
+  DROP `email`,
+  DROP `phone`;
+
+
+ALTER TABLE `tender` CHANGE `sector_id` `sector_id` SMALLINT( 5 ) UNSIGNED NULL COMMENT '{"fs":"b","pos":3}';
