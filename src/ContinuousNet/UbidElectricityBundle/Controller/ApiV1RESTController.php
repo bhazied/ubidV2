@@ -633,6 +633,8 @@ class ApiV1RESTController extends FOSRestController
         $qb->andwhere('t_.status = :status')
             ->setParameters(array('status' => 'Online'));
         $qb->andWhere('t_.section = :section') ->setParameter('section', $section);
+        $toDay = new \DateTime();
+        $qb->andWhere('t_.publishDate < :today')->setParameter('today', $toDay);
         $qb->select('t_');
         $qbList = clone $qb;
         $qb->select('count(t_.id)');

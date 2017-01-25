@@ -11,7 +11,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
-                $scope.tensers = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
+                $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
                 $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
                 $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
@@ -193,7 +193,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                             page:  $scope.currentPage
                         };
                         $localStorage.searchResult = searchResult;
-                        $state.transitionTo('front.advanced_search', {}, {reload:true, notify:true});
+                        $state.transitionTo('front.advanced_search', {}, {reload:false, notify:true});
                     }
                     else {
                         $rootScope.searchLoaded = true;
@@ -214,8 +214,10 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 delete $localStorage.genericSearchResults;
                 $timeout(function () {
                     //var def = $q.defer();
-                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
-                    var $params = {locale: $scope.locale, searchText: searchText};
+                    var $params = {};
+                    $params.locale = $localStorage.language;
+                    $params.searchText = searchText;
+                    console.log($params);
                     $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
