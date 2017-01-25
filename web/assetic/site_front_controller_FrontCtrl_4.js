@@ -35,7 +35,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.suppliers',
             'front.post',
             'front.generic_search',
-            'front.contact'
+            'front.contact',
+            'front.buyer'
         ];
 
         $timeout(function() {

@@ -11,6 +11,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.contentOffset = 0;
         }, 500);
 
+        $scope.supplier = {};
         $scope.getSupplier = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -18,7 +19,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             };
             $timeout(function () {
                 var def = $q.defer();
-                $suppliersFrontDataFactory.one($params).$promise.then(function(data){
+                $suppliersFrontDataFactory.supplier($params).$promise.then(function(data){
                     $scope.supplier = data;
                 });
                 def.resolve($scope.supplier);

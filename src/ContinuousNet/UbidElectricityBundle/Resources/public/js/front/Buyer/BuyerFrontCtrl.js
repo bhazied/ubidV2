@@ -11,6 +11,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentOffset = 0;
         }, 500);
 
+        $scope.buyer = {};
         $scope.getBuyer = function() {
             var $params = {
                 locale: $localStorage.language,

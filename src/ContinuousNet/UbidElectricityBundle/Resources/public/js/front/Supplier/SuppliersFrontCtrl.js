@@ -50,7 +50,6 @@ app.controller('SuppliersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '
             $params.sortDirection = $scope.sortingOption.sortDirection;
             $timeout(function () {
                 var def = $q.defer();
-                console.warn($params)
                 $suppliersFrontDataFactory.list($params).$promise.then(function(data){
                     $scope.suppliersLoaded = true;
                     $scope.suppliers = data.results;

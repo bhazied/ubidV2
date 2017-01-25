@@ -19,6 +19,16 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     angular.extend(this, $controller('TenderFormCtrl', {$scope:$scope}));
     $scope.enableFormAlert = false;
     $scope.disableTenderType = false;
+
+    // Editor options.
+    $scope.editorOptions = {
+        language: $scope.locale,
+        allowedContent: true,
+        entities: false,
+        extraPlugins: 'colorbutton,colordialog'
+
+    };
+
     $scope.list = function() {
         $state.go('front.mytenders.list');
     };

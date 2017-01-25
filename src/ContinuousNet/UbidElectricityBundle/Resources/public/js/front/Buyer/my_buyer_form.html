@@ -331,7 +331,7 @@
                                             <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                         </label>
                                         <span class="input-icon form-group nice-select">
-                                            <select class="form-control select" ng-model="buyer.total_revenu" ng-options="item as item.label for item in totalRevenuRange track by item.value" name="totalRevenu" id="buyerTotalRevenu" ng-required="false"></select>
+                                            <select class="form-control select" ng-model="buyer.total_revenu" ng-options="item.value as item.label for item in totalRevenuRange track by item.value" name="totalRevenu" id="buyerTotalRevenu" ng-required="false"></select>
                                             <!--<input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />-->
                                             <i class="fa fa-money"></i>
                                         </span><!--/input-icon-->
