@@ -25,8 +25,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         language: $scope.locale,
         allowedContent: true,
         entities: false,
-        extraPlugins: 'colorbutton,colordialog'
-
+        extraPlugins: 'colorbutton,colordialog,justify'
     };
 
     $scope.list = function() {

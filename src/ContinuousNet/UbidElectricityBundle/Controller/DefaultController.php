@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", host="ubid.com")
+     * @Route("/")
      * @Template("UbidElectricityBundle:Default:index.html.twig")
      */
     public function indexAction()
