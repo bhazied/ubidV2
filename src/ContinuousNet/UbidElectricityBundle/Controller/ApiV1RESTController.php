@@ -275,6 +275,7 @@ class ApiV1RESTController extends FOSRestController
             $jsonData['language'] = $language->getId();
             unset($jsonData['locale']);
             unset($jsonData['countryChoise']);
+            unset($jsonData['cg']);
             $group = $this->getGroupByName('Subscriber');
             $jsonData['groups'] = array($group->getId());
 
@@ -984,7 +985,7 @@ class ApiV1RESTController extends FOSRestController
      * @return Response
      *
      */
-    public function buyerDetailsAction($id)
+    public function buyerDetailAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
@@ -1047,7 +1048,7 @@ class ApiV1RESTController extends FOSRestController
      * @return Response
      *
      */
-    public function supplierDetailsAction($id)
+    public function supplierDetailAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();

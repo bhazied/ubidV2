@@ -1261,7 +1261,8 @@
         },
         "CURRENTPASSWORD": "Current password",
         "NEWPASSWORD": "New password",
-        "RECESSPASSWORD":"retype password"
+        "RECESSPASSWORD":"retype password",
+        "GENERALCONDITION": "General condition"
       }
     },
     "form": {
@@ -1582,7 +1583,8 @@
         "COUNTRYREQUIRED": "Country is required",
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
-        "LASTNAMEREQUIRED": "Last name is required"
+        "LASTNAMEREQUIRED": "Last name is required",
+        "CGREQUIRED": "Accept the general conditions"
       }
     },
     "common": {
@@ -1852,6 +1854,7 @@
     "BETWEEN10ANDBELION": "$10 million- $1 billion",
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
-    "SUPPLIERDESCRIPTIONSTEP2": "Company informations"
+    "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
+    "SHOWGENERALCONDITION": "Show General Condition"
   }
 }
