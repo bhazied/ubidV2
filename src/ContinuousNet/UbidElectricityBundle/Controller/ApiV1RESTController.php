@@ -292,6 +292,7 @@ class ApiV1RESTController extends FOSRestController
             //$jsonData['enabled'] = true;
 
             //$jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
+           // return $jsonData;
 
             if (isset($jsonData['provider'])) {
                 unset($jsonData['provider']);

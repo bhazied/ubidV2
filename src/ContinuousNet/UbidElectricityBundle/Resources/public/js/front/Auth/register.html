@@ -171,14 +171,14 @@
                 </span>
                     <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.PHONEREQUIRED">Phone is required.</span>
                 </div>
-                <div class="form-group col-md-6" ng-class="{'has-error':registerForm.userPhone.$dirty && registerForm.userPhone.$invalid, 'has-success':registerForm.userPhone.$valid}">
-                <span class="input-icon checkbox continuous-check check-primary">
-                    <input name="cg" id= "CG" ng-model="user.cg" type="checkbox" class="form-control"  placeholder="[[ 'content.list.fields.GENERALCONDITION' | translate ]]" ng-required="true">
-                   <label for="CG" class="control-label">
+                <div class="form-group col-md-6" ng-class="{'has-error':registerForm.cg.$dirty && registerForm.cg.$invalid, 'has-success':registerForm.cg.$valid}">
+                <div class="input-icon checkbox continuous-check check-primary">
+                    <input name="cg" id="cg" ng-model="user.cg" type="checkbox" class="form-control"  placeholder="[[ 'content.list.fields.GENERALCONDITION' | translate ]]" ng-required="true">
+                   <label for="cg" class="control-label">
                        <span translate="content.list.fields.GENERALCONDITION">General conditions</span>
                    </label>
-                </span>
-                    <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.CGREQUIRED">Accept the general conditions.</span>
+                </div>
+                    <span class="error text-small block" ng-if="registerForm.cg.$dirty && registerForm.cg.$error.required" translate="content.form.messages.CGREQUIRED">Accept the general conditions.</span>
                     <a ui-sref="front.post({slug:'general-condition'})" translate="front.SHOWGENERALCONDITION"></a>
                 </div>
             </div>
