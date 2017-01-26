@@ -16,7 +16,8 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.editorOptions = {
         language: $scope.locale,
         allowedContent: true,
-        entities: false
+        entities: false,
+        extraPlugins: 'colorbutton,colordialog,justify'
     };
 
     // Called when the editor is completely ready.
