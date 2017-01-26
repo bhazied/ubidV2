@@ -274,7 +274,8 @@ class ApiV1RESTController extends FOSRestController
             $language = $this->getLanguageByCode($jsonData['locale']);
             $jsonData['language'] = $language->getId();
             unset($jsonData['locale']);
-
+            unset($jsonData['countryChoise']);
+            unset($jsonData['cg']);
             $group = $this->getGroupByName('Subscriber');
             $jsonData['groups'] = array($group->getId());
 
@@ -291,6 +292,7 @@ class ApiV1RESTController extends FOSRestController
             //$jsonData['enabled'] = true;
 
             //$jsonData['picture'] = '/assets/images/'.strtolower($jsonData['gender']).'.png';
+           // return $jsonData;
 
             if (isset($jsonData['provider'])) {
                 unset($jsonData['provider']);
@@ -299,7 +301,6 @@ class ApiV1RESTController extends FOSRestController
             if (isset($jsonData['providerId'])) {
                 unset($jsonData['providerId']);
             }
-
             $request->request->set('app_user_registration', $jsonData);
 
             $form = $this->container->get('fos_user.registration.form');
@@ -622,38 +623,31 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/homeTenders")
+     * @GET("/homeTenders/{section}/{page}/{pageCount}/{sortField}/{sortDirection}")
      * @View(serializerEnableMaxDepthChecks=true)
      */
-    public function homeTendersAction(Request $request){
+    public function homeTendersAction($section, $page, $pageCount, $sortField, $sortDirection){
         $data = [];
-        $category = !is_null($request->query->get('category')) ? $request->query->get('category') : null;
-        $sector = !is_null($request->query->get('sector')) ? $request->query->get('sector') : null;
         $em = $this->getDoctrine()->getManager();
-        $page = $request->query->get('page');
         $qb = $em->createQueryBuilder();
         $qb->from('UbidElectricityBundle:Tender', 't_');
 
         $qb->andwhere('t_.status = :status')
             ->setParameters(array('status' => 'Online'));
-        if (!is_null($category)) {
-            $qb->andWhere(':category MEMBER OF t_.tenderCategories')->setParameter('category', $category);
-        }
-        if (!is_null($sector)) {
-            $qb->andWhere('t_.sector = :sector')->setParameter('sector', $sector);
-        }
+        $qb->andWhere('t_.section = :section') ->setParameter('section', $section);
+        $toDay = new \DateTime();
+        $qb->andWhere('t_.publishDate < :today')->setParameter('today', $toDay);
         $qb->select('t_');
-        $qb->setMaxResults(10);
-        if ($page != null) {
-            $qb->setFirstResult((10*$page));
-        } else {
-            $qb->setFirstResult(0);
-        }
-
-        $qb->groupBy('t_.id');
-        $qb->orderBy('t_.id', 'DESC');
-        $results  = $qb->getQuery()->getResult();
-        $tenders = null;
+        $qbList = clone $qb;
+        $qb->select('count(t_.id)');
+        $count = $qb->getQuery()->getSingleScalarResult();
+        $data['inlineCount'] = $count;
+        $qbList->select('t_');
+        $qbList->setMaxResults($pageCount);
+        $offset = ($page - 1) * $pageCount;
+        $qbList->setFirstResult($offset);
+        $qbList->addOrderBy('t_.'.$sortField, $sortDirection);
+        $results  = $qbList->getQuery()->getResult();
         if ($results) {
             $data['results'] = $results;
         }
@@ -710,9 +704,52 @@ class ApiV1RESTController extends FOSRestController
             ->select('c_');
         $results = $qb->getQuery()->getResult();
         if ($results) {
-            $data['results'] = $results;
+            //$data['results'] = $results;
+            $data['results'] = $this->prepareDataToBeTree($results);
         }
         return $data;
+    }
+
+
+    private function prepareDataToBeTree($categories){
+        $new = [];
+        foreach ($categories as $cat){
+            if(!is_null($cat->getParentCategory())){
+                $new[$cat->getParentCategory()->getId()] = $cat->getParentCategory();
+            }
+            else{
+                $new[0][] = $cat;
+            }
+        }
+        $tree = $this->treeBuilderCategories($categories, $new);
+        return $tree;
+    }
+
+    private function treeBuilderCategories($categories, $new){
+       $tree = [];
+        $i=0;
+        $j=0;
+        foreach ($new as $key => $val){
+            if($key != 0){
+                $tree[$i]['node'] = $val;
+                foreach ($categories as $cat){
+                    $parentId = !(is_null($cat->getParentCategory())) ? $cat->getParentCategory()->getId() : 0;
+                    if($parentId == $key){
+                        $tree[$i]['children'][] = $cat;
+                    }
+                }
+            }
+            else if($key == 0){
+                foreach($val as $node){
+                    $tree[$j+$i]['node'] = $node;
+                    $tree[$j+$i]['children'] = array();
+                    $j++;
+                }
+            }
+            $i++;
+        }
+
+        return $tree;
     }
 
     /**
@@ -941,7 +978,7 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * Get a Buyer entity By id
+     * Get public Buyer
      *
      * @Get("/buyerDetails/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
@@ -949,7 +986,7 @@ class ApiV1RESTController extends FOSRestController
      * @return Response
      *
      */
-    public function buyerDetailsAction($id)
+    public function buyerDetailAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
@@ -1012,7 +1049,7 @@ class ApiV1RESTController extends FOSRestController
      * @return Response
      *
      */
-    public function supplierDetailsAction($id)
+    public function supplierDetailAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();

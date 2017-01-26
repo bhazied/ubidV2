@@ -84,6 +84,7 @@ class TenderRESTController extends BaseRESTController
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Tender', 't_');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.buyer = buyer.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.supplier = supplier.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'region', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.region = region.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.country = country.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.sector = sector.id');
@@ -91,7 +92,7 @@ class TenderRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BiddingType', 'bidding_type', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.biddingType = bidding_type.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.modifierUser = modifier_user.id');
-            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.address', 'tender.email', 'tender.phone', 'tender.attachmentFiles', 'tender.source');
+            $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.attachmentFiles', 'tender.source');
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
                     if ($value == 'true') {
@@ -158,18 +159,6 @@ class TenderRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
-            $authorizedChangeSection = false;
-            $roles = $this->getUser()->getRoles();
-            if (!empty($roles)) {
-                foreach ($roles as $role) {
-                    if (substr_count($role, 'ADM') > 0) {
-                        $authorizedChangeSection = true;
-                    }
-                }
-            }
-            if (!$authorizedChangeSection) {
-                $entity->setSection('Consultation');
-            }
             $authorizedChangeSource = false;
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
@@ -234,15 +223,6 @@ class TenderRESTController extends BaseRESTController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $entity->setModifierUser($this->getUser());
-                $authorizedChangeSection = false;
-                $roles = $this->getUser()->getRoles();
-                if (!empty($roles)) {
-                    foreach ($roles as $role) {
-                        if (substr_count($role, 'ADM') > 0) {
-                            $authorizedChangeSection = true;
-                        }
-                    }
-                }
                 $authorizedChangeSource = false;
                 $roles = $this->getUser()->getRoles();
                 if (!empty($roles)) {

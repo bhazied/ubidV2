@@ -46,6 +46,7 @@ class TenderType extends AbstractType
         $builder
             ->add('section', ChoiceType::class, array('choices' => array('Consultation' => 'Consultation', 'Tender' => 'Tender', ), 'expanded' => false, 'multiple' => false))
             ->add('buyer', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Buyer', 'choice_label' => 'name'))
+            ->add('supplier', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Supplier', 'choice_label' => 'name'))
             ->add('region', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Region', 'choice_label' => 'name'))
             ->add('country', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
             ->add('sector', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Sector', 'choice_label' => 'name'))
@@ -60,9 +61,6 @@ class TenderType extends AbstractType
             ->add('publishDate', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
             ->add('deadline', DateTimeType::class, array('widget' => 'single_text', 'input' => 'datetime'))
             ->add('estimatedCost', IntegerType::class)
-            ->add('address', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('phone', TextType::class)
             ->add('attachmentFiles', TextType::class)
             ->add('source', TextType::class)
             ->add('validated', CheckboxType::class)

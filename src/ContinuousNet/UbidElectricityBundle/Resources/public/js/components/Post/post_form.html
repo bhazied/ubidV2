@@ -37,7 +37,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="post_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="post.post_type" name="postType" id="postPostType" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-newspaper-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="postForm.postType.$dirty && postForm.postType.$error.required" translate="content.form.messages.POSTTYPEREQUIRED">Post Type is required.</span>
@@ -54,7 +54,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.title" type="text" name="title" id="postTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-tags"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postForm.title.$dirty && postForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
                                     <span class="success text-small block" ng-if="postForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -220,7 +220,7 @@
                                     <div class="note-editor">
                                         <span class="input-icon">
                                             <textarea ng-model="post.meta_title" name="metaTitle" id="postMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-code"></i>
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
@@ -237,7 +237,7 @@
                                     <div class="note-editor">
                                         <span class="input-icon">
                                             <textarea ng-model="post.meta_description" name="metaDescription" id="postMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-code"></i>
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
@@ -252,7 +252,7 @@
                                     <div class="note-editor">
                                         <span class="input-icon">
                                             <textarea ng-model="post.meta_keywords" name="metaKeywords" id="postMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-code"></i>
                                         </span>
                                     </div>
                                 </div><!--/form-group-->
@@ -274,8 +274,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="post.status" name="status" id="postStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="(currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') == -1)" ng-options="item.id as item.title for item in statuses" ng-model="post.status" name="status" id="postStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="postForm.status.$dirty && postForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="postForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -290,7 +292,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_prints" type="text" name="totalPrints" id="postTotalPrints" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALPRINTS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-print"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -305,7 +307,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_hits" type="text" name="totalHits" id="postTotalHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALHITS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-eye"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -318,7 +320,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_comments" type="text" name="totalComments" id="postTotalComments" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCOMMENTS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-comments-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -333,7 +335,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_ratings" type="text" name="totalRatings" id="postTotalRatings" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALRATINGS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-star-half-empty"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -344,7 +346,10 @@
                                     <label for="postAverageRatings" class="control-label">
                                         <span translate="content.list.fields.AVERAGERATINGS">Average Ratings</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="post.average_ratings" type="text" name="averageRatings" id="postAverageRatings" class="form-control" placeholder="[[ 'content.form.messages.ENTERAVERAGERATINGS' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-pie-chart"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -358,7 +363,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_likes" type="text" name="totalLikes" id="postTotalLikes" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALLIKES' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-thumbs-o-down"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -371,7 +376,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_dislikes" type="text" name="totalDislikes" id="postTotalDislikes" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALDISLIKES' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-thumbs-o-up"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -386,7 +391,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.total_bookmarks" type="text" name="totalBookmarks" id="postTotalBookmarks" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALBOOKMARKS' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-bar-chart"></i>
+                                        <i class="fa fa-bookmark-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -417,7 +422,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="post.ordering" type="text" name="ordering" id="postOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -427,7 +432,10 @@
                             <div class="col-md-12">
                                 <label for="postPostCategories" class="control-label">
                                     <span translate="content.list.fields.POSTCATEGORIES">Post Categories</span>
-                                    <input placeholder="[[ 'content.form.messages.FILTERPOSTCATEGORIES' | translate ]]" type="text" ng-model="postCategoriesSearchText" class="form-control pull-right input-sm underline" />
+                                    <span class="input-icon">
+                                        <input placeholder="[[ 'content.form.messages.FILTERPOSTCATEGORIES' | translate ]]" type="text" ng-model="postCategoriesSearchText" class="form-control pull-right input-sm underline" />
+                                         <i class="ti-filter"></i>
+                                     </span><!--/input-icon-->
                                 </label>
                             </div><!--/col-md-12-->
                             <div class="col-md-3" ng-repeat="postCategory in postCategories | filter:postCategoriesSearchText" ng-if="postCategory.id">
@@ -439,20 +447,23 @@
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="postPostCategories" type="checkbox" id="postPostCategories" />
-                                    <label for="postPostCategories" translate="content.common.SELECTALL">Select All</label>
+                                    <label class="all" for="postPostCategories" translate="content.common.SELECTALL">Select All</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKPOSTS">Back to Posts list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKPOSTS">Back to Posts list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="post.id > 0" type="button" ng-click="submitForm(postForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="postForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(postForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="postForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(postForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="postForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -462,11 +473,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

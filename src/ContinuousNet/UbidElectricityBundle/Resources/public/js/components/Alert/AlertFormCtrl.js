@@ -4,8 +4,8 @@
  * Controller for Alert Form
  */
 
-app.controller('AlertFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$categoriesDataFactory', '$usersDataFactory', '$alertsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $categoriesDataFactory, $usersDataFactory, $alertsDataFactory) {
+app.controller('AlertFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$usersDataFactory', '$categoriesDataFactory', '$countriesDataFactory', '$alertsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $usersDataFactory, $categoriesDataFactory, $countriesDataFactory, $alertsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -26,19 +26,19 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.types = [{
         id: 'Tender',
-        title: $filter('translate')('content.list.fields.types.TENDER'),
+        title: $filter('translate')('content.list.fields.typesoptions.TENDER'),
         css: 'primary'
     }, {
         id: 'Supplier',
-        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIER'),
         css: 'success'
     }, {
         id: 'Buyer',
-        title: $filter('translate')('content.list.fields.types.BUYER'),
+        title: $filter('translate')('content.list.fields.typesoptions.BUYER'),
         css: 'warning'
     }, {
         id: 'SupplierProduct',
-        title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERPRODUCT'),
         css: 'danger'
     }];
     $scope.statuses = [{
@@ -50,31 +50,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
     }];
-
-    $scope.categories = [];
-    $scope.categoriesLoaded = false;
-
-    $scope.getCategories = function() {
-        $timeout(function(){
-            $scope.categoriesLoaded = true;
-            if ($scope.categories.length == 0) {
-                $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
-                var def = $q.defer();
-                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
-                    for (var i in data.results) {
-                        data.results[i].hidden = false;
-                    }
-                    $scope.categories = data.results;
-                    def.resolve($scope.categories);
-                });
-                return def;
-            } else {
-                return $scope.categories;
-            }
-        });
-    };
-
-    $scope.getCategories();
 
     $scope.users = [];
     $scope.usersLoaded = false;
@@ -101,8 +76,98 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
 
     $scope.getUsers();
 
+    $scope.categories = [];
+    $scope.categoriesLoaded = [];
 
-    $scope.submitForm = function(form) {
+    $scope.getCategories = function() {
+        $timeout(function(){
+            if ($scope.categories.length == 0) {
+                $scope.categories.push({});
+                var def = $q.defer();
+                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
+                });
+                return def;
+            } else {
+                return $scope.categories;
+            }
+        });
+    };
+
+    $scope.getCategories();
+
+    $scope.categoriesSearchText = '';
+    $scope.alertCategories = false;
+    $scope.$watch('alertCategories', function() {
+        if (angular.isDefined($scope.alert)) {
+            var categories = $filter('filter')($scope.categories, $scope.categoriesSearchText);
+            if ($scope.alertCategories) {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.alert.categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.alert.categories.push(id);
+                    }
+                }
+            } else {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.alert.categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.alert.categories.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
+    $scope.countries = [];
+    $scope.countriesLoaded = [];
+
+    $scope.getCountries = function() {
+        $timeout(function(){
+            if ($scope.countries.length == 0) {
+                $scope.countries.push({});
+                var def = $q.defer();
+                $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.countries = data.results;
+                    def.resolve($scope.countries);
+                });
+                return def;
+            } else {
+                return $scope.countries;
+            }
+        });
+    };
+
+    $scope.getCountries();
+
+    $scope.countriesSearchText = '';
+    $scope.alertCountries = false;
+    $scope.$watch('alertCountries', function() {
+        if (angular.isDefined($scope.alert)) {
+            var countries = $filter('filter')($scope.countries, $scope.countriesSearchText);
+            if ($scope.alertCountries) {
+                for (var i in countries) {
+                    var id = countries[i].id;
+                    var index = $scope.alert.countries.indexOf(id);
+                    if (index == -1) {
+                        $scope.alert.countries.push(id);
+                    }
+                }
+            } else {
+                for (var i in countries) {
+                    var id = countries[i].id;
+                    var index = $scope.alert.countries.indexOf(id);
+                    if (index > -1) {
+                        $scope.alert.countries.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
+
+    $scope.submitForm = function(form, redirect) {
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -127,7 +192,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $alertsDataFactory.update($scope.alert).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.ALERTUPDATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.ALERTNOTUPDATED'));
@@ -138,7 +205,9 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
                 $alertsDataFactory.create($scope.alert).$promise.then(function(data) {
                     $scope.disableSubmit = false;
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.list.ALERTCREATED'));
-                    $scope.list();
+                    if (redirect) {
+                        $scope.list();
+                    }
                 }, function(error) {
                     $scope.disableSubmit = false;
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('content.list.ALERTNOTCREATED'));
@@ -153,7 +222,6 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
         $state.go('app.access.alerts');
     };
     
-    $scope.alert_category_readonly = false;
     if (angular.isDefined($stateParams.id)) {
         $alertsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
@@ -161,12 +229,8 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $
             });
         });
     } else {
-        $scope.alert = {id: 0, type: 'Tender', status: 'Active'};
+        $scope.alert = {id: 0, status: 'Active', categories: [], countries: []};
 
-        if (angular.isDefined($stateParams.alert_category) && JSON.parse($stateParams.alert_category) != null) {
-            $scope.alert.category = $stateParams.alert_category;
-            $scope.alert_category_readonly = true;
-        }
     }
 
 }]);

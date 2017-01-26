@@ -4,8 +4,8 @@
  * Controller for Alerts List
  */
 
-app.controller('AlertsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$categoriesDataFactory', '$usersDataFactory', '$alertsDataFactory',
-function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $categoriesDataFactory, $usersDataFactory, $alertsDataFactory) {
+app.controller('AlertsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$categoriesDataFactory', '$countriesDataFactory', '$alertsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $categoriesDataFactory, $countriesDataFactory, $alertsDataFactory) {
 
     $scope.typesOptions = [{
         id: '',
@@ -46,35 +46,6 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
     $scope.showFieldsMenu = false;
 
-    $scope.categories = [];
-    $scope.categoriesLoaded = false;
-
-    $scope.getCategories = function() {
-        $scope.categoriesLoaded = true;
-        if ($scope.categories.length == 0) {
-            $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
-            var def = $q.defer();
-            $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
-                $timeout(function(){
-                    if (data.results.length > 0) {
-                        for (var i in data.results) {
-                            $scope.categories.push({
-                                id: data.results[i].id,
-                                title: data.results[i].name
-                            });
-                        }
-                        def.resolve($scope.categories);
-                    }
-                });
-            });
-            return def;
-        } else {
-            return $scope.categories;
-        }
-    };
-
-    $scope.getCategories();
-
     $scope.users = [];
     $scope.usersLoaded = false;
 
@@ -105,6 +76,64 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers();
 
 
+    $scope.categories = [];
+    $scope.categoriesLoaded = [];
+
+    $scope.getCategories = function() {
+        if ($scope.categories.length == 0) {
+            $scope.categories.push({});
+            var def = $q.defer();
+            $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.categories.length = 0;
+                        for (var i in data.results) {
+                            $scope.categories.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.categories);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.categories;
+        }
+    };
+
+    $scope.getCategories();
+
+    $scope.countries = [];
+    $scope.countriesLoaded = [];
+
+    $scope.getCountries = function() {
+        if ($scope.countries.length == 0) {
+            $scope.countries.push({});
+            var def = $q.defer();
+            $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.countries.length = 0;
+                        for (var i in data.results) {
+                            $scope.countries.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.countries);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.countries;
+        }
+    };
+
+    $scope.getCountries();
+
     $scope.textValue = function($scope, row) {
         return $scope.$eval('row.' + this.field);
     };
@@ -125,6 +154,25 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
+    $scope.linksValue = function($scope, row) {
+        var values = row[this.field];
+        if (values.length == 0) {
+            return '';
+        }
+        var links = [];
+        for (var i in values) {
+            var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            var displayFields = this.displayField.split(' ');
+            for (var j in displayFields) {
+                link += value[displayFields[j]] + ' ';
+            }
+            html += '</a>';
+            links.push(link);
+        }
+        var html = links.join(', ');
+        return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
+    };
+
     $scope.evaluatedValue = function($scope, row) {
         var value = $scope.$eval('row.' + this.field, {row: row});
         if (value == null || typeof value == 'undefined') {
@@ -140,7 +188,6 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.interpolatedValue = function($scope, row) {
         return this.interpolateExpr({
             row: row,
-            types: $scope.typesOptions,
             statuses: $scope.statusesOptions,
             field: this.field,
             title: this.title,
@@ -175,16 +222,16 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.setCols = function() {
         $scope.cols = [
             { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'alert.id', filter: { 'alert.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), getValue: $scope.textValue },
-            { field: 'type', title: $filter('translate')('content.list.fields.TYPE'), sortable: 'alert.type', filter: { 'alert.type': 'select' }, show: $scope.getParamValue('type_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.typesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.type ]]" my-enum-list=\'[[ types ]]\'></span>') },
-            { field: 'category', title: $filter('translate')('content.list.fields.CATEGORY'), sortable: 'category.name', filter: { 'alert.category': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCategories(), show: $scope.getParamValue('category_id_show_filed', true), displayField: 'name', state: 'app.lists.categoriesdetails' },
-            { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'alert.name', filter: { 'alert.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'alert.createdAt', filter: { 'alert.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', true), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'alert.modifiedAt', filter: { 'alert.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', true), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'alert.description', filter: { 'alert.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), getValue: $scope.textValue },
-            { field: 'status', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'alert.status', filter: { 'alert.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
-            { field: 'unit_cost', title: $filter('translate')('content.list.fields.UNITCOST'), sortable: 'alert.unitCost', filter: { 'alert.unitCost': 'number' }, show: $scope.getParamValue('unit_cost_show_filed', true), getValue: $scope.textValue },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'alert.createdAt', filter: { 'alert.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'alert.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'alert.modifiedAt', filter: { 'alert.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'alert.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'alert.name', filter: { 'alert.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), getValue: $scope.textValue },
+            { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'alert.status', filter: { 'alert.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="alertStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'types', title: $filter('translate')('content.list.fields.TYPES'), sortable: 'alert.types', filter: { 'alert.types': 'text' }, show: $scope.getParamValue('types_show_filed', false), getValue: $scope.textValue },
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'alert.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'alert.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'alert.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), show: $scope.getParamValue('categories_show_filed', false), display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
+            { field: 'countries', 'class': 'has_nany', title: $filter('translate')('content.list.fields.COUNTRIES'), filter: { 'alert.countries': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCountries(), show: $scope.getParamValue('countries_show_filed', false), display: false, displayField: 'name', state: 'app.settings.countriesdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
@@ -214,6 +261,8 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.sorting = {'alert.createdAt': 'desc'};
     $scope.sorting = $scope.getParamValue('alertsSorting', $scope.sorting);
     $scope.filter = {
+        categories: [],
+        countries: []
     };
     $scope.filter = $scope.getParamValue('alertsFilter', $scope.filter);
     $scope.setParamValue('alertsPage', $scope.page);

@@ -4,8 +4,8 @@
  * Controller for Translation Country Details
  */
 
-app.controller('TranslationCountryCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationCountriesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationCountriesDataFactory) {
+app.controller('TranslationCountryCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationCountriesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationCountriesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

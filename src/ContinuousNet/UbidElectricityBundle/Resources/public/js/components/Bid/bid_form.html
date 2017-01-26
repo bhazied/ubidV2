@@ -47,7 +47,10 @@
                                     <label for="bidTotalCost" class="control-label">
                                         <span translate="content.list.fields.TOTALCOST">Total Cost</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="bid.total_cost" type="text" name="totalCost" id="bidTotalCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-money"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -158,8 +161,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="bid.status" name="status" id="bidStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="bid.status" name="status" id="bidStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="bidForm.status.$dirty && bidForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="bidForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -175,7 +180,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="bid.title" type="text" name="title" id="bidTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-tags"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bidForm.title.$dirty && bidForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
                                     <span class="success text-small block" ng-if="bidForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -246,15 +251,6 @@
                                             </a>
                                         </span>
                                     </div>
-                                    <div class="user-image margin-top-10" ng-if="bid.attachment_files != '' && bid.attachment_files != null">
-                                        <div class="thumbnail">
-                                            <img ng-src="[[ thumbURL + bid.attachment_files ]]" alt="" />
-                                        </div>
-                                        <div class="user-image-buttons">
-                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
-                                            <span class="btn btn-danger" ng-click="bid.attachment_files = ''"> <i class="fa fa-times"></i></span>
-                                        </div>
-                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -262,13 +258,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBIDS">Back to Bids list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKBIDS">Back to Bids list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="bid.id > 0" type="button" ng-click="submitForm(bidForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="bidForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(bidForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(bidForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -278,11 +277,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

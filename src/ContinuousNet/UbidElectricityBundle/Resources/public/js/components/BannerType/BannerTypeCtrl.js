@@ -4,8 +4,8 @@
  * Controller for Banner Type Details
  */
 
-app.controller('BannerTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bannerTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bannerTypesDataFactory) {
+app.controller('BannerTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bannerTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bannerTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

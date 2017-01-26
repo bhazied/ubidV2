@@ -11,6 +11,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentOffset = 0;
         }, 500);
 
+        $scope.buyer = {};
         $scope.getBuyer = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -18,7 +19,8 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             };
             $timeout(function () {
                 var def = $q.defer();
-                $buyersFrontDataFactory.one($params).$promise.then(function(data){
+                $buyersFrontDataFactory.buyer($params).$promise.then(function(data){
+                    console.log(data);
                     $scope.buyer = data;
                 });
                 def.resolve($scope.buyer);

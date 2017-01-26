@@ -119,19 +119,22 @@
                         <tr>
                             <td><span translate="content.list.fields.ADDRESS">Address</span></td>
                             <td>
-                                <div ng-bind-html="tender.address"></div>
+                                <div ng-if="tender.buyer" ng-bind-html="tender.buyer.address"></div>
+                                <div ng-if="tender.supplier" ng-bind-html="tender.supplier.address"></div>
                             </td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.EMAIL">Email</span></td>
                             <td>
-                                <div ng-bind-html="tender.email"></div>
+                                <div ng-if="tender.buyer" ng-bind-html="tender.buyer.email"></div>
+                                <div ng-if="tender.supplier" ng-bind-html="tender.supplier.email"></div>
                             </td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.PHONE">Phone</span></td>
                             <td>
-                                <div ng-bind-html="tender.phone"></div>
+                                <div ng-if="tender.buyer" ng-bind-html="tender.buyer.phone"></div>
+                                <div ng-if="tender.supplier" ng-bind-html="tender.supplier.phone"></div>
                             </td>
                         </tr>
                         <tr>

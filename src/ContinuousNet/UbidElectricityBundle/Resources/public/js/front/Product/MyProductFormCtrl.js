@@ -14,9 +14,11 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    });
+    },1500);
 
     angular.extend(this, $controller('SupplierProductFormCtrl', {$scope:$scope}));
+
+    $scope.enableFormAlert = false;
 
     $scope.list = function() {
         $state.go('front.mysuppliers.list');

@@ -4,8 +4,8 @@
  * Controller for Post Category Details
  */
 
-app.controller('PostCategoryCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$postCategoriesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $postCategoriesDataFactory) {
+app.controller('PostCategoryCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$postCategoriesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $postCategoriesDataFactory) {
 
     $scope.statuses = [{
         id: 'Draft',

@@ -23,8 +23,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.anonymousStates = [
             'front.login',
             'front.register',
-            'auth.resetpassword',
-            'auth.reset',
+            'front.reset',
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
@@ -36,7 +35,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.suppliers',
             'front.post',
             'front.generic_search',
-            'front.contact'
+            'front.contact',
+            'front.buyer'
         ];
 
         $timeout(function() {

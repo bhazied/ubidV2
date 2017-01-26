@@ -1,8 +1,31 @@
 <div ng-controller="tendersFrontCtrl">
+
+    <div class="row nav-menu">
+        <div class="col-md-8 pl-0 pr-0">
+            <ul class="pull-left">
+                <li ng-class="{active: section=='Consultation'}"><a ui-sref="front.tenders.list({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li ng-class="{active: section=='Tender'}"><a ui-sref="front.tenders.list({section:'Tender'})" translate="front.TENDERS">Tenders </a></li>
+                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
+                <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4 pl-0">
+            <div class="form-group row pull-right sort-by">
+                <label class="col-xs-4 col-form-label pl-0" translate="front.SORTBY">Sort By</label>
+                <div class="col-xs-8 pr-0">
+                    <div class="input-group nice-select">
+                        <select class="form-control" class="select" ng-model="sortingOption" ng-options="item as item.label for item in sortingOptions" ng-change="getTenders()"></select>
+                        <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="tender-preview"  ng-repeat="tender in tendersList">
         <a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a>
         <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>
-        <p class="description" ng-bind-html="[[ tender.description ]]"></p>
+        <p class="description" ng-bind-html="tender.description | limitTo: 250"></p> ...
         <div class="dates row">
             <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : [[ tender.publish_date | date : formats.DATE  | translate  ]]</p>
             <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : [[ tender.deadline | date : formats.DATE  | translate  ]]</p>
@@ -18,11 +41,32 @@
             </div>
         </div>
     </div>
-    <div paging
-         page="currentPage"
-         page-size="pageSize"
-         total="total"
-         paging-action=" getTenders(page)"
-    >
+    <div class="row">
+        <div class="col-md-6">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li ng-if="showPrevPage" class="page-item" ng-click="prevPage()" >
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only" translate="content.common.PREVIOUS">Previous</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="p in pages" ng-click="setPage(p)" ng-class="{'page-item': page != p, 'page-item active': page == p}"><a class="page-link">[[ p ]]</a></li>
+                    <li ng-if="showNextPage" class="page-item" ng-click="nextPage()">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" translate="content.common.NEXT">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            <nav aria-label="Page navigation" class="pull-right">
+                <ul class="pagination">
+                    <li ng-repeat="c in pageCounts" ng-click="setPageCount(c)" ng-class="{'page-item': pageCount != c, 'page-item active': pageCount == c}"><a class="page-link">[[ c ]]</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>

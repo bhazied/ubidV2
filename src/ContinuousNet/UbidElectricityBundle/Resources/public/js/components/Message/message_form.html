@@ -143,7 +143,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="message.subject" type="text" name="subject" id="messageSubject" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUBJECT' | translate ]]" ng-required="true" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-file-text-o"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="messageForm.subject.$dirty && messageForm.subject.$error.required" translate="content.form.messages.SUBJECTREQUIRED">Subject is required.</span>
                                     <span class="success text-small block" ng-if="messageForm.subject.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -178,8 +178,10 @@
                                         </label>
                                     </div>
                                     <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="message.status" name="status" id="messageStatus" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="message.status" name="status" id="messageStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="messageForm.status.$dirty && messageForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
                                     <span class="success text-small block" ng-if="messageForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -246,13 +248,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKMESSAGES">Back to Messages list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKMESSAGES">Back to Messages list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="message.id > 0" type="button" ng-click="submitForm(messageForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="messageForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(messageForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="messageForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(messageForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="messageForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -262,11 +267,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

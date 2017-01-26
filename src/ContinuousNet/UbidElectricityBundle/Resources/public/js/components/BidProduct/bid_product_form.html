@@ -91,7 +91,10 @@
                                     <label for="bidProductNewUnitCost" class="control-label">
                                         <span translate="content.list.fields.NEWUNITCOST">New Unit Cost</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="bidProduct.new_unit_cost" type="text" name="newUnitCost" id="bidProductNewUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERNEWUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-money"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -103,7 +106,10 @@
                                     <label for="bidProductQuantity" class="control-label">
                                         <span translate="content.list.fields.QUANTITY">Quantity</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="bidProduct.quantity" type="text" name="quantity" id="bidProductQuantity" class="form-control" placeholder="[[ 'content.form.messages.ENTERQUANTITY' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -113,7 +119,10 @@
                                     <label for="bidProductDuration" class="control-label">
                                         <span translate="content.list.fields.DURATION">Duration</span>
                                     </label>
+                                    <span class="input-icon">
                                         <input ng-model="bidProduct.duration" type="text" name="duration" id="bidProductDuration" class="form-control" placeholder="[[ 'content.form.messages.ENTERDURATION' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="ti-timer"></i>
+                                    </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -127,7 +136,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="bidProduct.ordering" type="text" name="ordering" id="bidProductOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -136,13 +145,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBIDPRODUCTS">Back to Bid Products list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKBIDPRODUCTS">Back to Bid Products list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="bidProduct.id > 0" type="button" ng-click="submitForm(bidProductForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="bidProductForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(bidProductForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidProductForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(bidProductForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidProductForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -152,11 +164,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

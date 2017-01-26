@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="buyer_id", columns={"buyer_id"}), @ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="bidding_type_id", columns={"bidding_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`tender`", indexes={@ORM\Index(name="buyer_id", columns={"buyer_id"}), @ORM\Index(name="supplier_id", columns={"supplier_id"}), @ORM\Index(name="region_id", columns={"region_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="sector_id", columns={"sector_id"}), @ORM\Index(name="tender_type_id", columns={"tender_type_id"}), @ORM\Index(name="bidding_type_id", columns={"bidding_type_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -78,7 +78,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="slug", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,39 +166,6 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="address", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $address;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="email", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $email;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="phone", type="string", length=320, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $phone;
-
-    /**
-     * @var string
-     * @access private
-     *
      * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
@@ -275,6 +242,21 @@ class Tender
      * 
      */
     private $buyer;
+
+    /**
+     * @var \ContinuousNet\UbidElectricityBundle\Entity\Supplier
+     * @access private
+     *
+     * @ORM\ManyToOne(targetEntity="Supplier")
+     * @ORM\JoinColumns({
+     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     * })
+     * 
+     * @Expose
+     * @MaxDepth(1)
+     * 
+     */
+    private $supplier;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\Region
@@ -477,7 +459,7 @@ class Tender
      * @param string $slug
      * @return Tender
      */
-    public function setSlug($slug)
+    public function setSlug($slug = null)
     {
         $this->slug = $slug;
         return $this;
@@ -663,78 +645,6 @@ class Tender
     }
 
     /**
-     * Set address
-     *
-     * @access public
-     * @param string $address
-     * @return Tender
-     */
-    public function setAddress($address = null)
-    {
-        $this->address = $address;
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @access public
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set email
-     *
-     * @access public
-     * @param string $email
-     * @return Tender
-     */
-    public function setEmail($email = null)
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @access public
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set phone
-     *
-     * @access public
-     * @param string $phone
-     * @return Tender
-     */
-    public function setPhone($phone = null)
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @access public
-     * @return string 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
      * Set attachmentFiles
      *
      * @access public
@@ -818,7 +728,7 @@ class Tender
         $this->views = $views;
         return $this;
     }
-    
+
     /**
      * Get views
      *
@@ -900,6 +810,30 @@ class Tender
     public function getBuyer()
     {
         return $this->buyer;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @access public
+     * @param \ContinuousNet\UbidElectricityBundle\Entity\Supplier $supplier
+     * @return Tender
+     */
+    public function setSupplier(Supplier $supplier = null)
+    {
+        $this->supplier = $supplier;
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @access public
+     * @return \ContinuousNet\UbidElectricityBundle\Entity\Supplier 
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
     }
 
     /**

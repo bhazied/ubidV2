@@ -37,7 +37,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="translation_post_post_readonly" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
                                             </select>
-                                            <i class="ti-marker-alt"></i>
+                                            <i class="fa fa-newspaper-o"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="translationPostForm.post.$dirty && translationPostForm.post.$error.required" translate="content.form.messages.POSTREQUIRED">Post is required.</span>
@@ -53,8 +53,10 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="block select-list">
-                                        <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPost.locale" name="locale" id="translationPostLocale" class="form-control" ng-required="true">
-                                        </select>
+                                        <span class="input-icon">
+                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPost.locale" name="locale" id="translationPostLocale" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
                                     </div>
                                     <span class="error text-small block" ng-if="translationPostForm.locale.$dirty && translationPostForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
                                     <span class="success text-small block" ng-if="translationPostForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -124,13 +126,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTRANSLATIONPOSTS">Back to Translation Posts list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTRANSLATIONPOSTS">Back to Translation Posts list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="translationPost.id > 0" type="button" ng-click="submitForm(translationPostForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(translationPostForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(translationPostForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -140,11 +145,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

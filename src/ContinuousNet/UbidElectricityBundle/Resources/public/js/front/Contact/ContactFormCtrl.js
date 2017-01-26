@@ -4,15 +4,12 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
 
         $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
-            $rootScope.contentOffset = 0;
-        }, 2000);
-
-        console.log("showLeftSide   "+ $rootScope.showLeftSide);
-        console.log("showRightSide  " + $rootScope.showRightSide);
+            $rootScope.contentSize = 8;
+            $rootScope.contentOffset = 2;
+        }, 1500);
 
         $scope.disableSubmit = false;
         $scope.submitForm = function (form) {
@@ -30,7 +27,6 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
-                SweetAlert.swal($filter('translate')('errors.titles.CONTACTFORMFAILEDTITLE'), $filter('translate')('errors.messages.CONTACTFORMFAILEDMESSAGE'), "error");
                 return false;
             } else {
                 $scope.disableSubmit = true;

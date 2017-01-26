@@ -30,7 +30,7 @@ use JMS\Serializer\Annotation\Groups;
  * @since      Class available since Release 1.0
  * @access     public
  * 
- * @ORM\Table(name="`alert`", indexes={@ORM\Index(name="category_id", columns={"category_id"}), @ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
+ * @ORM\Table(name="`alert`", indexes={@ORM\Index(name="creator_user_id", columns={"creator_user_id"}), @ORM\Index(name="modifier_user_id", columns={"modifier_user_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * 
@@ -53,15 +53,15 @@ class Alert
     private $id;
 
     /**
-     * @var string
+     * @var array
      * @access private
      *
-     * @ORM\Column(name="type", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="types", type="array", nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
-    private $type;
+    private $types;
 
     /**
      * @var string
@@ -97,17 +97,6 @@ class Alert
     private $status;
 
     /**
-     * @var float
-     * @access private
-     *
-     * @ORM\Column(name="unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $unitCost;
-
-    /**
      * @var \DateTime
      * @access private
      *
@@ -128,21 +117,6 @@ class Alert
      * 
      */
     private $modifiedAt;
-
-    /**
-     * @var \ContinuousNet\UbidElectricityBundle\Entity\Category
-     * @access private
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
-     * 
-     * @Expose
-     * @MaxDepth(1)
-     * 
-     */
-    private $category;
 
     /**
      * @var \ContinuousNet\UbidElectricityBundle\Entity\User
@@ -175,12 +149,54 @@ class Alert
     private $modifierUser;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="alerts")
+     * @ORM\JoinTable(name="alerts_categories",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $categories;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Country", inversedBy="alerts")
+     * @ORM\JoinTable(name="alerts_countries",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $countries;
+
+    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
+        $this->categories = new DoctrineCollection();
+        $this->countries = new DoctrineCollection();
     }
 
     /**
@@ -195,27 +211,27 @@ class Alert
     }
 
     /**
-     * Set type
+     * Set types
      *
      * @access public
-     * @param string $type
+     * @param array $types
      * @return Alert
      */
-    public function setType($type)
+    public function setTypes(array $types)
     {
-        $this->type = $type;
+        $this->types = $types;
         return $this;
     }
 
     /**
-     * Get type
+     * Get types
      *
      * @access public
-     * @return string 
+     * @return array 
      */
-    public function getType()
+    public function getTypes()
     {
-        return $this->type;
+        return $this->types;
     }
 
     /**
@@ -291,30 +307,6 @@ class Alert
     }
 
     /**
-     * Set unitCost
-     *
-     * @access public
-     * @param float $unitCost
-     * @return Alert
-     */
-    public function setUnitCost($unitCost = null)
-    {
-        $this->unitCost = $unitCost;
-        return $this;
-    }
-
-    /**
-     * Get unitCost
-     *
-     * @access public
-     * @return float 
-     */
-    public function getUnitCost()
-    {
-        return $this->unitCost;
-    }
-
-    /**
      * Set createdAt
      *
      * @access public
@@ -363,30 +355,6 @@ class Alert
     }
 
     /**
-     * Set category
-     *
-     * @access public
-     * @param \ContinuousNet\UbidElectricityBundle\Entity\Category $category
-     * @return Alert
-     */
-    public function setCategory(Category $category = null)
-    {
-        $this->category = $category;
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @access public
-     * @return \ContinuousNet\UbidElectricityBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Set creatorUser
      *
      * @access public
@@ -432,6 +400,118 @@ class Alert
     public function getModifierUser()
     {
         return $this->modifierUser;
+    }
+
+    /**
+     * Add category
+     *
+     * @access public
+     * @param Category $category
+     * @return Alert
+     */
+    public function addCategory(Category $category)
+    {
+        if (!$this->categories->contains($category))
+        {
+            $this->categories->add($category);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @access public
+     * @param Category $category
+     * @return Alert
+     */
+    public function removeCategory(Category $category)
+    {
+        if ($this->categories->contains($category))
+        {
+            $this->categories->removeElement($category);
+        }
+        return $this;
+    }
+
+    /**
+     * Set category
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Alert
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Add country
+     *
+     * @access public
+     * @param Country $country
+     * @return Alert
+     */
+    public function addCountry(Country $country)
+    {
+        if (!$this->countries->contains($country))
+        {
+            $this->countries->add($country);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove country
+     *
+     * @access public
+     * @param Country $country
+     * @return Alert
+     */
+    public function removeCountry(Country $country)
+    {
+        if ($this->countries->contains($country))
+        {
+            $this->countries->removeElement($country);
+        }
+        return $this;
+    }
+
+    /**
+     * Set country
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Alert
+     */
+    public function setCountries($countries)
+    {
+        $this->countries = $countries;
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCountries()
+    {
+        return $this->countries;
     }
 
     /**

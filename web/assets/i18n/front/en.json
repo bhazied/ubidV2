@@ -1,7 +1,11 @@
 {
   "title": {
     "error": {
-      "LOGIN": "Authentication Error"
+      "LOGIN": "Authentication Error",
+      "SUBSCRIBTION": "Subscription Error"
+    },
+    "success": {
+      "SUBSCRIBTION": "Subscription success"
     },
     "message": {
       "error": {
@@ -42,7 +46,7 @@
   },
   "emailconfirm": {
     "EMAILCONFIRMATIONINPROGRESS": "Email confirmation in progress...",
-    "EMAILCONFIRMED": "Email confrimed, your can access to your dashboard.",
+    "EMAILCONFIRMED": "Email confrimed, your can access to your Profile.",
     "EMAILNOTCONFIRMED": "Invalid token or email already confirmed!",
     "NOTOKEN": "No token, please check url!"
   },
@@ -1052,7 +1056,7 @@
         "COMPANYNAME": "Company Name",
         "COUNTRY": "Country",
         "LANGUAGE": "Language",
-        "TOTALREVENU": "Total Revenu",
+        "TOTALREVENU": "Annual Revenu",
         "FIRSTMARKETREGION": "First Market Region",
         "FIRSTMARKETRATE": "First Market Rate",
         "SECONDMARKETREGION": "Second Market Region",
@@ -1257,7 +1261,8 @@
         },
         "CURRENTPASSWORD": "Current password",
         "NEWPASSWORD": "New password",
-        "RECESSPASSWORD":"Recess password"
+        "RECESSPASSWORD":"retype password",
+        "GENERALCONDITION": "General condition"
       }
     },
     "form": {
@@ -1322,7 +1327,7 @@
         "PASSWORDSDONOTMATCH": "Passwords do not match!",
         "PASSWORDSMATCH": "Passwords match!",
         "EMAILINVALID": "Email invalid!",
-        "EMAILALREADYINUSE": "Email already used by another user!",
+        "EMAILALREADYINUSE": "Bad email or already used by another user",
         "VALIDEMAIL": "It's a valid e-mail!",
         "INVALIDEMAIL": "Please, enter a valid email address.",
         "SELECTTYPE": "Select Type",
@@ -1425,7 +1430,7 @@
         "ENTERCOMPANYNAME": "Enter the Company Name",
         "SELECTCOUNTRY": "Select Country",
         "SELECTLANGUAGE": "Select Language",
-        "ENTERTOTALREVENU": "Enter the Total Revenu",
+        "ENTERTOTALREVENU": "Enter the Annual Revenu",
         "SELECTFIRSTMARKETREGION": "Select First Market Region",
         "ENTERFIRSTMARKETRATE": "Enter the First Market Rate",
         "SELECTSECONDMARKETREGION": "Select Second Market Region",
@@ -1577,7 +1582,9 @@
         "ZIPCODEREQUIRED": "Zip Code is required",
         "COUNTRYREQUIRED": "Country is required",
         "PHONEREQUIRED": "Phone is required",
-        "CURRENTPASSWORDREQUIRED": "Current password is required"
+        "CURRENTPASSWORDREQUIRED": "Current password is required",
+        "LASTNAMEREQUIRED": "Last name is required",
+        "CGREQUIRED": "Accept the general conditions"
       }
     },
     "common": {
@@ -1712,12 +1719,14 @@
     "SERVICES": "Services",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
-    "MYBUYERS":"My Buyers",
+    "MYBUYERS":"Buyers",
     "NEWBUYER":"New Buyer",
+    "CONSULTBUYERS": "List of buyers",
     "MYTENDERS":"My Tenders",
     "NEWTENDER":"New Tender",
     "MYSUPPLIERS":"My Suppliers",
     "NEWSUPPLIER":"New Supplier",
+    "CONSULTSUPPLIERS": "List of  suppliers",
     "MYPRODUCTS":"My Products",
     "NEWPRODUCT":"New Product",
     "MYPROFILE":"My Profile",
@@ -1734,17 +1743,18 @@
     "KEEPINTOUCH": "Keep <b>IN TOUCH</b>",
     "CONTACTINFORMATIONS": "Contact Infomations",
     "ADDRESS": "anjanyika road berges du lac - 1000 - Tunis - Tunisia",
-    "IMABUYER": "I'm a <b>Buyer</b>",
-    "IMASUPPLIER": "I'm a <b>Supplier</b>",
-    "IMABOTH": "I'm a <b>Buyer & Supplier</b>",
+    "IMABUYER": "I'm a <b>buyer</b>",
+    "IMASUPPLIER": "I'm a <b>supplier</b>",
+    "IMABOTH": "I'm a <b>buyer & supplier</b>",
     "ELECTRICITYBOOKSEARCH": "Electricity Book Search...",
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
     "COPYRIGHT": "Copyright &copy; E-electricity 2017. All rights reserved.",
     "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
+    "COMPTECREATESUCCESSEMAIL":"Your account is successfully created thank you to check your e-mail for activated",
     "PUBLICATION": "Publication",
-    "CONSULTTENDER": "Consult TENDER",
-    "CONSULTPROPOSAL": "Consult PROPOSAL",
+    "CONSULTTENDER": "List of tenders",
+    "CONSULTPROPOSAL": "List of consultation",
     "CONSULTADVERTISER": "Consult ADVERTISER",
     "RELATEDCATEGORIES": "Related Categories",
     "REGIONCOUNTRY": "Region/Country",
@@ -1773,6 +1783,10 @@
     "NAMEDESC": "Name DESC",
     "VIEWSASC": "Views ASC",
     "VIEWSDESC": "Views DESC",
+    "TITLEASC": "Title ASC",
+    "TITLEDESC": "Title DESC",
+    "DUEDATEASC": "Due date ASC",
+    "DUEDATEDESC": "Due Date DESC",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",
@@ -1808,18 +1822,39 @@
       "ZIPCODE": "Zip code"
     },
     "USERMENU":{
-      "MYBUYERS" : "My buyers text info ...",
-      "NEWBUYER" : "New buyers text info ...",
-      "MYTENDERS" : "My tender text info ...",
-      "NEWTENDER" : "New tender text info ...",
+      "MYBUYERS" : "Manage my company profiles",
+      "NEWBUYER" : "Add new buyer",
+      "MYTENDERS" : "Manage my tenders",
+      "NEWTENDER" : "Add new tender",
       "PROJECTBIDS" : "Project bids text info ...",
-      "PROJECTBIDSSHORTLIST" : "Project bids shot list text info ...",
+      "PROJECTBIDSSHORTLIST" : "Manage my short list",
       "MYSUPPLIERS" : "My supplier text info ...",
       "NEWSUPPLIER" : "New supplier text info ...",
-      "MYPRODUCTS" : "My Product text info ...",
-      "MYBIDS" : "My bids text info ...",
-      "BOOKMARKPROJECT" : "BookMark projects text info ...",
-      "NEWPRODUCT" : "New product text info ..."
-    }
+      "MYPRODUCTS" : "Manage my products",
+      "MYBIDS" : "Manage my bids",
+      "BOOKMARKPROJECT" : "Manage my bookmark projects",
+      "NEWPRODUCT" : "New product text info ...",
+      "MYALERTS": "Manage my alerts",
+      "NEWALERT": "Add new alert",
+      "CHANGEPASSWORD": "Change my password",
+      "MYPROFILE": "Manage my account",
+      "SIGNOUT": "Sign out"
+    },
+    "MYALERTS": "My alerts",
+    "NEWALERT": "New Alert",
+    "MYACCOUNT": "Account",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "ADDBUYERSTEP1": "Step 1",
+    "ADDBUYERSTEP2": "Step 2",
+    "DESCRIPTIONSTEP1": "Buyer informations",
+    "DESCRIPTIONSTEP2": "Comapny informations",
+    "UNDER5M": "Under $5 million",
+    "BETWEEN5AND10M": "$5-$10 million",
+    "BETWEEN10ANDBELION": "$10 million- $1 billion",
+    "OVER1BILLION": "Over $1 billion",
+    "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
+    "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
+    "SHOWGENERALCONDITION": "Show General Condition"
   }
 }

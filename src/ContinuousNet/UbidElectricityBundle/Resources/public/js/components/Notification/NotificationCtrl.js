@@ -4,8 +4,8 @@
  * Controller for Notification Details
  */
 
-app.controller('NotificationCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$notificationsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $notificationsDataFactory) {
+app.controller('NotificationCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$notificationsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $notificationsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

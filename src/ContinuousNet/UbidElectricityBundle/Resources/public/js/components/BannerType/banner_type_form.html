@@ -86,7 +86,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="bannerType.mime_types" type="text" name="mimeTypes" id="bannerTypeMimeTypes" class="form-control" placeholder="[[ 'content.form.messages.ENTERMIMETYPES' | translate ]]" ng-required="true" />
-                                        <i class="fa fa-sitemap"></i>
+                                        <i class="fa fa-cog"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerTypeForm.mimeTypes.$dirty && bannerTypeForm.mimeTypes.$error.required" translate="content.form.messages.MIMETYPESREQUIRED">Mime Types is required.</span>
                                     <span class="success text-small block" ng-if="bannerTypeForm.mimeTypes.$valid" translate="content.form.messages.OK">Ok!</span>
@@ -107,13 +107,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBANNERTYPES">Back to Banner Types list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKBANNERTYPES">Back to Banner Types list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="bannerType.id > 0" type="button" ng-click="submitForm(bannerTypeForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerTypeForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(bannerTypeForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerTypeForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(bannerTypeForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bannerTypeForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -123,11 +126,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

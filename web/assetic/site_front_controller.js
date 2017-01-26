@@ -419,8 +419,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.anonymousStates = [
             'front.login',
             'front.register',
-            'auth.resetpassword',
-            'auth.reset',
+            'front.reset',
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
@@ -432,7 +431,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.suppliers',
             'front.post',
             'front.generic_search',
-            'front.contact'
+            'front.contact',
+            'front.buyer'
         ];
 
         $timeout(function() {
@@ -659,7 +659,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        /*$timeout(function() {
+       /* $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
@@ -669,8 +669,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
-            console.log($localStorage.searchResult);
-                $scope.tensers = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
+                $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
                 $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
                 $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
@@ -714,6 +713,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             selectNone      : $filter('translate')("content.form.country_picker.selectNone"),
             reset           : $filter('translate')("content.form.country_picker.reset"),
             search          : $filter('translate')("content.form.country_picker.search"),
+            search          : $filter('translate')("content.form.country_picker.search"),
             nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
         };
 
@@ -721,14 +721,14 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.fromPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.fromPublishDateOpened = !$scope.deadline1Opened;
+            $scope.fromPublishDateOpened = !$scope.fromPublishDateOpened;
         };
 
         $scope.toPublishDateOpened = false;
         $scope.toPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.toPublishDateOpened = !$scope.deadline2Opened;
+            $scope.toPublishDateOpened = !$scope.toPublishDateOpened;
         };
 
         $scope.deadline1Opened = false;
@@ -851,7 +851,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                             page:  $scope.currentPage
                         };
                         $localStorage.searchResult = searchResult;
-                        $state.transitionTo('front.advanced_search', {}, {reload:true, notify:true});
+                        $state.transitionTo('front.advanced_search', {}, {reload:false, notify:true});
                     }
                     else {
                         $rootScope.searchLoaded = true;
@@ -872,8 +872,10 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 delete $localStorage.genericSearchResults;
                 $timeout(function () {
                     //var def = $q.defer();
-                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
-                    var $params = {locale: $scope.locale, searchText: searchText};
+                    var $params = {};
+                    $params.locale = $localStorage.language;
+                    $params.searchText = searchText;
+                    console.log($params);
                     $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
@@ -952,6 +954,22 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
         ];
 
+        $scope.changeParentStatus = function(tcid){
+            var selectedVariable = tcid + '_checked';
+            $scope[selectedVariable] = !$scope[selectedVariable];
+        }
+
+        $scope.parentChecked = function (tcid, tsc) {
+                var selectedVariable = tcid + '_checked';
+                if (angular.isUndefined($scope[selectedVariable])) {
+                    $scope[selectedVariable] = false;
+                    return $scope[selectedVariable];
+                }
+                if (tcid == tsc.parent_category.id) {
+                    return $scope[selectedVariable];
+                }
+                return false;
+            }
 
     }]);
 
@@ -963,11 +981,12 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
         var url = $rootScope.app.apiURL ;
+        var urlGen = '/en' + url ;
         return $resource(url, {
             locale: '@locale'
         }, {
             getResults: { method: 'POST', url: '/:locale' + url + 'sr' , isArray: false},
-            genericSearch: {method: 'POST', url: +'/:locale'+ url + 'genericSearch', isArray : false }
+            genericSearch: {method: 'POST', url: urlGen + 'genericSearch', isArray : false }
         });
 
     }]);

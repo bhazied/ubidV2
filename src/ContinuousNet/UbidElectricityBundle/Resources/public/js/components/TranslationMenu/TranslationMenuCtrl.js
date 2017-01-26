@@ -4,8 +4,8 @@
  * Controller for Translation Menu Details
  */
 
-app.controller('TranslationMenuCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationMenusDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationMenusDataFactory) {
+app.controller('TranslationMenuCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationMenusDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationMenusDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

@@ -4,8 +4,8 @@
  * Controller for Bidding Type Details
  */
 
-app.controller('BiddingTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$biddingTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $biddingTypesDataFactory) {
+app.controller('BiddingTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$biddingTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $biddingTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

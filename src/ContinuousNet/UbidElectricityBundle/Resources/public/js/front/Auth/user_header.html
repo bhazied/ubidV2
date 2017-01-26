@@ -1,4 +1,4 @@
-<div ng-show="loggedIn" ng-controller="LoginFrontCtrl">
+<div ng-if="user.email" ng-controller="LoginFrontCtrl">
     <!--span class="user-name pull-right">  logout </span-->
     <span class="user-name pull-right">
         [[ user.name ]]
@@ -11,7 +11,6 @@
     <a ui-sref="front.usermenu" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
 </div>
 
-<div ng-show="!loggedIn">
-    <a ui-sref="front.login" class="user-photo pull-right Male"></a>
-    <a class="notification pull-right"></a>
+<div ng-if="!user.email" ng-controller="LoginFrontCtrl">
+    <a ui-sref="front.login" class="pull-right" translate="front.SIGNIN"> Sign in</a>
 </div>

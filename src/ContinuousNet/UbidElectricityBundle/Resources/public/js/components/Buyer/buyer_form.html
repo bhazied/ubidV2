@@ -43,7 +43,7 @@
                                         <span class="input-icon">
                                             <select ng-readonly="buyer_buyer_type_readonly" ng-options="item.id as item.name for item in buyerTypes | filter:{ hidden : false }" ng-model="buyer.buyer_type" name="buyerType" id="buyerBuyerType" class="form-control" ng-required="false">
                                             </select>
-                                            <i class="fa fa-sitemap"></i>
+                                            <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                 </div><!--/form-group-->
@@ -320,7 +320,7 @@
                                         <span translate="content.list.fields.TOTALREVENU">Total Revenu</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-model="buyer.total_revenu" type="text" name="totalRevenu" id="buyerTotalRevenu" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALREVENU' | translate ]]" ng-required="false" />
                                         <i class="fa fa-money"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -429,7 +429,7 @@
                                     </label>
                                     <span class="input-icon">
                                         <input ng-model="buyer.reference_number" type="text" name="referenceNumber" id="buyerReferenceNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCENUMBER' | translate ]]" ng-required="false" />
-                                        <i class="fa fa-hashtag"></i>
+                                        <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -495,13 +495,16 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
-                                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKBUYERS">Back to Buyers list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-center">
+                                <button ng-if="buyer.id > 0" type="button" ng-click="submitForm(buyerForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(buyerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(buyerForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
@@ -511,11 +514,11 @@
                     </div>
                 </fieldset>
                 <div class="row">
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
-                    <div class="col-md-4 margin-bottom-10 text-center">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
                     </div>
-                    <div class="col-md-4 margin-bottom-10">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
                     </div>
                 </div>
             </div>

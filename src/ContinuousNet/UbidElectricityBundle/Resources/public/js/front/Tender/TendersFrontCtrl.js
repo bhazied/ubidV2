@@ -5,11 +5,47 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = true;
+            $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
+            $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
-        }, 500);
+        }, 1000);
+
+        $scope.sortingOptions = [{
+            sortField: 'deadline',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.DUEDATEASC')
+        },{
+            sortField: 'deadline',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.DUEDATEDESC')
+        },{
+            sortField: 'title',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.TITLEASC')
+        }, {
+            sortField: 'title',
+            sortDirection: 'DESC',
+            label: $filter('translate')('front.TITLEDESC')
+        }, {
+            sortField: 'views',
+            sortDirection: 'DESC',
+            label: $filter('translate')('front.VIEWSDESC')
+        }, {
+            sortField: 'name',
+            sortDirection: 'ASC',
+            label: $filter('translate')('front.VIEWSASC')
+        }];
+        $scope.pageCounts = [5, 10, 20, 50, 100];
+
+        $scope.sortingOption = $scope.sortingOptions[0];
+        $scope.total = 0;
+        $scope.pages = [1];
+        $scope.page = 1;
+        $scope.maxPage = 1;
+        $scope.showNextPage = false;
+        $scope.showPrevPage = false;
+        $scope.pageCount = 10;
 
         $scope.category_name = $filter('translate')('content.text.ALLCATEGORIES');
         $scope.dateFormat = $filter('translate')('formats.DATE');
@@ -17,26 +53,46 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $scope.timeFormat = $filter('translate')('formats.TIME');
         $scope.tendersLoaded = false;
         $scope.tendersList = [];
-        $scope.getTenders = function (page, categoryId) {
-            page = page -1;
+
+        $scope.section = angular.isDefined($stateParams.section) ? $stateParams.section : "Tender";
+        $scope.getTenders = function () {
             var $params = {};
-            if(angular.isDefined(categoryId)){
-                $params.category = categoryId;
-            }
             $params.locale = $localStorage.language;
-            $params.page = page;
+            $params.page = $scope.page;
+            $params.pageCount = $scope.pageCount;
+            $params.sortField = $scope.sortingOption.sortField;
+            $params.sortDirection = $scope.sortingOption.sortDirection;
+            $params.section = $scope.section;
             $scope.tendersList = [];
-            console.warn('params '+ $params);
             $timeout(function () {
                 $scope.tendersLoaded = true;
                 var def = $q.defer();
                 $tendersFrontDataFactory.homeTenders($params).$promise.then(function(data){
-                        if(data.results.length > 0){
                             $scope.tendersList = data.results;
-                            $scope.pageSize = 10;
                             $scope.total = data.inlineCount;
-                            $scope.currentPage = page+1;
-                        }
+                            $scope.maxPage = Math.ceil($scope.total/$scope.pageCount);
+                            if ($scope.page > $scope.maxPage) {
+                                $scope.page = $scope.maxPage;
+                            }
+                            $scope.pages = [];
+                            for (var i = 1; i <= $scope.maxPage; i += 1) {
+                                $scope.pages.push(i);
+                            }
+                            if ($scope.maxPage > 1) {
+                                if ($scope.page < $scope.maxPage) {
+                                    $scope.showNextPage = true;
+                                } else {
+                                    $scope.showNextPage = false;
+                                }
+                                if ($scope.page > 1) {
+                                    $scope.showPrevPage = true;
+                                } else {
+                                    $scope.showPrevPage = false;
+                                }
+                            } else {
+                                $scope.showNextPage = false;
+                                $scope.showPrevPage = false;
+                            }
                     });
                     def.resolve($scope.tendersList);
                 return def;
@@ -44,8 +100,27 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
         }
 
-        $scope.getTenders(1);
+        $scope.getTenders();
 
+        $scope.setPage = function() {
+            $scope.page = page;
+            $scope.getTenders();
+        };
+
+        $scope.nextPage = function() {
+            $scope.page++;
+            $scope.getTenders();
+        };
+
+        $scope.prevPage = function() {
+            $scope.page--;
+            $scope.getTenders();
+        };
+
+        $scope.setPageCount = function(pageCount) {
+            $scope.pageCount = pageCount;
+            $scope.getTenders();
+        };
 
         /*$scope.categoriesLoaded = false;
         $scope.categoriesList = [];

@@ -4,8 +4,8 @@
  * Controller for Bid Product Details
  */
 
-app.controller('BidProductCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bidProductsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bidProductsDataFactory) {
+app.controller('BidProductCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bidProductsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bidProductsDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

@@ -7,6 +7,7 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
 
         var url = $rootScope.app.apiURL + $rootScope.app.apiVersion;
+        console.log(url);
         return $resource(url, {
             locale: '@locale',
             id: '@id',
@@ -16,7 +17,7 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
             sortDirection: '@sortDirection'
         }, {
             list : { method: 'GET', url: '/:locale' + url + 'suppliers/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            one : { methof: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false}
+            supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false}
         });
 
     }]);

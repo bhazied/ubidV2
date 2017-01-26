@@ -1,6 +1,6 @@
 app.controller('TenderFrontFormCtrl', ['$rootScope', '$scope', '$controller', '$state', 'SweetAlert','toaster', '$filter', 'FileUploader', function ($rootScope, $scope, $controller, $state, SweetAlert, toaster, $filter, FileUploader) {
     angular.extend(this, $controller('TenderFormCtrl', {$scope:$scope}));
-
+    
    $scope.currentStep = 1;
     $scope.steps = [
         {

@@ -338,6 +338,12 @@ app.constant('APP_JS_REQUIRES', {
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
+        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
+        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
+        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
+        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
+        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
+        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
         'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
         'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
@@ -362,15 +368,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
-        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
-        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
-        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
         'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
         'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
         'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
-        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
-        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
-        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'GroupsCtrl': '/bundles/ubidelectricity/js/components/Group/GroupsCtrl.js',
         'GroupFormCtrl': '/bundles/ubidelectricity/js/components/Group/GroupFormCtrl.js',
         'GroupCtrl': '/bundles/ubidelectricity/js/components/Group/GroupCtrl.js',
@@ -549,6 +549,12 @@ app.constant('APP_JS_REQUIRES', {
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
     },{
+        name: 'categoryService',
+        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
+    },{
+        name: 'countryService',
+        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
+    },{
         name: 'bannerService',
         files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
     },{
@@ -573,14 +579,8 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
-        name: 'categoryService',
-        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
-    },{
         name: 'clickService',
         files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
-    },{
-        name: 'countryService',
-        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
     },{
         name: 'groupService',
         files: ['/bundles/ubidelectricity/js/components/Group/GroupService.js']
@@ -883,7 +883,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService')
         /*
          *  User Service routes
          */
@@ -908,12 +908,12 @@ app.config(['$stateProvider',
             title: 'front.RESETPAWSSWORD',
             resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
         }).state('front.emailconfirm', {
-            url: '/email-confirm/:token/:language',
+            url: '/auth/email-confirm/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/email_confirm.html',
             title: 'front.EMAILCONFIRM',
             resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
         }).state('front.reset', {
-            url: '/reset/:token/:language',
+            url: '/auth/reset/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset.html',
             title: 'front.RESET',
             resolve: loadSequence('ResetCtrl', 'ResetPasswordService')
@@ -987,7 +987,7 @@ app.config(['$stateProvider',
                 label: 'sidebar.nav.adserving.MAIN'
             }
         }).state('front.tenders.list',{
-            url: '/list',
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
@@ -1037,22 +1037,22 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
             title: 'front.TENDERDETAILS',
-            resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService')
+            resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService', 'supplierService')
         }).state('front.mytenders.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.EDITTENDER',
-            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
-            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
-            resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         /*
          * My Products Manager routes
          */
@@ -1167,7 +1167,7 @@ app.config(['$stateProvider',
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
-            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'profileFrontService')
         /*
          * My Suppliers Manager routes
          */
@@ -1184,7 +1184,7 @@ app.config(['$stateProvider',
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.EDITSUPPLIER',
-            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService')
         }).state('front.mysuppliers.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',

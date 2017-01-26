@@ -67908,6 +67908,12 @@ app.constant('APP_JS_REQUIRES', {
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
+        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
+        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
+        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
+        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
+        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
+        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'BannersCtrl': '/bundles/ubidelectricity/js/components/Banner/BannersCtrl.js',
         'BannerFormCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerFormCtrl.js',
         'BannerCtrl': '/bundles/ubidelectricity/js/components/Banner/BannerCtrl.js',
@@ -67932,15 +67938,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
-        'CategoriesCtrl': '/bundles/ubidelectricity/js/components/Category/CategoriesCtrl.js',
-        'CategoryFormCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryFormCtrl.js',
-        'CategoryCtrl': '/bundles/ubidelectricity/js/components/Category/CategoryCtrl.js',
         'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
         'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
         'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
-        'CountriesCtrl': '/bundles/ubidelectricity/js/components/Country/CountriesCtrl.js',
-        'CountryFormCtrl': '/bundles/ubidelectricity/js/components/Country/CountryFormCtrl.js',
-        'CountryCtrl': '/bundles/ubidelectricity/js/components/Country/CountryCtrl.js',
         'GroupsCtrl': '/bundles/ubidelectricity/js/components/Group/GroupsCtrl.js',
         'GroupFormCtrl': '/bundles/ubidelectricity/js/components/Group/GroupFormCtrl.js',
         'GroupCtrl': '/bundles/ubidelectricity/js/components/Group/GroupCtrl.js',
@@ -68119,6 +68119,12 @@ app.constant('APP_JS_REQUIRES', {
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
     },{
+        name: 'categoryService',
+        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
+    },{
+        name: 'countryService',
+        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
+    },{
         name: 'bannerService',
         files: ['/bundles/ubidelectricity/js/components/Banner/BannerService.js']
     },{
@@ -68143,14 +68149,8 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
-        name: 'categoryService',
-        files: ['/bundles/ubidelectricity/js/components/Category/CategoryService.js']
-    },{
         name: 'clickService',
         files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
-    },{
-        name: 'countryService',
-        files: ['/bundles/ubidelectricity/js/components/Country/CountryService.js']
     },{
         name: 'groupService',
         files: ['/bundles/ubidelectricity/js/components/Group/GroupService.js']
@@ -68453,7 +68453,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService')
         /*
          *  User Service routes
          */
@@ -68478,12 +68478,12 @@ app.config(['$stateProvider',
             title: 'front.RESETPAWSSWORD',
             resolve: loadSequence('ResetPasswordCtrl', 'ResetPasswordService')
         }).state('front.emailconfirm', {
-            url: '/email-confirm/:token/:language',
+            url: '/auth/email-confirm/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/email_confirm.html',
             title: 'front.EMAILCONFIRM',
             resolve: loadSequence('EmailConfirmCtrl', 'RegisterService')
         }).state('front.reset', {
-            url: '/reset/:token/:language',
+            url: '/auth/reset/:token/:language',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset.html',
             title: 'front.RESET',
             resolve: loadSequence('ResetCtrl', 'ResetPasswordService')
@@ -68557,7 +68557,7 @@ app.config(['$stateProvider',
                 label: 'sidebar.nav.adserving.MAIN'
             }
         }).state('front.tenders.list',{
-            url: '/list',
+            url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
@@ -68607,22 +68607,22 @@ app.config(['$stateProvider',
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
             title: 'front.TENDERDETAILS',
-            resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService')
+            resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService', 'supplierService')
         }).state('front.mytenders.edit',{
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.EDITTENDER',
-            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
-            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.list',{
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
-            resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         /*
          * My Products Manager routes
          */
@@ -68737,7 +68737,7 @@ app.config(['$stateProvider',
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
-            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'profileFrontService')
         /*
          * My Suppliers Manager routes
          */
@@ -68754,7 +68754,7 @@ app.config(['$stateProvider',
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.EDITSUPPLIER',
-            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService', 'supplierCategoryService', 'SupplierFrontFormCtrl')
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService')
         }).state('front.mysuppliers.new',{
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
@@ -71741,6 +71741,45 @@ app.directive('myTooltip', [
     }]);
 'use strict';
 /**
+ * Check if field is unique or not
+ */
+app.directive('checkEmailExisting', ['$resource', '$rootScope', '$localStorage',
+    function($resource, $rootScope, $localStorage) {
+        var timeoutId;
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function(scope, elem, attrs, ctrl) {
+                //when the scope changes, check the email.
+                scope.$watch(attrs.ngModel, function(value) {
+                    // if there was a previous attempt, stop it.
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                    }
+                    // start a new attempt with a delay to keep it from
+                    // getting too "chatty".
+                    timeoutId = setTimeout(function() {
+                        var fieldName = attrs.myField;
+                        var resourceURL = attrs.myResourceUrl;
+                        var url = $rootScope.app.apiURL + $rootScope.app.apiVersion + resourceURL;
+                        var resource = $resource('/' + $localStorage.language + url , {}, {
+                            checkEmail: { method: 'Post' }
+                        });
+                        var http_params = {
+                            email: value
+                        };
+                        //http_params['filters['+fieldName+']'] = value;
+                        resource.checkEmail(http_params).$promise.then(function(data) {
+                            ctrl.$setValidity('checkEmailExisting', data.status);
+                        });
+                    }, 500);
+                });
+            }
+        }
+    }]);
+
+'use strict';
+/**
  * controllers for UI Bootstrap components
  */
 app.controller('AlertDemoCtrl', ["$scope", function ($scope) {
@@ -72160,8 +72199,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $scope.anonymousStates = [
             'front.login',
             'front.register',
-            'auth.resetpassword',
-            'auth.reset',
+            'front.reset',
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
@@ -72173,7 +72211,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.suppliers',
             'front.post',
             'front.generic_search',
-            'front.contact'
+            'front.contact',
+            'front.buyer'
         ];
 
         $timeout(function() {
@@ -72400,7 +72439,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        /*$timeout(function() {
+       /* $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
@@ -72410,8 +72449,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 1000);*/
 
         if(angular.isDefined($localStorage.searchResult)){
-            console.log($localStorage.searchResult);
-                $scope.tensers = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
+                $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
                 $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
                 $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
@@ -72455,6 +72493,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             selectNone      : $filter('translate')("content.form.country_picker.selectNone"),
             reset           : $filter('translate')("content.form.country_picker.reset"),
             search          : $filter('translate')("content.form.country_picker.search"),
+            search          : $filter('translate')("content.form.country_picker.search"),
             nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
         };
 
@@ -72462,14 +72501,14 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.fromPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.fromPublishDateOpened = !$scope.deadline1Opened;
+            $scope.fromPublishDateOpened = !$scope.fromPublishDateOpened;
         };
 
         $scope.toPublishDateOpened = false;
         $scope.toPublishDateToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.toPublishDateOpened = !$scope.deadline2Opened;
+            $scope.toPublishDateOpened = !$scope.toPublishDateOpened;
         };
 
         $scope.deadline1Opened = false;
@@ -72592,7 +72631,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                             page:  $scope.currentPage
                         };
                         $localStorage.searchResult = searchResult;
-                        $state.transitionTo('front.advanced_search', {}, {reload:true, notify:true});
+                        $state.transitionTo('front.advanced_search', {}, {reload:false, notify:true});
                     }
                     else {
                         $rootScope.searchLoaded = true;
@@ -72613,8 +72652,10 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 delete $localStorage.genericSearchResults;
                 $timeout(function () {
                     //var def = $q.defer();
-                    $scope.locale = angular.isDefined($localStorage.language) ? $localStorage.language : 'en';
-                    var $params = {locale: $scope.locale, searchText: searchText};
+                    var $params = {};
+                    $params.locale = $localStorage.language;
+                    $params.searchText = searchText;
+                    console.log($params);
                     $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
@@ -72693,6 +72734,22 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
         ];
 
+        $scope.changeParentStatus = function(tcid){
+            var selectedVariable = tcid + '_checked';
+            $scope[selectedVariable] = !$scope[selectedVariable];
+        }
+
+        $scope.parentChecked = function (tcid, tsc) {
+                var selectedVariable = tcid + '_checked';
+                if (angular.isUndefined($scope[selectedVariable])) {
+                    $scope[selectedVariable] = false;
+                    return $scope[selectedVariable];
+                }
+                if (tcid == tsc.parent_category.id) {
+                    return $scope[selectedVariable];
+                }
+                return false;
+            }
 
     }]);
 
@@ -72704,11 +72761,12 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
         var url = $rootScope.app.apiURL ;
+        var urlGen = '/en' + url ;
         return $resource(url, {
             locale: '@locale'
         }, {
             getResults: { method: 'POST', url: '/:locale' + url + 'sr' , isArray: false},
-            genericSearch: {method: 'POST', url: +'/:locale'+ url + 'genericSearch', isArray : false }
+            genericSearch: {method: 'POST', url: urlGen + 'genericSearch', isArray : false }
         });
 
     }]);

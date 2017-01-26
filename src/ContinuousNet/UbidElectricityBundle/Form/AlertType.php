@@ -44,12 +44,12 @@ class AlertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Supplier' => 'Supplier', 'Buyer' => 'Buyer', 'SupplierProduct' => 'SupplierProduct', ), 'expanded' => false, 'multiple' => false))
-            ->add('category', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
+            ->add('types', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Supplier' => 'Supplier', 'Buyer' => 'Buyer', 'SupplierProduct' => 'SupplierProduct', ), 'expanded' => true, 'multiple' => true))
             ->add('name', TextType::class)
             ->add('description', TextType::class)
             ->add('status', ChoiceType::class, array('choices' => array('Active' => 'Active', 'Inactive' => 'Inactive', ), 'expanded' => false, 'multiple' => false))
-            ->add('unitCost', TextType::class)
+            ->add('categories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
+            ->add('countries', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
         ;
     }
     

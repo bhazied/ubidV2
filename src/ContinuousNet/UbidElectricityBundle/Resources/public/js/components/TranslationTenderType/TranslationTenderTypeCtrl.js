@@ -4,8 +4,8 @@
  * Controller for Translation Tender Type Details
  */
 
-app.controller('TranslationTenderTypeCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationTenderTypesDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationTenderTypesDataFactory) {
+app.controller('TranslationTenderTypeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$translationTenderTypesDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $translationTenderTypesDataFactory) {
 
 
     $scope.dateFormat = $filter('translate')('formats.DATE');
