@@ -377,11 +377,19 @@
                                     <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
                                 </label>
                             </div><!--/col-md-12-->
-                            <div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
-                                <div class="checkbox continuous-check check-primary">
+                            <!--<div class="col-md-6" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">-->
+                            <div class="col-md-12">
+                                <!--<div class="checkbox continuous-check check-primary">
                                     <input checklist-model="tender.categories" checklist-value="category.id" type="checkbox" name="category[]" id="tenderCategory[[category.id]]" />
                                     <label for="tenderCategory[[category.id]]">[[ category.name ]]</label>
-                                </div><!--/checkbox-->
+                                </div> -->
+                                <div class="block select-list">
+                                        <span class="input-icon">
+                                            <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="tender.categories" name="category[]" id="tenderCategory" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                </div>
                             </div><!--/col-md-3-->
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">

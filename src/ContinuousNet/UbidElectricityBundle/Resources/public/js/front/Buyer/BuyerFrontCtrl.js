@@ -17,7 +17,6 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 locale: $localStorage.language,
                 id: $stateParams.id
             };
-            console.log($params);
             $timeout(function () {
                 var def = $q.defer();
                 $buyersFrontDataFactory.buyer($params).$promise.then(function(data){

@@ -123,7 +123,7 @@ security:
             stateless: true
             anonymous: true
 
-        buyerDetails:
+        buyer_details:
             pattern:  ^/(en|fr|ar)/api/v1/buyerDetails
             stateless: true
             anonymous: true
