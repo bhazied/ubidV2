@@ -1711,8 +1711,9 @@
                 "ISVALID": "Est valide",
                 "typesoptions": {
                     "TENDER": "Appel d'offres",
-                    "CONSULTATION": "Consultation",
-                    "SUPPLIERANDBUYER": "Fournisseurandbuyer"
+                    "SUPPLIER": "Fournisseur",
+                    "BUYER": "Acheteur",
+                    "SUPPLIERPRODUCT": "Fournisseurproduct"
                 },
                 "statuses": {
                     "ACTIVE": "Active",

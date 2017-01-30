@@ -1711,8 +1711,9 @@
                 "ISVALID": "Is Valid",
                 "typesoptions": {
                     "TENDER": "Tender",
-                    "CONSULTATION": "Consultation",
-                    "SUPPLIERANDBUYER": "Supplierandbuyer"
+                    "SUPPLIER": "Supplier",
+                    "BUYER": "Buyer",
+                    "SUPPLIERPRODUCT": "Supplierproduct"
                 },
                 "statuses": {
                     "ACTIVE": "Active",

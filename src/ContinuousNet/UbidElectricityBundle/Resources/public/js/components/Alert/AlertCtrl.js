@@ -12,13 +12,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         title: $filter('translate')('content.list.fields.types.TENDER'),
         css: 'primary'
     }, {
-        id: 'Consultation',
-        title: $filter('translate')('content.list.fields.types.CONSULTATION'),
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
         css: 'success'
     }, {
-        id: 'SupplierAndBuyer',
-        title: $filter('translate')('content.list.fields.types.SUPPLIERANDBUYER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
         css: 'warning'
+    }, {
+        id: 'SupplierProduct',
+        title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
+        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',
