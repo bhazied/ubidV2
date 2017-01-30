@@ -371,5 +371,30 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },*/
             resolve: loadSequence('BidsShortListCtrl','BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'projectBidsFrontService')
+        }).state('front.myAlerts',{
+            url: '/my-alerts',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title : 'front.MYALERTS',
+            resolve: loadSequence()
+        }).state('front.myAlerts.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alerts.html',
+            title : 'front.MYALERTS',
+            resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
+        }).state('front.myAlerts.details',{
+            url: '/details',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
+            title : 'front.MYALERTS',
+            resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
+        }).state('front.myAlerts.new', {
+            url: '/new',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.edit', {
+            url: '/edit/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
         })
     }]);

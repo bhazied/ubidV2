@@ -204,7 +204,10 @@ app.constant('APP_JS_REQUIRES', {
         'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js',
         'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
         'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
-        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js'
+        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js',
+        'MyAlertsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertsCtrl.js',
+        'MyAlertCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertCtrl.js',
+        'MyAlertFormCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertFormCtrl.js'
     },
     modules: [{
         name: 'LoginService',

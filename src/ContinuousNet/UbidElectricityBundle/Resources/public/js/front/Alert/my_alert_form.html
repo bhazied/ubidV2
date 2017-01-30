@@ -1,0 +1,199 @@
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MyAlertFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWALERT" ng-if="alert.id == 0">
+                        New Alert
+                    </legend>
+                    <legend translate="content.list.EDITALERT" ng-if="alert.id > 0">
+                        Edit Alert
+                    </legend>
+                    <form name="alertForm" id="alertForm" novalidate>
+                        <input type="hidden" name="id" id="alertId" ng-model="alert.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.types.$dirty && alertForm.types.$invalid, 'has-success':alertForm.types.$valid}">
+                                    <label for="alertTypes" class="control-label">
+                                        <span translate="content.list.fields.TYPES">Types</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-md-6" ng-repeat="types_ in types">
+                                            <div class="checkbox continuous-check check-primary">
+                                                <input checklist-model="alert.types" checklist-value="types_.id" type="checkbox" name="types[]" id="alertTypes[[types_.id]]" />
+                                                <label for="alertTypes[[types_.id]]">[[ types_.title ]]</label>
+                                            </div><!--/checkbox-->
+                                        </div><!--/col-md-6-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="alertForm.types.$dirty && alertForm.types.$error.required" translate="content.form.messages.TYPESREQUIRED">Types is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.types.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.name.$dirty && alertForm.name.$invalid, 'has-success':alertForm.name.$valid}">
+                                    <label for="alertName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="alert.name" type="text" name="name" id="alertName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="alertForm.name.$dirty && alertForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="alertDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="alert.description" type="text" name="description" id="alertDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':alertForm.status.$dirty && alertForm.status.$invalid, 'has-success':alertForm.status.$valid}">
+                                    <label for="alertStatus" class="control-label">
+                                        <span translate="content.list.fields.STATUS">Status</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
+                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="alert.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
+                                        <label ng-repeat-end for="status[[ status.id ]]">
+                                            [[ status.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="statuses.length >= 10">
+                                        <span class="input-icon">
+                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="alert.status" name="status" id="alertStatus" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="alertForm.status.$dirty && alertForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                                <div class="col-md-12">
+                                <ul class="categories-checkbox">
+                                    <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
+                                    <li ng-repeat="category in frontCategories | filter:filterCategories">
+                                        <div class="form-group">
+                                            <label class="custom-control custom-checkbox">
+                                                <input ng-click="changeParentStatus(category.node.id)" type="checkbox" class="custom-control-input" checklist-model="alert.categories" checklist-value="category.node.id" name="category[]" id="alertCategory[[category.node.id]]">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">[[ category.node.name ]]</span>
+                                            </label>
+                                        </div>
+                                        <ul ng-if="category.children.length > 0" ng-repeat="tenderSubCategory in category.children">
+                                            <div class="form-group">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">[[ tenderSubCategory.name ]]</span>
+                                                </label>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div><!--/col-md-6-->
+
+
+                            <div class="col-md-12">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="alertCategories" type="checkbox" id="alertCategories" />
+                                    <label class="all" for="alertCategories" translate="content.common.SELECTALL">Select All</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span translate="content.list.fields.COUNTRIES">Countries</span>
+                                    <span class="input-icon">
+                                        <input placeholder="[[ 'content.form.messages.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSearchText" class="form-control pull-right input-sm underline" />
+                                         <i class="ti-filter"></i>
+                                     </span><!--/input-icon-->
+                                </label>
+                                <select multiple ng-options="item.id as item.name for item in countries | filter:countriesSearchText " ng-model="alert.countries" name="country[]" id="alertCountry[[country.id]]" class="form-control" ng-required="true" ng-dblclick="addSelectedCountries()">
+                                </select>
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+                                <span translate="content.list.fields.COUNTRIESSELECTED">Countries  Selected</span>
+                                 <span class="input-icon">
+                                        <input placeholder="[[ 'content.form.messages.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSelectedSearchText" class="form-control pull-right input-sm underline" />
+                                         <i class="ti-filter"></i>
+                                     </span><!--/input-icon-->
+                                </label>
+                                <select multiple ng-options="item.id as item.name for item in selectedCountries | filter:countriesSelectedSearchText "  ng-model="alert.selectedCountries" name="countrySelected[]" id="alertCountrySelected[[country.id]]" class="form-control">
+                                </select>
+                            </div><!--/col-md-6-->
+
+
+                            <div class="col-md-4">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="alertCountries" type="checkbox" id="alertCountries" />
+                                    <label class="all" for="alertCountries" translate="content.common.SELECTALL">Select All</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-4-->
+                            <div class="col-md-4">
+                                <div class="checkbox continuous-check check-primary">
+                                    <button class="add-remove add" ng-click="addSelectedCountries()">+</button>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-4-->
+                            <div class="col-md-4">
+                                <div class="checkbox continuous-check check-primary pull-right">
+                                    <button class="add-remove remove" ng-if="selectedCountries.length  > 0" ng-click="removeSelectedCountries()">-</button>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-4-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKALERTS">Back to Alerts list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="alert.id > 0" type="button" ng-click="submitForm(alertForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(alertForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="alerts.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+
