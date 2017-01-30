@@ -42,6 +42,20 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BID.E"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
+                                <td>
+                                    <div ng-if="bid.attachment_files != '' && bid.attachment_files != null">
+                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BID.Z"></h3></th>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
                                 <td>
                                     <span>[[ bid.created_at | date: datetimeFormat ]]</span>
@@ -134,17 +148,6 @@
                             <tr>
                                 <td><span translate="content.list.fields.TENDER">Tender</span></td>
                                 <td><a ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})">[[ bid.tender.title ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.BID.E"></h3></th>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
-                                <td>
-                                    <div ng-if="bid.attachment_files != '' && bid.attachment_files != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

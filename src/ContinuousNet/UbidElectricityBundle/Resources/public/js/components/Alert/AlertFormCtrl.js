@@ -30,17 +30,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.typesoptions.TENDER'),
         css: 'primary'
     }, {
-        id: 'Supplier',
-        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIER'),
+        id: 'Consultation',
+        title: $filter('translate')('content.list.fields.typesoptions.CONSULTATION'),
         css: 'success'
     }, {
-        id: 'Buyer',
-        title: $filter('translate')('content.list.fields.typesoptions.BUYER'),
+        id: 'SupplierAndBuyer',
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERANDBUYER'),
         css: 'warning'
-    }, {
-        id: 'SupplierProduct',
-        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERPRODUCT'),
-        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',
@@ -168,7 +164,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         }
     });
 
+    $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
+        $scope.redirect = redirect;
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;

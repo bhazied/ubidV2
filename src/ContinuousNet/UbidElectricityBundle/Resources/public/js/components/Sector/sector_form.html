@@ -23,7 +23,7 @@
                     <legend translate="content.list.EDITSECTOR" ng-if="sector.id > 0">
                         Edit Sector
                     </legend>
-                    <form name="sectorForm" id="sectorForm" novalidate ng-submit="submitForm(sectorForm)">
+                    <form name="sectorForm" id="sectorForm" novalidate ng-submit="submitForm(sectorForm, true)">
                         <input type="hidden" name="id" id="sectorId" ng-model="sector.id" />
                         <div class="row">
                             <div class="col-md-6">
@@ -79,12 +79,12 @@
                             </div>
                             <div class="col-md-4 text-center">
                                 <button ng-if="sector.id > 0" type="button" ng-click="submitForm(sectorForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="sectorForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
                                 </button>
                             </div>
                             <div class="col-md-4">
                                 <button type="button" ng-click="submitForm(sectorForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="sectorForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
                         </div>

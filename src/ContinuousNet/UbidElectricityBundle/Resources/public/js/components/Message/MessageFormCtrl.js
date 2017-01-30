@@ -137,7 +137,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.getSuppliers();
 
 
+    $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
+        $scope.redirect = redirect;
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;

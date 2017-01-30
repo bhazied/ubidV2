@@ -202,7 +202,34 @@
                                 <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
                             </tr>
                             <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.DEFAULT"></h3></th>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.E"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ISPUBLIC">Is Public</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.is_public ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLECOMMENT">Enable Comment</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_comment ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_private_message ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ENABLESHARE">Enable Share</span></td>
+                                <td>
+                                    <span my-boolean="[[ buyer.enable_share ]]"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.Z"></h3></th>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
@@ -229,33 +256,6 @@
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
                                 <td><a ui-sref="app.access.usersdetails({id: buyer.modifier_user.id})">[[ buyer.modifier_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.E"></h3></th>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ISPUBLIC">Is Public</span></td>
-                                <td>
-                                    <span my-boolean="[[ buyer.is_public ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ENABLECOMMENT">Enable Comment</span></td>
-                                <td>
-                                    <span my-boolean="[[ buyer.enable_comment ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</span></td>
-                                <td>
-                                    <span my-boolean="[[ buyer.enable_private_message ]]"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ENABLESHARE">Enable Share</span></td>
-                                <td>
-                                    <span my-boolean="[[ buyer.enable_share ]]"></span>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

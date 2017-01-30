@@ -90,13 +90,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.rolesoptions.ROLE_ADMIN'),
         css: 'warning'
     }, {
-        id: 'ROLE_ADMIN_PUBLISHER',
-        title: $filter('translate')('content.list.fields.rolesoptions.ROLE_ADMIN_PUBLISHER'),
+        id: 'ROLE_CALL_CANTER',
+        title: $filter('translate')('content.list.fields.rolesoptions.ROLE_CALL_CANTER'),
         css: 'danger'
+    }, {
+        id: 'ROLE_IT',
+        title: $filter('translate')('content.list.fields.rolesoptions.ROLE_IT'),
+        css: 'default'
     }, {
         id: 'ROLE_SUPER_ADMIN',
         title: $filter('translate')('content.list.fields.rolesoptions.ROLE_SUPER_ADMIN'),
-        css: 'default'
+        css: 'info'
     }];
 
     $scope.passwordRequestedAtOpened = false;
@@ -267,7 +271,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         }
     });
 
+    $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
+        $scope.redirect = redirect;
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
