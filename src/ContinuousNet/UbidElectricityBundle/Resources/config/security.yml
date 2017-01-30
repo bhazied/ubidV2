@@ -1,54 +1,462 @@
 
 security:
     access_control:
-        - { path: ^/(en|fr|ar)/api/alerts$,      roles: [ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        # - { path: ^/(en|fr|ar)/api/categories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        # - { path: ^/(en|fr|ar)/api/countries$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/banners$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/bannerpositions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/bannertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/bids$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/bidproducts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/biddingtypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/buyers$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/buyertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/clicks$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/groups$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/hits$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/impressions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        #- { path: ^/(en|fr|ar)/api/languages$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/logs$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/menus$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/menulinks$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/messages$,      roles: [ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/notifications$,      roles: [ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/posts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/postcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/posttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/producttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/regions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/sectors$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/suppliers$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/supplierproducts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMI,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/suppliertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/tenders$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/tenderbookmarks$,      roles: [ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/tenderproducts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/tendertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationbuyertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationcountries$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationmenus$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationmenulinks$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationposts$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationpostcategories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationposttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationproducttypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationregions$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationsectors$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/translationtendertypes$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/users$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/usersettings$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
-        - { path: ^/(en|fr|ar)/api/visits$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
+        # Alerts ACL
+        # Alert data
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [GET], roles: [] }
+        # Create new Alert
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [POST], roles: [] }
+        # Update existing Alert
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [PUT, PATCH], roles: [] }
+        # Detlete existing Alert
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [DELETE], roles: [] }
+        # Categories ACL
+        # Category data
+        #- { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Category
+        - { path: ^/(en|fr|ar)/api/categories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Category
+        - { path: ^/(en|fr|ar)/api/categories$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Category
+        - { path: ^/(en|fr|ar)/api/categories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Countries ACL
+        # Country data
+        #- { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Country
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Country
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Country
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Banners ACL
+        # Banner data
+        - { path: ^/(en|fr|ar)/api/banners$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Banner
+        - { path: ^/(en|fr|ar)/api/banners$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Banner
+        - { path: ^/(en|fr|ar)/api/banners$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Banner
+        - { path: ^/(en|fr|ar)/api/banners$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Banner Positions ACL
+        # Banner Position data
+        - { path: ^/(en|fr|ar)/api/bannerpositions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Banner Position
+        - { path: ^/(en|fr|ar)/api/bannerpositions$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Banner Position
+        - { path: ^/(en|fr|ar)/api/bannerpositions$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Banner Position
+        - { path: ^/(en|fr|ar)/api/bannerpositions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Banner Types ACL
+        # Banner Type data
+        - { path: ^/(en|fr|ar)/api/bannertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Banner Type
+        - { path: ^/(en|fr|ar)/api/bannertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Banner Type
+        - { path: ^/(en|fr|ar)/api/bannertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Banner Type
+        - { path: ^/(en|fr|ar)/api/bannertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Bids ACL
+        # Bid data
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Bid
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Bid
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Bid
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Bid Products ACL
+        # Bid Product data
+        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Bid Product
+        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Bid Product
+        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Bid Product
+        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Bidding Types ACL
+        # Bidding Type data
+        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Bidding Type
+        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Bidding Type
+        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Bidding Type
+        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Buyers ACL
+        # Buyer data
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Create new Buyer
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Update existing Buyer
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Detlete existing Buyer
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Buyer Types ACL
+        # Buyer Type data
+        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Buyer Type
+        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Buyer Type
+        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Buyer Type
+        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Clicks ACL
+        # Click data
+        - { path: ^/(en|fr|ar)/api/clicks$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Click
+        - { path: ^/(en|fr|ar)/api/clicks$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Click
+        - { path: ^/(en|fr|ar)/api/clicks$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Click
+        - { path: ^/(en|fr|ar)/api/clicks$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Groups ACL
+        # Group data
+        - { path: ^/(en|fr|ar)/api/groups$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Group
+        - { path: ^/(en|fr|ar)/api/groups$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Group
+        - { path: ^/(en|fr|ar)/api/groups$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Group
+        - { path: ^/(en|fr|ar)/api/groups$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Hits ACL
+        # Hit data
+        - { path: ^/(en|fr|ar)/api/hits$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Hit
+        - { path: ^/(en|fr|ar)/api/hits$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Hit
+        - { path: ^/(en|fr|ar)/api/hits$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Hit
+        - { path: ^/(en|fr|ar)/api/hits$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Impressions ACL
+        # Impression data
+        - { path: ^/(en|fr|ar)/api/impressions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Impression
+        - { path: ^/(en|fr|ar)/api/impressions$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Impression
+        - { path: ^/(en|fr|ar)/api/impressions$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Impression
+        - { path: ^/(en|fr|ar)/api/impressions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Languages ACL
+        # Language data
+        #- { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Language
+        - { path: ^/(en|fr|ar)/api/languages$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Language
+        - { path: ^/(en|fr|ar)/api/languages$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Language
+        - { path: ^/(en|fr|ar)/api/languages$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Logs ACL
+        # Log data
+        - { path: ^/(en|fr|ar)/api/logs$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Log
+        - { path: ^/(en|fr|ar)/api/logs$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Log
+        - { path: ^/(en|fr|ar)/api/logs$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Log
+        - { path: ^/(en|fr|ar)/api/logs$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Menus ACL
+        # Menu data
+        - { path: ^/(en|fr|ar)/api/menus$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Menu
+        - { path: ^/(en|fr|ar)/api/menus$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Menu
+        - { path: ^/(en|fr|ar)/api/menus$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Menu
+        - { path: ^/(en|fr|ar)/api/menus$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Menu Links ACL
+        # Menu Link data
+        - { path: ^/(en|fr|ar)/api/menulinks$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Menu Link
+        - { path: ^/(en|fr|ar)/api/menulinks$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Menu Link
+        - { path: ^/(en|fr|ar)/api/menulinks$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Menu Link
+        - { path: ^/(en|fr|ar)/api/menulinks$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Messages ACL
+        # Message data
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [GET], roles: [] }
+        # Create new Message
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [POST], roles: [] }
+        # Update existing Message
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [PUT, PATCH], roles: [] }
+        # Detlete existing Message
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [DELETE], roles: [] }
+        # Notifications ACL
+        # Notification data
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [GET], roles: [] }
+        # Create new Notification
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [POST], roles: [] }
+        # Update existing Notification
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [PUT, PATCH], roles: [] }
+        # Detlete existing Notification
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [DELETE], roles: [] }
+        # Posts ACL
+        # Post data
+        - { path: ^/(en|fr|ar)/api/posts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Post
+        - { path: ^/(en|fr|ar)/api/posts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Post
+        - { path: ^/(en|fr|ar)/api/posts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Post
+        - { path: ^/(en|fr|ar)/api/posts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Post Categories ACL
+        # Post Category data
+        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Post Category
+        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Post Category
+        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Post Category
+        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Post Types ACL
+        # Post Type data
+        - { path: ^/(en|fr|ar)/api/posttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Post Type
+        - { path: ^/(en|fr|ar)/api/posttypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Post Type
+        - { path: ^/(en|fr|ar)/api/posttypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Post Type
+        - { path: ^/(en|fr|ar)/api/posttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Product Types ACL
+        # Product Type data
+        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Product Type
+        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Product Type
+        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Product Type
+        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Regions ACL
+        # Region data
+        - { path: ^/(en|fr|ar)/api/regions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Region
+        - { path: ^/(en|fr|ar)/api/regions$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Region
+        - { path: ^/(en|fr|ar)/api/regions$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Region
+        - { path: ^/(en|fr|ar)/api/regions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Sectors ACL
+        # Sector data
+        - { path: ^/(en|fr|ar)/api/sectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Sector
+        - { path: ^/(en|fr|ar)/api/sectors$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Sector
+        - { path: ^/(en|fr|ar)/api/sectors$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Sector
+        - { path: ^/(en|fr|ar)/api/sectors$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Suppliers ACL
+        # Supplier data
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Create new Supplier
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Update existing Supplier
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Detlete existing Supplier
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        # Supplier Products ACL
+        # Supplier Product data
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Supplier Product
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Supplier Product
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Supplier Product
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Supplier Types ACL
+        # Supplier Type data
+        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Supplier Type
+        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Supplier Type
+        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Supplier Type
+        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Tenders ACL
+        # Tender data
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Tender
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Tender
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Tender
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Tender Bookmarks ACL
+        # Tender Bookmark data
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [GET], roles: [] }
+        # Create new Tender Bookmark
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [POST], roles: [] }
+        # Update existing Tender Bookmark
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [PUT, PATCH], roles: [] }
+        # Detlete existing Tender Bookmark
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [DELETE], roles: [] }
+        # Tender Products ACL
+        # Tender Product data
+        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Tender Product
+        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Tender Product
+        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Tender Product
+        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Tender Types ACL
+        # Tender Type data
+        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Tender Type
+        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Tender Type
+        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Tender Type
+        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Bidding Types ACL
+        # Translation Bidding Type data
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Bidding Type
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Bidding Type
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Bidding Type
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Buyer Types ACL
+        # Translation Buyer Type data
+        - { path: ^/(en|fr|ar)/api/translationbuyertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Buyer Type
+        - { path: ^/(en|fr|ar)/api/translationbuyertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Buyer Type
+        - { path: ^/(en|fr|ar)/api/translationbuyertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Buyer Type
+        - { path: ^/(en|fr|ar)/api/translationbuyertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Categories ACL
+        # Translation Category data
+        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Category
+        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Category
+        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Category
+        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Countries ACL
+        # Translation Country data
+        - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Country
+        - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Country
+        - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Country
+        - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Menus ACL
+        # Translation Menu data
+        - { path: ^/(en|fr|ar)/api/translationmenus$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Menu
+        - { path: ^/(en|fr|ar)/api/translationmenus$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Menu
+        - { path: ^/(en|fr|ar)/api/translationmenus$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Menu
+        - { path: ^/(en|fr|ar)/api/translationmenus$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Menu Links ACL
+        # Translation Menu Link data
+        - { path: ^/(en|fr|ar)/api/translationmenulinks$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Menu Link
+        - { path: ^/(en|fr|ar)/api/translationmenulinks$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Menu Link
+        - { path: ^/(en|fr|ar)/api/translationmenulinks$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Menu Link
+        - { path: ^/(en|fr|ar)/api/translationmenulinks$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Posts ACL
+        # Translation Post data
+        - { path: ^/(en|fr|ar)/api/translationposts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Post
+        - { path: ^/(en|fr|ar)/api/translationposts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Post
+        - { path: ^/(en|fr|ar)/api/translationposts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Post
+        - { path: ^/(en|fr|ar)/api/translationposts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Post Categories ACL
+        # Translation Post Category data
+        - { path: ^/(en|fr|ar)/api/translationpostcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Post Category
+        - { path: ^/(en|fr|ar)/api/translationpostcategories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Post Category
+        - { path: ^/(en|fr|ar)/api/translationpostcategories$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Post Category
+        - { path: ^/(en|fr|ar)/api/translationpostcategories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Post Types ACL
+        # Translation Post Type data
+        - { path: ^/(en|fr|ar)/api/translationposttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Post Type
+        - { path: ^/(en|fr|ar)/api/translationposttypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Post Type
+        - { path: ^/(en|fr|ar)/api/translationposttypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Post Type
+        - { path: ^/(en|fr|ar)/api/translationposttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Product Types ACL
+        # Translation Product Type data
+        - { path: ^/(en|fr|ar)/api/translationproducttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Product Type
+        - { path: ^/(en|fr|ar)/api/translationproducttypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Product Type
+        - { path: ^/(en|fr|ar)/api/translationproducttypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Product Type
+        - { path: ^/(en|fr|ar)/api/translationproducttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Regions ACL
+        # Translation Region data
+        - { path: ^/(en|fr|ar)/api/translationregions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Region
+        - { path: ^/(en|fr|ar)/api/translationregions$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Region
+        - { path: ^/(en|fr|ar)/api/translationregions$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Region
+        - { path: ^/(en|fr|ar)/api/translationregions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Sectors ACL
+        # Translation Sector data
+        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Sector
+        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Sector
+        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Sector
+        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Supplier Types ACL
+        # Translation Supplier Type data
+        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Supplier Type
+        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Supplier Type
+        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Supplier Type
+        - { path: ^/(en|fr|ar)/api/translationsuppliertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Translation Tender Types ACL
+        # Translation Tender Type data
+        - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Translation Tender Type
+        - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Translation Tender Type
+        - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Translation Tender Type
+        - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Users ACL
+        # User data
+        - { path: ^/(en|fr|ar)/api/users$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        # Create new User
+        - { path: ^/(en|fr|ar)/api/users$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        # Update existing User
+        - { path: ^/(en|fr|ar)/api/users$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        # Detlete existing User
+        - { path: ^/(en|fr|ar)/api/users$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        # User Settings ACL
+        # User Setting data
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new User Setting
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing User Setting
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing User Setting
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Visits ACL
+        # Visit data
+        - { path: ^/(en|fr|ar)/api/visits$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Create new Visit
+        - { path: ^/(en|fr|ar)/api/visits$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Update existing Visit
+        - { path: ^/(en|fr|ar)/api/visits$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        # Detlete existing Visit
+        - { path: ^/(en|fr|ar)/api/visits$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }

@@ -45,7 +45,7 @@
                                 <span class="sr-only"></span>
                             </button>
                             <ul class="dropdown-menu my-dropdown" ng-show="showFieldsMenu">
-                                <li ng-repeat="(i, col) in cols">
+                                <li ng-repeat="(i, col) in cols" ng-if="col.displayInList">
                                     <div class="checkbox continuous-check check-primary check-sm" style="margin: 3px 5px;">
                                         <input type="checkbox" id="field[[i]]" ng-model="col.show" ng-change="setParamValue(col.field + '_show_filed', col.show)" />
                                         <label for="field[[i]]">[[col.title]]</label>
