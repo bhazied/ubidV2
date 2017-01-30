@@ -1847,10 +1847,12 @@
       "NEWALERT": "Add new alert",
       "CHANGEPASSWORD": "Change my password",
       "MYPROFILE": "Manage my account",
-      "SIGNOUT": "Sign out"
+      "SIGNOUT": "Sign out",
+      "SETTINGS": "Settings"
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
+    "ALERTSETTINGS": "Alert settings",
     "MYACCOUNT": "Account",
     "PREVIOUS": "Previous",
     "NEXT": "Next",

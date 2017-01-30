@@ -346,7 +346,7 @@ app.config(['$stateProvider',
             resolve: loadSequence()
         }).state('front.projectbids.list', {
             url: '/list',
-            
+
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
             title: 'front.PROJECTBIDS',
             resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService', 'supplierService')
@@ -397,5 +397,10 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
             title : 'front.MYALERTADD',
             resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.settings', {
+            url: '/settings',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_settings.html',
+            title : 'front.MYALERTSETTINGS',
+            resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingFormCtrl', 'userSettingService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         })
     }]);

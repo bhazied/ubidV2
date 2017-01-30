@@ -207,7 +207,8 @@ app.constant('APP_JS_REQUIRES', {
         'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js',
         'MyAlertsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertsCtrl.js',
         'MyAlertCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertCtrl.js',
-        'MyAlertFormCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertFormCtrl.js'
+        'MyAlertFormCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertFormCtrl.js',
+        'MyAlertSettingsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertSettingsCtrl.js'
     },
     modules: [{
         name: 'LoginService',
