@@ -84,13 +84,13 @@ security:
         - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Buyers ACL
         # Buyer data
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Create new Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Update existing Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Detlete existing Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Buyer Types ACL
         # Buyer Type data
         - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -246,13 +246,13 @@ security:
         - { path: ^/(en|fr|ar)/api/sectors$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Suppliers ACL
         # Supplier data
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Create new Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Update existing Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Detlete existing Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
         # Supplier Products ACL
         # Supplier Product data
         - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -435,13 +435,13 @@ security:
         - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Users ACL
         # User data
-        - { path: ^/(en|fr|ar)/api/users$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/users$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # Create new User
-        - { path: ^/(en|fr|ar)/api/users$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/users$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # Update existing User
-        - { path: ^/(en|fr|ar)/api/users$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/users$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # Detlete existing User
-        - { path: ^/(en|fr|ar)/api/users$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CANTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/users$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # User Settings ACL
         # User Setting data
         - { path: ^/(en|fr|ar)/api/usersettings$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }

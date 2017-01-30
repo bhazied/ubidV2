@@ -90,8 +90,8 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.rolesoptions.ROLE_ADMIN'),
         css: 'warning'
     }, {
-        id: 'ROLE_CALL_CANTER',
-        title: $filter('translate')('content.list.fields.rolesoptions.ROLE_CALL_CANTER'),
+        id: 'ROLE_CALL_CENTER',
+        title: $filter('translate')('content.list.fields.rolesoptions.ROLE_CALL_CENTER'),
         css: 'danger'
     }, {
         id: 'ROLE_IT',

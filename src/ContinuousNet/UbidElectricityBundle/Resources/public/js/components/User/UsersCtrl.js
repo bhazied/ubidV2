@@ -79,8 +79,8 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         title: $filter('translate')('content.list.fields.roles.ROLE_ADMIN'),
         css: 'warning'
     }, {
-        id: 'ROLE_CALL_CANTER',
-        title: $filter('translate')('content.list.fields.roles.ROLE_CALL_CANTER'),
+        id: 'ROLE_CALL_CENTER',
+        title: $filter('translate')('content.list.fields.roles.ROLE_CALL_CENTER'),
         css: 'danger'
     }, {
         id: 'ROLE_IT',
