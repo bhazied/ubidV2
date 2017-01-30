@@ -1262,7 +1262,16 @@
         "CURRENTPASSWORD": "Current password",
         "NEWPASSWORD": "New password",
         "RECESSPASSWORD":"retype password",
-        "GENERALCONDITION": "General condition"
+        "GENERALCONDITION": "General condition",
+        "TYPES": "Types",
+        "typesoptions":{
+          "TENDER": "Tender",
+          "SUPPLIER": "Supplier",
+          "BUYER": "Buyer",
+          "CONSULTATION": "Consultation"
+        },
+        "COUNTRIES": "Countries",
+        "COUNTRIESSELECTED": "Selected countries"
       }
     },
     "form": {

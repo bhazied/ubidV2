@@ -1,7 +1,7 @@
 
 security:
     access_control:
-        - { path: ^/(en|fr|ar)/api/alerts$,      roles: [], methods: [GET, POST, PUT, PATCH, DELETE] }
+        - { path: ^/(en|fr|ar)/api/alerts$,      roles: [ROLE_SUBSCRIBER], methods: [GET, POST, PUT, PATCH, DELETE] }
         # - { path: ^/(en|fr|ar)/api/categories$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         # - { path: ^/(en|fr|ar)/api/countries$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN], methods: [GET, POST, PUT, PATCH, DELETE] }
         - { path: ^/(en|fr|ar)/api/banners$,      roles: [ROLE_ADMIN, ROLE_ADMIN_PUBLISHER, ROLE_SUPER_ADMIN,], methods: [GET, POST, PUT, PATCH, DELETE] }
