@@ -12,7 +12,7 @@ security:
         - { path: ^/(en|fr|ar)/api/alerts$, methods: [DELETE], roles: [] }
         # Categories ACL
         # Category data
-        #- { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Create new Category
         - { path: ^/(en|fr|ar)/api/categories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Category
@@ -21,7 +21,7 @@ security:
         - { path: ^/(en|fr|ar)/api/categories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Countries ACL
         # Country data
-        #- { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Create new Country
         - { path: ^/(en|fr|ar)/api/countries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Country
@@ -138,7 +138,7 @@ security:
         - { path: ^/(en|fr|ar)/api/impressions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Languages ACL
         # Language data
-        #- { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Create new Language
         - { path: ^/(en|fr|ar)/api/languages$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Language
