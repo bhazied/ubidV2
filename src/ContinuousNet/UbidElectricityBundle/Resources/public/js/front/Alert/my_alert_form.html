@@ -126,7 +126,7 @@
                             <div class="col-md-6">
                                 <span translate="content.list.fields.COUNTRIES">Countries</span>
                                     <span class="input-icon">
-                                        <input placeholder="[[ 'content.form.messages.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSearchText" class="form-control pull-right input-sm underline" />
+                                        <input placeholder="[[ 'front.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSearchText" class="form-control pull-right input-sm underline" />
                                          <i class="ti-filter"></i>
                                      </span><!--/input-icon-->
                                 </label>
@@ -136,7 +136,7 @@
                             <div class="col-md-6">
                                 <span translate="content.list.fields.COUNTRIESSELECTED">Countries  Selected</span>
                                  <span class="input-icon">
-                                        <input placeholder="[[ 'content.form.messages.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSelectedSearchText" class="form-control pull-right input-sm underline" />
+                                        <input placeholder="[[ 'front.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSelectedSearchText" class="form-control pull-right input-sm underline" />
                                          <i class="ti-filter"></i>
                                      </span><!--/input-icon-->
                                 </label>
@@ -169,9 +169,7 @@
                                 </a>
                             </div>
                             <div class="col-md-4 text-center">
-                                <button ng-if="alert.id > 0" type="button" ng-click="submitForm(alertForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
-                                </button>
+
                             </div>
                             <div class="col-md-4">
                                 <button type="button" ng-click="submitForm(alertForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="alertForm.$invalid" -->

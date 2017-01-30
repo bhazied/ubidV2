@@ -1269,7 +1269,9 @@
           "SUPPLIER": "Supplier",
           "BUYER": "Buyer",
           "CONSULTATION": "Consultation"
-        }
+        },
+        "COUNTRIES": "Countries",
+        "COUNTRIESSELECTED": "Selected countries"
       }
     },
     "form": {
