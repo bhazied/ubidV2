@@ -16,13 +16,17 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         title: $filter('translate')('content.list.fields.types.TENDER'),
         css: 'primary'
     }, {
-        id: 'Consultation',
-        title: $filter('translate')('content.list.fields.types.CONSULTATION'),
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
         css: 'success'
     }, {
-        id: 'SupplierAndBuyer',
-        title: $filter('translate')('content.list.fields.types.SUPPLIERANDBUYER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
         css: 'warning'
+    }, {
+        id: 'SupplierProduct',
+        title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
+        css: 'danger'
     }];
     $scope.statusesOptions = [{
         id: '',
@@ -217,17 +221,17 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
-            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'alert.id', filter: { 'alert.id': 'number' }, displayInList: true, getValue: $scope.textValue },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'alert.createdAt', filter: { 'alert.createdAt': 'number' }, displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'alert.modifiedAt', filter: { 'alert.modifiedAt': 'number' }, displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'alert.description', filter: { 'alert.description': 'text' }, displayInList: true, getValue: $scope.textValue },
-            { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'alert.name', filter: { 'alert.name': 'text' }, displayInList: true, getValue: $scope.textValue },
-            { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'alert.status', filter: { 'alert.status': 'select' }, displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="alertStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
-            { field: 'types', title: $filter('translate')('content.list.fields.TYPES'), sortable: 'alert.types', filter: { 'alert.types': 'text' }, displayInList: true, getValue: $scope.textValue },
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'alert.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'alert.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'alert.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), displayInList: true, display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
-            { field: 'countries', 'class': 'has_nany', title: $filter('translate')('content.list.fields.COUNTRIES'), filter: { 'alert.countries': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCountries(), displayInList: true, display: false, displayField: 'name', state: 'app.settings.countriesdetails' },
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'alert.id', filter: { 'alert.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'alert.createdAt', filter: { 'alert.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'alert.modifiedAt', filter: { 'alert.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'alert.description', filter: { 'alert.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), displayInList: true, getValue: $scope.textValue },
+            { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'alert.name', filter: { 'alert.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), displayInList: true, getValue: $scope.textValue },
+            { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'alert.status', filter: { 'alert.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="alertStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'types', title: $filter('translate')('content.list.fields.TYPES'), sortable: 'alert.types', filter: { 'alert.types': 'text' }, show: $scope.getParamValue('types_show_filed', false), displayInList: true, getValue: $scope.textValue },
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'alert.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'alert.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'alert.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), show: $scope.getParamValue('categories_show_filed', false), displayInList: true, display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
+            { field: 'countries', 'class': 'has_nany', title: $filter('translate')('content.list.fields.COUNTRIES'), filter: { 'alert.countries': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCountries(), show: $scope.getParamValue('countries_show_filed', false), displayInList: true, display: false, displayField: 'name', state: 'app.settings.countriesdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'

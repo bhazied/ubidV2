@@ -30,13 +30,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.typesoptions.TENDER'),
         css: 'primary'
     }, {
-        id: 'Consultation',
-        title: $filter('translate')('content.list.fields.typesoptions.CONSULTATION'),
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIER'),
         css: 'success'
     }, {
-        id: 'SupplierAndBuyer',
-        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERANDBUYER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.typesoptions.BUYER'),
         css: 'warning'
+    }, {
+        id: 'SupplierProduct',
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERPRODUCT'),
+        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',
