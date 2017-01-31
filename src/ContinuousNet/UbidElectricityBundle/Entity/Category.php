@@ -57,7 +57,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class Category
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class Category
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class Category
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -147,7 +147,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="parent_category_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`parent_category_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -162,7 +162,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="ProductType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`product_type_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -177,7 +177,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -192,7 +192,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -208,10 +208,10 @@ class Category
      * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
      *     }
      * )
      * 

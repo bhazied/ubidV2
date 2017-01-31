@@ -56,7 +56,7 @@ class TenderBookmark
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class TenderBookmark
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class TenderBookmark
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -91,7 +91,7 @@ class TenderBookmark
      *
      * @ORM\ManyToOne(targetEntity="Tender")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -106,7 +106,7 @@ class TenderBookmark
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -121,7 +121,7 @@ class TenderBookmark
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

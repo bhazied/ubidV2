@@ -41,6 +41,23 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
     }];
+    $scope.periodsOptions = [{
+        id: '',
+        title: $filter('translate')('content.common.ALL'),
+        css: ''
+    }, {
+        id: 'Daily',
+        title: $filter('translate')('content.list.fields.periods.DAILY'),
+        css: 'primary'
+    }, {
+        id: 'Weekly',
+        title: $filter('translate')('content.list.fields.periods.WEEKLY'),
+        css: 'success'
+    }, {
+        id: 'Monthly',
+        title: $filter('translate')('content.list.fields.periods.MONTHLY'),
+        css: 'warning'
+    }];
 
     $scope.isLoading = false;
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
@@ -189,6 +206,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         return this.interpolateExpr({
             row: row,
             statuses: $scope.statusesOptions,
+            periods: $scope.periodsOptions,
             field: this.field,
             title: this.title,
             sortable: this.sortable,
@@ -226,6 +244,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'alert.modifiedAt', filter: { 'alert.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'alert.description', filter: { 'alert.description': 'text' }, show: $scope.getParamValue('description_show_filed', true), displayInList: true, getValue: $scope.textValue },
             { field: 'name', title: $filter('translate')('content.list.fields.NAME'), sortable: 'alert.name', filter: { 'alert.name': 'text' }, show: $scope.getParamValue('name_show_filed', true), displayInList: true, getValue: $scope.textValue },
+            { field: 'period', 'class': 'enum', title: $filter('translate')('content.list.fields.PERIOD'), sortable: 'alert.period', filter: { 'alert.period': 'select' }, show: $scope.getParamValue('period_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.periodsOptions, interpolateExpr: $interpolate('<span class="alertPeriod" my-enum="[[ row.period ]]" my-enum-list=\'[[ periods ]]\'></span>') },
             { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'alert.status', filter: { 'alert.status': 'select' }, show: $scope.getParamValue('status_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="alertStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
             { field: 'types', title: $filter('translate')('content.list.fields.TYPES'), sortable: 'alert.types', filter: { 'alert.types': 'text' }, show: $scope.getParamValue('types_show_filed', false), displayInList: true, getValue: $scope.textValue },
             { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'alert.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },

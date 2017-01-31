@@ -343,6 +343,8 @@
                 "ENTERDESCRIPTION": "Enter the Description",
                 "SELECTSTATUS": "Select Status",
                 "STATUSREQUIRED": "The Status is required",
+                "SELECTPERIOD": "Select Period",
+                "PERIODREQUIRED": "The Period is required",
                 "FILTERCATEGORIES": "Filter Categories",
                 "FILTERCOUNTRIES": "Filter Countries",
                 "ENTERSLUG": "Enter the Slug",
@@ -1490,6 +1492,7 @@
                 "NAME": "Name",
                 "DESCRIPTION": "Description",
                 "STATUS": "Status",
+                "PERIOD": "Period",
                 "CREATEDAT": "Created At",
                 "CREATORUSER": "Creator User",
                 "MODIFIEDAT": "Modified At",
@@ -1729,6 +1732,11 @@
                     "SHORTLISTED": "Shortlisted",
                     "QUALIFIED": "Qualified",
                     "SENT": "Sent"
+                },
+                "periods": {
+                    "DAILY": "Daily",
+                    "WEEKLY": "Weekly",
+                    "MONTHLY": "Monthly"
                 },
                 "genders": {
                     "ALL": "All",
