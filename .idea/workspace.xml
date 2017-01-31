@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="71cdd257-2ac0-467f-8132-0c7a6f87c93d" name="Default" comment="" />
-=======
     <list default="true" id="71cdd257-2ac0-467f-8132-0c7a6f87c93d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -23,87 +19,161 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DatabaseView">
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="ubid_electricity" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="partial_profile_menu.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html">
+      <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="e-elctricity.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="569">
-              <caret line="1140" column="0" selection-start-line="1140" selection-start-column="0" selection-end-line="1140" selection-end-column="0" />
-=======
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="87" selection-start-line="8" selection-start-column="87" selection-end-line="8" selection-end-column="87" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
+              <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMenuFrontCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/UserMenuFrontCtrl.js">
+      <file leaf-file-name="BidsShortListCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="510">
-              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-=======
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
+              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="user_menu.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html">
+      <file leaf-file-name="front.router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-=======
-      <file leaf-file-name="db_updates_20170117.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/db_updates_20170117.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09819967">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="front.app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
             <state vertical-scroll-proportion="0.0">
-              <caret line="1728" column="29" selection-start-line="1728" selection-start-column="29" selection-end-line="1728" selection-end-column="29" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
+              <caret line="147" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+              <folding>
+                <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+                <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+                <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+                <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+                <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+                <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+                <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+                <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+                <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+                <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+                <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+                <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+                <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+                <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+                <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+                <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+                <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+                <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+                <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+                <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+                <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+                <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+                <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+                <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+                <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+                <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="308" column="30" selection-start-line="308" selection-start-column="15" selection-end-line="308" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyProjectBidsCtrl.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/MyProjectBidsCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0234375">
+              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+              <folding>
+                <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TenderTypeRESTController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+              <folding>
+                <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TendersCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="107" column="33" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -117,61 +187,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderFrontFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Contact/ContactService.js" />
-        <option value="$PROJECT_DIR$/web/assets/views/front/header.html" />
-        <option value="$PROJECT_DIR$/web/assets/views/front/footer.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyers.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/suppliers.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderFrontService.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/BuyersFrontCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tenders.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TendersFrontCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/bidShortListes.html.twig" />
-        <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/web/assets/js/directives/check-email-existing.js" />
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/RegistrationType.php" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Contact/contact_form.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/EmailConfirmCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Search/SearchFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/specific_search.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/my_buyers.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/register.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/RegisterCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/register.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/RegisterCtrl.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/MyBuyersCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/profile_informations.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/my_tenders.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTendersCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/MySuppliersCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/my_suppliers.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Product/my_products.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Product/MyProductsCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Contact/ContactFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/MyBuyerFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/MySupplierFormCtrl.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/my_supplier_form.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/my_buyer_form.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_header.html" />
-        <option value="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/UserMenuFrontCtrl.js" />
-        <option value="$PROJECT_DIR$/web/front/css/e-elctricity.css" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html" />
-=======
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/UserMenuFrontCtrl.js" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids_short_list.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/MyProjectBidsCtrl.js" />
       </list>
     </option>
   </component>
@@ -186,9 +210,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -201,7 +225,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -215,464 +239,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="css">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="assets">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="assets">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="i18n">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="assets">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="i18n">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Supplier">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Main">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Home">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid-electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ContinuousNet">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="UbidElectricityBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="public">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="front">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Contact">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-=======
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ubid-electricity" />
+              <option name="myItemId" value="ubid_electricity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ubid_electricity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -683,14 +256,8 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sport_club" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -732,24 +299,20 @@
       <created>1483387845478</created>
       <option name="number" value="Default" />
       <updated>1483387845478</updated>
-      <workItem from="1483433469141" duration="12000" />
-      <workItem from="1483433606632" duration="18148000" />
-      <workItem from="1483545894920" duration="2353000" />
-      <workItem from="1483690364272" duration="14435000" />
-      <workItem from="1483950555299" duration="19386000" />
-      <workItem from="1484046547970" duration="24447000" />
-      <workItem from="1484554998452" duration="20804000" />
+      <workItem from="1485784957272" duration="183000" />
+      <workItem from="1485785263206" duration="325000" />
+      <workItem from="1485785957703" duration="6001000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99585000" />
+    <option name="totallyTimeSpent" value="6509000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27440432" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -763,7 +326,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289855" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -780,504 +343,370 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="2" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/RegistrationType.php">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/app.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="125" selection-start-line="1" selection-start-column="108" selection-end-line="1" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/RegisterCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="35" selection-start-line="96" selection-start-column="20" selection-end-line="110" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1096" column="14" selection-start-line="1096" selection-start-column="14" selection-end-line="1096" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/bootstrap/dist/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="45" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="41" selection-start-line="19" selection-start-column="32" selection-end-line="54" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/LoginFrontCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="45" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/LoginCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="57" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/MyBuyersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="202" selection-start-line="26" selection-start-column="202" selection-end-line="26" selection-end-column="202" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/profile_informations.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tenders.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTendersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="269" selection-start-line="22" selection-start-column="269" selection-end-line="22" selection-end-column="269" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="427" column="0" selection-start-line="389" selection-start-column="3" selection-end-line="427" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/my_tenders.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/my_suppliers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/MySuppliersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/SuppliersCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="286" column="0" selection-start-line="239" selection-start-column="4" selection-end-line="286" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/suppliers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/SupplierProductsCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="238" column="21" selection-start-line="211" selection-start-column="3" selection-end-line="238" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Product/my_products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Product/MyProductsCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-=======
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="187" column="19" selection-start-line="187" selection-start-column="19" selection-end-line="187" selection-end-column="30" />
+          <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+            <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+            <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+            <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+            <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+            <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+            <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+            <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+            <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+            <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+            <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+            <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Contact/ContactFormCtrl.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <caret line="308" column="30" selection-start-line="308" selection-start-column="15" selection-end-line="308" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Search/generic_search_result.html">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/MyProjectBidsCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Search/search_results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/twbs/bootstrap/scss/_custom-forms.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/change_password.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Search/SearchFormCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Search/search_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="109" selection-start-line="61" selection-start-column="103" selection-end-line="61" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="259" column="8" selection-start-line="259" selection-start-column="8" selection-end-line="259" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/specific_search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="99" selection-start-line="54" selection-start-column="99" selection-end-line="54" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/MySupplierFormCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="15" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/MyBuyerFormCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/my_supplier_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="154" column="51" selection-start-line="154" selection-start-column="49" selection-end-line="154" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="12" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="12" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="28" />
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/my_buyer_form.html">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="164" column="45" selection-start-line="164" selection-start-column="45" selection-end-line="164" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/update_account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/sub_header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/views/front/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="104" selection-start-line="27" selection-start-column="104" selection-end-line="27" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/views/front/front.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="117" selection-start-line="11" selection-start-column="111" selection-end-line="11" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/views/front/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="105" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="1721" column="29" selection-start-line="1721" selection-start-column="29" selection-end-line="1721" selection-end-column="29" />
+          <caret line="107" column="33" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Main/dashboard.html">
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/views/partials/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="585">
-          <caret line="39" column="20" selection-start-line="37" selection-start-column="16" selection-end-line="39" selection-end-column="20" />
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Main/AppCtrl.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="92" column="10" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/front.config.router.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/AlertFormCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/AlertsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="354" column="15" selection-start-line="354" selection-start-column="11" selection-end-line="354" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="77" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="183" column="26" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="308" column="30" selection-start-line="308" selection-start-column="15" selection-end-line="308" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="120" column="13" selection-start-line="113" selection-start-column="12" selection-end-line="120" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/TenderType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/MyBuyersCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="29" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="33" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
-=======
         <state vertical-scroll-proportion="0.0">
-          <caret line="1728" column="29" selection-start-line="1728" selection-start-column="29" selection-end-line="1728" selection-end-column="29" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/user_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="15">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/angular-bootstrap/ui-bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1829">
-          <caret line="165" column="29" selection-start-line="165" selection-start-column="12" selection-end-line="165" selection-end-column="29" />
+          <caret line="147" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
           <folding>
-            <element signature="n#!!doc" expanded="false" />
+            <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+            <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+            <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+            <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+            <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+            <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+            <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+            <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+            <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+            <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+            <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+            <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/app.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids_short_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/bower_components/angular-bootstrap/.bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/directives/check-email-existing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/directives/my-tooltip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
-=======
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="87" selection-start-line="8" selection-start-column="87" selection-end-line="8" selection-end-column="87" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-          <folding />
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/UserMenuFrontCtrl.js">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/my_project_bids.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="510">
-          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-=======
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/web/front/css/e-elctricity.css">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="1140" column="0" selection-start-line="1140" selection-start-column="0" selection-end-line="1140" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Common/partial_profile_menu.html">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/MyProjectBidsCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-=======
-    <entry file="file://$PROJECT_DIR$/database/db_updates_20170117.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09819967">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
->>>>>>> f803d37f726df06bba11cd07756b49f03983d4a8
-          <folding />
+        <state vertical-scroll-proportion="0.0234375">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
