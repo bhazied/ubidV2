@@ -105,6 +105,14 @@ class BiddingTypeRESTController extends BaseRESTController
                    }
                 }
             }
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                       $qb->andWhere('bt_.isPublished = :isPublished')->setParameter('isPublished', true);
+                   }
+                }
+            }
             $qbList = clone $qb;
             $qb->select('count(bt_.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
@@ -167,6 +175,13 @@ class BiddingTypeRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                   }
+                }
+            }
             $form = $this->createForm(new BiddingTypeType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
@@ -209,6 +224,13 @@ class BiddingTypeRESTController extends BaseRESTController
     public function deleteAction(Request $request, BiddingType $entity)
     {
         try {
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                   }
+                }
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);
             $em->flush();
