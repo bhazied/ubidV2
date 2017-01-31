@@ -16,7 +16,7 @@ app.controller('MyProjectBidsCtrl', ['$scope','$controller', '$rootScope', '$sta
             $rootScope.showUserMenu = true;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 500);
+        }, 1000);
 
         $scope.setCols = function() {
             $scope.cols = [
@@ -64,11 +64,11 @@ app.controller('MyProjectBidsCtrl', ['$scope','$controller', '$rootScope', '$sta
         }
 
 
-        /* $scope.add = function() {
-         $state.go('app.marketplace.bidsnew');
+         $scope.add = function() {
+         $state.go('front.mytenders.new');
          };
 
-         $scope.edit = function(row) {
+        /* $scope.edit = function(row) {
          $state.go('app.marketplace.bidsedit', {id: row.id});
          };
 

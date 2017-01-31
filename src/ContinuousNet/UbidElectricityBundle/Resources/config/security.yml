@@ -3,13 +3,13 @@ security:
     access_control:
         # Alerts ACL
         # Alert data
-        - { path: ^/(en|fr|ar)/api/alerts$, methods: [GET], roles: [] }
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [GET], roles: [ROLE_SUBSCRIBER] }
         # Create new Alert
-        - { path: ^/(en|fr|ar)/api/alerts$, methods: [POST], roles: [] }
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [POST], roles: [ROLE_SUBSCRIBER] }
         # Update existing Alert
-        - { path: ^/(en|fr|ar)/api/alerts$, methods: [PUT, PATCH], roles: [] }
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [PUT, PATCH], roles: [ROLE_SUBSCRIBER] }
         # Detlete existing Alert
-        - { path: ^/(en|fr|ar)/api/alerts$, methods: [DELETE], roles: [] }
+        - { path: ^/(en|fr|ar)/api/alerts$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Categories ACL
         # Category data
         - { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -57,13 +57,13 @@ security:
         - { path: ^/(en|fr|ar)/api/bannertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Bids ACL
         # Bid data
-        - { path: ^/(en|fr|ar)/api/bids$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Bid
-        - { path: ^/(en|fr|ar)/api/bids$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Bid
-        - { path: ^/(en|fr|ar)/api/bids$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Bid
-        - { path: ^/(en|fr|ar)/api/bids$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/bids$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Bid Products ACL
         # Bid Product data
         - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -75,7 +75,7 @@ security:
         - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Bidding Types ACL
         # Bidding Type data
-        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Bidding Type
         - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Bidding Type
@@ -84,16 +84,16 @@ security:
         - { path: ^/(en|fr|ar)/api/biddingtypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Buyers ACL
         # Buyer data
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Buyer
-        - { path: ^/(en|fr|ar)/api/buyers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Buyer Types ACL
         # Buyer Type data
-        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Buyer Type
         - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Buyer Type
@@ -228,7 +228,7 @@ security:
         - { path: ^/(en|fr|ar)/api/producttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Regions ACL
         # Region data
-        - { path: ^/(en|fr|ar)/api/regions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/regions$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER] }
         # Create new Region
         - { path: ^/(en|fr|ar)/api/regions$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Region
@@ -237,7 +237,7 @@ security:
         - { path: ^/(en|fr|ar)/api/regions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Sectors ACL
         # Sector data
-        - { path: ^/(en|fr|ar)/api/sectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/sectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Sector
         - { path: ^/(en|fr|ar)/api/sectors$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Sector
@@ -246,13 +246,13 @@ security:
         - { path: ^/(en|fr|ar)/api/sectors$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Suppliers ACL
         # Supplier data
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Supplier
-        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Supplier Products ACL
         # Supplier Product data
         - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -264,7 +264,7 @@ security:
         - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Supplier Types ACL
         # Supplier Type data
-        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Supplier Type
         - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Supplier Type
@@ -273,22 +273,22 @@ security:
         - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Tenders ACL
         # Tender data
-        - { path: ^/(en|fr|ar)/api/tenders$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Tender
-        - { path: ^/(en|fr|ar)/api/tenders$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Tender
-        - { path: ^/(en|fr|ar)/api/tenders$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Tender
-        - { path: ^/(en|fr|ar)/api/tenders$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tenders$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Tender Bookmarks ACL
         # Tender Bookmark data
-        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [GET], roles: [] }
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [GET], roles: [ROLE_SUBSCRIBER] }
         # Create new Tender Bookmark
-        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [POST], roles: [] }
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [POST], roles: [ROLE_SUBSCRIBER] }
         # Update existing Tender Bookmark
-        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [PUT, PATCH], roles: [] }
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [PUT, PATCH], roles: [ROLE_SUBSCRIBER] }
         # Detlete existing Tender Bookmark
-        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [DELETE], roles: [] }
+        - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Tender Products ACL
         # Tender Product data
         - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -300,7 +300,7 @@ security:
         - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Tender Types ACL
         # Tender Type data
-        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Tender Type
         - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Tender Type
@@ -309,7 +309,7 @@ security:
         - { path: ^/(en|fr|ar)/api/tendertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Translation Bidding Types ACL
         # Translation Bidding Type data
-        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Translation Bidding Type
         - { path: ^/(en|fr|ar)/api/translationbiddingtypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Translation Bidding Type
@@ -408,7 +408,7 @@ security:
         - { path: ^/(en|fr|ar)/api/translationregions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Translation Sectors ACL
         # Translation Sector data
-        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Translation Sector
         - { path: ^/(en|fr|ar)/api/translationsectors$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Translation Sector
@@ -435,7 +435,7 @@ security:
         - { path: ^/(en|fr|ar)/api/translationtendertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Users ACL
         # User data
-        - { path: ^/(en|fr|ar)/api/users$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/users$, methods: [GET], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new User
         - { path: ^/(en|fr|ar)/api/users$, methods: [POST], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # Update existing User

@@ -126,12 +126,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     });
 
     $scope.add = function() {
-        if(row.id == 0){
-            $state.go('front.profile');
-        }
-        else{
             $state.go('front.mybuyers.new');
-        }
     };
 
     $scope.edit = function(row) {
