@@ -108,9 +108,9 @@ class TenderTypeRESTController extends BaseRESTController
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
-                    if (substr_count($role, 'SUB') > 0) {
-                        $qb->andWhere('tt_.isPublished = :publish')->setParameter('publish', true);
-                    }
+                   if (substr_count($role, 'SUB') > 0) {
+                       $qb->andWhere('tt_.isPublished = :isPublished')->setParameter('isPublished', true);
+                   }
                 }
             }
             $qbList = clone $qb;
@@ -175,6 +175,13 @@ class TenderTypeRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                   }
+                }
+            }
             $form = $this->createForm(new TenderTypeType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
@@ -217,6 +224,13 @@ class TenderTypeRESTController extends BaseRESTController
     public function deleteAction(Request $request, TenderType $entity)
     {
         try {
+            $roles = $this->getUser()->getRoles();
+            if (!empty($roles)) {
+                foreach ($roles as $role) {
+                   if (substr_count($role, 'SUB') > 0) {
+                   }
+                }
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($entity);
             $em->flush();

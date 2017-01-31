@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="71cdd257-2ac0-467f-8132-0c7a6f87c93d" name="Default" comment="" />
+=======
+    <list default="true" id="71cdd257-2ac0-467f-8132-0c7a6f87c93d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+>>>>>>> generator
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,6 +31,7 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
@@ -40,17 +48,116 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+=======
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+>>>>>>> generator
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="front.router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+=======
+      <file leaf-file-name="BidsShortListCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/BidsShortListCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+>>>>>>> generator
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+=======
+      <file leaf-file-name="front.router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="147" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+              <folding>
+                <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+                <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+                <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+                <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+                <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+                <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+                <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+                <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+                <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+                <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+                <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+                <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+                <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+                <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+                <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+                <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+                <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+                <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+                <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+                <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+                <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+                <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+                <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+                <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+                <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+                <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+                <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+                <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+                <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+                <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,6 +166,7 @@
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+>>>>>>> generator
               <caret line="308" column="30" selection-start-line="308" selection-start-column="15" selection-end-line="308" selection-end-column="30" />
               <folding />
             </state>
@@ -71,7 +179,11 @@
             <state vertical-scroll-proportion="0.0234375">
               <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
               <folding>
+<<<<<<< HEAD
                 <marker date="1485862327727" expanded="true" signature="10429:10662" placeholder="..." />
+=======
+                <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+>>>>>>> generator
               </folding>
             </state>
           </provider>
@@ -81,12 +193,29 @@
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+=======
+              <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+              <folding>
+                <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TendersCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="107" column="33" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="33" />
+>>>>>>> generator
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="TendersCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,6 +230,12 @@
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+=======
+      <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+>>>>>>> generator
               <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
               <folding />
             </state>
@@ -279,10 +414,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+<<<<<<< HEAD
           <folding>
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
             <marker date="1485862327739" expanded="true" signature="29575:29576" placeholder="roles:" />
           </folding>
+=======
+          <folding />
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -298,7 +437,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+            <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+            <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+            <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+            <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+            <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+            <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+            <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+            <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+            <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+            <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+            <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+          </folding>
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -315,7 +528,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
             <marker date="1485862327727" expanded="true" signature="10429:10662" placeholder="..." />
+=======
+            <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+>>>>>>> generator
           </folding>
         </state>
       </provider>
@@ -324,7 +541,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+          </folding>
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -345,6 +568,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -363,6 +587,12 @@
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
             <marker date="1485862327739" expanded="true" signature="29575:29576" placeholder="roles:" />
           </folding>
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -370,6 +600,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding>
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
             <marker date="1485862327739" expanded="true" signature="29575:29576" placeholder="roles:" />
@@ -392,9 +623,47 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/regions_categories.sql">
+=======
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+>>>>>>> generator
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/AlertsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="354" column="15" selection-start-line="354" selection-start-column="11" selection-end-line="354" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="77" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Alert/AlertFormCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -412,6 +681,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> generator
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -437,8 +707,15 @@
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
           <folding />
+=======
+          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="4877:5016" placeholder="..." />
+          </folding>
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -468,8 +745,83 @@
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
           <folding />
+=======
+          <caret line="147" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+          <folding>
+            <marker date="1485863278455" expanded="true" signature="49:21803" placeholder="[...]" />
+            <marker date="1485863278455" expanded="true" signature="98:21802" placeholder="{...}" />
+            <marker date="1485863278455" expanded="true" signature="108:143" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="187:492" placeholder="{&quot;url&quot;: '/'...}" />
+            <marker date="1485863278455" expanded="true" signature="436:482" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="515:739" placeholder="{&quot;url&quot;: '/login/:type'...}" />
+            <marker date="1485863278455" expanded="true" signature="2500:2771" placeholder="{&quot;url&quot;: '/profile'...}" />
+            <marker date="1485863278455" expanded="true" signature="2797:3033" placeholder="{&quot;url&quot;: '/user-menu'...}" />
+            <marker date="1485863278455" expanded="true" signature="3065:3428" placeholder="{&quot;url&quot;: '/change-password'...}" />
+            <marker date="1485863278455" expanded="true" signature="3358:3418" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="3451:3679" placeholder="{&quot;url&quot;: '/buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="3702:4010" placeholder="{&quot;url&quot;: '/buyer/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="3937:4000" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="4308:4633" placeholder="{&quot;url&quot;: '/supplier/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="4658:4898" placeholder="{&quot;url&quot;: '/products'...}" />
+            <marker date="1485863278455" expanded="true" signature="4923:5242" placeholder="{&quot;url&quot;: '/product/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="5266:5514" placeholder="{&quot;url&quot;: &quot;/tenders&quot;...}" />
+            <marker date="1485863278455" expanded="true" signature="5437:5504" placeholder="{&quot;label&quot;: 'sidebar.nav.adserving.MAIN'...}" />
+            <marker date="1485863278455" expanded="true" signature="5543:5798" placeholder="{&quot;url&quot;: '/list/:section'...}" />
+            <marker date="1485863278455" expanded="true" signature="5831:6089" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6121:6381" placeholder="{&quot;url&quot;: '/sector/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6414:6679" placeholder="{&quot;url&quot;: '/category/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="6711:6973" placeholder="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="7006:7354" placeholder="{&quot;url&quot;: '/advanced-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7386:7740" placeholder="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1485863278455" expanded="true" signature="7771:8184" placeholder="{&quot;url&quot;: '/applay_tender/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8115:8174" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="8210:8355" placeholder="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1485863278455" expanded="true" signature="8389:8659" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="8690:9217" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="9247:9768" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="9799:10267" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="10205:10257" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="10294:10541" placeholder="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1485863278455" expanded="true" signature="10576:10753" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="10785:11223" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="11254:11686" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="11718:12093" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12035:12083" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="12116:12291" placeholder="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="12320:12820" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="12482:12684" placeholder="{&quot;bidsIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="12851:13087" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13115:13614" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="13641:14212" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="14135:14202" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="14244:14437" placeholder="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1485863278455" expanded="true" signature="14474:15066" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="14659:14916" placeholder="{&quot;tenderBookmarksIsFiltersVisible&quot;: null...}" />
+            <marker date="1485863278455" expanded="true" signature="15106:15458" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15390:15448" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="15483:15626" placeholder="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1485863278455" expanded="true" signature="15659:15904" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="15934:16380" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="16409:16849" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="16879:17290" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="17227:17280" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="17318:17467" placeholder="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1485863278455" expanded="true" signature="17503:17766" placeholder="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="17799:18286" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1485863278455" expanded="true" signature="18318:18779" placeholder="{&quot;url&quot;: '/new'...}" />
+            <marker date="1485863278455" expanded="true" signature="18812:19211" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="19158:19201" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19236:19472" placeholder="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1485863278455" expanded="true" signature="19493:19789" placeholder="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1485863278455" expanded="true" signature="19720:19779" placeholder="/*...*/" />
+            <marker date="1485863278455" expanded="true" signature="19817:20002" placeholder="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1485863278455" expanded="true" signature="20036:20076" placeholder="{&quot;url&quot;: '/list'...}" />
+            <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
+          </folding>
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -491,10 +843,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+<<<<<<< HEAD
           <folding>
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
             <marker date="1485862327739" expanded="true" signature="29575:29576" placeholder="roles:" />
           </folding>
+=======
+          <folding />
+>>>>>>> generator
         </state>
       </provider>
     </entry>
@@ -511,7 +867,11 @@
         <state vertical-scroll-proportion="0.0234375">
           <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding>
+<<<<<<< HEAD
             <marker date="1485862327727" expanded="true" signature="10429:10662" placeholder="..." />
+=======
+            <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
+>>>>>>> generator
           </folding>
         </state>
       </provider>
