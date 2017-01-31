@@ -284,7 +284,7 @@ assetic:
     assets:
         bootstrap_4_css:
             inputs:
-                - "assets/bower_components/tether/dist/js/tether.min.css"
+                - "assets/bower_components/tether/dist/css/tether.min.css"
                 - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
         bootstrap_4_js:
             inputs:
