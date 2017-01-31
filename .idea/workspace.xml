@@ -166,7 +166,10 @@
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
 >>>>>>> generator
+=======
+>>>>>>> frontoffice
               <caret line="308" column="30" selection-start-line="308" selection-start-column="15" selection-end-line="308" selection-end-column="30" />
               <folding />
             </state>
@@ -178,6 +181,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0234375">
               <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+<<<<<<< HEAD
               <folding>
 <<<<<<< HEAD
                 <marker date="1485862327727" expanded="true" signature="10429:10662" placeholder="..." />
@@ -185,6 +189,9 @@
                 <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
 >>>>>>> generator
               </folding>
+=======
+              <folding />
+>>>>>>> frontoffice
             </state>
           </provider>
         </entry>
@@ -194,6 +201,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> frontoffice
               <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
 =======
               <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
@@ -230,12 +240,15 @@
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
 =======
       <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
 >>>>>>> generator
+=======
+>>>>>>> frontoffice
               <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
               <folding />
             </state>
@@ -373,7 +386,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+<<<<<<< HEAD
     <editor active="true" />
+=======
+    <editor active="false" />
+>>>>>>> frontoffice
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -415,6 +432,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
 <<<<<<< HEAD
+<<<<<<< HEAD
           <folding>
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
             <marker date="1485862327739" expanded="true" signature="29575:29576" placeholder="roles:" />
@@ -422,6 +440,9 @@
 =======
           <folding />
 >>>>>>> generator
+=======
+          <folding />
+>>>>>>> frontoffice
         </state>
       </provider>
     </entry>
@@ -437,6 +458,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
+<<<<<<< HEAD
 <<<<<<< HEAD
           <folding />
 =======
@@ -512,6 +534,9 @@
             <marker date="1485863278455" expanded="true" signature="21771:21795" placeholder="{&quot;url&quot;: '/edit/:id'...}" />
           </folding>
 >>>>>>> generator
+=======
+          <folding />
+>>>>>>> frontoffice
         </state>
       </provider>
     </entry>
@@ -526,6 +551,41 @@
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/ProjectBids/MyProjectBidsCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+=======
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderTypeRESTController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="33" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+>>>>>>> frontoffice
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
 <<<<<<< HEAD
@@ -582,6 +642,7 @@
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1485862327739" expanded="true" signature="133:141" placeholder="roles:" />
@@ -590,6 +651,8 @@
 =======
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+=======
+>>>>>>> frontoffice
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
 >>>>>>> generator
@@ -708,6 +771,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> frontoffice
           <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
           <folding />
 =======
@@ -746,6 +812,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> frontoffice
           <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="37" />
           <folding />
 =======
@@ -866,6 +935,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0234375">
           <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+<<<<<<< HEAD
           <folding>
 <<<<<<< HEAD
             <marker date="1485862327727" expanded="true" signature="10429:10662" placeholder="..." />
@@ -873,6 +943,9 @@
             <marker date="1485863278455" expanded="true" signature="10948:11174" placeholder="/*...*/" />
 >>>>>>> generator
           </folding>
+=======
+          <folding />
+>>>>>>> frontoffice
         </state>
       </provider>
     </entry>

@@ -1696,6 +1696,18 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "CONNECTWITH" : "CONNECT whith electricity business lead",
+    "BUYER" : "Buyer",
+    "BUYERDESCRIPTION" : "anyone looks for broadcasting business apportunities all over the world an compare bids",
+    "SUPPLIER" : "Supplier",
+    "SUPPLIERDESCRIPTION" : "anyone looks for business apportunities to expand affair",
+    "SERVICEREQUESTER" : "Service Requester",
+    "SERVICEREQUESTERDESCRIPTION" : "anyone requests services within the electrical business industry",
+    "SERVICEPROVIDER" : "Service Provider",
+    "SERVICEPROVIDERDESCRIPTION" : "a business responds to all your electrical service needs",
+    "LOGISTICAGENT" : "Logistic Agent",
+    "LOGISTICAGENTDESCRIPTION" : "a business responds to all your carrer service needs",
+    "LEARMORE" : "Learn more",
     "SPECIFICSEARCH":"Specific Search",
     "CATEGORIES":"Categories",
     "COUNTRIES":"Countries",

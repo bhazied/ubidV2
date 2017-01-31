@@ -14,11 +14,6 @@ ubid_electricity_prod:
     defaults: { _controller: UbidElectricityBundle:Default:index }
     host: "admin.e-electricity.com"
 
-ubid_electricity:
-    resource: "@UbidElectricityBundle/Controller/DefaultController.php"
-    type:     annotation
-    prefix:   /
-
 thumb:
     resource: "@UbidElectricityBundle/Controller/ThumbController.php"
     type:     annotation
