@@ -56,7 +56,7 @@ class Language
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=20, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Language
      * @var string
      * @access private
      *
-     * @ORM\Column(name="locale", type="string", length=5, nullable=false, unique=false)
+     * @ORM\Column(name="`locale`", type="string", length=5, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Language
      * @var string
      * @access private
      *
-     * @ORM\Column(name="code", type="string", length=2, nullable=false, unique=false)
+     * @ORM\Column(name="`code`", type="string", length=2, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Language
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="preferred", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`preferred`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Language
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Language
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -124,7 +124,7 @@ class Language
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -139,7 +139,7 @@ class Language
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

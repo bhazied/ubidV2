@@ -33,6 +33,19 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
     }];
+    $scope.periods = [{
+        id: 'Daily',
+        title: $filter('translate')('content.list.fields.periods.DAILY'),
+        css: 'primary'
+    }, {
+        id: 'Weekly',
+        title: $filter('translate')('content.list.fields.periods.WEEKLY'),
+        css: 'success'
+    }, {
+        id: 'Monthly',
+        title: $filter('translate')('content.list.fields.periods.MONTHLY'),
+        css: 'warning'
+    }];
 
     $scope.dateFormat = $filter('translate')('formats.DATE');
     $scope.datetimeFormat = $filter('translate')('formats.DATETIME');

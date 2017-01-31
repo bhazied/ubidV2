@@ -56,7 +56,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="section", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`section`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="title", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`title`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="reference", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`reference`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Tender
      * @var float
      * @access private
      *
-     * @ORM\Column(name="fees", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`fees`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class Tender
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="publish_date", type="date", nullable=true, unique=false)
+     * @ORM\Column(name="`publish_date`", type="date", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class Tender
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="deadline", type="date", nullable=true, unique=false)
+     * @ORM\Column(name="`deadline`", type="date", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class Tender
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="estimated_cost", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`estimated_cost`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,7 +166,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
+     * @ORM\Column(name="`attachment_files`", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -177,7 +177,7 @@ class Tender
      * @var string
      * @access private
      *
-     * @ORM\Column(name="source", type="string", length=511, nullable=true, unique=false)
+     * @ORM\Column(name="`source`", type="string", length=511, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -188,7 +188,7 @@ class Tender
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="validated", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`validated`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -199,7 +199,7 @@ class Tender
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`views`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -210,7 +210,7 @@ class Tender
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -221,7 +221,7 @@ class Tender
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -234,7 +234,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Buyer")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="buyer_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`buyer_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -249,7 +249,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`supplier_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -264,7 +264,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Region")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`region_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -279,7 +279,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`country_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -294,7 +294,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Sector")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="sector_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`sector_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -309,7 +309,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="TenderType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="tender_type_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`tender_type_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -324,7 +324,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="BiddingType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="bidding_type_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`bidding_type_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -339,7 +339,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -354,7 +354,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -370,10 +370,10 @@ class Tender
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="tenders")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
      *     }
      * )
      * 

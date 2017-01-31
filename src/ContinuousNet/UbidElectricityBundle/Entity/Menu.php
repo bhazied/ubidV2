@@ -57,7 +57,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=100, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="mode", type="string", nullable=true, unique=false)
+     * @ORM\Column(name="`mode`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="menu_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`menu_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="item_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`item_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="active_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`active_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="not_active_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`not_active_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="first_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`first_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -145,7 +145,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="last_css", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`last_css`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -156,7 +156,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="before_txt", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`before_txt`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -167,7 +167,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="after_txt", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`after_txt`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -178,7 +178,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="separator", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`separator`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -189,7 +189,7 @@ class Menu
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="columns_number", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`columns_number`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -200,7 +200,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="display_mode", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`display_mode`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -211,7 +211,7 @@ class Menu
      * @var string
      * @access private
      *
-     * @ORM\Column(name="text_position", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`text_position`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -222,7 +222,7 @@ class Menu
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_published", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_published`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -233,7 +233,7 @@ class Menu
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -244,7 +244,7 @@ class Menu
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -257,7 +257,7 @@ class Menu
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -272,7 +272,7 @@ class Menu
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
