@@ -1866,6 +1866,14 @@
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
     "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
-    "SHOWGENERALCONDITION": "Show General Condition"
+    "SHOWGENERALCONDITION": "Show General Condition",
+    "settings":{
+      "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
+      "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
+      "RECEIVEDNEWMESSAGE":"E-mail sent to notify you that you have received a new message",
+      "CONSULTYOUROPPOTUNITY":"E-mail sent to notify you who has consult your oportunity business",
+      "CONSULTYOURPROFILE":"E-mail sent to notify you who has consult your profil"
+    },
+    "ALERTSETTINGS": "Alert settings"
   }
 }

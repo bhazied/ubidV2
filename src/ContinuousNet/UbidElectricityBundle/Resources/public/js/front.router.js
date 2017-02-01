@@ -401,6 +401,13 @@ app.config(['$stateProvider',
             url: '/settings',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_settings.html',
             title : 'front.MYALERTSETTINGS',
-            resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingFormCtrl', 'userSettingService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+            params: {
+                'userSettingsIsFiltersVisible': null,
+                'userSettingsPage': null,
+                'userSettingsCount': null,
+                'userSettingsSorting': null,
+                'userSettingsFilter': null
+            },
+            resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingsCtrl', 'userSettingService', 'userService')
         })
     }]);

@@ -444,13 +444,13 @@ security:
         - { path: ^/(en|fr|ar)/api/users$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_IT, ROLE_SUPER_ADMIN] }
         # User Settings ACL
         # User Setting data
-        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new User Setting
-        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing User Setting
-        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing User Setting
-        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/usersettings$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Visits ACL
         # Visit data
         - { path: ^/(en|fr|ar)/api/visits$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }

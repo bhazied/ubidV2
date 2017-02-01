@@ -56,7 +56,7 @@ class UserSetting
      * @var string
      * @access private
      *
-     * @ORM\Column(name="key", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`key`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
