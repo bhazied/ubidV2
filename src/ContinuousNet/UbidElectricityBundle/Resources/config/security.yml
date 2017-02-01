@@ -12,7 +12,7 @@ security:
         - { path: ^/(en|fr|ar)/api/alerts$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Categories ACL
         # Category data
-        #- { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/categories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Category
         - { path: ^/(en|fr|ar)/api/categories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Category
@@ -21,13 +21,13 @@ security:
         - { path: ^/(en|fr|ar)/api/categories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Countries ACL
         # Country data
-        #- { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        #- { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER] }
         # Create new Country
-        - { path: ^/(en|fr|ar)/api/countries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Country
-        - { path: ^/(en|fr|ar)/api/countries$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Country
-        - { path: ^/(en|fr|ar)/api/countries$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/countries$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Banners ACL
         # Banner data
         - { path: ^/(en|fr|ar)/api/banners$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -138,7 +138,7 @@ security:
         - { path: ^/(en|fr|ar)/api/impressions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Languages ACL
         # Language data
-        #- { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Create new Language
         - { path: ^/(en|fr|ar)/api/languages$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Language
@@ -201,7 +201,7 @@ security:
         - { path: ^/(en|fr|ar)/api/posts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Post Categories ACL
         # Post Category data
-        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/postcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Post Category
         - { path: ^/(en|fr|ar)/api/postcategories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Post Category
@@ -327,7 +327,7 @@ security:
         - { path: ^/(en|fr|ar)/api/translationbuyertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Translation Categories ACL
         # Translation Category data
-        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Translation Category
         - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Translation Category
@@ -336,7 +336,7 @@ security:
         - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Translation Countries ACL
         # Translation Country data
-        - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        #- { path: ^/(en|fr|ar)/api/translationcountries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Translation Country
         - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Translation Country

@@ -56,7 +56,7 @@ class TranslationRegion
      * @var string
      * @access private
      *
-     * @ORM\Column(name="locale", type="string", length=5, nullable=false, unique=false)
+     * @ORM\Column(name="`locale`", type="string", length=5, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class TranslationRegion
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class TranslationRegion
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="validated", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`validated`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class TranslationRegion
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class TranslationRegion
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -113,7 +113,7 @@ class TranslationRegion
      *
      * @ORM\ManyToOne(targetEntity="Region")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`region_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -128,7 +128,7 @@ class TranslationRegion
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -143,7 +143,7 @@ class TranslationRegion
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

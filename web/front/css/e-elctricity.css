@@ -1155,3 +1155,113 @@ fieldset h2 {
 .remove{
     background: #C76868;
 }
+
+
+.home {
+    padding-bottom: 120px;
+}
+
+.home h1 {
+    /*background-color: #F7F8FC;*/
+    color: #6D6D6D;
+    /* border: 1px solid #85AED3; */
+    border-radius: 2px;
+    margin: 0 auto 120px auto;
+    width: 60%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.home ul {
+    min-height: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.home ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 20%;
+    text-align: center;
+    min-height: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.home ul li div {
+    border-right: 1px solid #EDEDED;
+    min-height: 200px;
+    clear: both;
+}
+
+.home ul li:last-child div {
+    border-right: none;
+}
+
+.home ul li div i {
+    background: black;
+    display: block;
+    height: 96px;
+    min-width: 96px;
+    width: 100%;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    background-size: auto 60%;
+}
+
+.home ul li:hover div i {
+    background-size: auto 80%;
+}
+
+.home ul li div i.buyer {
+    background-image: url('/front/img/buyer.png');
+}
+
+.home ul li div i.supplier {
+    background-image: url('/front/img/supplier.png');
+}
+
+.home ul li div i.service_requester {
+    background-image: url('/front/img/service_requester.png');
+}
+
+.home ul li div i.service_provider {
+    background-image: url('/front/img/service_provider.png');
+}
+
+.home ul li div i.logistic_agent {
+    background-image: url('/front/img/logistic_agent.png');
+}
+
+.home ul li div span {
+    text-align: center;
+    color: #1D69AD;
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.2rem;
+}
+
+.home ul li div p {
+    text-align: center;
+    color: #9C9C9C;
+    font-size: 0.8rem;
+    padding: 0;
+    margin: 0;
+}
+
+.home ul li a {
+    clear: both;
+    color: white;
+    background-color: #0ECD68;
+    margin: auto;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    text-align: center;
+    padding: 0.3rem 1rem;
+}

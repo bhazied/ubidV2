@@ -56,7 +56,7 @@ class Log
      * @var string
      * @access private
      *
-     * @ORM\Column(name="entity", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`entity`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Log
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="foreign_key", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="`foreign_key`", type="integer", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Log
      * @var string
      * @access private
      *
-     * @ORM\Column(name="action", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`action`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Log
      * @var string
      * @access private
      *
-     * @ORM\Column(name="ip_address", type="string", length=15, nullable=true, unique=false)
+     * @ORM\Column(name="`ip_address`", type="string", length=15, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Log
      * @var string
      * @access private
      *
-     * @ORM\Column(name="user_agent", type="string", length=511, nullable=true, unique=false)
+     * @ORM\Column(name="`user_agent`", type="string", length=511, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Log
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -124,7 +124,7 @@ class Log
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

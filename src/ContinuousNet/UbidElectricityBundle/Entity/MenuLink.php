@@ -57,7 +57,7 @@ class MenuLink
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=100, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class MenuLink
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class MenuLink
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_published", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_published`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class MenuLink
      * @var string
      * @access private
      *
-     * @ORM\Column(name="controller", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`controller`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class MenuLink
      * @var string
      * @access private
      *
-     * @ORM\Column(name="action", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`action`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class MenuLink
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="foreign_key", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`foreign_key`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class MenuLink
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class MenuLink
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -145,7 +145,7 @@ class MenuLink
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -158,7 +158,7 @@ class MenuLink
      *
      * @ORM\ManyToOne(targetEntity="Menu")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="menu_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`menu_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -173,7 +173,7 @@ class MenuLink
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -188,7 +188,7 @@ class MenuLink
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

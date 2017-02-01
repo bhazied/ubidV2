@@ -56,7 +56,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="brand", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`brand`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="model", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`model`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=512, nullable=true, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=512, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=512, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=512, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class SupplierProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class SupplierProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`unit_cost`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class SupplierProduct
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_public", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`is_public`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class SupplierProduct
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`views`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,7 +166,7 @@ class SupplierProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -177,7 +177,7 @@ class SupplierProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -190,7 +190,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`supplier_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -205,7 +205,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -220,7 +220,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -235,7 +235,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

@@ -12,13 +12,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         title: $filter('translate')('content.list.fields.types.TENDER'),
         css: 'primary'
     }, {
-        id: 'Consultation',
-        title: $filter('translate')('content.list.fields.types.CONSULTATION'),
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.types.SUPPLIER'),
         css: 'success'
     }, {
-        id: 'SupplierAndBuyer',
-        title: $filter('translate')('content.list.fields.types.SUPPLIERANDBUYER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.types.BUYER'),
         css: 'warning'
+    }, {
+        id: 'SupplierProduct',
+        title: $filter('translate')('content.list.fields.types.SUPPLIERPRODUCT'),
+        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',
@@ -28,6 +32,19 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         id: 'Inactive',
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
+    }];
+    $scope.periods = [{
+        id: 'Daily',
+        title: $filter('translate')('content.list.fields.periods.DAILY'),
+        css: 'primary'
+    }, {
+        id: 'Weekly',
+        title: $filter('translate')('content.list.fields.periods.WEEKLY'),
+        css: 'success'
+    }, {
+        id: 'Monthly',
+        title: $filter('translate')('content.list.fields.periods.MONTHLY'),
+        css: 'warning'
     }];
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

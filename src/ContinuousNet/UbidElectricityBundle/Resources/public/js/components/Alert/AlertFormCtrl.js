@@ -30,13 +30,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.typesoptions.TENDER'),
         css: 'primary'
     }, {
-        id: 'Consultation',
-        title: $filter('translate')('content.list.fields.typesoptions.CONSULTATION'),
+        id: 'Supplier',
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIER'),
         css: 'success'
     }, {
-        id: 'SupplierAndBuyer',
-        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERANDBUYER'),
+        id: 'Buyer',
+        title: $filter('translate')('content.list.fields.typesoptions.BUYER'),
         css: 'warning'
+    }, {
+        id: 'SupplierProduct',
+        title: $filter('translate')('content.list.fields.typesoptions.SUPPLIERPRODUCT'),
+        css: 'danger'
     }];
     $scope.statuses = [{
         id: 'Active',
@@ -46,6 +50,19 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         id: 'Inactive',
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
+    }];
+    $scope.periods = [{
+        id: 'Daily',
+        title: $filter('translate')('content.list.fields.periods.DAILY'),
+        css: 'primary'
+    }, {
+        id: 'Weekly',
+        title: $filter('translate')('content.list.fields.periods.WEEKLY'),
+        css: 'success'
+    }, {
+        id: 'Monthly',
+        title: $filter('translate')('content.list.fields.periods.MONTHLY'),
+        css: 'warning'
     }];
 
     $scope.users = [];
@@ -228,7 +245,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.alert = {id: 0, status: 'Active', categories: [], countries: []};
+        $scope.alert = {id: 0, status: 'Active', period: 'Daily', categories: [], countries: []};
 
     }
 

@@ -100,15 +100,12 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
             else{
                 $scope.settings = $scope.initSettings;
             }
-            console.log($scope.settings);
         }, true);
 
         $scope.submitForm = function (form) {
             $scope.disableSubmit = true;
-            console.log($scope.userAlertSettings);
             var setting = {};
             angular.forEach($scope.settings, function (value, key) {
-                console.log(value);
                 if( angular.isDefined($scope.userAlertSettings[value.key])){
                     var val = ($scope.userAlertSettings[value.key] == true) ? "ON" : "OFF";
                     if(value.id == 0){
@@ -116,7 +113,6 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
                             key : value.key,
                             value: val
                         };
-                        console.log(setting);
                         $userSettingsDataFactory.create(setting).$promise.then(function(data) {
                             value.id = data.id;
                         });
@@ -127,7 +123,6 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
                             value: val,
                             id: value.id
                         };
-                        console.log(setting);
                         $userSettingsDataFactory.update(setting).$promise.then(function(data) {
                             value.id = data.id;
                         });

@@ -56,7 +56,7 @@ class BidProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="new_unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`new_unit_cost`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class BidProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="quantity", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`quantity`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class BidProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="duration", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`duration`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class BidProduct
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class BidProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class BidProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -124,7 +124,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="TenderProduct")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="tender_product_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`tender_product_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -139,7 +139,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="Bid")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="bid_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`bid_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -154,7 +154,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="SupplierProduct")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="supplier_product_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`supplier_product_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -169,7 +169,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -184,7 +184,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

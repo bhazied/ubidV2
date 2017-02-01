@@ -56,7 +56,7 @@ class TenderProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="title", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`title`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class TenderProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class TenderProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class TenderProduct
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class TenderProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="unit_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`unit_cost`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class TenderProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="quantity", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`quantity`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class TenderProduct
      * @var float
      * @access private
      *
-     * @ORM\Column(name="duration", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`duration`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class TenderProduct
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class TenderProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class TenderProduct
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -168,7 +168,7 @@ class TenderProduct
      *
      * @ORM\ManyToOne(targetEntity="Tender")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -183,7 +183,7 @@ class TenderProduct
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -198,7 +198,7 @@ class TenderProduct
      *
      * @ORM\ManyToOne(targetEntity="ProductType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`product_type_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -213,7 +213,7 @@ class TenderProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -228,7 +228,7 @@ class TenderProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

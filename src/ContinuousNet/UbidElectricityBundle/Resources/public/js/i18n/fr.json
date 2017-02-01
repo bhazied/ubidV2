@@ -343,6 +343,8 @@
                 "ENTERDESCRIPTION": "Entrer une valeur pour Description",
                 "SELECTSTATUS": "Sélectionner une valeur pour Statut",
                 "STATUSREQUIRED": "Le champs Statut est obligatoire",
+                "SELECTPERIOD": "Sélectionner une valeur pour Période",
+                "PERIODREQUIRED": "Le champs Période est obligatoire",
                 "FILTERCATEGORIES": "Filter Catégories",
                 "FILTERCOUNTRIES": "Filter Pays",
                 "ENTERSLUG": "Entrer une valeur pour Url lisible",
@@ -1490,6 +1492,7 @@
                 "NAME": "Nom",
                 "DESCRIPTION": "Description",
                 "STATUS": "Statut",
+                "PERIOD": "Période",
                 "CREATEDAT": "Créé le",
                 "CREATORUSER": "Créé par",
                 "MODIFIEDAT": "Modifié le",
@@ -1711,8 +1714,9 @@
                 "ISVALID": "Est valide",
                 "typesoptions": {
                     "TENDER": "Appel d'offres",
-                    "CONSULTATION": "Consultation",
-                    "SUPPLIERANDBUYER": "Fournisseurandbuyer"
+                    "SUPPLIER": "Fournisseur",
+                    "BUYER": "Acheteur",
+                    "SUPPLIERPRODUCT": "Fournisseurproduct"
                 },
                 "statuses": {
                     "ACTIVE": "Active",
@@ -1728,6 +1732,11 @@
                     "SHORTLISTED": "Shortlisté",
                     "QUALIFIED": "Qualifié",
                     "SENT": "Sent"
+                },
+                "periods": {
+                    "DAILY": "Daily",
+                    "WEEKLY": "Weekly",
+                    "MONTHLY": "Moisly"
                 },
                 "genders": {
                     "ALL": "Tout",

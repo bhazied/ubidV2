@@ -56,7 +56,7 @@ class BannerPosition
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class BannerPosition
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=50, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=50, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class BannerPosition
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="items_number", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="`items_number`", type="integer", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class BannerPosition
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="display_time", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="`display_time`", type="integer", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class BannerPosition
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_full_screen", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_full_screen`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class BannerPosition
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="display_one_time", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`display_one_time`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class BannerPosition
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_published", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_published`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class BannerPosition
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class BannerPosition
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -157,7 +157,7 @@ class BannerPosition
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -172,7 +172,7 @@ class BannerPosition
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -188,10 +188,10 @@ class BannerPosition
      * @ORM\ManyToMany(targetEntity="Banner", inversedBy="bannerPositions")
      * @ORM\JoinTable(name="banners_banner_positions",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="banner_position_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`banner_position_id`", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="banner_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`banner_id`", referencedColumnName="id")
      *     }
      * )
      * 

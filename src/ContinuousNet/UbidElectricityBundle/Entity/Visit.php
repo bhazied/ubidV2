@@ -56,7 +56,7 @@ class Visit
      * @var string
      * @access private
      *
-     * @ORM\Column(name="ip", type="string", length=15, nullable=false, unique=false)
+     * @ORM\Column(name="`ip`", type="string", length=15, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Visit
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_valid", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_valid`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Visit
      * @var string
      * @access private
      *
-     * @ORM\Column(name="user_agent", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`user_agent`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Visit
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Visit
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -113,7 +113,7 @@ class Visit
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -128,7 +128,7 @@ class Visit
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

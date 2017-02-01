@@ -56,7 +56,7 @@ class Hit
      * @var string
      * @access private
      *
-     * @ORM\Column(name="entity", type="string", length=50, nullable=false, unique=false)
+     * @ORM\Column(name="`entity`", type="string", length=50, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Hit
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="foreign_key", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="`foreign_key`", type="integer", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Hit
      * @var string
      * @access private
      *
-     * @ORM\Column(name="url", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`url`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Hit
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -102,7 +102,7 @@ class Hit
      *
      * @ORM\ManyToOne(targetEntity="Visit")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="visit_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`visit_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -117,7 +117,7 @@ class Hit
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose

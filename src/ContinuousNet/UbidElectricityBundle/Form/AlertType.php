@@ -44,10 +44,11 @@ class AlertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('types', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Consultation' => 'Consultation', 'SupplierAndBuyer' => 'SupplierAndBuyer', ), 'expanded' => true, 'multiple' => true))
+            ->add('types', ChoiceType::class, array('choices' => array('Tender' => 'Tender', 'Supplier' => 'Supplier', 'Buyer' => 'Buyer', 'SupplierProduct' => 'SupplierProduct', ), 'expanded' => true, 'multiple' => true))
             ->add('name', TextType::class)
             ->add('description', TextType::class)
             ->add('status', ChoiceType::class, array('choices' => array('Active' => 'Active', 'Inactive' => 'Inactive', ), 'expanded' => false, 'multiple' => false))
+            ->add('period', ChoiceType::class, array('choices' => array('Daily' => 'Daily', 'Weekly' => 'Weekly', 'Monthly' => 'Monthly', ), 'expanded' => false, 'multiple' => false))
             ->add('categories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
             ->add('countries', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Country', 'choice_label' => 'name'))
         ;

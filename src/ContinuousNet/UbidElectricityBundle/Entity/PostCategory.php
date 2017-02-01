@@ -57,7 +57,7 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class PostCategory
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class PostCategory
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class PostCategory
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class PostCategory
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -147,7 +147,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostCategory")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="parent_post_category_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`parent_post_category_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -162,7 +162,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="post_type_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`post_type_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -177,7 +177,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -192,7 +192,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -208,10 +208,10 @@ class PostCategory
      * @ORM\ManyToMany(targetEntity="Post", inversedBy="postCategories")
      * @ORM\JoinTable(name="posts_post_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`post_category_id`", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="`post_id`", referencedColumnName="id")
      *     }
      * )
      * 
