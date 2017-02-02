@@ -1552,3 +1552,33 @@ fieldset h2 {
 .remove{
     background: #C76868;
 }
+
+.detail-message table tr th {
+    min-width: 150px !important;
+    border-bottom: 1px solid #ccc !important;
+}
+.detail-message table tr td {
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+.detail-message table tr td div {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.detail-message table tr td span {
+    border-left: 1px solid #000000;
+   padding-left: 0.75rem;
+    /*display: block;*/
+}
+.detail-message table tr td a {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.detail-message .name {
+    font-size: 1.5rem;
+    color: #013486 !important;
+    cursor: pointer;
+    font-family: Arial !important;
+    margin-top: 2rem;

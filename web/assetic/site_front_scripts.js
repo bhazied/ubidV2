@@ -528,7 +528,11 @@ app.constant('APP_JS_REQUIRES', {
         'BidDetailsCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidDetailsCtrl.js',
         'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
         'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
-        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js'
+        'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js',
+        'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
+        'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
+        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js'
+
     },
     modules: [{
         name: 'LoginService',
@@ -950,6 +954,26 @@ app.config(['$stateProvider',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
             resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
+        }).state('front.messages', {
+            url : '/messages',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: ''
+        }).state('front.messages.send', {
+            url: '/send/:id/:to',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
+            title: '',
+            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.list', {
+            url: '/list/:type',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
+            title: '',
+            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.detail', {
+            url: '/detail/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
+            title: '',
+            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+
         /*
          * Public Supplier List & Details routes
          */

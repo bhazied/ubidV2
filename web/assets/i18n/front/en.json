@@ -1838,7 +1838,9 @@
       "NEWALERT": "Add new alert",
       "CHANGEPASSWORD": "Change my password",
       "MYPROFILE": "Manage my account",
-      "SIGNOUT": "Sign out"
+      "SIGNOUT": "Sign out",
+      "MYSENTMESSAGE":"Manage sent messages",
+      "MYRECEIVEDMESSAGE":"Manage received messages"
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
@@ -1855,6 +1857,9 @@
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
     "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
-    "SHOWGENERALCONDITION": "Show General Condition"
+    "SHOWGENERALCONDITION": "Show General Condition",
+    "MYMESSAGES" : "My messages",
+    "SENTMESSAGE": "sent messages",
+    "RECEIVEDMESSAGE":"Received messages"
   }
 }

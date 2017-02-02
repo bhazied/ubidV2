@@ -67,6 +67,7 @@ class MessageRESTController extends BaseRESTController
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
+     * @QueryParam(name="type", nullable=true, array=false, description="inbox or outbox")
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
@@ -76,6 +77,7 @@ class MessageRESTController extends BaseRESTController
             $limit = $paramFetcher->get('limit');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
+            $type = $paramFetcher->get('type');
             $data = array(
                 'inlineCount' => 0,
                 'results' => array()
@@ -114,7 +116,12 @@ class MessageRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('m_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       if($type == 'inbox'){
+                           $qb->andWhere('m_.toUser = :receiver')->setParameter('receiver', $this->getUser()->getId());
+                       }
+                       else if($type == 'outbox'){
+                           $qb->andWhere('m_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       }
                    }
                 }
             }
@@ -249,6 +256,6 @@ class MessageRESTController extends BaseRESTController
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-    
+
 
 }

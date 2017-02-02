@@ -12,7 +12,7 @@ function($resource, $rootScope, $localStorage) {
         query: { method: 'GET'},
         get: { method: 'GET', url: baseURL + '/:id' },
         remove: { method: 'DELETE', url: baseURL + '/:id' },
-        update: { method: 'PUT', url: baseURL + '/:id' }
+        update: { method: 'PUT', url: baseURL + '/:id' },
     });
    
 }]);
