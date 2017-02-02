@@ -74,5 +74,18 @@
                 <li><a ui-sref="front.myAlerts.settings"><i class="fa fa-plus-circle"></i> <span translate="front.ALERTSETTINGS" title="[['front.USERMENU.SETTINGS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>settings</span></a></li>
             </ul>
         </uib-accordion-group>
+
+        <uib-accordion-group is-open="status.open4">
+            <uib-accordion-heading>
+                [[ 'front.MYMESSAGES'| translate]]
+                <i class="fa pull-right" ng-class="{'fa-arrow-circle-down': status.open4, 'fa-arrow-circle-right': !status.open4}"></i>
+            </uib-accordion-heading>
+            <ul>
+                <li>
+                    <a ui-sref="front.messages.list({type: 'outbox'})"><i class="fa fa-send-o"></i> <span translate="front.SENTMESSAGE" title="[['front.USERMENU.MYSENTMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Sent messages</span></a>
+                    <a ui-sref="front.messages.list({type: 'inbox'})"><i class="fa fa-envelope-o"></i> <span translate="front.RECEIVEDMESSAGE" title="[['front.USERMENU.MYRECEIVEDMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Received message</span></a>
+                </li>
+            </ul>
+        </uib-accordion-group>
     </uib-accordion>
 </div>

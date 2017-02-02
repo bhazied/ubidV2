@@ -1866,7 +1866,9 @@
       "CHANGEPASSWORD": "Change my password",
       "MYPROFILE": "Manage my account",
       "SIGNOUT": "Sign out",
-      "SETTINGS": "Settings"
+      "SETTINGS": "Settings",
+      "MYSENTMESSAGE":"Manage sent messages",
+      "MYRECEIVEDMESSAGE":"Manage received messages"
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
@@ -1892,6 +1894,9 @@
       "CONSULTYOUROPPOTUNITY":"E-mail sent to notify you who has consult your oportunity business",
       "CONSULTYOURPROFILE":"E-mail sent to notify you who has consult your profil"
     },
-    "ALERTSETTINGS": "Alert settings"
+    "ALERTSETTINGS": "Alert settings",
+    "MYMESSAGES" : "My messages",
+    "SENTMESSAGE": "sent messages",
+    "RECEIVEDMESSAGE":"Received messages"
   }
 }
