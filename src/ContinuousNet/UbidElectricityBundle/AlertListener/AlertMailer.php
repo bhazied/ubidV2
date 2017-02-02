@@ -4,8 +4,10 @@ namespace ContinuousNet\UbidElectricityBundle\AlertListener;
 
 use ContinuousNet\UbidElectricityBundle\Entity\Message;
 use FOS\UserBundle\Entity\User;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * AlertMailer
@@ -15,15 +17,28 @@ use Symfony\Component\Templating\EngineInterface;
 class AlertMailer
 {
     
-    protected $mailer;
-    protected $templating;
-    protected  $from;
+    private $mailer;
+    private $templating;
+    private $router;
+    //protected  $container;
+    private  $from;
 
-    function __construct(\Swift_Mailer $_mailer, EngineInterface $_templating)
+    public function __construct(RouterInterface $router)
+    //function __construct(ContainerInterface $container)
     {
-        $this->mailer = $_mailer;
-        $this->templating = $_templating;
+        //$this->container = $_container;
+        //$this->mailer = $mailer;
+        //$this->twig = $twig;
+        $this->router = $router;
         $this->from = 'contact@ubid.com';
+    }
+
+    public function setMailer(\Swift_Mailer $mailer){
+        $this->mailer = $mailer;
+    }
+
+    public function setTemplating(\Symfony\Bundle\TwigBundle\TwigEngine $templating){
+        $this->templating = $templating;
     }
 
     protected function sendMail($to, $subject, $body){

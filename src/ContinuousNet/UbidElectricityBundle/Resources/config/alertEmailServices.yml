@@ -5,7 +5,11 @@ parameters:
 services:
     ubid_electricity.alert_mailer:
         class: %ubid_electricity.event.alert_mailer.class%
-        arguments: [@mailer, @templating]
+        #arguments: [@templating, @mailer, @router]
+        arguments: [@router]
+        calls:
+            - [setMailer, ["@mailer"]]
+            #- [setTemplating, ["@templating"]]
     ubid_electricity.event.alert_email_listner:
         class: %ubid_electricity.event.alert_email_listner.class%
         arguments: [@ubid_electricity.alert_mailer]

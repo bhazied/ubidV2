@@ -174,13 +174,13 @@ security:
         - { path: ^/(en|fr|ar)/api/menulinks$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Messages ACL
         # Message data
-        - { path: ^/(en|fr|ar)/api/messages$, methods: [GET], roles: [] }
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [GET], roles: [ROLE_SUBSCRIBER] }
         # Create new Message
-        - { path: ^/(en|fr|ar)/api/messages$, methods: [POST], roles: [] }
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [POST], roles: [ROLE_SUBSCRIBER] }
         # Update existing Message
-        - { path: ^/(en|fr|ar)/api/messages$, methods: [PUT, PATCH], roles: [] }
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [PUT, PATCH], roles: [ROLE_SUBSCRIBER] }
         # Detlete existing Message
-        - { path: ^/(en|fr|ar)/api/messages$, methods: [DELETE], roles: [] }
+        - { path: ^/(en|fr|ar)/api/messages$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Notifications ACL
         # Notification data
         - { path: ^/(en|fr|ar)/api/notifications$, methods: [GET], roles: [] }
