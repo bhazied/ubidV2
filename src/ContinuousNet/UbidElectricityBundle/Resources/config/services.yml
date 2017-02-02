@@ -1,3 +1,5 @@
+imports:
+    - { resource: 'alertEmailServices.yml'}
 parameters:
     ubid_electricity.event.jwt_response_listener.class: ContinuousNet\UbidElectricityBundle\EventListener\JWTResponseListener
     ubid_electricity.event.jwt_created_listener.class: ContinuousNet\UbidElectricityBundle\EventListener\JWTCreatedListener
