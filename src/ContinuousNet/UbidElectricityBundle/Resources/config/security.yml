@@ -66,7 +66,7 @@ security:
         - { path: ^/(en|fr|ar)/api/bids$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Bid Products ACL
         # Bid Product data
-        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Bid Product
         - { path: ^/(en|fr|ar)/api/bidproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Bid Product
@@ -183,13 +183,13 @@ security:
         - { path: ^/(en|fr|ar)/api/messages$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Notifications ACL
         # Notification data
-        - { path: ^/(en|fr|ar)/api/notifications$, methods: [GET], roles: [] }
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [GET], roles: [ROLE_SUBSCRIBER] }
         # Create new Notification
-        - { path: ^/(en|fr|ar)/api/notifications$, methods: [POST], roles: [] }
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [POST], roles: [ROLE_SUBSCRIBER] }
         # Update existing Notification
-        - { path: ^/(en|fr|ar)/api/notifications$, methods: [PUT, PATCH], roles: [] }
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [PUT, PATCH], roles: [ROLE_SUBSCRIBER] }
         # Detlete existing Notification
-        - { path: ^/(en|fr|ar)/api/notifications$, methods: [DELETE], roles: [] }
+        - { path: ^/(en|fr|ar)/api/notifications$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Posts ACL
         # Post data
         - { path: ^/(en|fr|ar)/api/posts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -219,7 +219,7 @@ security:
         - { path: ^/(en|fr|ar)/api/posttypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Product Types ACL
         # Product Type data
-        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/producttypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Product Type
         - { path: ^/(en|fr|ar)/api/producttypes$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Product Type
@@ -255,13 +255,13 @@ security:
         - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Supplier Products ACL
         # Supplier Product data
-        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Supplier Product
-        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Supplier Product
-        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Detlete existing Supplier Product
-        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Supplier Types ACL
         # Supplier Type data
         - { path: ^/(en|fr|ar)/api/suppliertypes$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
@@ -291,7 +291,7 @@ security:
         - { path: ^/(en|fr|ar)/api/tenderbookmarks$, methods: [DELETE], roles: [ROLE_SUBSCRIBER] }
         # Tender Products ACL
         # Tender Product data
-        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Tender Product
         - { path: ^/(en|fr|ar)/api/tenderproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Tender Product
