@@ -1271,7 +1271,13 @@
           "CONSULTATION": "Consultation"
         },
         "COUNTRIES": "Countries",
-        "COUNTRIESSELECTED": "Selected countries"
+        "COUNTRIESSELECTED": "Selected countries",
+        "periods":{
+          "DAILY":"Daily",
+          "WEEKLY":"Weekly",
+          "MONTHLY":"Monthly"
+        },
+        "PERIOD": "Period"
       }
     },
     "form": {
@@ -1737,7 +1743,11 @@
     "SUPPLIERS": "Suppliers",
     "SUPPLIER": "Supplier",
     "HOWDOESITWORK": "How does it work?",
+    "SITEMAP": "Site map",
+    "ACCOUNT": "Account",
     "SERVICES": "Services",
+    "ABOUTUS": "About us",
+    "ELECTRICITYMAGAZINE": "Electicity magazine",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
     "MYBUYERS":"Buyers",
@@ -1760,6 +1770,10 @@
     "REGISTER": "Register",
     "REGISTERASBUYER": "Register as Buyer",
     "REGISTERASSUPPLIER": "Register as Supplier",
+    "SOCIALMEDIA": "Social media",
+    "PUBLISH": "Publish",
+    "CONSULT": "Consult",
+    "SEARCH": "Search",
     "CONTACTUS": "Contact us",
     "KEEPINTOUCH": "Keep <b>IN TOUCH</b>",
     "CONTACTINFORMATIONS": "Contact Infomations",
@@ -1859,10 +1873,14 @@
       "NEWALERT": "Add new alert",
       "CHANGEPASSWORD": "Change my password",
       "MYPROFILE": "Manage my account",
-      "SIGNOUT": "Sign out"
+      "SIGNOUT": "Sign out",
+      "SETTINGS": "Settings",
+      "MYSENTMESSAGE":"Manage sent messages",
+      "MYRECEIVEDMESSAGE":"Manage received messages"
     },
     "MYALERTS": "My alerts",
     "NEWALERT": "New Alert",
+    "ALERTSETTINGS": "Alert settings",
     "MYACCOUNT": "Account",
     "PREVIOUS": "Previous",
     "NEXT": "Next",
@@ -1876,6 +1894,17 @@
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
     "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
-    "SHOWGENERALCONDITION": "Show General Condition"
+    "SHOWGENERALCONDITION": "Show General Condition",
+    "settings":{
+      "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
+      "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
+      "RECEIVEDNEWMESSAGE":"E-mail sent to notify you that you have received a new message",
+      "CONSULTYOUROPPOTUNITY":"E-mail sent to notify you who has consult your oportunity business",
+      "CONSULTYOURPROFILE":"E-mail sent to notify you who has consult your profil"
+    },
+    "ALERTSETTINGS": "Alert settings",
+    "MYMESSAGES" : "My messages",
+    "SENTMESSAGE": "sent messages",
+    "RECEIVEDMESSAGE":"Received messages"
   }
 }

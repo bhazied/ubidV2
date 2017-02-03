@@ -51,10 +51,11 @@ class UserSessionData
             'job' => $user->getJob(),
             'roles' => $roles
         );
-
+        
         if (in_array('ROLE_SUBSCRIBER', $roles)) {
-            $data['country'] = $user->getCountry()->getId();
-            $data['countryName'] = $user->getCountry()->getName();
+            $data['country'] = $user->getCountry();
+            //$data['country'] = $user->getCountry()->getId();
+            //$data['countryName'] = $user->getCountry()->getName();
             $data['phone'] = $user->getPhone();
             $data['gender'] = $user->getGender();
             $data['picture'] = $user->getPicture();

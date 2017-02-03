@@ -79,14 +79,14 @@ body {
 }
 
 .navbar-logo-text {
-    background-image: url('/front/img/logo-e-electricity-text.png');
+    background-image: url('/front/img/e-electricity-logo.png');
     background-position: center;
     background-repeat: no-repeat;
-    height: 58px;
-    width: 236px;
+    height: 38px;
+    width: 168px;
     display: inline-block;
     float: left;
-    margin-right: 10px;
+    margin: 10px 50px 10px 0;
 }
 
 #electricity-navbar .nav {
@@ -190,11 +190,20 @@ body {
 }
 
 .footer-sep {
-    border-top: 4px #1D69AD solid;
+    border-top: 1px #1D69AD solid;
 }
 
 .footer-links {
     padding-right: 0;
+    padding-left: 10px;
+}
+
+.footer-links h4 {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #1D69AD !important;
 }
 
 .footer-links ul, .footer-links ul li {
@@ -204,7 +213,12 @@ body {
 }
 
 .footer-links ul li a {
+    color: #7B7B7B !important;
+}
+
+.footer-links ul li a:hover {
     color: #1D69AD !important;
+    text-decoration: underline!important;
 }
 
 .footer-center ul {
@@ -312,7 +326,8 @@ p.copyright {
 }
 
 .contact-infos {
-    border-left: 1px solid #1D69AD;
+    /*border-left: 1px solid #1D69AD;*/
+    padding: 0.5rem;
 }
 
 .contact-infos ul {
@@ -364,6 +379,28 @@ p.copyright {
 .contact-infos ul li i.email:before {
     /*background-image: url('/front/img/email.png');*/
     content: "\f0e0";
+}
+
+.contact-infos ul.inline {
+    margin: 30px 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-infos ul.inline li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.contact-infos ul.inline li a {
+    color: #1D69AD !important;
+    text-decoration: underline!important;
+}
+
+.contact-infos ul.inline li a:hover {
+    text-decoration: none!important;
 }
 
 .search-box, .search-box-home {
@@ -1109,7 +1146,7 @@ fieldset h2 {
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 17px;
     color: inherit;
 }
 .panel-group {
@@ -1156,15 +1193,14 @@ fieldset h2 {
     background: #C76868;
 }
 
-
 .home {
     padding-bottom: 120px;
 }
 
 .home h1 {
     background-color: #F7F8FC;
-    color: #6D6D6D;
     border: 1px solid #85AED3;
+    color: #6D6D6D;
     border-radius: 2px;
     margin: 0 auto 120px auto;
     width: 60%;
@@ -1251,7 +1287,7 @@ fieldset h2 {
     text-align: center;
     color: #9C9C9C;
     font-size: 0.8rem;
-    padding: 0;
+    padding: 0 0.5rem;
     margin: 0;
 }
 
@@ -1265,3 +1301,32 @@ fieldset h2 {
     text-align: center;
     padding: 0.3rem 1rem;
 }
+.detail-message table tr th {
+    min-width: 150px !important;
+    border-bottom: 1px solid #ccc !important;
+}
+.detail-message table tr td {
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+.detail-message table tr td div {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.detail-message table tr td span {
+    border-left: 1px solid #000000;
+   padding-left: 0.75rem;
+    /*display: block;*/
+}
+.detail-message table tr td a {
+    border-left: 1px solid #000000;
+    padding-left: 0.75rem;
+    display: block;
+}
+.detail-message .name {
+    font-size: 1.5rem;
+    color: #013486 !important;
+    cursor: pointer;
+    font-family: Arial !important;
+    margin-top: 2rem;

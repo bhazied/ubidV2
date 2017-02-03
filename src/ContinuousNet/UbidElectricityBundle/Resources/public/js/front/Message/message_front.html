@@ -1,0 +1,61 @@
+<!-- start: DETAILS -->
+<div class="container-fluid container-fullw bg-white detail-message">
+    <div class="row">
+        <div class="col-md-12" ng-controller="MessageFrontCtrl">
+            <div>
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                        <button ng-click="list()" class="btn btn-primary pull-left">
+                            <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKMESSAGES">Back to Messages list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                        </button>
+                    </div>
+                </div><!--/list-toolbox-->
+
+                    <h4 class="name" translate="content.list.MESSAGEDETAILS">Message Details</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+
+                        <tr>
+                            <th><span translate="content.list.fields.FROMBUYER">From Buyer</span></th>
+                            <td><a ui-sref="app.marketplace.buyersdetails({id: message.from_buyer.id})">[[ message.from_buyer.name ]]</a></span></td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.FROMSUPPLIER">From Supplier</span></th>
+                            <td><a ui-sref="app.marketplace.suppliersdetails({id: message.from_supplier.id})">[[ message.from_supplier.name ]]</a></span></td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.SUBJECT">Subject</span></th>
+                            <td>
+                                <div ng-bind-html="message.subject"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.BODY">Body</span></th>
+                            <td>
+                                <div ng-bind-html="message.body"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span translate="content.list.fields.SENDINGTIME">Sending Time</span></th>
+                            <td>
+                                <span>[[ message.sending_time | date: datetimeFormat ]]</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!--/table-responsive-->
+                <div class="row list-toolbox">
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-md-4  margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-md-4 margin-bottom-10">
+                    </div>
+                </div><!--/list-toolbox-->
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: DETAILS -->

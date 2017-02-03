@@ -181,7 +181,7 @@ class AlertRESTController extends BaseRESTController
             foreach ($previousCountries as $previousCountry) {
                 $entity->removeCountry($previousCountry);
             }
-            $roles = $this->getUser()->getRoles();
+            /*$roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
@@ -190,7 +190,7 @@ class AlertRESTController extends BaseRESTController
                        }
                    }
                 }
-            }
+            }*/
             $form = $this->createForm(new AlertType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);

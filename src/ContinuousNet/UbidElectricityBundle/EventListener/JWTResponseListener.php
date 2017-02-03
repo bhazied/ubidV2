@@ -44,7 +44,6 @@ class JWTResponseListener
         $user->setLoginCount($user->getLoginCount()+1);
         $user->setLastFailedLoginCount(0);
         $this->em->flush();
-
         $data['user'] = $this->usd->userData($user);
 
         $event->setData($data);

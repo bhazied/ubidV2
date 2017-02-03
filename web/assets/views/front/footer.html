@@ -5,27 +5,31 @@
 
     <div class="col-md-4 col-xs-12 mb-1">
         <div class="col-md-4 col-xs-4 footer-links">
+            <h4 translate="front.ACCOUNT">Account</h4>
             <ul>
-                <li><a ui-sref="front.tenders.list({section:'Tender'})" translate="front.TENDERS">Tenders</a></li>
-                <li><a ui-sref="front.products" translate="front.PRODUCTS">Products</a></li>
-                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
-                <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+                <li><a ui-sref="front.buyers" translate="front.BUYER">Buyer</a></li>
+                <li><a ui-sref="front.suppliers" translate="front.SUPPLIER">Supplier</a></li>
+                <li><a ng-if="!user.email" ui-sref="front.register({type: 'Both'})" translate="front.REGISTER">Register</a></li>
+                <li><a ng-if="!user.email" ui-sref="front.login({type: 'Both'})" translate="front.SIGNIN">Sign in</a></li>
+                <li><a ng-if="user.email" ui-sref="front.logout" translate="front.SIGNOUT">Sign-out</a></li>
             </ul>
         </div>
         <div class="col-md-4 col-xs-4 footer-links">
+            <h4 translate="front.SERVICES">Services</h4>
+            <ul>
+                <li><a ng-if="user.email" ui-sref="front.mytenders.new" translate="front.PUBLISH">Publish</a></li>
+                <li><a ng-if="!user.email" ui-sref="front.login({type: 'Both'})" translate="front.PUBLISH">Publish</a></li>
+                <li><a ui-sref="front.tenders.list({section: 'Consultation'})" translate="front.CONSULT">Consult</a></li>
+                <li><a ui-sref="front.tenders.list" translate="front.SEARCH">Search</a></li>
+                <li><a ui-sref="front.post({slug: 'social-media'})" translate="front.SOCIALMEDIA">Social media</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4 col-xs-4 footer-links">
+            <h4 translate="front.ABOUTUS">About us</h4>
             <ul>
                 <li><a ui-sref="front.post({slug: 'how-does-it-work'})" translate="front.HOWDOESITWORK">How does it work?</a></li>
+                <li><a ui-sref="front.post({slug: 'electicity-magazine'})" translate="front.ELECTRICITYMAGAZINE">Electicity magazine</a></li>
                 <li><a ui-sref="front.post({slug: 'services'})" translate="front.SERVICES">Services</a></li>
-                <li><a ui-sref="front.post({slug: 'terms-of-use'})" translate="front.TERMSOFUSE">Terms of use</a></li>
-                <li><a ui-sref="front.post({slug: 'privacy-policy'})" translate="front.PRIVACYPOLICY">Privacy policy</a></li>
-            </ul>
-        </div>
-        <div class="col-md-4 col-xs-4 footer-links">
-            <ul>
-                <li><a ng-if="!user.email" ui-sref="front.login({type: 'Both'})" translate="front.SIGNIN">Sign in</a></li>
-                <li><a ng-if="!user.email" ui-sref="front.register({type: 'Buyer'})" translate="front.REGISTERASBUYER">Register as Buyer</a></li>
-                <li><a ng-if="!user.email" ui-sref="front.register({type: 'Supplier'})" translate="front.REGISTERASSUPPLIER">Register as Supplier</a></li>
-                <li><a ng-if="user.email" ui-sref="front.logout" translate="front.SIGNOUT">Sign-out</a></li>
                 <li><a ui-sref="front.contact" translate="front.CONTACTUS">Contact us</a></li>
             </ul>
         </div>
@@ -46,19 +50,28 @@
     </div>
 
     <div class="col-md-4 col-xs-12 mb-1">
-
+        <!--
         <div class="col-md-5 col-sm-6 col-xs-6">
             <span class="contact-footer" translate="front.CONTACTINFORMATIONS" class="pull-right" clas>Contact Infomations</span>
         </div>
         <div class="col-md-7 col-sm-6 col-xs-6 contact-infos">
+        </div>
+        -->
+        <div class="contact-infos pull-right">
             <ul>
-                <li><i class="address"></i> <span translate="front.ADDRESS">Tanjanyika road berges du lac - 1000 - Tunis - Tunisia</span></li>
+                <!--li><i class="address"></i> <span translate="front.ADDRESS">Tanjanyika road berges du lac - 1000 - Tunis - Tunisia</span></li-->
                 <li><i class="tel"></i> +971 1258 4526 7</li>
-                <li><i class="fax"></i> +971 1258 4525 9</li>
+                <!--li><i class="fax"></i> +971 1258 4525 9</li-->
                 <li><i class="email"></i> <a href="mailto:contact@e-electricity.com" target="_blank">contact@e-electricity.com</a></li>
             </ul>
+            <ul class="inline">
+                <li><a ui-sref="front.post({slug: 'terms-of-use'})" translate="front.TERMSOFUSE">Terms of use</a></li>
+                <li><span>-</span></li>
+                <li><a ui-sref="front.post({slug: 'privacy-policy'})" translate="front.PRIVACYPOLICY">Privacy policy</a></li>
+                <li><span>-</span></li>
+                <li><a ui-sref="front.post({slug: 'site-map'})" translate="front.SITEMAP">Site map</a></li>
+            </ul>
         </div>
-
     </div>
 
 </footer>
