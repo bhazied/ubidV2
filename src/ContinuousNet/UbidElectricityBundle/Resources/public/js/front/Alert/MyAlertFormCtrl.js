@@ -18,6 +18,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
         }, 1000);
 
         angular.extend(this, $controller('AlertFormCtrl', {$scope:$scope}));
+        $scope.enableFormAlert = false;
 
         $scope.types = [{
             id: 'Tender',
