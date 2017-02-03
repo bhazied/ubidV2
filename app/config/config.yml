@@ -343,7 +343,7 @@ assetic:
                 # - "assets/css/front/theme.css"
                 # - "assets/css/front/style.css"
                 - "assets/css/custom.css"
-                - "front/css/e-elctricity.css"
+                - "front/css/e-electricity.css"
         jquery:
             inputs:
                 - "assets/bower_components/jquery/dist/jquery.js" #.min
