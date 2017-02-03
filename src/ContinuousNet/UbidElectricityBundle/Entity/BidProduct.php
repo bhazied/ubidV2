@@ -124,7 +124,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="TenderProduct")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`tender_product_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="tender_product_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -139,7 +139,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="Bid")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`bid_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="bid_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -154,7 +154,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="SupplierProduct")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`supplier_product_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="supplier_product_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -169,7 +169,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -184,7 +184,7 @@ class BidProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

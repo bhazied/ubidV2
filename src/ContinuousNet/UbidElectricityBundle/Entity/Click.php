@@ -69,7 +69,7 @@ class Click
      *
      * @ORM\ManyToOne(targetEntity="Visit")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`visit_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="visit_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -84,7 +84,7 @@ class Click
      *
      * @ORM\ManyToOne(targetEntity="Banner")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`banner_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="banner_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -99,7 +99,7 @@ class Click
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
