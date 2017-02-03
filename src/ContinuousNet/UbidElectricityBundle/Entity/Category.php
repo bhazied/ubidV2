@@ -98,6 +98,39 @@ class Category
     private $description;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaKeywords;
+
+    /**
      * @var integer
      * @access private
      *
@@ -336,6 +369,78 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @access public
+     * @param string $metaTitle
+     * @return Category
+     */
+    public function setMetaTitle($metaTitle = null)
+    {
+        $this->metaTitle = $metaTitle;
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @access public
+     * @param string $metaDescription
+     * @return Category
+     */
+    public function setMetaDescription($metaDescription = null)
+    {
+        $this->metaDescription = $metaDescription;
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @access public
+     * @param array $metaKeywords
+     * @return Category
+     */
+    public function setMetaKeywords(array $metaKeywords = null)
+    {
+        $this->metaKeywords = $metaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
     }
 
     /**
