@@ -167,6 +167,11 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'click.id', filter: { 'click.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
+            { field: 'visit', 'class': 'has_one', title: $filter('translate')('content.list.fields.VISIT'), sortable: 'visit.ip', filter: { 'click.visit': 'select' }, getValue: $scope.linkValue, filterData: $scope.getVisits(), show: $scope.getParamValue('visit_id_show_filed', true), displayInList: true, displayField: 'ip', state: 'app.statistics.visitsdetails' },
+            { field: 'banner', 'class': 'has_one', title: $filter('translate')('content.list.fields.BANNER'), sortable: 'banner.name', filter: { 'click.banner': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBanners(), show: $scope.getParamValue('banner_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.adserving.bannersdetails' },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'click.createdAt', filter: { 'click.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'click.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
