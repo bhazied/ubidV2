@@ -147,7 +147,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`parent_category_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="parent_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -162,7 +162,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="ProductType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`product_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -177,7 +177,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -192,7 +192,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -208,10 +208,10 @@ class Category
      * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
      *     }
      * )
      * 

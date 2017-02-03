@@ -190,7 +190,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`supplier_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -205,7 +205,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -220,7 +220,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -235,7 +235,7 @@ class SupplierProduct
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

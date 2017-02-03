@@ -146,7 +146,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`from_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="from_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -161,7 +161,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="Buyer")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`from_buyer_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="from_buyer_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -176,7 +176,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`from_supplier_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="from_supplier_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -191,7 +191,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`to_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="to_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -206,7 +206,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="Buyer")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`to_buyer_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="to_buyer_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -221,7 +221,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`to_supplier_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="to_supplier_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -236,7 +236,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -251,7 +251,7 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

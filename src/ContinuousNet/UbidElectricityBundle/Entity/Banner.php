@@ -553,7 +553,7 @@ class Banner
      *
      * @ORM\ManyToOne(targetEntity="BannerType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`banner_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="banner_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -568,7 +568,7 @@ class Banner
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -583,7 +583,7 @@ class Banner
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -599,10 +599,10 @@ class Banner
      * @ORM\ManyToMany(targetEntity="BannerPosition", inversedBy="banners")
      * @ORM\JoinTable(name="banners_banner_positions",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`banner_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="banner_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`banner_position_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="banner_position_id", referencedColumnName="id")
      *     }
      * )
      * 
