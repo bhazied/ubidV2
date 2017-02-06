@@ -40,6 +40,14 @@ ubid_electricity_dashboard:
     prefix:   /{_locale}/api/dashboard
     requirements:
         _locale: en|fr|ar
+
+ubid_electricity_reporting:
+    resource: "@UbidElectricityBundle/Controller/ReportingRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api/reporting
+    requirements:
+        _locale: en|fr|ar
+
 ubid_electricity_alert_api:
     resource: "@UbidElectricityBundle/Controller/AlertRESTController.php"
     type:   rest

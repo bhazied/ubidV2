@@ -165,6 +165,13 @@ class MessageRESTController extends BaseRESTController
         $form->handleRequest($request);
         if ($form->isValid()) {
             $entity->setCreatorUser($this->getUser());
+            $entity->setFromUser($this->getUser());
+            if($form->getData()->getToBuyer()){
+                $entity->setToUser($form->getData()->getToBuyer()->getCreatorUser());
+            }
+            if($form->getData()->getToSupplier()){
+                $entity->setToUser($form->getData()->getToSupplier()->getCreatorUser());
+            }
             $em->persist($entity);
             $em->flush();
             return $entity;

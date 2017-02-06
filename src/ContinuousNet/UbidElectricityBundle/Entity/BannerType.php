@@ -56,7 +56,7 @@ class BannerType
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class BannerType
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=50, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=50, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class BannerType
      * @var string
      * @access private
      *
-     * @ORM\Column(name="extensions", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`extensions`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class BannerType
      * @var string
      * @access private
      *
-     * @ORM\Column(name="mime_types", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`mime_types`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class BannerType
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_published", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_published`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class BannerType
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class BannerType
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

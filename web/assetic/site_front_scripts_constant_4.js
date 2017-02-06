@@ -1,7 +1,9 @@
 app.constant('APP_JS_REQUIRES', {
     //*** Scripts
     scripts: {
-        //*** Controllers
+        //***
+        // *
+        // Controllers
         'LoginCtrl': '/bundles/ubidelectricity/js/components/Auth/LoginCtrl.js',
         'LockScreenCtrl': '/bundles/ubidelectricity/js/components/Auth/LockScreenCtrl.js',
         'RegisterCtrl': '/bundles/ubidelectricity/js/components/Auth/RegisterCtrl.js',
@@ -11,6 +13,7 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'ReportingCtrl': '/bundles/ubidelectricity/js/components/Reporting/ReportingCtrl.js',
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
@@ -205,10 +208,14 @@ app.constant('APP_JS_REQUIRES', {
         'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
         'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
         'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js',
+        'MyAlertsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertsCtrl.js',
+        'MyAlertCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertCtrl.js',
+        'MyAlertFormCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertFormCtrl.js',
+        'MyAlertSettingsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertSettingsCtrl.js',
         'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
-        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js'
-
+        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
+        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -225,6 +232,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
+    },{
+        name: 'ReportingService',
+        files: ['/bundles/ubidelectricity/js/components/Reporting/ReportingService.js']
     },{
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
@@ -378,7 +388,11 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'visitService',
         files: ['/bundles/ubidelectricity/js/components/Visit/VisitService.js']
-    },{
+    },
+    /*
+     * Front Services
+     */
+    {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{

@@ -61,7 +61,7 @@
             <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER">Bookmark Tender</button>
         </div>
         <div class="col-md-6">
-            <button ng-if="user.email" ui-sref="front.applay_tender({id: '[[tender.id]]'})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+            <button ng-if="user.email" ui-sref="front.applay_tender({id: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
             <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
         </div>
     </div>

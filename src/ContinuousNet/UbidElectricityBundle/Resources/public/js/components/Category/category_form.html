@@ -23,7 +23,7 @@
                     <legend translate="content.list.EDITCATEGORY" ng-if="category.id > 0">
                         Edit Category
                     </legend>
-                    <form name="categoryForm" id="categoryForm" novalidate ng-submit="submitForm(categoryForm)">
+                    <form name="categoryForm" id="categoryForm" novalidate ng-submit="submitForm(categoryForm, true)">
                         <input type="hidden" name="id" id="categoryId" ng-model="category.id" />
                         <div class="row">
                             <div class="col-md-6">
@@ -149,6 +149,53 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
+                                    <label for="categoryMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.METATITLE">Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-model="category.meta_title" name="metaTitle" id="categoryMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="categoryMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.METADESCRIPTION">Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-model="category.meta_description" name="metaDescription" id="categoryMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="categoryMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-model="category.meta_keywords" name="metaKeywords" id="categoryMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
                                     <label for="categoryOrdering" class="control-label">
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
                                     </label>
@@ -159,6 +206,8 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ROLE_ADMIN_PUBLISHER') > -1"  ng-class="{'has-error':categoryForm.status.$dirty && categoryForm.status.$invalid, 'has-success':categoryForm.status.$valid}">
@@ -192,12 +241,12 @@
                             </div>
                             <div class="col-md-4 text-center">
                                 <button ng-if="category.id > 0" type="button" ng-click="submitForm(categoryForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="categoryForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
                                 </button>
                             </div>
                             <div class="col-md-4">
                                 <button type="button" ng-click="submitForm(categoryForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="categoryForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
                         </div>

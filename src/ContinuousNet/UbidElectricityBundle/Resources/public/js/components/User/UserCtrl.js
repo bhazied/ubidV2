@@ -63,13 +63,17 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         title: $filter('translate')('content.list.fields.roles.ROLE_ADMIN'),
         css: 'warning'
     }, {
-        id: 'ROLE_ADMIN_PUBLISHER',
-        title: $filter('translate')('content.list.fields.roles.ROLE_ADMIN_PUBLISHER'),
+        id: 'ROLE_CALL_CENTER',
+        title: $filter('translate')('content.list.fields.roles.ROLE_CALL_CENTER'),
         css: 'danger'
+    }, {
+        id: 'ROLE_IT',
+        title: $filter('translate')('content.list.fields.roles.ROLE_IT'),
+        css: 'default'
     }, {
         id: 'ROLE_SUPER_ADMIN',
         title: $filter('translate')('content.list.fields.roles.ROLE_SUPER_ADMIN'),
-        css: 'default'
+        css: 'info'
     }];
 
     $scope.dateFormat = $filter('translate')('formats.DATE');

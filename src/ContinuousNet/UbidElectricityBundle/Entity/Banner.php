@@ -56,7 +56,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Banner
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="closable", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`closable`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="count_down", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`count_down`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="iphone_action", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`iphone_action`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="android_action", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`android_action`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="web_action", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`web_action`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="gender", type="string", nullable=true, unique=false)
+     * @ORM\Column(name="`gender`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="min_age", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`min_age`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="max_age", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`max_age`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,7 +166,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="priority", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`priority`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -177,7 +177,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="web_url", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`web_url`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -188,7 +188,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="phone_number_to_call", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`phone_number_to_call`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -199,7 +199,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="sms_mobile_number", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`sms_mobile_number`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -210,7 +210,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="sms_body", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`sms_body`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -221,7 +221,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email_adress", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`email_adress`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -232,7 +232,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email_subject", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`email_subject`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -243,7 +243,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email_body", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`email_body`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -254,7 +254,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="android_app_url", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`android_app_url`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -265,7 +265,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="iphone_app_url", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`iphone_app_url`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -276,7 +276,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="youtube_url", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`youtube_url`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -287,7 +287,7 @@ class Banner
      * @var float
      * @access private
      *
-     * @ORM\Column(name="map_latitude", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`map_latitude`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -298,7 +298,7 @@ class Banner
      * @var float
      * @access private
      *
-     * @ORM\Column(name="map_longitude", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`map_longitude`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -309,7 +309,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="screen", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`screen`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -320,7 +320,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="screen_parameters", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`screen_parameters`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -331,7 +331,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_hits", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_hits`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -342,7 +342,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="today_hits", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`today_hits`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -353,7 +353,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_clicks", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_clicks`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -364,7 +364,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="today_clicks", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`today_clicks`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -375,7 +375,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="template", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`template`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -386,7 +386,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="ad_text", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`ad_text`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -397,7 +397,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="text_color", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`text_color`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -408,7 +408,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="background_color", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`background_color`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -419,7 +419,7 @@ class Banner
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="auto_publishing", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`auto_publishing`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -430,7 +430,7 @@ class Banner
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="start_publishing", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`start_publishing`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -441,7 +441,7 @@ class Banner
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="end_publishing", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`end_publishing`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -452,7 +452,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="start_publishing_time", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`start_publishing_time`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -463,7 +463,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="end_publishing_time", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`end_publishing_time`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -474,7 +474,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="max_clicks_per_day", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`max_clicks_per_day`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -485,7 +485,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="max_total_clicks", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`max_total_clicks`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -496,7 +496,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="max_hits_per_day", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`max_hits_per_day`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -507,7 +507,7 @@ class Banner
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="max_total_hits", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`max_total_hits`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -518,7 +518,7 @@ class Banner
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -529,7 +529,7 @@ class Banner
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -540,7 +540,7 @@ class Banner
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

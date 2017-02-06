@@ -57,7 +57,7 @@ class Group  extends BaseGroup
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="name", type="string", length=50, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=50, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Group  extends BaseGroup
      * @var array
      * @access protected
      *
-     * @ORM\Column(name="roles", type="array", nullable=false, unique=false)
+     * @ORM\Column(name="`roles`", type="array", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Group  extends BaseGroup
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Group  extends BaseGroup
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

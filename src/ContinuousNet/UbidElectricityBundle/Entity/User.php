@@ -62,7 +62,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="type", type="string", nullable=true, unique=false)
+     * @ORM\Column(name="`type`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -73,7 +73,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="username", type="string", length=50, nullable=false, unique=true)
+     * @ORM\Column(name="`username`", type="string", length=50, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -84,7 +84,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="password", type="string", length=128, nullable=false, unique=false)
+     * @ORM\Column(name="`password`", type="string", length=128, nullable=false, unique=false)
      * 
      * @Exclude
      * 
@@ -95,7 +95,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=true, unique=true)
+     * @ORM\Column(name="`salt`", type="string", length=255, nullable=true, unique=true)
      * 
      * @Exclude
      * 
@@ -106,7 +106,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=true)
+     * @ORM\Column(name="`phone`", type="string", length=20, nullable=true, unique=true)
      * 
      * @Expose
      * 
@@ -117,7 +117,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="`email`", type="string", length=255, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -128,7 +128,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="username_canonical", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`username_canonical`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -139,7 +139,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`email_canonical`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -150,7 +150,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="gender", type="string", nullable=true, unique=false)
+     * @ORM\Column(name="`gender`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -161,7 +161,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="first_name", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`first_name`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -172,7 +172,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="last_name", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`last_name`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -183,7 +183,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -194,7 +194,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="address", type="string", length=500, nullable=true, unique=false)
+     * @ORM\Column(name="`address`", type="string", length=500, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -205,7 +205,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="zip_code", type="string", length=10, nullable=true, unique=false)
+     * @ORM\Column(name="`zip_code`", type="string", length=10, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -216,7 +216,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="company_name", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`company_name`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -227,7 +227,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="job", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`job`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -238,7 +238,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="profile", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`profile`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -249,7 +249,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="enable_oauth", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`enable_oauth`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -260,7 +260,7 @@ class User  extends BaseUser
      * @var integer
      * @access protected
      *
-     * @ORM\Column(name="session_timeout", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`session_timeout`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -271,7 +271,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="multiple_session", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`multiple_session`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -282,7 +282,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="phone_validated", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`phone_validated`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -293,7 +293,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="phone_validation_code", type="string", length=25, nullable=true, unique=false)
+     * @ORM\Column(name="`phone_validation_code`", type="string", length=25, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -304,7 +304,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="email_validated", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`email_validated`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -315,7 +315,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="email_validation_code", type="string", length=500, nullable=true, unique=false)
+     * @ORM\Column(name="`email_validation_code`", type="string", length=500, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -326,7 +326,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="authentication_mode", type="string", nullable=true, unique=false)
+     * @ORM\Column(name="`authentication_mode`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -337,7 +337,7 @@ class User  extends BaseUser
      * @var array
      * @access protected
      *
-     * @ORM\Column(name="roles", type="array", nullable=false, unique=false)
+     * @ORM\Column(name="`roles`", type="array", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -348,7 +348,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="enabled", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`enabled`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -359,7 +359,7 @@ class User  extends BaseUser
      * @var string
      * @access protected
      *
-     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`confirmation_token`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -370,7 +370,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`password_requested_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -381,7 +381,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="locked", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`locked`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -392,7 +392,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="expired", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`expired`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -403,7 +403,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="expires_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`expires_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -414,7 +414,7 @@ class User  extends BaseUser
      * @var boolean
      * @access protected
      *
-     * @ORM\Column(name="credentials_expired", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`credentials_expired`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -425,7 +425,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`credentials_expire_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -436,7 +436,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="last_login", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`last_login`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -447,7 +447,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="last_failed_login", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`last_failed_login`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -458,7 +458,7 @@ class User  extends BaseUser
      * @var integer
      * @access protected
      *
-     * @ORM\Column(name="login_count", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`login_count`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -469,7 +469,7 @@ class User  extends BaseUser
      * @var integer
      * @access protected
      *
-     * @ORM\Column(name="failed_login_count", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`failed_login_count`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -480,7 +480,7 @@ class User  extends BaseUser
      * @var integer
      * @access protected
      *
-     * @ORM\Column(name="last_failed_login_count", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`last_failed_login_count`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -491,7 +491,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -502,7 +502,7 @@ class User  extends BaseUser
      * @var \DateTime
      * @access protected
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

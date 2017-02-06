@@ -4,8 +4,8 @@
  * Controller for Alert Details
  */
 
-app.controller('MyAlertCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$alertsDataFactory',
-    function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $alertsDataFactory) {
+app.controller('MyAlertsCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$alertsDataFactory','$controller',
+    function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $alertsDataFactory, $controller) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -16,25 +16,19 @@ app.controller('MyAlertCtrl', ['$scope', '$rootScope', '$state', '$stateParams',
             $rootScope.contentOffset = 0;
         });
 
-        angular.extend(this, $controller('AlertCtrl', {$scope:$scope}));
-
-        $scope.list = function() {
-            $state.go('app.access.alerts');
-        };
+        angular.extend(this, $controller('AlertsCtrl', {$scope:$scope}));
 
         $scope.add = function() {
-            $state.go('app.access.alertsnew');
+            $state.go('front.myAlerts.new');
         };
 
         $scope.edit = function(row) {
-            $state.go('app.access.alertsedit', {id: row.id});
+            $state.go('front.myAlerts.edit', {id: row.id});
         };
 
-        if (angular.isDefined($stateParams.id)) {
-            $alertsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
-                $scope.alert = data;
-            });
-        }
+        $scope.details = function(row) {
+            $state.go('front.myAlerts.details', {id: row.id});
+        };
 
     }]);
 

@@ -238,48 +238,25 @@ app.controller('MessageFrontFormCtrl', ['$scope','$controller', '$rootScope', '$
        
        $scope.currentUser = $localStorage.user ;
 
-        var offset = 0;
-        var limit = 1;
-        var http_params = {
-            offset: offset,
-            limit: limit
-        };
-        //get fromUser
-        http_params['filters[user.email]'] = $scope.currentUser.email;
-        $usersDataFactory.query(http_params).$promise.then(function(data) {
-            angular.forEach(data.results,function(item){
-                $scope.sender = item.id;
-            });
-        });
-
-
         //get toUser
         if($stateParams.to == "buyer"){
-            $buyersDataFactory.get({id : $stateParams.id}).$promise.then(function(data) {
-                $scope.receiver = data.creator_user.id;
-            });
             $timeout(function(){
                 $scope.message = {
                     status: 'Draft',
                     sending_time: new Date(),
                     reading_time: new Date(),
                     from_user :  $scope.sender,
-                    to_user :  $scope.receiver,
                     to_buyer : $stateParams.id
                 };
             },2000);
         }
         if($stateParams.to == "supplier"){
-            $suppliersDataFactory.get({id : $stateParams.id}).$promise.then(function(data) {
-                $scope.receiver = data.creator_user.id;
-            });
             $timeout(function(){
                 $scope.message = {
                     status: 'Draft',
                     sending_time: new Date(),
                     reading_time: new Date(),
                     from_user :  $scope.sender,
-                    to_user :  $scope.receiver,
                     to_supplier : $stateParams.id
                 };
             },2000);

@@ -173,7 +173,7 @@ app.config(['$stateProvider',
             url: '/applay_tender/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
             title: 'Advanced Search',
-            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            resolve: loadSequence('ApplyTenderCtrl','BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
             /*
              * My Tenders Manager routes
              */
@@ -366,9 +366,10 @@ app.config(['$stateProvider',
             resolve: loadSequence()
         }).state('front.projectbids.list', {
             url: '/list',
+
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
             title: 'front.PROJECTBIDS',
-            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')
+            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService', 'supplierService')
         }).state('front.projectbids.bids', {
             url: '/bids-by-project/:projectId',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
@@ -391,5 +392,42 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },*/
             resolve: loadSequence('BidsShortListCtrl','BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'projectBidsFrontService')
+        }).state('front.myAlerts',{
+            url: '/my-alerts',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title : 'front.MYALERTS',
+            resolve: loadSequence()
+        }).state('front.myAlerts.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alerts.html',
+            title : 'front.MYALERTS',
+            resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
+        }).state('front.myAlerts.details',{
+            url: '/details',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
+            title : 'front.MYALERTS',
+            resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
+        }).state('front.myAlerts.new', {
+            url: '/new',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.edit', {
+            url: '/edit/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.settings', {
+            url: '/settings',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_settings.html',
+            title : 'front.MYALERTSETTINGS',
+            params: {
+                'userSettingsIsFiltersVisible': null,
+                'userSettingsPage': null,
+                'userSettingsCount': null,
+                'userSettingsSorting': null,
+                'userSettingsFilter': null
+            },
+            resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingsCtrl', 'userSettingService', 'userService')
         })
     }]);

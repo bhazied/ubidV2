@@ -56,7 +56,7 @@ class UserSetting
      * @var string
      * @access private
      *
-     * @ORM\Column(name="key", type="string", length=100, nullable=false, unique=false)
+     * @ORM\Column(name="`key`", type="string", length=100, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class UserSetting
      * @var string
      * @access private
      *
-     * @ORM\Column(name="value", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`value`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class UserSetting
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class UserSetting
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

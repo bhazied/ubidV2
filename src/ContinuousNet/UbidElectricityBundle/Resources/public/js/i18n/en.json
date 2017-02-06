@@ -343,6 +343,8 @@
                 "ENTERDESCRIPTION": "Enter the Description",
                 "SELECTSTATUS": "Select Status",
                 "STATUSREQUIRED": "The Status is required",
+                "SELECTPERIOD": "Select Period",
+                "PERIODREQUIRED": "The Period is required",
                 "FILTERCATEGORIES": "Filter Categories",
                 "FILTERCOUNTRIES": "Filter Countries",
                 "ENTERSLUG": "Enter the Slug",
@@ -351,6 +353,9 @@
                 "SELECTPARENTCATEGORY": "Select Parent Category",
                 "SELECTPRODUCTTYPE": "Select Product Type",
                 "PRODUCTTYPEREQUIRED": "The Product Type is required",
+                "ENTERMETATITLE": "Enter the Meta Title",
+                "ENTERMETADESCRIPTION": "Enter the Meta Description",
+                "ENTERMETAKEYWORDS": "Enter the Meta Keywords",
                 "ENTERORDERING": "Enter the Ordering",
                 "FILTERTENDERS": "Filter Tenders",
                 "SELECTREGION": "Select Region",
@@ -516,9 +521,6 @@
                 "POSTTYPEREQUIRED": "The Post Type is required",
                 "SELECTPUBLISHDATE": "Select Publish Date",
                 "PUBLISHDATEREQUIRED": "The Publish Date is required",
-                "ENTERMETATITLE": "Enter the Meta Title",
-                "ENTERMETADESCRIPTION": "Enter the Meta Description",
-                "ENTERMETAKEYWORDS": "Enter the Meta Keywords",
                 "ENTERTOTALPRINTS": "Enter the Total Prints",
                 "ENTERTOTALCOMMENTS": "Enter the Total Comments",
                 "ENTERTOTALRATINGS": "Enter the Total Ratings",
@@ -1307,35 +1309,35 @@
             "BACKVISITS": "Back To Visits List",
             "fieldsets": {
                 "ALERT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "CATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "COUNTRY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNER" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNERPOSITION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BID" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "E" : "E"
                 },
                 "BIDPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BIDDINGTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BUYER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "D" : "D",
@@ -1343,58 +1345,58 @@
                     "E" : "E"
                 },
                 "BUYERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "CLICK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "GROUP" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "HIT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "IMPRESSION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "LANGUAGE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "LOG" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MENU" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MENULINK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MESSAGE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "NOTIFICATION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POST" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POSTCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POSTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "PRODUCTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "REGION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SECTOR" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SUPPLIER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "D" : "D",
@@ -1402,77 +1404,77 @@
                     "E" : "E"
                 },
                 "SUPPLIERPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SUPPLIERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "B" : "B",
                     "D" : "D"
                 },
                 "TENDERBOOKMARK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDERPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONBIDDINGTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONBUYERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONCOUNTRY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONMENU" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONMENULINK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOST" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOSTCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOSTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPRODUCTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONREGION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONSECTOR" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONSUPPLIERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONTENDERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "USER" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "USERSETTING" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "VISIT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 }
             },
             "fields": {
@@ -1490,6 +1492,7 @@
                 "NAME": "Name",
                 "DESCRIPTION": "Description",
                 "STATUS": "Status",
+                "PERIOD": "Period",
                 "CREATEDAT": "Created At",
                 "CREATORUSER": "Creator User",
                 "MODIFIEDAT": "Modified At",
@@ -1500,6 +1503,9 @@
                 "PICTURE": "Picture",
                 "PARENTCATEGORY": "Parent Category",
                 "PRODUCTTYPE": "Product Type",
+                "METATITLE": "Meta Title",
+                "METADESCRIPTION": "Meta Description",
+                "METAKEYWORDS": "Meta Keywords",
                 "ORDERING": "Ordering",
                 "TENDERS": "Tenders",
                 "REGION": "Region",
@@ -1642,9 +1648,6 @@
                 "POSTTYPE": "Post Type",
                 "ISHEADLINE": "Is Headline",
                 "PUBLISHDATE": "Publish Date",
-                "METATITLE": "Meta Title",
-                "METADESCRIPTION": "Meta Description",
-                "METAKEYWORDS": "Meta Keywords",
                 "TOTALPRINTS": "Total Prints",
                 "TOTALCOMMENTS": "Total Comments",
                 "TOTALRATINGS": "Total Ratings",
@@ -1730,6 +1733,11 @@
                     "QUALIFIED": "Qualified",
                     "SENT": "Sent"
                 },
+                "periods": {
+                    "DAILY": "Daily",
+                    "WEEKLY": "Weekly",
+                    "MONTHLY": "Monthly"
+                },
                 "genders": {
                     "ALL": "All",
                     "MALE": "Male",
@@ -1740,7 +1748,9 @@
                     "ROLESUBSCRIBER": "Role Subscriber",
                     "ROLEADMIN": "Role Admin",
                     "ROLEADMINPUBLISHER": "Role Admin Publisher",
-                    "ROLESUPERADMIN": "Role Super Admin"
+                    "ROLESUPERADMIN": "Role Super Admin",
+                    "ROLECALLCENTER": "Role Call Center",
+                    "ROLEIT": "Role It"
                 },
                 "modes": {
                     "LINK": "Link",

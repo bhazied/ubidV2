@@ -202,35 +202,6 @@
                                 <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
                             </tr>
                             <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.DEFAULT"></h3></th>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
-                                <td>
-                                    <span>[[ buyer.created_at | date: datetimeFormat ]]</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
-                                <td>
-                                    <span>[[ buyer.modified_at | date: datetimeFormat ]]</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.ID">Id</span></td>
-                                <td>
-                                    <div ng-bind-html="buyer.id"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: buyer.creator_user.id})">[[ buyer.creator_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: buyer.modifier_user.id})">[[ buyer.modifier_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.E"></h3></th>
                             </tr>
                             <tr>
@@ -256,6 +227,35 @@
                                 <td>
                                     <span my-boolean="[[ buyer.enable_share ]]"></span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.Z"></h3></th>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.ID">Id</span></td>
+                                <td>
+                                    <div ng-bind-html="buyer.id"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
+                                <td>
+                                    <span>[[ buyer.created_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: buyer.creator_user.id})">[[ buyer.creator_user.username ]]</a></span></td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
+                                <td>
+                                    <span>[[ buyer.modified_at | date: datetimeFormat ]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: buyer.modifier_user.id})">[[ buyer.modifier_user.username ]]</a></span></td>
                             </tr>
                         </tbody>
                     </table>

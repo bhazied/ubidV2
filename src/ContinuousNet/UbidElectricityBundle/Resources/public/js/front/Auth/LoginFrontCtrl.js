@@ -69,5 +69,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.register = function (type) {
             $state.go('front.register', {type: type});
         }
+        
+        $scope.goLogin = function () {
+            $state.go('front.login');
+        }
 
     }]);

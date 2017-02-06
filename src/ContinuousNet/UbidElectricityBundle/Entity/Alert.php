@@ -56,7 +56,7 @@ class Alert
      * @var array
      * @access private
      *
-     * @ORM\Column(name="types", type="array", nullable=false, unique=false)
+     * @ORM\Column(name="`types`", type="array", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Alert
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Alert
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=512, nullable=true, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=512, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Alert
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -97,10 +97,21 @@ class Alert
     private $status;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`period`", type="string", nullable=false, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $period;
+
+    /**
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +122,7 @@ class Alert
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -304,6 +315,30 @@ class Alert
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set period
+     *
+     * @access public
+     * @param string $period
+     * @return Alert
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @access public
+     * @return string 
+     */
+    public function getPeriod()
+    {
+        return $this->period;
     }
 
     /**

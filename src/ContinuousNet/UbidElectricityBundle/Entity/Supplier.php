@@ -57,7 +57,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=1024, nullable=true, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=1024, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="main_products_services", type="string", length=512, nullable=true, unique=false)
+     * @ORM\Column(name="`main_products_services`", type="string", length=512, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="reference_number", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`reference_number`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="phone", type="string", length=20, nullable=true, unique=false)
+     * @ORM\Column(name="`phone`", type="string", length=20, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="fax", type="string", length=20, nullable=true, unique=false)
+     * @ORM\Column(name="`fax`", type="string", length=20, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="website", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`website`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`email`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -145,7 +145,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="first_name", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`first_name`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -156,7 +156,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="last_name", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`last_name`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -167,7 +167,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="job", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`job`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -178,7 +178,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -189,7 +189,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="address", type="string", length=500, nullable=true, unique=false)
+     * @ORM\Column(name="`address`", type="string", length=500, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -200,7 +200,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="zip_code", type="string", length=10, nullable=true, unique=false)
+     * @ORM\Column(name="`zip_code`", type="string", length=10, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -211,7 +211,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="city", type="string", length=10, nullable=true, unique=false)
+     * @ORM\Column(name="`city`", type="string", length=10, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -222,7 +222,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="company_name", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`company_name`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -233,7 +233,7 @@ class Supplier
      * @var string
      * @access private
      *
-     * @ORM\Column(name="total_revenu", type="string", length=100, nullable=true, unique=false)
+     * @ORM\Column(name="`total_revenu`", type="string", length=100, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -244,7 +244,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="first_market_rate", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`first_market_rate`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -255,7 +255,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="second_market_rate", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`second_market_rate`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -266,7 +266,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="third_market_rate", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`third_market_rate`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -277,7 +277,7 @@ class Supplier
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_public", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_public`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -288,7 +288,7 @@ class Supplier
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="views", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`views`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -299,7 +299,7 @@ class Supplier
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="enable_comment", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`enable_comment`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -310,7 +310,7 @@ class Supplier
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="enable_private_message", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`enable_private_message`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -321,7 +321,7 @@ class Supplier
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="enable_share", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`enable_share`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -332,7 +332,7 @@ class Supplier
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -343,7 +343,7 @@ class Supplier
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
