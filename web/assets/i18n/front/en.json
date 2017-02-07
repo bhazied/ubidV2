@@ -1906,6 +1906,7 @@
     "MYMESSAGES" : "My messages",
     "SENTMESSAGE": "sent messages",
     "RECEIVEDMESSAGE":"Received messages",
-    "APPLAYTENDER" : "Applay tender"
+    "APPLAYTENDER" : "Applay tender",
+    "DESCRIPTIONREQUIRED" : "Description is required"
   }
 }

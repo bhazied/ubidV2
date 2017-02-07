@@ -9,7 +9,6 @@
                         Applay Tender
                     </legend>
                     <form name="bidForm" id="bidForm" novalidate ng-submit="submitForm(bidForm, true)">
-                        <input type="hidden" name="id" id="bidId" ng-model="bid.id" />
                         <div class="row">
                             <div class="col-md-6">
 
@@ -35,23 +34,6 @@
                         <div class="row">
                             <!--<div class="col-md-6">-->
                                 <input type="hidden" value="[[bid.tender]]" ng-model="bid.tender" name="tender" id="bidTender">
-                                <!--<div class="form-group" ng-class="{'has-error':bidForm.tender.$dirty && bidForm.tender.$invalid, 'has-success':bidForm.tender.$valid}">
-                                    <label for="bidTender" class="control-label">
-                                        <span translate="content.list.fields.TENDER">Tender</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <div class="block select-list" ng-if="tendersLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="bid_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="bid.tender" name="tender" id="bidTender" class="form-control" ng-required="true">
-                                            </select>
-                                            <i class="ti-control-skip-backward"></i>
-                                        </span><!--/input-icon-->
-                             <!--       </div>
-                                    <span class="error text-small block" ng-if="bidForm.tender.$dirty && bidForm.tender.$error.required" translate="content.form.messages.TENDERREQUIRED">Tender is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.tender.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            <!--</div><!--/col-md-6-->
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':bidForm.title.$dirty && bidForm.title.$invalid, 'has-success':bidForm.title.$valid}">
@@ -135,50 +117,11 @@
                                     <div class="note-editor">
                                         <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="bid.description" name="description" id="bidDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></div>
                                     </div>
-                                    <span class="error text-small block" ng-if="bidForm.description.$dirty && bidForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
+                                    <span class="error text-small block" ng-if="bidForm.description.$dirty && bidForm.description.$error.required" translate="front.DESCRIPTIONREQUIRED">Description is required.</span>
                                     <span class="success text-small block" ng-if="bidForm.description.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-12-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group" ng-class="{'has-error':bidForm.status.$dirty && bidForm.status.$invalid, 'has-success':bidForm.status.$valid}">
-                                    <label for="bidStatus" class="control-label">
-                                        <span translate="content.list.fields.STATUS">Status</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <div class="continuous-radio radio-primary" ng-if="statuses.length < 10">
-                                        <input ng-disabled="false" ng-repeat-start="status in statuses" ng-model="bid.status" type="radio" id="status[[ status.id ]]" value="[[ status.id ]]" name="status" ng-required="true" />
-                                        <label ng-repeat-end for="status[[ status.id ]]">
-                                            [[ status.title ]]
-                                        </label>
-                                    </div>
-                                    <div class="block select-list" ng-if="statuses.length >= 10">
-                                        <span class="input-icon">
-                                            <select ng-disabled="false" ng-options="item.id as item.title for item in statuses" ng-model="bid.status" name="status" id="bidStatus" class="form-control" ng-required="true">
-                                            </select>
-                                        </span>
-                                    </div>
-                                    <span class="error text-small block" ng-if="bidForm.status.$dirty && bidForm.status.$error.required" translate="content.form.messages.STATUSREQUIRED">Status is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.status.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidNote" class="control-label">
-                                        <span translate="content.list.fields.NOTE">Note</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.note" type="text" name="note" id="bidNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
@@ -231,6 +174,21 @@
                                     <span class="input-icon">
                                         <input ng-model="bid.phone" type="text" name="phone" id="bidPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" />
                                         <i class="fa fa-phone"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="bidNote" class="control-label">
+                                        <span translate="content.list.fields.NOTE">Note</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.note" type="text" name="note" id="bidNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
