@@ -68091,7 +68091,8 @@ app.constant('APP_JS_REQUIRES', {
         'MyAlertSettingsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertSettingsCtrl.js',
         'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
-        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js'
+        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
+        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js'
     },
     modules: [{
         name: 'LoginService',
