@@ -391,6 +391,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.register = function (type) {
             $state.go('front.register', {type: type});
         }
+        
+        $scope.goLogin = function () {
+            $state.go('front.login');
+        }
 
     }]);
 
@@ -484,7 +488,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             if($state.current.name == "front.home"){
-                $rootScope.SearchFormHeader = false;
+                $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
             }
