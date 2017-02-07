@@ -58,7 +58,7 @@
         "ENTERNEWPASSWORD": "Entrer your new password",
         "INVALIDTOKEN": "Invalid token",
         "RESETPASSWORDRESETINPROGRESS": "Reset password reset in progress...",
-        "NEWPASSWORDNOTSET": "Ajouter d'un(e) password not set!",
+        "NEWPASSWORDNOTSET": "Nouveau(lle) password not set!",
         "PASSWORDCHANGED": "Mot de passe changed",
         "ENTERCURRENTPASSWORD": "Entrer your current password"
     },
@@ -198,7 +198,7 @@
         "invoice" : {
             "ORDERDATE": "Order date",
             "DESCRIPTION" : "Description",
-            "UNUTPRICE" : "Unit price",
+            "UNUTPRICE" : "Unité price",
             "AMOUNT" : "Montant",
             "SUBTOTAL" : "Subtotal",
             "TOTAL": "Total",
@@ -343,6 +343,8 @@
                 "ENTERDESCRIPTION": "Entrer une valeur pour Description",
                 "SELECTSTATUS": "Sélectionner une valeur pour Statut",
                 "STATUSREQUIRED": "Le champs Statut est obligatoire",
+                "SELECTPERIOD": "Sélectionner une valeur pour Période",
+                "PERIODREQUIRED": "Le champs Période est obligatoire",
                 "FILTERCATEGORIES": "Filter Catégories",
                 "FILTERCOUNTRIES": "Filter Pays",
                 "ENTERSLUG": "Entrer une valeur pour Url lisible",
@@ -351,6 +353,9 @@
                 "SELECTPARENTCATEGORY": "Sélectionner une valeur pour Catégorie Mére",
                 "SELECTPRODUCTTYPE": "Sélectionner une valeur pour Type de produits",
                 "PRODUCTTYPEREQUIRED": "Le champs Type de produits est obligatoire",
+                "ENTERMETATITLE": "Entrer une valeur pour Meta Titre",
+                "ENTERMETADESCRIPTION": "Entrer une valeur pour Description Meta",
+                "ENTERMETAKEYWORDS": "Entrer une valeur pour Mots clés Meta",
                 "ENTERORDERING": "Entrer une valeur pour Ordre",
                 "FILTERTENDERS": "Filter Appels d'offres",
                 "SELECTREGION": "Sélectionner une valeur pour Région",
@@ -432,7 +437,7 @@
                 "BIDREQUIRED": "Le champs Réponse est obligatoire",
                 "SELECTSUPPLIERPRODUCT": "Sélectionner une valeur pour Produit de fournisseurs",
                 "SUPPLIERPRODUCTREQUIRED": "Le champs Produit de fournisseurs est obligatoire",
-                "ENTERNEWUNITCOST": "Entrer une valeur pour Ajouter d'un(e) Coût unitaire",
+                "ENTERNEWUNITCOST": "Entrer une valeur pour Nouveau(lle) Coût unitaire",
                 "ENTERQUANTITY": "Entrer une valeur pour Quantité",
                 "ENTERDURATION": "Entrer une valeur pour Durée",
                 "SELECTBUYERTYPE": "Sélectionner une valeur pour Type d'acheteurs",
@@ -516,9 +521,6 @@
                 "POSTTYPEREQUIRED": "Le champs Type d'articles est obligatoire",
                 "SELECTPUBLISHDATE": "Sélectionner une valeur pour Date de publication",
                 "PUBLISHDATEREQUIRED": "Le champs Date de publication est obligatoire",
-                "ENTERMETATITLE": "Entrer une valeur pour Meta Titre",
-                "ENTERMETADESCRIPTION": "Entrer une valeur pour Description Meta",
-                "ENTERMETAKEYWORDS": "Entrer une valeur pour Mots clés Meta",
                 "ENTERTOTALPRINTS": "Entrer une valeur pour Nombre d'impressions",
                 "ENTERTOTALCOMMENTS": "Entrer une valeur pour Nombre de commentaires",
                 "ENTERTOTALRATINGS": "Entrer une valeur pour Total Ratings",
@@ -594,7 +596,7 @@
             "ALERTS": "Alerts",
             "ALERT": "Alert",
             "ADDALERT": "Ajouter un(e) Alert",
-            "NEWALERT": "Ajouter d'un(e) Alert",
+            "NEWALERT": "Nouveau(lle) Alert",
             "ALERTDETAILS": "Détails Alert",
             "EDITALERT": "Modifier ce(tte) Alert",
             "ALERTUPDATED": "Alert mis(e) à jour",
@@ -608,7 +610,7 @@
             "CATEGORIES": "Catégories",
             "CATEGORY": "Catégorie",
             "ADDCATEGORY": "Ajouter un(e) Catégorie",
-            "NEWCATEGORY": "Ajouter d'un(e) Catégorie",
+            "NEWCATEGORY": "Nouveau(lle) Catégorie",
             "CATEGORYDETAILS": "Détails Catégorie",
             "EDITCATEGORY": "Modifier ce(tte) Catégorie",
             "CATEGORYUPDATED": "Catégorie mis(e) à jour",
@@ -622,7 +624,7 @@
             "COUNTRIES": "Pays",
             "COUNTRY": "Pays",
             "ADDCOUNTRY": "Ajouter un(e) Pays",
-            "NEWCOUNTRY": "Ajouter d'un(e) Pays",
+            "NEWCOUNTRY": "Nouveau(lle) Pays",
             "COUNTRYDETAILS": "Détails Pays",
             "EDITCOUNTRY": "Modifier ce(tte) Pays",
             "COUNTRYUPDATED": "Pays mis(e) à jour",
@@ -636,7 +638,7 @@
             "BANNERS": "Bannières",
             "BANNER": "Bannière",
             "ADDBANNER": "Ajouter un(e) Bannière",
-            "NEWBANNER": "Ajouter d'un(e) Bannière",
+            "NEWBANNER": "Nouveau(lle) Bannière",
             "BANNERDETAILS": "Détails Bannière",
             "EDITBANNER": "Modifier ce(tte) Bannière",
             "BANNERUPDATED": "Bannière mis(e) à jour",
@@ -650,7 +652,7 @@
             "BANNERPOSITIONS": "Positions de bannières",
             "BANNERPOSITION": "Position de bannières",
             "ADDBANNERPOSITION": "Ajouter un(e) Position de bannières",
-            "NEWBANNERPOSITION": "Ajouter d'un(e) Position de bannières",
+            "NEWBANNERPOSITION": "Nouveau(lle) Position de bannières",
             "BANNERPOSITIONDETAILS": "Détails Position de bannières",
             "EDITBANNERPOSITION": "Modifier ce(tte) Position de bannières",
             "BANNERPOSITIONUPDATED": "Position de bannières mis(e) à jour",
@@ -664,7 +666,7 @@
             "BANNERTYPES": "Types de bannières",
             "BANNERTYPE": "Type de bannières",
             "ADDBANNERTYPE": "Ajouter un(e) Type de bannières",
-            "NEWBANNERTYPE": "Ajouter d'un(e) Type de bannières",
+            "NEWBANNERTYPE": "Nouveau(lle) Type de bannières",
             "BANNERTYPEDETAILS": "Détails Type de bannières",
             "EDITBANNERTYPE": "Modifier ce(tte) Type de bannières",
             "BANNERTYPEUPDATED": "Type de bannières mis(e) à jour",
@@ -678,7 +680,7 @@
             "BIDS": "Réponses",
             "BID": "Réponse",
             "ADDBID": "Ajouter un(e) Réponse",
-            "NEWBID": "Ajouter d'un(e) Réponse",
+            "NEWBID": "Nouveau(lle) Réponse",
             "BIDDETAILS": "Détails Réponse",
             "EDITBID": "Modifier ce(tte) Réponse",
             "BIDUPDATED": "Réponse mis(e) à jour",
@@ -692,7 +694,7 @@
             "BIDPRODUCTS": "Produits de réponses",
             "BIDPRODUCT": "Produit de réponses",
             "ADDBIDPRODUCT": "Ajouter un(e) Produit de réponses",
-            "NEWBIDPRODUCT": "Ajouter d'un(e) Produit de réponses",
+            "NEWBIDPRODUCT": "Nouveau(lle) Produit de réponses",
             "BIDPRODUCTDETAILS": "Détails Produit de réponses",
             "EDITBIDPRODUCT": "Modifier ce(tte) Produit de réponses",
             "BIDPRODUCTUPDATED": "Produit de réponses mis(e) à jour",
@@ -706,7 +708,7 @@
             "BIDDINGTYPES": "Types d'appels d'offres",
             "BIDDINGTYPE": "Type d'appels d'offres",
             "ADDBIDDINGTYPE": "Ajouter un(e) Type d'appels d'offres",
-            "NEWBIDDINGTYPE": "Ajouter d'un(e) Type d'appels d'offres",
+            "NEWBIDDINGTYPE": "Nouveau(lle) Type d'appels d'offres",
             "BIDDINGTYPEDETAILS": "Détails Type d'appels d'offres",
             "EDITBIDDINGTYPE": "Modifier ce(tte) Type d'appels d'offres",
             "BIDDINGTYPEUPDATED": "Type d'appels d'offres mis(e) à jour",
@@ -720,7 +722,7 @@
             "BUYERS": "Acheteurs",
             "BUYER": "Acheteur",
             "ADDBUYER": "Ajouter un(e) Acheteur",
-            "NEWBUYER": "Ajouter d'un(e) Acheteur",
+            "NEWBUYER": "Nouveau(lle) Acheteur",
             "BUYERDETAILS": "Détails Acheteur",
             "EDITBUYER": "Modifier ce(tte) Acheteur",
             "BUYERUPDATED": "Acheteur mis(e) à jour",
@@ -734,7 +736,7 @@
             "BUYERTYPES": "Types d'acheteurs",
             "BUYERTYPE": "Type d'acheteurs",
             "ADDBUYERTYPE": "Ajouter un(e) Type d'acheteurs",
-            "NEWBUYERTYPE": "Ajouter d'un(e) Type d'acheteurs",
+            "NEWBUYERTYPE": "Nouveau(lle) Type d'acheteurs",
             "BUYERTYPEDETAILS": "Détails Type d'acheteurs",
             "EDITBUYERTYPE": "Modifier ce(tte) Type d'acheteurs",
             "BUYERTYPEUPDATED": "Type d'acheteurs mis(e) à jour",
@@ -748,7 +750,7 @@
             "CLICKS": "Clics",
             "CLICK": "Clic",
             "ADDCLICK": "Ajouter un(e) Clic",
-            "NEWCLICK": "Ajouter d'un(e) Clic",
+            "NEWCLICK": "Nouveau(lle) Clic",
             "CLICKDETAILS": "Détails Clic",
             "EDITCLICK": "Modifier ce(tte) Clic",
             "CLICKUPDATED": "Clic mis(e) à jour",
@@ -762,7 +764,7 @@
             "GROUPS": "Groupes",
             "GROUP": "Groupe",
             "ADDGROUP": "Ajouter un(e) Group",
-            "NEWGROUP": "Ajouter d'un(e) Group",
+            "NEWGROUP": "Nouveau(lle) Group",
             "GROUPDETAILS": "Détails Group",
             "EDITGROUP": "Modifier ce(tte) Group",
             "GROUPUPDATED": "Groupe mis(e) à jour",
@@ -776,7 +778,7 @@
             "HITS": "Hits",
             "HIT": "Hit",
             "ADDHIT": "Ajouter un(e) Hit",
-            "NEWHIT": "Ajouter d'un(e) Hit",
+            "NEWHIT": "Nouveau(lle) Hit",
             "HITDETAILS": "Détails Hit",
             "EDITHIT": "Modifier ce(tte) Hit",
             "HITUPDATED": "Hit mis(e) à jour",
@@ -790,7 +792,7 @@
             "IMPRESSIONS": "Affichages",
             "IMPRESSION": "Affichage",
             "ADDIMPRESSION": "Ajouter un(e) Affichage",
-            "NEWIMPRESSION": "Ajouter d'un(e) Affichage",
+            "NEWIMPRESSION": "Nouveau(lle) Affichage",
             "IMPRESSIONDETAILS": "Détails Affichage",
             "EDITIMPRESSION": "Modifier ce(tte) Affichage",
             "IMPRESSIONUPDATED": "Affichage mis(e) à jour",
@@ -804,7 +806,7 @@
             "LANGUAGES": "Langues",
             "LANGUAGE": "Langue",
             "ADDLANGUAGE": "Ajouter un(e) Langue",
-            "NEWLANGUAGE": "Ajouter d'un(e) Langue",
+            "NEWLANGUAGE": "Nouveau(lle) Langue",
             "LANGUAGEDETAILS": "Détails Langue",
             "EDITLANGUAGE": "Modifier ce(tte) Langue",
             "LANGUAGEUPDATED": "Langue mis(e) à jour",
@@ -818,7 +820,7 @@
             "LOGS": "Journaux",
             "LOG": "Journal",
             "ADDLOG": "Ajouter un(e) Journal",
-            "NEWLOG": "Ajouter d'un(e) Journal",
+            "NEWLOG": "Nouveau(lle) Journal",
             "LOGDETAILS": "Détails Journal",
             "EDITLOG": "Modifier ce(tte) Journal",
             "LOGUPDATED": "Journal mis(e) à jour",
@@ -832,7 +834,7 @@
             "MENUS": "Menus",
             "MENU": "Menu",
             "ADDMENU": "Ajouter un(e) Menu",
-            "NEWMENU": "Ajouter d'un(e) Menu",
+            "NEWMENU": "Nouveau(lle) Menu",
             "MENUDETAILS": "Détails Menu",
             "EDITMENU": "Modifier ce(tte) Menu",
             "MENUUPDATED": "Menu mis(e) à jour",
@@ -846,7 +848,7 @@
             "MENULINKS": "Menu Liens",
             "MENULINK": "Menu Lien",
             "ADDMENULINK": "Ajouter un(e) Menu Lien",
-            "NEWMENULINK": "Ajouter d'un(e) Menu Lien",
+            "NEWMENULINK": "Nouveau(lle) Menu Lien",
             "MENULINKDETAILS": "Détails Menu Lien",
             "EDITMENULINK": "Modifier ce(tte) Menu Lien",
             "MENULINKUPDATED": "Menu Lien mis(e) à jour",
@@ -860,7 +862,7 @@
             "MESSAGES": "Messages",
             "MESSAGE": "Message",
             "ADDMESSAGE": "Ajouter un(e) Message",
-            "NEWMESSAGE": "Ajouter d'un(e) Message",
+            "NEWMESSAGE": "Nouveau(lle) Message",
             "MESSAGEDETAILS": "Détails Message",
             "EDITMESSAGE": "Modifier ce(tte) Message",
             "MESSAGEUPDATED": "Message mis(e) à jour",
@@ -874,7 +876,7 @@
             "NOTIFICATIONS": "Notifications",
             "NOTIFICATION": "Notification",
             "ADDNOTIFICATION": "Ajouter un(e) Notification",
-            "NEWNOTIFICATION": "Ajouter d'un(e) Notification",
+            "NEWNOTIFICATION": "Nouveau(lle) Notification",
             "NOTIFICATIONDETAILS": "Détails Notification",
             "EDITNOTIFICATION": "Modifier ce(tte) Notification",
             "NOTIFICATIONUPDATED": "Notification mis(e) à jour",
@@ -888,7 +890,7 @@
             "POSTS": "Articles",
             "POST": "Article",
             "ADDPOST": "Ajouter un(e) Article",
-            "NEWPOST": "Ajouter d'un(e) Article",
+            "NEWPOST": "Nouveau(lle) Article",
             "POSTDETAILS": "Détails Article",
             "EDITPOST": "Modifier ce(tte) Article",
             "POSTUPDATED": "Article mis(e) à jour",
@@ -902,7 +904,7 @@
             "POSTCATEGORIES": "Catégories d'articles",
             "POSTCATEGORY": "Catégorie d'articles",
             "ADDPOSTCATEGORY": "Ajouter un(e) Catégorie d'articles",
-            "NEWPOSTCATEGORY": "Ajouter d'un(e) Catégorie d'articles",
+            "NEWPOSTCATEGORY": "Nouveau(lle) Catégorie d'articles",
             "POSTCATEGORYDETAILS": "Détails Catégorie d'articles",
             "EDITPOSTCATEGORY": "Modifier ce(tte) Catégorie d'articles",
             "POSTCATEGORYUPDATED": "Catégorie d'articles mis(e) à jour",
@@ -916,7 +918,7 @@
             "POSTTYPES": "Types d'articles",
             "POSTTYPE": "Type d'articles",
             "ADDPOSTTYPE": "Ajouter un(e) Type d'articles",
-            "NEWPOSTTYPE": "Ajouter d'un(e) Type d'articles",
+            "NEWPOSTTYPE": "Nouveau(lle) Type d'articles",
             "POSTTYPEDETAILS": "Détails Type d'articles",
             "EDITPOSTTYPE": "Modifier ce(tte) Type d'articles",
             "POSTTYPEUPDATED": "Type d'articles mis(e) à jour",
@@ -930,7 +932,7 @@
             "PRODUCTTYPES": "Types de produits",
             "PRODUCTTYPE": "Type de produits",
             "ADDPRODUCTTYPE": "Ajouter un(e) Type de produits",
-            "NEWPRODUCTTYPE": "Ajouter d'un(e) Type de produits",
+            "NEWPRODUCTTYPE": "Nouveau(lle) Type de produits",
             "PRODUCTTYPEDETAILS": "Détails Type de produits",
             "EDITPRODUCTTYPE": "Modifier ce(tte) Type de produits",
             "PRODUCTTYPEUPDATED": "Type de produits mis(e) à jour",
@@ -944,7 +946,7 @@
             "REGIONS": "Régions",
             "REGION": "Région",
             "ADDREGION": "Ajouter un(e) Région",
-            "NEWREGION": "Ajouter d'un(e) Région",
+            "NEWREGION": "Nouveau(lle) Région",
             "REGIONDETAILS": "Détails Région",
             "EDITREGION": "Modifier ce(tte) Région",
             "REGIONUPDATED": "Région mis(e) à jour",
@@ -958,7 +960,7 @@
             "SECTORS": "Secteurs",
             "SECTOR": "Secteur",
             "ADDSECTOR": "Ajouter un(e) Secteur",
-            "NEWSECTOR": "Ajouter d'un(e) Secteur",
+            "NEWSECTOR": "Nouveau(lle) Secteur",
             "SECTORDETAILS": "Détails Secteur",
             "EDITSECTOR": "Modifier ce(tte) Secteur",
             "SECTORUPDATED": "Secteur mis(e) à jour",
@@ -972,7 +974,7 @@
             "SUPPLIERS": "Fournisseurs",
             "SUPPLIER": "Fournisseur",
             "ADDSUPPLIER": "Ajouter un(e) Fournisseur",
-            "NEWSUPPLIER": "Ajouter d'un(e) Fournisseur",
+            "NEWSUPPLIER": "Nouveau(lle) Fournisseur",
             "SUPPLIERDETAILS": "Détails Fournisseur",
             "EDITSUPPLIER": "Modifier ce(tte) Fournisseur",
             "SUPPLIERUPDATED": "Fournisseur mis(e) à jour",
@@ -986,7 +988,7 @@
             "SUPPLIERPRODUCTS": "Produits de fournisseurs",
             "SUPPLIERPRODUCT": "Produit de fournisseurs",
             "ADDSUPPLIERPRODUCT": "Ajouter un(e) Produit de fournisseurs",
-            "NEWSUPPLIERPRODUCT": "Ajouter d'un(e) Produit de fournisseurs",
+            "NEWSUPPLIERPRODUCT": "Nouveau(lle) Produit de fournisseurs",
             "SUPPLIERPRODUCTDETAILS": "Détails Produit de fournisseurs",
             "EDITSUPPLIERPRODUCT": "Modifier ce(tte) Produit de fournisseurs",
             "SUPPLIERPRODUCTUPDATED": "Produit de fournisseurs mis(e) à jour",
@@ -1000,7 +1002,7 @@
             "SUPPLIERTYPES": "Fournisseur Types",
             "SUPPLIERTYPE": "Fournisseur Type",
             "ADDSUPPLIERTYPE": "Ajouter un(e) Fournisseur Type",
-            "NEWSUPPLIERTYPE": "Ajouter d'un(e) Fournisseur Type",
+            "NEWSUPPLIERTYPE": "Nouveau(lle) Fournisseur Type",
             "SUPPLIERTYPEDETAILS": "Détails Fournisseur Type",
             "EDITSUPPLIERTYPE": "Modifier ce(tte) Fournisseur Type",
             "SUPPLIERTYPEUPDATED": "Fournisseur Type mis(e) à jour",
@@ -1014,7 +1016,7 @@
             "TENDERS": "Appels d'offres",
             "TENDER": "Appel d'offres",
             "ADDTENDER": "Ajouter un(e) Appel d'offres",
-            "NEWTENDER": "Ajouter d'un(e) Appel d'offres",
+            "NEWTENDER": "Nouveau(lle) Appel d'offres",
             "TENDERDETAILS": "Détails Appel d'offres",
             "EDITTENDER": "Modifier ce(tte) Appel d'offres",
             "TENDERUPDATED": "Appel d'offres mis(e) à jour",
@@ -1028,7 +1030,7 @@
             "TENDERBOOKMARKS": "Appel d'offres Bookmarks",
             "TENDERBOOKMARK": "Appel d'offres Bookmark",
             "ADDTENDERBOOKMARK": "Ajouter un(e) Appel d'offres Bookmark",
-            "NEWTENDERBOOKMARK": "Ajouter d'un(e) Appel d'offres Bookmark",
+            "NEWTENDERBOOKMARK": "Nouveau(lle) Appel d'offres Bookmark",
             "TENDERBOOKMARKDETAILS": "Détails Appel d'offres Bookmark",
             "EDITTENDERBOOKMARK": "Modifier ce(tte) Appel d'offres Bookmark",
             "TENDERBOOKMARKUPDATED": "Appel d'offres Bookmark mis(e) à jour",
@@ -1042,7 +1044,7 @@
             "TENDERPRODUCTS": "Produits d'appel d'offres",
             "TENDERPRODUCT": "Produit d'appel d'offres",
             "ADDTENDERPRODUCT": "Ajouter un(e) Produit d'appel d'offres",
-            "NEWTENDERPRODUCT": "Ajouter d'un(e) Produit d'appel d'offres",
+            "NEWTENDERPRODUCT": "Nouveau(lle) Produit d'appel d'offres",
             "TENDERPRODUCTDETAILS": "Détails Produit d'appel d'offres",
             "EDITTENDERPRODUCT": "Modifier ce(tte) Produit d'appel d'offres",
             "TENDERPRODUCTUPDATED": "Produit d'appel d'offres mis(e) à jour",
@@ -1056,7 +1058,7 @@
             "TENDERTYPES": "Types d'appels d'offres",
             "TENDERTYPE": "Type d'appels d'offres",
             "ADDTENDERTYPE": "Ajouter un(e) Type d'appels d'offres",
-            "NEWTENDERTYPE": "Ajouter d'un(e) Type d'appels d'offres",
+            "NEWTENDERTYPE": "Nouveau(lle) Type d'appels d'offres",
             "TENDERTYPEDETAILS": "Détails Type d'appels d'offres",
             "EDITTENDERTYPE": "Modifier ce(tte) Type d'appels d'offres",
             "TENDERTYPEUPDATED": "Type d'appels d'offres mis(e) à jour",
@@ -1070,7 +1072,7 @@
             "TRANSLATIONBIDDINGTYPES": "Traduction Types d'appels d'offres",
             "TRANSLATIONBIDDINGTYPE": "Traduction Type d'appels d'offres",
             "ADDTRANSLATIONBIDDINGTYPE": "Ajouter un(e) Traduction Type d'appels d'offres",
-            "NEWTRANSLATIONBIDDINGTYPE": "Ajouter d'un(e) Traduction Type d'appels d'offres",
+            "NEWTRANSLATIONBIDDINGTYPE": "Nouveau(lle) Traduction Type d'appels d'offres",
             "TRANSLATIONBIDDINGTYPEDETAILS": "Détails Traduction Type d'appels d'offres",
             "EDITTRANSLATIONBIDDINGTYPE": "Modifier ce(tte) Traduction Type d'appels d'offres",
             "TRANSLATIONBIDDINGTYPEUPDATED": "Traduction Type d'appels d'offres mis(e) à jour",
@@ -1084,7 +1086,7 @@
             "TRANSLATIONBUYERTYPES": "Traduction Types d'acheteurs",
             "TRANSLATIONBUYERTYPE": "Traduction Type d'acheteurs",
             "ADDTRANSLATIONBUYERTYPE": "Ajouter un(e) Traduction Type d'acheteurs",
-            "NEWTRANSLATIONBUYERTYPE": "Ajouter d'un(e) Traduction Type d'acheteurs",
+            "NEWTRANSLATIONBUYERTYPE": "Nouveau(lle) Traduction Type d'acheteurs",
             "TRANSLATIONBUYERTYPEDETAILS": "Détails Traduction Type d'acheteurs",
             "EDITTRANSLATIONBUYERTYPE": "Modifier ce(tte) Traduction Type d'acheteurs",
             "TRANSLATIONBUYERTYPEUPDATED": "Traduction Type d'acheteurs mis(e) à jour",
@@ -1098,7 +1100,7 @@
             "TRANSLATIONCATEGORIES": "Traduction Catégories",
             "TRANSLATIONCATEGORY": "Traduction Catégorie",
             "ADDTRANSLATIONCATEGORY": "Ajouter un(e) Traduction Catégorie",
-            "NEWTRANSLATIONCATEGORY": "Ajouter d'un(e) Traduction Catégorie",
+            "NEWTRANSLATIONCATEGORY": "Nouveau(lle) Traduction Catégorie",
             "TRANSLATIONCATEGORYDETAILS": "Détails Traduction Catégorie",
             "EDITTRANSLATIONCATEGORY": "Modifier ce(tte) Traduction Catégorie",
             "TRANSLATIONCATEGORYUPDATED": "Traduction Catégorie mis(e) à jour",
@@ -1112,7 +1114,7 @@
             "TRANSLATIONCOUNTRIES": "Traduction Pays",
             "TRANSLATIONCOUNTRY": "Traduction Pays",
             "ADDTRANSLATIONCOUNTRY": "Ajouter un(e) Traduction Pays",
-            "NEWTRANSLATIONCOUNTRY": "Ajouter d'un(e) Traduction Pays",
+            "NEWTRANSLATIONCOUNTRY": "Nouveau(lle) Traduction Pays",
             "TRANSLATIONCOUNTRYDETAILS": "Détails Traduction Pays",
             "EDITTRANSLATIONCOUNTRY": "Modifier ce(tte) Traduction Pays",
             "TRANSLATIONCOUNTRYUPDATED": "Traduction Pays mis(e) à jour",
@@ -1126,7 +1128,7 @@
             "TRANSLATIONMENUS": "Traduction Menus",
             "TRANSLATIONMENU": "Traduction Menu",
             "ADDTRANSLATIONMENU": "Ajouter un(e) Traduction Menu",
-            "NEWTRANSLATIONMENU": "Ajouter d'un(e) Traduction Menu",
+            "NEWTRANSLATIONMENU": "Nouveau(lle) Traduction Menu",
             "TRANSLATIONMENUDETAILS": "Détails Traduction Menu",
             "EDITTRANSLATIONMENU": "Modifier ce(tte) Traduction Menu",
             "TRANSLATIONMENUUPDATED": "Traduction Menu mis(e) à jour",
@@ -1140,7 +1142,7 @@
             "TRANSLATIONMENULINKS": "Traduction Menu Liens",
             "TRANSLATIONMENULINK": "Traduction Menu Lien",
             "ADDTRANSLATIONMENULINK": "Ajouter un(e) Traduction Menu Lien",
-            "NEWTRANSLATIONMENULINK": "Ajouter d'un(e) Traduction Menu Lien",
+            "NEWTRANSLATIONMENULINK": "Nouveau(lle) Traduction Menu Lien",
             "TRANSLATIONMENULINKDETAILS": "Détails Traduction Menu Lien",
             "EDITTRANSLATIONMENULINK": "Modifier ce(tte) Traduction Menu Lien",
             "TRANSLATIONMENULINKUPDATED": "Traduction Menu Lien mis(e) à jour",
@@ -1154,7 +1156,7 @@
             "TRANSLATIONPOSTS": "Traduction Articles",
             "TRANSLATIONPOST": "Traduction Article",
             "ADDTRANSLATIONPOST": "Ajouter un(e) Traduction Article",
-            "NEWTRANSLATIONPOST": "Ajouter d'un(e) Traduction Article",
+            "NEWTRANSLATIONPOST": "Nouveau(lle) Traduction Article",
             "TRANSLATIONPOSTDETAILS": "Détails Traduction Article",
             "EDITTRANSLATIONPOST": "Modifier ce(tte) Traduction Article",
             "TRANSLATIONPOSTUPDATED": "Traduction Article mis(e) à jour",
@@ -1168,7 +1170,7 @@
             "TRANSLATIONPOSTCATEGORIES": "Traduction Catégories d'articles",
             "TRANSLATIONPOSTCATEGORY": "Traduction Catégorie d'articles",
             "ADDTRANSLATIONPOSTCATEGORY": "Ajouter un(e) Traduction Catégorie d'articles",
-            "NEWTRANSLATIONPOSTCATEGORY": "Ajouter d'un(e) Traduction Catégorie d'articles",
+            "NEWTRANSLATIONPOSTCATEGORY": "Nouveau(lle) Traduction Catégorie d'articles",
             "TRANSLATIONPOSTCATEGORYDETAILS": "Détails Traduction Catégorie d'articles",
             "EDITTRANSLATIONPOSTCATEGORY": "Modifier ce(tte) Traduction Catégorie d'articles",
             "TRANSLATIONPOSTCATEGORYUPDATED": "Traduction Catégorie d'articles mis(e) à jour",
@@ -1182,7 +1184,7 @@
             "TRANSLATIONPOSTTYPES": "Traduction Types d'articles",
             "TRANSLATIONPOSTTYPE": "Traduction Type d'articles",
             "ADDTRANSLATIONPOSTTYPE": "Ajouter un(e) Traduction Type d'articles",
-            "NEWTRANSLATIONPOSTTYPE": "Ajouter d'un(e) Traduction Type d'articles",
+            "NEWTRANSLATIONPOSTTYPE": "Nouveau(lle) Traduction Type d'articles",
             "TRANSLATIONPOSTTYPEDETAILS": "Détails Traduction Type d'articles",
             "EDITTRANSLATIONPOSTTYPE": "Modifier ce(tte) Traduction Type d'articles",
             "TRANSLATIONPOSTTYPEUPDATED": "Traduction Type d'articles mis(e) à jour",
@@ -1196,7 +1198,7 @@
             "TRANSLATIONPRODUCTTYPES": "Traduction Types de produits",
             "TRANSLATIONPRODUCTTYPE": "Traduction Type de produits",
             "ADDTRANSLATIONPRODUCTTYPE": "Ajouter un(e) Traduction Type de produits",
-            "NEWTRANSLATIONPRODUCTTYPE": "Ajouter d'un(e) Traduction Type de produits",
+            "NEWTRANSLATIONPRODUCTTYPE": "Nouveau(lle) Traduction Type de produits",
             "TRANSLATIONPRODUCTTYPEDETAILS": "Détails Traduction Type de produits",
             "EDITTRANSLATIONPRODUCTTYPE": "Modifier ce(tte) Traduction Type de produits",
             "TRANSLATIONPRODUCTTYPEUPDATED": "Traduction Type de produits mis(e) à jour",
@@ -1210,7 +1212,7 @@
             "TRANSLATIONREGIONS": "Traduction Régions",
             "TRANSLATIONREGION": "Traduction Région",
             "ADDTRANSLATIONREGION": "Ajouter un(e) Traduction Région",
-            "NEWTRANSLATIONREGION": "Ajouter d'un(e) Traduction Région",
+            "NEWTRANSLATIONREGION": "Nouveau(lle) Traduction Région",
             "TRANSLATIONREGIONDETAILS": "Détails Traduction Région",
             "EDITTRANSLATIONREGION": "Modifier ce(tte) Traduction Région",
             "TRANSLATIONREGIONUPDATED": "Traduction Région mis(e) à jour",
@@ -1224,7 +1226,7 @@
             "TRANSLATIONSECTORS": "Traduction Secteurs",
             "TRANSLATIONSECTOR": "Traduction Secteur",
             "ADDTRANSLATIONSECTOR": "Ajouter un(e) Traduction Secteur",
-            "NEWTRANSLATIONSECTOR": "Ajouter d'un(e) Traduction Secteur",
+            "NEWTRANSLATIONSECTOR": "Nouveau(lle) Traduction Secteur",
             "TRANSLATIONSECTORDETAILS": "Détails Traduction Secteur",
             "EDITTRANSLATIONSECTOR": "Modifier ce(tte) Traduction Secteur",
             "TRANSLATIONSECTORUPDATED": "Traduction Secteur mis(e) à jour",
@@ -1238,7 +1240,7 @@
             "TRANSLATIONSUPPLIERTYPES": "Traduction Fournisseur Types",
             "TRANSLATIONSUPPLIERTYPE": "Traduction Fournisseur Type",
             "ADDTRANSLATIONSUPPLIERTYPE": "Ajouter un(e) Traduction Fournisseur Type",
-            "NEWTRANSLATIONSUPPLIERTYPE": "Ajouter d'un(e) Traduction Fournisseur Type",
+            "NEWTRANSLATIONSUPPLIERTYPE": "Nouveau(lle) Traduction Fournisseur Type",
             "TRANSLATIONSUPPLIERTYPEDETAILS": "Détails Traduction Fournisseur Type",
             "EDITTRANSLATIONSUPPLIERTYPE": "Modifier ce(tte) Traduction Fournisseur Type",
             "TRANSLATIONSUPPLIERTYPEUPDATED": "Traduction Fournisseur Type mis(e) à jour",
@@ -1252,7 +1254,7 @@
             "TRANSLATIONTENDERTYPES": "Traduction Types d'appels d'offres",
             "TRANSLATIONTENDERTYPE": "Traduction Type d'appels d'offres",
             "ADDTRANSLATIONTENDERTYPE": "Ajouter un(e) Traduction Type d'appels d'offres",
-            "NEWTRANSLATIONTENDERTYPE": "Ajouter d'un(e) Traduction Type d'appels d'offres",
+            "NEWTRANSLATIONTENDERTYPE": "Nouveau(lle) Traduction Type d'appels d'offres",
             "TRANSLATIONTENDERTYPEDETAILS": "Détails Traduction Type d'appels d'offres",
             "EDITTRANSLATIONTENDERTYPE": "Modifier ce(tte) Traduction Type d'appels d'offres",
             "TRANSLATIONTENDERTYPEUPDATED": "Traduction Type d'appels d'offres mis(e) à jour",
@@ -1266,7 +1268,7 @@
             "USERS": "Utilisateurs",
             "USER": "Utilisateur",
             "ADDUSER": "Ajouter un(e) Utilisateur",
-            "NEWUSER": "Ajouter d'un(e) Utilisateur",
+            "NEWUSER": "Nouveau(lle) Utilisateur",
             "USERDETAILS": "Détails Utilisateur",
             "EDITUSER": "Modifier ce(tte) Utilisateur",
             "USERUPDATED": "Utilisateur mis(e) à jour",
@@ -1280,7 +1282,7 @@
             "USERSETTINGS": "Utilisateur Paramètres",
             "USERSETTING": "Utilisateur Paramètre",
             "ADDUSERSETTING": "Ajouter un(e) Utilisateur Paramètre",
-            "NEWUSERSETTING": "Ajouter d'un(e) Utilisateur Paramètre",
+            "NEWUSERSETTING": "Nouveau(lle) Utilisateur Paramètre",
             "USERSETTINGDETAILS": "Détails Utilisateur Paramètre",
             "EDITUSERSETTING": "Modifier ce(tte) Utilisateur Paramètre",
             "USERSETTINGUPDATED": "Utilisateur Paramètre mis(e) à jour",
@@ -1294,7 +1296,7 @@
             "VISITS": "Visites",
             "VISIT": "Visite",
             "ADDVISIT": "Ajouter un(e) Visite",
-            "NEWVISIT": "Ajouter d'un(e) Visite",
+            "NEWVISIT": "Nouveau(lle) Visite",
             "VISITDETAILS": "Détails Visite",
             "EDITVISIT": "Modifier ce(tte) Visite",
             "VISITUPDATED": "Visite mis(e) à jour",
@@ -1307,35 +1309,35 @@
             "BACKVISITS": "Retour à la liste des Visites",
             "fieldsets": {
                 "ALERT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "CATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "COUNTRY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNER" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNERPOSITION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BANNERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BID" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "E" : "E"
                 },
                 "BIDPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BIDDINGTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "BUYER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "D" : "D",
@@ -1343,58 +1345,58 @@
                     "E" : "E"
                 },
                 "BUYERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "CLICK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "GROUP" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "HIT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "IMPRESSION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "LANGUAGE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "LOG" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MENU" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MENULINK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "MESSAGE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "NOTIFICATION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POST" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POSTCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "POSTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "PRODUCTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "REGION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SECTOR" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SUPPLIER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "D" : "D",
@@ -1402,77 +1404,77 @@
                     "E" : "E"
                 },
                 "SUPPLIERPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "SUPPLIERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDER" : {
-                    "DEFAULT" : "Default",
+                    "Z" : "Z",
                     "A" : "A",
                     "C" : "C",
                     "B" : "B",
                     "D" : "D"
                 },
                 "TENDERBOOKMARK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDERPRODUCT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TENDERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONBIDDINGTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONBUYERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONCOUNTRY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONMENU" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONMENULINK" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOST" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOSTCATEGORY" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPOSTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONPRODUCTTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONREGION" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONSECTOR" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONSUPPLIERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "TRANSLATIONTENDERTYPE" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "USER" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "USERSETTING" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 },
                 "VISIT" : {
-                    "DEFAULT" : "Default"
+                    "Z" : "Z"
                 }
             },
             "fields": {
@@ -1490,6 +1492,7 @@
                 "NAME": "Nom",
                 "DESCRIPTION": "Description",
                 "STATUS": "Statut",
+                "PERIOD": "Période",
                 "CREATEDAT": "Créé le",
                 "CREATORUSER": "Créé par",
                 "MODIFIEDAT": "Modifié le",
@@ -1500,6 +1503,9 @@
                 "PICTURE": "Photo",
                 "PARENTCATEGORY": "Catégorie Mére",
                 "PRODUCTTYPE": "Type de produits",
+                "METATITLE": "Meta Titre",
+                "METADESCRIPTION": "Description Meta",
+                "METAKEYWORDS": "Mots clés Meta",
                 "ORDERING": "Ordre",
                 "TENDERS": "Appels d'offres",
                 "REGION": "Région",
@@ -1570,7 +1576,7 @@
                 "TENDERPRODUCT": "Produit d'appel d'offres",
                 "BID": "Réponse",
                 "SUPPLIERPRODUCT": "Produit de fournisseurs",
-                "NEWUNITCOST": "Ajouter d'un(e) Coût unitaire",
+                "NEWUNITCOST": "Nouveau(lle) Coût unitaire",
                 "QUANTITY": "Quantité",
                 "DURATION": "Durée",
                 "BUYERTYPE": "Type d'acheteurs",
@@ -1642,9 +1648,6 @@
                 "POSTTYPE": "Type d'articles",
                 "ISHEADLINE": "Est à l'une",
                 "PUBLISHDATE": "Date de publication",
-                "METATITLE": "Meta Titre",
-                "METADESCRIPTION": "Description Meta",
-                "METAKEYWORDS": "Mots clés Meta",
                 "TOTALPRINTS": "Nombre d'impressions",
                 "TOTALCOMMENTS": "Nombre de commentaires",
                 "TOTALRATINGS": "Total Ratings",
@@ -1730,6 +1733,11 @@
                     "QUALIFIED": "Qualifié",
                     "SENT": "Sent"
                 },
+                "periods": {
+                    "DAILY": "Daily",
+                    "WEEKLY": "Weekly",
+                    "MONTHLY": "Moisly"
+                },
                 "genders": {
                     "ALL": "Tout",
                     "MALE": "Mâle",
@@ -1740,7 +1748,9 @@
                     "ROLESUBSCRIBER": "Role Abonné",
                     "ROLEADMIN": "Role Admin",
                     "ROLEADMINPUBLISHER": "Role Admin Éditeur",
-                    "ROLESUPERADMIN": "Role Super Admin"
+                    "ROLESUPERADMIN": "Role Super Admin",
+                    "ROLECALLCENTER": "Role Call Center",
+                    "ROLEIT": "Role It"
                 },
                 "modes": {
                     "LINK": "Lien",

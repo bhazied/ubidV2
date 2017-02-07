@@ -23,7 +23,7 @@
                     <legend translate="content.list.EDITTRANSLATIONPOSTCATEGORY" ng-if="translationPostCategory.id > 0">
                         Edit Translation Post Category
                     </legend>
-                    <form name="translationPostCategoryForm" id="translationPostCategoryForm" novalidate ng-submit="submitForm(translationPostCategoryForm)">
+                    <form name="translationPostCategoryForm" id="translationPostCategoryForm" novalidate ng-submit="submitForm(translationPostCategoryForm, true)">
                         <input type="hidden" name="id" id="translationPostCategoryId" ng-model="translationPostCategory.id" />
                         <div class="row">
                             <div class="col-md-6">
@@ -130,12 +130,12 @@
                             </div>
                             <div class="col-md-4 text-center">
                                 <button ng-if="translationPostCategory.id > 0" type="button" ng-click="submitForm(translationPostCategoryForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostCategoryForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
                                 </button>
                             </div>
                             <div class="col-md-4">
                                 <button type="button" ng-click="submitForm(translationPostCategoryForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPostCategoryForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
                         </div>

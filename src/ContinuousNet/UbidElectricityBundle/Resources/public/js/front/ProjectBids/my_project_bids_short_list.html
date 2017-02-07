@@ -8,7 +8,7 @@
 
             <div>
                 <div class="row list-toolbox">
-                    <div class="col-md-2 margin-bottom-10">
+                    <div class="col-md-3 margin-bottom-10">
                         <span class="setting-title pull-left" translate="content.common.SHOWFILTERROW">Show filter row</span>
                         <span class="setting-switch pull-right"><switch ng-model="isFiltersVisible" class="green"></switch></span>
                     </div>
@@ -21,26 +21,6 @@
                         <button ng-click="tableParams.sorting({})" class="btn btn-primary">
                             <i class="ti-split-v"></i> <span  translate="content.common.CLEARSORTING">Clear sorting</span>
                         </button>
-                    </div>
-                    <div class="col-md-2 margin-bottom-10">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                <i class="ti-layout-grid3"></i>
-                                <span translate="content.common.FIELDS">Fields</span>
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" ng-class="{'dropup': showFieldsMenu}" ng-click="showFieldsMenu = !showFieldsMenu">
-                                <span class="caret"></span>
-                                <span class="sr-only"></span>
-                            </button>
-                            <ul class="dropdown-menu my-dropdown" ng-show="showFieldsMenu">
-                                <li ng-repeat="(i, col) in cols">
-                                    <div class="checkbox continuous-check check-primary check-sm" style="margin: 3px 5px;">
-                                        <input type="checkbox" id="field[[i]]" ng-model="col.show" ng-change="setParamValue(col.field + '_show_filed', col.show)" />
-                                        <label for="field[[i]]">[[col.title]]</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <p class="pager">

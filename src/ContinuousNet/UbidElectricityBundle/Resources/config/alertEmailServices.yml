@@ -1,0 +1,17 @@
+parameters:
+    ubid_electricity.event.alert_email_listner.class: ContinuousNet\UbidElectricityBundle\AlertListener\AlertEmailListener
+    ubid_electricity.event.alert_mailer.class: ContinuousNet\UbidElectricityBundle\AlertListener\AlertMailer
+
+services:
+    ubid_electricity.alert_mailer:
+        class: %ubid_electricity.event.alert_mailer.class%
+        #arguments: [@templating, @mailer, @router]
+        arguments: [@router]
+        calls:
+            - [setMailer, ["@mailer"]]
+            #- [setTemplating, ["@templating"]]
+    ubid_electricity.event.alert_email_listner:
+        class: %ubid_electricity.event.alert_email_listner.class%
+        arguments: [@ubid_electricity.alert_mailer]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, connection: default }

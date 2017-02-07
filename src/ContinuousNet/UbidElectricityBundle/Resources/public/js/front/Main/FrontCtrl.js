@@ -88,7 +88,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             });
 
             if($state.current.name == "front.home"){
-                $rootScope.SearchFormHeader = false;
+                $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
             }

@@ -56,7 +56,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="title", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`title`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="content", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`content`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Post
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_headline", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_headline`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Post
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="auto_publishing", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`auto_publishing`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class Post
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="start_publishing", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`start_publishing`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class Post
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="end_publishing", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`end_publishing`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class Post
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="publish_date", type="date", nullable=false, unique=false)
+     * @ORM\Column(name="`publish_date`", type="date", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="meta_title", type="text", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_title`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,7 +166,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="meta_description", type="text", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_description`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -177,7 +177,7 @@ class Post
      * @var array
      * @access private
      *
-     * @ORM\Column(name="meta_keywords", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -188,7 +188,7 @@ class Post
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -199,7 +199,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_prints", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_prints`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -210,7 +210,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_hits", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_hits`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -221,7 +221,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_comments", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_comments`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -232,7 +232,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_ratings", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_ratings`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -243,7 +243,7 @@ class Post
      * @var float
      * @access private
      *
-     * @ORM\Column(name="average_ratings", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`average_ratings`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -254,7 +254,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_likes", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_likes`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -265,7 +265,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_dislikes", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_dislikes`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -276,7 +276,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="total_bookmarks", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`total_bookmarks`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -287,7 +287,7 @@ class Post
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_top", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_top`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -298,7 +298,7 @@ class Post
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_new", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`is_new`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -309,7 +309,7 @@ class Post
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -320,7 +320,7 @@ class Post
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -331,7 +331,7 @@ class Post
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

@@ -57,7 +57,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -98,10 +98,43 @@ class Category
     private $description;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaKeywords;
+
+    /**
      * @var integer
      * @access private
      *
-     * @ORM\Column(name="ordering", type="integer", nullable=true, unique=false)
+     * @ORM\Column(name="`ordering`", type="integer", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +145,7 @@ class Category
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +156,7 @@ class Category
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +167,7 @@ class Category
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -336,6 +369,78 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @access public
+     * @param string $metaTitle
+     * @return Category
+     */
+    public function setMetaTitle($metaTitle = null)
+    {
+        $this->metaTitle = $metaTitle;
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @access public
+     * @param string $metaDescription
+     * @return Category
+     */
+    public function setMetaDescription($metaDescription = null)
+    {
+        $this->metaDescription = $metaDescription;
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @access public
+     * @param array $metaKeywords
+     * @return Category
+     */
+    public function setMetaKeywords(array $metaKeywords = null)
+    {
+        $this->metaKeywords = $metaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
     }
 
     /**

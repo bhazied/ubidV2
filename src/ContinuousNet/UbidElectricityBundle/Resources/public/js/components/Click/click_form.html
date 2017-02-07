@@ -23,7 +23,7 @@
                     <legend translate="content.list.EDITCLICK" ng-if="click.id > 0">
                         Edit Click
                     </legend>
-                    <form name="clickForm" id="clickForm" novalidate ng-submit="submitForm(clickForm)">
+                    <form name="clickForm" id="clickForm" novalidate ng-submit="submitForm(clickForm, true)">
                         <input type="hidden" name="id" id="clickId" ng-model="click.id" />
                         <div class="row">
                             <div class="col-md-6">
@@ -70,12 +70,12 @@
                             </div>
                             <div class="col-md-4 text-center">
                                 <button ng-if="click.id > 0" type="button" ng-click="submitForm(clickForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="clickForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-check-circle" ng-if="!disableSubmit"></i> <span translate="content.common.APPLY">Apply</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
                                 </button>
                             </div>
                             <div class="col-md-4">
                                 <button type="button" ng-click="submitForm(clickForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="clickForm.$invalid" -->
-                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>
                         </div>

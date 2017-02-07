@@ -84,6 +84,24 @@
                                 <td><a ui-sref="app.lists.producttypesdetails({id: category.product_type.id})">[[ category.product_type.name ]]</a></span></td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.METATITLE">Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="category.meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.METADESCRIPTION">Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="category.meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="category.meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><span translate="content.list.fields.ORDERING">Ordering</span></td>
                                 <td>
                                     <div ng-bind-html="category.ordering"></div>

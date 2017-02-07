@@ -325,7 +325,9 @@ app.constant('JS_REQUIRES', {
 app.constant('APP_JS_REQUIRES', {
     //*** Scripts
     scripts: {
-        //*** Controllers
+        //***
+        // *
+        // Controllers
         'LoginCtrl': '/bundles/ubidelectricity/js/components/Auth/LoginCtrl.js',
         'LockScreenCtrl': '/bundles/ubidelectricity/js/components/Auth/LockScreenCtrl.js',
         'RegisterCtrl': '/bundles/ubidelectricity/js/components/Auth/RegisterCtrl.js',
@@ -335,6 +337,7 @@ app.constant('APP_JS_REQUIRES', {
         'ChangePasswordCtrl': '/bundles/ubidelectricity/js/components/Auth/ChangePasswordCtrl.js',
         'ProfileCtrl': '/bundles/ubidelectricity/js/components/Auth/ProfileCtrl.js',
         'DashboardCtrl': '/bundles/ubidelectricity/js/components/Main/DashboardCtrl.js',
+        'ReportingCtrl': '/bundles/ubidelectricity/js/components/Reporting/ReportingCtrl.js',
         'AlertsCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertsCtrl.js',
         'AlertFormCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertFormCtrl.js',
         'AlertCtrl': '/bundles/ubidelectricity/js/components/Alert/AlertCtrl.js',
@@ -529,10 +532,14 @@ app.constant('APP_JS_REQUIRES', {
         'BidsShortListCtrl': '/bundles/ubidelectricity/js/front/ProjectBids/BidsShortListCtrl.js',
         'MyTenderBookmarkedCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedCtrl.js',
         'MyTenderBookmarkedDetailsCtrl': '/bundles/ubidelectricity/js/front/Tender/MyTenderBookmarkedDetailsCtrl.js',
+        'MyAlertsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertsCtrl.js',
+        'MyAlertCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertCtrl.js',
+        'MyAlertFormCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertFormCtrl.js',
+        'MyAlertSettingsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertSettingsCtrl.js',
         'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
-        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js'
-
+        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
+        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -549,6 +556,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'DashboardService',
         files: ['/bundles/ubidelectricity/js/components/Main/DashboardService.js']
+    },{
+        name: 'ReportingService',
+        files: ['/bundles/ubidelectricity/js/components/Reporting/ReportingService.js']
     },{
         name: 'alertService',
         files: ['/bundles/ubidelectricity/js/components/Alert/AlertService.js']
@@ -702,7 +712,11 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'visitService',
         files: ['/bundles/ubidelectricity/js/components/Visit/VisitService.js']
-    },{
+    },
+    /*
+     * Front Services
+     */
+    {
         name: 'homeService',
         files: ['/bundles/ubidelectricity/js/front/Home/HomeServices.js']
     },{
@@ -1046,10 +1060,10 @@ app.config(['$stateProvider',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.applay_tender', {
-            url: '/applay_tender/:id',
+            url: '/applay_tender/:idTender',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
             title: 'Advanced Search',
-            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            resolve: loadSequence('ApplyTenderCtrl','BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
             /*
              * My Tenders Manager routes
              */
@@ -1242,9 +1256,10 @@ app.config(['$stateProvider',
             resolve: loadSequence()
         }).state('front.projectbids.list', {
             url: '/list',
+
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
             title: 'front.PROJECTBIDS',
-            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')
+            resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService', 'supplierService')
         }).state('front.projectbids.bids', {
             url: '/bids-by-project/:projectId',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
@@ -1267,6 +1282,43 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },*/
             resolve: loadSequence('BidsShortListCtrl','BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'projectBidsFrontService')
+        }).state('front.myAlerts',{
+            url: '/my-alerts',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title : 'front.MYALERTS',
+            resolve: loadSequence()
+        }).state('front.myAlerts.list',{
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alerts.html',
+            title : 'front.MYALERTS',
+            resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
+        }).state('front.myAlerts.details',{
+            url: '/details',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
+            title : 'front.MYALERTS',
+            resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
+        }).state('front.myAlerts.new', {
+            url: '/new',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.edit', {
+            url: '/edit/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
+            title : 'front.MYALERTADD',
+            resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
+        }).state('front.myAlerts.settings', {
+            url: '/settings',
+            templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_settings.html',
+            title : 'front.MYALERTSETTINGS',
+            params: {
+                'userSettingsIsFiltersVisible': null,
+                'userSettingsPage': null,
+                'userSettingsCount': null,
+                'userSettingsSorting': null,
+                'userSettingsFilter': null
+            },
+            resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingsCtrl', 'userSettingService', 'userService')
         })
     }]);
 

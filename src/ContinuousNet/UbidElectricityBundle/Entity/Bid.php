@@ -56,7 +56,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="title", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`title`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="slug", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="reference", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`reference`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="description", type="text", nullable=false, unique=false)
+     * @ORM\Column(name="`description`", type="text", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="note", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`note`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class Bid
      * @var float
      * @access private
      *
-     * @ORM\Column(name="total_cost", type="float", precision=10, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="`total_cost`", type="float", precision=10, scale=0, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="address", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`address`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -144,7 +144,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="email", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`email`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -155,7 +155,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="phone", type="string", length=320, nullable=true, unique=false)
+     * @ORM\Column(name="`phone`", type="string", length=320, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -166,7 +166,7 @@ class Bid
      * @var string
      * @access private
      *
-     * @ORM\Column(name="attachment_files", type="string", length=1000, nullable=true, unique=false)
+     * @ORM\Column(name="`attachment_files`", type="string", length=1000, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -177,7 +177,7 @@ class Bid
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -188,7 +188,7 @@ class Bid
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

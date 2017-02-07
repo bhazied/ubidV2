@@ -56,7 +56,7 @@ class Notification
      * @var string
      * @access private
      *
-     * @ORM\Column(name="content", type="string", length=500, nullable=false, unique=false)
+     * @ORM\Column(name="`content`", type="string", length=500, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Notification
      * @var string
      * @access private
      *
-     * @ORM\Column(name="link", type="string", length=500, nullable=false, unique=false)
+     * @ORM\Column(name="`link`", type="string", length=500, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Notification
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="read", type="boolean", nullable=false, unique=false)
+     * @ORM\Column(name="`read`", type="boolean", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Notification
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Notification
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

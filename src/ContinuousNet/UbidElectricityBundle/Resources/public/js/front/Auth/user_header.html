@@ -12,5 +12,8 @@
 </div>
 
 <div ng-if="!user.email" ng-controller="LoginFrontCtrl">
-    <a ui-sref="front.login" class="pull-right" translate="front.SIGNIN"> Sign in</a>
+    <!--<a ui-sref="front.login" class="pull-right" translate="front.SIGNIN"> Sign in</a> -->
+    <button type="button" class="btn btn-primary pull-right" ng-click="goLogin()">
+        <i class="ti-user"></i> <span translate="front.SIGNIN">Sign in</span>
+    </button>
 </div>

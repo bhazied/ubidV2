@@ -55,10 +55,8 @@
                 <li><a ui-sref="front.mytenders.new"><i class="fa fa-plus-circle"></i> <span translate="front.NEWTENDER" title="[['front.USERMENU.NEWTENDER' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Tender</span></a></li>
                 <li><a ui-sref="front.projectbids.list"><i class="fa fa-tags"></i> <span translate="front.PROJECTBIDS" title="[['front.USERMENU.PROJECTBIDS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Project bids</span></a></li>
                 <li><a ui-sref="front.projectbids.shortlist"><i class="fa fa-thumbs-up"></i> <span translate="front.PROJECTBIDSSHORTLIST" title="[['front.USERMENU.PROJECTBIDSSHORTLIST' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Project bids</span></a></li>
-                <!--
                <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.myproducts.list"><i class="fa fa-shopping-cart"></i> <span translate="front.MYPRODUCTS" title="[['front.USERMENU.MYPRODUCTS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Products</span></a></li>
                <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.myproducts.new"><i class="fa fa-cart-plus"></i> <span translate="front.NEWPRODUCT" title="[['front.USERMENU.NEWPRODUCT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New Product</span></a></li>
-               -->
                 <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.mybids.list"><i class="fa fa-shopping-cart"></i> <span translate="front.MYBIDS" title="[['front.USERMENU.MYBIDS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Bids</span></a></li>
                 <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.bookmarkproject.list"><i class="fa fa-shopping-cart"></i> <span translate="front.BOOKMARKPROJECT" title="[['front.USERMENU.BOOKMARKPROJECT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Bookmarks project</span></a></li>
             </ul>
@@ -69,8 +67,9 @@
                 <i class="fa pull-right" ng-class="{'fa-arrow-circle-down': status.open3, 'fa-arrow-circle-right': !status.open3}"></i>
             </uib-accordion-heading>
             <ul>
-                <li><a ui-sref="front.home"><i class="fa fa-bell-o"></i> <span translate="front.MYALERTS" title="[['front.USERMENU.MYALERTS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Alerts</span></a></li>
-                <li><a ui-sref="front.home"><i class="fa fa-plus-circle"></i> <span translate="front.NEWALERT" title="[['front.USERMENU.NEWALERT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New alert</span></a></li>
+                <li><a ui-sref="front.myAlerts.list"><i class="fa fa-bell-o"></i> <span translate="front.MYALERTS" title="[['front.USERMENU.MYALERTS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Alerts</span></a></li>
+                <li><a ui-sref="front.myAlerts.new"><i class="fa fa-plus-circle"></i> <span translate="front.NEWALERT" title="[['front.USERMENU.NEWALERT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New alert</span></a></li>
+                <li><a ui-sref="front.myAlerts.settings"><i class="fa fa-plus-circle"></i> <span translate="front.ALERTSETTINGS" title="[['front.USERMENU.SETTINGS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>settings</span></a></li>
             </ul>
         </uib-accordion-group>
 

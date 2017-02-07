@@ -57,7 +57,7 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="name", type="string", length=320, nullable=false, unique=true)
+     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=true)
      * 
      * @Expose
      * 
@@ -68,7 +68,7 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true, unique=false)
+     * @ORM\Column(name="`picture`", type="string", length=255, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -79,7 +79,7 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="code", type="string", length=2, nullable=false, unique=false)
+     * @ORM\Column(name="`code`", type="string", length=2, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -90,7 +90,7 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="long_code", type="string", length=3, nullable=false, unique=false)
+     * @ORM\Column(name="`long_code`", type="string", length=3, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -101,7 +101,7 @@ class Country
      * @var string
      * @access private
      *
-     * @ORM\Column(name="prefix", type="string", length=5, nullable=true, unique=false)
+     * @ORM\Column(name="`prefix`", type="string", length=5, nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -112,7 +112,7 @@ class Country
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="published", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`published`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -123,7 +123,7 @@ class Country
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -134,7 +134,7 @@ class Country
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

@@ -68109,7 +68109,8 @@ app.constant('APP_JS_REQUIRES', {
         'MyAlertSettingsCtrl': '/bundles/ubidelectricity/js/front/Alert/MyAlertSettingsCtrl.js',
         'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
-        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js'
+        'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
+        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68570,7 +68571,7 @@ app.config(['$stateProvider',
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierProductService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
         /*
          * Public Product List & Details routes
          */
@@ -68630,10 +68631,10 @@ app.config(['$stateProvider',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.applay_tender', {
-            url: '/applay_tender/:id',
+            url: '/applay_tender/:idTender',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
             title: 'Advanced Search',
-            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
+            resolve: loadSequence('ApplyTenderCtrl','BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
             /*
              * My Tenders Manager routes
              */

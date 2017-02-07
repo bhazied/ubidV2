@@ -83,7 +83,8 @@
     "bootstrap": "~3.3.2",
     "bootstrap-rtl": "~3.3.1",
     "angular-color-picker": "angularjs-color-picker#~0.8.1",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "angular-bootstrap-toggle-switch": "^0.5.6"
   },
   "main": "",
   "moduleType": [

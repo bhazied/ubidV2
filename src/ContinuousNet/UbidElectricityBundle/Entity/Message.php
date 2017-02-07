@@ -56,7 +56,7 @@ class Message
      * @var string
      * @access private
      *
-     * @ORM\Column(name="subject", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`subject`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -67,7 +67,7 @@ class Message
      * @var string
      * @access private
      *
-     * @ORM\Column(name="body", type="text", nullable=true, unique=false)
+     * @ORM\Column(name="`body`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -78,7 +78,7 @@ class Message
      * @var string
      * @access private
      *
-     * @ORM\Column(name="status", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="`status`", type="string", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -89,7 +89,7 @@ class Message
      * @var boolean
      * @access private
      *
-     * @ORM\Column(name="is_read", type="boolean", nullable=true, unique=false)
+     * @ORM\Column(name="`is_read`", type="boolean", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -100,7 +100,7 @@ class Message
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="sending_time", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`sending_time`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -111,7 +111,7 @@ class Message
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="reading_time", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`reading_time`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -122,7 +122,7 @@ class Message
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="`created_at`", type="datetime", nullable=false, unique=false)
      * 
      * @Expose
      * 
@@ -133,7 +133,7 @@ class Message
      * @var \DateTime
      * @access private
      *
-     * @ORM\Column(name="modified_at", type="datetime", nullable=true, unique=false)
+     * @ORM\Column(name="`modified_at`", type="datetime", nullable=true, unique=false)
      * 
      * @Expose
      * 

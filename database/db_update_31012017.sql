@@ -1,0 +1,1 @@
+ALTER TABLE `alert` ADD `period` ENUM( 'Daily', 'Weekly', 'Monthly' ) NOT NULL DEFAULT 'Monthly' AFTER `status` ;

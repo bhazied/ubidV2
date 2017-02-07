@@ -51,6 +51,19 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         title: $filter('translate')('content.list.fields.statuses.INACTIVE'),
         css: 'success'
     }];
+    $scope.periods = [{
+        id: 'Daily',
+        title: $filter('translate')('content.list.fields.periods.DAILY'),
+        css: 'primary'
+    }, {
+        id: 'Weekly',
+        title: $filter('translate')('content.list.fields.periods.WEEKLY'),
+        css: 'success'
+    }, {
+        id: 'Monthly',
+        title: $filter('translate')('content.list.fields.periods.MONTHLY'),
+        css: 'warning'
+    }];
 
     $scope.users = [];
     $scope.usersLoaded = false;
@@ -168,7 +181,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         }
     });
 
+    $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
+        $scope.redirect = redirect;
         var firstError = null;
         if (form.$invalid) {
             var field = null, firstError = null;
@@ -230,7 +245,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.alert = {id: 0, status: 'Active', categories: [], countries: []};
+        $scope.alert = {id: 0, status: 'Active', period: 'Daily', categories: [], countries: []};
 
     }
 
