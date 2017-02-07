@@ -150,5 +150,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             value: "Over $1 billion"
         }
     ];
+
+
 }]);
 

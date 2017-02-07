@@ -1001,19 +1001,6 @@ app.config(['$stateProvider',
             title: 'front.SUPPLIERDETAILS',
             resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierProductService')
         /*
-         * Public Product List & Details routes
-         */
-        }).state('front.products',{
-            url: '/products',
-            templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
-            title: 'front.PRODUCTS',
-            resolve: loadSequence('ProductsFrontCtrl', 'productFrontService')
-        }).state('front.product', {
-            url: '/product/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
-            title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
-        /*
          * Public Tender Lists & Details routes
          */
         }).state('front.tenders',{
@@ -1085,14 +1072,28 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
             resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
-        }).state('front.mytenders.list',{
+        }).state('front.mytenders.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
             resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
-        /*
-         * My Products Manager routes
-         */
+
+            /**
+             * Product Manage route
+             */
+        }).state('front.products', {
+            url: '/products',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: "front.PRODUCTS",
+            resolve: loadSequence()
+        }).state('front.products.details',{
+            url: '/details/:categorySlug/:slug/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
+            title: 'front.PRODUCTDETAILS',
+            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService')
+            /*
+             * My Products Manager routes
+             */
         }).state('front.myproducts',{
             url: '/my-products',
             template: '<div ui-view class="fade-in-up"></div>',

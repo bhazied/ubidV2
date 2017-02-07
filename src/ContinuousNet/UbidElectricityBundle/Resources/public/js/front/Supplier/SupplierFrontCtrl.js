@@ -12,7 +12,8 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         }, 500);
 
         $scope.supplier = {};
-        $scope.supplierProducts = [];
+        $scope.supplierProducts = {count : 0, results:[]};
+
         
         $scope.getSupplierProducts = function (supplierId) {
             var $params = {};
@@ -21,7 +22,8 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $timeout(function () {
                 var def = $q.defer();
                 $supplierProductsDataFactory.query($params).$promise.then(function (data) {
-                    $scope.supplierProducts = data.results;
+                    $scope.supplierProducts.count = data.inlineCount;
+                    $scope.supplierProducts.results = data.results;
                 });
                 def.resolve($scope.supplierProducts);
                 return def;
@@ -45,9 +47,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         }
         
         $scope.getSupplier();
-        $scope.$watch('supplier', function () {
-            $scope.getSupplierProducts($stateParams.id);
-        })
-
+        $scope.getSupplierProducts($stateParams.id);
+        
 
     }]);
