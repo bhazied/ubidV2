@@ -10,10 +10,10 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
 
         //angular.extend(this, $controller('BidFormCtrl', {$scope:$scope}));
 
-        $tendersDataFactory.get({id : $stateParams.id}).$promise.then(function(data){
-           //console.log(data.id);
+        if(angular.isDefined($stateParams.id)){
+            $scope.bid = {};
             $scope.bid.tender = $stateParams.id;
-        });
+        };
         //$scope.tenderId = 0;
         /*if(angular.isDefined($stateParams.id)){
                 //$scope.bid.tender = $stateParams.id;
