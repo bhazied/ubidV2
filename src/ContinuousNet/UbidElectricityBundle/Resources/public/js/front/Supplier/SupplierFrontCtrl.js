@@ -1,6 +1,6 @@
 'use strict';
-app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory) {
+app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory','$supplierProductsDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory, $supplierProductsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -12,6 +12,22 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         }, 500);
 
         $scope.supplier = {};
+        $scope.supplierProducts = [];
+        
+        $scope.getSupplierProducts = function (supplierId) {
+            var $params = {};
+            var filters = {};
+            $params['filters[supplierProduct.supplier]'] = supplierId;
+            $timeout(function () {
+                var def = $q.defer();
+                $supplierProductsDataFactory.query($params).$promise.then(function (data) {
+                    $scope.supplierProducts = data.results;
+                });
+                def.resolve($scope.supplierProducts);
+                return def;
+            });
+
+        }
         $scope.getSupplier = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -27,7 +43,11 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             });
 
         }
-
+        
         $scope.getSupplier();
+        $scope.$watch('supplier', function () {
+            $scope.getSupplierProducts($stateParams.id);
+        })
+
 
     }]);

@@ -7,6 +7,7 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
 
         var url = $rootScope.app.apiURL + $rootScope.app.apiVersion;
+        var supplierProductUrl = $rootScope.app.apiURL + 'supplierproducts';
         console.log(url);
         return $resource(url, {
             locale: '@locale',

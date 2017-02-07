@@ -68570,7 +68570,7 @@ app.config(['$stateProvider',
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierProductService')
         /*
          * Public Product List & Details routes
          */
