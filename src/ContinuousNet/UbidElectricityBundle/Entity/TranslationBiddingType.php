@@ -124,7 +124,7 @@ class TranslationBiddingType
      *
      * @ORM\ManyToOne(targetEntity="BiddingType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`bidding_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="bidding_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -139,7 +139,7 @@ class TranslationBiddingType
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -154,7 +154,7 @@ class TranslationBiddingType
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

@@ -103,7 +103,7 @@ class Group  extends BaseGroup
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -118,7 +118,7 @@ class Group  extends BaseGroup
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -134,10 +134,10 @@ class Group  extends BaseGroup
      * @ORM\ManyToMany(targetEntity="User", inversedBy="groups")
      * @ORM\JoinTable(name="users_groups",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`group_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="group_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`user_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      *     }
      * )
      * 

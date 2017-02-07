@@ -1,6 +1,6 @@
 
 <div ng-controller="HomeCtrl" class="home">
-    <h1 translate="front.CONNECTWITH">CONNECT whith electricity business lead</h1>
+    <h1 ng-if="homeLoaded" translate="front.CONNECTWITH">CONNECT whith electricity business lead</h1>
     <ul ng-if="homeLoaded"><li>
             <div>
                 <i class="buyer" ng-click="goBuyers()"></i>

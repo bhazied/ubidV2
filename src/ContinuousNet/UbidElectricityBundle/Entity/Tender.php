@@ -234,7 +234,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Buyer")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`buyer_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="buyer_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -249,7 +249,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Supplier")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`supplier_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -264,7 +264,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Region")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`region_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -279,7 +279,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`country_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -294,7 +294,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="Sector")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`sector_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="sector_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -309,7 +309,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="TenderType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`tender_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="tender_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -324,7 +324,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="BiddingType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`bidding_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="bidding_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -339,7 +339,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -354,7 +354,7 @@ class Tender
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -370,10 +370,10 @@ class Tender
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="tenders")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *     }
      * )
      * 

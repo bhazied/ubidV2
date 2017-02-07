@@ -147,7 +147,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostCategory")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`parent_post_category_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="parent_post_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -162,7 +162,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`post_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="post_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -177,7 +177,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -192,7 +192,7 @@ class PostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -208,10 +208,10 @@ class PostCategory
      * @ORM\ManyToMany(targetEntity="Post", inversedBy="postCategories")
      * @ORM\JoinTable(name="posts_post_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`post_category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`post_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      *     }
      * )
      * 

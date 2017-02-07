@@ -14,7 +14,7 @@ app.controller('MessageFrontFormCtrl', ['$scope','$controller', '$rootScope', '$
        $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
         $scope.disableSubmit = false;
-        $scope.enableFormAlert = true;
+        $scope.enableFormAlert = false;
 
         // Editor options.
         $scope.editorOptions = {
