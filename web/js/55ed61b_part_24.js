@@ -1010,7 +1010,6 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
         $scope.folder = folder;
         $scope.url = '';
         $scope.mode = '';
-
         $timeout(function(){
             var fileManager = $('#elfinder_'+$scope.field).elfinder({
                 url : '/efconnect/'+$scope.instance+'/'+$scope.folder+'?mode='+$scope.mode,
