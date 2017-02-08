@@ -319,6 +319,9 @@ app.constant('JS_REQUIRES', {
     },{
         name: 'angular-slider',
         files: ['/assets/bower_components/angularjs-slider/dist/rzslider.min.js', '/assets/bower_components/angularjs-slider/dist/rzslider.min.css']
+    },{
+        name: 'tree-grid-directive',
+        files: ['/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js', '/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css']
     }]
 });
 
@@ -539,7 +542,9 @@ app.constant('APP_JS_REQUIRES', {
         'MessageFrontFormCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontFormCtrl.js',
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
-        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js'
+        'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
+        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
+        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -1320,6 +1325,22 @@ app.config(['$stateProvider',
                 'userSettingsFilter': null
             },
             resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingsCtrl', 'userSettingService', 'userService')
+            /**
+             * Categories routes manage
+             */
+        }).state('front.categories', {
+            url : '/categories',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.categories',
+            resolve: loadSequence()
+        }).state('front.categories.list', {
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
+            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive')
+        }).state('front.categories.details', {
+            url: '/details/:id/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
+            resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
         })
     }]);
 

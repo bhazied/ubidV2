@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <fieldset>
+                <legend translate="front.ALLCATEGORIES">
+                    All Categories
+                </legend>
+            </fieldset>
+        </div>
+    </div>
+<div  class="container-fluid container-fullw bg-white" ng-controller="CategoriesFrontCtrl">
+    <div class="row">
+        <div class="col-md-6 category_container">
+            <abn-tree
+                    tree-data ="tree_data"
+                    icon-leaf         = "fa fa-folder-o"
+                    icon-expand       = "fa fa-chevron-right"
+                    icon-collapse     = "fa fa-chevron-up"
+                    tree-control ="my_tree"
+                    on-select = "category_selected(branch)"
+                    expand-level = "expandFirst"
+                    initial-selection = "selectedFirst">
+            ></abn-tree>
+        </div>
+        <div class="col-md-6 category_container" ng-if="selectedYet">
+            <div  class="text-info" translate="front.SMALLDETAILSCATEGORY" translate-values='{ category_name: selectedCategory.name, tender_count: selectedCategory.tenderCount}'></div>
+            <a ui-sref="front.categories.details({id: selectedCategory.id, slug: selectedCategory.slug})"> <span translate="front.READMORE">Read more</span> </a>
+        </div>
+    </div>
+</div>

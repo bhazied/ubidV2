@@ -430,5 +430,21 @@ app.config(['$stateProvider',
                 'userSettingsFilter': null
             },
             resolve: loadSequence('MyAlertSettingsCtrl', 'UserSettingsCtrl', 'userSettingService', 'userService')
+            /**
+             * Categories routes manage
+             */
+        }).state('front.categories', {
+            url : '/categories',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: 'front.categories',
+            resolve: loadSequence()
+        }).state('front.categories.list', {
+            url: '/list',
+            templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
+            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive')
+        }).state('front.categories.details', {
+            url: '/details/:id/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
+            resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
         })
     }]);

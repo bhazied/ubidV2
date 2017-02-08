@@ -5,6 +5,7 @@ namespace ContinuousNet\UbidElectricityBundle\Controller;
 use ContinuousNet\UbidElectricityBundle\Entity\TenderBookmark;
 use ContinuousNet\UbidElectricityBundle\Entity\TenderCategory;
 use ContinuousNet\UbidElectricityBundle\Entity\Tender;
+use ContinuousNet\UbidElectricityBundle\Entity\Category;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -758,6 +759,15 @@ class ApiV1RESTController extends FOSRestController
      * @param $entity
      */
     public function homeTenderAction(Tender $entity){
+        return $entity;
+    }
+
+    /**
+     * @GET("/publicCategory/{id}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     * @param $entity
+     */
+    public function publicCategoryAction(Category $entity){
         return $entity;
     }
 

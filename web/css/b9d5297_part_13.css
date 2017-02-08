@@ -1727,3 +1727,14 @@ fieldset h2 {
     cursor: pointer;
     font-family: Arial !important;
     margin-top: 2rem;
+}
+
+.category_container {
+    width: 250px;
+    margin-left: 100px;
+    background: whitesmoke;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
