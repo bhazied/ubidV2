@@ -130,12 +130,12 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             });
         }
 
-        $scope.tenderCAtegoriesLoaded = false;
+        $scope.tenderCategoriesLoaded = false;
         $scope.tenderCategories = [];
 
         $scope.getTenderCategories = function () {
             $timeout(function () {
-                $scope.tenderCAtegoriesLoaded = true;
+                $scope.tenderCategoriesLoaded = true;
                 if($scope.tenderCategories.length == 0){
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {

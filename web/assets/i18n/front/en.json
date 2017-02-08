@@ -1907,6 +1907,12 @@
     "SENTMESSAGE": "sent messages",
     "RECEIVEDMESSAGE":"Received messages",
     "APPLAYTENDER" : "Applay tender",
-    "DESCRIPTIONREQUIRED" : "Description is required"
+    "DESCRIPTIONREQUIRED" : "Description is required",
+    "CATEGORIES": "Categories",
+    "ALLCATEGORIES": "All categories",
+    "SMALLDETAILSCATEGORY": "The category '[[category_name]]' content [[tender_count]] Tenders for more information click to link bellow",
+    "CATEGORIESLIST": "Categories list",
+    "SUPPLIERPRODUCTS": "Supplier Products",
+    "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products"
   }
 }
