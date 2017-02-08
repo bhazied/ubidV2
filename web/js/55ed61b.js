@@ -68571,20 +68571,7 @@ app.config(['$stateProvider',
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
-        /*
-         * Public Product List & Details routes
-         */
-        }).state('front.products',{
-            url: '/products',
-            templateUrl: '/bundles/ubidelectricity/js/front/Product/products.html',
-            title: 'front.PRODUCTS',
-            resolve: loadSequence('ProductsFrontCtrl', 'productFrontService')
-        }).state('front.product', {
-            url: '/product/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Product/product.html',
-            title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'productFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierProductService')
         /*
          * Public Tender Lists & Details routes
          */
@@ -68657,14 +68644,28 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
             resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
-        }).state('front.mytenders.list',{
+        }).state('front.mytenders.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
             resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
-        /*
-         * My Products Manager routes
-         */
+
+            /**
+             * Product Manage route
+             */
+        }).state('front.products', {
+            url: '/products',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: "front.PRODUCTS",
+            resolve: loadSequence()
+        }).state('front.products.details',{
+            url: '/details/:categorySlug/:slug/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
+            title: 'front.PRODUCTDETAILS',
+            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService')
+            /*
+             * My Products Manager routes
+             */
         }).state('front.myproducts',{
             url: '/my-products',
             template: '<div ui-view class="fade-in-up"></div>',
@@ -72867,7 +72868,6 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
         $scope.folder = folder;
         $scope.url = '';
         $scope.mode = '';
-
         $timeout(function(){
             var fileManager = $('#elfinder_'+$scope.field).elfinder({
                 url : '/efconnect/'+$scope.instance+'/'+$scope.folder+'?mode='+$scope.mode,
