@@ -423,10 +423,10 @@ class Category
      * Set metaKeywords
      *
      * @access public
-     * @param array $metaKeywords
+     * @param string $metaKeywords
      * @return Category
      */
-    public function setMetaKeywords(array $metaKeywords = null)
+    public function setMetaKeywords($metaKeywords = null)
     {
         $this->metaKeywords = $metaKeywords;
         return $this;
