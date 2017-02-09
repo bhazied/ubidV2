@@ -20,6 +20,9 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
         if (angular.isDefined($stateParams.id)) {
             $tendersFrontDataFactory.category({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function(data) {
                 $scope.category = data;
+                $rootScope.seo.meta_description = data.meta_description;
+                $rootScope.seo.meta_keywords = data.meta_keywords;
+                $rootScope.seo.meta_title = data.meta_title;
             });
         }
 

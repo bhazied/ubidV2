@@ -67666,6 +67666,12 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
+        $rootScope.seo = {
+                meta_title: '',
+                meta_description: '',
+                meta_keywords: ''
+        }
+
     }]);
 
 // translate config
@@ -72416,8 +72422,16 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
 
         $rootScope.pageTitle = function() {
-            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.seo.meta_title);
         };
+
+        $rootScope.pageDescription = function () {
+            return $rootScope.app.description + ' - ' + $rootScope.seo.meta_description;
+        }
+
+        $rootScope.pageKeywords = function () {
+            return $rootScope.seo.meta_keywords;
+        }
 
         // save settings to local storage
         if (angular.isDefined($localStorage.layout)) {

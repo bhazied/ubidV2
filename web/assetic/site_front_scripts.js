@@ -95,6 +95,12 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
+        $rootScope.seo = {
+                meta_title: '',
+                meta_description: '',
+                meta_keywords: ''
+        }
+
     }]);
 
 // translate config

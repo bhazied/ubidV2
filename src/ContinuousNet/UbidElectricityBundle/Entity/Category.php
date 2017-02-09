@@ -120,10 +120,10 @@ class Category
     private $metaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
