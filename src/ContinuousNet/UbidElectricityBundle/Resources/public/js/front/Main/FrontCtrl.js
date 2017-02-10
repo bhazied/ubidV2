@@ -137,7 +137,14 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
 
         $rootScope.pageTitle = function() {
-            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.seo.meta_title);
+            var title = $rootScope.app.name;
+            if($rootScope.currTitle){
+                title = title+ ' - ' + $rootScope.currTitle;
+            }
+            if($rootScope.seo.meta_title){
+                title = title+ ' - ' + $rootScope.seo.meta_title;
+            }
+            return title;
         };
 
         $rootScope.pageDescription = function () {
