@@ -174,10 +174,10 @@ class Post
     private $metaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_keywords`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -692,10 +692,10 @@ class Post
      * Set metaKeywords
      *
      * @access public
-     * @param array $metaKeywords
+     * @param string $metaKeywords
      * @return Post
      */
-    public function setMetaKeywords(array $metaKeywords = null)
+    public function setMetaKeywords($metaKeywords = null)
     {
         $this->metaKeywords = $metaKeywords;
         return $this;
@@ -705,7 +705,7 @@ class Post
      * Get metaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getMetaKeywords()
     {
