@@ -379,7 +379,7 @@
       "NOTIFICATIONNOTDELETED": "Notification Not Deleted",
       "BACKNOTIFICATIONS": "Back To Notifications List",
       "POSTS": "Posts",
-      "POST": "Post",
+      "POST": "Post details",
       "ADDPOST": "Add New Post",
       "NEWPOST": "New Post",
       "POSTDETAILS": "Post Details",
@@ -1913,6 +1913,7 @@
     "SMALLDETAILSCATEGORY": "The category '[[category_name]]' content [[tender_count]] Tenders for more information click to link bellow",
     "CATEGORIESLIST": "Categories list",
     "SUPPLIERPRODUCTS": "Supplier Products",
-    "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products"
+    "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products",
+    "POST": "Post details"
   }
 }

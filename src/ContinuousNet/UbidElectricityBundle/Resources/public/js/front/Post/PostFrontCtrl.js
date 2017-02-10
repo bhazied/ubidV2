@@ -24,7 +24,6 @@ function($rootScope, $scope, $state, $stateParams, $sce, $timeout, $filter, $q, 
 
     if (angular.isDefined($stateParams.slug)) {
         $postsDataFactory.getBySlug({slug: $stateParams.slug, locale: $scope.locale}).$promise.then(function(data) {
-            console.warn(data)
             $scope.post = data;
             $rootScope.seo.meta_description = data.meta_description;
             $rootScope.seo.meta_keywords = data.meta_keywords;
