@@ -7,8 +7,24 @@
         <a class="navbar-logo-text" ui-sref="front.home"></a><!-- ng-if="showBrandName" -->
 
         <form ng-if="SearchFormHeader" ng-controller="searchFormCtrl" class="float-xs-left" name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
-            <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
-            <button type="submit" ng-submit="submitSearch(searchText)"></button>
+            <div class="input-group">
+                <div class="input-group-btn" uib-dropdown>
+                    <a class="btn btn-primary dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list-ul"></i>
+                    </a>
+                    <div class="dropdown-menu" uib-dropdown-menu>
+                        <a class="dropdown-item" ui-sref="front.categories.list"><i class="fa fa-file-text-o"></i><span translate="front.TENDERS">Tenders</span></a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item"  ui-sref="front.tenders.list({section: 'Consultation'})"><i class="fa fa-user-secret"></i><span translate="front.CONSULTATIONS">Consultations</span></a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" ui-sref="front.buyers"><i class="fa fa-shopping-cart"></i><span translate="front.BUYERS">Buyers</span></a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" ui-sref="front.suppliers"><i class="fa fa-handshake-o"></i><span translate="front.SUPPLIERS">Suppliers</span></a>
+                    </div>
+                </div>
+                <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
+                <button type="submit" ng-submit="submitSearch(searchText)"></button>
+            </div>
         </form>
 
         <div class="float-xs-right" id="language-switcher">
