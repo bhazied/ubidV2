@@ -2,9 +2,9 @@
 
     <div class="header-container">
 
-        <a ng-if="showLogo" class="navbar-logo-icon" ui-sref="front.home"></a>
+        <!--a ng-if="showLogo" class="navbar-logo-icon" ui-sref="front.home"></a-->
 
-        <a ng-if="showBrandName" class="navbar-logo-text" ui-sref="front.home"></a>
+        <a class="navbar-logo-text" ui-sref="front.home"></a><!-- ng-if="showBrandName" -->
 
         <form ng-if="SearchFormHeader" ng-controller="searchFormCtrl" class="float-xs-left" name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
             <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
