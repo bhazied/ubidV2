@@ -379,7 +379,7 @@
       "NOTIFICATIONNOTDELETED": "Notification Not Deleted",
       "BACKNOTIFICATIONS": "Back To Notifications List",
       "POSTS": "Posts",
-      "POST": "Post",
+      "POST": "Post details",
       "ADDPOST": "Add New Post",
       "NEWPOST": "New Post",
       "POSTDETAILS": "Post Details",
@@ -1747,7 +1747,7 @@
     "ACCOUNT": "Account",
     "SERVICES": "Services",
     "ABOUTUS": "About us",
-    "ELECTRICITYMAGAZINE": "Electicity magazine",
+    "ELECTRICITYMAGAZINE": "Electricity magazine",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
     "MYBUYERS":"Buyers",
@@ -1905,6 +1905,15 @@
     "ALERTSETTINGS": "Alert settings",
     "MYMESSAGES" : "My messages",
     "SENTMESSAGE": "sent messages",
-    "RECEIVEDMESSAGE":"Received messages"
+    "RECEIVEDMESSAGE":"Received messages",
+    "APPLAYTENDER" : "Applay tender",
+    "DESCRIPTIONREQUIRED" : "Description is required",
+    "CATEGORIES": "Categories",
+    "ALLCATEGORIES": "All categories",
+    "SMALLDETAILSCATEGORY": "The category '[[category_name]]' content [[tender_count]] Tenders for more information click to link bellow",
+    "CATEGORIESLIST": "Categories list",
+    "SUPPLIERPRODUCTS": "Supplier Products",
+    "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products",
+    "POST": "Post details"
   }
 }

@@ -113,7 +113,7 @@ class TranslationCountry
      *
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`country_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -128,7 +128,7 @@ class TranslationCountry
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -143,7 +143,7 @@ class TranslationCountry
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

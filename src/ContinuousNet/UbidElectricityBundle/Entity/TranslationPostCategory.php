@@ -135,7 +135,7 @@ class TranslationPostCategory
      *
      * @ORM\ManyToOne(targetEntity="PostCategory")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`post_category_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -150,7 +150,7 @@ class TranslationPostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -165,7 +165,7 @@ class TranslationPostCategory
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

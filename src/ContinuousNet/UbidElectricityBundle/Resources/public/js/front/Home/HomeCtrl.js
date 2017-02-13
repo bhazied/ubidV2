@@ -2,11 +2,8 @@
 app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$q', '$HomeDataFactory','$filter',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $q, $HomeDataFactory, $filter) {
 
-        /*$rootScope.showSlogan = false;
-        $rootScope.showUserMenu = false;
-        $rootScope.showLeftSide = false;
-        $rootScope.showRightSide = false;
-*/
+        $scope.homeLoaded = false;
+
         $timeout(function () {
             $rootScope.showSlogan = false;
             $rootScope.showUserMenu = false;
@@ -16,7 +13,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
             console.log('set content size');
             $rootScope.contentSize = 12;
             $rootScope.contentOffset = 0;
-            $rootScope.homeLoaded = true;
+            $scope.homeLoaded = true;
         }, 2000);
 
         $scope.goPublication = function () {

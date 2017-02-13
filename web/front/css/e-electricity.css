@@ -79,9 +79,10 @@ body {
 }
 
 .navbar-logo-text {
-    background-image: url('/front/img/e-electricity-logo.png');
+    background-image: url('/front/img/e-electricity-logo.svg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 100% auto;
     height: 38px;
     width: 168px;
     display: inline-block;
@@ -1017,7 +1018,7 @@ span.input-help > input {
 fieldset legend {
     font-size: 2rem;
     color: #013486 !important;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #013486;
 }
 
 fieldset h2 {
@@ -1035,26 +1036,73 @@ fieldset h2 {
 }
 
 #partial_profile_menu {
-    border-right: 1px solid #1D69AD;
+    /*border-right: 1px solid #1D69AD;*/
 }
 
 #partial_profile_menu ul {
-    margin: 0;
-    padding: 0;
+    padding: 0.8rem 0 0.8rem 0.5rem!important;
+    margin: 0!important;
     list-style: none;
-    margin-top: 1rem;
-    margin-left : 1rem;
 }
 
 #partial_profile_menu ul li {
     margin: 0;
     padding: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+#partial_profile_menu ul li:last-child {
+    margin-bottom: 0;
 }
 
 #partial_profile_menu ul li a {
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: block;
+}
+
+#partial_profile_menu .panel-default > .panel-heading {
+    background-color: #1D69AD;
+    border-radius: 0;
+    border-bottom: 1px solid white;
+    padding: 0 0;
+}
+
+#partial_profile_menu .panel-default > .panel-heading h4 a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-transform: uppercase;
+    font-white: bold;
+}
+
+#partial_profile_menu .panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#partial_profile_menu .panel-group .panel .panel-collapse {
+    border: 1px solid #1D69AD;
+    border-top: 0;
+}
+
+#partial_profile_menu .panel-default {
+    border: none;
+}
+
+#user-menu-icon {
+    margin: -33px 0 3px 0;
+    border-bottom: 1px solid #1D69AD;
+    height: 30px;
+    padding-bottom: 1px;
+    vertical-align: top;
+}
+
+#user-menu-icon .fa {
+    color: #1D69AD;
+    font-size: 30px;
+    vertical-align: top;
 }
 
 .list-toolbox {
@@ -1143,27 +1191,33 @@ fieldset h2 {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
+
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 17px;
     color: inherit;
 }
+
 .panel-group {
     margin-bottom: 20px;
 }
+
 .panel-group .panel {
     margin-bottom: 0;
     border-radius: 4px;
 }
+
 .panel-default {
     border-color: #ddd;
 }
+
 .panel-default>.panel-heading {
     color: #333;
     background-color: #f5f5f5;
     border-color: #ddd;
 }
+
 .panel-group .panel-heading {
     border-bottom: 0;
 }
@@ -1272,7 +1326,7 @@ fieldset h2 {
 }
 
 .home ul li div i.logistic_agent {
-    background-image: url('/front/img/logistic_agent.png');
+    background-image: url('/front/img/logistic_agent.svg');
 }
 
 .home ul li div span {
@@ -1330,3 +1384,69 @@ fieldset h2 {
     cursor: pointer;
     font-family: Arial !important;
     margin-top: 2rem;
+}
+
+.category_container {
+    width: 250px;
+    margin-left: 100px;
+    background: whitesmoke;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.custom-profile-style {
+    background-color: #E7F2FD;
+    padding: 10px;
+}
+
+.custom-profile-style .nav-tabs {
+    border-bottom: none;
+}
+
+.custom-profile-style .nav-tabs li a {
+    text-decoration: underline;
+}
+
+.custom-profile-style .tender-details table tr {
+    background-color: transparent!important;
+}
+
+.custom-profile-style .tender-details table tr th {
+    border-bottom: none;
+    min-width: 10px;
+    font-weight: normal;
+}
+
+.custom-profile-style .tender-details table tr td {
+    border-bottom: none;
+}
+
+.custom-profile-style .tender-details table tr td span.value {
+    border-left: none;
+    color: #1d69ad !important;
+    font-weight: bold;
+}
+
+.custom-profile-style .nav-tabs li.active a {
+    background-color: #F7F8F9;
+    font-weight: bold;
+}
+
+.custom-profile-style .tab-content .tab-pane {
+    background-color: #F7F8F9;
+    padding: 10px;
+}
+
+#front-content .bg-white {
+    background-color: #E7F2FD!important;
+    padding-top: 10px;
+}
+
+#front-content .table-responsive {
+    background-color: #F7F8F9!important;
+}
+
+#front-content form {
+    background-color: #F7F8F9!important;
+    padding: 10px;
+}

@@ -36,7 +36,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.post',
             'front.generic_search',
             'front.contact',
-            'front.buyer'
+            'front.buyer',
+            'front.categories.list',
+            'front.categories.details'
         ];
 
         $timeout(function() {
@@ -135,8 +137,23 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
 
         $rootScope.pageTitle = function() {
-            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+            var title = $rootScope.app.name;
+            if($rootScope.currTitle){
+                title = title+ ' - ' + $rootScope.currTitle;
+            }
+            if($rootScope.seo.meta_title){
+                title = title+ ' - ' + $rootScope.seo.meta_title;
+            }
+            return title;
         };
+
+        $rootScope.pageDescription = function () {
+            return $rootScope.app.description + ' - ' + $rootScope.seo.meta_description;
+        }
+
+        $rootScope.pageKeywords = function () {
+            return $rootScope.seo.meta_keywords;
+        }
 
         // save settings to local storage
         if (angular.isDefined($localStorage.layout)) {

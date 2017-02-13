@@ -138,8 +138,7 @@ security:
         - { path: ^/(en|fr|ar)/api/impressions$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Languages ACL
         # Language data
-        - { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        # Create new Language
+        # - { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         - { path: ^/(en|fr|ar)/api/languages$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Language
         - { path: ^/(en|fr|ar)/api/languages$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
@@ -255,7 +254,7 @@ security:
         - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Supplier Products ACL
         # Supplier Product data
-        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER, IS_AUTHENTICATED_ANONYMOUSLY ] }
         # Create new Supplier Product
         - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Supplier Product

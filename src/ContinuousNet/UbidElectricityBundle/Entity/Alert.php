@@ -135,7 +135,7 @@ class Alert
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -150,7 +150,7 @@ class Alert
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -166,10 +166,10 @@ class Alert
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="alerts")
      * @ORM\JoinTable(name="alerts_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`alert_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *     }
      * )
      * 
@@ -186,10 +186,10 @@ class Alert
      * @ORM\ManyToMany(targetEntity="Country", inversedBy="alerts")
      * @ORM\JoinTable(name="alerts_countries",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`alert_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`country_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      *     }
      * )
      * 

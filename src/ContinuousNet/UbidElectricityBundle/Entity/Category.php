@@ -98,6 +98,39 @@ class Category
     private $description;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaDescription;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_keywords`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaKeywords;
+
+    /**
      * @var integer
      * @access private
      *
@@ -147,7 +180,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`parent_category_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="parent_category_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -162,7 +195,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="ProductType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`product_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="product_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -177,7 +210,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -192,7 +225,7 @@ class Category
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -208,10 +241,10 @@ class Category
      * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`tender_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
      *     }
      * )
      * 
@@ -336,6 +369,78 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @access public
+     * @param string $metaTitle
+     * @return Category
+     */
+    public function setMetaTitle($metaTitle = null)
+    {
+        $this->metaTitle = $metaTitle;
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @access public
+     * @param string $metaDescription
+     * @return Category
+     */
+    public function setMetaDescription($metaDescription = null)
+    {
+        $this->metaDescription = $metaDescription;
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @access public
+     * @param string $metaKeywords
+     * @return Category
+     */
+    public function setMetaKeywords($metaKeywords = null)
+    {
+        $this->metaKeywords = $metaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
     }
 
     /**

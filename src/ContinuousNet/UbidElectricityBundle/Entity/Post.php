@@ -174,10 +174,10 @@ class Post
     private $metaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_keywords`", type="string", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -344,7 +344,7 @@ class Post
      *
      * @ORM\ManyToOne(targetEntity="PostType")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`post_type_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="post_type_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -359,7 +359,7 @@ class Post
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -374,7 +374,7 @@ class Post
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -390,10 +390,10 @@ class Post
      * @ORM\ManyToMany(targetEntity="PostCategory", inversedBy="posts")
      * @ORM\JoinTable(name="posts_post_categories",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="`post_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="`post_category_id`", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
      *     }
      * )
      * 
@@ -692,10 +692,10 @@ class Post
      * Set metaKeywords
      *
      * @access public
-     * @param array $metaKeywords
+     * @param string $metaKeywords
      * @return Post
      */
-    public function setMetaKeywords(array $metaKeywords = null)
+    public function setMetaKeywords($metaKeywords = null)
     {
         $this->metaKeywords = $metaKeywords;
         return $this;
@@ -705,7 +705,7 @@ class Post
      * Get metaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getMetaKeywords()
     {

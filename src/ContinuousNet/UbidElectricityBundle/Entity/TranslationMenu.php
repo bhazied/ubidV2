@@ -124,7 +124,7 @@ class TranslationMenu
      *
      * @ORM\ManyToOne(targetEntity="Menu")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`menu_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="menu_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -139,7 +139,7 @@ class TranslationMenu
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`creator_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="creator_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose
@@ -154,7 +154,7 @@ class TranslationMenu
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *        @ORM\JoinColumn(name="`modifier_user_id`", referencedColumnName="id")
+     *        @ORM\JoinColumn(name="modifier_user_id", referencedColumnName="id")
      * })
      * 
      * @Expose

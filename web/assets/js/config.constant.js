@@ -133,5 +133,8 @@ app.constant('JS_REQUIRES', {
     },{
         name: 'angular-slider',
         files: ['/assets/bower_components/angularjs-slider/dist/rzslider.min.js', '/assets/bower_components/angularjs-slider/dist/rzslider.min.css']
+    },{
+        name: 'tree-grid-directive',
+        files: ['/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js', '/assets/bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css']
     }]
 });
