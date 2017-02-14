@@ -1,7 +1,9 @@
-<div ng-controller="ProfileFrontCtrl" class="custom-profile-style">
-    <uib-tabset>
-        <uib-tab ng-repeat="tab in tabs" heading="[[tab.title]]" active="tab.active">
-            <div data-ng-include="tab.template"></div>
-        </uib-tab>
-    </uib-tabset>
+<div class="container-fluid container-fullw bg-blue">
+    <div ng-controller="ProfileFrontCtrl" class="custom-profile-style">
+        <uib-tabset>
+            <uib-tab ng-repeat="tab in tabs" heading="[[tab.title]]" active="tab.active">
+                <div data-ng-include="tab.template"></div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
 </div>
