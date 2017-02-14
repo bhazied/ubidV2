@@ -39,6 +39,9 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                 var def = $q.defer();
                 $suppliersFrontDataFactory.supplier($params).$promise.then(function(data){
                     $scope.supplier = data;
+                    $rootScope.seo.meta_description = data.description;
+                    $rootScope.seo.meta_keywords = data.main_products_services;
+                    $rootScope.seo.meta_title = data.name;
                 });
                 def.resolve($scope.supplier);
                 return def;

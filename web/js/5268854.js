@@ -67692,9 +67692,8 @@ function ($translateProvider) {
 // configuration
 app.config(['cfpLoadingBarProvider',
 function (cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeBar = true;
-    cfpLoadingBarProvider.includeSpinner = false;
-
+    cfpLoadingBarProvider.includeBar = false;
+    cfpLoadingBarProvider.includeSpinner = true;
 }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols. 

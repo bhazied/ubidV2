@@ -1,12 +1,9 @@
 <div ng-controller="CategoryFrontCtrl">
     <div class="tender-preview">
-        <a class="name"> <h1 ng-bind="category.name"></h1></a>
+        <h1 class="name" ng-bind="category.name"></h1>
         <div class="pb-1 clearfix">
             <img ng-if="supplier.picture" src="[[ category.picture ]]" alt="[[ category.name ]]" class="pull-right img-thumbnail" />
-            <h3 ng-bind-html="category.description"></h3>
-        </div>
-        <div class="row" ng-if="supplierProducts.count == 0">
-            <h1 class="name"> This supplier has no products yet </h1>
+            <h2 ng-bind-html="category.description"></h2>
         </div>
         <div class="row">
             <div class="col-md-6"></div>

@@ -4,8 +4,8 @@
  * Controller for Categories List
  */
 
-app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$productTypesDataFactory', '$usersDataFactory', '$categoriesDataFactory','$tendersFrontDataFactory',
-    function($scope, $controller,$rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $productTypesDataFactory, $usersDataFactory, $categoriesDataFactory, $tendersFrontDataFactory) {
+app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$productTypesDataFactory', '$usersDataFactory', '$categoriesDataFactory','$tendersFrontDataFactory', '$postsDataFactory',
+    function($scope, $controller,$rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $productTypesDataFactory, $usersDataFactory, $categoriesDataFactory, $tendersFrontDataFactory, $postsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -15,7 +15,14 @@ app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$
             $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
         },1500);
-        
+
+        $postsDataFactory.getBySlug({slug: 'categories', locale: $scope.locale}).$promise.then(function(data) {
+            $scope.postLoaded = true;
+            $scope.post = data;
+            $rootScope.seo.meta_description = data.meta_description;
+            $rootScope.seo.meta_keywords = data.meta_keywords;
+            $rootScope.seo.meta_title = data.meta_title;
+        });
 
         $scope.tree_data =[];
 

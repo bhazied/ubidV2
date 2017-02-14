@@ -1,5 +1,6 @@
 <div class="tender-details" ng-controller="tenderCtrl">
-    <h4 class="name">[[ tender.title ]]</h4>
+    <h1 class="name">[[ tender.title ]]</h1>
+    <h2>[[ tender.description ]]</h2>
     <table class="table table-striped">
         <tr>
             <th><span translate="front.REFNUMBER">Tender  no</span>:</th>
@@ -36,13 +37,13 @@
         <tr>
             <th><span translate="front.CONTACT">Contact</span>:</th>
             <td>
-                                    <span class="value">
-                                        <span translate="front.TEL">Tel</span>: <span>[[ tender.buyer.phone ]]</span>
-                                        -
-                                        <span translate="front.FAX">Fax</span>: <span>[[ tender.buyer.fax ]]</span>
-                                        -
-                                        <span translate="front.WEBSITE">Website</span>: <span>[[ tender.buter.website ]]</span>
-                                    </span>
+                <span class="value">
+                    <span translate="front.TEL">Tel</span>: <span>[[ tender.buyer.phone ]]</span>
+                    -
+                    <span translate="front.FAX">Fax</span>: <span>[[ tender.buyer.fax ]]</span>
+                    -
+                    <span translate="front.WEBSITE">Website</span>: <span>[[ tender.buter.website ]]</span>
+                </span>
             </td>
         </tr>
     </table>
@@ -65,8 +66,4 @@
             <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
         </div>
     </div>
-   <!-- <div class="row mb-1">
-        <div class="col-md-6"><a href="#"><i class="ti-arrow-left"></i> <span translate="front.PREVIOUSTENDER">Previous Tender</span></a></div>
-        <div class="col-md-6"><a href="#" class="pull-right"><span translate="front.NEXTTENDER">Next Tender</span> <i class="ti-arrow-right"></i></a></div>
-    </div> -->
 </div>

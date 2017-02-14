@@ -3,8 +3,8 @@
     <div class="row nav-menu">
         <div class="col-md-8 pl-0 pr-0">
             <ul class="pull-left">
-                <li ng-class="{active: section=='Consultation'}"><a ui-sref="front.tenders.list({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
-                <li ng-class="{active: section=='Tender'}"><a ui-sref="front.tenders.list({section:'Tender'})" translate="front.TENDERS">Tenders </a></li>
+                <li ng-class="{active: section == 'Consultation'}"><a ui-sref="front.tenders.list({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li ng-class="{active: section == 'Tender'}"><a ui-sref="front.tenders.list({section:'Tender'})" translate="front.TENDERS">Tenders </a></li>
                 <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
                 <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
             </ul>
@@ -22,8 +22,11 @@
         </div>
     </div>
 
+    <h1 ng-if="section == 'Tender'" translate="front.TENDERS">Tenders</h1>
+    <h1 ng-if="section == 'Consultation'" translate="front.CONSULTATIONS">Consultations</h1>
+
     <div class="tender-preview"  ng-repeat="tender in tendersList">
-        <a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a>
+        <h3><a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a></h3>
         <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>
         <p class="description" ng-bind-html="tender.description | limitTo: 250"></p> ...
         <div class="dates row">

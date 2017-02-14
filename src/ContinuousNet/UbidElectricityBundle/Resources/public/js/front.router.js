@@ -11,7 +11,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
         /*
          *  User Service routes
          */
@@ -77,27 +77,7 @@ app.config(['$stateProvider',
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
-        }).state('front.messages', {
-            url : '/messages',
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: ''
-        }).state('front.messages.send', {
-            url: '/send/:id/:to',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
-            title: '',
-            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.list', {
-            url: '/list/:type',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
-            title: '',
-            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.detail', {
-            url: '/detail/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
-            title: '',
-            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService', 'postFrontService')
         /*
          * Public Supplier List & Details routes
          */
@@ -105,7 +85,7 @@ app.config(['$stateProvider',
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService', 'postFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
@@ -125,7 +105,7 @@ app.config(['$stateProvider',
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
-            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
+            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService', 'postFrontService')
         }).state('front.tenders.details', {
             url: '/details/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
@@ -201,7 +181,7 @@ app.config(['$stateProvider',
             url: '/details/:categorySlug/:slug/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService')
+            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService', 'postFrontService')
             /*
              * My Products Manager routes
              */
@@ -351,7 +331,7 @@ app.config(['$stateProvider',
             url: '/contact',
             templateUrl : '/bundles/ubidelectricity/js/front/Contact/contact_form.html',
             title: 'front.CONTACT',
-            resolve: loadSequence('contactService', 'ContactFormCtrl')
+            resolve: loadSequence('contactService', 'ContactFormCtrl', 'postFrontService')
         }).state('front.post',{
             url: '/post/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
@@ -446,5 +426,27 @@ app.config(['$stateProvider',
             url: '/details/:id/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
             resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
+        }).state('front.messages', {
+            url : '/messages',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: ''
+            /**
+             * Messages routes manage
+             */
+        }).state('front.messages.send', {
+            url: '/send/:id/:to',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
+            title: '',
+            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.list', {
+            url: '/list/:type',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
+            title: '',
+            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.detail', {
+            url: '/detail/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
+            title: '',
+            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         })
     }]);

@@ -1702,6 +1702,7 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "HOME": "Home page",
     "CONNECTWITH" : "CONNECT whith electricity business lead",
     "BUYER" : "Buyer",
     "BUYERDESCRIPTION" : "anyone looks for broadcasting business apportunities all over the world an compare bids",

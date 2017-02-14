@@ -28,6 +28,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.app = {
             name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
+            keywords: 'Electricity, Tenders, Buyers, Suppliers, Products', // some keywords
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
             year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -65,10 +66,10 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
         $rootScope.seo = {
-                meta_title: '',
-                meta_description: '',
-                meta_keywords: ''
-        }
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: ''
+        };
 
     }]);
 
@@ -114,9 +115,8 @@ app.config(['$translateProvider',
 // configuration
 app.config(['cfpLoadingBarProvider',
     function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeBar = true;
-        cfpLoadingBarProvider.includeSpinner = false;
-
+        cfpLoadingBarProvider.includeBar = false;
+        cfpLoadingBarProvider.includeSpinner = true;
     }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols.

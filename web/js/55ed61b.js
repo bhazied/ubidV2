@@ -67630,6 +67630,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.app = {
             name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
+            keywords: 'Electricity, Tenders, Buyers, Suppliers, Products', // some keywords
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
             year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -67667,10 +67668,10 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
         $rootScope.seo = {
-                meta_title: '',
-                meta_description: '',
-                meta_keywords: ''
-        }
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: ''
+        };
 
     }]);
 
@@ -67716,9 +67717,8 @@ app.config(['$translateProvider',
 // configuration
 app.config(['cfpLoadingBarProvider',
     function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeBar = true;
-        cfpLoadingBarProvider.includeSpinner = false;
-
+        cfpLoadingBarProvider.includeBar = false;
+        cfpLoadingBarProvider.includeSpinner = true;
     }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols.
@@ -68483,7 +68483,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
         /*
          *  User Service routes
          */
@@ -68549,27 +68549,7 @@ app.config(['$stateProvider',
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
-        }).state('front.messages', {
-            url : '/messages',
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: ''
-        }).state('front.messages.send', {
-            url: '/send/:id/:to',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
-            title: '',
-            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.list', {
-            url: '/list/:type',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
-            title: '',
-            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.detail', {
-            url: '/detail/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
-            title: '',
-            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService', 'postFrontService')
         /*
          * Public Supplier List & Details routes
          */
@@ -68577,7 +68557,7 @@ app.config(['$stateProvider',
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService', 'postFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
@@ -68597,7 +68577,7 @@ app.config(['$stateProvider',
             url: '/list/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
-            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
+            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService', 'postFrontService')
         }).state('front.tenders.details', {
             url: '/details/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
@@ -68673,7 +68653,7 @@ app.config(['$stateProvider',
             url: '/details/:categorySlug/:slug/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService')
+            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService', 'postFrontService')
             /*
              * My Products Manager routes
              */
@@ -68823,7 +68803,7 @@ app.config(['$stateProvider',
             url: '/contact',
             templateUrl : '/bundles/ubidelectricity/js/front/Contact/contact_form.html',
             title: 'front.CONTACT',
-            resolve: loadSequence('contactService', 'ContactFormCtrl')
+            resolve: loadSequence('contactService', 'ContactFormCtrl', 'postFrontService')
         }).state('front.post',{
             url: '/post/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
@@ -68918,6 +68898,28 @@ app.config(['$stateProvider',
             url: '/details/:id/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
             resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
+        }).state('front.messages', {
+            url : '/messages',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: ''
+            /**
+             * Messages routes manage
+             */
+        }).state('front.messages.send', {
+            url: '/send/:id/:to',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
+            title: '',
+            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.list', {
+            url: '/list/:type',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
+            title: '',
+            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.detail', {
+            url: '/detail/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
+            title: '',
+            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         })
     }]);
 
@@ -72360,7 +72362,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             //start loading bar on stateChangeStart
             cfpLoadingBar.start();
-
         });
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -72369,22 +72370,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $rootScope.searchLoaded = false;
             
             //stop loading bar on stateChangeSuccess
-            event.targetScope.$watch("$viewContentLoaded", function() {
-
-                cfpLoadingBar.complete();
+            event.targetScope.$watch('$viewContentLoaded', function() {
+                $timeout(function() {
+                    cfpLoadingBar.complete();
+                }, 500);
             });
 
-            if($state.current.name == "front.home"){
+            if ($state.current.name == 'front.home') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else if($state.current.name == "front.usermenu"){
+            } else if ($state.current.name == 'front.usermenu') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else{
+            } else {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = true;
                 $rootScope.showBrandName = false;
@@ -72414,7 +72414,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
             //$rootScope.loading = false;
             console.log(unfoundState.to);
-            // "lazy.state"
+            // 'lazy.state'
             console.log(unfoundState.toParams);
             // {a:1, b:2}
             console.log(unfoundState.options);
@@ -72423,22 +72423,29 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
         $rootScope.pageTitle = function() {
             var title = $rootScope.app.name;
-            if($rootScope.currTitle){
-                title = title+ ' - ' + $rootScope.currTitle;
-            }
-            if($rootScope.seo.meta_title){
-                title = title+ ' - ' + $rootScope.seo.meta_title;
+            if ($rootScope.seo.meta_title) {
+                title = $rootScope.seo.meta_title;
+            } else if ($rootScope.currTitle) {
+                title = $rootScope.currTitle;
             }
             return title;
         };
 
         $rootScope.pageDescription = function () {
-            return $rootScope.app.description + ' - ' + $rootScope.seo.meta_description;
-        }
+            var description = $rootScope.app.description;
+            if ($rootScope.seo.meta_description) {
+                description = $rootScope.seo.meta_description;
+            }
+            return description;
+        };
 
         $rootScope.pageKeywords = function () {
-            return $rootScope.seo.meta_keywords;
-        }
+            var keywords = $rootScope.app.keywords;
+            if ($rootScope.seo.meta_keywords) {
+                keywords = $rootScope.seo.meta_keywords;
+            }
+            return keywords;
+        };
 
         // save settings to local storage
         if (angular.isDefined($localStorage.layout)) {
@@ -72446,6 +72453,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         } else {
             $localStorage.layout = $scope.app.layout;
         }
+
         $scope.$watch('app.layout', function() {
             // save to local storage
             $localStorage.layout = $scope.app.layout;
