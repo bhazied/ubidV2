@@ -763,7 +763,7 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/publicCategory/{id}")
+     * @GET("/publicCategory/{slug}")
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
