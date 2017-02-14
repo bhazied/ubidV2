@@ -13,7 +13,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = true;
-            $rootScope.contentSize = 8;
+            $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         }, 1000);
 

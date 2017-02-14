@@ -409,7 +409,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
-        $rootScope.contentSize = 6;
+        $rootScope.contentSize = 9;
         $rootScope.contentOffset = 0;
 
         //header searchForm show

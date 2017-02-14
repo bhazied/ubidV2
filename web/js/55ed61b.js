@@ -68891,11 +68891,11 @@ app.config(['$stateProvider',
             title: 'front.categories',
             resolve: loadSequence()
         }).state('front.categories.list', {
-            url: '/list',
+            url: '/',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
-            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive')
+            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive', 'postFrontService')
         }).state('front.categories.details', {
-            url: '/details/:id/:slug',
+            url: '/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
             resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
         }).state('front.messages', {
@@ -72296,7 +72296,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
-        $rootScope.contentSize = 6;
+        $rootScope.contentSize = 9;
         $rootScope.contentOffset = 0;
 
         //header searchForm show

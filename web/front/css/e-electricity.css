@@ -1584,3 +1584,8 @@ fieldset h2 {
     border-left-color: #1D69AD;
     border-radius: 20px;
 }
+
+.list-group.inner li{
+    border:none;
+
+}

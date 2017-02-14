@@ -13,9 +13,11 @@
                         <i class="fa fa-list-ul"></i>
                     </a>
                     <div class="dropdown-menu" uib-dropdown-menu>
-                        <a class="dropdown-item" ui-sref="front.categories.list"><i class="fa fa-file-text-o"></i><span translate="front.TENDERS">Tenders</span></a>
+                        <a class="dropdown-item" ui-sref="front.tenders.list({section: 'Tender'})"><i class="fa fa-file-text-o"></i><span translate="front.TENDERS">Tenders</span></a>
                         <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item"  ui-sref="front.tenders.list({section: 'Consultation'})"><i class="fa fa-user-secret"></i><span translate="front.CONSULTATIONS">Consultations</span></a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" ui-sref="front.categories.list"><i class="fa fa-folder-open-o"></i><span translate="front.CATEGORIES">Categories</span></a>
                         <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item" ui-sref="front.buyers"><i class="fa fa-shopping-cart"></i><span translate="front.BUYERS">Buyers</span></a>
                         <div role="separator" class="dropdown-divider"></div>

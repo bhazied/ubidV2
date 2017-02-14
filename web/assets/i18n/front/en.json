@@ -1599,7 +1599,7 @@
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
         "LASTNAMEREQUIRED": "Last name is required",
-        "CGREQUIRED": "Accept the general conditions"
+        "GCREQUIRED": "Please accept the general conditions"
       }
     },
     "common": {
@@ -1703,6 +1703,7 @@
   },
   "front": {
     "HOME": "Home page",
+    "MENU": "User menu",
     "CONNECTWITH" : "CONNECT whith electricity business lead",
     "BUYER" : "Buyer",
     "BUYERDESCRIPTION" : "anyone looks for broadcasting business apportunities all over the world an compare bids",
@@ -1895,7 +1896,9 @@
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
     "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
-    "SHOWGENERALCONDITION": "Show General Condition",
+    "SHOWGENERALCONDITIONS": "Show General Conditions",
+    "GENERALCONDITIONS": "General Conditions",
+    "IHAVEREADANDACCEPTTHE": "I have read and accept the",
     "settings":{
       "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
       "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
@@ -1915,6 +1918,8 @@
     "CATEGORIESLIST": "Categories list",
     "SUPPLIERPRODUCTS": "Supplier Products",
     "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products",
-    "POST": "Post details"
+    "POST": "Post details",
+    "LISTTENDERSBYCATEGORIES": "Tenders in Category",
+    "NOTENDERS": "This category has no Tender"
   }
 }

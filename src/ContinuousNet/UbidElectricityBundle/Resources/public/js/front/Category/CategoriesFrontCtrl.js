@@ -12,7 +12,7 @@ app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$
             $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
+            $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
         },1500);
 

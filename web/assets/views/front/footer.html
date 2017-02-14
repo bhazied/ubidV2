@@ -9,7 +9,6 @@
             <ul>
                 <li><a ui-sref="front.buyers" translate="front.BUYER">Buyer</a></li>
                 <li><a ui-sref="front.suppliers" translate="front.SUPPLIER">Supplier</a></li>
-                <li><a ui-sref="front.categories.list" translate="front.CATEGORIES">Categories</a></li>
                 <li ng-if="!user.email"><a ui-sref="front.register({type: 'Both'})" translate="front.REGISTER">Register</a></li>
                 <li ng-if="!user.email"><a ui-sref="front.login({type: 'Both'})" translate="front.SIGNIN">Sign in</a></li>
                 <li ng-if="user.email"><a ui-sref="front.logout" translate="front.SIGNOUT">Sign-out</a></li>
