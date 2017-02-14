@@ -67,6 +67,41 @@ body {
     z-index: 10;
 }
 
+#electricity-navbar .btn-primary {
+    background-color: transparent!important;
+    border-color: white!important;
+}
+
+#electricity-navbar .dropdown-menu {
+    border-radius: 0!important;
+    border: none!important;
+    background-color: #EAF3FC!important;
+}
+
+#electricity-navbar .dropdown-menu .dropdown-item {
+    color: #1D69AD;
+    font-size: 0.8rem;
+    border-left: 2px solid #EAF3FC;
+    padding: 3px 0.5rem;
+    margin: 0 0.5rem;
+    width: auto!important;
+}
+
+#electricity-navbar .dropdown-menu .dropdown-item i {
+    color: #1D69AD;
+    margin: 0 0.5rem 0 0;
+}
+
+#electricity-navbar .dropdown-menu .dropdown-item:hover {
+    border-left-color: #0FC966;
+    background-color: transparent!important;
+}
+
+#electricity-navbar .dropdown-menu .dropdown-divider {
+    margin: .2rem 0;
+    background-color: #1D69AD;
+}
+
 .navbar-logo-icon {
     background-image: url('/front/img/logo-e-electricity-icon.png');
     background-position: center;
@@ -1437,16 +1472,16 @@ fieldset h2 {
     padding: 10px;
 }
 
-#front-content .bg-white {
+#front-content .bg-blue {
     background-color: #E7F2FD!important;
     padding-top: 10px;
 }
 
-#front-content .table-responsive {
+#front-content .bg-blue .table-responsive {
     background-color: #F7F8F9!important;
 }
 
-#front-content form {
+#front-content .bg-blue form {
     background-color: #F7F8F9!important;
     padding: 10px;
 }
