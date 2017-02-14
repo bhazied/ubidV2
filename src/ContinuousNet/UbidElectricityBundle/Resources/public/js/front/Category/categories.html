@@ -10,7 +10,17 @@
     </div>
 <div  class="container-fluid container-fullw bg-white" ng-controller="CategoriesFrontCtrl">
     <div class="row">
-        <div class="col-md-6 category_container">
+        <ul>
+           <li ng-repeat="category in tenderCategories">
+               <a su-ref="front.categories.details({id: category.node.id, slug: category.node.slug})"> [[ category.node.name ]]</a>
+               <ul ng-if="category.node.children.length > 0">
+                   <li ng-repeat="sub in category.node.children">
+                       <a su-ref="front.categories.details({id: sub.id, slug: sub.slug})"> [[ sub.name ]]</a>
+                   </li>
+               </ul>
+           </li>
+        </ul>
+        <!--<div class="col-md-6 category_container">
             <abn-tree
                     tree-data ="tree_data"
                     icon-leaf         = "fa fa-folder-o"
@@ -25,6 +35,6 @@
         <div class="col-md-6 category_container" ng-if="selectedYet">
             <div  class="text-info" translate="front.SMALLDETAILSCATEGORY" translate-values='{ category_name: selectedCategory.name, tender_count: selectedCategory.tenderCount}'></div>
             <a ui-sref="front.categories.details({id: selectedCategory.id, slug: selectedCategory.slug})"> <span translate="front.READMORE">Read more</span> </a>
-        </div>
+        </div> -->
     </div>
 </div>
