@@ -19,11 +19,11 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
         };
 
         $scope.goTender = function () {
-            $state.go('front.tenders.list', {section: 'Tender'});;
+            $state.go('front.tenders', {section: 'Tender'});;
         };
 
         $scope.goProposal = function () {
-            $state.go('front.tenders.list', {section: 'Consultation'});
+            $state.go('front.tenders', {section: 'Consultation'});
         };
 
         $scope.goSuppliers = function () {

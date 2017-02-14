@@ -1079,13 +1079,13 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get public Supplier Products List
      *
-     * @Get("/supplierProducts/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @Get("/supplierProducts/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function supplierProductsAction($page, $pageCount, $sortField, $sortDirection)
+    public function supplierProductsAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
@@ -1100,11 +1100,8 @@ class ApiV1RESTController extends FOSRestController
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('sp_');
+            $qb->andWhere('sp_.supplier = :supplier')->setParameter('supplier', $id);
             $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
-            $qb->addOrderBy('sp_.'.$sortField, $sortDirection);
-            $qb->setMaxResults($pageCount);
-            $offset = ($page - 1) * $pageCount;
-            $qb->setFirstResult($offset);
             $data['results'] = $qb->getQuery()->getResult();
 
             return $data;

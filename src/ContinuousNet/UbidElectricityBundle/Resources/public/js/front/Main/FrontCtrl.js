@@ -27,18 +27,19 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
             'front.advanced_search',
-            'front.tenders.details',
-            'front.buyers',
-            'front.suppliers',
-            'front.post',
             'front.generic_search',
-            'front.contact',
+            'front.tender',
+            'front.buyers',
             'front.buyer',
-            'front.categories.list',
-            'front.categories.details'
+            'front.suppliers',
+            'front.supplier',
+            'front.post',
+            'front.contact',
+            'front.categories',
+            'front.category'
         ];
 
         $timeout(function() {
@@ -278,7 +279,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tenders.details', {id: id})
+            $state.go('front.tender', {id: id})
         }
         
     }]);

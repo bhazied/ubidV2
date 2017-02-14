@@ -16,7 +16,8 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
             sortDirection: '@sortDirection'
         }, {
             list : { method: 'GET', url: '/:locale' + url + 'suppliers/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false}
+            supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false},
+            products : { method: 'GET', url:'/:locale' + url +  'supplierProducts/:id', isArray: false}
         });
 
     }]);

@@ -9,8 +9,8 @@
             <li class="publish" ng-if="user.type == 'Supplier'" ng-click="goPublication()"><a ui-sref="front.mytenders.new" translate="front.PUBLICATION">Publication</a></li>
             <li class="publish" ng-if="user.type == 'Buyer' || user.type == 'Both'" ng-click="goPublication()"><a ui-sref="front.mytenders.new" translate="front.PUBLICATION">Publication</a></li>
 
-            <li class="tender" ng-click="goTender()"><a ui-sref="front.tenders.list({section:'Tender'})" translate="front.CONSULTTENDER">List of  TENDER</a></li>
-            <li class="proposal" ng-click="goProposal()"><a ui-sref="front.tenders.list({section:'Consultation'})" translate="front.CONSULTPROPOSAL">List of  consultation</a></li>
+            <li class="tender" ng-click="goTender()"><a ui-sref="front.tenders({section:'Tender'})" translate="front.CONSULTTENDER">List of  TENDER</a></li>
+            <li class="proposal" ng-click="goProposal()"><a ui-sref="front.tenders({section:'Consultation'})" translate="front.CONSULTPROPOSAL">List of  consultation</a></li>
 
             <li class="advertiser" ng-if="user.type == 'Buyer'" ng-click="goSuppliers()"><a ui-sref="front.suppliers" translate="front.CONSULTSUPPLIERS">List of suppliers</a></li>
             <li class="advertiser" ng-if="user.type == 'Supplier' || user.type == 'Both'" ng-click="goBuyers()"><a ui-sref="front.buyers" translate="front.CONSULTBUYERS">List of buyers</a></li>

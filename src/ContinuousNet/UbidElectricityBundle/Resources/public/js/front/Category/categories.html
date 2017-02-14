@@ -6,10 +6,10 @@
     <div class="row">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="category in tenderCategories">
-                <a ui-sref="front.categories.details({slug: category.node.slug})"> [[ category.node.name ]] </a>
+                <a ui-sref="front.category({slug: category.node.slug})"> [[ category.node.name ]] </a>
                 <ul class="list-group inner" ng-if="category.children.length > 0">
                     <li class="list-group-item" ng-repeat="sub in category.children">
-                        <a ui-sref="front.categories.details({slug: sub.slug})">[[ sub.name ]]</a>
+                        <a ui-sref="front.category({slug: sub.slug})">[[ sub.name ]]</a>
                     </li>
                 </ul>
             </li>

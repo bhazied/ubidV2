@@ -96,6 +96,7 @@ app.config(['$translateProvider',
             currentLanguage = languageKey;
         }
     }
+
     localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
     localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
@@ -130,6 +131,15 @@ app.config(function($interpolateProvider) {
 app.config(function($breadcrumbProvider) {
     $breadcrumbProvider.setOptions({
         templateUrl: '/assets/views/partials/breadcrumb.html'
+    });
+});
+
+// location
+// configuration
+app.config(function($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: true
     });
 });
 

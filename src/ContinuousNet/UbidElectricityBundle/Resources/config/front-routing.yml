@@ -1,0 +1,287 @@
+e_electricity_front_login:
+    path: /login/{type}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_logout:
+    path: /logout
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_register:
+    path: /register/{type}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_resetpassword:
+    path: /reset-password
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_emailconfirm:
+    path: /auth/email-confirm/{token}/{language}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_reset:
+    path: /auth/reset/{token}/{language}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_lockscreen:
+    path: /lock-screen
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_profile:
+    path: /profile
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_usermenu:
+    path: /user-menu
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_changepassword:
+    path: /change-password
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_buyers:
+    path: /buyers
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_buyer:
+    path: /buyer/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_suppliers:
+    path: /suppliers
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_supplier:
+    path: /supplier/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tenders:
+    path: /tenders
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tenders_section:
+    path: /tenders/{section}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tender:
+    path: /tender/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tenders_sector:
+    path: /tenders/sector/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tenders_category:
+    path: /tenders/category/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_tenders_country:
+    path: /tenders/country/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_advanced_search:
+    path: /advanced-search-results
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_generic_search:
+    path: /generic-search-results
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_apply_tender:
+    path: /apply_tender/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mytenders:
+    path: /my-tenders
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mytenders_details:
+    path: /my-tenders/details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mytenders_edit:
+    path: /my-tenders/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mytenders_new:
+    path: /my-tenders/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mytenders_list:
+    path: /my-tenders/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_products:
+    path: /products
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_products_details:
+    path: /details/{categorySlug}/{slug}/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myproducts:
+    path: /my-products
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myproducts_details:
+    path: /my-products/details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myproducts_edit:
+    path: /my-products/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myproducts_new:
+    path: /my-products/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myproducts_list:
+    path: /my-products/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybids:
+    path: /my-bids
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybids_list:
+    path: /my-bids/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybids_details:
+    path: /my-bids/details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybids_edit:
+    path: /my-bids/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybids_new:
+    path: /my-bids/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_bookmarkproject:
+    path: /bookmark-project
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_bookmarkproject_list:
+    path: /bookmark-project/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_bookmarkproject_details:
+    path: /details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybuyers:
+    path: /my-buyers
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybuyers_details:
+    path: /my-buyers/details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybuyers_edit:
+    path: /my-buyers/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybuyers_new:
+    path: /my-buyers/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mybuyers_list:
+    path: /my-buyers/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mysuppliers:
+    path: /my-suppliers
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mysuppliers_details:
+    path: /my-suppliers/details/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mysuppliers_edit:
+    path: /my-suppliers/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mysuppliers_new:
+    path: /my-suppliers/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_mysuppliers_list:
+    path: /my-suppliers/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_contact:
+    path: /contact
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_post:
+    path: /post/{slug}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids:
+    path: /project-bids
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_list:
+    path: /list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_bids:
+    path: /bids-by-project/{projectId}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_bid:
+    path: /details/{slug}/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_shortlist:
+    path: /short-list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts:
+    path: /my-alerts
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts_list:
+    path: /my-alerts/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts_details:
+    path: /my-alerts/details
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts_new:
+    path: /my-alerts/new
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts_edit:
+    path: /my-alerts/edit/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_myAlerts_settings:
+    path: /my-alerts/settings
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_categories:
+    path: /categories
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_category:
+    path: /category/{slug}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_messages:
+    path : /messages
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_messages_send:
+    path: /messages/send/{id}/{to}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_messages_list:
+    path: /messages/list/{type}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_messages_detail:
+    path: /messages/detail/{id}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
