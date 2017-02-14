@@ -1914,6 +1914,8 @@
     "CATEGORIESLIST": "Categories list",
     "SUPPLIERPRODUCTS": "Supplier Products",
     "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products",
-    "POST": "Post details"
+    "POST": "Post details",
+    "LISTTENDERSBYCATEGORIES": "Tenders in Category",
+    "NOTENDERS": "This category has no Tender"
   }
 }
