@@ -4,8 +4,8 @@
  * Controller for Supplier Form
  */
 
-app.controller('SupplierFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$suppliersDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $suppliersDataFactory) {
+app.controller('SupplierFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$suppliersDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $categoriesDataFactory, $suppliersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -151,6 +151,51 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
 
     $scope.getUsers();
 
+    $scope.categories = [];
+    $scope.categoriesLoaded = [];
+
+    $scope.getCategories = function() {
+        $timeout(function(){
+            if ($scope.categories.length == 0) {
+                $scope.categories.push({});
+                var def = $q.defer();
+                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
+                });
+                return def;
+            } else {
+                return $scope.categories;
+            }
+        });
+    };
+
+    $scope.getCategories();
+
+    $scope.categoriesSearchText = '';
+    $scope.supplierCategories = false;
+    $scope.$watch('supplierCategories', function() {
+        if (angular.isDefined($scope.supplier)) {
+            var categories = $filter('filter')($scope.categories, $scope.categoriesSearchText);
+            if ($scope.supplierCategories) {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.supplier.categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.supplier.categories.push(id);
+                    }
+                }
+            } else {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.supplier.categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.supplier.categories.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
 
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
@@ -222,7 +267,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.supplier = {id: 0};
+        $scope.supplier = {id: 0, categories: []};
 
         if (angular.isDefined($stateParams.supplier_supplier_type) && JSON.parse($stateParams.supplier_supplier_type) != null) {
             $scope.supplier.supplier_type = $stateParams.supplier_supplier_type;

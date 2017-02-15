@@ -181,6 +181,10 @@ class CategoryRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
+            $previousSuppliers = $entity->getSuppliers()->toArray();
+            foreach ($previousSuppliers as $previousSupplier) {
+                $entity->removeSupplier($previousSupplier);
+            }
             $previousTenders = $entity->getTenders()->toArray();
             foreach ($previousTenders as $previousTender) {
                 $entity->removeTender($previousTender);

@@ -229,13 +229,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.Z"></h3></th>
+                                <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                                <td>
+                                    <a ng-repeat="category in supplier.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ID">Id</span></td>
-                                <td>
-                                    <div ng-bind-html="supplier.id"></div>
-                                </td>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.Z"></h3></th>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>

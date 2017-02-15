@@ -242,6 +242,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.sorting = {'category.name': 'asc'};
     $scope.sorting = $scope.getParamValue('categoriesSorting', $scope.sorting);
     $scope.filter = {
+        suppliers: [],
         tenders: []
     };
     $scope.filter = $scope.getParamValue('categoriesFilter', $scope.filter);
