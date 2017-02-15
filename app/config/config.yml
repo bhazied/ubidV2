@@ -275,6 +275,28 @@ fm_elfinder:
                         upload_max_size: 100M
                         #attributes: example of setting attributes permission
                         #    - { pattern: "/(.*?)/", read: true, write: false, locked: true }
+        data:
+            locale: %locale% # defaults to current request locale
+            cors_support: true # allows cross domain responses handling (default false)
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce,  form, simple, custom
+            #editor_template: set custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # defaults true, applies to simple and ckeditor editors
+            theme: "base" # jquery theme, default is "smoothness"
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            visible_mime_types: ["image", "video", "audio"] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hide files that
+                        driver: LocalFileSystem
+                        path: uploads/data
+                        upload_allow: ["image", "video", "audio"]
+                        upload_deny: ["all"]
+                        upload_max_size: 100M
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: "/(.*?)/", read: true, write: false, locked: true }
 
 assetic:
     debug:          "%kernel.debug%"

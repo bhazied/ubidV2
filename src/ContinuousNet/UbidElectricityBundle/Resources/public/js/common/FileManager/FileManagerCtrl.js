@@ -21,7 +21,7 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                 onlyMimes: ['image', 'video', 'audio'],
                 customHeaders: {
                     'Authorization': 'Bearer ' + $localStorage.access_token,
-                    'PP-Application': 'BackOffice'
+                    'APP-Application': 'BackOffice'
                 },
                 getFileCallback : function(file) {
                     var parser = document.createElement('a');
