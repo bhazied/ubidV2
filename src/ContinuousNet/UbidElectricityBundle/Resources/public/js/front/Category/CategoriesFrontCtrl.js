@@ -16,7 +16,7 @@ app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$
             $rootScope.contentOffset = 0;
         },1500);
 
-        $postsDataFactory.getBySlug({slug: 'categories', locale: $scope.locale}).$promise.then(function(data) {
+        $postsDataFactory.getBySlug({slug: 'categories', locale: $localStorage.language}).$promise.then(function(data) {
             $scope.postLoaded = true;
             $scope.post = data;
             $rootScope.seo.meta_description = data.meta_description;
