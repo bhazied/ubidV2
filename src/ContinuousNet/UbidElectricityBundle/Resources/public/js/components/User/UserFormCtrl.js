@@ -378,12 +378,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     return $scope.user[field];
                 },
                 instance: function() {
-                    return 'default';
+                    return 'data';
                 },
                 folder: function() {
                     var user_id = '000000' + $localStorage.user.id;
-                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
-                    return 'data' + user_dir + '/users';
+                    var user_dir = 'user_' + user_id.substr(user_id.length - 6);
+                    return user_dir;
                 }
             }
         });
