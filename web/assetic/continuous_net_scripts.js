@@ -2051,7 +2051,7 @@ function ($stateProvider) {
             'suppliersSorting': null,
             'suppliersFilter': null
         },
-        resolve: loadSequence('SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+        resolve: loadSequence('SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
     }).state('app.marketplace.suppliersnew', {
         url: '/suppliers/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
@@ -2067,7 +2067,7 @@ function ($stateProvider) {
             'supplier_second_market_region': null,
             'supplier_third_market_region': null
         },
-        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.suppliersedit', {
         url: '/suppliers/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
@@ -2075,7 +2075,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITSUPPLIER'
         },
-        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.suppliersdetails', {
         url: '/suppliers/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier.html',
