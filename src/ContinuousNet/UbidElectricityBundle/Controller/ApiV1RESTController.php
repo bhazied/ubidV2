@@ -1101,7 +1101,7 @@ class ApiV1RESTController extends FOSRestController
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('sp_');
             $qb->andWhere('sp_.supplier = :supplier')->setParameter('supplier', $id);
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $data['results'] = $qb->getQuery()->getResult();
 
             return $data;
@@ -1113,7 +1113,7 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get a Supplier Product entity By id
      *
-     * @Get("/supplierProductDetails/{id}")
+     * @Get("/supplierProduct/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
@@ -1127,7 +1127,7 @@ class ApiV1RESTController extends FOSRestController
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('sp_');
             $qb->andWhere('sp_.id = :id')->setParameter('id', $id);
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $qb->setMaxResults(1);
             $data = $qb->getQuery()->getOneOrNullResult();
             return $data;

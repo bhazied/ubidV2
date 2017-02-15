@@ -17,7 +17,9 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
         }, {
             list : { method: 'GET', url: '/:locale' + url + 'suppliers/:page/:pageCount/:sortField/:sortDirection', isArray: false},
             supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false},
-            products : { method: 'GET', url:'/:locale' + url +  'supplierProducts/:id', isArray: false}
+            products : { method: 'GET', url:'/:locale' + url +  'supplierProducts/:id', isArray: false},
+            product : { method: 'GET', url:'/:locale' + url +  'supplierProduct/:id', isArray: false},
+            category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false}
         });
 
     }]);

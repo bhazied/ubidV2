@@ -114,8 +114,8 @@ e_electricity_front_products:
     path: /products
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
-e_electricity_front_products_details:
-    path: /details/{categorySlug}/{slug}/{id}
+e_electricity_front_product:
+    path: /product/{categorySlug}/{slug}/{id}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_myproducts:

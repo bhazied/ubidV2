@@ -1283,7 +1283,7 @@ fieldset h2 {
 }
 
 .home {
-    padding-bottom: 120px;
+    padding-bottom: 100px;
 }
 
 .home h1 {
@@ -1291,7 +1291,7 @@ fieldset h2 {
     border: 1px solid #85AED3;
     color: #6D6D6D;
     border-radius: 2px;
-    margin: 0 auto 120px auto;
+    margin: 0 auto 100px auto;
     width: 60%;
     text-align: center;
     font-size: 1.5rem;
@@ -1299,7 +1299,7 @@ fieldset h2 {
 }
 
 .home ul {
-    min-height: 250px;
+    min-height: 280px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1312,14 +1312,14 @@ fieldset h2 {
     list-style: none;
     width: 50%;
     text-align: center;
-    min-height: 250px;
+    min-height: 280px;
     display: inline-block;
     vertical-align: top;
 }
 
 .home ul li div {
     border-right: 1px solid #EDEDED;
-    min-height: 190px;
+    min-height: 220px;
     margin-bottom: 20px;
     clear: both;
 }
@@ -1371,6 +1371,7 @@ fieldset h2 {
     text-transform: uppercase;
     display: block;
     font-size: 1.2rem;
+    min-height: 2.64rem;
     margin: 0;
     padding: 0;
 }
@@ -1379,7 +1380,7 @@ fieldset h2 {
     text-align: center;
     color: #9C9C9C;
     font-size: 0.8rem;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
     margin: 0;
 }
 

@@ -245,6 +245,12 @@
                                 <span my-boolean="[[ supplier.enable_share ]]"></span>
                             </td>
                         </tr>
+                        <tr>
+                            <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                            <td>
+                                <a ng-repeat="category in supplier.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div><!--/table-responsive-->
