@@ -55,6 +55,7 @@ class CategoryType extends AbstractType
             ->add('metaKeywords', TextareaType::class)
             ->add('ordering', IntegerType::class)
             ->add('status', ChoiceType::class, array('choices' => array('Draft' => 'Draft', 'Online' => 'Online', 'Deactivated' => 'Deactivated', 'Offline' => 'Offline', 'Deleted' => 'Deleted', 'Archived' => 'Archived', ), 'expanded' => false, 'multiple' => false))
+            ->add('suppliers', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Supplier', 'choice_label' => 'name'))
             ->add('tenders', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Tender', 'choice_label' => 'title'))
         ;
     }
