@@ -929,7 +929,6 @@ class ApiV1RESTController extends FOSRestController
      *
      * @Get("/getPostBySlug/{slug}")
      * @View(serializerEnableMaxDepthChecks=true)
-     *
      * @return Response
      *
      */

@@ -34,7 +34,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
             $state.go('front.buyers');
         };
 
-        $postsDataFactory.getBySlug({slug: 'home', locale: $scope.locale}).$promise.then(function(data) {
+        $postsDataFactory.getBySlug({slug: 'home', locale: $localStorage.language}).$promise.then(function(data) {
             $scope.postLoaded = true;
             $scope.post = data;
             $rootScope.seo.meta_description = data.meta_description;
