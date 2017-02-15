@@ -1918,9 +1918,11 @@
     "SMALLDETAILSCATEGORY": "The category '[[category_name]]' content [[tender_count]] Tenders for more information click to link bellow",
     "CATEGORIESLIST": "Categories list",
     "SUPPLIERPRODUCTS": "Supplier Products",
-    "SUPPLIERNOPRODUCTS": "This supplier has not yet added any products",
+    "SUPPLIERNOPRODUCT": "This supplier has not yet added any product",
     "POST": "Post details",
-    "LISTTENDERSBYCATEGORIES": "Tenders in Category",
-    "NOTENDERS": "This category has no Tender"
+    "TENDERSIN": "Tenders in",
+    "NOTENDERS": "This category has no tender",
+    "SUPPLIERSIN": "Supplier in",
+    "NOSUPPLIERS": "This category has no supplier"
   }
 }

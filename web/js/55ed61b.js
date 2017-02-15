@@ -68570,7 +68570,7 @@ app.config(['$stateProvider',
             title: 'front.SUPPLIERS',
             resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService', 'postFrontService')
         }).state('front.supplierscategory', {
-            url: '/suppliers-category/:slug',
+            url: '/suppliers/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/category.html',
             title: 'front.SUPPLIERS',
             resolve: loadSequence('SuppliersCategoryFrontCtrl', 'supplierFrontService', 'postFrontService')
@@ -68657,7 +68657,7 @@ app.config(['$stateProvider',
             url: '/product/:categorySlug/:slug/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierFrontService')
+            resolve: loadSequence('ProductFrontCtrl', 'supplierFrontService')
             /*
              * My Products Manager routes
              */
@@ -72315,12 +72315,15 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.home',
             'front.tenders',
             'front.tenders.category',
+            'front.tenders.country',
+            'front.tenders.sector',
             'front.advanced_search',
             'front.generic_search',
             'front.tender',
             'front.buyers',
             'front.buyer',
             'front.suppliers',
+            'front.supplierscategory',
             'front.supplier',
             'front.post',
             'front.contact',

@@ -16,8 +16,6 @@ app.controller('ProductFrontCtrl', ['$scope', '$controller', '$rootScope', '$sta
             $rootScope.contentOffset = 0;
         });
 
-        angular.extend(this, $controller('SupplierProductCtrl', {$scope:$scope}));
-
         $scope.supplierProduct = {};
         $scope.getSupplierProduct = function() {
             var $params = {

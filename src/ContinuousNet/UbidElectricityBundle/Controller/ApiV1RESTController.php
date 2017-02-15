@@ -1093,7 +1093,7 @@ class ApiV1RESTController extends FOSRestController
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('count(sp_.id)');
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
 
             $qb = $em->createQueryBuilder();

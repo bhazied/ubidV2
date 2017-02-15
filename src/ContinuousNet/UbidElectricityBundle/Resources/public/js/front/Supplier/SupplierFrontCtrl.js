@@ -14,7 +14,6 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $scope.supplier = {};
         $scope.supplierProducts = {count : 0, results:[]};
 
-        
         $scope.getSupplierProducts = function () {
             var $params = {
                 locale: $localStorage.language,

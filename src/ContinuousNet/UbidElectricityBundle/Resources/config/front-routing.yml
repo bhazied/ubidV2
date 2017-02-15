@@ -50,6 +50,10 @@ e_electricity_front_suppliers:
     path: /suppliers
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
+e_electricity_front_suppliers_category:
+    path: /suppliers/{slug}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
 e_electricity_front_supplier:
     path: /supplier/{id}
     defaults: { _controller: UbidElectricityBundle:Default:public }

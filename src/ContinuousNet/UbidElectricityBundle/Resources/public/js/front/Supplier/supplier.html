@@ -10,12 +10,12 @@
             <div class="pb-1 clearfix" ng-repeat="product in supplierProducts.results">
                 <h4><a class="name" ng-bind="product.name" ui-sref="front.product({slug: product.slug, categorySlug: product.category.slug, id: product.id})"></a></h4>
                 <div ng-bind-html="product.brand"></div>
-                <img src="[[ product.picture ]]" alt="[[ product.name ]]" class="pull-right img-thumbnail" />
+                <img ng-if="product.picture" src="[[ product.picture ]]" alt="[[ product.name ]]" class="pull-right img-thumbnail" />
                 <div ng-bind-html="product.description"></div>
             </div>
         </div>
         <div class="row" ng-if="supplierProducts.count == 0">
-            <span class="name" translate="front.SUPPLIERNOPRODUCTS"> This supplier has not yet added any products </span>
+            <span class="name" translate="front.SUPPLIERNOPRODUCT">This supplier has not yet added any product</span>
         </div>
         <div class="row">
             <div class="col-md-6"></div>
