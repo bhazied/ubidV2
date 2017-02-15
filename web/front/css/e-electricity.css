@@ -1328,7 +1328,7 @@ fieldset h2 {
     border-right: none;
 }
 
-.home ul li div i {
+.home ul li div a {
     background: black;
     display: block;
     height: 96px;
@@ -1341,27 +1341,27 @@ fieldset h2 {
     background-size: auto 60%;
 }
 
-.home ul li:hover div i {
+.home ul li:hover div a {
     background-size: auto 80%;
 }
 
-.home ul li div i.buyer {
+.home ul li div a.buyer {
     background-image: url('/front/img/buyer.png');
 }
 
-.home ul li div i.supplier {
+.home ul li div a.supplier {
     background-image: url('/front/img/supplier.png');
 }
 
-.home ul li div i.service_requester {
+.home ul li div a.service_requester {
     background-image: url('/front/img/service_requester.png');
 }
 
-.home ul li div i.service_provider {
+.home ul li div a.service_provider {
     background-image: url('/front/img/service_provider.png');
 }
 
-.home ul li div i.logistic_agent {
+.home ul li div a.logistic_agent {
     background-image: url('/front/img/logistic_agent.svg');
 }
 
@@ -1383,7 +1383,7 @@ fieldset h2 {
     margin: 0;
 }
 
-.home ul li a {
+.home ul li > a {
     clear: both;
     color: white;
     background-color: #0ECD68;
