@@ -21,7 +21,7 @@ security:
         - { path: ^/(en|fr|ar)/api/categories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Countries ACL
         # Country data
-        #- { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER] }
+        # - { path: ^/(en|fr|ar)/api/countries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN,ROLE_SUBSCRIBER] }
         # Create new Country
         - { path: ^/(en|fr|ar)/api/countries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Country
@@ -254,7 +254,7 @@ security:
         - { path: ^/(en|fr|ar)/api/suppliers$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_CALL_CENTER, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Supplier Products ACL
         # Supplier Product data
-        #- { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER, IS_AUTHENTICATED_ANONYMOUSLY ] }
+        - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER, IS_AUTHENTICATED_ANONYMOUSLY ] }
         # Create new Supplier Product
         - { path: ^/(en|fr|ar)/api/supplierproducts$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Update existing Supplier Product
@@ -335,7 +335,7 @@ security:
         - { path: ^/(en|fr|ar)/api/translationcategories$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Translation Countries ACL
         # Translation Country data
-        #- { path: ^/(en|fr|ar)/api/translationcountries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
+        # - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_SUBSCRIBER] }
         # Create new Translation Country
         - { path: ^/(en|fr|ar)/api/translationcountries$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Update existing Translation Country
