@@ -777,8 +777,8 @@ app.constant('APP_JS_REQUIRES', {
 
 'use strict';
 
-app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$filter', '$timeout', 'toaster',
-    function ($q, $localStorage, $location, $filter, $timeout, toaster) {
+app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$filter', '$timeout', 'toaster', '$rootScope',
+    function ($q, $localStorage, $location, $filter, $timeout, toaster, $rootScope) {
         return {
             request: function (config) {
                 if ($localStorage.access_token) {
@@ -790,6 +790,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
                     delete $localStorage.user;
+                    delete $rootScope.user;
                     $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));

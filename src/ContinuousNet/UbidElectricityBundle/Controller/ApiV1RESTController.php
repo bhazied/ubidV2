@@ -68,6 +68,9 @@ class ApiV1RESTController extends FOSRestController
 
     public function translateEntity($entity, $level = 0)
     {
+        if (is_null($entity)) {
+            return array();
+        }
         $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
         $entityName = str_replace($ns, '', get_class($entity));
         $translationEntityName = 'Translation' . $entityName;

@@ -67692,8 +67692,8 @@ function ($translateProvider) {
 // configuration
 app.config(['cfpLoadingBarProvider',
 function (cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeBar = false;
-    cfpLoadingBarProvider.includeSpinner = true;
+    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeSpinner = false;
 }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols. 
@@ -73066,10 +73066,10 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                 url : '/efconnect/'+$scope.instance+'/'+$scope.folder+'?mode='+$scope.mode,
                 lang : (angular.isDefined($localStorage.language))?$localStorage.language:'en',
                 useBrowserHistory: false,
-                onlyMimes: ['image', 'video', 'audio'],
+                onlyMimes: ['image', 'video', 'audio', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'],
                 customHeaders: {
                     'Authorization': 'Bearer ' + $localStorage.access_token,
-                    'PP-Application': 'BackOffice'
+                    'APP-Application': 'BackOffice'
                 },
                 getFileCallback : function(file) {
                     var parser = document.createElement('a');
@@ -73080,16 +73080,20 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                     select: function(event, elfinderInstance) {
                         var selected = event.data.selected;
                         if (selected.length > 0) {
-                            var file = elfinderInstance.file(selected[0]);
-                            var path = elfinderInstance.path(selected[0]);
-                            if (file.mime=='directory') {
-                                //opens a folder
-                                elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
-                            } else {
-                                var parser = document.createElement('a');
-                                parser.href = '/uploads/'+$scope.folder+'/../'+path;
-                                $scope.url = parser.pathname;
+                            var files = [];
+                            for (var i in selected) {
+                                var file = elfinderInstance.file(selected[i]);
+                                var path = elfinderInstance.path(selected[i]);
+                                if (file.mime == 'directory') {
+                                    //opens a folder
+                                    elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
+                                } else {
+                                    var parser = document.createElement('a');
+                                    parser.href = '/uploads/'+$scope.folder+'/../'+path;
+                                    files.push(parser.pathname);
+                                }
                             }
+                            $scope.url = files.join();
                         }
                     }
                 }

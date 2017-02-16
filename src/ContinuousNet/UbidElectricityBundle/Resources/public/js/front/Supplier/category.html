@@ -20,7 +20,7 @@
         </div>
 
         <div class="mt-3 mb-3" ng-if="suppliers.length == 0">
-            <h3 class="text-center text-info" translate="front.NOSUPPLIER">This category has no supplier</h3>
+            <h3 class="text-center text-info" translate="front.NOSUPPLIERS">This category has no supplier</h3>
         </div>
 
         <div class="row" ng-if="suppliers.length > 0">
@@ -32,7 +32,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+                        <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+                    </div>
                     <div class="col-md-6">
                         <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
                         <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
