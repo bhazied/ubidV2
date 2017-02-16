@@ -48,7 +48,7 @@
                                 <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
                                 <td>
                                     <div ng-if="bid.attachment_files != '' && bid.attachment_files != null">
-                                        <a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a>
+                                        <ul><li ng-repeat="file in bid.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a></li></ul>
                                     </div>
                                 </td>
                             </tr>
