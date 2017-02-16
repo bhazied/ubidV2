@@ -1072,6 +1072,10 @@ input.form-control {
     right: -4px;
 }
 
+.user-image .list-group {
+    margin: 1rem 0;
+}
+
 .user-photo {
     height: 34px;
     width: 34px;
