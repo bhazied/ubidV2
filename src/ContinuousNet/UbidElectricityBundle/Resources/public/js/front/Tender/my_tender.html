@@ -144,7 +144,7 @@
                             <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
                             <td>
                                 <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-                                    <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a>
+                                    <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a></li></ul>
                                 </div>
                             </td>
                         </tr>

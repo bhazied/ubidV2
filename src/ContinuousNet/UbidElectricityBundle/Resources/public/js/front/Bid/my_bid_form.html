@@ -230,7 +230,7 @@
                                         </span>
                                     </div>
                                     <div class="user-image margin-top-10" ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-                                        <ul><li ng-repeat="file in tender.attachment_files.split(',')"><a href="[[ file ]]" target="_blank">[[ file ]]</a></li></ul>
+                                        <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a href="[[ file ]]" target="_blank">[[ file ]]</a></li></ul>
                                         <div class="user-image-buttons">
                                             <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
                                             <span class="btn btn-danger" ng-click="tender.attachment_files = ''"> <i class="fa fa-times"></i></span>
