@@ -50,6 +50,13 @@
                                             </a>
                                         </span>
                                     </div>
+                                    <div class="user-image margin-top-10" ng-if="bid.attachment_files != '' && bid.attachment_files != null">
+                                        <ul><li ng-repate="file in bid.attachment_files.split(',')"><a href="[[ file ]]" target="_blank">[[ file ]]</a></li></ul>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="bid.attachment_files = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
