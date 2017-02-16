@@ -41,7 +41,11 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                                     elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
                                 } else {
                                     var parser = document.createElement('a');
-                                    parser.href = '/uploads/'+$scope.folder+'/../'+path;
+                                    var href = '/uploads/';
+                                    if ($scope.instance == 'data') {
+                                        href += 'data/'+$scope.folder+'/../'+path;
+                                    }
+                                    parser.href = href;
                                     files.push(parser.pathname);
                                 }
                             }
