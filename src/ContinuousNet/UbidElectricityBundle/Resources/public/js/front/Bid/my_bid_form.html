@@ -215,54 +215,27 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="bidAttachmentFile1" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE1">Attachment File1</span>
+                                    <label for="tenderAttachmentFiles" class="control-label">
+                                        <span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span>
                                     </label>
+                                    <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="bid.attachment_file1" type="text" name="attachmentFile1" id="bidAttachmentFile1" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE1' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
+                                        <input ng-model="tender.attachment_files" type="text" name="attachmentFiles" id="tenderAttachmentFiles" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILES' | translate ]]" ng-required="false" />
+                                        <i class="ti-folder"></i>
                                     </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile2" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE2">Attachment File2</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file2" type="text" name="attachmentFile2" id="bidAttachmentFile2" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE2' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile3" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE3">Attachment File3</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file3" type="text" name="attachmentFile3" id="bidAttachmentFile3" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE3' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="bidAttachmentFile4" class="control-label">
-                                        <span translate="content.list.fields.ATTACHMENTFILE4">Attachment File4</span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.attachment_file4" type="text" name="attachmentFile4" id="bidAttachmentFile4" class="form-control" placeholder="[[ 'content.form.messages.ENTERATTACHMENTFILE4' | translate ]]" ng-required="false" />
-                                        <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
+                                        <span class="input-group-btn">
+                                            <a type="button" class="btn btn-primary" ng-click="showFileManager('attachment_files')">
+                                                <i class="ti-cloud"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="user-image margin-top-10" ng-if="tender.attachment_files != '' && tender.attachment_files != null">
+                                        <ul><li ng-repeat="file in tender.attachment_files.split(',')"><a href="[[ file ]]" target="_blank">[[ file ]]</a></li></ul>
+                                        <div class="user-image-buttons">
+                                            <span class="btn btn-primary"  ng-click="showFileManager('attachment_files')"><i class="fa fa-pencil"></i></span>
+                                            <span class="btn btn-danger" ng-click="tender.attachment_files = ''"> <i class="fa fa-times"></i></span>
+                                        </div>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
