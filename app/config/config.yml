@@ -319,6 +319,9 @@ assetic:
         bootstrap:
             inputs:   
                 - "assets/bower_components/bootstrap/dist/css/bootstrap.min.css"
+        flags:
+            inputs:
+                - "assets/bower_components/flag-icon-css/css/flag-icon.min.css"
         font_awesome:
             inputs:   
                 - "assets/bower_components/components-font-awesome/css/font-awesome.min.css"

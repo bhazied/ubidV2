@@ -17,11 +17,11 @@
                             </tr>
                             <tr>
                                 <th><span translate="content.list.fields.TENDER">Tender</span></th>
-                                <td><a ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})">[[ bid.tender.title ]]</a></span></td>
+                                <td>[[ bid.tender.title ]]</td>
                             </tr>
                             <tr>
                                 <th><span translate="content.list.fields.SUPPLIER">Supplier</span></th>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: bid.supplier.id})">[[ bid.supplier.name ]]</a></span></td>
+                                <td>[[ bid.supplier.name ]]</td>
                             </tr>
                             <tr>
                                 <th><span translate="content.list.fields.TITLE">Title</span></th>
@@ -87,7 +87,7 @@
                                 <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
                                 <td>
                                     <div ng-if="bid.attachment_files != '' && bid.attachment_files != null">
-                                        <ul class="list-group"><li class="list-group-item" ng-repeat="file in bid.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ bid.attachment_files ]]" alt=""><i class="ti-download"></i> [[bid.attachment_files]]</a></li></ul>
+                                        <ul class="list-group"><li class="list-group-item" ng-repeat="file in bid.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ file ]]" alt=""><i class="ti-download"></i> [[ file ]]</a></li></ul>
                                     </div>
                                 </td>
                             </tr>
@@ -98,18 +98,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th><span translate="content.list.fields.CREATORUSER">Creator User</span></th>
-                                <td><a ui-sref="app.access.usersdetails({id: bid.creator_user.id})">[[ bid.creator_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
                                 <th><span translate="content.list.fields.MODIFIEDAT">Modified At</span></th>
                                 <td>
                                     <span>[[ bid.modified_at | date: datetimeFormat ]]</span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <th><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></th>
-                                <td><a ui-sref="app.access.usersdetails({id: bid.modifier_user.id})">[[ bid.modifier_user.username ]]</a></span></td>
                             </tr>
                     </table>
                 </div>

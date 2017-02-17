@@ -37,11 +37,11 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: supplierProduct.supplier.id})">[[ supplierProduct.supplier.name ]]</a></span></td>
+                                <td>[[ supplierProduct.supplier.name ]]</td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORY">Category</span></td>
-                                <td><a ui-sref="app.lists.categoriesdetails({id: supplierProduct.category.id})">[[ supplierProduct.category.name ]]</a></span></td>
+                                <td>[[ supplierProduct.category.name ]]</td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -114,18 +114,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplierProduct.creator_user.id})">[[ supplierProduct.creator_user.username ]]</a></span></td>
-                            </tr>
-                            <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
                                 <td>
                                     <span>[[ supplierProduct.modified_at | date: datetimeFormat ]]</span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplierProduct.modifier_user.id})">[[ supplierProduct.modifier_user.username ]]</a></span></td>
                             </tr>
                         </tbody>
                     </table>
