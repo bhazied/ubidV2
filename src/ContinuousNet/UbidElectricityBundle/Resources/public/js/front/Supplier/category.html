@@ -35,9 +35,9 @@
                         <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
+                        <!--<button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>-->
                         <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
-                        <button ui-sref="front.login" ng-if="!user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                        <!--<button ui-sref="front.login" ng-if="!user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button> -->
                     </div>
                 </div>
             </div>
