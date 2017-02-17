@@ -937,6 +937,7 @@ p.copyright {
 .sidebar-title {
     text-transform: uppercase;
     font-size: 1.2rem;
+    line-height: 1.5;
     border-bottom: 2px #1D69AD solid;
     margin: 20px 0;
     padding: 0 20px;
@@ -1074,6 +1075,10 @@ input.form-control {
 
 .user-image .list-group {
     margin: 1rem 0;
+}
+
+.list-group-item {
+    overflow: hidden;
 }
 
 .user-photo {
@@ -1309,6 +1314,20 @@ input.form-control {
     min-width: 120px;
 }
 
+h1 {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+h3, h3 a {
+    font-size: 1rem;
+    color: #1D69AD;
+}
+
 .tender-preview {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
@@ -1328,7 +1347,7 @@ input.form-control {
 }
 
 .tender-preview h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: Arial!important;
 }
 
@@ -1382,9 +1401,7 @@ input.form-control {
 }
 
 .tender-details .country {
-    height: 23.5px;
     width: 35px;
-    display: inline-block;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100% auto;

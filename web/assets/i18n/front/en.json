@@ -809,9 +809,9 @@
         "BUYER" : {
           "DEFAULT" : "Default",
           "A" : "KEY INFORMATION",
-          "C" : "PERSONAL INFORAMTION",
-          "D" : "COMPANY INFORMATION",
-          "B" : "MORE INFORMATION",
+          "B" : "PERSONAL INFORAMTION",
+          "C" : "COMPANY INFORMATION",
+          "D" : "MORE INFORMATION",
           "E" : "PUBLIC SETTINGS"
         },
         "BUYERTYPE" : {
@@ -874,9 +874,9 @@
         "SUPPLIER" : {
           "DEFAULT" : "Default",
           "A" : "KEY INFORMATION",
-          "C" : "PERSONAL INFORAMTION",
-          "D" : "COMPANY INFORMATION",
-          "B" : "MORE INFORMATION",
+          "B" : "PERSONAL INFORAMTION",
+          "C" : "COMPANY INFORMATION",
+          "D" : "MORE INFORMATION",
           "E" : "PUBLIC SETTINGS"
         },
         "SUPPLIERPRODUCT" : {
@@ -1730,6 +1730,8 @@
     "COUNTRIES":"Countries",
     "OPPORTUNITYSIZE":"Opportunity Size",
     "PUBLICATIONDATE":"Publication Date",
+    "MARKETREGIONSRATES": "Market Regions Rates",
+    "FEES":"Fees",
     "DUEDATE":"Due Date",
     "FROM":"From",
     "TO":"To",
