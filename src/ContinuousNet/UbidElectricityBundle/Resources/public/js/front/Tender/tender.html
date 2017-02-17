@@ -1,17 +1,13 @@
 <div class="tender-details" ng-controller="tenderCtrl">
     <h1 class="name">[[ tender.title ]]</h1>
-    <h2>[[ tender.description ]]</h2>
+    <h2 ng-bind-html="tender.description"></h2>
     <table class="table table-striped">
         <tr>
             <th><span translate="front.REFNUMBER">Tender  no</span>:</th>
             <td><span class="value">[[ tender.reference ]]</span></td>
         </tr>
         <tr>
-            <th><span translate="front.BOND">Bond</span>:</th>
-            <td><span class="value">Applicable</span></td>
-        </tr>
-        <tr>
-            <th><span translate="front.TENDERFEE">Tender Fee</span>:</th>
+            <th><span translate="front.FEES">Tender Fees</span>:</th>
             <td><span class="value">[[ tender.fees ]]</span></td>
         </tr>
         <tr>
@@ -20,7 +16,7 @@
         </tr>
         <tr>
             <th><span translate="front.REGIONCOUNTRY">Country</span>:</th>
-            <td><span class="value"><i class="country"><img src="[[ tender.country.picture ]]"></i> [[ tender.country.name ]]</span></td>
+            <td><span class="value"><i class="country"><span class="flag-icon flag-icon-[[ tender.country.code | lowercase ]] flag-icon-squared"></span> [[ tender.country.name ]]</span></td>
         </tr>
         <tr>
             <th><span translate="front.ISSUER">Issueur</span>:</th>
@@ -50,7 +46,7 @@
     <h5 translate="front.ATTACHMENTFILES" ng-if="tender.attachment_files != ''">Attachment Files</h5>
     <div class="mb-1">
         <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-            <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a></li></ul>
+            <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[ file ]]</a></li></ul>
         </div>
     </div>
     <div class="row mb-1">

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="718945e4-3b42-43e7-bee3-9be9ff57f8a6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/i18n/front/en.json" afterPath="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
     </list>
     <ignored path="ubid_electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,26 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="my_bid_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625">
-              <caret line="235" column="14" selection-start-line="235" selection-start-column="14" selection-end-line="235" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my_tender_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/my_tender_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0">
-              <caret line="119" column="49" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BaseRESTController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BaseRESTController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,10 +56,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileFrontCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProfileFrontCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6328125">
+            <state vertical-scroll-proportion="0.0">
               <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
               <folding />
             </state>
@@ -100,6 +81,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="386" column="17" selection-start-line="378" selection-start-column="17" selection-end-line="386" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tender.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.41025642">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="en.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.5454545">
+              <caret line="1732" column="16" selection-start-line="1732" selection-start-column="16" selection-end-line="1732" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -155,7 +156,6 @@
         <option value="$PROJECT_DIR$/web/.htaccess" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Home/home.html" />
         <option value="$PROJECT_DIR$/web/assets/js/front.config.router.js" />
-        <option value="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/ApiV1RESTController.php" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/category.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Category/category.html" />
@@ -164,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/common/FileManager/FileManagerCtrl.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Bid/bid_form.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Bid/bid.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/my_tender.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Bid/my_bid_form.html" />
@@ -172,6 +171,8 @@
         <option value="$PROJECT_DIR$/web/front/css/e-electricity.css" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/my_tender_form.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js" />
+        <option value="$PROJECT_DIR$/web/assets/i18n/front/en.json" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
       </list>
     </option>
   </component>
@@ -303,6 +304,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="i18n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ubid_electricity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="i18n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -538,91 +587,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UbidElectricityBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ubid_electricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ContinuousNet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UbidElectricityBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="User" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1023,13 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.909091">
-          <caret line="1930" column="14" selection-start-line="1930" selection-start-column="5" selection-end-line="1930" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/front-routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -1155,14 +1113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="62" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tender.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1211,14 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="308" column="14" selection-start-line="308" selection-start-column="14" selection-end-line="308" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/MyTenderFormCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1245,8 +1187,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/ProfileFrontCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6328125">
+        <state vertical-scroll-proportion="0.0">
           <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="308" column="14" selection-start-line="308" selection-start-column="14" selection-end-line="308" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/i18n/front/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5454545">
+          <caret line="1732" column="16" selection-start-line="1732" selection-start-column="16" selection-end-line="1732" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41025642">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
           <folding />
         </state>
       </provider>
