@@ -74,7 +74,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                     var start = $scope.page;
                     var end = (start + 1) * $scope.pageCount;
                     if($scope.target == "suppliers"){
-                        $scope.suppliers = data.tenders.slice(start, end);
+                        $scope.suppliers = data.suppliers.slice(start, end);
                     }
                     if($scope.target == "buyers"){
                         $scope.suppliers = data.suppliers.slice(start, end);
