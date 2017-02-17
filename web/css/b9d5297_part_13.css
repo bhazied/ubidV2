@@ -1314,6 +1314,20 @@ input.form-control {
     min-width: 120px;
 }
 
+h1 {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+h3, h3 a {
+    font-size: 1rem;
+    color: #1D69AD;
+}
+
 .tender-preview {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
@@ -1332,13 +1346,8 @@ input.form-control {
     font-weight: bold;
 }
 
-h3, h3 a {
-    font-size: 0.9rem;
-    color: #1D69AD;
-}
-
 .tender-preview h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: Arial!important;
 }
 
