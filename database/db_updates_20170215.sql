@@ -17,7 +17,7 @@ ALTER TABLE `suppliers_categories`
 
 ALTER TABLE `category` ADD INDEX ( `parent_category_id` ) ;
 
-ALTER TABLE `category` ADD CONSTRAINT `parent_category_id` FOREIGN KEY ( `parent_category_id_fk` ) REFERENCES `ubid_electricity`.`category` (
+ALTER TABLE `category` ADD CONSTRAINT `parent_category_id_fk` FOREIGN KEY ( `parent_category_id` ) REFERENCES `ubid_electricity`.`category` (
   `id`
 ) ON DELETE SET NULL ON UPDATE CASCADE ;
 
