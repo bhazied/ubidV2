@@ -271,7 +271,7 @@ e_electricity_front_categories:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_category:
-    path: /category/{slug}
+    path: /category/{slug}/{target}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_messages:

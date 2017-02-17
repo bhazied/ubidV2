@@ -28,6 +28,13 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
         $scope.category = {};
         $scope.tenders = [];
+        $scope.suppliers = [];
+        $scope.buyers = [];
+
+        $scope.target = '';
+        if(angular.isDefined($stateParams.target)){
+            $scope.target = $stateParams.target;
+        }
         $scope.getCategory = function() {
             if (angular.isDefined($stateParams.slug)) {
                 $tendersFrontDataFactory.category({
@@ -66,7 +73,15 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                     //end paging
                     var start = $scope.page;
                     var end = (start + 1) * $scope.pageCount;
-                    $scope.tenders = data.tenders.slice(start, end);
+                    if($scope.target == "suppliers"){
+                        $scope.suppliers = data.tenders.slice(start, end);
+                    }
+                    if($scope.target == "buyers"){
+                        $scope.suppliers = data.suppliers.slice(start, end);
+                    }
+                    if($scope.target == "tenders"){
+                        $scope.tenders = data.tenders.slice(start, end);
+                    }
 
                     $rootScope.seo.meta_description = data.meta_description;
                     $rootScope.seo.meta_keywords = data.meta_keywords;
@@ -77,7 +92,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
         $scope.getCategory();
 
-        $scope.setPage = function() {
+        $scope.setPage = function(page) {
             $scope.page = page;
             $scope.getCategory();
         };

@@ -1324,7 +1324,7 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
             resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive', 'postFrontService')
         }).state('front.category', {
-            url: '/category/:slug',
+            url: '/category/:slug/:target',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
             resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
             /**

@@ -1931,7 +1931,11 @@
     "POST": "Post details",
     "TENDERSIN": "Tenders in",
     "NOTENDERS": "This category has no tender",
-    "SUPPLIERSIN": "Supplier in",
-    "NOSUPPLIERS": "This category has no supplier"
+    "SUPPLIERSIN": "Suppliers in",
+    "BUYERSIN": "Buyers in",
+    "NOSUPPLIERS": "This category has no supplier",
+    "TENDERS": "Tenders",
+    "NOSUPPLIERS": "This category has no Suppliers",
+    "NOBUYERS": "This category has no Buyers"
   }
 }
