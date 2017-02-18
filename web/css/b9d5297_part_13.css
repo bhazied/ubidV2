@@ -678,6 +678,10 @@ body {
 
 .footer-center ul li a {
     text-decoration: none;
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    display: block;
 }
 
 .footer-center ul li a:before {
