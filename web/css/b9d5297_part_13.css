@@ -1705,15 +1705,24 @@ fieldset h2 {
 }
 
 .home h1 {
-    background-color: #F7F8FC;
-    border: 1px solid #85AED3;
     color: #6D6D6D;
+    text-transform: uppercase;
     border-radius: 2px;
     margin: 0 auto 100px auto;
-    width: 60%;
+    width: 100%;
     text-align: center;
     font-size: 1.5rem;
     line-height: 1.5;
+}
+
+.home h1:after{
+    content: ' ';
+    display: block;
+    margin: auto;
+    width: 45%;
+    height: 1px;
+    background-color: #0ECD68;
+    vertical-align: bottom;
 }
 
 .home ul {
@@ -1736,7 +1745,7 @@ fieldset h2 {
 }
 
 .home ul li div {
-    border-right: 1px solid #EDEDED;
+    /*border-right: 1px solid #EDEDED;*/
     min-height: 220px;
     margin-bottom: 20px;
     clear: both;
@@ -1747,43 +1756,48 @@ fieldset h2 {
 }
 
 .home ul li div a {
-    background: black;
     display: block;
-    height: 96px;
-    min-width: 96px;
-    width: 100%;
+    height: 132px;
+    width: 132px;
+    margin: auto;
+}
+
+.home ul li div a i {
+    display: block;
+    height: 132px;
+    width: 132px;
     margin: auto;
     background-repeat: no-repeat;
     background-position: center center;
     background-color: transparent;
-    background-size: auto 60%;
+    background-size: 80%;
 }
 
-.home ul li:hover div a {
-    background-size: auto 80%;
+.home ul li div a:hover i {
+    background-size: 100%;
 }
 
-.home ul li div a.buyer {
-    background-image: url('/front/img/buyer.png');
+.home ul li div a i.buniness_opportunity {
+    background-image: url('/front/img/buniness_opportunity.png');
 }
 
-.home ul li div a.supplier {
+.home ul li div a i.supplier {
     background-image: url('/front/img/supplier.png');
 }
 
-.home ul li div a.service_requester {
+.home ul li div a i.service_requester {
     background-image: url('/front/img/service_requester.png');
 }
 
-.home ul li div a.service_provider {
+.home ul li div a i.service_provider {
     background-image: url('/front/img/service_provider.png');
 }
 
-.home ul li div a.logistic_agent {
-    background-image: url('/front/img/logistic_agent.svg');
+.home ul li div a i.logistic_agent {
+    background-image: url('/front/img/logistic_agent.png');
 }
 
-.home ul li div h2 {
+.home ul li div h2 a {
     text-align: center;
     color: #1D69AD;
     text-transform: uppercase;
@@ -1792,6 +1806,8 @@ fieldset h2 {
     min-height: 2.64rem;
     margin: 0;
     padding: 0;
+    height: auto;
+    width: auto;
 }
 
 .home ul li div p {

@@ -1,10 +1,10 @@
 'use strict';
 
 /**
- * Controller for Category Details
+ * Controller for Tenders Category
  */
 
-app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tendersFrontDataFactory',
+app.controller('TendersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tendersFrontDataFactory',
     function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tendersFrontDataFactory) {
 
         $timeout(function() {

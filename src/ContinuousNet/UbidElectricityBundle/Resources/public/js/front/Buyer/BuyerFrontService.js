@@ -16,7 +16,8 @@ app.factory('$buyersFrontDataFactory', ['$resource', '$rootScope',
             sortDirection: '@sortDirection'
         }, {
             list : { method: 'GET', url: '/:locale' + url + 'buyers/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            buyer : { method: 'GET', url:'/:locale' + url +  'buyerDetails/:id', isArray: false}
+            buyer : { method: 'GET', url:'/:locale' + url +  'buyerDetails/:id', isArray: false},
+            category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false}
         });
 
     }]);

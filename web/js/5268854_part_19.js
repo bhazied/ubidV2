@@ -499,8 +499,10 @@ app.constant('APP_JS_REQUIRES', {
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
         'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
+        'TendersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersCategoryFrontCtrl.js',
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'BuyersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersCategoryFrontCtrl.js',
         'BuyerFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontCtrl.js',
         'SuppliersFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersFrontCtrl.js',
         'SuppliersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersCategoryFrontCtrl.js',
@@ -540,8 +542,7 @@ app.constant('APP_JS_REQUIRES', {
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
-        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
-        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
+        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -2140,7 +2141,7 @@ function ($stateProvider) {
             'buyersSorting': null,
             'buyersFilter': null
         },
-        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
     }).state('app.marketplace.buyersnew', {
         url: '/buyers/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
@@ -2156,7 +2157,7 @@ function ($stateProvider) {
             'buyer_second_market_region': null,
             'buyer_third_market_region': null
         },
-        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.buyersedit', {
         url: '/buyers/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
@@ -2164,7 +2165,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITBUYER'
         },
-        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.buyersdetails', {
         url: '/buyers/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer.html',

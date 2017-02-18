@@ -42,6 +42,10 @@ e_electricity_front_buyers:
     path: /buyers
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
+e_electricity_front_buyers_category:
+    path: /buyers/{slug}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
 e_electricity_front_buyer:
     path: /buyer/{id}
     defaults: { _controller: UbidElectricityBundle:Default:public }
@@ -75,7 +79,7 @@ e_electricity_front_tenders_sector:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_tenders_category:
-    path: /tenders/category/{id}
+    path: /tenders/{section}/{slug}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_tenders_country:
@@ -268,10 +272,6 @@ e_electricity_front_myAlerts_settings:
 
 e_electricity_front_categories:
     path: /categories
-    defaults: { _controller: UbidElectricityBundle:Default:public }
-
-e_electricity_front_category:
-    path: /category/{slug}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_messages:

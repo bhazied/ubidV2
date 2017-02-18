@@ -68090,8 +68090,10 @@ app.constant('APP_JS_REQUIRES', {
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
         'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
+        'TendersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersCategoryFrontCtrl.js',
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'BuyersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersCategoryFrontCtrl.js',
         'BuyerFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontCtrl.js',
         'SuppliersFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersFrontCtrl.js',
         'SuppliersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersCategoryFrontCtrl.js',
@@ -68131,8 +68133,7 @@ app.constant('APP_JS_REQUIRES', {
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
-        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
-        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
+        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68557,6 +68558,11 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
             resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService', 'postFrontService')
+        }).state('front.buyerscategory', {
+            url: '/buyers/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/category.html',
+            title: 'front.BUYERS',
+            resolve: loadSequence('BuyersCategoryFrontCtrl', 'buyerFrontService')
         }).state('front.buyer', {
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
@@ -68574,7 +68580,7 @@ app.config(['$stateProvider',
             url: '/suppliers/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/category.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersCategoryFrontCtrl', 'supplierFrontService', 'postFrontService')
+            resolve: loadSequence('SuppliersCategoryFrontCtrl', 'supplierFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
@@ -68598,11 +68604,10 @@ app.config(['$stateProvider',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/sector.html',
             title: 'front.TENDERSBYSECTOR',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.tenders.category', {
-            url: '/category/:id',
+        }).state('front.tenderscategory', {
+            url: '/tenders/:section/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/category.html',
-            title: 'front.TENDERSBYCATEGORY',
-            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
+            resolve: loadSequence('TendersCategoryFrontCtrl' , 'tenderFrontService')
         }).state('front.tenders.country', {
             url: '/country/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/country.html',
@@ -68894,10 +68899,6 @@ app.config(['$stateProvider',
             url: '/categories',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
             resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive', 'postFrontService')
-        }).state('front.category', {
-            url: '/category/:slug',
-            templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
-            resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
             /**
              * Messages routes manage
              */

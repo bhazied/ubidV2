@@ -176,8 +176,10 @@ app.constant('APP_JS_REQUIRES', {
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
         'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
+        'TendersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersCategoryFrontCtrl.js',
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'BuyersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersCategoryFrontCtrl.js',
         'BuyerFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontCtrl.js',
         'SuppliersFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersFrontCtrl.js',
         'SuppliersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersCategoryFrontCtrl.js',
@@ -217,8 +219,7 @@ app.constant('APP_JS_REQUIRES', {
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
-        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
-        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
+        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
