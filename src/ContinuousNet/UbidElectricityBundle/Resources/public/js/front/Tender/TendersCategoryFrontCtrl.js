@@ -6,6 +6,8 @@
 
 app.controller('TendersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$tendersFrontDataFactory',
     function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $tendersFrontDataFactory) {
+        
+        $scope.section = $stateParams.section;
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -35,10 +37,14 @@ app.controller('TendersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope
                     locale: $localStorage.language
                 }).$promise.then(function (data) {
                     $scope.category = data;
-
+                    var rows = [];
+                    for (var i = 0 ; i < data.tenders.length ; i++ ) {
+                        if (data.tenders[i].section == $scope.section) {
+                            rows.push(data.tenders[i]);
+                        }
+                    }
                     //paging
-
-                    $scope.total = data.tenders.length;
+                    $scope.total = rows.length;
                     $scope.maxPage = Math.ceil($scope.total / $scope.pageCount);
                     if ($scope.page > $scope.maxPage) {
                         $scope.page = $scope.maxPage;
@@ -66,7 +72,7 @@ app.controller('TendersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope
                     //end paging
                     var start = $scope.page;
                     var end = (start + 1) * $scope.pageCount;
-                    $scope.tenders = data.tenders.slice(start, end);
+                    $scope.tenders = rows.slice(start, end);
 
                     $rootScope.seo.meta_description = data.meta_description;
                     $rootScope.seo.meta_keywords = data.meta_keywords;
