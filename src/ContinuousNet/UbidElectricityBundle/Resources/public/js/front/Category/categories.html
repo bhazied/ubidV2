@@ -1,33 +1,41 @@
 
 <div  class="container-fluid container-fullw bg-white" ng-controller="CategoriesFrontCtrl">
+
     <h1 translate="front.ALLCATEGORIES">All Categories</h1>
+
     <div class="row">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="category in tenderCategories">
-                <span>[[ category.node.name ]]</span>
-                -
-                <a ui-sref="front.tenderscategory({section: 'Tender', slug: category.node.slug})" translate="front.TENDERS">Tenders</a>
-                -
-                <a ui-sref="front.tenderscategory({section: 'Consultation', slug: category.node.slug})" translate="front.CONSULTATIONS">Consultations</a>
-                -
-                <a ui-sref="front.supplierscategory({slug: category.node.slug})" translate="front.SUPPLIERS">Suppliers</a>
-                -
-                <a ui-sref="front.buyerscategory({slug: category.node.slug})" translate="front.BUYERS">Buyers</a>
+                <div class="row">
+                    <div class="col-md-6">
+                         [[ category.node.name ]]
+                    </div>
+                    <div class="col-md-6">
+                        <a ui-sref="front.category({slug: category.node.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
+                    </div>
+
+                </div>
                 <ul class="list-group inner" ng-if="category.children.length > 0">
                     <li class="list-group-item" ng-repeat="sub in category.children">
-                        <span>[[ sub.name ]]</span>
-                        -
-                        <a ui-sref="front.tenderscategory({section: 'Tender', slug: sub.slug})" translate="front.TENDERS">Tenders</a>
-                        -
-                        <a ui-sref="front.tenderscategory({section: 'Consultation', slug: sub.slug})" translate="front.CONSULTATIONS">Consultations</a>
-                        -
-                        <a ui-sref="front.supplierscategory({slug: sub.slug})" translate="front.SUPPLIERS">Suppliers</a>
-                        -
-                        <a ui-sref="front.buyerscategory({slug: sub.slug})" translate="front.BUYERS">Buyers</a>
-                    </li>>
+                        <div class="row">
+                            <div class="col-md-6">
+                                [[ sub.name ]]
+                            </div>
+                            <div class="col-md-6">
+                                <a ui-sref="front.category({slug: sub.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
+                            </div>
+                        </div>
+
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
-</div>
 
+</div>

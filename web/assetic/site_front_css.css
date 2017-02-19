@@ -991,6 +991,14 @@ p.copyright {
     width: auto !important;
 }
 
+.categories-checkbox .fa {
+    color: #1D69AD;
+    line-height: 1.2rem;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 0.2rem;
+}
+
 .categories-checkbox, .countries-checkbox  {
     height: 132px;
     overflow-y: scroll;
@@ -1004,6 +1012,10 @@ p.copyright {
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
     background-image: url('/front/img/check.svg');
+}
+
+.custom-control-indicator {
+    top: 0.15rem;
 }
 
 .product {
@@ -1319,7 +1331,7 @@ input.form-control {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5;
 }
 

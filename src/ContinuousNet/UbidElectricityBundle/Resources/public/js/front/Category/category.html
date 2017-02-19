@@ -1,0 +1,130 @@
+<div ng-controller="CategoryFrontCtrl">
+
+    <h1>
+        <span translate="front.TENDERSIN" ng-if="target == 'tenders'">Tenders in</span>
+        <span translate="front.CONSULTATIONSIN" ng-if="target == 'consultations'">Consultations in</span>
+        <span translate="front.SUPPLIERSIN" ng-if="target == 'suppliers'">Suppliers in</span>
+        <span translate="front.BUYERSIN" ng-if="target == 'buyers'">Buyers in</span>
+        <span ng-bind="category.name"></span>
+    </h1>
+
+    <div class="pb-1 clearfix">
+        <img ng-if="category.picture" src="[[ category.picture ]]" alt="[[ category.name ]]" class="pull-right img-thumbnail" />
+        <h2 ng-bind-html="category.description"></h2>
+    </div>
+
+    <div ng-if="target == 'tenders' || target == 'consultations'">
+        <div class="mt-3 mb-3" ng-if="tenders.length == 0">
+            <h3 class="text-center text-info" translate="front.NOTENDERS" ng-if="target == 'tenders'">This category has no tender</h3>
+            <h3 class="text-center text-info" translate="front.NOCONSULTATIONS" ng-if="target == 'consultations'">This category has no consultation</h3>
+        </div>
+
+        <div class="row" ng-if="tenders.length > 0">
+            <div class="tender-preview"  ng-repeat="tender in tenders">
+                <a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a>
+                <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>
+                <p class="description" ng-bind-html="tender.description | limitTo: 250"></p> ...
+                <div class="dates row">
+                    <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : [[ tender.publish_date | date : formats.DATE  | translate  ]]</p>
+                    <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : [[ tender.deadline | date : formats.DATE  | translate  ]]</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-sm" ng-if="user.email" translate="front.READMORE" ng-click="show_tender(tender.id)">Read more</button>
+                        <button class="btn btn-sm" ng-if="!user.email" translate="front.READMORE"  ui-sref="front.login">Read more</button>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <button class="btn btn-sm pull-right" translate="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
+                        <!--<button class="btn btn-sm pull-right mr-1" translate="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="target == 'suppliers'">
+        <div class="mt-3 mb-3" ng-if="suppliers.length == 0">
+            <h3 class="text-center text-info" translate="front.NOSUPPLIERS">This category has no supplier</h3>
+        </div>
+        <div ng-repeat="supplier in suppliers" class="tender-preview">
+            <h3><a ui-sref="front.supplier({id: supplier.id})" class="name" ng-bind="supplier.name"></a></h3>
+            <div class="pb-1 clearfix">
+                <img ng-if="supplier.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
+                <div ng-bind-html="supplier.description"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+                <div class="col-md-6">
+                    <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
+                    <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                    <!-- <button ui-sref="front.login" ng-if="!user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="target == 'buyers'">
+        <div class="mt-3 mb-3" ng-if="buyers.length == 0">
+            <h3 class="text-center text-info" translate="front.NOBUYERS">This category has no buyer</h3>
+        </div>
+        <div ng-repeat="buyer in buyers" class="tender-preview">
+            <h3><a ui-sref="front.buyer({id: buyer.id})" class="name" ng-bind="buyer.name"></a></h3>
+            <div class="pb-1 clearfix">
+                <img ng-if="buyer.picture" src="[[ buyer.picture ]]" alt="[[ buyer.name ]]" class="pull-right img-thumbnail" />
+                <div ng-bind-html="buyer.description"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button ui-sref="front.buyer({id: buyer.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+                <div class="col-md-6">
+                    <!--<button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>-->
+                    <button ui-sref="front.messages.send({id: buyer.id, to:'buyer'})" ng-if="user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message" ><i class="fa fa-envelope-o"></i></button>
+                    <button ui-sref="front.login" ng-if="!user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message" ><i class="fa fa-envelope-o"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="tenders.length > 0 || suppliers.length > 0 || buyers.length > 0">
+        <div class="col-md-6">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li ng-if="showPrevPage" class="page-item" ng-click="prevPage()" >
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only" translate="content.common.PREVIOUS">Previous</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="p in pages" ng-click="setPage(p)" ng-class="{'page-item': page != p, 'page-item active': page == p}"><a class="page-link">[[ p ]]</a></li>
+                    <li ng-if="showNextPage" class="page-item" ng-click="nextPage()">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" translate="content.common.NEXT">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            <nav aria-label="Page navigation" class="pull-right">
+                <ul class="pagination">
+                    <li ng-repeat="c in pageCounts" ng-click="setPageCount(c)" ng-class="{'page-item': pageCount != c, 'page-item active': pageCount == c}"><a class="page-link">[[ c ]]</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
+            <!-- <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button> -->
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-md-6"><a ui-sref="front.categories"> <i class="ti-arrow-left"></i> <span translate="front.CATEGORIESLIST">Categories list</span></a></div>
+    </div>
+
+</div>

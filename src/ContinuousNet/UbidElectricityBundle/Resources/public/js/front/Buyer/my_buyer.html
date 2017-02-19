@@ -237,6 +237,12 @@
                                 <span my-boolean="[[ buyer.enable_share ]]"></span>
                             </td>
                         </tr>
+                        <tr>
+                            <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                            <td>
+                                <span ng-repeat="category in buyer.categories">[[ category.name ]]</span>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div><!--/table-responsive-->

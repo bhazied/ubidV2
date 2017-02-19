@@ -687,7 +687,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         
     }]);
 
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
        /* $timeout(function() {
@@ -828,6 +828,9 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 if($scope.tenderCategories.length == 0){
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                        for (var i in data.results) {
+                            data.results[i].expand = false;
+                        }
                         $scope.tenderCategories = data.results;
                         def.resolve($scope.tenderCategories);
                     });
@@ -837,7 +840,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.tenderCategories;
                 }
             });
-        }
+        };
 
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;

@@ -562,7 +562,8 @@ app.constant('APP_JS_REQUIRES', {
         'MessagesFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessagesFrontCtrl.js',
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
-        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js'
+        'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
+        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -769,6 +770,9 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
+    },{
+        name : 'categoryFrontService',
+        files : ['/bundles/ubidelectricity/js/front/Category/CategoryFrontService.js']
     },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
@@ -1328,13 +1332,10 @@ app.config(['$stateProvider',
             url: '/categories',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
             resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive', 'postFrontService')
-<<<<<<< HEAD
-=======
         }).state('front.category', {
             url: '/category/:slug/:target',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
-            resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
->>>>>>> frontoffice
+            resolve: loadSequence('CategoryFrontCtrl' , 'categoryFrontService')
             /**
              * Messages routes manage
              */

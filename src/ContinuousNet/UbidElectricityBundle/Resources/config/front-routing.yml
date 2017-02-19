@@ -274,13 +274,10 @@ e_electricity_front_categories:
     path: /categories
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
-<<<<<<< HEAD
-=======
 e_electricity_front_category:
     path: /category/{slug}/{target}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
->>>>>>> frontoffice
 e_electricity_front_messages:
     path : /messages
     defaults: { _controller: UbidElectricityBundle:Default:public }

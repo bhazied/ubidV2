@@ -4,8 +4,8 @@
  * Controller for Suppliers List
  */
 
-app.controller('MySuppliersCtrl', ['$scope', '$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$suppliersDataFactory',
-function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $categoriesDataFactory, $suppliersDataFactory) {
+app.controller('MySuppliersCtrl', ['$scope', '$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$supplierTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$suppliersDataFactory', '$profileDataFactory',
+function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $supplierTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $categoriesDataFactory, $suppliersDataFactory, $profileDataFactory) {
 
     $timeout(function() {
         $rootScope.showSlogan = false;
@@ -17,7 +17,6 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     });
 
     angular.extend(this, $controller('SuppliersCtrl', {$scope:$scope}));
-
 
     $scope.setCols = function() {
         $scope.cols = [
@@ -39,7 +38,20 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
 
     $scope.setCols();
 
+    $scope.defaultSupplier = {};
 
+    $scope.getDefaultSupplier = function () {
+        var def = $q.defer();
+        $profileDataFactory.getProfile({locale: $localStorage.language}).$promise.then(function (data) {
+            $timeout(function () {
+                $scope.defaultSupplier = data ;
+                return def.resolve($scope.defaultSupplier);
+            });
+        });
+    };
+
+    $scope.getDefaultSupplier();
+    
     $scope.add = function() {
         $state.go('front.mysuppliers.new');
     };
