@@ -67,7 +67,6 @@ app.controller('BuyersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope'
                     var start = $scope.page;
                     var end = (start + 1) * $scope.pageCount;
                     $scope.buyers = data.buyers.slice(start, end);
-
                     $rootScope.seo.meta_description = data.meta_description;
                     $rootScope.seo.meta_keywords = data.meta_keywords;
                     $rootScope.seo.meta_title = data.meta_title;
@@ -77,7 +76,7 @@ app.controller('BuyersCategoryFrontCtrl', ['$scope', '$controller', '$rootScope'
 
         $scope.getCategory();
 
-        $scope.setPage = function() {
+        $scope.setPage = function(page) {
             $scope.page = page;
             $scope.getCategory();
         };
