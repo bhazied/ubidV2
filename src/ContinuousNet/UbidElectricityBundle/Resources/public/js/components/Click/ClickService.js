@@ -6,13 +6,12 @@
 app.factory('$clicksDataFactory', ['$resource', '$rootScope', '$localStorage', 
 function($resource, $rootScope, $localStorage) {
 
-   var baseURL = '/' + $localStorage.language + $rootScope.app.apiURL + 'clicks';
-   return $resource(baseURL, {id: '@id'}, {
+   return $resource('/:locale' + $rootScope.app.apiURL + '/:controller', {locale: $localStorage.language, controller: 'clicks', id: '@id'}, {
         create: { method: 'POST', isArray: false},
         query: { method: 'GET'},
-        get: { method: 'GET', url: baseURL + '/:id' },
-        remove: { method: 'DELETE', url: baseURL + '/:id' },
-        update: { method: 'PUT', url: baseURL + '/:id' }
+        get: { method: 'GET', url: '/:locale' + $rootScope.app.apiURL + '/:controller/:id' },
+        remove: { method: 'DELETE', url: '/:locale' + $rootScope.app.apiURL + '/:controller/:id' },
+        update: { method: 'PUT', url: '/:locale' + $rootScope.app.apiURL + '/:controller/:id' }
     });
    
 }]);
