@@ -218,6 +218,7 @@
         "common": {
             "NA": "NA",
             "DOWNLOAD": "Télécharger",
+            "ASSIGN": "Assigner",
             "CUSTOMIZE": "Parsonnaliser",
             "CUSTOMIZINGDASHBOARD": "Customizing Tableau de bord",
             "SYNCAPPS": "Applications de synchronisation",
