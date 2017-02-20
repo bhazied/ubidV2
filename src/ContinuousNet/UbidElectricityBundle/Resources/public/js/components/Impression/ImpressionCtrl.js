@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $impressionsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
+        $impressionsDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.impression = data;
         });
     }

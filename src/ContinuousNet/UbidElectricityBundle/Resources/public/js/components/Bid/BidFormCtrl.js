@@ -76,7 +76,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.tenders.length == 0) {
                 $scope.tenders.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDER')});
                 var def = $q.defer();
-                $tendersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
+                $tendersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -101,7 +101,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.suppliers.length == 0) {
                 $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
                 var def = $q.defer();
-                $suppliersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[supplier.name]': 'asc'}).$promise.then(function(data) {
+                $suppliersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplier.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -126,7 +126,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -203,7 +203,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.bid_tender_readonly = false;
     $scope.bid_supplier_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $bidsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
+        $bidsDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.bid = savable(data);
             });

@@ -71,7 +71,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.users.length == 0) {
             $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -100,7 +100,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.categories.length == 0) {
             $scope.categories.push({});
             var def = $q.defer();
-            $categoriesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
+            $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         $scope.categories.length = 0;
@@ -129,7 +129,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.countries.length == 0) {
             $scope.countries.push({});
             var def = $q.defer();
-            $countriesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[country.id]': 'desc'}).$promise.then(function(data) {
+            $countriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[country.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         $scope.countries.length = 0;
@@ -307,7 +307,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             $scope.setParamValue('alertsSorting', order_by);
             $scope.setParamValue('alertsFilter', filters);
             var http_params = {
-                locale: $localeStorage.language,
+                locale: $localStorage.language,
                 offset: offset,
                 limit: limit
             };

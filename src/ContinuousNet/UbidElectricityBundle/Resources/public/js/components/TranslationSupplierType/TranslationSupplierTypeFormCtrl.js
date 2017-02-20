@@ -35,7 +35,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.supplierTypes.length == 0) {
                 $scope.supplierTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIERTYPE')});
                 var def = $q.defer();
-                $supplierTypesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[supplierType.name]': 'asc'}).$promise.then(function(data) {
+                $supplierTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplierType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -60,7 +60,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -136,7 +136,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     
     $scope.translation_supplier_type_supplier_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $translationSupplierTypesDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
+        $translationSupplierTypesDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.translationSupplierType = savable(data);
             });
