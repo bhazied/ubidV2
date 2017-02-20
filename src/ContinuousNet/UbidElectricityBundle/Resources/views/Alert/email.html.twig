@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <title>Alert Notification</title>
+</head>
+<body>
+<div style="background-color: #1D69AD;height: 60px;">
+    <img src="{{ logo }}" style="padding-top: 10px;">
+</div>
+
+<table>
+    <!-- for tenders -->
+    {% if Tenders %}
+    <tr>
+        <a href="{{ baseUrl }}/#/tenders/list/Tender">
+            <h3 style="color: #0275d8;">New Tenders</h3>
+        </a>
+    </tr>
+        {% for key,tender in Tenders %}
+            <tr>
+                <a href="{{ baseUrl }}/#/tenders/details/{{ key }}" style="text-decoration:none;">{{ tender }}</a>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+
+    <!-- for Consultations -->
+    {% if Consultations %}
+    <tr>
+        <a href="{{ baseUrl }}/#/tenders/list/Tender">
+            <h3 style="color: #0275d8;">New Consultations</h3>
+        </a>
+    </tr>
+    {% for key,consultation in Consultations %}
+        <tr>
+            <a href="{{ baseUrl }}/#/tenders/details/{{ key }}" style="text-decoration:none;">{{ consultation }}</a>
+        </tr>
+        {% endfor %}
+    {% endif %}
+
+    <!-- for Buyers -->
+    {% if Buyers %}
+        <tr>
+            <a href="{{ baseUrl }}/#/buyers">
+                <h3 style="color: #0275d8;">New Buyers</h3>
+            </a>
+        </tr>
+        {% for key,buyer in Buyers %}
+            <tr>
+                <a href="{{ baseUrl }}/#/buyer/{{ key }}" style="text-decoration:none;">{{ buyer }}</a>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+    <!-- for Suppliers -->
+    {% if Suppliers %}
+        <tr>
+            <a href="{{ baseUrl }}/#/suppliers">
+                <h3 style="color: #0275d8;">New Suppliers</h3>
+            </a>
+
+        </tr>
+        {% for key,supplier in Suppliers %}
+            <tr>
+                <a href="{{ baseUrl }}/#/supplier/{{ key }}" style="text-decoration:none;">{{ supplier }}</a>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+
+<div style="background-color: #1D69AD;height: 60px;color: #FFFFFF;padding-top: 10px;">
+    <div>
+        <img src="{{ phone }}">
+        <span>+971 1258 4526 7</span>
+    </div>
+    <div><a href="mailto:contact@e-electricity.com" target="_blank" style="color: #FFFFFF;text-decoration:none;" >
+            <img src="{{ mail }}" style="width: 20px;">
+            <span>contact@e-electricity.com</span>
+        </a>
+    </div>
+</div>
+
+</body>
+
+
+</html>
