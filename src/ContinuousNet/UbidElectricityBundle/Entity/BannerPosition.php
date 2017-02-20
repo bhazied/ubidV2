@@ -185,7 +185,7 @@ class BannerPosition
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Banner", inversedBy="bannerPositions")
+     * @ORM\ManyToMany(targetEntity="Banner")
      * @ORM\JoinTable(name="banners_banner_positions",
      *     joinColumns={
      *         @ORM\JoinColumn(name="banner_position_id", referencedColumnName="id")

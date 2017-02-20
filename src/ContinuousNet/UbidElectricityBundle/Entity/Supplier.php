@@ -474,7 +474,7 @@ class Supplier
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="suppliers")
+     * @ORM\ManyToMany(targetEntity="Category")
      * @ORM\JoinTable(name="suppliers_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")

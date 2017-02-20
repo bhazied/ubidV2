@@ -238,7 +238,7 @@ class Category
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Supplier", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Supplier")
      * @ORM\JoinTable(name="suppliers_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
@@ -258,7 +258,7 @@ class Category
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Tender")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")

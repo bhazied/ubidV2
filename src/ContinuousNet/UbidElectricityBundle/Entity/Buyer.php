@@ -474,7 +474,7 @@ class Buyer
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="buyers")
+     * @ORM\ManyToMany(targetEntity="Category")
      * @ORM\JoinTable(name="buyers_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="buyer_id", referencedColumnName="id")
