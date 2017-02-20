@@ -19,14 +19,14 @@
                 <div class="form-group">
                     <i ng-if="tenderCategory.children.length > 0 && tenderCategory.expand" ng-click="tenderCategory.expand = false" class="fa fa-minus-square-o"></i>
                     <i ng-if="tenderCategory.children.length > 0 && !tenderCategory.expand" ng-click="tenderCategory.expand = true" class="fa fa-plus-square-o"></i>
-                    <i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>
+                    <!--<i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>-->
                     <label class="custom-control custom-checkbox">
                         <input ng-click="changeParentStatus(tenderCategory.node.id)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.node.id]]">
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description">[[ tenderCategory.node.name ]]</span>
                     </label>
                 </div>
-                <ul ng-show="enderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
+                <ul ng-show="tenderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
                             <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
