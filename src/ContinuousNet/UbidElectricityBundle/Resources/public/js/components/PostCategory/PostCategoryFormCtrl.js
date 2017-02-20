@@ -60,7 +60,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.postCategories.length == 0) {
                 $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENTPOSTCATEGORY')});
                 var def = $q.defer();
-                $postCategoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
+                $postCategoriesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -85,7 +85,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.postTypes.length == 0) {
                 $scope.postTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
                 var def = $q.defer();
-                $postTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[postType.name]': 'asc'}).$promise.then(function(data) {
+                $postTypesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[postType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -110,7 +110,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -187,7 +187,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.post_category_parent_post_category_readonly = false;
     $scope.post_category_post_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $postCategoriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $postCategoriesDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.postCategory = savable(data);
             });

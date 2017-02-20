@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $translationPostsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $translationPostsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.translationPost = data;
         });
     }

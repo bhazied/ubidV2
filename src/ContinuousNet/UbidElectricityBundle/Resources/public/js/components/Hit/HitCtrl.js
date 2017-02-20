@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $hitsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $hitsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.hit = data;
         });
     }

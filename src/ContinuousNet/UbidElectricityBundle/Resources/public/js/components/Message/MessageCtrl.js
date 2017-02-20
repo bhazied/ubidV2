@@ -34,7 +34,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $messagesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $messagesDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.message = data;
         });
     }

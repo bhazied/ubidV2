@@ -46,7 +46,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $groupsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $groupsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.group = data;
         });
     }

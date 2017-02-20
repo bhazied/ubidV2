@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $clicksDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $clicksDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.click = data;
         });
     }

@@ -74,7 +74,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -98,7 +98,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.categories.length == 0) {
                 $scope.categories.push({});
                 var def = $q.defer();
-                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                $categoriesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                     $scope.categories = data.results;
                     def.resolve($scope.categories);
                 });
@@ -143,7 +143,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.countries.length == 0) {
                 $scope.countries.push({});
                 var def = $q.defer();
-                $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
+                $countriesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     $scope.countries = data.results;
                     def.resolve($scope.countries);
                 });
@@ -239,7 +239,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
     
     if (angular.isDefined($stateParams.id)) {
-        $alertsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $alertsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.alert = savable(data);
             });

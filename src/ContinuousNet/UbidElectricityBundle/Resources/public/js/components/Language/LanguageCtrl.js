@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $languagesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $languagesDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.language = data;
         });
     }

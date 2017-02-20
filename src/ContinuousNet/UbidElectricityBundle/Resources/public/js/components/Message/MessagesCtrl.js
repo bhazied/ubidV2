@@ -47,7 +47,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.users.length == 0) {
             $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -76,7 +76,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.buyers.length == 0) {
             $scope.buyers.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMBUYER')});
             var def = $q.defer();
-            $buyersDataFactory.query({offset: 0, limit: 10000, 'order_by[buyer.id]': 'desc'}).$promise.then(function(data) {
+            $buyersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[buyer.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -105,7 +105,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.suppliers.length == 0) {
             $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMSUPPLIER')});
             var def = $q.defer();
-            $suppliersDataFactory.query({offset: 0, limit: 10000, 'order_by[supplier.id]': 'desc'}).$promise.then(function(data) {
+            $suppliersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[supplier.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -266,6 +266,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             $scope.setParamValue('messagesSorting', order_by);
             $scope.setParamValue('messagesFilter', filters);
             var http_params = {
+                locale: $localeStorage.language,
                 offset: offset,
                 limit: limit
             };

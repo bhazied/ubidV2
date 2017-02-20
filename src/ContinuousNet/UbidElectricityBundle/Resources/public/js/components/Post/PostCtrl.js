@@ -50,7 +50,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $postsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $postsDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.post = data;
         });
     }

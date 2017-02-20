@@ -93,7 +93,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $usersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $usersDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.user = data;
         });
     }

@@ -44,7 +44,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.tenders.length == 0) {
                 $scope.tenders.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDER')});
                 var def = $q.defer();
-                $tendersDataFactory.query({offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
+                $tendersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -69,7 +69,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -145,7 +145,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     
     $scope.tender_bookmark_tender_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $tenderBookmarksDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $tenderBookmarksDataFactory.get({locale: $localeStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.tenderBookmark = savable(data);
             });

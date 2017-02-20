@@ -34,7 +34,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.supplierTypes.length == 0) {
             $scope.supplierTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIERTYPE')});
             var def = $q.defer();
-            $supplierTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[supplierType.id]': 'desc'}).$promise.then(function(data) {
+            $supplierTypesDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'order_by[supplierType.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -63,7 +63,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if ($scope.users.length == 0) {
             $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
             var def = $q.defer();
-            $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
+            $usersDataFactory.query({locale: $localeStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
                         for (var i in data.results) {
@@ -216,6 +216,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             $scope.setParamValue('translationSupplierTypesSorting', order_by);
             $scope.setParamValue('translationSupplierTypesFilter', filters);
             var http_params = {
+                locale: $localeStorage.language,
                 offset: offset,
                 limit: limit
             };
