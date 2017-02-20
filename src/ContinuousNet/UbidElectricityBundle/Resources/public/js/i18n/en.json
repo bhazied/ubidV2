@@ -218,6 +218,7 @@
         "common": {
             "NA": "NA",
             "DOWNLOAD": "Download",
+            "PRINT": "Print",
             "ASSIGN": "Assign",
             "CUSTOMIZE": "Customize",
             "CUSTOMIZINGDASHBOARD": "Customizing Dashboard",
