@@ -67630,6 +67630,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.app = {
             name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
+            keywords: 'Electricity, Tenders, Buyers, Suppliers, Products', // some keywords
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
             year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -67667,10 +67668,10 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
         $rootScope.seo = {
-                meta_title: '',
-                meta_description: '',
-                meta_keywords: ''
-        }
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: ''
+        };
 
     }]);
 
@@ -67697,6 +67698,7 @@ app.config(['$translateProvider',
             currentLanguage = languageKey;
         }
     }
+
     localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
     localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
@@ -67716,9 +67718,8 @@ app.config(['$translateProvider',
 // configuration
 app.config(['cfpLoadingBarProvider',
     function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeBar = true;
-        cfpLoadingBarProvider.includeSpinner = false;
-
+        cfpLoadingBarProvider.includeBar = false;
+        cfpLoadingBarProvider.includeSpinner = true;
     }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols.
@@ -67732,6 +67733,15 @@ app.config(function($interpolateProvider) {
 app.config(function($breadcrumbProvider) {
     $breadcrumbProvider.setOptions({
         templateUrl: '/assets/views/partials/breadcrumb.html'
+    });
+});
+
+// location
+// configuration
+app.config(function($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: true
     });
 });
 
@@ -68080,10 +68090,13 @@ app.constant('APP_JS_REQUIRES', {
         'RegisterFrontCtrl': '/bundles/ubidelectricity/js/front/Auth/RegisterCtrl.js',
         'SearchFormCtrl' : '/bundles/ubidelectricity/js/front/Search/SearchFormCtrl.js',
         'TendersFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersFrontCtrl.js',
+        'TendersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Tender/TendersCategoryFrontCtrl.js',
         'TenderFrontCtrl': '/bundles/ubidelectricity/js/front/Tender/TenderCtrl.js',
         'BuyersFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersFrontCtrl.js',
+        'BuyersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyersCategoryFrontCtrl.js',
         'BuyerFrontCtrl' : '/bundles/ubidelectricity/js/front/Buyer/BuyerFrontCtrl.js',
         'SuppliersFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersFrontCtrl.js',
+        'SuppliersCategoryFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SuppliersCategoryFrontCtrl.js',
         'SupplierFrontCtrl' : '/bundles/ubidelectricity/js/front/Supplier/SupplierFrontCtrl.js',
         'ProductsFrontCtrl' : '/bundles/ubidelectricity/js/front/Product/ProductsFrontCtrl.js',
         'ProductFrontCtrl' : '/bundles/ubidelectricity/js/front/Product/ProductFrontCtrl.js',
@@ -68329,6 +68342,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'postFrontService',
         files: ['/bundles/ubidelectricity/js/front/Post/PostService.js']
     },{
+        name : 'categoryFrontService',
+        files : ['/bundles/ubidelectricity/js/front/Category/CategoryFrontService.js']
+    },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
     }]
@@ -68337,8 +68353,8 @@ app.constant('APP_JS_REQUIRES', {
 
 'use strict';
 
-app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$filter', '$timeout', 'toaster',
-    function ($q, $localStorage, $location, $filter, $timeout, toaster) {
+app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$filter', '$timeout', 'toaster', '$rootScope',
+    function ($q, $localStorage, $location, $filter, $timeout, toaster, $rootScope) {
         return {
             request: function (config) {
                 if ($localStorage.access_token) {
@@ -68350,6 +68366,7 @@ app.factory('httpRequestInterceptor', ['$q', '$localStorage', '$location', '$fil
                 if ( response.status === 401) {
                     delete $localStorage.access_token;
                     delete $localStorage.user;
+                    delete $rootScope.user;
                     $location.path('/login');
                 } else if (response.status === 403) {
                     toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ACCESSDENEID'));
@@ -68483,7 +68500,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
         /*
          *  User Service routes
          */
@@ -68540,66 +68557,49 @@ app.config(['$stateProvider',
         /*
          * Public Buyer List & Details routes
          */
-        }).state('front.buyers',{
+        }).state('front.buyers', {
             url: '/buyers',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/buyers.html',
             title: 'front.BUYERS',
-            resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService')
+            resolve: loadSequence('BuyersFrontCtrl', 'buyerFrontService', 'postFrontService')
+        }).state('front.buyerscategory', {
+            url: '/buyers/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Buyer/category.html',
+            title: 'front.BUYERS',
+            resolve: loadSequence('BuyersCategoryFrontCtrl', 'buyerFrontService')
         }).state('front.buyer', {
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
             resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
-        }).state('front.messages', {
-            url : '/messages',
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: ''
-        }).state('front.messages.send', {
-            url: '/send/:id/:to',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
-            title: '',
-            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.list', {
-            url: '/list/:type',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
-            title: '',
-            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-        }).state('front.messages.detail', {
-            url: '/detail/:id',
-            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
-            title: '',
-            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
-
         /*
          * Public Supplier List & Details routes
          */
-        }).state('front.suppliers',{
+        }).state('front.suppliers', {
             url: '/suppliers',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/suppliers.html',
             title: 'front.SUPPLIERS',
-            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('SuppliersFrontCtrl', 'supplierFrontService', 'postFrontService')
+        }).state('front.supplierscategory', {
+            url: '/suppliers/:slug',
+            templateUrl: '/bundles/ubidelectricity/js/front/Supplier/category.html',
+            title: 'front.SUPPLIERS',
+            resolve: loadSequence('SuppliersCategoryFrontCtrl', 'supplierFrontService')
         }).state('front.supplier', {
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierProductService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
         /*
          * Public Tender Lists & Details routes
          */
-        }).state('front.tenders',{
-            url: "/tenders",
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: 'sidebar.nav.adserving.MAIN',
-            ncyBreadcrumb: {
-                label: 'sidebar.nav.adserving.MAIN'
-            }
-        }).state('front.tenders.list',{
-            url: '/list/:section',
+        }).state('front.tenders', {
+            url: '/tenders/:section',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders.html',
             title: 'front.TENDERS',
-            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.tenders.details', {
-            url: '/details/:id',
+            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService', 'postFrontService')
+        }).state('front.tender', {
+            url: '/tender/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService')
@@ -68608,12 +68608,11 @@ app.config(['$stateProvider',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/sector.html',
             title: 'front.TENDERSBYSECTOR',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.tenders.category',{
-            url: '/category/:id',
+        }).state('front.tenderscategory', {
+            url: '/tenders/:section/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/category.html',
-            title: 'front.TENDERSBYCATEGORY',
-            resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.tenders.country',{
+            resolve: loadSequence('TendersCategoryFrontCtrl' , 'tenderFrontService')
+        }).state('front.tenders.country', {
             url: '/country/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/country.html',
             title: 'front.TENDERSBYCOUNTRY',
@@ -68628,29 +68627,29 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
-        }).state('front.applay_tender', {
-            url: '/applay_tender/:idTender',
-            templateUrl: '/bundles/ubidelectricity/js/front/Tender/applay_tender.html',
+        }).state('front.apply_tender', {
+            url: '/apply_tender/:id',
+            templateUrl: '/bundles/ubidelectricity/js/front/Tender/apply_tender.html',
             title: 'Advanced Search',
             resolve: loadSequence('ApplyTenderCtrl','BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
             /*
              * My Tenders Manager routes
              */
-        }).state('front.mytenders',{
+        }).state('front.mytenders', {
             url: '/my-tenders',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYTENDERS',
-        }).state('front.mytenders.details',{
+        }).state('front.mytenders.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService', 'supplierService')
-        }).state('front.mytenders.edit',{
+        }).state('front.mytenders.edit', {
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.EDITTENDER',
             resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
-        }).state('front.mytenders.new',{
+        }).state('front.mytenders.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
@@ -68664,39 +68663,34 @@ app.config(['$stateProvider',
             /**
              * Product Manage route
              */
-        }).state('front.products', {
-            url: '/products',
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: "front.PRODUCTS",
-            resolve: loadSequence()
-        }).state('front.products.details',{
-            url: '/details/:categorySlug/:slug/:id',
+        }).state('front.product', {
+            url: '/product/:categorySlug/:slug/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/product.html',
             title: 'front.PRODUCTDETAILS',
-            resolve: loadSequence('ProductFrontCtrl', 'SupplierProductCtrl', 'supplierProductService')
+            resolve: loadSequence('ProductFrontCtrl', 'supplierFrontService')
             /*
              * My Products Manager routes
              */
-        }).state('front.myproducts',{
+        }).state('front.myproducts', {
             url: '/my-products',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductCtrl', 'SupplierProductCtrl', 'supplierProductService')
-        }).state('front.myproducts.details',{
+        }).state('front.myproducts.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product.html',
             title: 'front.PRODUCTDETAILS',
-            }).state('front.myproducts.edit',{
+            }).state('front.myproducts.edit', {
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.EDITPRODUCT',
             resolve: loadSequence('MyProductFromCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
-        }).state('front.myproducts.new',{
+        }).state('front.myproducts.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.NEWPRODUCT',
             resolve: loadSequence('MyProductFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
-        }).state('front.myproducts.list',{
+        }).state('front.myproducts.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_products.html',
             title: 'front.MYPRODUCTS',
@@ -68704,7 +68698,7 @@ app.config(['$stateProvider',
         /*
          * My Bids Manager routes
          */
-        }).state('front.mybids',{
+        }).state('front.mybids', {
             url: '/my-bids',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYBIDS',
@@ -68721,31 +68715,30 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
-        }).state('front.mybids.details',{
+        }).state('front.mybids.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('MyBidCtrl', 'BidCtrl', 'bidService')
-        }).state('front.mybids.edit',{
+        }).state('front.mybids.edit', {
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.EDITTENDER',
             resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
-        }).state('front.mybids.new',{
+        }).state('front.mybids.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.NEWBID',
             resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
-
             /*
              * My BookmarkProject Manager routes
              */
-        }).state('front.bookmarkproject',{
+        }).state('front.bookmarkproject', {
             url: '/bookmark-project',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.BOOKMARKPROJECT',
             resolve: loadSequence()
-        }).state('front.bookmarkproject.list',{
+        }).state('front.bookmarkproject.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tenders_bookmarked.html',
             title: 'front.BOOKMARKPROJECT',
@@ -68757,7 +68750,7 @@ app.config(['$stateProvider',
                 'tenderBookmarksFilter': null
             },
             resolve: loadSequence('MyTenderBookmarkedCtrl','TenderBookmarksCtrl', 'tenderBookmarkService', 'tenderService', 'userService')
-        }).state('front.bookmarkproject.details',{
+        }).state('front.bookmarkproject.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender_bookmarked.html',
             title: 'front.TENDERBOOKMARKEDDETAILS',
@@ -68765,57 +68758,57 @@ app.config(['$stateProvider',
             /*
              * My Buyers Manager routes
              */
-        }).state('front.mybuyers',{
+        }).state('front.mybuyers', {
             url: '/my-buyers',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYBUYERS',
-        }).state('front.mybuyers.details',{
+        }).state('front.mybuyers.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer.html',
             title: 'front.BUYERDETAILS',
             resolve: loadSequence('MyBuyerCtrl', 'BuyerCtrl', 'buyerService')
-        }).state('front.mybuyers.edit',{
+        }).state('front.mybuyers.edit', {
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
             title: 'front.EDITBUYER',
-            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
-        }).state('front.mybuyers.new',{
+            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        }).state('front.mybuyers.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
             title: 'front.NEWBUYER',
-            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService')
-        }).state('front.mybuyers.list',{
+            resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        }).state('front.mybuyers.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
-            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'profileFrontService')
+            resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'profileFrontService')
         /*
          * My Suppliers Manager routes
          */
-        }).state('front.mysuppliers',{
+        }).state('front.mysuppliers', {
             url: '/my-suppliers',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYSUPPLIERS',
-        }).state('front.mysuppliers.details',{
+        }).state('front.mysuppliers.details', {
             url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier.html',
             title: 'front.SUPPLIERDETAILS',
             resolve: loadSequence('MySupplierCtrl', 'SupplierCtrl', 'supplierService')
-        }).state('front.mysuppliers.edit',{
+        }).state('front.mysuppliers.edit', {
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.EDITSUPPLIER',
-            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'regionService', 'countryService', 'sectorService', 'supplierTypeService', 'biddingTypeService', 'userService')
-        }).state('front.mysuppliers.new',{
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        }).state('front.mysuppliers.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.NEWSUPPLIER',
-            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService')
-        }).state('front.mysuppliers.list',{
+            resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        }).state('front.mysuppliers.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_suppliers.html',
             title: 'front.MYSUPPLIERS',
-            resolve: loadSequence('MySuppliersCtrl', 'SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService')
+            resolve: loadSequence('MySuppliersCtrl', 'SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'profileFrontService')
         /*
         * Public Pages routes
         */
@@ -68823,8 +68816,8 @@ app.config(['$stateProvider',
             url: '/contact',
             templateUrl : '/bundles/ubidelectricity/js/front/Contact/contact_form.html',
             title: 'front.CONTACT',
-            resolve: loadSequence('contactService', 'ContactFormCtrl')
-        }).state('front.post',{
+            resolve: loadSequence('contactService', 'ContactFormCtrl', 'postFrontService')
+        }).state('front.post', {
             url: '/post/:slug',
             templateUrl: '/bundles/ubidelectricity/js/front/Post/post.html',
             title: 'front.POST',
@@ -68832,7 +68825,7 @@ app.config(['$stateProvider',
             /*
             * Project Bids manager routes
             */
-        }).state('front.projectbids',{
+        }).state('front.projectbids', {
             url: '/project-bids',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.PROJECTBIDS',
@@ -68865,17 +68858,17 @@ app.config(['$stateProvider',
                 'bidsFilter': null
             },*/
             resolve: loadSequence('BidsShortListCtrl','BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'projectBidsFrontService')
-        }).state('front.myAlerts',{
+        }).state('front.myAlerts', {
             url: '/my-alerts',
             template: '<div ui-view class="fade-in-up"></div>',
             title : 'front.MYALERTS',
             resolve: loadSequence()
-        }).state('front.myAlerts.list',{
+        }).state('front.myAlerts.list', {
             url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alerts.html',
             title : 'front.MYALERTS',
             resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
-        }).state('front.myAlerts.details',{
+        }).state('front.myAlerts.details', {
             url: '/details',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
             title : 'front.MYALERTS',
@@ -68906,18 +68899,35 @@ app.config(['$stateProvider',
              * Categories routes manage
              */
         }).state('front.categories', {
-            url : '/categories',
-            template: '<div ui-view class="fade-in-up"></div>',
-            title: 'front.categories',
-            resolve: loadSequence()
-        }).state('front.categories.list', {
-            url: '/list',
+            url: '/categories',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/categories.html',
-            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive')
-        }).state('front.categories.details', {
-            url: '/details/:id/:slug',
+            resolve: loadSequence('CategoriesFrontCtrl', 'CategoryFormCtrl', 'categoryService', 'productTypeService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService', 'tree-grid-directive', 'postFrontService')
+        }).state('front.category', {
+            url: '/category/:slug/:target',
             templateUrl: '/bundles/ubidelectricity/js/front/Category/category.html',
-            resolve: loadSequence('CategoryFrontCtrl' , 'tenderFrontService')
+            resolve: loadSequence('CategoryFrontCtrl' , 'categoryFrontService')
+            /**
+             * Messages routes manage
+             */
+        }).state('front.messages', {
+            url: '/messages',
+            template: '<div ui-view class="fade-in-up"></div>',
+            title: ''
+        }).state('front.messages.send', {
+            url: '/send/:id/:to',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
+            title: '',
+            resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.list', {
+            url: '/list/:type',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
+            title: '',
+            resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        }).state('front.messages.detail', {
+            url: '/detail/:id',
+            templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
+            title: '',
+            resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         })
     }]);
 
@@ -72294,7 +72304,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
-        $rootScope.contentSize = 6;
+        $rootScope.contentSize = 9;
         $rootScope.contentOffset = 0;
 
         //header searchForm show
@@ -72312,18 +72322,22 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
+            'front.tenders.country',
+            'front.tenders.sector',
             'front.advanced_search',
-            'front.tenders.details',
-            'front.buyers',
-            'front.suppliers',
-            'front.post',
             'front.generic_search',
-            'front.contact',
+            'front.tender',
+            'front.buyers',
             'front.buyer',
-            'front.categories.list',
-            'front.categories.details'
+            'front.suppliers',
+            'front.supplierscategory',
+            'front.supplier',
+            'front.post',
+            'front.contact',
+            'front.categories',
+            'front.category'
         ];
 
         $timeout(function() {
@@ -72360,7 +72374,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             //start loading bar on stateChangeStart
             cfpLoadingBar.start();
-
         });
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -72369,22 +72382,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $rootScope.searchLoaded = false;
             
             //stop loading bar on stateChangeSuccess
-            event.targetScope.$watch("$viewContentLoaded", function() {
-
-                cfpLoadingBar.complete();
+            event.targetScope.$watch('$viewContentLoaded', function() {
+                $timeout(function() {
+                    cfpLoadingBar.complete();
+                }, 500);
             });
 
-            if($state.current.name == "front.home"){
+            if ($state.current.name == 'front.home') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else if($state.current.name == "front.usermenu"){
+            } else if ($state.current.name == 'front.usermenu') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else{
+            } else {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = true;
                 $rootScope.showBrandName = false;
@@ -72414,7 +72426,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
             //$rootScope.loading = false;
             console.log(unfoundState.to);
-            // "lazy.state"
+            // 'lazy.state'
             console.log(unfoundState.toParams);
             // {a:1, b:2}
             console.log(unfoundState.options);
@@ -72422,16 +72434,30 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
 
         $rootScope.pageTitle = function() {
-            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.seo.meta_title);
+            var title = $rootScope.app.name;
+            if ($rootScope.seo.meta_title) {
+                title = $rootScope.seo.meta_title;
+            } else if ($rootScope.currTitle) {
+                title = $rootScope.currTitle;
+            }
+            return title;
         };
 
         $rootScope.pageDescription = function () {
-            return $rootScope.app.description + ' - ' + $rootScope.seo.meta_description;
-        }
+            var description = $rootScope.app.description;
+            if ($rootScope.seo.meta_description) {
+                description = $rootScope.seo.meta_description;
+            }
+            return description;
+        };
 
         $rootScope.pageKeywords = function () {
-            return $rootScope.seo.meta_keywords;
-        }
+            var keywords = $rootScope.app.keywords;
+            if ($rootScope.seo.meta_keywords) {
+                keywords = $rootScope.seo.meta_keywords;
+            }
+            return keywords;
+        };
 
         // save settings to local storage
         if (angular.isDefined($localStorage.layout)) {
@@ -72439,6 +72465,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         } else {
             $localStorage.layout = $scope.app.layout;
         }
+
         $scope.$watch('app.layout', function() {
             // save to local storage
             $localStorage.layout = $scope.app.layout;
@@ -72550,12 +72577,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tenders.details', {id: id})
+            $state.go('front.tender', {id: id})
         }
         
     }]);
 
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
        /* $timeout(function() {
@@ -72696,6 +72723,9 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 if($scope.tenderCategories.length == 0){
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                        for (var i in data.results) {
+                            data.results[i].expand = false;
+                        }
                         $scope.tenderCategories = data.results;
                         def.resolve($scope.tenderCategories);
                     });
@@ -72705,7 +72735,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.tenderCategories;
                 }
             });
-        }
+        };
 
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;
@@ -72910,10 +72940,10 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                 url : '/efconnect/'+$scope.instance+'/'+$scope.folder+'?mode='+$scope.mode,
                 lang : (angular.isDefined($localStorage.language))?$localStorage.language:'en',
                 useBrowserHistory: false,
-                onlyMimes: ['image', 'video', 'audio'],
+                onlyMimes: ['image', 'video', 'audio', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'],
                 customHeaders: {
                     'Authorization': 'Bearer ' + $localStorage.access_token,
-                    'PP-Application': 'BackOffice'
+                    'APP-Application': 'BackOffice'
                 },
                 getFileCallback : function(file) {
                     var parser = document.createElement('a');
@@ -72924,16 +72954,24 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                     select: function(event, elfinderInstance) {
                         var selected = event.data.selected;
                         if (selected.length > 0) {
-                            var file = elfinderInstance.file(selected[0]);
-                            var path = elfinderInstance.path(selected[0]);
-                            if (file.mime=='directory') {
-                                //opens a folder
-                                elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
-                            } else {
-                                var parser = document.createElement('a');
-                                parser.href = '/uploads/'+$scope.folder+'/../'+path;
-                                $scope.url = parser.pathname;
+                            var files = [];
+                            for (var i in selected) {
+                                var file = elfinderInstance.file(selected[i]);
+                                var path = elfinderInstance.path(selected[i]);
+                                if (file.mime == 'directory') {
+                                    //opens a folder
+                                    elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
+                                } else {
+                                    var parser = document.createElement('a');
+                                    var href = '/uploads/';
+                                    if ($scope.instance == 'data') {
+                                        href += 'data/'+$scope.folder+'/../'+path;
+                                    }
+                                    parser.href = href;
+                                    files.push(parser.pathname);
+                                }
                             }
+                            $scope.url = files.join();
                         }
                     }
                 }

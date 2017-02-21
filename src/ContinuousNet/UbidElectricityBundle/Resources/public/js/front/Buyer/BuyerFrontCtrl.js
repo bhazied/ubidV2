@@ -20,8 +20,10 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $timeout(function () {
                 var def = $q.defer();
                 $buyersFrontDataFactory.buyer($params).$promise.then(function(data){
-                    console.log(data);
                     $scope.buyer = data;
+                    $rootScope.seo.meta_description = data.description;
+                    $rootScope.seo.meta_keywords = data.main_products_services;
+                    $rootScope.seo.meta_title = data.name;
                 });
                 def.resolve($scope.buyer);
                 return def;

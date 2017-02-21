@@ -1,30 +1,41 @@
-<div class="row">
-    <div class="col-md-12">
-        <div>
-            <fieldset>
-                <legend translate="front.ALLCATEGORIES">
-                    All Categories
-                </legend>
-            </fieldset>
-        </div>
-    </div>
+
 <div  class="container-fluid container-fullw bg-white" ng-controller="CategoriesFrontCtrl">
+
+    <h1 translate="front.ALLCATEGORIES">All Categories</h1>
+
     <div class="row">
-        <div class="col-md-6 category_container">
-            <abn-tree
-                    tree-data ="tree_data"
-                    icon-leaf         = "fa fa-folder-o"
-                    icon-expand       = "fa fa-chevron-right"
-                    icon-collapse     = "fa fa-chevron-up"
-                    tree-control ="my_tree"
-                    on-select = "category_selected(branch)"
-                    expand-level = "expandFirst"
-                    initial-selection = "selectedFirst">
-            ></abn-tree>
-        </div>
-        <div class="col-md-6 category_container" ng-if="selectedYet">
-            <div  class="text-info" translate="front.SMALLDETAILSCATEGORY" translate-values='{ category_name: selectedCategory.name, tender_count: selectedCategory.tenderCount}'></div>
-            <a ui-sref="front.categories.details({id: selectedCategory.id, slug: selectedCategory.slug})"> <span translate="front.READMORE">Read more</span> </a>
-        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="category in tenderCategories">
+                <div class="row">
+                    <div class="col-md-6">
+                         [[ category.node.name ]]
+                    </div>
+                    <div class="col-md-6">
+                        <a ui-sref="front.category({slug: category.node.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
+                        <a ui-sref="front.category({slug: category.node.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
+                    </div>
+
+                </div>
+                <ul class="list-group inner" ng-if="category.children.length > 0">
+                    <li class="list-group-item" ng-repeat="sub in category.children">
+                        <div class="row">
+                            <div class="col-md-6">
+                                [[ sub.name ]]
+                            </div>
+                            <div class="col-md-6">
+                                <a ui-sref="front.category({slug: sub.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: sub.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
+
 </div>

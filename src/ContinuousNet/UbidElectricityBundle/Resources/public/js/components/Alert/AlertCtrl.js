@@ -64,7 +64,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $alertsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $alertsDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.alert = data;
         });
     }

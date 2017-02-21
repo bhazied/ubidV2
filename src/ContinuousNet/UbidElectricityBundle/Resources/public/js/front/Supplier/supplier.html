@@ -1,27 +1,169 @@
 <div ng-controller="SupplierFrontCtrl">
     <div class="tender-preview">
-        <a class="name" ng-bind="supplier.name"></a>
+        <h1 class="name" ng-bind="supplier.name"></h1>
         <div class="pb-1 clearfix">
             <img ng-if="supplier.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
-            <div ng-bind-html="supplier.description"></div>
+            <h2 ng-bind-html="supplier.description"></h2>
+            <div class="mt-1 table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.A"></h3></th>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.SUPPLIERTYPE">Supplier Type</span></td>
+                        <td>[[ supplier.supplier_type.name ]]</td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.NAME">Name</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.name"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.EMAIL">Email</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.email"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.PHONE">Phone</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.phone"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.B"></h3></th>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.FIRSTNAME">First Name</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.first_name"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.LASTNAME">Last Name</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.last_name"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.JOB">Job</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.job"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.C"></h3></th>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.COMPANYNAME">Company Name</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.company_name"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.ADDRESS">Address</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.address"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.ZIPCODE">Zip Code</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.zip_code"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.CITY">City</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.city"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.COUNTRY">Country</span></td>
+                        <td><i class="country"><span class="flag-icon flag-icon-[[ supplier.country.code | lowercase ]]"></span></i> [[ supplier.country.name ]]</a></span></td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.FAX">Fax</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.fax"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.WEBSITE">Website</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.website"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.D"></h3></th>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.MAINPRODUCTSSERVICES">Main Products Services</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.main_products_services"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.TOTALREVENU">Total Revenu</span></td>
+                        <td>
+                            <span ng-bind-html="supplier.total_revenu"></span> <i ng-if="supplier.total_revenu">USD</i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="front.MARKETREGIONSRATES">Market Regions Rates</span></td>
+                        <td>
+                            <span ng-if="supplier.first_market_region.name && supplier.first_market_rate">
+                                [[ supplier.first_market_region.name ]]
+                                <i ng-bind-html="supplier.first_market_rate"></i>
+                            </span>
+                            <spa ng-if="supplier.second_market_region.name && supplier.second_market_rate">
+                                -
+                                [[ supplier.second_market_region.name ]]
+                                <i ng-bind-html="supplier.second_market_rate"></i>
+                            </spa>
+                            <span ng-if="supplier.third_market_region.name && supplier.third_market_rate">
+                                -
+                                [[ supplier.third_market_region.name ]]
+                                <i ng-bind-html="supplier.third_market_rate"></i>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.REFERENCENUMBER">Reference Number</span></td>
+                        <td>
+                            <div ng-bind-html="supplier.reference_number"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                        <td>
+                            <a ng-repeat="category in supplier.categories" ui-sref="front.supplierscategory({slug: category.slug})">[[ category.name ]]</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
         </div>
         <div class="row" ng-if="supplierProducts.count > 0">
-            <h3 class="sidebar-title" translate="front.SUPPLIERPRODUCTS">supplier products</h3>
+            <h3 class="sidebar-title" translate="front.SUPPLIERPRODUCTS">Supplier products</h3>
             <div class="pb-1 clearfix" ng-repeat="product in supplierProducts.results">
-                <a class="name" ng-bind="product.name" ui-sref="front.products.details({slug: product.slug, categorySlug: product.category.slug, id: product.id})"></a>
+                <h4><a class="name" ng-bind="product.name" ui-sref="front.product({slug: product.slug, categorySlug: product.category.slug, id: product.id})"></a></h4>
                 <div ng-bind-html="product.brand"></div>
-                <img src="[[ product.picture ]]" alt="[[ product.name ]]" class="pull-right img-thumbnail" />
+                <img ng-if="product.picture" src="[[ product.picture ]]" alt="[[ product.name ]]" class="pull-right img-thumbnail" />
                 <div ng-bind-html="product.description"></div>
             </div>
         </div>
         <div class="row" ng-if="supplierProducts.count == 0">
-            <h1 class="name" translate="front.SUPPLIERNOPRODUCTS"> This supplier has not yet added any products </h1>
+            <span class="name" translate="front.SUPPLIERNOPRODUCT">This supplier has not yet added any product</span>
         </div>
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-                <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
-                <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button>
+                <!--<button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
+                <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                <!-- <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button> -->
             </div>
         </div>
     </div>

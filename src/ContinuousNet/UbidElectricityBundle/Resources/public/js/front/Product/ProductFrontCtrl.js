@@ -4,8 +4,8 @@
  * Controller for Supplier Product Details
  */
 
-app.controller('ProductFrontCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$supplierProductsDataFactory',
-    function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $supplierProductsDataFactory) {
+app.controller('ProductFrontCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$suppliersFrontDataFactory',
+    function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $suppliersFrontDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -16,19 +16,27 @@ app.controller('ProductFrontCtrl', ['$scope', '$controller', '$rootScope', '$sta
             $rootScope.contentOffset = 0;
         });
 
-        angular.extend(this, $controller('SupplierProductCtrl', {$scope:$scope}));
+        $scope.supplierProduct = {};
+        $scope.getSupplierProduct = function() {
+            var $params = {
+                locale: $localStorage.language,
+                id: $stateParams.id
+            };
+            $timeout(function () {
+                var def = $q.defer();
+                $suppliersFrontDataFactory.product($params).$promise.then(function(data){
+                    $scope.supplierProduct = data;
+                    $rootScope.seo.meta_description = data.description;
+                    $rootScope.seo.meta_keywords = data.main_products_services;
+                    $rootScope.seo.meta_title = data.name;
+                });
+                def.resolve($scope.supplierProduct);
+                return def;
+            });
 
-        /*$scope.list = function() {
-            $state.go('front.myproducts.list');
-        };
+        }
 
-        $scope.add = function() {
-            $state.go('front.myproducts.new');
-        };
-
-        $scope.edit = function(row) {
-            $state.go('front.myproducts.edit', {id: row.id});
-        };*/
+        $scope.getSupplierProduct();
 
     }]);
 

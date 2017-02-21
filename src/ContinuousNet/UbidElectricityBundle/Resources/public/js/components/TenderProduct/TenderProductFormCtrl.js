@@ -60,7 +60,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.tenders.length == 0) {
                 $scope.tenders.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDER')});
                 var def = $q.defer();
-                $tendersDataFactory.query({offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
+                $tendersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[tender.title]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -85,7 +85,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.categories.length == 0) {
                 $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
                 var def = $q.defer();
-                $categoriesDataFactory.query({offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -110,7 +110,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.productTypes.length == 0) {
                 $scope.productTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPRODUCTTYPE')});
                 var def = $q.defer();
-                $productTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[productType.name]': 'asc'}).$promise.then(function(data) {
+                $productTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[productType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -135,7 +135,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -213,7 +213,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.tender_product_category_readonly = false;
     $scope.tender_product_product_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $tenderProductsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $tenderProductsDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.tenderProduct = savable(data);
             });

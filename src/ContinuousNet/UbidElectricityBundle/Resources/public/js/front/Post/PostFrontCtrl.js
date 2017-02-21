@@ -16,7 +16,6 @@ function($rootScope, $scope, $state, $stateParams, $sce, $timeout, $filter, $q, 
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
-
         console.log('set content size');
         $rootScope.contentSize = 12;
         $rootScope.contentOffset = 0;

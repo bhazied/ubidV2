@@ -4,8 +4,8 @@
  * Controller for Buyer Form
  */
 
-app.controller('BuyerFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$buyersDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $buyersDataFactory) {
+app.controller('BuyerFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$buyersDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $categoriesDataFactory, $buyersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -35,7 +35,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.buyerTypes.length == 0) {
                 $scope.buyerTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBUYERTYPE')});
                 var def = $q.defer();
-                $buyerTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[buyerType.name]': 'asc'}).$promise.then(function(data) {
+                $buyerTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[buyerType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -60,7 +60,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.countries.length == 0) {
                 $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
                 var def = $q.defer();
-                $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
+                $countriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -85,7 +85,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.languages.length == 0) {
                 $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
                 var def = $q.defer();
-                $languagesDataFactory.query({offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -110,7 +110,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.regions.length == 0) {
                 $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTFIRSTMARKETREGION')});
                 var def = $q.defer();
-                $regionsDataFactory.query({offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
+                $regionsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -135,7 +135,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -151,6 +151,51 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
 
     $scope.getUsers();
 
+    $scope.categories = [];
+    $scope.categoriesLoaded = [];
+
+    $scope.getCategories = function() {
+        $timeout(function(){
+            if ($scope.categories.length == 0) {
+                $scope.categories.push({});
+                var def = $q.defer();
+                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
+                });
+                return def;
+            } else {
+                return $scope.categories;
+            }
+        });
+    };
+
+    $scope.getCategories();
+
+    $scope.categoriesSearchText = '';
+    $scope.buyerCategories = false;
+    $scope.$watch('buyerCategories', function() {
+        if (angular.isDefined($scope.buyer)) {
+            var categories = $filter('filter')($scope.categories, $scope.categoriesSearchText);
+            if ($scope.buyerCategories) {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.buyer.categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.buyer.categories.push(id);
+                    }
+                }
+            } else {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.buyer.categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.buyer.categories.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
 
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
@@ -216,13 +261,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.buyer_second_market_region_readonly = false;
     $scope.buyer_third_market_region_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $buyersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $buyersDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.buyer = savable(data);
             });
         });
     } else {
-        $scope.buyer = {id: 0};
+        $scope.buyer = {id: 0, categories: []};
 
         if (angular.isDefined($stateParams.buyer_buyer_type) && JSON.parse($stateParams.buyer_buyer_type) != null) {
             $scope.buyer.buyer_type = $stateParams.buyer_buyer_type;
@@ -264,12 +309,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     return $scope.buyer[field];
                 },
                 instance: function() {
-                    return 'default';
+                    return 'data';
                 },
                 folder: function() {
                     var user_id = '000000' + $localStorage.user.id;
-                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
-                    return 'data' + user_dir + '/buyers';
+                    var user_dir = 'user_' + user_id.substr(user_id.length - 6);
+                    return user_dir;
                 }
             }
         });

@@ -1,4 +1,4 @@
-<div ng-controller="searchFormCtrl">
+<div ng-controller="SearchFormCtrl">
     <h3 class="sidebar-title" translate="front.SPECIFICSEARCH" >Specific Search</h3>
     <form name="searchform" id="searchform" ng-submit="submitForm(searchform, 1)">
     <div class="form-group">
@@ -17,13 +17,16 @@
             <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
             <li ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.node.id">
                 <div class="form-group">
+                    <i ng-if="tenderCategory.children.length > 0 && tenderCategory.expand" ng-click="tenderCategory.expand = false" class="fa fa-minus-square-o"></i>
+                    <i ng-if="tenderCategory.children.length > 0 && !tenderCategory.expand" ng-click="tenderCategory.expand = true" class="fa fa-plus-square-o"></i>
+                    <i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>
                     <label class="custom-control custom-checkbox">
                         <input ng-click="changeParentStatus(tenderCategory.node.id)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.node.id]]">
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description">[[ tenderCategory.node.name ]]</span>
                     </label>
                 </div>
-                <ul ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
+                <ul ng-show="enderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
                             <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
@@ -48,10 +51,10 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-0">
         <label class="sidebar-label" translate="front.OPPORTUNITYSIZE">Opportunity Size</label>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-1">
                 <div class="input-group nice-select">
 
                     <select class="form-control" class="select" ng-model="search.total_cost_operator">
@@ -62,7 +65,7 @@
                     <div class="input-group-addon"><i class="fa fa-caret-down"></i></div>
                 </div>
             </div>
-            <div class="col-md-6 pl-0">
+            <div class="col-md-6 mb-1">
                 <div class="input-group">
                     <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
                     <div class="input-group-addon"><i class="fa fa-usd"></i></div>
@@ -119,8 +122,13 @@
             </div>
         </div>
     </div>
-        <button type="button" ng-click="submitForm(searchform, 1)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
-            <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-search" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SUBMITADVANCEDSEARCH">Search</span>
-        </button>
+    <div class="form-group">
+        <div class="clearfix">
+            <button type="button" ng-click="submitForm(searchform, 1)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="userForm.$invalid" -->
+                <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="fa fa-search" ng-if="!disableSubmit"></i> <span translate="content.form.buttons.SUBMITADVANCEDSEARCH">Search</span>
+            </button>
+        </div>
+    </div>
+
     </form>
 </div>

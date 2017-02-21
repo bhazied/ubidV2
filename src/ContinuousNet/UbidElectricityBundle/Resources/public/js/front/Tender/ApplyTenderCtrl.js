@@ -11,15 +11,15 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
         angular.extend(this, $controller('BidFormCtrl', {$scope:$scope}));
         $scope.enableFormAlert = false;
         $scope.tender = 0;
-        if(angular.isDefined($stateParams.idTender)){
+        if(angular.isDefined($stateParams.id)){
             //$scope.bid = {};
-            $scope.tender = $stateParams.idTender;
-            $scope.bid.tender = $stateParams.idTender;
+            $scope.tender = $stateParams.id;
+            $scope.bid.tender = $stateParams.id;
         };
         $scope.bid.status = 'Online'
 
         $scope.list = function() {
-            $state.go('front.tenders.list' ,{section:'Tender'});
+            $state.go('front.tenders' ,{section:'Tender'});
         };
 
     }]);

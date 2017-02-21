@@ -1,6 +1,6 @@
 'use strict';
-app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$contactDataFactory','SweetAlert','toaster',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $contactDataFactory, SweetAlert, toaster) {
+app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', 'SweetAlert', 'toaster', '$contactDataFactory', '$postsDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, SweetAlert, toaster, $contactDataFactory, $postsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -10,6 +10,14 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.contentSize = 8;
             $rootScope.contentOffset = 2;
         }, 1500);
+
+        $postsDataFactory.getBySlug({slug: 'contact', locale: $scope.locale}).$promise.then(function(data) {
+            $scope.postLoaded = true;
+            $scope.post = data;
+            $rootScope.seo.meta_description = data.meta_description;
+            $rootScope.seo.meta_keywords = data.meta_keywords;
+            $rootScope.seo.meta_title = data.meta_title;
+        });
 
         $scope.disableSubmit = false;
         $scope.submitForm = function (form) {

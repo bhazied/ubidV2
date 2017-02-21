@@ -1,6 +1,6 @@
 'use strict';
-app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory','$supplierProductsDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory, $supplierProductsDataFactory) {
+app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -14,14 +14,14 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $scope.supplier = {};
         $scope.supplierProducts = {count : 0, results:[]};
 
-        
-        $scope.getSupplierProducts = function (supplierId) {
-            var $params = {};
-            var filters = {};
-            $params['filters[supplierProduct.supplier]'] = supplierId;
+        $scope.getSupplierProducts = function () {
+            var $params = {
+                locale: $localStorage.language,
+                id: $stateParams.id
+            };
             $timeout(function () {
                 var def = $q.defer();
-                $supplierProductsDataFactory.query($params).$promise.then(function (data) {
+                $suppliersFrontDataFactory.products($params).$promise.then(function (data) {
                     $scope.supplierProducts.count = data.inlineCount;
                     $scope.supplierProducts.results = data.results;
                 });
@@ -29,7 +29,8 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                 return def;
             });
 
-        }
+        };
+
         $scope.getSupplier = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -39,6 +40,9 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                 var def = $q.defer();
                 $suppliersFrontDataFactory.supplier($params).$promise.then(function(data){
                     $scope.supplier = data;
+                    $rootScope.seo.meta_description = data.description;
+                    $rootScope.seo.meta_keywords = data.main_products_services;
+                    $rootScope.seo.meta_title = data.name;
                 });
                 def.resolve($scope.supplier);
                 return def;
@@ -47,7 +51,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         }
         
         $scope.getSupplier();
-        $scope.getSupplierProducts($stateParams.id);
+        $scope.getSupplierProducts();
         
 
     }]);

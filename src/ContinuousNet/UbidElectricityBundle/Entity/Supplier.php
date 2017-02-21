@@ -471,12 +471,33 @@ class Supplier
     private $modifierUser;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\JoinTable(name="suppliers_categories",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $categories;
+
+    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
+        $this->categories = new DoctrineCollection();
     }
 
     /**
@@ -1328,6 +1349,62 @@ class Supplier
     public function getModifierUser()
     {
         return $this->modifierUser;
+    }
+
+    /**
+     * Add category
+     *
+     * @access public
+     * @param Category $category
+     * @return Supplier
+     */
+    public function addCategory(Category $category)
+    {
+        if (!$this->categories->contains($category))
+        {
+            $this->categories->add($category);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @access public
+     * @param Category $category
+     * @return Supplier
+     */
+    public function removeCategory(Category $category)
+    {
+        if ($this->categories->contains($category))
+        {
+            $this->categories->removeElement($category);
+        }
+        return $this;
+    }
+
+    /**
+     * Set category
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Supplier
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 
     /**
