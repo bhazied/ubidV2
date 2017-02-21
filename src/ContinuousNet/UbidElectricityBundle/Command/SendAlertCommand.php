@@ -188,7 +188,7 @@ class SendAlertCommand extends ContainerAwareCommand
         $mailer = $this->getContainer()->get('mailer');
         $message = \Swift_Message::newInstance();
         $baseUrl = $this->getContainer()->get('templating.helper.assets')->getUrl('');
-        $logo = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/e-electricity-logo.png'));
+        $logo = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/logo-email.png'));
         $phone = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/phone.ico'));
         $mail = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/mail.ico'));
         $message->setSubject('New Alert')
@@ -203,6 +203,9 @@ class SendAlertCommand extends ContainerAwareCommand
                     'phone'=>$phone,
                     'mail'=>$mail,
                     'baseUrl'=>$baseUrl)), "text/html");
-        $mailer->send($message);
+         $mailer->send($message);
+        //if($result == 1){
+            print_r("An email has been sent to",$creatorUser);
+        //}
     }
 }
