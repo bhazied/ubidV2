@@ -7,7 +7,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
+            $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
         }, 1000);
 

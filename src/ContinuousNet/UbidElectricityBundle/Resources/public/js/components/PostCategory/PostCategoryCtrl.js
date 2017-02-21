@@ -50,7 +50,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $postCategoriesDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $postCategoriesDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.postCategory = data;
         });
     }

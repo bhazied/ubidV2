@@ -387,7 +387,7 @@ class Post
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="PostCategory", inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity="PostCategory")
      * @ORM\JoinTable(name="posts_post_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")

@@ -573,7 +573,7 @@ class User  extends BaseUser
      * @var \Doctrine\Common\Collections\Collection
      * @access protected
      *
-     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Group")
      * @ORM\JoinTable(name="users_groups",
      *     joinColumns={
      *         @ORM\JoinColumn(name="user_id", referencedColumnName="id")

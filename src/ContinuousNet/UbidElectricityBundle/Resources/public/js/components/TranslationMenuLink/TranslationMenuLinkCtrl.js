@@ -25,7 +25,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $q, 
     };
 
     if (angular.isDefined($stateParams.id)) {
-        $translationMenuLinksDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $translationMenuLinksDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $scope.translationMenuLink = data;
         });
     }
