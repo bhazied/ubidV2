@@ -31,7 +31,7 @@ class AlertEmailListener
 
         }
         else if($entity instanceof Message){
-
+            $this->alertMailer->sendNewMessageEmail($entity->getCreatorUser(), $entity);
         }
         else{
             return;

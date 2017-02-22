@@ -1,4 +1,3 @@
-
 ubid_electricity:
     resource: "@UbidElectricityBundle/Resources/config/routing.yml"
 

@@ -1,0 +1,5 @@
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    you have a new message <br>
+    {{ message.getBody() }}
+{% endblock %}
