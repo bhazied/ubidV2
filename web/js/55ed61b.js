@@ -72594,6 +72594,17 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentOffset = 0;
         }, 1000);*/
 
+        $scope.showForm = false;
+        $scope.toggle = function() {
+          if ($scope.showForm) {
+              $scope.showForm = false;
+              $('#searchform').addClass('hidden-sm-down');
+          } else {
+              $scope.showForm = true;
+              $('#searchform').removeClass('hidden-sm-down');
+          }
+        };
+
         if(angular.isDefined($localStorage.searchResult)){
                 $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
