@@ -181,27 +181,65 @@ class SendAlertCommand extends ContainerAwareCommand
             return $results;
         }
     }
-
+    private function getNameUserFromEmail($email){
+        $em = $this->getContainer()->get('doctrine')->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:User', 'u_');
+        $qb->where('u_.email = :email')->setParameter('email', $email);
+        $qb->select('u_.firstName');
+        $result = $qb->getQuery()->getSingleScalarResult();
+        if ($result == null) {
+            return false;
+        }
+        else{
+            return $result;
+        }
+    }
 
     private function sendEmail($creatorUser ,$infoTender, $infoConsultation, $infoBuyer,$infoSupplier){
-        //print_r($infoTender);die;
+        //print_r($creatorUser);die;
+        $nameUser = $this->getNameUserFromEmail($creatorUser);
         $mailer = $this->getContainer()->get('mailer');
         $message = \Swift_Message::newInstance();
         $baseUrl = $this->getContainer()->get('templating.helper.assets')->getUrl('');
-        $logo = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/logo-email.png'));
-        $phone = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/phone.ico'));
-        $mail = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/mail.ico'));
+        $logo = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/e-electricity-logo-blue.png'));
+        $logo_vertical = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/e-electricity-logo-vertical.png'));
+        $logistic = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/logistic_agent.png'));
+        $service_provider = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/service_provider.png'));
+        $service_request = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/service_requester.png'));
+        $supplier = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/supplier.png'));
+        $buniness_opportunity = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/buniness_opportunity.png'));
+        $phone = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/phone.png'));
+        $envelope = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/envelope.png'));
+        $facebook = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/facebook.png'));
+        $twitter = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/twitter.png'));
+        $youtube = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/youtube.png'));
+        $google = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/google.png'));
+        $linkedin = $message->embed(\Swift_Image::fromPath($baseUrl.'/front/img/linkedin.png'));
         $message->setSubject('New Alert')
             ->setFrom('contact@continuousnet.com')
             ->setTo($creatorUser)
             ->setBody($this->getContainer()->get('templating')->render('UbidElectricityBundle:Alert:email.html.twig',
-                array('Tenders' => $infoTender,
+                array(
+                    'Name' =>$nameUser,
+                    'Tenders' => $infoTender,
                     'Consultations' => $infoConsultation,
                     'Buyers'=>$infoBuyer,
                     'Suppliers' => $infoSupplier,
                     'logo'=>$logo,
+                    'logo_vertical'=>$logo_vertical,
+                    'logistic'=>$logistic,
+                    'service_provider'=>$service_provider,
+                    'service_resquest'=>$service_request,
+                    'supplier'=>$supplier,
+                    'buniness_opportunity'=>$buniness_opportunity,
                     'phone'=>$phone,
-                    'mail'=>$mail,
+                    'envelope'=>$envelope,
+                    'facebook'=>$facebook,
+                    'twitter'=>$twitter,
+                    'youtube'=>$youtube,
+                    'google'=>$google,
+                    'linkedin'=>$linkedin,
                     'baseUrl'=>$baseUrl)), "text/html");
          $mailer->send($message);
         //if($result == 1){
