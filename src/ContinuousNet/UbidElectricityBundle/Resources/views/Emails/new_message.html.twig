@@ -1,5 +1,15 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    you have a new message <br>
-    {{ message.getBody() }}
+
+    <p>Dear {{ message.getToUser().getFirstName() }},</p>
+    <p>&nbsp;</p>
+    <p>
+        You have received a new Message from {{ message.getFromUser().getFirstName() }}
+    </p>
+    <p>&nbsp;</p>
+    {% if message.getBody()|length > 100 %}
+        {{ message.getBody()|striptags | slice(0, 100) }} ..
+    {% else %}
+        {{ message.getBody()|striptags }}
+    {% endif %}
 {% endblock %}

@@ -26,27 +26,29 @@
         The professional network for electrical business opportunities
     </div>
     <div style="background-color: white; padding: 30px;">
-        <div style="background-color: #F7F8FC; padding: 50px 230px 200px 80px; background-image: url('http://public.ubid.com/front/img/e-electricity-logo-vertical.png'); background-position: bottom right; background-repeat: no-repeat;">
-            {% block mailContent %} {% endblock %}
+        <div style="background-color: #F7F8FC; padding: 50px 230px 200px 80px; background-image: url('{{ app.request.getSchemeAndHttpHost() }}/front/img/e-electricity-logo-vertical.png'); background-position: bottom right; background-repeat: no-repeat;">
+            {% block mailContent %}
+
+            {% endblock %}
         </div>
     </div>
     <div style="background-color: #1D69AD; padding: 60px 80px 20px 110px; color: white;">
         <div style="width: 340px; height: 92px; border-bottom: white 1px solid; text-align: center; display: inline-block;">
-            <a href="https://www.facebook.com/" target="_blank" title="join us on facebook" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on facebook" src="http://public.ubid.com/front/img/facebook.png" height="44" width="44" style="border: none;" /></a>
-            <a href="https://twitter.com/" target="_blank" title="join us on twitter" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on twitter" src="http://public.ubid.com/front/img/twitter.png" height="44" width="44" style="border: none;" /></a>
-            <a href="https://www.youtube.com/" target="_blank" title="join us on youtube" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on youtube" src="http://public.ubid.com/front/img/youtube.png" height="44" width="44" style="border: none;" /></a>
-            <a href="https://plus.google.com/" target="_blank" title="join us on Google+" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on Google+" src="http://public.ubid.com/front/img/google.png" height="44" width="44" style="border: none;" /></a>
-            <a href="https://www.linkedin.com/" target="_blank" title="join us on LinkedIn" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 5px 5px 5px;"><img alt="join us on LinkedIn" src="http://public.ubid.com/front/img/linkedin.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://www.facebook.com/" target="_blank" title="join us on facebook" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on facebook" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/facebook.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://twitter.com/" target="_blank" title="join us on twitter" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on twitter" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/twitter.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://www.youtube.com/" target="_blank" title="join us on youtube" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on youtube" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/youtube.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://plus.google.com/" target="_blank" title="join us on Google+" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on Google+" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/google.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://www.linkedin.com/" target="_blank" title="join us on LinkedIn" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 5px 5px 5px;"><img alt="join us on LinkedIn" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/linkedin.png" height="44" width="44" style="border: none;" /></a>
             <span style="margin: 20px auto -8px auto; width: 170px; background-color: #1D69AD; font-size: 16px; text-align: center; display: inline-block;">Keep in touch</span>
         </div>
 
         <div style="width: 260px; height: 114px; text-align: left; display: inline-block; float: right;">
             <div style="margin-top: 10px;">
-                <img style="display: inline; vertical-align: middle;" src="http://public.ubid.com/front/img/phone.png" height="34" width="34" alt="Call us" />
+                <img style="display: inline; vertical-align: middle;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/phone.png" height="34" width="34" alt="Call us" />
                 <a target="_blank" href="tel:+971125845267" style="color: white; font-size: 16px; line-height: 34px; text-decoration: none;">+971 1258 4526 7</a>
             </div>
             <div style="margin-top: 30px;">
-                <img style="display: inline; vertical-align: middle;" src="http://public.ubid.com/front/img/envelope.png" height="34" width="34" alt="Call us" />
+                <img style="display: inline; vertical-align: middle;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/envelope.png" height="34" width="34" alt="Call us" />
                 <a target="_blank" href="mailto:contact@e-electricity.com" style="color: white; font-size: 16px; line-height: 34px; text-decoration: none;">contact@e-electricity.com</a>
             </div>
         </div>

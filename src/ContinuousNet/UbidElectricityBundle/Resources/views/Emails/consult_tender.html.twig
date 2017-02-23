@@ -1,0 +1,5 @@
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    Your opportunity business is consulted<br>
+    {{ tender.getReference()}}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    <p>Dear {{ bid.getTender().getCreatorUser().getFirstName() }},</p>
+    <p>&nbsp;</p>
+    <p>
+        You have received a new Bid from {{ bid.getCreatorUser().getFirstName() }} {{ bid.getCreatorUser().getLastName() }}
+    </p>
+    <p>&nbsp;</p>
+    <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
+        <tr>
+            <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                Bid informations
+            </th>
+        </tr>
+        <tr>
+            <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                <p><span style="color: #1D69AD;">Reference</span> : {{ bid.getReference() }}</p>
+                <p><span style="color: #1D69AD;">Title</span> : {{ bid.getTitle() }}</p>
+                <p><span style="color: #1D69AD;">Description</span> : {{ bid.getDescription() | striptags}}</p>
+            </td>
+        </tr>
+{% endblock %}

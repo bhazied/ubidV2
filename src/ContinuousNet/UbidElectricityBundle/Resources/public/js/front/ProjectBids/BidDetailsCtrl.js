@@ -4,8 +4,8 @@
  * Controller Front to show bid details
  */
 
-app.controller('BidDetailsCtrl', ['$scope', '$rootScope','$controller', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bidsDataFactory','$projectBidsFrontDataFactory','toaster',
-    function($scope, $rootScope, $controller, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bidsDataFactory, $projectBidsFrontDataFactory, toaster) {
+app.controller('BidDetailsCtrl', ['$scope', '$rootScope','$controller', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bidsDataFactory','$bidsFrontDataFactory','toaster',
+    function($scope, $rootScope, $controller, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bidsDataFactory, $bidsFrontDataFactory, toaster) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -25,7 +25,7 @@ app.controller('BidDetailsCtrl', ['$scope', '$rootScope','$controller', '$state'
                 locale: $localStorage.language,
                 id: $scope.bid.id
             };
-            $projectBidsFrontDataFactory.bookmarkBid($params).$promise.then(function (data) {
+            $bidsFrontDataFactory.bookmarkBid($params).$promise.then(function (data) {
                 if(data.status == true) {
                     toaster.pop('success', $filter('translate')('content.common.SHORLISTBIDNOTIFICATION'), data.message);
                 }
