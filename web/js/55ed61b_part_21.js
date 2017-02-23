@@ -40,10 +40,37 @@ var languages = {
     'de' : 'Deutsch'
 };
 
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
-    function ($rootScope, $state, $stateParams, $localStorage) {
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStorage', '$timeout', '$interval',
+    function ($rootScope, $state, $stateParams, $localStorage, $sessionStorage, $timeout, $interval) {
 
         $rootScope.languages = languages;
+
+        $rootScope.underPage = true;
+        if (angular.isDefined($sessionStorage.underPage)) {
+            $rootScope.underPage = false;
+        } else {
+            $('body').addClass('underPage');
+            $sessionStorage.underPage = true;
+            $rootScope.timer = 6;
+            var interval = $interval(function() {
+                $rootScope.timer--;
+                if ($rootScope.timer < 0) {
+                    $('body').removeClass('underPage');
+                    $rootScope.timer = 0;
+                    $rootScope.underPage = false;
+                    $interval.cancel(interval);
+                }
+                var $circle = $('.circle_animation');
+                var r = 65.85699;
+                var c = Math.PI*(r*2);
+                console.log('C: ' + c);
+                console.log('i: ' + $rootScope.timer);
+                console.log((6-$rootScope.timer)/6);
+                var pct = ((6-timer)/6)*c;
+                console.log('PCT: ' + pct);
+                $circle.css({strokeDashoffset: pct});
+            }, 1000);
+        }
 
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
