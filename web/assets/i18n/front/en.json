@@ -1937,6 +1937,10 @@
     "SUPPLIERSIN": "Suppliers in",
     "NOSUPPLIERS": "This category has no supplier",
     "BUYERSIN": "Buyers in",
-    "NOBUYERS": "This category has no buyer"
+    "NOBUYERS": "This category has no buyer",
+    "seo":{
+      "BUYERMETATITLE": "Electrical buyer",
+      "SUPPLIERMETATITLE": "Electric supplier"
+    }
   }
 }
