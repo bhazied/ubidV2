@@ -2067,8 +2067,6 @@ body {
     background-repeat: no-repeat;
 }
 
-
-
 #electricity-navbar {
     background-color: #1D69AD !important;
     min-height: 86px;
@@ -3832,10 +3830,12 @@ body.underPage .btn-green {
     font-size: 16px;
     border-radius: 3px;
     text-align: center;
-    font-family: century Gothic;
+    font-family: 'CenturyGothic';
     border: none;
     color: white;
     padding: 15px 32px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 body.underPage footer {

@@ -49,7 +49,7 @@
     <meta name="theme-color" content="#1d69ad">
 
 </head>
-<body ng-controller="FrontCtrl">
+<body ng-controller="FrontCtrl" ng-controller="AppCtrl" ng-class="{'underPage': underPage, 'noUnserPage': !underPage}">
 
 {% block body %}
 {% endblock %}

@@ -67604,11 +67604,11 @@ angular.module('ubid-electricity', [
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English',
+    'en' : 'English'/*,
     'fr' : 'Français',
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStorage', '$timeout', '$interval',
@@ -67620,26 +67620,19 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         if (angular.isDefined($sessionStorage.underPage)) {
             $rootScope.underPage = false;
         } else {
-            $('body').addClass('underPage');
+            $rootScope.initialTime = $rootScope.timer = 6;
+            $rootScope.circleRadius = 66;
             $sessionStorage.underPage = true;
-            $rootScope.timer = 6;
-            var interval = $interval(function() {
+            $rootScope.interval = $interval(function() {
                 $rootScope.timer--;
                 if ($rootScope.timer < 0) {
-                    $('body').removeClass('underPage');
                     $rootScope.timer = 0;
+                    $interval.cancel($rootScope.interval);
                     $rootScope.underPage = false;
-                    $interval.cancel(interval);
                 }
-                var $circle = $('.circle_animation');
-                var r = 65.85699;
-                var c = Math.PI*(r*2);
-                console.log('C: ' + c);
-                console.log('i: ' + $rootScope.timer);
-                console.log((6-$rootScope.timer)/6);
-                var pct = ((6-timer)/6)*c;
-                console.log('PCT: ' + pct);
-                $circle.css({strokeDashoffset: pct});
+                var angle = Math.PI*($rootScope.circleRadius*2);
+                var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
+                $('.circle_animation').css({strokeDashoffset: percent});
             }, 1000);
         }
 
