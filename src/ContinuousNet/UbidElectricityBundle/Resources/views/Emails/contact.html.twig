@@ -1,5 +1,12 @@
-vous venez de recever un nouveau email de la part de {{ firstName }} {{ lastName }} <br>
-avec l'adresse e-mail suivante {{ email }} <br>
-{{ subject }} : <br>
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    <p>Dear ,</p>
+    <p>&nbsp;</p>
+    <p>
 
-<p>{{ message }}</p>
+        You have just received a new mail from {{ firstName }}  {{ lastName }}
+    </p>
+    <p>with subject : {{ subject }}</p>
+    <p>{{ message }}</p>
+    <p>&nbsp;</p>
+{% endblock %}
