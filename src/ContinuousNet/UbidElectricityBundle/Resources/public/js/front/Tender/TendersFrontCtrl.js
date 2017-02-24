@@ -58,7 +58,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
         $scope.slug = $scope.section.toLowerCase() + 's';
 
-        $postsDataFactory.getBySlug({slug: $scope.slug, locale: $scope.locale}).$promise.then(function(data) {
+        $postsDataFactory.getBySlug({slug: $scope.slug, locale: $localStorage.language}).$promise.then(function(data) {
             $scope.postLoaded = true;
             $scope.post = data;
             $rootScope.seo.meta_description = data.meta_description;

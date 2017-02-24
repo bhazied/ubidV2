@@ -42,7 +42,7 @@
     <div class="form-group">
         <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
         <div class="countries-checkbox">
-            <input type="text" ng-model="filterCountries" placeholder="[['front.FILTERCOUNTRIES' | translate]]">
+            <input type="text" ng-model="filterCountries" placeholder="[['front.FILTERCOUNTRIES' | translate]]" ng-minlength="3">
             <div class="form-group" ng-repeat="country in countries | filter:filterCountries ">
                 <label class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" checklist-model="search.countries" checklist-value="country.id" name="countries[]" id="searchCountries[[country.id]]">
