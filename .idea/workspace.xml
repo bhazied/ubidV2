@@ -2,62 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e873a20-8d76-416f-86e7-fbbe7c4e3b98" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/arrows-active.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/arrows-active.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/arrows-normal.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/arrows-normal.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/crop.gif" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/crop.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/dialogs.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/dialogs.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/icons-big.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/icons-big.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/icons-small.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/icons-small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/logo.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/progress.gif" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/progress.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/quicklook-bg.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/quicklook-bg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/quicklook-icons.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/quicklook-icons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/resize.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/resize.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/spinner-mini.gif" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/spinner-mini.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/toolbar.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/toolbar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_dropbox.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_dropbox.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_ftp.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_ftp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_local.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_local.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_sql.png" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/img/volume_icon_sql.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/register_email.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/css/elfinder.min.css" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/css/elfinder.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/css/theme.css" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/css/theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/elfinder.min.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/elfinder.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.LANG.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.LANG.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ar.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.bg.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ca.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.cs.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.cs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.da.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.da.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.de.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.de.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.el.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.el.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.es.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fa.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fo.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fr.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.fr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.he.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.he.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.hu.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.hu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.id.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.id.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.it.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.it.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.jp.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.jp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ko.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ko.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.nl.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.nl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.no.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.no.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.pl.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.pl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.pt_BR.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.pt_BR.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ro.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ro.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ru.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.ru.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sk.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sl.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sr.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sv.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.sv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.tr.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.tr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.uk.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.uk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.vi.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.vi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.zh_CN.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.zh_CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.zh_TW.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/dist/js/i18n/elfinder.zh_TW.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/elfinder-built.css" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/elfinder-built.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/bower_components/elfinder/elfinder-built.js" afterPath="$PROJECT_DIR$/web/assets/bower_components/elfinder/elfinder-built.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/registration.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/registration.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/resetting.html.twig" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/resetting.html.twig" />
     </list>
     <ignored path="ubid-electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,12 +28,62 @@
     <favorites_list name="ubid-electricity" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="contact.html.twig" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="contact.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/contact.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+              <caret line="4" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resetting.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/resetting.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="70" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset_email.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registration.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/registration.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register_email.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/register_email.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="166" column="32" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -109,6 +109,11 @@
       <list>
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/contact.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/resetting.html.twig" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/register_email.html.twig" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/registration.html.twig" />
       </list>
     </option>
   </component>
@@ -149,7 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -483,10 +487,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -504,6 +510,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -525,11 +537,12 @@
       <option name="presentableId" value="Default" />
       <updated>1487927194341</updated>
       <workItem from="1487927196682" duration="3263000" />
+      <workItem from="1487933877431" duration="1457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3263000" />
+    <option name="totallyTimeSpent" value="4720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -581,11 +594,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/publicLayout.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/contact.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/bid_short_listed.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/publicLayout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -593,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-495">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -617,7 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -629,19 +653,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/front/css/e-electricity.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="1773" column="32" selection-start-line="1773" selection-start-column="16" selection-end-line="1773" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -649,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -657,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="23" column="22" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1680">
           <caret line="163" column="24" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -680,7 +692,47 @@
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/contact.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <caret line="4" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="166" column="32" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/resetting.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="70" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/register_email.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/registration.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
           <folding />
         </state>
       </provider>

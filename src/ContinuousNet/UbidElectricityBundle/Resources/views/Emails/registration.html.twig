@@ -12,9 +12,5 @@
 {% endblock %}
 
 {% block body_html %}
-    <p>
-    {% autoescape false %}
-        {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
-    {% endautoescape %}
-    </p>
+    {% include 'UbidElectricityBundle:Emails:register_email.html.twig' %}
 {% endblock %}
