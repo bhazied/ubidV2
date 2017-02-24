@@ -146,7 +146,7 @@ fos_user:
                 address:        registration@continuousnet.com
                 sender_name:    E-electricity Registration
             enabled:    true # change to true for required email confirmation
-            template:   FOSUserBundle:Registration:email.txt.twig
+            template:   UbidElectricityBundle:Emails:registration.html.twig
         form:
             type:               ContinuousNet\UbidElectricityBundle\Form\RegistrationType # or "fos_user_registration" on Symfony < 2.8
             name:               app_user_registration
@@ -157,7 +157,7 @@ fos_user:
             from_email: # Use this node only if you don"t want the global email address for the resetting email
                 address:        resetting@continuousnet.com
                 sender_name:    E-electricity Resetting
-            template:   FOSUserBundle:Resetting:email.txt.twig
+            template:   UbidElectricityBundle:Emails:resetting.html.twig
         form:
             type:               FOS\UserBundle\Form\Type\ResettingFormType # or "fos_user_resetting" on Symfony < 2.8
             name:               fos_user_resetting_form
