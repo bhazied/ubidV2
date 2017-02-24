@@ -379,7 +379,7 @@
       "NOTIFICATIONNOTDELETED": "Notification Not Deleted",
       "BACKNOTIFICATIONS": "Back To Notifications List",
       "POSTS": "Posts",
-      "POST": "Post",
+      "POST": "Post details",
       "ADDPOST": "Add New Post",
       "NEWPOST": "New Post",
       "POSTDETAILS": "Post Details",
@@ -809,9 +809,9 @@
         "BUYER" : {
           "DEFAULT" : "Default",
           "A" : "KEY INFORMATION",
-          "C" : "PERSONAL INFORAMTION",
-          "D" : "COMPANY INFORMATION",
-          "B" : "MORE INFORMATION",
+          "B" : "PERSONAL INFORAMTION",
+          "C" : "COMPANY INFORMATION",
+          "D" : "MORE INFORMATION",
           "E" : "PUBLIC SETTINGS"
         },
         "BUYERTYPE" : {
@@ -874,9 +874,9 @@
         "SUPPLIER" : {
           "DEFAULT" : "Default",
           "A" : "KEY INFORMATION",
-          "C" : "PERSONAL INFORAMTION",
-          "D" : "COMPANY INFORMATION",
-          "B" : "MORE INFORMATION",
+          "B" : "PERSONAL INFORAMTION",
+          "C" : "COMPANY INFORMATION",
+          "D" : "MORE INFORMATION",
           "E" : "PUBLIC SETTINGS"
         },
         "SUPPLIERPRODUCT" : {
@@ -1599,7 +1599,7 @@
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
         "LASTNAMEREQUIRED": "Last name is required",
-        "CGREQUIRED": "Accept the general conditions"
+        "GCREQUIRED": "Please accept the general conditions"
       }
     },
     "common": {
@@ -1702,23 +1702,37 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "HOME": "Home page",
+    "MENU": "User menu",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "EMAILCONFIRM": "Email confirmation",
+    "RESETPAWSSWORD": "Rest password",
+    "LOCKSCREEN": "Lock screen",
+    "PROFILE": "User profile",
+    "MENU": "User menu",
+    "CHANGEPASSWORD":"Change password",
     "CONNECTWITH" : "CONNECT whith electricity business lead",
+    "THEPROFESSIONAL": "The professional network for electrical business opportunities",
     "BUYER" : "Buyer",
-    "BUYERDESCRIPTION" : "anyone looks for broadcasting business apportunities all over the world an compare bids",
     "SUPPLIER" : "Supplier",
-    "SUPPLIERDESCRIPTION" : "anyone looks for business apportunities to expand affair",
-    "SERVICEREQUESTER" : "Service Requester",
-    "SERVICEREQUESTERDESCRIPTION" : "anyone requests services within the electrical business industry",
+    "BUSINESSOPPORTUNITIES": "Business opportunities",
+    "BUSINESSOPPORTUNITIESDESCRIPTION" : "Access to lastes worldwide electrical tenders, consultations and products",
+    "SUPPLIERSDESCRIPTION" : "Find out largest company databse for services and products",
+    "PRODUCTSERVICEREQUESTER" : "Product / Service Requester",
+    "PRODUCTSERVICEREQUESTERDESCRIPTION" : "Publish for FREE all your electrical products and services",
     "SERVICEPROVIDER" : "Service Provider",
-    "SERVICEPROVIDERDESCRIPTION" : "a business responds to all your electrical service needs",
-    "LOGISTICAGENT" : "Logistic Agent",
-    "LOGISTICAGENTDESCRIPTION" : "a business responds to all your carrer service needs",
+    "SERVICEPROVIDERDESCRIPTION" : "Come up with your service partner to respond to all your business needs",
+    "LOGISTICS" : "Logistics",
+    "LOGISTICSDESCRIPTION" : "Guaratee your products safety and find your logistic partner",
     "LEARMORE" : "Learn more",
     "SPECIFICSEARCH":"Specific Search",
     "CATEGORIES":"Categories",
     "COUNTRIES":"Countries",
     "OPPORTUNITYSIZE":"Opportunity Size",
     "PUBLICATIONDATE":"Publication Date",
+    "MARKETREGIONSRATES": "Market Regions Rates",
+    "FEES":"Fees",
     "DUEDATE":"Due Date",
     "FROM":"From",
     "TO":"To",
@@ -1761,7 +1775,6 @@
     "MYPRODUCTS":"My Products",
     "NEWPRODUCT":"New Product",
     "MYPROFILE":"My Profile",
-    "CHANGEPASSWORD":"Change Password",
     "SIGNIN": "Sign in",
     "SIGNOUT":"Sign out",
     "SIGNUP": "Sign up",
@@ -1821,7 +1834,7 @@
     "TITLEASC": "Title ASC",
     "TITLEDESC": "Title DESC",
     "DUEDATEASC": "Due date ASC",
-    "DUEDATEDESC": "Due Date DESC",
+    "DUEDATEDESC": "Due date DESC",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",
@@ -1894,7 +1907,9 @@
     "OVER1BILLION": "Over $1 billion",
     "SUPPLIERDESCRIPTIONSTEP1": "Supplier informations",
     "SUPPLIERDESCRIPTIONSTEP2": "Company informations",
-    "SHOWGENERALCONDITION": "Show General Condition",
+    "SHOWGENERALCONDITIONS": "Show General Conditions",
+    "GENERALCONDITIONS": "General Conditions",
+    "IHAVEREADANDACCEPTTHE": "I have read and accept the",
     "settings":{
       "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
       "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
@@ -1907,6 +1922,25 @@
     "SENTMESSAGE": "sent messages",
     "RECEIVEDMESSAGE":"Received messages",
     "APPLAYTENDER" : "Applay tender",
-    "DESCRIPTIONREQUIRED" : "Description is required"
+    "DESCRIPTIONREQUIRED" : "Description is required",
+    "CATEGORIES": "Categories",
+    "ALLCATEGORIES": "All categories",
+    "SMALLDETAILSCATEGORY": "The category '[[category_name]]' content [[tender_count]] Tenders for more information click to link bellow",
+    "CATEGORIESLIST": "Categories list",
+    "SUPPLIERPRODUCTS": "Supplier Products",
+    "SUPPLIERNOPRODUCT": "This supplier has not yet added any product",
+    "POST": "Post details",
+    "TENDERSIN": "Tenders in",
+    "NOTENDERS": "This category has no tender",
+    "CONSULTATIONSIN": "Consultations in",
+    "NOCONSULTATIONS": "This category has no consultation",
+    "SUPPLIERSIN": "Suppliers in",
+    "NOSUPPLIERS": "This category has no supplier",
+    "BUYERSIN": "Buyers in",
+    "NOBUYERS": "This category has no buyer",
+    "seo":{
+      "BUYERMETATITLE": "Electrical buyer",
+      "SUPPLIERMETATITLE": "Electric supplier"
+    }
   }
 }

@@ -1,5 +1,5 @@
 <!-- start: DETAILS -->
-<div class="container-fluid container-fullw bg-white">
+<div class="container-fluid container-fullw bg-blue">
     <div class="row">
         <div class="col-md-12 myTenderBookmark-details" ng-controller="MyTenderBookmarkedDetailsCtrl">
             <div>
@@ -26,7 +26,7 @@
                         </tr>
                         <tr>
                             <th><span translate="content.list.fields.TENDER">Tender</span></th>
-                            <td><a ui-sref="app.marketplace.tendersdetails({id: tenderBookmark.tender.id})">[[ tenderBookmark.tender.title ]]</a></span></td>
+                            <td>[[ tenderBookmark.tender.title ]]</td>
                         </tr>
                         <tr>
                             <th><span translate="content.list.fields.STATUS">Status</span></th>
@@ -41,18 +41,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><span translate="content.list.fields.CREATORUSER">Creator User</span></th>
-                            <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.creator_user.id})">[[ tenderBookmark.creator_user.username ]]</a></span></td>
-                        </tr>
-                        <tr>
                             <th><span translate="content.list.fields.MODIFIEDAT">Modified At</span></th>
                             <td>
                                 <span>[[ tenderBookmark.modified_at | date: datetimeFormat ]]</span>
                             </td>
-                        </tr>
-                        <tr>
-                            <th><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></th>
-                            <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.modifier_user.id})">[[ tenderBookmark.modifier_user.username ]]</a></span></td>
                         </tr>
                         </tbody>
                     </table>

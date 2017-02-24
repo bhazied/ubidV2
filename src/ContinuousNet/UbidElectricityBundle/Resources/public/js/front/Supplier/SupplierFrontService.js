@@ -7,7 +7,6 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
 
         var url = $rootScope.app.apiURL + $rootScope.app.apiVersion;
-        console.log(url);
         return $resource(url, {
             locale: '@locale',
             id: '@id',
@@ -17,7 +16,10 @@ app.factory('$suppliersFrontDataFactory', ['$resource', '$rootScope',
             sortDirection: '@sortDirection'
         }, {
             list : { method: 'GET', url: '/:locale' + url + 'suppliers/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-            supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false}
+            supplier : { method: 'GET', url:'/:locale' + url +  'supplierDetails/:id', isArray: false},
+            products : { method: 'GET', url:'/:locale' + url +  'supplierProducts/:id', isArray: false},
+            product : { method: 'GET', url:'/:locale' + url +  'supplierProduct/:id', isArray: false},
+            category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false}
         });
 
     }]);

@@ -75,6 +75,7 @@ class SupplierType extends AbstractType
             ->add('enableComment', CheckboxType::class)
             ->add('enablePrivateMessage', CheckboxType::class)
             ->add('enableShare', CheckboxType::class)
+            ->add('categories', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Category', 'choice_label' => 'name'))
         ;
     }
     

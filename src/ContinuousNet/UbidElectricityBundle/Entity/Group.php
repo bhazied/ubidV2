@@ -131,7 +131,7 @@ class Group  extends BaseGroup
      * @var \Doctrine\Common\Collections\Collection
      * @access protected
      *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="groups")
+     * @ORM\ManyToMany(targetEntity="User")
      * @ORM\JoinTable(name="users_groups",
      *     joinColumns={
      *         @ORM\JoinColumn(name="group_id", referencedColumnName="id")

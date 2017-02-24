@@ -1,16 +1,13 @@
 <div class="tender-details" ng-controller="tenderCtrl">
-    <h4 class="name">[[ tender.title ]]</h4>
+    <h1 class="name">[[ tender.title ]]</h1>
+    <h2 ng-bind-html="tender.description"></h2>
     <table class="table table-striped">
         <tr>
             <th><span translate="front.REFNUMBER">Tender  no</span>:</th>
             <td><span class="value">[[ tender.reference ]]</span></td>
         </tr>
         <tr>
-            <th><span translate="front.BOND">Bond</span>:</th>
-            <td><span class="value">Applicable</span></td>
-        </tr>
-        <tr>
-            <th><span translate="front.TENDERFEE">Tender Fee</span>:</th>
+            <th><span translate="front.FEES">Tender Fees</span>:</th>
             <td><span class="value">[[ tender.fees ]]</span></td>
         </tr>
         <tr>
@@ -19,7 +16,7 @@
         </tr>
         <tr>
             <th><span translate="front.REGIONCOUNTRY">Country</span>:</th>
-            <td><span class="value"><i class="country"><img src="[[ tender.country.picture ]]"></i> [[ tender.country.name ]]</span></td>
+            <td><span class="value"><i class="country"><span class="flag-icon flag-icon-[[ tender.country.code | lowercase ]]"></span></i> [[ tender.country.name ]]</span></td>
         </tr>
         <tr>
             <th><span translate="front.ISSUER">Issueur</span>:</th>
@@ -36,23 +33,21 @@
         <tr>
             <th><span translate="front.CONTACT">Contact</span>:</th>
             <td>
-                                    <span class="value">
-                                        <span translate="front.TEL">Tel</span>: <span>[[ tender.buyer.phone ]]</span>
-                                        -
-                                        <span translate="front.FAX">Fax</span>: <span>[[ tender.buyer.fax ]]</span>
-                                        -
-                                        <span translate="front.WEBSITE">Website</span>: <span>[[ tender.buter.website ]]</span>
-                                    </span>
+                <span class="value">
+                    <span translate="front.TEL">Tel</span>: <span>[[ tender.buyer.phone ]]</span>
+                    -
+                    <span translate="front.FAX">Fax</span>: <span>[[ tender.buyer.fax ]]</span>
+                    -
+                    <span translate="front.WEBSITE">Website</span>: <span>[[ tender.buter.website ]]</span>
+                </span>
             </td>
         </tr>
     </table>
-    <h5 translate="front.ATTACHMENTFILES" ng-if="tender.attachment_file1 != ''">Attachment Files</h5>
+    <h5 translate="front.ATTACHMENTFILES" ng-if="tender.attachment_files != ''">Attachment Files</h5>
     <div class="mb-1">
-        <ul class="list-group">
-            <li class="list-group-item"  ng-if="tender.attachment_file1"><a href="#"><i class="fa fa-download"></i> Cras justo odio.pdf</a></li>
-            <li class="list-group-item" ng-if="tender.attachment_file2"><a href="#"><i class="fa fa-download"></i> Dapibus ac facilisis.docx</a</li>
-            <li class="list-group-item" ng-if="tender.attachment_file3"><a href="#"><i class="fa fa-download"></i> Morbi leo risus.pdf</a></li>
-        </ul>
+        <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
+            <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ file ]]" alt=""><i class="ti-download"></i> [[ file ]]</a></li></ul>
+        </div>
     </div>
     <div class="row mb-1">
         <div class="col-md-6">
@@ -61,12 +56,8 @@
             <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER">Bookmark Tender</button>
         </div>
         <div class="col-md-6">
-            <button ng-if="user.email" ui-sref="front.applay_tender({idTender: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+            <button ng-if="user.email" ui-sref="front.apply_tender({idTender: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
             <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
         </div>
     </div>
-   <!-- <div class="row mb-1">
-        <div class="col-md-6"><a href="#"><i class="ti-arrow-left"></i> <span translate="front.PREVIOUSTENDER">Previous Tender</span></a></div>
-        <div class="col-md-6"><a href="#" class="pull-right"><span translate="front.NEXTTENDER">Next Tender</span> <i class="ti-arrow-right"></i></a></div>
-    </div> -->
 </div>

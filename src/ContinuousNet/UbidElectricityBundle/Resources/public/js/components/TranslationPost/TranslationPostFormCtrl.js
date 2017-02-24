@@ -35,7 +35,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.posts.length == 0) {
                 $scope.posts.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOST')});
                 var def = $q.defer();
-                $postsDataFactory.query({offset: 0, limit: 10000, 'order_by[post.title]': 'asc'}).$promise.then(function(data) {
+                $postsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[post.title]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -60,7 +60,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -136,7 +136,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     
     $scope.translation_post_post_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $translationPostsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $translationPostsDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.translationPost = savable(data);
             });

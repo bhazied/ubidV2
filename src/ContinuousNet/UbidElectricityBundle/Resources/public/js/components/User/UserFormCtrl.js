@@ -159,7 +159,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.countries.length == 0) {
                 $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
                 var def = $q.defer();
-                $countriesDataFactory.query({offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
+                $countriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -184,7 +184,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.languages.length == 0) {
                 $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
                 var def = $q.defer();
-                $languagesDataFactory.query({offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -209,7 +209,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -233,7 +233,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.groups.length == 0) {
                 $scope.groups.push({});
                 var def = $q.defer();
-                $groupsDataFactory.query({offset: 0, limit: 10000, 'order_by[group.name]': 'asc'}).$promise.then(function(data) {
+                $groupsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[group.name]': 'asc'}).$promise.then(function(data) {
                     $scope.groups = data.results;
                     def.resolve($scope.groups);
                 });
@@ -331,7 +331,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.user_country_readonly = false;
     $scope.user_language_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $usersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $usersDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.user = savable(data);
                 if ($scope.user.password_requested_at != null) {
@@ -378,12 +378,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     return $scope.user[field];
                 },
                 instance: function() {
-                    return 'default';
+                    return 'data';
                 },
                 folder: function() {
                     var user_id = '000000' + $localStorage.user.id;
-                    var user_dir = '/user_' + user_id.substr(user_id.length - 6);
-                    return 'data' + user_dir + '/users';
+                    var user_dir = 'user_' + user_id.substr(user_id.length - 6);
+                    return user_dir;
                 }
             }
         });

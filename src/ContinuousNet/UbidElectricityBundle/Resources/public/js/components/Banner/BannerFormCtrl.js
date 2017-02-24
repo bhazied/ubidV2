@@ -102,7 +102,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.bannerTypes.length == 0) {
                 $scope.bannerTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBANNERTYPE')});
                 var def = $q.defer();
-                $bannerTypesDataFactory.query({offset: 0, limit: 10000, 'order_by[bannerType.name]': 'asc'}).$promise.then(function(data) {
+                $bannerTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[bannerType.name]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -127,7 +127,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.users.length == 0) {
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
-                $usersDataFactory.query({offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
@@ -151,7 +151,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.bannerPositions.length == 0) {
                 $scope.bannerPositions.push({});
                 var def = $q.defer();
-                $bannerPositionsDataFactory.query({offset: 0, limit: 10000, 'order_by[bannerPosition.name]': 'asc'}).$promise.then(function(data) {
+                $bannerPositionsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[bannerPosition.name]': 'asc'}).$promise.then(function(data) {
                     $scope.bannerPositions = data.results;
                     def.resolve($scope.bannerPositions);
                 });
@@ -248,7 +248,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     
     $scope.banner_banner_type_readonly = false;
     if (angular.isDefined($stateParams.id)) {
-        $bannersDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
+        $bannersDataFactory.get({locale: $localStorage.language, id: $stateParams.id}).$promise.then(function(data) {
             $timeout(function(){
                 $scope.banner = savable(data);
                 if ($scope.banner.start_publishing != null) {

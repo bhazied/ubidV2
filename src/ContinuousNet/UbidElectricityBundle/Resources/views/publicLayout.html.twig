@@ -3,13 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="[[app.description]]">
-    <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
+    <meta name="description" content="[[pageDescription()]]"/>
+    <meta name="keywords" content="[[pageKeywords()]]" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="[[app.author]]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title data-ng-bind="pageTitle()">{% block title %}Welcome!{% endblock %}</title>
+    <meta name="fragment" content="!" />
+    <base href="/">
+    <title>[[pageTitle()]] {% block title %}{% endblock %}</title>
     {% block stylesheets %}
 
         {% stylesheets
@@ -25,6 +29,7 @@
         '@elfinder_css'
         '@color_picker_css'
         '@multirange_slider_css'
+        '@flags'
         '@site_front_css'
         filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -32,8 +37,17 @@
 
     {% endblock %}
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/front/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/front/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/front/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/front/icons/manifest.json">
+    <link rel="mask-icon" href="/front/icons/safari-pinned-tab.svg" color="#1d69ad">
+    <link rel="shortcut icon" href="/front/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1d69ad">
+    <meta name="msapplication-TileImage" content="/front/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/front/icons/browserconfig.xml">
+    <meta name="theme-color" content="#1d69ad">
 
-    <link rel="icon" href="/favicon.ico" />
 </head>
 <body ng-controller="FrontCtrl">
 

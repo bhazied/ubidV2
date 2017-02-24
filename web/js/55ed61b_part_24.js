@@ -409,7 +409,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.showUserMenu = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
-        $rootScope.contentSize = 6;
+        $rootScope.contentSize = 9;
         $rootScope.contentOffset = 0;
 
         //header searchForm show
@@ -427,16 +427,22 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'auth.lockscreen',
             'auth.emailconfirm',
             'front.home',
-            'front.tenders.list',
+            'front.tenders',
             'front.tenders.category',
+            'front.tenders.country',
+            'front.tenders.sector',
             'front.advanced_search',
-            'front.tenders.details',
-            'front.buyers',
-            'front.suppliers',
-            'front.post',
             'front.generic_search',
+            'front.tender',
+            'front.buyers',
+            'front.buyer',
+            'front.suppliers',
+            'front.supplierscategory',
+            'front.supplier',
+            'front.post',
             'front.contact',
-            'front.buyer'
+            'front.categories',
+            'front.category'
         ];
 
         $timeout(function() {
@@ -473,7 +479,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             //start loading bar on stateChangeStart
             cfpLoadingBar.start();
-
         });
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -482,22 +487,21 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             $rootScope.searchLoaded = false;
             
             //stop loading bar on stateChangeSuccess
-            event.targetScope.$watch("$viewContentLoaded", function() {
-
-                cfpLoadingBar.complete();
+            event.targetScope.$watch('$viewContentLoaded', function() {
+                $timeout(function() {
+                    cfpLoadingBar.complete();
+                }, 500);
             });
 
-            if($state.current.name == "front.home"){
+            if ($state.current.name == 'front.home') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else if($state.current.name == "front.usermenu"){
+            } else if ($state.current.name == 'front.usermenu') {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = false;
                 $rootScope.showBrandName = true;
-            }
-            else{
+            } else {
                 $rootScope.SearchFormHeader = true;
                 $rootScope.showLogo = true;
                 $rootScope.showBrandName = false;
@@ -527,7 +531,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
             //$rootScope.loading = false;
             console.log(unfoundState.to);
-            // "lazy.state"
+            // 'lazy.state'
             console.log(unfoundState.toParams);
             // {a:1, b:2}
             console.log(unfoundState.options);
@@ -535,7 +539,29 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         });
 
         $rootScope.pageTitle = function() {
-            return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+            var title = $rootScope.app.name;
+            if ($rootScope.currTitle) {
+                title = $rootScope.currTitle;
+            }else if ($rootScope.seo.meta_title) {
+                title = $rootScope.seo.meta_title;
+            }
+            return title;
+        };
+
+        $rootScope.pageDescription = function () {
+            var description = $rootScope.app.description;
+            if ($rootScope.seo.meta_description) {
+                description = $rootScope.seo.meta_description;
+            }
+            return description;
+        };
+
+        $rootScope.pageKeywords = function () {
+            var keywords = $rootScope.app.keywords;
+            if ($rootScope.seo.meta_keywords) {
+                keywords = $rootScope.seo.meta_keywords;
+            }
+            return keywords;
         };
 
         // save settings to local storage
@@ -544,6 +570,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         } else {
             $localStorage.layout = $scope.app.layout;
         }
+
         $scope.$watch('app.layout', function() {
             // save to local storage
             $localStorage.layout = $scope.app.layout;
@@ -655,12 +682,12 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         }
 
         $scope.show_tender = function (id) {
-            $state.go('front.tenders.details', {id: id})
+            $state.go('front.tender', {id: id})
         }
         
     }]);
 
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
        /* $timeout(function() {
@@ -792,15 +819,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             });
         }
 
-        $scope.tenderCAtegoriesLoaded = false;
+        $scope.tenderCategoriesLoaded = false;
         $scope.tenderCategories = [];
 
         $scope.getTenderCategories = function () {
             $timeout(function () {
-                $scope.tenderCAtegoriesLoaded = true;
+                $scope.tenderCategoriesLoaded = true;
                 if($scope.tenderCategories.length == 0){
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                        for (var i in data.results) {
+                            data.results[i].expand = false;
+                        }
                         $scope.tenderCategories = data.results;
                         def.resolve($scope.tenderCategories);
                     });
@@ -810,7 +840,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.tenderCategories;
                 }
             });
-        }
+        };
 
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;
@@ -1010,16 +1040,15 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
         $scope.folder = folder;
         $scope.url = '';
         $scope.mode = '';
-
         $timeout(function(){
             var fileManager = $('#elfinder_'+$scope.field).elfinder({
                 url : '/efconnect/'+$scope.instance+'/'+$scope.folder+'?mode='+$scope.mode,
                 lang : (angular.isDefined($localStorage.language))?$localStorage.language:'en',
                 useBrowserHistory: false,
-                onlyMimes: ['image', 'video', 'audio'],
+                onlyMimes: ['image', 'video', 'audio', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'],
                 customHeaders: {
                     'Authorization': 'Bearer ' + $localStorage.access_token,
-                    'PP-Application': 'BackOffice'
+                    'APP-Application': 'BackOffice'
                 },
                 getFileCallback : function(file) {
                     var parser = document.createElement('a');
@@ -1030,16 +1059,24 @@ app.controller('FileManagerCtrl', ['$scope', '$localStorage', '$timeout', '$uibM
                     select: function(event, elfinderInstance) {
                         var selected = event.data.selected;
                         if (selected.length > 0) {
-                            var file = elfinderInstance.file(selected[0]);
-                            var path = elfinderInstance.path(selected[0]);
-                            if (file.mime=='directory') {
-                                //opens a folder
-                                elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
-                            } else {
-                                var parser = document.createElement('a');
-                                parser.href = '/uploads/'+$scope.folder+'/../'+path;
-                                $scope.url = parser.pathname;
+                            var files = [];
+                            for (var i in selected) {
+                                var file = elfinderInstance.file(selected[i]);
+                                var path = elfinderInstance.path(selected[i]);
+                                if (file.mime == 'directory') {
+                                    //opens a folder
+                                    elfinderInstance.request({data:{cmd: 'open', target: selected[0]},notify:{type:'open',target:selected[0]}, syncOnFail:true});
+                                } else {
+                                    var parser = document.createElement('a');
+                                    var href = '/uploads/';
+                                    if ($scope.instance == 'data') {
+                                        href += 'data/'+$scope.folder+'/../'+path;
+                                    }
+                                    parser.href = href;
+                                    files.push(parser.pathname);
+                                }
                             }
+                            $scope.url = files.join();
                         }
                     }
                 }

@@ -1,0 +1,16 @@
+<div ng-controller="ProductFrontCtrl">
+    <div class="tender-preview">
+        <h1><a class="name" ng-bind="supplierProduct.name"></a></h1>
+        <div class="pb-1 clearfix">
+            <img ng-if="supplier.picture" src="[[ supplierProduct.picture ]]" alt="[[ supplierProduct.name ]]" class="pull-right img-thumbnail" />
+            <h2 ng-bind-html="supplierProduct.description"></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
+                <!-- <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button> -->
+            </div>
+        </div>
+    </div>
+</div>

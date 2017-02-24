@@ -262,7 +262,7 @@ fm_elfinder:
             #fullscreen: true|false # defaults true, applies to simple and ckeditor editors
             theme: "base" # jquery theme, default is "smoothness"
             include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
-            visible_mime_types: ["image", "video", "audio"] # only show these mime types, defaults to show all
+            visible_mime_types: ["image", "video", "audio", "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"] # only show these mime types, defaults to show all
             connector:
                 #debug: true|false # defaults to false
                 roots:       # at least one root must be defined
@@ -270,7 +270,29 @@ fm_elfinder:
                         #show_hidden: true|false # defaults to false, hide files that
                         driver: LocalFileSystem
                         path: uploads
-                        upload_allow: ["image", "video", "audio"]
+                        upload_allow: ["image", "video", "audio", "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"]
+                        upload_deny: ["all"]
+                        upload_max_size: 100M
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: "/(.*?)/", read: true, write: false, locked: true }
+        data:
+            locale: %locale% # defaults to current request locale
+            cors_support: true # allows cross domain responses handling (default false)
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce,  form, simple, custom
+            #editor_template: set custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # defaults true, applies to simple and ckeditor editors
+            theme: "base" # jquery theme, default is "smoothness"
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            visible_mime_types: ["image", "video", "audio", "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hide files that
+                        driver: LocalFileSystem
+                        path: uploads/data
+                        upload_allow: ["image", "video", "audio", "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"]
                         upload_deny: ["all"]
                         upload_max_size: 100M
                         #attributes: example of setting attributes permission
@@ -297,6 +319,9 @@ assetic:
         bootstrap:
             inputs:   
                 - "assets/bower_components/bootstrap/dist/css/bootstrap.min.css"
+        flags:
+            inputs:
+                - "assets/bower_components/flag-icon-css/css/flag-icon.min.css"
         font_awesome:
             inputs:   
                 - "assets/bower_components/components-font-awesome/css/font-awesome.min.css"
@@ -311,7 +336,7 @@ assetic:
                 - "assets/bower_components/animate.css/animate.min.css"
         angular_table_css:
             inputs:
-                - 'assets/bower_components/ng-table/dist/ng-table.min.css'
+                - "assets/bower_components/ng-table/dist/ng-table.min.css"
         toaster_css:
             inputs:   
                 - "assets/bower_components/AngularJS-Toaster/toaster.css"
@@ -377,7 +402,7 @@ assetic:
                 - "assets/bower_components/ngstorage/ngStorage.js" #.min
         angular_table:
             inputs:
-                - 'assets/bower_components/ng-table/dist/ng-table.min.js'
+                - "assets/bower_components/ng-table/dist/ng-table.min.js"
         videogular:
             inputs:
                 - "assets/bower_components/videogular/videogular.min.js"

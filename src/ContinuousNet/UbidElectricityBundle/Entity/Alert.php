@@ -163,7 +163,7 @@ class Alert
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="alerts")
+     * @ORM\ManyToMany(targetEntity="Category")
      * @ORM\JoinTable(name="alerts_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")
@@ -183,7 +183,7 @@ class Alert
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Country", inversedBy="alerts")
+     * @ORM\ManyToMany(targetEntity="Country")
      * @ORM\JoinTable(name="alerts_countries",
      *     joinColumns={
      *         @ORM\JoinColumn(name="alert_id", referencedColumnName="id")

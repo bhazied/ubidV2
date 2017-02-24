@@ -205,7 +205,7 @@ class PostCategory
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Post", inversedBy="postCategories")
+     * @ORM\ManyToMany(targetEntity="Post")
      * @ORM\JoinTable(name="posts_post_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")

@@ -367,7 +367,7 @@ class Tender
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="tenders")
+     * @ORM\ManyToMany(targetEntity="Category")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")

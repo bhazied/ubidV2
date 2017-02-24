@@ -46,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BUYERTYPE">Buyer Type</span></td>
-                                <td><a ui-sref="app.lists.buyertypesdetails({id: buyer.buyer_type.id})">[[ buyer.buyer_type.name ]]</a></span></td>
+                                <td><a ui-sref="app.lists.buyertypesdetails({id: buyer.buyer_type.id})">[[ buyer.buyer_type.name ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -122,7 +122,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.COUNTRY">Country</span></td>
-                                <td><a ui-sref="app.settings.countriesdetails({id: buyer.country.id})">[[ buyer.country.name ]]</a></span></td>
+                                <td><a ui-sref="app.settings.countriesdetails({id: buyer.country.id})">[[ buyer.country.name ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FAX">Fax</span></td>
@@ -163,7 +163,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.first_market_region.id})">[[ buyer.first_market_region.name ]]</a></span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.first_market_region.id})">[[ buyer.first_market_region.name ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span></td>
@@ -173,7 +173,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.second_market_region.id})">[[ buyer.second_market_region.name ]]</a></span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.second_market_region.id})">[[ buyer.second_market_region.name ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span></td>
@@ -183,7 +183,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.third_market_region.id})">[[ buyer.third_market_region.name ]]</a></span></td>
+                                <td><a ui-sref="app.settings.regionsdetails({id: buyer.third_market_region.id})">[[ buyer.third_market_region.name ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span></td>
@@ -199,7 +199,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
-                                <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></span></td>
+                                <td><a ui-sref="app.settings.languagesdetails({id: buyer.language.id})">[[ buyer.language.name ]]</a></td>
                             </tr>
                             <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.E"></h3></th>
@@ -229,13 +229,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.Z"></h3></th>
+                                <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                                <td>
+                                    <a ng-repeat="category in buyer.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><span translate="content.list.fields.ID">Id</span></td>
-                                <td>
-                                    <div ng-bind-html="buyer.id"></div>
-                                </td>
+                                <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.Z"></h3></th>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
@@ -245,7 +245,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: buyer.creator_user.id})">[[ buyer.creator_user.username ]]</a></span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: buyer.creator_user.id})">[[ buyer.creator_user.username ]]</a></td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -255,7 +255,7 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: buyer.modifier_user.id})">[[ buyer.modifier_user.username ]]</a></span></td>
+                                <td><a ui-sref="app.access.usersdetails({id: buyer.modifier_user.id})">[[ buyer.modifier_user.username ]]</a></td>
                             </tr>
                         </tbody>
                     </table>
