@@ -22,3 +22,4 @@
 /web/assetic/*
 /.idea/*
 /nbproject/*
+.idea/workspace.xml
