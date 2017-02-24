@@ -74,53 +74,5 @@ class AlertMailer
         $this->mailer->send($message);
 
     }
-
-/*
-    public function sendNewBidEmail(User $user, Bid $bid){
-        $this->templating = $this->container->get('templating');
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('newBid' => $bid));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendViewProfileEmail(User $user, User $visitor){
-        $this->templating = $this->container->get('templating');
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('newBid' => $visitor));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendShortListBidEmail(User $user, Bid $bid){
-        $this->templating = $this->container->get('templating');
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('shortList' => $bid));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendNewMessageEmail(User $user, Message $message){
-        $this->templating = $this->container->get('templating');
-
-        $template = 'UbidElectricityBundle:Emails:new_message.html.twig';
-        $body = $this->templating->render($template, array('message' => $message));
-        $to = $user->getEmail();
-        $subject = '[New Received Message]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendConsultTenderEmail(User $user, Tender $tender){
-        $this->templating = $this->container->get('templating');
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('tender' => $tender));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-
-    }
-*/
+    
 }

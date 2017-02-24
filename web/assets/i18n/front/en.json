@@ -953,6 +953,12 @@
         }
       },
       "fields": {
+        "alert":{
+          "SELECTTOPIC": "Please select your preferred topic",
+          "SELECTCATEGORIES": "Please select your preferred product or service categories",
+          "SELECTCOUNTRIES": "lease select your preferred region or country",
+          "SELECTPERIOD": "How often do you want to receive this emai"
+        },
         "MESSAGE" : "Message",
         "CARDNUMBER" : "Card Number",
         "CARDMONTHEXPR" : "Expiration Month",
@@ -1702,6 +1708,7 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "NEWALERTHEADER":"Subscribe now to get the latest electrical business opportunities",
     "ISSUER": "Issuer",
     "ISSUER": "Issuer",
     "GETINTOUCH": "GET IN TOUCH",

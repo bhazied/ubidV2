@@ -2,7 +2,9 @@
 <!-- menu with accordion -->
 <div ng-if="user.email">
     <uib-accordion close-others="oneAtATime">
-        <uib-accordion-group is-open="status.open1 || $state.current.name.indexOf('front.profile') == 0" is-disabled="status.isFirstDisabled">
+        [[ status.open1 = ($state.current.name.indexOf('front.profile') == 0); '' ]]
+        [[ status.open3 = ($state.current.name.indexOf('front.myAlerts') == 0); '' ]]
+        <uib-accordion-group is-open="status.open1" is-disabled="status.isFirstDisabled">
             <uib-accordion-heading>
                 [[ 'front.MYACCOUNT'| translate]]
                 <i  class="fa pull-right" ng-class="{'fa-angle-down': status.open1, 'fa-angle-right': !status.open1}"></i>
@@ -32,7 +34,7 @@
                 <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.bookmarkproject.list"><i class="fa fa-shopping-cart"></i> <span translate="front.BOOKMARKPROJECT" title="[['front.USERMENU.BOOKMARKPROJECT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Bookmarks project</span></a></li>
             </ul>
         </uib-accordion-group>
-        <uib-accordion-group is-open="status.open3 || $state.current.name.indexOf('front.myAlerts') == 0">
+        <uib-accordion-group is-open="status.open3">
             <uib-accordion-heading>
                 [[ 'front.MYALERTS'| translate]]
                 <i class="fa pull-right" ng-class="{'fa-angle-down': status.open3, 'fa-angle-right': !status.open3}"></i>
