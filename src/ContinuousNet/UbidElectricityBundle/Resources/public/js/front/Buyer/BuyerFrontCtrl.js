@@ -23,7 +23,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     $scope.buyer = data;
                     $rootScope.seo.meta_description = data.description;
                     $rootScope.seo.meta_keywords = data.main_products_services;
-                    $rootScope.seo.meta_title = data.name;
+                    $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
                 });
                 def.resolve($scope.buyer);
                 return def;

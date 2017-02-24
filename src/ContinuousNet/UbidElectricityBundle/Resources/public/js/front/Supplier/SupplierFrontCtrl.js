@@ -42,7 +42,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                     $scope.supplier = data;
                     $rootScope.seo.meta_description = data.description;
                     $rootScope.seo.meta_keywords = data.main_products_services;
-                    $rootScope.seo.meta_title = data.name;
+                    $rootScope.seo.meta_title = data.name+ ' - '+ $filter('translate')('front.seo.SUPPLIERMETATITLE');
                 });
                 def.resolve($scope.supplier);
                 return def;
