@@ -1912,7 +1912,7 @@
     "GENERALCONDITIONS": "General Conditions",
     "IHAVEREADANDACCEPTTHE": "I have read and accept the",
     "settings":{
-      "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
+      "BIDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
       "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
       "RECEIVEDNEWMESSAGE":"E-mail sent to notify you that you have received a new message",
       "CONSULTYOUROPPOTUNITY":"E-mail sent to notify you who has consult your oportunity business",

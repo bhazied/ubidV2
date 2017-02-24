@@ -21,8 +21,8 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
 
         $scope.initSettings = [
             {
-                key: 'BEED_SHORLISTED',
-                Label: $filter('translate')('front.settings.BEEDSHORLISTED'),
+                key: 'BID_SHORLISTED',
+                Label: $filter('translate')('front.settings.BIDSHORLISTED'),
                 value: false,
                 id: 0
             },
@@ -59,7 +59,13 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
             if($scope.alertSettings.length  == 0){
                 $scope.settingsLoaded = true;
                 var def = $q.defer();
-                $userSettingsDataFactory.query({offset: 0, limit: 10000}).$promise.then(function(data) {
+                var $params =  {
+                    offset: 0,
+                    limit: 10000
+                };
+                $params['filters[userSetting.creatorUser]'] =  $localStorage.user.id;
+                $userSettingsDataFactory.query($params).$promise.then(function(data) {
+                   console.log(data);
                     $timeout(function () {
                         if(data.results.length > 0){
                             $scope.alertSettings = data.results;

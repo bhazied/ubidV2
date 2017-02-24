@@ -1,0 +1,61 @@
+<html>
+<head></head>
+<body style="padding: 0; margin: 0;">
+<style>
+    @font-face {
+        font-family: 'CenturyGothic';
+        src: url('{{ app.request.getSchemeAndHttpHost() }}/front/fonts/CenturyGothic.eot?#iefix') format('embedded-opentype'),
+        url('{{ app.request.getSchemeAndHttpHost() }}/front/fonts/CenturyGothic.woff') format('woff'),
+        url('{{ app.request.getSchemeAndHttpHost() }}/front/fonts/CenturyGothic.ttf')  format('truetype'),
+        url('{{ app.request.getSchemeAndHttpHost() }}/front/fonts/CenturyGothic.svg#CenturyGothic') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+</style>
+<div style="background-color: white; font-family: 'CenturyGothic'; font-size: 14px; color: black;">
+    <div style="padding: 20px 50px 20px 50px;">
+        <a href="http://public.ubid.com/" target="_blank" title="E-electricity" style="display: inline-block; height: 80px; width: 380px; margin: 0;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/e-electricity-logo-blue.png" alt="E-electricity" height="80" width="380"/></a>
+        <a href="{{ app.request.getSchemeAndHttpHost() }}/tenders/Tender" target="_blank" title="Logistics" style="display: inline-block; height: 70px; width: 70px; margin: 5px 10px 5px 0; float: right;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/logistic_agent.png" alt="Logistics" height="70" width="70" /></a>
+        <a href="{{ app.request.getSchemeAndHttpHost() }}/tenders/Tender" target="_blank" title="Service Provider" style="display: inline-block; height: 70px; width: 70px; margin: 5px 10px 5px 0; float: right;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/service_provider.png" alt="Service Provider" height="70" width="70" /></a>
+        <a href="{{ app.request.getSchemeAndHttpHost() }}/tenders/Tender" target="_blank" title="Product / Service requester" style="display: inline-block; height: 70px; width: 70px; margin: 5px 10px 5px 0; float: right;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/service_requester.png" alt="Product / Service requester" height="70" width="70" /></a>
+        <a href="{{ app.request.getSchemeAndHttpHost() }}/suppliers" target="_blank" title="Suppliers" style="display: inline-block; height: 70px; width: 70px; margin: 5px 10px 5px 0; float: right;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/supplier.png" alt="Suppliers" height="70" width="70" /></a>
+        <a href="{{ app.request.getSchemeAndHttpHost() }}/tenders/Tender" target="_blank" title="Business opportunities" style="display: inline-block; height: 70px; width: 70px; margin: 5px 10px 5px 0; float: right;"><img style="border: none;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/buniness_opportunity.png" alt="Business opportunities" height="70" width="70" /></a>
+        <br clear="all"/>
+    </div>
+    <div style="background-color: #1D69AD; color: white; height: 26px; line-height: 26px; font-size: 14px; text-align: center; text-transform: uppercase;">
+        The professional network for electrical business opportunities
+    </div>
+    <div style="background-color: white; padding: 30px;">
+        <div style="background-color: #F7F8FC; padding: 50px 230px 200px 80px; background-image: url('{{ app.request.getSchemeAndHttpHost() }}/front/img/e-electricity-logo-vertical.png'); background-position: bottom right; background-repeat: no-repeat;">
+            {% block mailContent %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <div style="background-color: #1D69AD; padding: 60px 80px 20px 110px; color: white;">
+        <div style="width: 340px; height: 92px; border-bottom: white 1px solid; text-align: center; display: inline-block;">
+            <a href="https://www.facebook.com/" target="_blank" title="join us on facebook" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on facebook" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/facebook.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://twitter.com/" target="_blank" title="join us on twitter" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on twitter" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/twitter.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://www.youtube.com/" target="_blank" title="join us on youtube" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on youtube" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/youtube.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://plus.google.com/" target="_blank" title="join us on Google+" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 10px 5px 5px;"><img alt="join us on Google+" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/google.png" height="44" width="44" style="border: none;" /></a>
+            <a href="https://www.linkedin.com/" target="_blank" title="join us on LinkedIn" style="display: inline-block; border: 3px solid #1D69AD; height: 44px; width: 44px; overflow: hidden; border-radius: 10px; box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.5); margin: 5px 5px 5px 5px;"><img alt="join us on LinkedIn" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/linkedin.png" height="44" width="44" style="border: none;" /></a>
+            <span style="margin: 20px auto -8px auto; width: 170px; background-color: #1D69AD; font-size: 16px; text-align: center; display: inline-block;">Keep in touch</span>
+        </div>
+
+        <div style="width: 260px; height: 114px; text-align: left; display: inline-block; float: right;">
+            <div style="margin-top: 10px;">
+                <img style="display: inline; vertical-align: middle;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/phone.png" height="34" width="34" alt="Call us" />
+                <a target="_blank" href="tel:+971125845267" style="color: white; font-size: 16px; line-height: 34px; text-decoration: none;">+971 1258 4526 7</a>
+            </div>
+            <div style="margin-top: 30px;">
+                <img style="display: inline; vertical-align: middle;" src="{{ app.request.getSchemeAndHttpHost() }}/front/img/envelope.png" height="34" width="34" alt="Call us" />
+                <a target="_blank" href="mailto:contact@e-electricity.com" style="color: white; font-size: 16px; line-height: 34px; text-decoration: none;">contact@e-electricity.com</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; font-size: 12px; margin: 60px 0 0 0;">Copyright &copy; E-electricity 2017. All rights reserved.</div>
+
+    </div>
+</div>
+</body>
+</html>
