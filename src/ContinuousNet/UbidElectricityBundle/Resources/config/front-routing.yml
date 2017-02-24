@@ -1,4 +1,8 @@
 e_electricity_front_login:
+    path: /login/
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_login_type:
     path: /login/{type}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
@@ -7,6 +11,10 @@ e_electricity_front_logout:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_register:
+    path: /register/
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_register_type:
     path: /register/{type}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
@@ -63,7 +71,7 @@ e_electricity_front_supplier:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_tenders:
-    path: /tenders
+    path: /tenders/
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_tenders_section:

@@ -24,7 +24,7 @@
 
     <h1 ng-if="section == 'Tender'" translate="front.TENDERS">Tenders</h1>
     <h1 ng-if="section == 'Consultation'" translate="front.CONSULTATIONS">Consultations</h1>
-
+    <h2 ng-bind-html="post.content"></h2>
     <div class="tender-preview"  ng-repeat="tender in tendersList">
         <h3><a class="name" ui-sref="front.tender({id: [[ tender.id ]]})">[[ tender.title ]]</a></h3>
         <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>

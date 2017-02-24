@@ -1,6 +1,7 @@
 <div ng-controller="contactFormCtrl">
     <fieldset>
-        <legend translate="content.form.titles.CONTACT"></legend>
+        <h1 translate="front.CONTACT">Contact</h1>
+        <h2 ng-bind-html="post.content"></h2>
         <form  name="contactForm" id="contactForm" class="form" data-ng-submit="submitForm(contactForm)">
             <div class="form-group" ng-class="{'has-error':contactForm.firstName.$dirty && contactForm.firstName.$invalid, 'has-success':contactForm.firstName.$valid}">
                 <label for="firstName" class="control-label">
