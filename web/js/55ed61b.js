@@ -67604,17 +67604,37 @@ angular.module('ubid-electricity', [
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English',
+    'en' : 'English'/*,
     'fr' : 'Français',
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
-    function ($rootScope, $state, $stateParams, $localStorage) {
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStorage', '$timeout', '$interval',
+    function ($rootScope, $state, $stateParams, $localStorage, $sessionStorage, $timeout, $interval) {
 
         $rootScope.languages = languages;
+
+        $rootScope.underPage = true;
+        if (angular.isDefined($sessionStorage.underPage)) {
+            $rootScope.underPage = false;
+        } else {
+            $rootScope.initialTime = $rootScope.timer = 6;
+            $rootScope.circleRadius = 66;
+            $sessionStorage.underPage = true;
+            $rootScope.interval = $interval(function() {
+                $rootScope.timer--;
+                if ($rootScope.timer < 0) {
+                    $rootScope.timer = 0;
+                    $interval.cancel($rootScope.interval);
+                    $rootScope.underPage = false;
+                }
+                var angle = Math.PI*($rootScope.circleRadius*2);
+                var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
+                $('.circle_animation').css({strokeDashoffset: percent});
+            }, 1000);
+        }
 
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);

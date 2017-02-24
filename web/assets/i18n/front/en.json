@@ -1702,6 +1702,7 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "GETINTOUCH": "GET IN TOUCH",
     "HOME": "Home page",
     "MENU": "User menu",
     "LOGIN": "Login",
