@@ -12,6 +12,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 500);
 
         $scope.buyer = {};
+        $scope.loaded = false;
         $scope.getBuyer = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -24,6 +25,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     $rootScope.seo.meta_description = data.description;
                     $rootScope.seo.meta_keywords = data.main_products_services;
                     $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
+                    $scope.loaded = true;
                 });
                 def.resolve($scope.buyer);
                 return def;

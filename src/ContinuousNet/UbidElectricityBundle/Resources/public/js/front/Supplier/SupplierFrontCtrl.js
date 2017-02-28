@@ -11,6 +11,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.contentOffset = 0;
         }, 500);
 
+        $scope.loaded = false;
         $scope.supplier = {};
         $scope.supplierProducts = {count : 0, results:[]};
 
@@ -43,6 +44,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                     $rootScope.seo.meta_description = data.description;
                     $rootScope.seo.meta_keywords = data.main_products_services;
                     $rootScope.seo.meta_title = data.name+ ' - '+ $filter('translate')('front.seo.SUPPLIERMETATITLE');
+                    $scope.loaded = true;
                 });
                 def.resolve($scope.supplier);
                 return def;
