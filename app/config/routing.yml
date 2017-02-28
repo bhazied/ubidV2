@@ -1,6 +1,8 @@
-
 ubid_electricity:
     resource: "@UbidElectricityBundle/Resources/config/routing.yml"
+
+front_ubid_electricity:
+    resource: "@UbidElectricityBundle/Resources/config/front-routing.yml"
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

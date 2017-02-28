@@ -2,8 +2,8 @@
 /**
  * Controller bids by project
  */
-app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$usersDataFactory','$projectBidsFrontDataFactory',
-    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $usersDataFactory, $projectBidsFrontDataFactory) {
+app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$tendersDataFactory', '$usersDataFactory','$bidsFrontDataFactory',
+    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $tendersDataFactory, $usersDataFactory, $bidsFrontDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -59,7 +59,7 @@ app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$sta
                     $scope.bidsLoaded = true;
                     if($scope.bids.length == 0){
                     console.log($params);
-                        $projectBidsFrontDataFactory.bidsByProject($params).$promise.then(function (data) {
+                        $bidsFrontDataFactory.bidsByProject($params).$promise.then(function (data) {
                             $scope.bids = data.results;
                             $scope.total = data.inlineCount;
                             $scope.maxPage = Math.ceil($scope.total/$scope.pageCount);

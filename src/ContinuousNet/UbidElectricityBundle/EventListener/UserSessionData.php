@@ -42,6 +42,7 @@ class UserSessionData
         $roles = $user->getRoles();
 
         $data = array(
+            'id' => $user->getId(),
             'email' => $user->getEmail(),
             'username' => $user->getUsername(),
             'name' => $user->getFirstName().' '.$user->getLastName(),

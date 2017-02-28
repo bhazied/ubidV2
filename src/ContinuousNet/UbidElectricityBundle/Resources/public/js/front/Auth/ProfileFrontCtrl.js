@@ -70,6 +70,14 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
                     },
                     value: function () {
                         return $scope.user[field];
+                    },
+                    instance: function() {
+                        return 'data';
+                    },
+                    folder: function() {
+                        var user_id = '000000' + $localStorage.user.id;
+                        var user_dir = 'user_' + user_id.substr(user_id.length - 6);
+                        return user_dir;
                     }
                 }
             });

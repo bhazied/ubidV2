@@ -12,6 +12,25 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         }, 500);
 
         $scope.supplier = {};
+        $scope.supplierProducts = {count : 0, results:[]};
+
+        $scope.getSupplierProducts = function () {
+            var $params = {
+                locale: $localStorage.language,
+                id: $stateParams.id
+            };
+            $timeout(function () {
+                var def = $q.defer();
+                $suppliersFrontDataFactory.products($params).$promise.then(function (data) {
+                    $scope.supplierProducts.count = data.inlineCount;
+                    $scope.supplierProducts.results = data.results;
+                });
+                def.resolve($scope.supplierProducts);
+                return def;
+            });
+
+        };
+
         $scope.getSupplier = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -21,13 +40,18 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
                 var def = $q.defer();
                 $suppliersFrontDataFactory.supplier($params).$promise.then(function(data){
                     $scope.supplier = data;
+                    $rootScope.seo.meta_description = data.description;
+                    $rootScope.seo.meta_keywords = data.main_products_services;
+                    $rootScope.seo.meta_title = data.name+ ' - '+ $filter('translate')('front.seo.SUPPLIERMETATITLE');
                 });
                 def.resolve($scope.supplier);
                 return def;
             });
 
         }
-
+        
         $scope.getSupplier();
+        $scope.getSupplierProducts();
+        
 
     }]);

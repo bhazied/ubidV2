@@ -1,17 +1,22 @@
 parameters:
     ubid_electricity.event.alert_email_listner.class: ContinuousNet\UbidElectricityBundle\AlertListener\AlertEmailListener
     ubid_electricity.event.alert_mailer.class: ContinuousNet\UbidElectricityBundle\AlertListener\AlertMailer
+    ubid_electricity.event.email_response.listener.class:  ContinuousNet\UbidElectricityBundle\AlertListener\EmailResponseListener
 
 services:
     ubid_electricity.alert_mailer:
         class: %ubid_electricity.event.alert_mailer.class%
         #arguments: [@templating, @mailer, @router]
-        arguments: [@router]
-        calls:
-            - [setMailer, ["@mailer"]]
-            #- [setTemplating, ["@templating"]]
+        arguments: [@service_container]
     ubid_electricity.event.alert_email_listner:
         class: %ubid_electricity.event.alert_email_listner.class%
-        arguments: [@ubid_electricity.alert_mailer]
+        arguments: [@ubid_electricity.alert_mailer, @translator]
         tags:
             - { name: doctrine.event_listener, event: postPersist, connection: default }
+            - { name: doctrine.event_listener, event: postUpdate, connection: default}
+            #- { name: doctrine.event_listener, event: postLoad, connection: default}
+    ubid_electricity.event.email_response_listener:
+        class: %ubid_electricity.event.email_response.listener.class%
+        arguments: [@ubid_electricity.alert_mailer, @router, @doctrine.orm.entity_manager, @translator]
+        tags:
+            - {name: kernel.event_listener, event: kernel.controller, method: onKernelController }

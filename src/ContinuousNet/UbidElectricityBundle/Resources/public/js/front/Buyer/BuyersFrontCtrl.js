@@ -1,6 +1,6 @@
 'use strict';
-app.controller('BuyersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$buyersFrontDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $buyersFrontDataFactory) {
+app.controller('BuyersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$buyersFrontDataFactory', '$postsDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $buyersFrontDataFactory, $postsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -10,6 +10,14 @@ app.controller('BuyersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
         }, 1500);
+
+        $postsDataFactory.getBySlug({slug: 'buyers', locale: $localStorage.language}).$promise.then(function(data) {
+            $scope.postLoaded = true;
+            $scope.post = data;
+            $rootScope.seo.meta_description = data.meta_description;
+            $rootScope.seo.meta_keywords = data.meta_keywords;
+            $rootScope.seo.meta_title = data.meta_title;
+        });
 
         $scope.sortingOptions = [{
             sortField: 'name',

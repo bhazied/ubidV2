@@ -11,7 +11,7 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.showUserMenu = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
-            $rootScope.contentSize = 10;
+            $rootScope.contentSize = 12;
             $rootScope.contentOffset = 0;
         }, 1000);
 

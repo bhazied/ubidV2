@@ -1,6 +1,6 @@
 
 <!-- start: DETAILS -->
-<div class="container-fluid container-fullw bg-white">
+<div class="container-fluid container-fullw bg-blue">
     <div class="row">
         <div class="col-md-12" ng-controller="MyTenderCtrl">
             <div>
@@ -34,15 +34,15 @@
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.BUYER">Buyer</span></td>
-                            <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></span></td>
+                            <td>[[ tender.buyer.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.TENDERTYPE">Tender Type</span></td>
-                            <td><a ui-sref="app.lists.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></span></td>
+                            <td>[[ tender.tender_type.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span></td>
-                            <td><a ui-sref="app.lists.biddingtypesdetails({id: tender.bidding_type.id})">[[ tender.bidding_type.name ]]</a></span></td>
+                            <td>[[ tender.bidding_type.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.SECTOR">Sector</span></td>
-                            <td><a ui-sref="app.lists.sectorsdetails({id: tender.sector.id})">[[ tender.sector.name ]]</a></span></td>
+                            <td>[[ tender.sector.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.DEADLINE">Deadline</span></td>
@@ -110,11 +110,11 @@
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.REGION">Region</span></td>
-                            <td><a ui-sref="app.settings.regionsdetails({id: tender.region.id})">[[ tender.region.name ]]</a></span></td>
+                            <td>[[ tender.region.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.COUNTRY">Country</span></td>
-                            <td><a ui-sref="app.settings.countriesdetails({id: tender.country.id})">[[ tender.country.name ]]</a></span></td>
+                            <td>[[ tender.country.name ]]</td>
                         </tr>
                         <tr>
                             <td><span translate="content.list.fields.ADDRESS">Address</span></td>
@@ -144,7 +144,7 @@
                             <td><span translate="content.list.fields.ATTACHMENTFILES">Attachment Files</span></td>
                             <td>
                                 <div ng-if="tender.attachment_files != '' && tender.attachment_files != null">
-                                    <a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a>
+                                    <ul class="list-group"><li class="list-group-item" ng-repeat="file in tender.attachment_files.split(',')"><a class="btn btn-wide btn-primary" target="_blank" href="[[ tender.attachment_files ]]" alt=""><i class="ti-download"></i> [[tender.attachment_files]]</a></li></ul>
                                 </div>
                             </td>
                         </tr>
@@ -176,17 +176,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                            <td><a ui-sref="app.access.usersdetails({id: tender.creator_user.id})">[[ tender.creator_user.username ]]</a></span></td>
-                        </tr>
-                        <tr>
-                            <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                            <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></span></td>
-                        </tr>
-                        <tr>
                             <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                             <td>
-                                <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                <a ng-repeat="category in tender.categories" ui-sref="front.category({slug: category.slug})">[[ category.name ]]</a>
                             </td>
                         </tr>
                         </tbody>

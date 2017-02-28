@@ -3,9 +3,9 @@
 
     <hr class="footer-sep" />
 
-    <div class="col-md-4 col-xs-12 mb-1">
+    <div class="col-md-4 col-xs-12 mb-1 pad-right-0">
         <div class="col-md-4 col-xs-4 footer-links">
-            <h4 translate="front.ACCOUNT">Account</h4>
+            <b translate="front.ACCOUNT">Account</b>
             <ul>
                 <li><a ui-sref="front.buyers" translate="front.BUYER">Buyer</a></li>
                 <li><a ui-sref="front.suppliers" translate="front.SUPPLIER">Supplier</a></li>
@@ -15,17 +15,17 @@
             </ul>
         </div>
         <div class="col-md-4 col-xs-4 footer-links">
-            <h4 translate="front.SERVICES">Services</h4>
+            <b translate="front.SERVICES">Services</b>
             <ul>
                 <li ng-if="user.email"><a ui-sref="front.mytenders.new" translate="front.PUBLISH">Publish</a></li>
                 <li ng-if="!user.email"><a ui-sref="front.login({type: 'Both'})" translate="front.PUBLISH">Publish</a></li>
-                <li><a ui-sref="front.tenders.list({section: 'Consultation'})" translate="front.CONSULT">Consult</a></li>
-                <li><a ui-sref="front.tenders.list" translate="front.SEARCH">Search</a></li>
+                <li><a ui-sref="front.tenders({section: 'Consultation'})" translate="front.CONSULT">Consult</a></li>
+                <li><a ui-sref="front.tenders" translate="front.SEARCH">Search</a></li>
                 <li><a ui-sref="front.post({slug: 'social-media'})" translate="front.SOCIALMEDIA">Social media</a></li>
             </ul>
         </div>
         <div class="col-md-4 col-xs-4 footer-links">
-            <h4 translate="front.ABOUTUS">About us</h4>
+            <b translate="front.ABOUTUS">About us</b>
             <ul>
                 <li><a ui-sref="front.post({slug: 'how-does-it-work'})" translate="front.HOWDOESITWORK">How does it work?</a></li>
                 <li><a ui-sref="front.post({slug: 'electricity-magazine'})" translate="front.ELECTRICITYMAGAZINE">Electricity magazine</a></li>
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="col-md-4 col-xs-12 mb-1">
+    <div class="col-md-4 col-xs-6 mb-1">
         <div class="footer-center">
             <ul>
                 <li><a href="http://facebook.com/" target="_blank" class="fb"></a></li>
@@ -46,10 +46,10 @@
             </ul>
             <p class="keep-in-touch"><a ui-sref="front.contact" ng-bind-html-unsafe="'front.KEEPINTOUCH' | translate">Keep <b>IN TOUCH</b></a></p>
         </div>
-        <p class="copyright" ng-bind-html-unsafe="'front.COPYRIGHT' | translate">Copyright &copy; E-electricity 2017. All rights reserved.</p>
+        <p class="copyright" ng-bind-html-unsafe="'front.COPYRIGHT' | translate:'{year: app.year}'">Copyright &copy; e-electricity [[app.year]]. All rights reserved.</p>
     </div>
 
-    <div class="col-md-4 col-xs-12 mb-1">
+    <div class="col-md-4 col-xs-6 mb-1 pad-left-0">
         <!--
         <div class="col-md-5 col-sm-6 col-xs-6">
             <span class="contact-footer" translate="front.CONTACTINFORMATIONS" class="pull-right" clas>Contact Infomations</span>

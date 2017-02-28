@@ -5,6 +5,7 @@ namespace ContinuousNet\UbidElectricityBundle\Controller;
 use ContinuousNet\UbidElectricityBundle\Entity\TenderBookmark;
 use ContinuousNet\UbidElectricityBundle\Entity\TenderCategory;
 use ContinuousNet\UbidElectricityBundle\Entity\Tender;
+use ContinuousNet\UbidElectricityBundle\Entity\Category;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -67,6 +68,9 @@ class ApiV1RESTController extends FOSRestController
 
     public function translateEntity($entity, $level = 0)
     {
+        if (is_null($entity)) {
+            return array();
+        }
         $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
         $entityName = str_replace($ns, '', get_class($entity));
         $translationEntityName = 'Translation' . $entityName;
@@ -762,6 +766,15 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
+     * @GET("/publicCategory/{slug}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     * @param $entity
+     */
+    public function publicCategoryAction(Category $entity){
+        return $entity;
+    }
+
+    /**
      * @POST("/contact")
      * @View(serializerEnableMaxDepthChecks=true)
      * @param Request $request
@@ -919,7 +932,6 @@ class ApiV1RESTController extends FOSRestController
      *
      * @Get("/getPostBySlug/{slug}")
      * @View(serializerEnableMaxDepthChecks=true)
-     *
      * @return Response
      *
      */
@@ -1069,13 +1081,13 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get public Supplier Products List
      *
-     * @Get("/supplierProducts/{page}/{pageCount}/{sortField}/{sortDirection}")
+     * @Get("/supplierProducts/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
      *
      */
-    public function supplierProductsAction($page, $pageCount, $sortField, $sortDirection)
+    public function supplierProductsAction($id)
     {
         try {
             $em = $this->getDoctrine()->getManager();
@@ -1084,17 +1096,14 @@ class ApiV1RESTController extends FOSRestController
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('count(sp_.id)');
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
 
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('sp_');
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
-            $qb->addOrderBy('sp_.'.$sortField, $sortDirection);
-            $qb->setMaxResults($pageCount);
-            $offset = ($page - 1) * $pageCount;
-            $qb->setFirstResult($offset);
+            $qb->andWhere('sp_.supplier = :supplier')->setParameter('supplier', $id);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $data['results'] = $qb->getQuery()->getResult();
 
             return $data;
@@ -1106,7 +1115,7 @@ class ApiV1RESTController extends FOSRestController
     /**
      * Get a Supplier Product entity By id
      *
-     * @Get("/supplierProductDetails/{id}")
+     * @Get("/supplierProduct/{id}")
      * @View(serializerEnableMaxDepthChecks=true)
      *
      * @return Response
@@ -1120,7 +1129,7 @@ class ApiV1RESTController extends FOSRestController
             $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
             $qb->select('sp_');
             $qb->andWhere('sp_.id = :id')->setParameter('id', $id);
-            $qb->andWhere('sp_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb->andWhere('sp_.status = :status')->setParameter('status', 'Online');
             $qb->setMaxResults(1);
             $data = $qb->getQuery()->getOneOrNullResult();
             return $data;
@@ -1254,8 +1263,8 @@ class ApiV1RESTController extends FOSRestController
                    return $data;
                }
                $bid->setStatus('shortlisted');
-               //$bid->save();
                $em->flush();
+              /*
                $message = \Swift_Message::newInstance()
                    ->setSubject('Your Tender '. $bid->getTender()->getTitle().' ')
                    ->setFrom('contact@continuousnet.com')
@@ -1265,6 +1274,7 @@ class ApiV1RESTController extends FOSRestController
                        'text/html'
                    );
                $this->get('mailer')->send($message);
+              */
                $data['status'] = true;
                $data['message'] = $this->get('translator')->trans('bidShortList.shortListed', array($bid->getTitle()));
                return $data;

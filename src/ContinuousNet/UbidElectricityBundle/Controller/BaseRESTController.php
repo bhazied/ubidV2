@@ -27,6 +27,8 @@ class BaseRESTController extends VoryxController
         'it' => 'it_IT',
     );
 
+    private $privateEntities = array('User', 'Tender', 'Bid', 'SupplierProduct', 'Supplier', 'Buyer');
+
     public function getConfig($path)
     {
         $config = $this->container->getParameter('uid_electricity');
@@ -101,9 +103,15 @@ class BaseRESTController extends VoryxController
         return $entities;
     }
 
+    public function getEntityName($entity)
+    {
+        $entityName = join('', array_slice(explode('\\', get_class($entity)), -1));
+        return $entityName;
+    }
+
     public function getEntityDir($entity, $pluralize = true)
     {
-        $dir = strtolower(join('', array_slice(explode('\\', get_class($entity)), -1)));
+        $dir = strtolower($this->getEntityName($entity));
         if ($pluralize) {
             $lastLetter = substr($dir, -1);
             switch ($lastLetter) {
@@ -123,13 +131,20 @@ class BaseRESTController extends VoryxController
         $directory = '';
         if ($absolute) {
             $directory .= $this->get('kernel')->getRootDir() . '/../web/uploads/';
+
         }
-        $directory .= $this->getEntityDir($entity) . '/';
+        $entityName = $this->getEntityName($entity);
+        if (in_array($entityName, $this->privateEntities)) {
+            $directory .= 'data' . sprintf('/user_%06d/', $this->getUser()->getId()) . '/' . $this->getEntityDir($entity) . '/';
+        } else {
+            $directory .= $this->getEntityDir($entity) . '/';
+        }
         return $directory;
     }
 
     public function createSubDirectory($entity)
     {
+
         $directory = $this->getSubDirectory($entity);
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);

@@ -2,17 +2,37 @@
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English',
+    'en' : 'English'/*,
     'fr' : 'Français',
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
-app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
-    function ($rootScope, $state, $stateParams, $localStorage) {
+app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStorage', '$timeout', '$interval',
+    function ($rootScope, $state, $stateParams, $localStorage, $sessionStorage, $timeout, $interval) {
 
         $rootScope.languages = languages;
+
+        $rootScope.underPage = true;
+        if (angular.isDefined($sessionStorage.underPage)) {
+            $rootScope.underPage = false;
+        } else {
+            $rootScope.initialTime = $rootScope.timer = 6;
+            $rootScope.circleRadius = 66;
+            $sessionStorage.underPage = true;
+            $rootScope.interval = $interval(function() {
+                $rootScope.timer--;
+                if ($rootScope.timer < 0) {
+                    $rootScope.timer = 0;
+                    $interval.cancel($rootScope.interval);
+                    $rootScope.underPage = false;
+                }
+                var angle = Math.PI*($rootScope.circleRadius*2);
+                var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
+                $('.circle_animation').css({strokeDashoffset: percent});
+            }, 1000);
+        }
 
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
@@ -28,6 +48,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         $rootScope.app = {
             name: 'E-electricity', // name of your project
             description: 'Electricity Tenders web site', // brief description
+            keywords: 'Electricity, Tenders, Buyers, Suppliers, Products', // some keywords
             author: 'ContinuousNet', // author's name or company name
             version: '2.0', // current version
             year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -64,6 +85,12 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
 
+        $rootScope.seo = {
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: ''
+        };
+
     }]);
 
 // translate config
@@ -89,6 +116,7 @@ app.config(['$translateProvider',
             currentLanguage = languageKey;
         }
     }
+
     localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
     localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
@@ -108,9 +136,8 @@ app.config(['$translateProvider',
 // configuration
 app.config(['cfpLoadingBarProvider',
     function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeBar = true;
-        cfpLoadingBarProvider.includeSpinner = false;
-
+        cfpLoadingBarProvider.includeBar = false;
+        cfpLoadingBarProvider.includeSpinner = true;
     }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols.
@@ -124,6 +151,15 @@ app.config(function($interpolateProvider) {
 app.config(function($breadcrumbProvider) {
     $breadcrumbProvider.setOptions({
         templateUrl: '/assets/views/partials/breadcrumb.html'
+    });
+});
+
+// location
+// configuration
+app.config(function($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: true
     });
 });
 

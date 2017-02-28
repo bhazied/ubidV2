@@ -1,6 +1,6 @@
 'use strict';
-app.controller('SuppliersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory) {
+app.controller('SuppliersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$suppliersFrontDataFactory', '$postsDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $suppliersFrontDataFactory, $postsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -10,6 +10,14 @@ app.controller('SuppliersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
         }, 500);
+
+        $postsDataFactory.getBySlug({slug: 'suppliers', locale: $localStorage.language}).$promise.then(function(data) {
+            $scope.postLoaded = true;
+            $scope.post = data;
+            $rootScope.seo.meta_description = data.meta_description;
+            $rootScope.seo.meta_keywords = data.meta_keywords;
+            $rootScope.seo.meta_title = data.meta_title;
+        });
 
         $scope.sortingOptions = [{
             sortField: 'name',

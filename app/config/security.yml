@@ -73,6 +73,11 @@ security:
             stateless: true
             anonymous: true
 
+        public_category:
+            pattern: ^/(en|fr|ar)/api/v1/publicCategory
+            stateless: true
+            anonymous: true
+
         register:
             pattern:  ^/(en|fr|ar)/api/v1/register
             stateless: true
@@ -139,7 +144,7 @@ security:
             anonymous: true
 
         products:
-            pattern:  ^/(en|fr|ar)/api/v1/products
+            pattern:  ^/(en|fr|ar)/api/v1/supplierProducts
             stateless: true
             anonymous: true
 

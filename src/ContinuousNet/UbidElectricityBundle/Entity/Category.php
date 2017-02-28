@@ -120,10 +120,10 @@ class Category
     private $metaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -238,7 +238,27 @@ class Category
      * @var \Doctrine\Common\Collections\Collection
      * @access private
      *
-     * @ORM\ManyToMany(targetEntity="Tender", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Supplier")
+     * @ORM\JoinTable(name="suppliers_categories",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $suppliers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Tender")
      * @ORM\JoinTable(name="tenders_categories",
      *     joinColumns={
      *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
@@ -261,6 +281,7 @@ class Category
      */
     public function __construct()
     {
+        $this->suppliers = new DoctrineCollection();
         $this->tenders = new DoctrineCollection();
     }
 
@@ -423,10 +444,10 @@ class Category
      * Set metaKeywords
      *
      * @access public
-     * @param array $metaKeywords
+     * @param string $metaKeywords
      * @return Category
      */
-    public function setMetaKeywords(array $metaKeywords = null)
+    public function setMetaKeywords($metaKeywords = null)
     {
         $this->metaKeywords = $metaKeywords;
         return $this;
@@ -633,6 +654,62 @@ class Category
     public function getModifierUser()
     {
         return $this->modifierUser;
+    }
+
+    /**
+     * Add supplier
+     *
+     * @access public
+     * @param Supplier $supplier
+     * @return Category
+     */
+    public function addSupplier(Supplier $supplier)
+    {
+        if (!$this->suppliers->contains($supplier))
+        {
+            $this->suppliers->add($supplier);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove supplier
+     *
+     * @access public
+     * @param Supplier $supplier
+     * @return Category
+     */
+    public function removeSupplier(Supplier $supplier)
+    {
+        if ($this->suppliers->contains($supplier))
+        {
+            $this->suppliers->removeElement($supplier);
+        }
+        return $this;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Category
+     */
+    public function setSuppliers($suppliers)
+    {
+        $this->suppliers = $suppliers;
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSuppliers()
+    {
+        return $this->suppliers;
     }
 
     /**

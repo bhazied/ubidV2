@@ -1,4 +1,4 @@
-app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
+app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
        /* $timeout(function() {
@@ -9,6 +9,17 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
         }, 1000);*/
+
+        $scope.showForm = false;
+        $scope.toggle = function() {
+          if ($scope.showForm) {
+              $scope.showForm = false;
+              $('#searchform').addClass('hidden-sm-down');
+          } else {
+              $scope.showForm = true;
+              $('#searchform').removeClass('hidden-sm-down');
+          }
+        };
 
         if(angular.isDefined($localStorage.searchResult)){
                 $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
@@ -130,15 +141,18 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             });
         }
 
-        $scope.tenderCAtegoriesLoaded = false;
+        $scope.tenderCategoriesLoaded = false;
         $scope.tenderCategories = [];
 
         $scope.getTenderCategories = function () {
             $timeout(function () {
-                $scope.tenderCAtegoriesLoaded = true;
+                $scope.tenderCategoriesLoaded = true;
                 if($scope.tenderCategories.length == 0){
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                        for (var i in data.results) {
+                            data.results[i].expand = false;
+                        }
                         $scope.tenderCategories = data.results;
                         def.resolve($scope.tenderCategories);
                     });
@@ -148,7 +162,7 @@ app.controller('searchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.tenderCategories;
                 }
             });
-        }
+        };
 
         $scope.maxEstimatedCostLoaded = false;
         $scope.maxEstimatedCost = 0;

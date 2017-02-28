@@ -107,7 +107,6 @@ app.config(['cfpLoadingBarProvider',
 function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeBar = true;
     cfpLoadingBarProvider.includeSpinner = false;
-
 }]);
 
 //  This binding is brought you by [[ ]] interpolation symbols. 
