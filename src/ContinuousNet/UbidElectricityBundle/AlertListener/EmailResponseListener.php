@@ -7,6 +7,8 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\Routing\RouterInterface;
 use ContinuousNet\UbidElectricityBundle\Entity\User;
+use ContinuousNet\UbidElectricityBundle\Entity\Notification;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class EmailResponseListener {
 
@@ -16,26 +18,21 @@ class EmailResponseListener {
     
     private $em;
 
-    public function __construct(AlertMailer $_alertMailer, RouterInterface $_router, EntityManager $_em)
+    private $translator;
+
+    public function __construct(AlertMailer $_alertMailer, RouterInterface $_router, EntityManager $_em, TranslatorInterface $_translator)
     {
         $this->alertMailer = $_alertMailer;
 
         $this->router = $_router;
 
         $this->em = $_em;
+
+        $this->translator = $_translator;
     }
 
     public function onKernelController(FilterControllerEvent $event)
     {
-        /*if($event->isMasterRequest())
-        {
-            return;
-        }*/
-        $controller = $event->getController();
-        if(!is_array($controller))
-        {
-            return;
-        }
         $matchedRoute = $this->router->match($event->getRequest()->getPathInfo());
         $method = $event->getRequest()->getMethod();
         if(($matchedRoute["_route"] == 'home_tender')  && strtolower($method) == 'get'){
@@ -44,6 +41,7 @@ class EmailResponseListener {
                 $this->getUserAlerts($this->em, $entity->getCreatorUser()),
                 $entity
             );
+            $this->addNotification($entity);
         }
         if(($matchedRoute["_route"] == 'buyer_detail')  && strtolower($method) == 'get'){
             $entity = $this->em->getRepository('UbidElectricityBundle:Buyer')->find($matchedRoute['id']);
@@ -51,6 +49,7 @@ class EmailResponseListener {
                 $this->getUserAlerts($this->em, $entity->getCreatorUser()),
                 $entity
             );
+            $this->addNotification($entity);
         }
         if(($matchedRoute["_route"] == 'supplier_detail')  && strtolower($method) == 'get'){
             $entity = $this->em->getRepository('UbidElectricityBundle:Supplier')->find($matchedRoute['id']);
@@ -58,6 +57,7 @@ class EmailResponseListener {
                 $this->getUserAlerts($this->em, $entity->getCreatorUser()),
                 $entity
             );
+            $this->addNotification($entity);
         }
 
 
@@ -96,6 +96,64 @@ class EmailResponseListener {
                 $this->alertMailer->$method($entity, $entity->getCreatorUser()->getEmail());
             }
         }
+    }
+
+    private function addNotification($entity){
+        $notification = new Notification();
+        $notification->setRead(false);
+        $notification->setCreatorUser($entity->getCreatorUser());
+        $className = get_class($entity);
+        $reflection = new \ReflectionClass($className);
+        $shortNameClass =  lcfirst($reflection->getShortName());
+        if($shortNameClass == "tender"){
+            $link = array(
+                'front.tender',
+                array(
+                    'id' => $entity->getId()
+                )
+            );
+            $content = $this->translator->trans('notification.showtender',array(
+                '%title%' => $entity->getTitle()
+            ));
+            $notification->setContent($content);
+            $notification->setLink(json_encode($link));
+
+        }
+        if($shortNameClass == "buyer"){
+            $link = array(
+                'front.buyer',
+                array(
+                    'id' => $entity->getId()
+                )
+            );
+            $content = $this->translator->trans('notification.showbuyerprofile',array(
+                '%title%' => $entity->getName()
+            ));
+            $notification->setContent($content);
+            $notification->setLink(json_encode($link));
+        }
+        if($shortNameClass == "supplier"){
+            $link = array(
+                'front.supplier',
+                array(
+                    'id' => $entity->getId()
+                )
+            );
+            $content = $this->translator->trans('notification.showbuyerprofile',array(
+                '%title%' => $entity->getName()
+            ));
+            $notification->setContent($content);
+            $notification->setLink(json_encode($link));
+        }
+
+        /*if(!$this->em->isOpen()){
+            $this->em =  $this->em->create(
+                $this->em->getConnection(),
+                $this->em->getConfiguration()
+            );
+        }*/
+        $this->em->persist($notification);
+        $this->em->flush();
     }
     
 }

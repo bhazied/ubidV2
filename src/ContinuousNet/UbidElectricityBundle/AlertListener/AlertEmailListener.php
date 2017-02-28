@@ -11,6 +11,8 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use ContinuousNet\UbidElectricityBundle\Entity\User;
 use Symfony\Component\Translation\TranslatorInterface;
 
+use ContinuousNet\UbidElectricityBundle\Entity\Notification;
+
 /**
  * AlertEmailListner
  *
@@ -21,9 +23,13 @@ class AlertEmailListener
 
     protected  $alertMailer;
 
-    function __construct(AlertMailer $_alertMailer)
+    protected $translator;
+
+    function __construct(AlertMailer $_alertMailer,  TranslatorInterface $_translator)
     {
         $this->alertMailer = $_alertMailer;
+
+        $this->translator = $_translator;
     }
 
     public function postPersist(LifecycleEventArgs $args){
