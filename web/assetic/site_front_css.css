@@ -1727,3 +1727,20 @@ fieldset h2 {
     cursor: pointer;
     font-family: Arial !important;
     margin-top: 2rem;
+}
+.notification:hover .submenu {
+    display: block;
+}
+
+.notification .submenu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #1D69AD;
+    min-width: 130px;
+    position: absolute;
+    left: 0;
+    top: 36px;
+    z-index: 1000;
+}

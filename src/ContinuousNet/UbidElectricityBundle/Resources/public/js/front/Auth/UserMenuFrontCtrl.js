@@ -21,6 +21,8 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             isFirstOpen: true,
             isFirstDisabled: false,
         };
+        
+        
     }
 
 ]);
