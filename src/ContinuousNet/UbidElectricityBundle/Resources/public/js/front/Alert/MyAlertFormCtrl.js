@@ -45,6 +45,9 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
         $scope.selectedCategories = [];
         $scope.selectedCountriesIds = [];
 
+        $scope.checkedCategories = [];
+        $scope.checkedCategoriesids = [];
+
         $scope.frontCategories = [];
         $scope.frontCategoriesLoaded = [];
 
@@ -87,8 +90,20 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
             }
         });
 
+        $scope.$watch('categories', function(){
+            if(angular.isDefined($scope.alert.categories)){
+                angular.forEach($scope.alert.categories, function(value, key){
+                    angular.forEach($scope.categories, function(val, k){
+                        if(val.id == value){
+                            $scope.checkedCategories.push(val);
+                            $scope.checkedCategoriesids.push(val.id);
+                        }
+                    });
+                });
+            }
+        });
+
         $scope.addSelectedCountries= function () {
-            console.log($scope.alert.countries);
             angular.forEach($scope.alert.countries, function(value, key){
                 var index = $scope.selectedCountriesIds.indexOf(value);
                 var country = {};
@@ -111,23 +126,50 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                 $scope.selectedCountriesIds.splice(index, 1);
             });
         }
-        
-        $scope.changeParentStatus = function(tcid){
-            var selectedVariable = tcid + '_checked';
-            $scope[selectedVariable] = !$scope[selectedVariable];
+
+
+        $scope.addCheckedCategoried = function () {
+            angular.forEach($scope.alert.categories, function (value, key) {
+                var category = {};
+                angular.forEach($scope.categories, function(cval, ckey){
+                    if(cval.id == value && $scope.checkedCategoriesids.indexOf(value) == -1){
+                        category = cval;
+                        $scope.checkedCategories.push(category);
+                        $scope.checkedCategoriesids.push(category.id);
+                    }
+                });
+            });
         }
 
-        $scope.parentChecked = function (tcid, tsc) {
+        $scope.removeCheckedCategories = function () {
+            console.log($scope.checkedCategories);
+            angular.forEach($scope.alert.checkedCategories, function (value, key) {
+                var index  = $scope.checkedCategoriesids.indexOf(value);
+                $scope.checkedCategories.splice(index, 1);
+                $scope.checkedCategoriesids.splice(index, 1);
+            });
+        }
+
+        /*$scope.changeParentStatus = function(tcid){
+            var selectedVariable = tcid + '_checked';
+            $scope[selectedVariable] = !$scope[selectedVariable];
+        }*/
+
+
+        /*$scope.parentChecked = function (tcid, tsc) {
             var selectedVariable = tcid + '_checked';
             if (angular.isUndefined($scope[selectedVariable])) {
                 $scope[selectedVariable] = false;
+                //var pos =  $scope.alert.categories.indexOf(tsc.id);
+               // $scope.alert.categories.slice(pos,1);
                 return $scope[selectedVariable];
             }
             if (tcid == tsc.parent_category.id) {
+                //$scope.alert.categories.push(tsc.id);
                 return $scope[selectedVariable];
             }
             return false;
-        }
+        }*/
 
 
         $scope.submitForm = function(form, redirect) {
