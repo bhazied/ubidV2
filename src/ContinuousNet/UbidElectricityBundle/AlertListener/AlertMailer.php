@@ -52,8 +52,17 @@ class AlertMailer
             $subject = "[SOMEONE CONSULT YOUR OPPORTUNITY BUSINESS]";
             $this->sendMail($arguments[1], $subject, $body);
         }
-        if($name == "load_profile"){
-            
+        if($name == "load_buyer"){
+            $template = 'UbidElectricityBundle:Emails:consult_profile_buyer.html.twig';
+            $body = $this->templating->render($template, array('buyer' => $arguments[0]));
+            $subject = "[SOMEONE CONSULT YOUR PROFILE - BUYER]";
+            $this->sendMail($arguments[1], $subject, $body);
+        }
+        if($name == "load_supplier"){
+            $template = 'UbidElectricityBundle:Emails:consult_profile_supplier.html.twig';
+            $body = $this->templating->render($template, array('supplier' => $arguments[0]));
+            $subject = "[SOMEONE CONSULT YOUR PROFILE - SUPPLIER]";
+            $this->sendMail($arguments[1], $subject, $body);
         }
         if($name == "update_bid"){
             $template = 'UbidElectricityBundle:Emails:bid_short_listed.html.twig';

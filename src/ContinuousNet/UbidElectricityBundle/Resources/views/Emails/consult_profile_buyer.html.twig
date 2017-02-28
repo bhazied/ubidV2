@@ -1,23 +1,22 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear {{tender.getCreatorUser().getFirstName() }},</p>
+    <p>Dear {{buyer.getCreatorUser().getFirstName() }},</p>
     <p>&nbsp;</p>
     <p>
 
-        Your {{ tender.getSection() }} {{ tender.getTitle() }} : {{ tender.getReference() }}  has been consulted
+        Your {{ buyer.getName() }}  has been consulted
     </p>
     <p>&nbsp;</p>
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
         <tr>
             <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
-                Bid informations
+                buyer informations
             </th>
         </tr>
         <tr>
             <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
-                <p><span style="color: #1D69AD;">Reference</span> : {{ tender.getReference() }}</p>
-                <p><span style="color: #1D69AD;">Title</span> : {{ tender.getTitle() }}</p>
-                <p><span style="color: #1D69AD;">Description</span> : {{ tender.getDescription() | striptags}}</p>
+                <p><span style="color: #1D69AD;">Name</span> : {{ buyer.getName() }}</p>
+                <p><span style="color: #1D69AD;">Description</span> : {{ buyer.getDescription() | striptags}}</p>
             </td>
         </tr>
     </table>
