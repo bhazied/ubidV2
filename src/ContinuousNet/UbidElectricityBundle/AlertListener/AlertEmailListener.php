@@ -138,8 +138,8 @@ class AlertEmailListener
                     'id' => $entity->getId()
                 )
             );
-            $content = $this->translator->trans('notification.showtender',array(
-                '%title%' => $entity->getTitle()
+            $content = $this->translator->trans('notification.newmessagereceived',array(
+                '%subject%' => $entity->getTitle()
             ));
             $notification->setContent($content);
             $notification->setLink(json_encode($link));
@@ -152,7 +152,7 @@ class AlertEmailListener
                     'id' => $entity->getId()
                 )
             );
-            $content = $this->translator->trans('notification.showbuyerprofile',array(
+            $content = $this->translator->trans('notification.shortlistbid',array(
                 '%title%' => $entity->getTitle()
             ));
             $notification->setContent($content);

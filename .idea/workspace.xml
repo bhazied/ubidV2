@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e873a20-8d76-416f-86e7-fbbe7c4e3b98" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/front/img/loading.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/EmailResponseListener.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/EmailResponseListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/BuyerFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/BuyerFrontCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyer.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/SupplierFrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/SupplierFrontCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/TenderCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_css.css" afterPath="$PROJECT_DIR$/web/assetic/site_front_css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297.css" afterPath="$PROJECT_DIR$/web/css/b9d5297.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" afterPath="$PROJECT_DIR$/web/css/b9d5297_part_13.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/front/css/e-electricity.css" afterPath="$PROJECT_DIR$/web/front/css/e-electricity.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" />
     </list>
     <ignored path="ubid-electricity.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +40,8 @@
       <file leaf-file-name="messages.en.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="554">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -69,44 +57,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlertEmailListener.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AlertEmailListener.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+            <state relative-caret-position="526">
+              <caret line="154" column="74" selection-start-line="154" selection-start-column="74" selection-end-line="154" selection-end-column="74" />
               <folding>
                 <element signature="e#69#122#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buyer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="supplier.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SupplierFrontCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/SupplierFrontCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -166,9 +124,7 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/consult_profile_buyer.html.twig" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/consult_profile_supplier.html.twig" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/alertEmailServices.yml" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/EmailResponseListener.php" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/BuyerFrontCtrl.js" />
         <option value="$PROJECT_DIR$/web/front/img/loading.svg" />
         <option value="$PROJECT_DIR$/web/front/css/e-electricity.css" />
@@ -177,6 +133,8 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/SupplierFrontCtrl.js" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php" />
       </list>
     </option>
   </component>
@@ -587,12 +545,12 @@
       <workItem from="1487933877431" duration="16079000" />
       <workItem from="1488019780142" duration="6938000" />
       <workItem from="1488206830168" duration="7226000" />
-      <workItem from="1488271757421" duration="13821000" />
+      <workItem from="1488271757421" duration="14021000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47327000" />
+    <option name="totallyTimeSpent" value="47527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -891,14 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="50" column="29" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Buyer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -957,16 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="e#69#122#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/front/img/Male.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -987,14 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1031,14 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Tender/tender.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="556">
@@ -1052,6 +976,40 @@
         <state relative-caret-position="510">
           <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Supplier/supplier.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Buyer/buyer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/translations/messages.en.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/AlertListener/AlertEmailListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="154" column="74" selection-start-line="154" selection-start-column="74" selection-end-line="154" selection-end-column="74" />
+          <folding>
+            <element signature="e#69#122#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
