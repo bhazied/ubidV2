@@ -107,20 +107,6 @@ class AlertEmailListener
 
     }
 
-    /*private function executeLoadAction($user_alerts, $entity){
-        if(!$user_alerts){
-            return;
-        }
-        $className = get_class($entity);
-        $reflection = new \ReflectionClass($className);
-        $shortNameClass =  lcfirst($reflection->getShortName());
-        $method = "load_".$shortNameClass;
-        foreach ($user_alerts as $alert){
-            if($alert->getKey() == "CONSULT_YOUR_OPPORTUNITY" && $alert->getValue() == "ON" && $shortNameClass == "tender") {
-                $this->alertMailer->$method($entity, $entity->getCreatorUser()->getEmail());
-            }
-        }
-    }*/
 
     private function executeUpdateAction($user_alerts, $entity){
         if(!$user_alerts){
@@ -137,4 +123,44 @@ class AlertEmailListener
             }
         }
     }
+
+    private function addNotification($entity, EntityManager $entityManager){
+        $notification = new Notification();
+        $notification->setRead(false);
+        $notification->setCreatorUser($entity->getCreatorUser());
+        $className = get_class($entity);
+        $reflection = new \ReflectionClass($className);
+        $shortNameClass =  lcfirst($reflection->getShortName());
+        if($shortNameClass == "message"){
+            $link = array(
+                'front.messages.detail',
+                array(
+                    'id' => $entity->getId()
+                )
+            );
+            $content = $this->translator->trans('notification.newmessagereceived',array(
+                '%subject%' => $entity->getTitle()
+            ));
+            $notification->setContent($content);
+            $notification->setLink(json_encode($link));
+
+        }
+        if($shortNameClass == "bid"){
+            $link = array(
+                'front.mybids.details',
+                array(
+                    'id' => $entity->getId()
+                )
+            );
+            $content = $this->translator->trans('notification.shortlistbid',array(
+                '%title%' => $entity->getTitle()
+            ));
+            $notification->setContent($content);
+            $notification->setLink(json_encode($link));
+        }
+
+        $entityManager->persist($notification);
+        $entityManager->flush();
+    }
+
 }

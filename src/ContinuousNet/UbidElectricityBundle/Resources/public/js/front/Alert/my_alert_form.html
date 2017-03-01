@@ -88,7 +88,7 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="alertDescription" class="control-label">
                                         <span translate="content.list.fields.alert.SELECTCATEGORIES">Please select your preferred product or service categories</span>
@@ -106,7 +106,8 @@
                                         <ul ng-if="category.children.length > 0" ng-repeat="tenderSubCategory in category.children">
                                             <div class="form-group">
                                                 <label class="custom-control custom-checkbox">
-                                                    <input ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
+                                                    <!--<input ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="alert.categories" checklist-value="tenderSubCategory.id" name="category[]" id="alertCategory[[tenderSubCategory.id]]">-->
+                                                    <input  ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="alert.categories" checklist-value="tenderSubCategory.id" name="category[]" id="alertCategory[[tenderSubCategory.id]]">
                                                     <span class="custom-control-indicator"></span>
                                                     <span class="custom-control-description">[[ tenderSubCategory.name ]]</span>
                                                 </label>
@@ -118,13 +119,41 @@
                             </div><!--/col-md-6-->
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="checkedCategories" class="control-label">
+                                        <span></span>
+                                    </label>
+                                    <select multiple ng-options="item.id as item.name for item in checkedCategories" ng-model="alert.checkedCategories" class="form-control" name="checkedCategories[]" id="checkedCategories[[category.id]]">
+                                    </select>
+                                </div>
+                            </div><!--/col-md-6-->
+
+
+                            <!--<div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="alertCategories" type="checkbox" id="alertCategories" />
                                     <label class="all" for="alertCategories" translate="content.common.SELECTALL">Select All</label>
-                                </div><!--/checkbox-->
-                            </div><!--/col-md-12-->
+                                </div>
+                            </div> -->
+
                         </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="checkbox continuous-check check-primary">
+                                        <button class="add-remove add" ng-click="addCheckedCategoried()">+</button>
+                                    </div><!--/checkbox-->
+                                </div><!--/col-md-4-->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="checkbox continuous-check check-primary pull-right">
+                                        <button class="add-remove remove" ng-if="checkedCategories.length  > 0" ng-click="removeCheckedCategories()">-</button>
+                                    </div><!--/checkbox-->
+                                </div><!--/col-md-4-->
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <span translate="content.list.fields.alert.SELECTCOUNTRIES">lease select your preferred region or country</span>

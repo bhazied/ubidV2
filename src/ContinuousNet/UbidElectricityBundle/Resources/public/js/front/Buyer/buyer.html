@@ -1,5 +1,7 @@
 <div ng-controller="BuyerFrontCtrl">
-    <div class="tender-preview">
+    <div ng-if="!loaded" class="svg-loader">
+    </div>
+    <div class="tender-preview" ng-if="loaded">
         <h1 class="name" ng-bind="buyer.name"></h1>
         <div class="pb-1 clearfix">
             <img ng-if="buyer.picture" src="[[ buyer.picture ]]" alt="[[ buyer.name ]]" class="pull-right img-thumbnail" />
