@@ -3043,7 +3043,7 @@ h3, h3 a {
 
 .tender-details table tr th {
     min-width: 150px;
-   border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .tender-details table tr td {
@@ -3513,7 +3513,7 @@ fieldset h2 {
 }
 .detail-message table tr td span {
     border-left: 1px solid #000000;
-   padding-left: 0.75rem;
+    padding-left: 0.75rem;
     /*display: block;*/
 }
 .detail-message table tr td a {
@@ -4246,3 +4246,48 @@ body.underPage footer {
         color: #FFFFFF;
     }
 }
+
+.notification:hover .submenu {
+    display: block;
+}
+
+.notification .submenu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #1D69AD;
+    min-width: 130px;
+    position: absolute;
+    left: 0;
+    top: 36px;
+    z-index: 1000;
+}
+
+.notification .submenu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.notification .submenu li a {
+    display: block;
+    line-height: 24px;
+    padding: 0 10px;
+    background: #eee;
+    color: #1D69AD;
+
+}
+.notification .submenu .span{
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.notification .submenu li a:hover {
+     background: #ccc;
+     color: #333;
+}
+
+
+
