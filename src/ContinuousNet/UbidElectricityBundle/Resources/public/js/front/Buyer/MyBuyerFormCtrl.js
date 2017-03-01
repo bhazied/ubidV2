@@ -137,5 +137,15 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         }
     ];
 
+   /* $scope.$watch('countries', function () {
+        if($scope.countries.length > 0){
+            var defaultCountry = {id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')};
+            $scope.countries.unshift(defaultCountry);
+            $scope.buyer.country = defaultCountry.id;
+        }
+
+
+    });*/
+
 }]);
 
