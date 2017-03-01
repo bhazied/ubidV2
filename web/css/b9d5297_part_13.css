@@ -2387,6 +2387,21 @@ body.underPage footer {
     }
 }
 
+.svg-loader {
+    margin: 0 0 2em;
+    height: 100px;
+    width: 20%;
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto 1em;
+    vertical-align: top;
+    background-image: url('/front/img/loading.svg');
+    background-repeat: no-repeat;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+}
+
 @media only screen and (max-width: 750px) {
     body.underPage .countdown-timer {
         font-family: Arial;

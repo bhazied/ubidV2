@@ -8,6 +8,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
         $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
 
+        $scope.loaded = false;
         $scope.tenderLoaded = false;
         $scope.tender = {};
         $scope.getTender = function () {
@@ -20,6 +21,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                         $rootScope.seo.meta_description = data.description;
                         $rootScope.seo.meta_keywords = data.reference;
                         $rootScope.seo.meta_title = data.title;
+                        $scope.loaded = true;
                     });
                     def.resolve($scope.tender);
                     return def;

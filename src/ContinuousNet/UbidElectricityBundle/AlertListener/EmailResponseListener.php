@@ -145,13 +145,7 @@ class EmailResponseListener {
             $notification->setContent($content);
             $notification->setLink(json_encode($link));
         }
-
-        /*if(!$this->em->isOpen()){
-            $this->em =  $this->em->create(
-                $this->em->getConnection(),
-                $this->em->getConfiguration()
-            );
-        }*/
+        
         $this->em->persist($notification);
         $this->em->flush();
     }
