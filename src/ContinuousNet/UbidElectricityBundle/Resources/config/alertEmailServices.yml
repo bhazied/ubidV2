@@ -17,6 +17,6 @@ services:
             #- { name: doctrine.event_listener, event: postLoad, connection: default}
     ubid_electricity.event.email_response_listener:
         class: %ubid_electricity.event.email_response.listener.class%
-        arguments: [@ubid_electricity.alert_mailer, @router, @doctrine.orm.entity_manager, @translator]
+        arguments: [@ubid_electricity.alert_mailer, @router, @doctrine.orm.entity_manager, @translator, @security.token_storage]
         tags:
-            - {name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            - {name: kernel.event_listener, event: kernel.controller, method: onKernelRequest }

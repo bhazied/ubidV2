@@ -1020,7 +1020,7 @@ app.config(['$stateProvider',
             url: '/buyer/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Buyer/buyer.html',
             title: 'front.BUYERDETAILS',
-            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService')
+            resolve: loadSequence('BuyerFrontCtrl', 'buyerFrontService', 'buyerService')
         /*
          * Public Supplier List & Details routes
          */
@@ -1038,7 +1038,7 @@ app.config(['$stateProvider',
             url: '/supplier/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Supplier/supplier.html',
             title: 'front.SUPPLIERDETAILS',
-            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService')
+            resolve: loadSequence('SupplierFrontCtrl', 'supplierFrontService', 'supplierService')
         /*
          * Public Tender Lists & Details routes
          */
@@ -1051,7 +1051,7 @@ app.config(['$stateProvider',
             url: '/tender/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/tender.html',
             title: 'front.TENDERDETAILS',
-            resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService')
+            resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService', 'tenderService')
         }).state('front.tenders.sector', {
             url: '/sector/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Tender/sector.html',
