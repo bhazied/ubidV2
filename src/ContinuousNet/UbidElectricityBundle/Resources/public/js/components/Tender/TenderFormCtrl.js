@@ -102,7 +102,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.buyers = data.results;
                     def.resolve($scope.buyers);
-                    $scope.tender.buyer = $scope.tender.buyer || $scope.buyers[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.buyer = $scope.tender.buyer || $scope.buyers[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -129,7 +131,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.suppliers = data.results;
                     def.resolve($scope.suppliers);
-                    $scope.tender.supplier = $scope.tender.supplier || $scope.suppliers[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.supplier = $scope.tender.supplier || $scope.suppliers[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -156,7 +160,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.regions = data.results;
                     def.resolve($scope.regions);
-                    $scope.tender.region = $scope.tender.region || $scope.regions[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.region = $scope.tender.region || $scope.regions[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -197,7 +203,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.countries = data.results;
                     def.resolve($scope.countries);
-                    $scope.tender.country = $scope.tender.country || $scope.countries[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.country = $scope.tender.country || $scope.countries[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -224,7 +232,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.sectors = data.results;
                     def.resolve($scope.sectors);
-                    $scope.tender.sector = $scope.tender.sector || $scope.sectors[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.sector = $scope.tender.sector || $scope.sectors[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -251,7 +261,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.tenderTypes = data.results;
                     def.resolve($scope.tenderTypes);
-                    $scope.tender.tender_type = $scope.tender.tender_type || $scope.tenderTypes[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.tender_type = $scope.tender.tender_type || $scope.tenderTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -278,7 +290,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.biddingTypes = data.results;
                     def.resolve($scope.biddingTypes);
-                    $scope.tender.bidding_type = $scope.tender.bidding_type || $scope.biddingTypes[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.bidding_type = $scope.tender.bidding_type || $scope.biddingTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -305,7 +319,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.tender.creator_user = $scope.tender.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.tender)) {
+                        $scope.tender.creator_user = $scope.tender.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.buyerTypes = data.results;
                     def.resolve($scope.buyerTypes);
-                    $scope.buyer.buyer_type = $scope.buyer.buyer_type || $scope.buyerTypes[0].id;
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.buyer_type = $scope.buyer.buyer_type || $scope.buyerTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.countries = data.results;
                     def.resolve($scope.countries);
-                    $scope.buyer.country = $scope.buyer.country || $scope.countries[0].id;
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.country = $scope.buyer.country || $scope.countries[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -96,7 +100,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.languages = data.results;
                     def.resolve($scope.languages);
-                    $scope.buyer.language = $scope.buyer.language || $scope.languages[0].id;
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.language = $scope.buyer.language || $scope.languages[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -123,7 +129,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.regions = data.results;
                     def.resolve($scope.regions);
-                    $scope.buyer.first_market_region = $scope.buyer.first_market_region || $scope.regions[0].id;
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.first_market_region = $scope.buyer.first_market_region || $scope.regions[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -150,7 +158,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.buyer.creator_user = $scope.buyer.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.creator_user = $scope.buyer.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

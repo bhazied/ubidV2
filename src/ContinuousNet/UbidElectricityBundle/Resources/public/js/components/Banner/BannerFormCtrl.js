@@ -109,7 +109,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.bannerTypes = data.results;
                     def.resolve($scope.bannerTypes);
-                    $scope.banner.banner_type = $scope.banner.banner_type || $scope.bannerTypes[0].id;
+                    if (angular.isDefined($scope.banner)) {
+                        $scope.banner.banner_type = $scope.banner.banner_type || $scope.bannerTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -136,7 +138,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.banner.creator_user = $scope.banner.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.banner)) {
+                        $scope.banner.creator_user = $scope.banner.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

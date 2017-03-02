@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.tenderProducts = data.results;
                     def.resolve($scope.tenderProducts);
-                    $scope.bidProduct.tender_product = $scope.bidProduct.tender_product || $scope.tenderProducts[0].id;
+                    if (angular.isDefined($scope.bidProduct)) {
+                        $scope.bidProduct.tender_product = $scope.bidProduct.tender_product || $scope.tenderProducts[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.bids = data.results;
                     def.resolve($scope.bids);
-                    $scope.bidProduct.bid = $scope.bidProduct.bid || $scope.bids[0].id;
+                    if (angular.isDefined($scope.bidProduct)) {
+                        $scope.bidProduct.bid = $scope.bidProduct.bid || $scope.bids[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -96,7 +100,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.supplierProducts = data.results;
                     def.resolve($scope.supplierProducts);
-                    $scope.bidProduct.supplier_product = $scope.bidProduct.supplier_product || $scope.supplierProducts[0].id;
+                    if (angular.isDefined($scope.bidProduct)) {
+                        $scope.bidProduct.supplier_product = $scope.bidProduct.supplier_product || $scope.supplierProducts[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -123,7 +129,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.bidProduct.creator_user = $scope.bidProduct.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.bidProduct)) {
+                        $scope.bidProduct.creator_user = $scope.bidProduct.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -77,7 +77,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.message.from_user = $scope.message.from_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_user = $scope.message.from_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -104,7 +106,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.buyers = data.results;
                     def.resolve($scope.buyers);
-                    $scope.message.from_buyer = $scope.message.from_buyer || $scope.buyers[0].id;
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_buyer = $scope.message.from_buyer || $scope.buyers[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -131,7 +135,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.suppliers = data.results;
                     def.resolve($scope.suppliers);
-                    $scope.message.from_supplier = $scope.message.from_supplier || $scope.suppliers[0].id;
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_supplier = $scope.message.from_supplier || $scope.suppliers[0].id;
+                    }
                 });
                 return def;
             } else {

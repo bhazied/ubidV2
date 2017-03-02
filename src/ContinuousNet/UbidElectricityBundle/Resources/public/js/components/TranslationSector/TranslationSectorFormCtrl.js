@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.sectors = data.results;
                     def.resolve($scope.sectors);
-                    $scope.translationSector.sector = $scope.translationSector.sector || $scope.sectors[0].id;
+                    if (angular.isDefined($scope.translationSector)) {
+                        $scope.translationSector.sector = $scope.translationSector.sector || $scope.sectors[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.translationSector.creator_user = $scope.translationSector.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.translationSector)) {
+                        $scope.translationSector.creator_user = $scope.translationSector.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

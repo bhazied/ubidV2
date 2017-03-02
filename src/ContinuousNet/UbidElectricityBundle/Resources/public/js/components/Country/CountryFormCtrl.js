@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.regions = data.results;
                     def.resolve($scope.regions);
-                    $scope.country.region = $scope.country.region || $scope.regions[0].id;
+                    if (angular.isDefined($scope.country)) {
+                        $scope.country.region = $scope.country.region || $scope.regions[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.country.creator_user = $scope.country.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.country)) {
+                        $scope.country.creator_user = $scope.country.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

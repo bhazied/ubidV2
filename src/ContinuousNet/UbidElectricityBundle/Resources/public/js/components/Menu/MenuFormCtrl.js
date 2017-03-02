@@ -132,7 +132,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.menu.creator_user = $scope.menu.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.menu)) {
+                        $scope.menu.creator_user = $scope.menu.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

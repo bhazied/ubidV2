@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.menus = data.results;
                     def.resolve($scope.menus);
-                    $scope.menuLink.menu = $scope.menuLink.menu || $scope.menus[0].id;
+                    if (angular.isDefined($scope.menuLink)) {
+                        $scope.menuLink.menu = $scope.menuLink.menu || $scope.menus[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.menuLink.creator_user = $scope.menuLink.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.menuLink)) {
+                        $scope.menuLink.creator_user = $scope.menuLink.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

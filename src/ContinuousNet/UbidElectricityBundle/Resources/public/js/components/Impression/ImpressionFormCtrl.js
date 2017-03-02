@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.visits = data.results;
                     def.resolve($scope.visits);
-                    $scope.impression.visit = $scope.impression.visit || $scope.visits[0].id;
+                    if (angular.isDefined($scope.impression)) {
+                        $scope.impression.visit = $scope.impression.visit || $scope.visits[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.banners = data.results;
                     def.resolve($scope.banners);
-                    $scope.impression.banner = $scope.impression.banner || $scope.banners[0].id;
+                    if (angular.isDefined($scope.impression)) {
+                        $scope.impression.banner = $scope.impression.banner || $scope.banners[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -96,7 +100,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.impression.creator_user = $scope.impression.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.impression)) {
+                        $scope.impression.creator_user = $scope.impression.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

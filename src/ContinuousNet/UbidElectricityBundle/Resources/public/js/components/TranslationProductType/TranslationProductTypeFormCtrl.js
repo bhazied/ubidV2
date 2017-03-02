@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.productTypes = data.results;
                     def.resolve($scope.productTypes);
-                    $scope.translationProductType.product_type = $scope.translationProductType.product_type || $scope.productTypes[0].id;
+                    if (angular.isDefined($scope.translationProductType)) {
+                        $scope.translationProductType.product_type = $scope.translationProductType.product_type || $scope.productTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.translationProductType.creator_user = $scope.translationProductType.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.translationProductType)) {
+                        $scope.translationProductType.creator_user = $scope.translationProductType.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

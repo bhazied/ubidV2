@@ -67,7 +67,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.postCategories = data.results;
                     def.resolve($scope.postCategories);
-                    $scope.postCategory.parent_post_category = $scope.postCategory.parent_post_category || $scope.postCategories[0].id;
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.parent_post_category = $scope.postCategory.parent_post_category || $scope.postCategories[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -94,7 +96,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.postTypes = data.results;
                     def.resolve($scope.postTypes);
-                    $scope.postCategory.post_type = $scope.postCategory.post_type || $scope.postTypes[0].id;
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.post_type = $scope.postCategory.post_type || $scope.postTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -121,7 +125,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.postCategory.creator_user = $scope.postCategory.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.creator_user = $scope.postCategory.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

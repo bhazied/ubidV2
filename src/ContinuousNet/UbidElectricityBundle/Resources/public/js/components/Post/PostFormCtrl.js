@@ -100,7 +100,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.postTypes = data.results;
                     def.resolve($scope.postTypes);
-                    $scope.post.post_type = $scope.post.post_type || $scope.postTypes[0].id;
+                    if (angular.isDefined($scope.post)) {
+                        $scope.post.post_type = $scope.post.post_type || $scope.postTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -127,7 +129,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.post.creator_user = $scope.post.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.post)) {
+                        $scope.post.creator_user = $scope.post.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.biddingTypes = data.results;
                     def.resolve($scope.biddingTypes);
-                    $scope.translationBiddingType.bidding_type = $scope.translationBiddingType.bidding_type || $scope.biddingTypes[0].id;
+                    if (angular.isDefined($scope.translationBiddingType)) {
+                        $scope.translationBiddingType.bidding_type = $scope.translationBiddingType.bidding_type || $scope.biddingTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.translationBiddingType.creator_user = $scope.translationBiddingType.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.translationBiddingType)) {
+                        $scope.translationBiddingType.creator_user = $scope.translationBiddingType.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.posts = data.results;
                     def.resolve($scope.posts);
-                    $scope.translationPost.post = $scope.translationPost.post || $scope.posts[0].id;
+                    if (angular.isDefined($scope.translationPost)) {
+                        $scope.translationPost.post = $scope.translationPost.post || $scope.posts[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.translationPost.creator_user = $scope.translationPost.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.translationPost)) {
+                        $scope.translationPost.creator_user = $scope.translationPost.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

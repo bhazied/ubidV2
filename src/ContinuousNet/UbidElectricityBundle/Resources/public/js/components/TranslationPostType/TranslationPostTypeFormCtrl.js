@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.postTypes = data.results;
                     def.resolve($scope.postTypes);
-                    $scope.translationPostType.post_type = $scope.translationPostType.post_type || $scope.postTypes[0].id;
+                    if (angular.isDefined($scope.translationPostType)) {
+                        $scope.translationPostType.post_type = $scope.translationPostType.post_type || $scope.postTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -69,7 +71,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.translationPostType.creator_user = $scope.translationPostType.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.translationPostType)) {
+                        $scope.translationPostType.creator_user = $scope.translationPostType.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

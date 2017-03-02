@@ -42,7 +42,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.userSetting.creator_user = $scope.userSetting.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.userSetting)) {
+                        $scope.userSetting.creator_user = $scope.userSetting.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

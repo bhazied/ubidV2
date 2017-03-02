@@ -83,7 +83,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.tenders = data.results;
                     def.resolve($scope.tenders);
-                    $scope.bid.tender = $scope.bid.tender || $scope.tenders[0].id;
+                    if (angular.isDefined($scope.bid)) {
+                        $scope.bid.tender = $scope.bid.tender || $scope.tenders[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -110,7 +112,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.suppliers = data.results;
                     def.resolve($scope.suppliers);
-                    $scope.bid.supplier = $scope.bid.supplier || $scope.suppliers[0].id;
+                    if (angular.isDefined($scope.bid)) {
+                        $scope.bid.supplier = $scope.bid.supplier || $scope.suppliers[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -137,7 +141,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.bid.creator_user = $scope.bid.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.bid)) {
+                        $scope.bid.creator_user = $scope.bid.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

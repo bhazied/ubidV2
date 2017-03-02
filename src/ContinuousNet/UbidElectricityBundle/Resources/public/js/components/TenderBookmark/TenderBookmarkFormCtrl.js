@@ -51,7 +51,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.tenders = data.results;
                     def.resolve($scope.tenders);
-                    $scope.tenderBookmark.tender = $scope.tenderBookmark.tender || $scope.tenders[0].id;
+                    if (angular.isDefined($scope.tenderBookmark)) {
+                        $scope.tenderBookmark.tender = $scope.tenderBookmark.tender || $scope.tenders[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -78,7 +80,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.tenderBookmark.creator_user = $scope.tenderBookmark.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.tenderBookmark)) {
+                        $scope.tenderBookmark.creator_user = $scope.tenderBookmark.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -67,7 +67,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.tenders = data.results;
                     def.resolve($scope.tenders);
-                    $scope.tenderProduct.tender = $scope.tenderProduct.tender || $scope.tenders[0].id;
+                    if (angular.isDefined($scope.tenderProduct)) {
+                        $scope.tenderProduct.tender = $scope.tenderProduct.tender || $scope.tenders[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -94,7 +96,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.categories = data.results;
                     def.resolve($scope.categories);
-                    $scope.tenderProduct.category = $scope.tenderProduct.category || $scope.categories[0].id;
+                    if (angular.isDefined($scope.tenderProduct)) {
+                        $scope.tenderProduct.category = $scope.tenderProduct.category || $scope.categories[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -121,7 +125,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.productTypes = data.results;
                     def.resolve($scope.productTypes);
-                    $scope.tenderProduct.product_type = $scope.tenderProduct.product_type || $scope.productTypes[0].id;
+                    if (angular.isDefined($scope.tenderProduct)) {
+                        $scope.tenderProduct.product_type = $scope.tenderProduct.product_type || $scope.productTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -148,7 +154,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
-                    $scope.tenderProduct.creator_user = $scope.tenderProduct.creator_user || $scope.users[0].id;
+                    if (angular.isDefined($scope.tenderProduct)) {
+                        $scope.tenderProduct.creator_user = $scope.tenderProduct.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {
