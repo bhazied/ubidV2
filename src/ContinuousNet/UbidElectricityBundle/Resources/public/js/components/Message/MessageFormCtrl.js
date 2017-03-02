@@ -71,11 +71,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTFROMUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_user = $scope.message.from_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -96,11 +100,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.buyers.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMBUYER')});
                 var def = $q.defer();
                 $buyersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[buyer.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTFROMBUYER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.buyers = data.results;
                     def.resolve($scope.buyers);
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_buyer = $scope.message.from_buyer || $scope.buyers[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -121,11 +129,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTFROMSUPPLIER')});
                 var def = $q.defer();
                 $suppliersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplier.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTFROMSUPPLIER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.suppliers = data.results;
                     def.resolve($scope.suppliers);
+                    if (angular.isDefined($scope.message)) {
+                        $scope.message.from_supplier = $scope.message.from_supplier || $scope.suppliers[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -36,11 +36,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    if (angular.isDefined($scope.postType)) {
+                        $scope.postType.creator_user = $scope.postType.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

@@ -46,7 +46,6 @@ class GroupType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('roles', ChoiceType::class, array('choices' => array('ROLE_API' => 'ROLE_API', 'ROLE_SUBSCRIBER' => 'ROLE_SUBSCRIBER', 'ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_ADMIN_PUBLISHER' => 'ROLE_ADMIN_PUBLISHER', 'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN', ), 'expanded' => true, 'multiple' => true))
-            ->add('users', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:User', 'choice_label' => 'username'))
         ;
     }
     

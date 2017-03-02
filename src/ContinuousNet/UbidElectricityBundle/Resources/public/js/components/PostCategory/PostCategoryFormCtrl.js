@@ -61,11 +61,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPARENTPOSTCATEGORY')});
                 var def = $q.defer();
                 $postCategoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTPARENTPOSTCATEGORY')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.postCategories = data.results;
                     def.resolve($scope.postCategories);
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.parent_post_category = $scope.postCategory.parent_post_category || $scope.postCategories[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -86,11 +90,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.postTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
                 var def = $q.defer();
                 $postTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[postType.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.postTypes = data.results;
                     def.resolve($scope.postTypes);
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.post_type = $scope.postCategory.post_type || $scope.postTypes[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -111,11 +119,15 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    if (angular.isDefined($scope.postCategory)) {
+                        $scope.postCategory.creator_user = $scope.postCategory.creator_user || $scope.users[0].id;
+                    }
                 });
                 return def;
             } else {

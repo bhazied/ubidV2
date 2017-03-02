@@ -165,10 +165,6 @@ class BannerPositionRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $previousBanners = $entity->getBanners()->toArray();
-            foreach ($previousBanners as $previousBanner) {
-                $entity->removeBanner($previousBanner);
-            }
             $form = $this->createForm(new BannerPositionType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);
