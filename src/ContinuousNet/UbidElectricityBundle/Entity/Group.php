@@ -128,33 +128,12 @@ class Group  extends BaseGroup
     protected $modifierUser;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access protected
-     *
-     * @ORM\ManyToMany(targetEntity="User")
-     * @ORM\JoinTable(name="users_groups",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="group_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    protected $users;
-
-    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct($name = null, $roles = array())
     {
-        $this->users = new DoctrineCollection();
         parent::__construct($name, $roles);
     }
 
@@ -311,62 +290,6 @@ class Group  extends BaseGroup
     public function getModifierUser()
     {
         return $this->modifierUser;
-    }
-
-    /**
-     * Add user
-     *
-     * @access public
-     * @param User $user
-     * @return Group
-     */
-    public function addUser(User $user)
-    {
-        if (!$this->users->contains($user))
-        {
-            $this->users->add($user);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @access public
-     * @param User $user
-     * @return Group
-     */
-    public function removeUser(User $user)
-    {
-        if ($this->users->contains($user))
-        {
-            $this->users->removeElement($user);
-        }
-        return $this;
-    }
-
-    /**
-     * Set user
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return Group
-     */
-    public function setUsers($users)
-    {
-        $this->users = $users;
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUsers()
-    {
-        return $this->users;
     }
 
     /**

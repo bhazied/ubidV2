@@ -103,11 +103,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.bannerTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBANNERTYPE')});
                 var def = $q.defer();
                 $bannerTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[bannerType.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTBANNERTYPE')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.bannerTypes = data.results;
                     def.resolve($scope.bannerTypes);
+                    $scope.banner.banner_type = $scope.banner.banner_type || $scope.bannerTypes[0].id;
                 });
                 return def;
             } else {
@@ -128,11 +130,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    $scope.banner.creator_user = $scope.banner.creator_user || $scope.users[0].id;
                 });
                 return def;
             } else {

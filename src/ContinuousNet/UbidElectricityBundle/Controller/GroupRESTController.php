@@ -166,10 +166,6 @@ class GroupRESTController extends BaseRESTController
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
             $entity->setRoles(array());
-            $previousUsers = $entity->getUsers()->toArray();
-            foreach ($previousUsers as $previousUser) {
-                $entity->removeUser($previousUser);
-            }
             $form = $this->createForm(new GroupType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);

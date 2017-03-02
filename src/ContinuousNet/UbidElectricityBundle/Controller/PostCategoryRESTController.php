@@ -181,10 +181,6 @@ class PostCategoryRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
-            $previousPosts = $entity->getPosts()->toArray();
-            foreach ($previousPosts as $previousPost) {
-                $entity->removePost($previousPost);
-            }
             $form = $this->createForm(new PostCategoryType(), $entity, array('method' => $request->getMethod()));
             $this->removeExtraFields($request, $form);
             $form->handleRequest($request);

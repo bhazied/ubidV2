@@ -36,11 +36,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.tenderProducts.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDERPRODUCT')});
                 var def = $q.defer();
                 $tenderProductsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[tenderProduct.title]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTTENDERPRODUCT')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.tenderProducts = data.results;
                     def.resolve($scope.tenderProducts);
+                    $scope.bidProduct.tender_product = $scope.bidProduct.tender_product || $scope.tenderProducts[0].id;
                 });
                 return def;
             } else {
@@ -61,11 +63,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.bids.push({id: '', title: $filter('translate')('content.form.messages.SELECTBID')});
                 var def = $q.defer();
                 $bidsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[bid.title]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTBID')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.bids = data.results;
                     def.resolve($scope.bids);
+                    $scope.bidProduct.bid = $scope.bidProduct.bid || $scope.bids[0].id;
                 });
                 return def;
             } else {
@@ -86,11 +90,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.supplierProducts.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIERPRODUCT')});
                 var def = $q.defer();
                 $supplierProductsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplierProduct.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTSUPPLIERPRODUCT')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.supplierProducts = data.results;
                     def.resolve($scope.supplierProducts);
+                    $scope.bidProduct.supplier_product = $scope.bidProduct.supplier_product || $scope.supplierProducts[0].id;
                 });
                 return def;
             } else {
@@ -111,11 +117,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    $scope.bidProduct.creator_user = $scope.bidProduct.creator_user || $scope.users[0].id;
                 });
                 return def;
             } else {

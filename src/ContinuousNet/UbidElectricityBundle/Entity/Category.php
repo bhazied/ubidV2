@@ -235,54 +235,12 @@ class Category
     private $modifierUser;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access private
-     *
-     * @ORM\ManyToMany(targetEntity="Supplier")
-     * @ORM\JoinTable(name="suppliers_categories",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="supplier_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    private $suppliers;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access private
-     *
-     * @ORM\ManyToMany(targetEntity="Tender")
-     * @ORM\JoinTable(name="tenders_categories",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    private $tenders;
-
-    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
-        $this->suppliers = new DoctrineCollection();
-        $this->tenders = new DoctrineCollection();
     }
 
     /**
@@ -654,118 +612,6 @@ class Category
     public function getModifierUser()
     {
         return $this->modifierUser;
-    }
-
-    /**
-     * Add supplier
-     *
-     * @access public
-     * @param Supplier $supplier
-     * @return Category
-     */
-    public function addSupplier(Supplier $supplier)
-    {
-        if (!$this->suppliers->contains($supplier))
-        {
-            $this->suppliers->add($supplier);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove supplier
-     *
-     * @access public
-     * @param Supplier $supplier
-     * @return Category
-     */
-    public function removeSupplier(Supplier $supplier)
-    {
-        if ($this->suppliers->contains($supplier))
-        {
-            $this->suppliers->removeElement($supplier);
-        }
-        return $this;
-    }
-
-    /**
-     * Set supplier
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return Category
-     */
-    public function setSuppliers($suppliers)
-    {
-        $this->suppliers = $suppliers;
-        return $this;
-    }
-
-    /**
-     * Get supplier
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSuppliers()
-    {
-        return $this->suppliers;
-    }
-
-    /**
-     * Add tender
-     *
-     * @access public
-     * @param Tender $tender
-     * @return Category
-     */
-    public function addTender(Tender $tender)
-    {
-        if (!$this->tenders->contains($tender))
-        {
-            $this->tenders->add($tender);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove tender
-     *
-     * @access public
-     * @param Tender $tender
-     * @return Category
-     */
-    public function removeTender(Tender $tender)
-    {
-        if ($this->tenders->contains($tender))
-        {
-            $this->tenders->removeElement($tender);
-        }
-        return $this;
-    }
-
-    /**
-     * Set tender
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return Category
-     */
-    public function setTenders($tenders)
-    {
-        $this->tenders = $tenders;
-        return $this;
-    }
-
-    /**
-     * Get tender
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTenders()
-    {
-        return $this->tenders;
     }
 
     /**

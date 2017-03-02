@@ -202,33 +202,12 @@ class PostCategory
     private $modifierUser;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access private
-     *
-     * @ORM\ManyToMany(targetEntity="Post")
-     * @ORM\JoinTable(name="posts_post_categories",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="post_category_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="post_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    private $posts;
-
-    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
-        $this->posts = new DoctrineCollection();
     }
 
     /**
@@ -528,62 +507,6 @@ class PostCategory
     public function getModifierUser()
     {
         return $this->modifierUser;
-    }
-
-    /**
-     * Add post
-     *
-     * @access public
-     * @param Post $post
-     * @return PostCategory
-     */
-    public function addPost(Post $post)
-    {
-        if (!$this->posts->contains($post))
-        {
-            $this->posts->add($post);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove post
-     *
-     * @access public
-     * @param Post $post
-     * @return PostCategory
-     */
-    public function removePost(Post $post)
-    {
-        if ($this->posts->contains($post))
-        {
-            $this->posts->removeElement($post);
-        }
-        return $this;
-    }
-
-    /**
-     * Set post
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return PostCategory
-     */
-    public function setPosts($posts)
-    {
-        $this->posts = $posts;
-        return $this;
-    }
-
-    /**
-     * Get post
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
 
     /**

@@ -36,11 +36,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.visits.push({id: '', title: $filter('translate')('content.form.messages.SELECTVISIT')});
                 var def = $q.defer();
                 $visitsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[visit.ip]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTVISIT')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.visits = data.results;
                     def.resolve($scope.visits);
+                    $scope.impression.visit = $scope.impression.visit || $scope.visits[0].id;
                 });
                 return def;
             } else {
@@ -61,11 +63,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.banners.push({id: '', title: $filter('translate')('content.form.messages.SELECTBANNER')});
                 var def = $q.defer();
                 $bannersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[banner.name]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTBANNER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.banners = data.results;
                     def.resolve($scope.banners);
+                    $scope.impression.banner = $scope.impression.banner || $scope.banners[0].id;
                 });
                 return def;
             } else {
@@ -86,11 +90,13 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
                     $scope.users = data.results;
                     def.resolve($scope.users);
+                    $scope.impression.creator_user = $scope.impression.creator_user || $scope.users[0].id;
                 });
                 return def;
             } else {

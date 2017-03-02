@@ -182,33 +182,12 @@ class BannerPosition
     private $modifierUser;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     * @access private
-     *
-     * @ORM\ManyToMany(targetEntity="Banner")
-     * @ORM\JoinTable(name="banners_banner_positions",
-     *     joinColumns={
-     *         @ORM\JoinColumn(name="banner_position_id", referencedColumnName="id")
-     *     },
-     *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="banner_id", referencedColumnName="id")
-     *     }
-     * )
-     * 
-     * @Expose
-     * @MaxDepth(2)
-     * 
-     */
-    private $banners;
-
-    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
-        $this->banners = new DoctrineCollection();
     }
 
     /**
@@ -484,62 +463,6 @@ class BannerPosition
     public function getModifierUser()
     {
         return $this->modifierUser;
-    }
-
-    /**
-     * Add banner
-     *
-     * @access public
-     * @param Banner $banner
-     * @return BannerPosition
-     */
-    public function addBanner(Banner $banner)
-    {
-        if (!$this->banners->contains($banner))
-        {
-            $this->banners->add($banner);
-        }
-        return $this;
-    }
-
-    /**
-     * Remove banner
-     *
-     * @access public
-     * @param Banner $banner
-     * @return BannerPosition
-     */
-    public function removeBanner(Banner $banner)
-    {
-        if ($this->banners->contains($banner))
-        {
-            $this->banners->removeElement($banner);
-        }
-        return $this;
-    }
-
-    /**
-     * Set banner
-     *
-     * @access public
-     * @param \Doctrine\Common\Collections\Collection
-     * @return BannerPosition
-     */
-    public function setBanners($banners)
-    {
-        $this->banners = $banners;
-        return $this;
-    }
-
-    /**
-     * Get banner
-     *
-     * @access public
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getBanners()
-    {
-        return $this->banners;
     }
 
     /**
