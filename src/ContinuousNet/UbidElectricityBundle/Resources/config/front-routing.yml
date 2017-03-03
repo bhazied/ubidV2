@@ -239,11 +239,19 @@ e_electricity_front_projectbids:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_projectbids_list:
+    path: /project-bids/list
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_list:
     path: /list
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_projectbids_bids:
-    path: /bids-by-project/{projectId}
+    path: /project-bids/bids-by-project/{projectId}
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
+e_electricity_front_projectbids_bids_details:
+    path: /project-bids/details/title-tender/{bidId}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_projectbids_bid:

@@ -3,12 +3,16 @@
 namespace ContinuousNet\UbidElectricityBundle\AlertListener;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\Routing\RouterInterface;
 use ContinuousNet\UbidElectricityBundle\Entity\User;
 use ContinuousNet\UbidElectricityBundle\Entity\Notification;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Translation\TranslatorInterface;
+
 
 class EmailResponseListener {
 
@@ -20,7 +24,11 @@ class EmailResponseListener {
 
     private $translator;
 
-    public function __construct(AlertMailer $_alertMailer, RouterInterface $_router, EntityManager $_em, TranslatorInterface $_translator)
+
+    private $tokenStorage;
+
+
+    public function __construct(AlertMailer $_alertMailer, RouterInterface $_router, EntityManager $_em, TranslatorInterface $_translator, TokenStorage $_tokenStorage)
     {
         $this->alertMailer = $_alertMailer;
 
@@ -29,35 +37,57 @@ class EmailResponseListener {
         $this->em = $_em;
 
         $this->translator = $_translator;
+
+        $this->tokenStorage = $_tokenStorage;
+
+
     }
 
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelRequest(FilterControllerEvent $event)
     {
         $matchedRoute = $this->router->match($event->getRequest()->getPathInfo());
         $method = $event->getRequest()->getMethod();
-        if(($matchedRoute["_route"] == 'home_tender')  && strtolower($method) == 'get'){
-            $entity = $this->em->getRepository('UbidElectricityBundle:Tender')->find($matchedRoute['id']);
-            $this->executeLoadAction(
-                $this->getUserAlerts($this->em, $entity->getCreatorUser()),
-                $entity
-            );
-            $this->addNotification($entity);
+
+        if(($matchedRoute["_route"] == 'get_tender')  && strtolower($method) == 'get'){
+            $entity = $this->em->getRepository('UbidElectricityBundle:Tender')->find($matchedRoute['entity']);
+            if(is_object($this->tokenStorage->getToken())){
+                $user = $this->tokenStorage->getToken()->getUser();
+                if($entity->getCreatorUser()->getId() != $user->getId()){
+                    $this->executeLoadAction(
+                        $this->getUserAlerts($this->em, $entity->getCreatorUser()),
+                        $entity
+                    );
+                    $this->addNotification($entity);
+                }
+            }
         }
-        if(($matchedRoute["_route"] == 'buyer_detail')  && strtolower($method) == 'get'){
-            $entity = $this->em->getRepository('UbidElectricityBundle:Buyer')->find($matchedRoute['id']);
-            $this->executeLoadAction(
-                $this->getUserAlerts($this->em, $entity->getCreatorUser()),
-                $entity
-            );
-            $this->addNotification($entity);
+        if(($matchedRoute["_route"] == 'get_buyer')  && strtolower($method) == 'get'){
+            $entity = $this->em->getRepository('UbidElectricityBundle:Buyer')->find($matchedRoute['entity']);
+            if(is_object($this->tokenStorage->getToken())){
+                $user = $this->tokenStorage->getToken()->getUser();
+                if($entity->getCreatorUser()->getId() != $user->getId()){
+                    $this->executeLoadAction(
+                        $this->getUserAlerts($this->em, $entity->getCreatorUser()),
+                        $entity
+                    );
+                    $this->addNotification($entity);
+                }
+            }
         }
-        if(($matchedRoute["_route"] == 'supplier_detail')  && strtolower($method) == 'get'){
-            $entity = $this->em->getRepository('UbidElectricityBundle:Supplier')->find($matchedRoute['id']);
-            $this->executeLoadAction(
-                $this->getUserAlerts($this->em, $entity->getCreatorUser()),
-                $entity
-            );
-            $this->addNotification($entity);
+
+        if(($matchedRoute["_route"] == 'get_supplier')  && strtolower($method) == 'get'){
+            $entity = $this->em->getRepository('UbidElectricityBundle:Supplier')->find($matchedRoute['entity']);
+            if(is_object($this->tokenStorage->getToken())){
+                $user = $this->tokenStorage->getToken()->getUser();
+                if($entity->getCreatorUser()->getId() != $user->getId()){
+                    $this->executeLoadAction(
+                        $this->getUserAlerts($this->em, $entity->getCreatorUser()),
+                        $entity
+                    );
+                    $this->addNotification($entity);
+                }
+
+            }
         }
 
 
