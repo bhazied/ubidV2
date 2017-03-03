@@ -4,23 +4,30 @@
  * Controller for Messages List
  */
 
-app.controller('MyNotification', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$notificationsDataFactory',
-    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $notificationsDataFactory) {
+app.controller('MyNotification', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$interval', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$notificationsDataFactory',
+    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $interval, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $notificationsDataFactory) {
 
+        $scope.notificationsInterval = $interval(function () {
+            if ($localStorage.access_token) {
+                $scope.getNotifications();
+            } else {
+                $interval.cancel($scope.notificationsInterval);
+            }
+        }, 5000);
 
-
-
-
-        $notificationsDataFactory.query({offset: 0, limit: 10000,'order_by[notification.createdAt]': 'desc'}).$promise.then(function(data) {
-            $scope.notifications = data.results;
-            var countAlert = 0;
-            angular.forEach(data.results,function (notification) {
-                if(notification.read == false){
-                    countAlert ++;
-                }
+        $scope.getNotifications = function(){
+            $notificationsDataFactory.query({offset: 0, limit: 10000,'order_by[notification.createdAt]': 'desc'}).$promise.then(function(data) {
+                $scope.notifications = data.results;
+                var countAlert = 0;
+                angular.forEach(data.results,function (notification) {
+                    if(notification.read == false){
+                        countAlert ++;
+                    }
+                });
+                $scope.countAlert = countAlert;
             });
-            $scope.countAlert = countAlert;
-        });
+        };
+
 
         $scope.viewNotification = function(notification){
             //$('.notification .submenu').css('display',  'none');
