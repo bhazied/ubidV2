@@ -175,7 +175,8 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             for (var j in displayFields) {
                 link += values[i][displayFields[j]] + ' ';
             }
-            html += '</a>';
+            link = link.trim();
+            link += '</a>';
             links.push(link);
         }
         var html = links.join(', ');
