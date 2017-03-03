@@ -1,0 +1,30 @@
+variable:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Variable:index" }
+
+variable_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Variable:show" }
+
+variable_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Variable:new" }
+
+variable_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Variable:create" }
+    methods:  POST
+
+variable_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Variable:edit" }
+
+variable_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Variable:update" }
+    methods:  [POST, PUT]
+
+variable_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Variable:delete" }
+    methods:  [POST, DELETE]

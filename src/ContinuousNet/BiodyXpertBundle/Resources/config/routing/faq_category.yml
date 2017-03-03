@@ -1,0 +1,30 @@
+faqcategory:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:index" }
+
+faqcategory_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:show" }
+
+faqcategory_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:new" }
+
+faqcategory_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:create" }
+    methods:  POST
+
+faqcategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:edit" }
+
+faqcategory_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:update" }
+    methods:  [POST, PUT]
+
+faqcategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:FaqCategory:delete" }
+    methods:  [POST, DELETE]

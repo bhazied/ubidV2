@@ -241,6 +241,8 @@
    "content": {
         "common": {
             "NA": "NA",
+            "AND": "AND",
+            "OR": "OR",
             "DONTHAVEPERMISSIONTODELETE": "You don't have permission to delete this record",
             "DONTHAVEPERMISSIONTOEDIT": "You don't have permission to edit this record",
             "WAIT": "Please Wait",

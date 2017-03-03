@@ -1,0 +1,30 @@
+documenttype:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:index" }
+
+documenttype_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:show" }
+
+documenttype_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:new" }
+
+documenttype_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:create" }
+    methods:  POST
+
+documenttype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:edit" }
+
+documenttype_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:update" }
+    methods:  [POST, PUT]
+
+documenttype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:DocumentType:delete" }
+    methods:  [POST, DELETE]

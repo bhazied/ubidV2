@@ -87,11 +87,19 @@ class QuizRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\SportClubBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'q_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\SportClubBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'q_.modifierUser = modifier_user.id');
             $textFields = array('quiz.title', 'quiz.titleAr', 'quiz.titleFr', 'quiz.slug', 'quiz.slugAr', 'quiz.slugFr', 'quiz.picture', 'quiz.description', 'quiz.descriptionAr', 'quiz.descriptionFr', 'quiz.question', 'quiz.questionAr', 'quiz.questionFr', 'quiz.choice1', 'quiz.choice1Ar', 'quiz.choice1Fr', 'quiz.choice2', 'quiz.choice2Ar', 'quiz.choice2Fr', 'quiz.choice3', 'quiz.choice3Ar', 'quiz.choice3Fr', 'quiz.choice4', 'quiz.choice4Ar', 'quiz.choice4Fr', 'quiz.choice5', 'quiz.choice5Ar', 'quiz.choice5Fr', 'quiz.choice6', 'quiz.choice6Ar', 'quiz.choice6Fr', 'quiz.choice7', 'quiz.choice7Ar', 'quiz.choice7Fr', 'quiz.choice8', 'quiz.choice8Ar', 'quiz.choice8Fr');
+            $memberOfConditions = array();
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
-                    if ($value == 'true') {
+                    if ($value == 'true' || $value == 'or' || $value == 'and') {
                         list ($entityName, $listName, $listItem) = explode('.', $field);
-                        $qb->andWhere(':'.$listName.'_value MEMBER OF q_.'.$listName)->setParameter($listName.'_value', $listItem);
+                        if (!isset($memberOfConditions[$listName])) {
+                            $memberOfConditions[$listName] = array('items' => array(), 'operator' => 'or');
+                        }
+                        if ($value == 'or' || $value == 'and') {
+                            $memberOfConditions[$listName]['operator'] = $value;
+                        } else {
+                            $memberOfConditions[$listName]['items'][] = $listItem;
+                        }
                     }
                     continue;
                 }
@@ -103,6 +111,25 @@ class QuizRESTController extends BaseRESTController
                    } else {
                        $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
                    }
+                }
+            }
+            foreach ($memberOfConditions as $listName => $memberOfCondition) {
+                if (!empty($memberOfCondition['items'])) {
+                    if ($memberOfCondition['operator'] == 'or') {
+                        $orX = $qb->expr()->orX();
+                        foreach ($memberOfCondition['items'] as $i => $item) {
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $qb->setParameter($listName.'_value_'.$i, $item);
+                        }
+                        $qb->andWhere($orX);
+                    } else if ($memberOfCondition['operator'] == 'and') {
+                        $andX = $qb->expr()->andX();
+                        foreach ($memberOfCondition['items'] as $i => $item) {
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $qb->setParameter($listName.'_value_'.$i, $item);
+                        }
+                        $qb->andWhere($andX);
+                    }
                 }
             }
             $qbList = clone $qb;

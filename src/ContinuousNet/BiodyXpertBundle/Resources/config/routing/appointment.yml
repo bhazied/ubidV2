@@ -1,0 +1,30 @@
+appointment:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Appointment:index" }
+
+appointment_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Appointment:show" }
+
+appointment_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Appointment:new" }
+
+appointment_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Appointment:create" }
+    methods:  POST
+
+appointment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Appointment:edit" }
+
+appointment_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Appointment:update" }
+    methods:  [POST, PUT]
+
+appointment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Appointment:delete" }
+    methods:  [POST, DELETE]

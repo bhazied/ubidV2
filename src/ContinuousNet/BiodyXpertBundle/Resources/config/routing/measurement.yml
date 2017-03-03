@@ -1,0 +1,30 @@
+measurement:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Measurement:index" }
+
+measurement_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Measurement:show" }
+
+measurement_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Measurement:new" }
+
+measurement_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Measurement:create" }
+    methods:  POST
+
+measurement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Measurement:edit" }
+
+measurement_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Measurement:update" }
+    methods:  [POST, PUT]
+
+measurement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Measurement:delete" }
+    methods:  [POST, DELETE]

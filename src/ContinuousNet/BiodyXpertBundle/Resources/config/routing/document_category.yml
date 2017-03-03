@@ -1,0 +1,30 @@
+documentcategory:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:index" }
+
+documentcategory_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:show" }
+
+documentcategory_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:new" }
+
+documentcategory_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:create" }
+    methods:  POST
+
+documentcategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:edit" }
+
+documentcategory_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:update" }
+    methods:  [POST, PUT]
+
+documentcategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:DocumentCategory:delete" }
+    methods:  [POST, DELETE]

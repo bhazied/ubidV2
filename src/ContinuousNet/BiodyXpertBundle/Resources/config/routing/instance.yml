@@ -1,0 +1,30 @@
+instance:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Instance:index" }
+
+instance_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Instance:show" }
+
+instance_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Instance:new" }
+
+instance_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Instance:create" }
+    methods:  POST
+
+instance_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Instance:edit" }
+
+instance_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Instance:update" }
+    methods:  [POST, PUT]
+
+instance_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Instance:delete" }
+    methods:  [POST, DELETE]

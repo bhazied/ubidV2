@@ -88,11 +88,19 @@ class PostRESTController extends BaseRESTController
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'p_.creatorUser = creator_user.id');
             $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'p_.modifierUser = modifier_user.id');
             $textFields = array('post.title', 'post.slug', 'post.picture', 'post.content', 'post.metaTitle', 'post.metaDescription', 'post.metaKeywords');
+            $memberOfConditions = array();
             foreach ($filters as $field => $value) {
                 if (substr_count($field, '.') > 1) {
-                    if ($value == 'true') {
+                    if ($value == 'true' || $value == 'or' || $value == 'and') {
                         list ($entityName, $listName, $listItem) = explode('.', $field);
-                        $qb->andWhere(':'.$listName.'_value MEMBER OF p_.'.$listName)->setParameter($listName.'_value', $listItem);
+                        if (!isset($memberOfConditions[$listName])) {
+                            $memberOfConditions[$listName] = array('items' => array(), 'operator' => 'or');
+                        }
+                        if ($value == 'or' || $value == 'and') {
+                            $memberOfConditions[$listName]['operator'] = $value;
+                        } else {
+                            $memberOfConditions[$listName]['items'][] = $listItem;
+                        }
                     }
                     continue;
                 }
@@ -104,6 +112,25 @@ class PostRESTController extends BaseRESTController
                    } else {
                        $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
                    }
+                }
+            }
+            foreach ($memberOfConditions as $listName => $memberOfCondition) {
+                if (!empty($memberOfCondition['items'])) {
+                    if ($memberOfCondition['operator'] == 'or') {
+                        $orX = $qb->expr()->orX();
+                        foreach ($memberOfCondition['items'] as $i => $item) {
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $qb->setParameter($listName.'_value_'.$i, $item);
+                        }
+                        $qb->andWhere($orX);
+                    } else if ($memberOfCondition['operator'] == 'and') {
+                        $andX = $qb->expr()->andX();
+                        foreach ($memberOfCondition['items'] as $i => $item) {
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $qb->setParameter($listName.'_value_'.$i, $item);
+                        }
+                        $qb->andWhere($andX);
+                    }
                 }
             }
             $qbList = clone $qb;
