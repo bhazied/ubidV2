@@ -1,0 +1,30 @@
+licence:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Licence:index" }
+
+licence_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Licence:show" }
+
+licence_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Licence:new" }
+
+licence_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Licence:create" }
+    methods:  POST
+
+licence_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Licence:edit" }
+
+licence_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Licence:update" }
+    methods:  [POST, PUT]
+
+licence_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Licence:delete" }
+    methods:  [POST, DELETE]

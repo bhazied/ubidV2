@@ -1,0 +1,30 @@
+translationword:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:index" }
+
+translationword_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:show" }
+
+translationword_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:new" }
+
+translationword_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:create" }
+    methods:  POST
+
+translationword_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:edit" }
+
+translationword_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:update" }
+    methods:  [POST, PUT]
+
+translationword_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:TranslationWord:delete" }
+    methods:  [POST, DELETE]

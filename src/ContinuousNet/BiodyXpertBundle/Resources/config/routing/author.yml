@@ -1,0 +1,30 @@
+author:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Author:index" }
+
+author_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Author:show" }
+
+author_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Author:new" }
+
+author_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Author:create" }
+    methods:  POST
+
+author_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Author:edit" }
+
+author_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Author:update" }
+    methods:  [POST, PUT]
+
+author_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Author:delete" }
+    methods:  [POST, DELETE]

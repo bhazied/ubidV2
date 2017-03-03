@@ -1,0 +1,30 @@
+quiztype:
+    path:     /
+    defaults: { _controller: "SportClubBundle:QuizType:index" }
+
+quiztype_details:
+    path:     /{id}/details
+    defaults: { _controller: "SportClubBundle:QuizType:show" }
+
+quiztype_new:
+    path:     /new
+    defaults: { _controller: "SportClubBundle:QuizType:new" }
+
+quiztype_create:
+    path:     /create
+    defaults: { _controller: "SportClubBundle:QuizType:create" }
+    methods:  POST
+
+quiztype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SportClubBundle:QuizType:edit" }
+
+quiztype_update:
+    path:     /{id}/update
+    defaults: { _controller: "SportClubBundle:QuizType:update" }
+    methods:  [POST, PUT]
+
+quiztype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SportClubBundle:QuizType:delete" }
+    methods:  [POST, DELETE]

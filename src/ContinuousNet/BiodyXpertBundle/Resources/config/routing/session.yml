@@ -1,0 +1,30 @@
+session:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Session:index" }
+
+session_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Session:show" }
+
+session_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Session:new" }
+
+session_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Session:create" }
+    methods:  POST
+
+session_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Session:edit" }
+
+session_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Session:update" }
+    methods:  [POST, PUT]
+
+session_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Session:delete" }
+    methods:  [POST, DELETE]

@@ -173,9 +173,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
             var displayFields = this.displayField.split(' ');
             for (var j in displayFields) {
-                link += value[displayFields[j]] + ' ';
+                link += values[i][displayFields[j]] + ' ';
             }
-            html += '</a>';
+            link = link.trim();
+            link += '</a>';
             links.push(link);
         }
         var html = links.join(', ');
@@ -216,8 +217,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (!angular.isDefined($localStorage.postsParams)) {
            $localStorage.postsParams = {};
         }
-        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+        if (angular.isDefined($stateParams[param]) && typeof $stateParams[param] == 'string' && JSON.parse($stateParams[param]) != null) {
             return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($stateParams[param]) && $stateParams[param] != null) {
+            return $stateParams[param];
         } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
         } else if (angular.isDefined($localStorage.postsParams[param]) && $localStorage.postsParams[param] != null) {
@@ -257,9 +260,9 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'is_new', title: $filter('translate')('content.list.fields.ISNEW'), sortable: 'post.isNew', filter: { 'post.isNew': 'select' }, show: $scope.getParamValue('is_new_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_new ]]"></span>') },
             { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'post.ordering', filter: { 'post.ordering': 'number' }, show: $scope.getParamValue('ordering_show_filed', false), displayInList: true, getValue: $scope.textValue },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'post.createdAt', filter: { 'post.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'post.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'post.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'post.modifiedAt', filter: { 'post.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'post.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'post.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'post_categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.POSTCATEGORIES'), filter: { 'post.postCategories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getPostCategories(), show: $scope.getParamValue('post_categories_show_filed', false), displayInList: true, display: false, displayField: 'name', state: 'app.news.postcategoriesdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'

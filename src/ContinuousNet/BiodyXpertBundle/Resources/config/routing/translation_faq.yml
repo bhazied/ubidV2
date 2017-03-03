@@ -1,0 +1,30 @@
+translationfaq:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:index" }
+
+translationfaq_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:show" }
+
+translationfaq_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:new" }
+
+translationfaq_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:create" }
+    methods:  POST
+
+translationfaq_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:edit" }
+
+translationfaq_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:update" }
+    methods:  [POST, PUT]
+
+translationfaq_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:TranslationFaq:delete" }
+    methods:  [POST, DELETE]

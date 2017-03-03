@@ -1,0 +1,30 @@
+deviceserialnumber:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:index" }
+
+deviceserialnumber_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:show" }
+
+deviceserialnumber_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:new" }
+
+deviceserialnumber_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:create" }
+    methods:  POST
+
+deviceserialnumber_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:edit" }
+
+deviceserialnumber_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:update" }
+    methods:  [POST, PUT]
+
+deviceserialnumber_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:DeviceSerialNumber:delete" }
+    methods:  [POST, DELETE]

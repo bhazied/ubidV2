@@ -1,0 +1,30 @@
+notification:
+    path:     /
+    defaults: { _controller: "BiodyXpertBundle:Notification:index" }
+
+notification_details:
+    path:     /{id}/details
+    defaults: { _controller: "BiodyXpertBundle:Notification:show" }
+
+notification_new:
+    path:     /new
+    defaults: { _controller: "BiodyXpertBundle:Notification:new" }
+
+notification_create:
+    path:     /create
+    defaults: { _controller: "BiodyXpertBundle:Notification:create" }
+    methods:  POST
+
+notification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BiodyXpertBundle:Notification:edit" }
+
+notification_update:
+    path:     /{id}/update
+    defaults: { _controller: "BiodyXpertBundle:Notification:update" }
+    methods:  [POST, PUT]
+
+notification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BiodyXpertBundle:Notification:delete" }
+    methods:  [POST, DELETE]
