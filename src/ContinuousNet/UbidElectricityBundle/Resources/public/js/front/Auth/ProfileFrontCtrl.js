@@ -15,6 +15,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.contentOffset = 0;
         }, 1500);
 
+        $scope.myCountry = {};
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
@@ -87,11 +88,18 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
             });
         };
-
         $scope.getProfile = function(){
+            $timeout(function () {
             $profileDataFactory.getProfile({locale: $localStorage.language}).$promise.then(function (data) {
-                $timeout(function () {
                     $scope.user = data ;
+                if(data.country != null){
+                    $scope.myCountry =  $scope.user.country;
+                    $scope.user.country =  $scope.user.country.id;
+                    }
+                else{
+                    $scope.myCountry =  null;
+                    $scope.user.country =  null;
+                }
                 });
             });
         }
@@ -105,6 +113,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
                 $scope.disableSubmit = false;
                 if (data.status) {
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('profile.PROFILEUPDATED'));
+                    $scope.getProfile();
                 } else {
                     toaster.pop('warning', $filter('translate')('content.common.NOTIFICATION'), data.message);
                 }
