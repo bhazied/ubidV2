@@ -181,7 +181,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
             var displayFields = this.displayField.split(' ');
             for (var j in displayFields) {
-                link += value[displayFields[j]] + ' ';
+                link += values[i][displayFields[j]] + ' ';
             }
             html += '</a>';
             links.push(link);
