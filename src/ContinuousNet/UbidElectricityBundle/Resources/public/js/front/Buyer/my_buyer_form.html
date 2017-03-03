@@ -238,6 +238,7 @@
                                     <div class="block select-list" ng-if="countriesLoaded">
                                         <span class="input-icon">
                                             <select ng-readonly="buyer_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
+                                                <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
                                             </select>
                                             <i class="fa fa-flag"></i>
                                         </span><!--/input-icon-->

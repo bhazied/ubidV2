@@ -101,7 +101,7 @@ class AlertEmailListener
                 $this->alertMailer->$method($entity, $entity->getToUser()->getEmail());
             }
             if($alert->getKey() == "RECEIVED_NEW_BID" && $alert->getValue() == "ON" && $shortNameClass == "bid"){
-                $this->alertMailer->$method($entity, $entity->getTender()->getCreatorUser()->getEmail);
+                $this->alertMailer->$method($entity, $entity->getTender()->getCreatorUser()->getEmail());
             }
         }
 
