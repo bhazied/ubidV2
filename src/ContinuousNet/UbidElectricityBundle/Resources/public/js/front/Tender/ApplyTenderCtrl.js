@@ -11,8 +11,8 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
         angular.extend(this, $controller('BidFormCtrl', {$scope:$scope}));
         $scope.enableFormAlert = false;
         $scope.tender = 0;
+        $scope.bid = {};
         if(angular.isDefined($stateParams.id)){
-            //$scope.bid = {};
             $scope.tender = $stateParams.id;
             $scope.bid.tender = $stateParams.id;
         };

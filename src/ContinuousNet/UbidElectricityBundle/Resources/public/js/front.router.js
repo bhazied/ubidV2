@@ -11,7 +11,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService','notificationService')
         /*
          *  User Service routes
          */

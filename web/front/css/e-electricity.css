@@ -2213,3 +2213,70 @@ body.underPage footer {
         color: #FFFFFF;
     }
 }
+
+.notification:hover .submenu {
+    /*display: none;*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #1D69AD;
+    position: absolute;
+    right: 0;
+    top: 36px;
+    z-index: 1000;
+    background: #fff;
+    color: #1D69AD;
+    font-weight: bold;
+    width: 280px;
+    line-height: 25px;
+    display: block !important;
+    border-radius: 10px 10px 10px 10px;
+}
+.notification:hover .header_list_notif{
+    display: block;
+}
+.notification:hover .li{
+    display: block;
+}
+.notification .submenu{
+    display: none;
+}
+
+.notification .submenu li {
+    margin: 0;
+    padding: 0;
+    margin: 5px 5px 5px 5px;
+    list-style: none;
+    background-color: #eee !important;
+}
+
+
+.notification .submenu li .time{
+    font-size: 8px;
+    font-style: italic;
+}
+.content_notification{
+    text-align: left;
+}
+
+.span_notification{
+    padding-left: 0px;
+
+}
+.header_list_notif{
+    color: #6D6D6D;
+    display: none;
+}
+
+.notification .submenu img{
+    border-radius: 5px 5px 5px 5px;
+}
+.margin-rigth-5{
+    margin-right: 5px;
+}
+.padding-left-0{
+    padding-left: 0px;
+}
+.padding-right-0{
+    padding-right: 0px;
+}

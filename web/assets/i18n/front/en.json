@@ -1951,6 +1951,8 @@
     "seo":{
       "BUYERMETATITLE": "Electrical buyer",
       "SUPPLIERMETATITLE": "Electric supplier"
-    }
+    },
+    "NOTIFICATIONS" : "Notifications",
+    "MARKALLASREAD" : "Mark all as read"
   }
 }

@@ -583,7 +583,8 @@ app.constant('APP_JS_REQUIRES', {
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
-        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
+        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
     },
     modules: [{
         name: 'LoginService',
@@ -921,7 +922,9 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
                 'languageService',
                 'countryService',
                 'tenderFrontService',
-                'checklist-model'
+                'checklist-model',
+                'MyNotification',
+                'notificationService'
             ),
             abstract: true
         }).state('error', {
@@ -949,7 +952,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService','notificationService')
         /*
          *  User Service routes
          */
