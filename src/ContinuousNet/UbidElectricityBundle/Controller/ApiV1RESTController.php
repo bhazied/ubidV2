@@ -703,21 +703,38 @@ class ApiV1RESTController extends FOSRestController
         $data = [];
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Category", "c_")
-            ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id')
-            ->select('c_');
+        $qb->from('UbidElectricityBundle:Category', 'c_');
+        $qb->andWhere('c_.status = :status')->setParameter('status', 'Online');
+        $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id');
+        $qb->select('c_');
+        $qb->orderBy('c_.ordering', 'ASC');
         $results = $qb->getQuery()->getResult();
         if ($results) {
-            //$data['results'] = $results;
-            $data['results'] = $this->prepareDataToBeTree($results);
+            $data['results'] = $this->prepareCategoryTree($results);
         }
         return $data;
     }
 
+    private function prepareCategoryTree($categories, $parentId = null) {
+        $tree = array();
+        foreach ($categories as $category) {
+            if (
+                (is_null($parentId) && is_null($category->getParentCegory()))
+                ||
+                (!is_null($parentId) && $category->getParentCegory()->getId() == $parentId)
+            ) {
+                $tree[] = array(
+                    'node' => $category,
+                    'children' => $this->prepareCategoryTree($categories, $category->getId())
+                );
+            }
+        }
+        return $tree;
+    }
 
-    private function prepareDataToBeTree($categories){
+    private function prepareDataToBeTree($categories) {
         $new = [];
-        foreach ($categories as $cat){
+        foreach ($categories as $cat) {
             if(!is_null($cat->getParentCategory())){
                 $new[$cat->getParentCategory()->getId()] = $cat->getParentCategory();
             }
