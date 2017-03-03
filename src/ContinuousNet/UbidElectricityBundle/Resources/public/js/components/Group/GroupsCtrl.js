@@ -120,8 +120,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (!angular.isDefined($localStorage.groupsParams)) {
            $localStorage.groupsParams = {};
         }
-        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+        if (angular.isDefined($stateParams[param]) && typeof $stateParams[param] == 'string' && JSON.parse($stateParams[param]) != null) {
             return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($stateParams[param]) && $stateParams[param] != null) {
+            return $stateParams[param];
         } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
         } else if (angular.isDefined($localStorage.groupsParams[param]) && $localStorage.groupsParams[param] != null) {

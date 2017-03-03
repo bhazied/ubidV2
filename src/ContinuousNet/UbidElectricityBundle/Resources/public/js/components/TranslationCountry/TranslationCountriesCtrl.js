@@ -138,8 +138,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (!angular.isDefined($localStorage.translationCountriesParams)) {
            $localStorage.translationCountriesParams = {};
         }
-        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+        if (angular.isDefined($stateParams[param]) && typeof $stateParams[param] == 'string' && JSON.parse($stateParams[param]) != null) {
             return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($stateParams[param]) && $stateParams[param] != null) {
+            return $stateParams[param];
         } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
         } else if (angular.isDefined($localStorage.translationCountriesParams[param]) && $localStorage.translationCountriesParams[param] != null) {
@@ -159,7 +161,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'validated', title: $filter('translate')('content.list.fields.VALIDATED'), sortable: 'translationCountry.validated', filter: { 'translationCountry.validated': 'select' }, show: $scope.getParamValue('validated_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.validated ]]"></span>') },
             { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'translationCountry.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'translationCountry.createdAt', filter: { 'translationCountry.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'translationCountry.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'translationCountry.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'translationCountry.modifiedAt', filter: { 'translationCountry.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
