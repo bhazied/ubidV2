@@ -4,24 +4,14 @@
     <form class="hidden-sm-down" name="searchform" id="searchform" ng-submit="submitForm(searchform, 1)">
     <div class="form-group">
         <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
-       <!-- <div class="categories-checkbox">
-            <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
-            <div class="form-group" ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.id">
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.id]]">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">[[ tenderCategory.name ]]</span>
-                </label>
-            </div>
-        </div> -->
         <ul class="categories-checkbox">
             <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
             <li ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.node.id">
                 <div class="form-group">
                     <i ng-if="tenderCategory.children.length > 0 && tenderCategory.expand" ng-click="tenderCategory.expand = false" class="fa fa-minus-square-o"></i>
                     <i ng-if="tenderCategory.children.length > 0 && !tenderCategory.expand" ng-click="tenderCategory.expand = true" class="fa fa-plus-square-o"></i>
-                    <!--<i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>-->
-                    <label class="custom-control custom-checkbox">
+                    <i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>
+                    <label class="custom-control custom-checkbox" title="[[ tenderCategory.node.name ]]">
                         <input ng-click="changeParentStatus(tenderCategory.node.id)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.node.id]]">
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description">[[ tenderCategory.node.name ]]</span>
@@ -29,7 +19,7 @@
                 </div>
                 <ul ng-show="tenderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
                     <div class="form-group">
-                        <label class="custom-control custom-checkbox">
+                        <label class="custom-control custom-checkbox" title="[[ tenderSubCategory.name ]]">
                             <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">[[ tenderSubCategory.name ]]</span>
