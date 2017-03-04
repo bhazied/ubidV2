@@ -613,6 +613,21 @@ p.copyright {
     margin-bottom: 0;
 }
 
+.categories-checkbox li {
+    width: 2000%;
+}
+
+.categories-checkbox label {
+    display: inline!important;
+    text-wrap: none;
+}
+
+.categories-checkbox input[type="text"], .countries-checkbox input[type="text"] {
+    width: 90%;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
 .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
     background-image: url('/front/img/check.svg');
 }
@@ -799,54 +814,64 @@ input.form-control {
     padding: 0;
     list-style: none;
     display: inline-block;
-    background-position: center center;
-    background-repeat: no-repeat;
     vertical-align: top;
     cursor: pointer;
     text-align: center;
 }
 
 .center-menu ul li a {
-    color: #616161;
-    font-weight: bold;
-    margin: 120px 0 0 0;
+    height: 230px;
+    width: 100%;
+    margin: 0 0 0 0;
     padding: 0;
-    display: none;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    text-align: center;
+    text-decoration: none;
 }
 
-.center-menu ul li:hover a {
+.center-menu ul li a span {
+    display: none;
+    color: #616161;
+    font-weight: bold;
+    vertical-align: bottom;
+    line-height: 230px;
+}
+
+.center-menu ul li:hover a span {
     display: block;
 }
 
-.center-menu ul li.publish {
+.center-menu ul li.publish a {
     background-image: url('/front/img/publish.png');
 }
 
-.center-menu ul li.publish:hover {
+.center-menu ul li.publish a:hover {
     background-image: url('/front/img/publish_large.png');
 }
 
-.center-menu ul li.tender {
+.center-menu ul li.tender a {
     background-image: url('/front/img/tender.png');
 }
 
-.center-menu ul li.tender:hover {
+.center-menu ul li.tender a:hover {
     background-image: url('/front/img/tender_large.png');
 }
 
-.center-menu ul li.proposal {
+.center-menu ul li.proposal a {
     background-image: url('/front/img/proposal.png');
 }
 
-.center-menu ul li.proposal:hover {
+.center-menu ul li.proposal a:hover {
     background-image: url('/front/img/proposal_large.png');
 }
 
-.center-menu ul li.advertiser {
+.center-menu ul li.advertiser a {
     background-image: url('/front/img/advertiser.png');
 }
 
-.center-menu ul li.advertiser:hover {
+.center-menu ul li.advertiser a:hover {
     background-image: url('/front/img/advertiser_large.png');
 }
 

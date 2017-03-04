@@ -1,7 +1,7 @@
 <div ng-if="user.email" ng-controller="LoginFrontCtrl">
     <!--span class="user-name pull-right">  logout </span-->
     <span class="user-name pull-right">
-        [[ user.name ]]
+        <a ui-sref="front.usermenu">[[ user.name ]]</a>
         <ul class="submenu">
             <li ng-click="myProfile()"><a><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
             <li ng-click="logout()"><a><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
