@@ -1,10 +1,9 @@
-<div ng-if="user.email" ng-controller="LoginFrontCtrl">
-    <!--span class="user-name pull-right">  logout </span-->
+<div ng-if="user.email">
     <span class="user-name pull-right">
         <a ui-sref="front.usermenu">[[ user.name ]]</a>
         <ul class="submenu">
-            <li ng-click="myProfile()"><a><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
-            <li ng-click="logout()"><a><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
+            <li><a ui-sref="front.profile"><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
+            <li><a ui-sref="front.logout"><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
         </ul>
     </span>
     <a class="user-photo pull-right [[ user.gender ]]"></a>
@@ -12,8 +11,7 @@
 </div>
 
 <div ng-if="!user.email" ng-controller="LoginFrontCtrl">
-    <!--<a ui-sref="front.login" class="pull-right" translate="front.SIGNIN"> Sign in</a> -->
-    <button type="button" class="btn btn-primary pull-right" ng-click="goLogin()">
+    <button type="button" class="btn btn-primary pull-right" ui-sref="front.login">
         <i class="ti-user"></i> <span translate="front.SIGNIN">Sign in</span>
     </button>
 </div>

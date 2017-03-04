@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top navbar-dark bg-inverse" id="electricity-navbar">
 
-    <div class="col-md-10 offset-md-1 col-sm-12 offset-sm-0 ">
+    <div class="col-lg-10 offset-lg-1 col-md-12 offset-md-0 col-sm-12 offset-sm-0">
 
         <!--a ng-if="showLogo" class="navbar-logo-icon" ui-sref="front.home"></a-->
 
@@ -31,11 +31,11 @@
 
         <div class="float-xs-right" id="language-switcher">
             <span class="current-language flag [[currentLanguage]]" title="[[ languages[currentLanguage] ]]">
-                <ul class="languages">
+                <ul ng-if="countLanguages > 1" class="languages">
                     <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]" ng-click="changeLanguage('[[langCode]]')"></li>
                 </ul>
             </span>
-            <a class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
+            <a ng-if="countLanguages > 1" class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
         </div>
 
         <ul class="nav navbar-nav float-xs-right">

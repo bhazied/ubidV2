@@ -719,9 +719,9 @@ class ApiV1RESTController extends FOSRestController
         $tree = array();
         foreach ($categories as $category) {
             if (
-                (is_null($parentId) && is_null($category->getParentCegory()))
+                (is_null($parentId) && is_null($category->getParentCategory()))
                 ||
-                (!is_null($parentId) && $category->getParentCegory()->getId() == $parentId)
+                (!is_null($parentId) && !is_null($category->getParentCategory()) && $category->getParentCategory()->getId() == $parentId)
             ) {
                 $tree[] = array(
                     'node' => $category,
@@ -729,47 +729,6 @@ class ApiV1RESTController extends FOSRestController
                 );
             }
         }
-        return $tree;
-    }
-
-    private function prepareDataToBeTree($categories) {
-        $new = [];
-        foreach ($categories as $cat) {
-            if(!is_null($cat->getParentCategory())){
-                $new[$cat->getParentCategory()->getId()] = $cat->getParentCategory();
-            }
-            else{
-                $new[0][] = $cat;
-            }
-        }
-        $tree = $this->treeBuilderCategories($categories, $new);
-        return $tree;
-    }
-
-    private function treeBuilderCategories($categories, $new){
-       $tree = [];
-        $i=0;
-        $j=0;
-        foreach ($new as $key => $val){
-            if($key != 0){
-                $tree[$i]['node'] = $val;
-                foreach ($categories as $cat){
-                    $parentId = !(is_null($cat->getParentCategory())) ? $cat->getParentCategory()->getId() : 0;
-                    if($parentId == $key){
-                        $tree[$i]['children'][] = $cat;
-                    }
-                }
-            }
-            else if($key == 0){
-                foreach($val as $node){
-                    $tree[$j+$i]['node'] = $node;
-                    $tree[$j+$i]['children'] = array();
-                    $j++;
-                }
-            }
-            $i++;
-        }
-
         return $tree;
     }
 

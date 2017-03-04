@@ -537,6 +537,12 @@ body {
     height: 30px;
 }
 
+@media only screen and (max-width: 900px) {
+    #language-switcher {
+        margin: 14px 0 10px 10px;
+    }
+}
+
 .flag {
     height: 30px;
     width: 30px;
@@ -1019,10 +1025,18 @@ p.copyright {
     text-wrap: none;
 }
 
+.categories-checkbox li ul {
+    padding: 0 0 0 30px;
+}
+
 .categories-checkbox input[type="text"], .countries-checkbox input[type="text"] {
     width: 90%;
     margin-bottom: 5px;
     padding: 2px;
+}
+
+.checkedCategories {
+    height: 132px;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
@@ -1521,6 +1535,17 @@ fieldset h2 {
     color: #013486 !important;
 }
 
+.thumbnail {
+    margin: 10px 0;
+    text-align: center;
+    padding: 0;
+}
+
+.thumbnail img {
+    max-width: 80%;
+    margin: auto;
+}
+
 .error {
     color: red;
 }
@@ -1563,7 +1588,7 @@ fieldset h2 {
 
 #partial_profile_menu .panel-default > .panel-heading h4 a {
     display: block;
-    padding: 10px 15px;
+    padding: 10px;
     color: white;
     text-transform: uppercase;
     font-white: bold;
@@ -1723,20 +1748,24 @@ fieldset h2 {
     border-top-right-radius: 3px;
 }
 
-.add-remove{
-    color: #FFF;
-    font-weight: bold;
-    font-size: 21px;
+.add, .remove {
     border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
     cursor: pointer;
     display: inline-block;
-    padding: 4px 9px;
-    vertical-align: top;
-    line-height: 100%;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
 }
-.add{
+
+.add {
     background: #416ac7;
 }
+
 .remove{
     background: #C76868;
 }
@@ -1956,7 +1985,9 @@ fieldset h2 {
 
 #front-content .bg-blue {
     background-color: #E7F2FD!important;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: 800px!important;
 }
 
 #front-content .bg-blue .table-responsive {

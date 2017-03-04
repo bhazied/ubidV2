@@ -19,10 +19,10 @@
                 </div>
                 <ul ng-show="tenderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
                     <div class="form-group">
-                        <label class="custom-control custom-checkbox" title="[[ tenderSubCategory.name ]]">
-                            <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
+                        <label class="custom-control custom-checkbox" title="[[ tenderSubCategory.node.name ]]">
+                            <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory.node)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.node.id]]">
                             <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">[[ tenderSubCategory.name ]]</span>
+                            <span class="custom-control-description">[[ tenderSubCategory.node.name ]]</span>
                         </label>
                     </div>
                 </ul>

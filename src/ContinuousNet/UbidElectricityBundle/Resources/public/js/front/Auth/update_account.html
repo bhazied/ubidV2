@@ -9,14 +9,6 @@
 
                 <div class="form-group">
                     <label class="control-label ">
-                        <span translate="content.list.fields.ALIAS">Name</span>
-                        <span class="symbol required"></span>
-                    </label>
-                    <input ng-required="true" type="text" placeholder="[[ 'content.form.messages.ENTERALIAS' | translate ]]" class="form-control" name="name" ng-model="user.alias">
-                </div><!--/form-group-->
-
-                <div class="form-group">
-                    <label class="control-label ">
                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
                     </label>
                     <input type="text" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" class="form-control" name="firstname" ng-model="user.firstName">
@@ -39,7 +31,6 @@
                 <div class="form-group">
                     <label for="userAddress" class="control-label">
                         <span translate="content.list.fields.ADDRESS">Address</span>
-                        <span class="symbol required"></span>
                     </label>
                     <input ng-required="true" id="userAddress" type="text" placeholder="Enter address" class="form-control" name="address" ng-model="user.address">
                 </div><!--/form-group-->
@@ -47,47 +38,8 @@
                 <div class="form-group">
                     <label for="userCity" class="control-label">
                         <span translate="content.list.fields.CITY">City</span>
-                        <span class="symbol required"></span>
                     </label>
                     <input ng-required="true" ng-model="user.city" type="text" name="city" id="userCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" />
-                </div><!--/form-group-->
-
-            </div><!--/col-md-6-->
-
-            <div class="col-md-6">
-
-                <div class="form-group">
-                    <label class="control-label ">
-                        <span translate="content.list.fields.EMAIL">Email</span>
-                        <span class="symbol required"></span>
-                    </label>
-                    <input ng-readonly="true" ng-required="true" type="text" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" class="form-control" name="name" ng-model="user.email">
-                </div><!--/form-group-->
-
-                <div class="form-group">
-                    <label class="control-label">
-                        <span translate="content.list.fields.LASTNAME">Last Name</span>
-                    </label>
-                    <input type="text" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" class="form-control" name="lastname" ng-model="user.lastName">
-                </div><!--/form-group-->
-
-                <div class="form-group">
-                    <label for="userGender" class="control-label">
-                        <span translate="content.list.fields.GENDER">Gender</span>
-                    </label>
-                    <div class="clip-radio radio-primary" ng-if="genders.length < 10">
-                        <input ng-disabled="false" ng-repeat-start="gender in genders" ng-model="user.gender" type="radio" id="gender[[ gender.id ]]" value="[[ gender.id ]]" name="gender" />
-                        <label ng-repeat-end for="gender[[ gender.id ]]">
-                            [[ gender.title ]]
-                        </label>
-                    </div>
-                    <div class="block" ng-if="genders.length >= 10">
-                        <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control">
-                            <option translate="content.form.messages.SELECTGENDER" value="">Select Gender</option>
-                        </select>
-                        <span my-enum="[[ user.gender ]]" my-enum-list="[[ genders ]]"></span>
-                    </div>
-
                 </div><!--/form-group-->
 
                 <div class="form-group">
@@ -107,7 +59,7 @@
                     </div>
                     <div class="user-image margin-top-10" ng-if="user.picture != '' && user.picture != null">
                         <div class="thumbnail">
-                            <img ng-src="[[ user.picture ]]" alt="" />
+                            <img class="img-thumbnail" ng-src="[[ user.picture ]]" alt="" />
                         </div>
                         <div class="user-image-buttons">
                             <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
@@ -116,10 +68,46 @@
                     </div>
                 </div><!--/form-group-->
 
+            </div><!--/col-md-6-->
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label class="control-label">
+                        <span translate="content.list.fields.LASTNAME">Last Name</span>
+                    </label>
+                    <input type="text" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" class="form-control" name="lastname" ng-model="user.lastName">
+                </div><!--/form-group-->
+
+                <div class="form-group">
+                    <label class="control-label ">
+                        <span translate="content.list.fields.EMAIL">Email</span>
+                        <span class="symbol required"></span>
+                    </label>
+                    <input ng-readonly="true" ng-required="true" type="text" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" class="form-control" name="name" ng-model="user.email">
+                </div><!--/form-group-->
+
+                <div class="form-group">
+                    <label for="userGender" class="control-label">
+                        <span translate="content.list.fields.GENDER">Gender</span>
+                    </label>
+                    <div class="continuous-radio radio-primary" ng-if="genders.length < 10">
+                        <input ng-disabled="false" ng-repeat-start="gender in genders" ng-model="user.gender" type="radio" id="gender[[ gender.id ]]" value="[[ gender.id ]]" name="gender" />
+                        <label ng-repeat-end for="gender[[ gender.id ]]">
+                            [[ gender.title ]]
+                        </label>
+                    </div>
+                    <div class="block" ng-if="genders.length >= 10">
+                        <select ng-disabled="false" ng-options="item.id as item.title for item in genders" ng-model="user.gender" name="gender" id="userGender" class="form-control">
+                            <option translate="content.form.messages.SELECTGENDER" value="">Select Gender</option>
+                        </select>
+                        <span my-enum="[[ user.gender ]]" my-enum-list="[[ genders ]]"></span>
+                    </div>
+                </div><!--/form-group-->
+
                 <div class="form-group">
                     <label class="control-label">
                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
-                        <span class="symbol required"></span>
                     </label>
                     <input ng-required="true" class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
                 </div><!--/form-group-->
