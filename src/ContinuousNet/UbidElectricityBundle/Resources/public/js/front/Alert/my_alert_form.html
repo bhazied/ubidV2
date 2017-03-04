@@ -4,12 +4,10 @@
         <div class="col-md-12" ng-controller="MyAlertFormCtrl">
             <div>
                 <fieldset>
-                    <legend translate="content.list.NEWALERT" ng-if="alert.id == 0">
+                    <legend translate="content.list.NEWALERT">
                         New Alert
                     </legend>
-                    <legend translate="content.list.EDITALERT" ng-if="alert.id > 0">
-                        Edit Alert
-                    </legend>
+                    <h3 translate="front.NEWALERTHEADER"></h3>
                     <form name="alertForm" id="alertForm" novalidate>
                         <input type="hidden" name="id" id="alertId" ng-model="alert.id" />
                         <div class="row">
@@ -17,7 +15,7 @@
 
                                 <div class="form-group" ng-class="{'has-error':alertForm.types.$dirty && alertForm.types.$invalid, 'has-success':alertForm.types.$valid}">
                                     <label for="alertTypes" class="control-label">
-                                        <span translate="content.list.fields.TYPES">Types</span>
+                                        <span translate="content.list.fields.alert.SELECTTOPIC">Please select your preferred topic </span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="row">
@@ -90,7 +88,11 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="alertDescription" class="control-label">
+                                        <span translate="content.list.fields.alert.SELECTCATEGORIES">Please select your preferred product or service categories</span>
+                                    </label>
                                 <ul class="categories-checkbox">
                                     <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
                                     <li ng-repeat="category in frontCategories | filter:filterCategories">
@@ -104,7 +106,8 @@
                                         <ul ng-if="category.children.length > 0" ng-repeat="tenderSubCategory in category.children">
                                             <div class="form-group">
                                                 <label class="custom-control custom-checkbox">
-                                                    <input ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.id]]">
+                                                    <!--<input ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="alert.categories" checklist-value="tenderSubCategory.id" name="category[]" id="alertCategory[[tenderSubCategory.id]]">-->
+                                                    <input  ng-checked="parentChecked(category.node.id, tenderSubCategory)" type="checkbox" class="custom-control-input" checklist-model="alert.categories" checklist-value="tenderSubCategory.id" name="category[]" id="alertCategory[[tenderSubCategory.id]]">
                                                     <span class="custom-control-indicator"></span>
                                                     <span class="custom-control-description">[[ tenderSubCategory.name ]]</span>
                                                 </label>
@@ -112,19 +115,48 @@
                                         </ul>
                                     </li>
                                 </ul>
+                                </div>
                             </div><!--/col-md-6-->
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="checkedCategories" class="control-label">
+                                        <span></span>
+                                    </label>
+                                    <select multiple ng-options="item.id as item.name for item in checkedCategories" ng-model="alert.checkedCategories" class="form-control" name="checkedCategories[]" id="checkedCategories[[category.id]]">
+                                    </select>
+                                </div>
+                            </div><!--/col-md-6-->
+
+
+                            <!--<div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="alertCategories" type="checkbox" id="alertCategories" />
                                     <label class="all" for="alertCategories" translate="content.common.SELECTALL">Select All</label>
-                                </div><!--/checkbox-->
-                            </div><!--/col-md-12-->
+                                </div>
+                            </div> -->
+
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
-                                <span translate="content.list.fields.COUNTRIES">Countries</span>
+                                <div class="col-md-4">
+                                    <div class="checkbox continuous-check check-primary">
+                                        <button class="add-remove add" ng-click="addCheckedCategoried()">+</button>
+                                    </div><!--/checkbox-->
+                                </div><!--/col-md-4-->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="checkbox continuous-check check-primary pull-right">
+                                        <button class="add-remove remove" ng-if="checkedCategories.length  > 0" ng-click="removeCheckedCategories()">-</button>
+                                    </div><!--/checkbox-->
+                                </div><!--/col-md-4-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span translate="content.list.fields.alert.SELECTCOUNTRIES">lease select your preferred region or country</span>
                                     <span class="input-icon">
                                         <input placeholder="[[ 'front.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSearchText" class="form-control pull-right input-sm underline" />
                                          <i class="ti-filter"></i>
@@ -167,7 +199,7 @@
 
                                 <div class="form-group" ng-class="{'has-error':alertForm.period.$dirty && alertForm.period.$invalid, 'has-success':alertForm.period.$valid}">
                                     <label for="alertPeriod" class="control-label">
-                                        <span translate="content.list.fields.PERIOD">Period</span>
+                                        <span translate="content.list.fields.alert.SELECTPERIOD">How often do you want to receive this emai</span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <div class="continuous-radio radio-primary" ng-if="periods.length < 10">

@@ -1280,8 +1280,8 @@ class ApiV1RESTController extends FOSRestController
                    return $data;
                }
                $bid->setStatus('shortlisted');
-               //$bid->save();
                $em->flush();
+              /*
                $message = \Swift_Message::newInstance()
                    ->setSubject('Your Tender '. $bid->getTender()->getTitle().' ')
                    ->setFrom('contact@continuousnet.com')
@@ -1291,6 +1291,7 @@ class ApiV1RESTController extends FOSRestController
                        'text/html'
                    );
                $this->get('mailer')->send($message);
+              */
                $data['status'] = true;
                $data['message'] = $this->get('translator')->trans('bidShortList.shortListed', array($bid->getTitle()));
                return $data;

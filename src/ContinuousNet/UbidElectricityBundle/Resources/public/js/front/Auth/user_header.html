@@ -8,7 +8,7 @@
         </ul>
     </span>
     <a class="user-photo pull-right [[ user.gender ]]"></a>
-    <a ui-sref="front.usermenu" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
+    <a ui-sref="front.myAlerts.list" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
 </div>
 
 <div ng-if="!user.email" ng-controller="LoginFrontCtrl">

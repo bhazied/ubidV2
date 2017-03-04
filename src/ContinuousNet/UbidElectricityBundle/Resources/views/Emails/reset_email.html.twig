@@ -1,0 +1,8 @@
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    <p>Dear {{ user.username }},</p>
+    <p>&nbsp;</p>
+        {% autoescape false %}
+            {{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+        {% endautoescape %}
+{% endblock %}

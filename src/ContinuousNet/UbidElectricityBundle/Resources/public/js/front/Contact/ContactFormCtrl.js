@@ -11,7 +11,7 @@ app.controller('contactFormCtrl', ['$scope', '$rootScope', '$localStorage', '$st
             $rootScope.contentOffset = 2;
         }, 1500);
 
-        $postsDataFactory.getBySlug({slug: 'contact', locale: $scope.locale}).$promise.then(function(data) {
+        $postsDataFactory.getBySlug({slug: 'contact', locale: $localStorage.language}).$promise.then(function(data) {
             $scope.postLoaded = true;
             $scope.post = data;
             $rootScope.seo.meta_description = data.meta_description;

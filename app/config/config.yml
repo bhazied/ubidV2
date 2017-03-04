@@ -163,7 +163,8 @@ fos_user:
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
     service:
-        mailer:                 fos_user.mailer.default
+        #mailer:                 fos_user.mailer.default
+        mailer:                 fos_user.mailer.twig_swift
         email_canonicalizer:    fos_user.util.canonicalizer.default
         username_canonicalizer: fos_user.util.canonicalizer.default
         token_generator:        fos_user.util.token_generator.default
@@ -511,3 +512,4 @@ assetic:
         #google_apis:
             #inputs:
                 #- "//maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization"
+

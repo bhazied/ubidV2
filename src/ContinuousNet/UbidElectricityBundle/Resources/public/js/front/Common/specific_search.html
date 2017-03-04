@@ -16,7 +16,7 @@
         </div> -->
         <ul class="categories-checkbox">
             <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
-            <li ng-repeat="tenderCategory in tenderCategories track by | filter:filterCategories tenderCategory.node.id" ng-if="tenderCategory.node.id">
+            <li ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.node.id">
                 <div class="form-group">
                     <i ng-if="tenderCategory.children.length > 0 && tenderCategory.expand" ng-click="tenderCategory.expand = false" class="fa fa-minus-square-o"></i>
                     <i ng-if="tenderCategory.children.length > 0 && !tenderCategory.expand" ng-click="tenderCategory.expand = true" class="fa fa-plus-square-o"></i>
@@ -43,7 +43,7 @@
         <label class="sidebar-label" translate="front.COUNTRIES">Countries</label>
         <div class="countries-checkbox">
             <input type="text" ng-model="filterCountries" placeholder="[['front.FILTERCOUNTRIES' | translate]]">
-            <div class="form-group" ng-repeat="country in countries | filter:filterCountries ">
+            <div class="form-group" ng-repeat="country in countries | filter:(filterCountries.length > 1 ? filterCountries : '') ">
                 <label class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" checklist-model="search.countries" checklist-value="country.id" name="countries[]" id="searchCountries[[country.id]]">
                     <span class="custom-control-indicator"></span>

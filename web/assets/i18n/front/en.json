@@ -953,6 +953,12 @@
         }
       },
       "fields": {
+        "alert":{
+          "SELECTTOPIC": "Please select your preferred topic",
+          "SELECTCATEGORIES": "Please select your preferred product or service categories",
+          "SELECTCOUNTRIES": "lease select your preferred region or country",
+          "SELECTPERIOD": "How often do you want to receive this emai"
+        },
         "MESSAGE" : "Message",
         "CARDNUMBER" : "Card Number",
         "CARDMONTHEXPR" : "Expiration Month",
@@ -1702,6 +1708,7 @@
     "DATETIME": "MM/dd/yyyy h:mma"
   },
   "front": {
+    "NEWALERTHEADER":"Subscribe now to get the latest electrical business opportunities",
     "ISSUER": "Issuer",
     "ISSUER": "Issuer",
     "GETINTOUCH": "GET IN TOUCH",
@@ -1800,7 +1807,7 @@
     "ELECTRICITYBOOKSEARCH": "Electricity Book Search...",
     "WHATYOUAREBIDDING": "What you are bidding...",
     "SLOGAN": "<b>Join US</b> to find your service provider in<br />Energy, Power, Electrical Products & Solutions...",
-    "COPYRIGHT": "Copyright &copy; e-electricity 2017. All rights reserved.",
+    "COPYRIGHT": "Copyright &copy; e-electricity {{year}}. All rights reserved.",
     "YOUHAVEBEENLOGGEDOUT":"You have been logged out",
     "COMPTECREATESUCCESSEMAIL":"Your account is successfully created thank you to check your e-mail for activated",
     "PUBLICATION": "Publication",
@@ -1914,7 +1921,7 @@
     "GENERALCONDITIONS": "General Conditions",
     "IHAVEREADANDACCEPTTHE": "I have read and accept the",
     "settings":{
-      "BEEDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
+      "BIDSHORLISTED":"E-mail sent to notify you that your bid have been shortlisted",
       "RECEIVEDNEWBID":"E-mail sent to notify you that you have received a new bid",
       "RECEIVEDNEWMESSAGE":"E-mail sent to notify you that you have received a new message",
       "CONSULTYOUROPPOTUNITY":"E-mail sent to notify you who has consult your oportunity business",

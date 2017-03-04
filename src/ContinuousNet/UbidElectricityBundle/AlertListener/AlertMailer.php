@@ -3,7 +3,7 @@
 namespace ContinuousNet\UbidElectricityBundle\AlertListener;
 
 use ContinuousNet\UbidElectricityBundle\Entity\Message;
-use FOS\UserBundle\Entity\User;
+use ContinuousNet\UbidElectricityBundle\Entity\User;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -16,29 +16,61 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class AlertMailer
 {
-    
+
     private $mailer;
     private $templating;
-    private $router;
-    //protected  $container;
+    //private $router;
+    protected  $container;
     private  $from;
 
-    public function __construct(RouterInterface $router)
-    //function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
-        //$this->container = $_container;
-        //$this->mailer = $mailer;
-        //$this->twig = $twig;
-        $this->router = $router;
-        $this->from = 'contact@ubid.com';
+        $this->container = $container;
+        $this->mailer = $this->container->get('mailer');
+        $this->from = $this->container->getParameter('email_contact');
     }
 
-    public function setMailer(\Swift_Mailer $mailer){
-        $this->mailer = $mailer;
-    }
 
-    public function setTemplating(\Symfony\Bundle\TwigBundle\TwigEngine $templating){
-        $this->templating = $templating;
+    public function __call($name, $arguments)
+    {
+        $this->templating = $this->container->get('templating');
+       if($name == "new_message"){
+           $template = 'UbidElectricityBundle:Emails:new_message.html.twig';
+           $body = $this->templating->render($template, array('message' => $arguments[0]));
+           $subject = "[RCEIVED A NEW MESSAGE]";
+
+           $this->sendMail($arguments[1], $subject, $body);
+       }
+        if ($name == "new_bid"){
+            $template = 'UbidElectricityBundle:Emails:new_bid_received.html.twig';
+            $body = $this->templating->render($template, array('bid' => $arguments[0]));
+            $subject = "[YOUR BID IS SHORTLISTED]";
+        }
+        if($name == "load_tender"){
+            $template = 'UbidElectricityBundle:Emails:consult_tender.html.twig';
+            $body = $this->templating->render($template, array('tender' => $arguments[0]));
+            $subject = "[SOMEONE CONSULT YOUR OPPORTUNITY BUSINESS]";
+            $this->sendMail($arguments[1], $subject, $body);
+        }
+        if($name == "load_buyer"){
+            $template = 'UbidElectricityBundle:Emails:consult_profile_buyer.html.twig';
+            $body = $this->templating->render($template, array('buyer' => $arguments[0]));
+            $subject = "[SOMEONE CONSULT YOUR PROFILE - BUYER]";
+            $this->sendMail($arguments[1], $subject, $body);
+        }
+        if($name == "load_supplier"){
+            $template = 'UbidElectricityBundle:Emails:consult_profile_supplier.html.twig';
+            $body = $this->templating->render($template, array('supplier' => $arguments[0]));
+            $subject = "[SOMEONE CONSULT YOUR PROFILE - SUPPLIER]";
+            $this->sendMail($arguments[1], $subject, $body);
+        }
+        if($name == "update_bid"){
+            $template = 'UbidElectricityBundle:Emails:bid_short_listed.html.twig';
+            $body = $this->templating->render($template, array('bid' => $arguments[0]));
+            $subject = "[YOUR BID SHORLISTED]";
+            $this->sendMail($arguments[1], $subject, $body);
+        }
+
     }
 
     protected function sendMail($to, $subject, $body){
@@ -50,48 +82,6 @@ class AlertMailer
             ->setContentType('text/html');
         $this->mailer->send($message);
 
-
     }
-
-
-    public function sendNewBidEmail(User $user, Bid $bid){
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('newBid' => $bid));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendViewProfileEmail(User $user, User $visitor){
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('newBid' => $visitor));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendShortListBidEmail(User $user, Bid $bid){
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('shortList' => $bid));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendNewMessageEmail(User $user, Message $message){
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('message' => $message));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-    }
-
-    public function sendConsultTenderEmail(User $user, Tender $tender){
-        $template = 'UbidElectricityBundle:EMAILS:bidShortListes.html.twig';
-        $body = $this->templating->render($template, array('tender' => $tender));
-        $to = $user->getEmail();
-        $subject = '[New Bid Added]';
-        $this->sendMail($to, $subject, $body);
-
-    }
+    
 }

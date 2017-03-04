@@ -1,6 +1,6 @@
 'use strict';
-app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory','toaster',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory, toaster) {
+app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory','toaster','$tendersDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory, toaster, $tendersDataFactory) {
 
         $scope.currentDate = new Date();
 
@@ -8,6 +8,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
         $scope.datetimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
 
+        $scope.loaded = false;
         $scope.tenderLoaded = false;
         $scope.tender = {};
         $scope.getTender = function () {
@@ -15,12 +16,25 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                 var def = $q.defer();
                 $timeout(function () {
                    $scope.tenderLoaded = true;
-                    $tendersFrontDataFactory.getTender({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
-                        $scope.tender = data;
-                        $rootScope.seo.meta_description = data.description;
-                        $rootScope.seo.meta_keywords = data.reference;
-                        $rootScope.seo.meta_title = data.title;
-                    });
+                    if(angular.isDefined($localStorage.user)){
+                        $tendersDataFactory.get({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
+                            $scope.tender = data;
+                            $rootScope.seo.meta_description = data.description;
+                            $rootScope.seo.meta_keywords = data.reference;
+                            $rootScope.seo.meta_title = data.title;
+                            $scope.loaded = true;
+                        });
+                    }
+                    else {
+                        $tendersFrontDataFactory.getTender({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
+                            $scope.tender = data;
+                            $rootScope.seo.meta_description = data.description;
+                            $rootScope.seo.meta_keywords = data.reference;
+                            $rootScope.seo.meta_title = data.title;
+                            $scope.loaded = true;
+                        });
+                    }
+
                     def.resolve($scope.tender);
                     return def;
                 });

@@ -1,6 +1,6 @@
 'use strict';
-app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$buyersFrontDataFactory',
-    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $buyersFrontDataFactory) {
+app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q', '$filter', '$buyersFrontDataFactory', '$buyersDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $buyersFrontDataFactory, $buyersDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -12,6 +12,7 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         }, 500);
 
         $scope.buyer = {};
+        $scope.loaded = false;
         $scope.getBuyer = function() {
             var $params = {
                 locale: $localStorage.language,
@@ -19,12 +20,26 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             };
             $timeout(function () {
                 var def = $q.defer();
-                $buyersFrontDataFactory.buyer($params).$promise.then(function(data){
-                    $scope.buyer = data;
-                    $rootScope.seo.meta_description = data.description;
-                    $rootScope.seo.meta_keywords = data.main_products_services;
-                    $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
-                });
+                if(angular.isDefined($localStorage.user)){
+                    $buyersDataFactory.get($params).$promise.then(function (data) {
+                        $scope.buyer = data;
+                        $rootScope.seo.meta_description = data.description;
+                        $rootScope.seo.meta_keywords = data.main_products_services;
+                        $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
+                        $scope.loaded = true;
+                    });
+                }
+                else
+                {
+                    $buyersFrontDataFactory.buyer($params).$promise.then(function(data){
+                        $scope.buyer = data;
+                        $rootScope.seo.meta_description = data.description;
+                        $rootScope.seo.meta_keywords = data.main_products_services;
+                        $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
+                        $scope.loaded = true;
+                    });
+                }
+
                 def.resolve($scope.buyer);
                 return def;
             });
