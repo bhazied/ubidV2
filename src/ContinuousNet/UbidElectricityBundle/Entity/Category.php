@@ -131,6 +131,138 @@ class Category
     private $metaKeywords;
 
     /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`tenders_meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $tendersMetaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`tenders_meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $tendersMetaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`tenders_meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $tendersMetaKeywords;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`consultations_meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $consultationsMetaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`consultations_meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $consultationsMetaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`consultations_meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $consultationsMetaKeywords;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`buyers_meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $buyersMetaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`buyers_meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $buyersMetaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`buyers_meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $buyersMetaKeywords;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`suppliers_meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $suppliersMetaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`suppliers_meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $suppliersMetaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`suppliers_meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $suppliersMetaKeywords;
+
+    /**
      * @var integer
      * @access private
      *
@@ -420,6 +552,294 @@ class Category
     public function getMetaKeywords()
     {
         return $this->metaKeywords;
+    }
+
+    /**
+     * Set tendersMetaTitle
+     *
+     * @access public
+     * @param string $tendersMetaTitle
+     * @return Category
+     */
+    public function setTendersMetaTitle($tendersMetaTitle = null)
+    {
+        $this->tendersMetaTitle = $tendersMetaTitle;
+        return $this;
+    }
+
+    /**
+     * Get tendersMetaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getTendersMetaTitle()
+    {
+        return $this->tendersMetaTitle;
+    }
+
+    /**
+     * Set tendersMetaDescription
+     *
+     * @access public
+     * @param string $tendersMetaDescription
+     * @return Category
+     */
+    public function setTendersMetaDescription($tendersMetaDescription = null)
+    {
+        $this->tendersMetaDescription = $tendersMetaDescription;
+        return $this;
+    }
+
+    /**
+     * Get tendersMetaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getTendersMetaDescription()
+    {
+        return $this->tendersMetaDescription;
+    }
+
+    /**
+     * Set tendersMetaKeywords
+     *
+     * @access public
+     * @param array $tendersMetaKeywords
+     * @return Category
+     */
+    public function setTendersMetaKeywords(array $tendersMetaKeywords = null)
+    {
+        $this->tendersMetaKeywords = $tendersMetaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get tendersMetaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getTendersMetaKeywords()
+    {
+        return $this->tendersMetaKeywords;
+    }
+
+    /**
+     * Set consultationsMetaTitle
+     *
+     * @access public
+     * @param string $consultationsMetaTitle
+     * @return Category
+     */
+    public function setConsultationsMetaTitle($consultationsMetaTitle = null)
+    {
+        $this->consultationsMetaTitle = $consultationsMetaTitle;
+        return $this;
+    }
+
+    /**
+     * Get consultationsMetaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getConsultationsMetaTitle()
+    {
+        return $this->consultationsMetaTitle;
+    }
+
+    /**
+     * Set consultationsMetaDescription
+     *
+     * @access public
+     * @param string $consultationsMetaDescription
+     * @return Category
+     */
+    public function setConsultationsMetaDescription($consultationsMetaDescription = null)
+    {
+        $this->consultationsMetaDescription = $consultationsMetaDescription;
+        return $this;
+    }
+
+    /**
+     * Get consultationsMetaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getConsultationsMetaDescription()
+    {
+        return $this->consultationsMetaDescription;
+    }
+
+    /**
+     * Set consultationsMetaKeywords
+     *
+     * @access public
+     * @param array $consultationsMetaKeywords
+     * @return Category
+     */
+    public function setConsultationsMetaKeywords(array $consultationsMetaKeywords = null)
+    {
+        $this->consultationsMetaKeywords = $consultationsMetaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get consultationsMetaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getConsultationsMetaKeywords()
+    {
+        return $this->consultationsMetaKeywords;
+    }
+
+    /**
+     * Set buyersMetaTitle
+     *
+     * @access public
+     * @param string $buyersMetaTitle
+     * @return Category
+     */
+    public function setBuyersMetaTitle($buyersMetaTitle = null)
+    {
+        $this->buyersMetaTitle = $buyersMetaTitle;
+        return $this;
+    }
+
+    /**
+     * Get buyersMetaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getBuyersMetaTitle()
+    {
+        return $this->buyersMetaTitle;
+    }
+
+    /**
+     * Set buyersMetaDescription
+     *
+     * @access public
+     * @param string $buyersMetaDescription
+     * @return Category
+     */
+    public function setBuyersMetaDescription($buyersMetaDescription = null)
+    {
+        $this->buyersMetaDescription = $buyersMetaDescription;
+        return $this;
+    }
+
+    /**
+     * Get buyersMetaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getBuyersMetaDescription()
+    {
+        return $this->buyersMetaDescription;
+    }
+
+    /**
+     * Set buyersMetaKeywords
+     *
+     * @access public
+     * @param array $buyersMetaKeywords
+     * @return Category
+     */
+    public function setBuyersMetaKeywords(array $buyersMetaKeywords = null)
+    {
+        $this->buyersMetaKeywords = $buyersMetaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get buyersMetaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getBuyersMetaKeywords()
+    {
+        return $this->buyersMetaKeywords;
+    }
+
+    /**
+     * Set suppliersMetaTitle
+     *
+     * @access public
+     * @param string $suppliersMetaTitle
+     * @return Category
+     */
+    public function setSuppliersMetaTitle($suppliersMetaTitle = null)
+    {
+        $this->suppliersMetaTitle = $suppliersMetaTitle;
+        return $this;
+    }
+
+    /**
+     * Get suppliersMetaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getSuppliersMetaTitle()
+    {
+        return $this->suppliersMetaTitle;
+    }
+
+    /**
+     * Set suppliersMetaDescription
+     *
+     * @access public
+     * @param string $suppliersMetaDescription
+     * @return Category
+     */
+    public function setSuppliersMetaDescription($suppliersMetaDescription = null)
+    {
+        $this->suppliersMetaDescription = $suppliersMetaDescription;
+        return $this;
+    }
+
+    /**
+     * Get suppliersMetaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getSuppliersMetaDescription()
+    {
+        return $this->suppliersMetaDescription;
+    }
+
+    /**
+     * Set suppliersMetaKeywords
+     *
+     * @access public
+     * @param array $suppliersMetaKeywords
+     * @return Category
+     */
+    public function setSuppliersMetaKeywords(array $suppliersMetaKeywords = null)
+    {
+        $this->suppliersMetaKeywords = $suppliersMetaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get suppliersMetaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getSuppliersMetaKeywords()
+    {
+        return $this->suppliersMetaKeywords;
     }
 
     /**
