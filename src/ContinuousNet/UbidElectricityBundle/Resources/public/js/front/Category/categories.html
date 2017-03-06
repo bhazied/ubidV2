@@ -17,14 +17,14 @@
 
                 </div>
                 <ul class="list-group inner" ng-if="category.children.length > 0">
-                    <li class="list-group-item" ng-repeat="sub in category.children">
+                    <li class="list-group-item" ng-repeat="subCategory in category.children">
                         <div class="row">
-                            <div class="col-md-6">[[ sub.name ]]</div>
+                            <div class="col-md-6">[[ subCategory.node.name ]]</div>
                             <div class="col-md-6">
-                                <a ui-sref="front.category({slug: sub.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
-                                <a ui-sref="front.category({slug: sub.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
-                                <a ui-sref="front.category({slug: sub.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
-                                <a ui-sref="front.category({slug: sub.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
+                                <a ui-sref="front.category({slug: subCategory.node.slug, target:'tenders'})"> [[ 'front.TENDERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: subCategory.node.slug, target:'consultations'})"> [[ 'front.CONSULTATIONS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: subCategory.node.slug, target:'suppliers'})"> [[ 'front.SUPPLIERS' | translate ]] </a> |
+                                <a ui-sref="front.category({slug: subCategory.node.slug, target:'buyers'})"> [[ 'front.BUYERS' | translate ]] </a>
                             </div>
                         </div>
 
