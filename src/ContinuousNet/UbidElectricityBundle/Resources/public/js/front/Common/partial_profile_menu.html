@@ -1,10 +1,9 @@
 <div ng-if="user.email" id="user-menu-icon"><i class="fa fa-user"></i></div>
 <!-- menu with accordion -->
 <div ng-if="user.email">
-    <uib-accordion close-others="oneAtATime">
-        [[ status.open1 = ($state.current.name.indexOf('front.profile') == 0); '' ]]
-        [[ status.open3 = ($state.current.name.indexOf('front.myAlerts') == 0); '' ]]
-        <uib-accordion-group is-open="status.open1" is-disabled="status.isFirstDisabled">
+    <uib-accordion close-others="true">
+
+        <uib-accordion-group is-open="status.open1">
             <uib-accordion-heading>
                 [[ 'front.MYACCOUNT'| translate]]
                 <i  class="fa pull-right" ng-class="{'fa-angle-down': status.open1, 'fa-angle-right': !status.open1}"></i>
@@ -18,10 +17,11 @@
                 <li><a ui-sref="front.changepassword"><i class="fa fa-key"></i> <span translate="front.CHANGEPASSWORD" title="[['front.USERMENU.CHANGEPASSWORD' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Change Password</span></a></li>
             </ul>
         </uib-accordion-group>
+
         <uib-accordion-group is-open="status.open2">
             <uib-accordion-heading>
                 [[ 'front.MYTENDERS'| translate]]
-                <i  class="fa pull-right" ng-class="{'fa-angle-down': status.open2, 'fa-angle-right': !status.open2}"></i>
+                <i class="fa pull-right" ng-class="{'fa-angle-down': status.open2, 'fa-angle-right': !status.open2}"></i>
             </uib-accordion-heading>
             <ul>
                 <li><a ui-sref="front.mytenders.list"><i class="fa fa-gavel"></i> <span translate="front.MYTENDERS" title="[['front.USERMENU.MYTENDERS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Tenders</span></a></li>
@@ -34,15 +34,16 @@
                 <li ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.bookmarkproject.list"><i class="fa fa-shopping-cart"></i> <span translate="front.BOOKMARKPROJECT" title="[['front.USERMENU.BOOKMARKPROJECT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Bookmarks project</span></a></li>
             </ul>
         </uib-accordion-group>
+
         <uib-accordion-group is-open="status.open3">
             <uib-accordion-heading>
                 [[ 'front.MYALERTS'| translate]]
                 <i class="fa pull-right" ng-class="{'fa-angle-down': status.open3, 'fa-angle-right': !status.open3}"></i>
             </uib-accordion-heading>
             <ul>
-                <li><a ui-sref="front.myAlerts.list"><i class="fa fa-bell-o"></i> <span translate="front.MYALERTS" title="[['front.USERMENU.MYALERTS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Alerts</span></a></li>
-                <li><a ui-sref="front.myAlerts.new"><i class="fa fa-plus-circle"></i> <span translate="front.NEWALERT" title="[['front.USERMENU.NEWALERT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New alert</span></a></li>
-                <li><a ui-sref="front.myAlerts.settings"><i class="fa fa-plus-circle"></i> <span translate="front.ALERTSETTINGS" title="[['front.USERMENU.SETTINGS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>settings</span></a></li>
+                <li><a ui-sref="front.myAlerts.list"><i class="fa fa-bell"></i> <span translate="front.MYALERTS" title="[['front.USERMENU.MYALERTS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>My Alerts</span></a></li>
+                <li><a ui-sref="front.myAlerts.new"><i class="fa fa-plus-square"></i> <span translate="front.NEWALERT" title="[['front.USERMENU.NEWALERT' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>New alert</span></a></li>
+                <li><a ui-sref="front.myAlerts.settings"><i class="fa fa-cogs"></i> <span translate="front.ALERTSETTINGS" title="[['front.USERMENU.SETTINGS' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>settings</span></a></li>
             </ul>
         </uib-accordion-group>
 
@@ -52,9 +53,11 @@
                 <i class="fa pull-right" ng-class="{'fa-angle-down': status.open4, 'fa-angle-right': !status.open4}"></i>
             </uib-accordion-heading>
             <ul>
-                <li><a ui-sref="front.messages.list({type: 'outbox'})"><i class="fa fa-send-o"></i> <span translate="front.SENTMESSAGE" title="[['front.USERMENU.MYSENTMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Sent messages</span></a></li>
-                <li><a ui-sref="front.messages.list({type: 'inbox'})"><i class="fa fa-envelope-o"></i> <span translate="front.RECEIVEDMESSAGE" title="[['front.USERMENU.MYRECEIVEDMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Received message</span></a></li>
+                <li><a ui-sref="front.messages.list({type: 'outbox'})"><i class="fa fa-send"></i> <span translate="front.SENTMESSAGE" title="[['front.USERMENU.MYSENTMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Sent messages</span></a></li>
+                <li><a ui-sref="front.messages.list({type: 'inbox'})"><i class="fa fa-envelope"></i> <span translate="front.RECEIVEDMESSAGE" title="[['front.USERMENU.MYRECEIVEDMESSAGE' | translate]]" data-toggle="tooltip" data-placement="right" my-tooltip>Received message</span></a></li>
             </ul>
         </uib-accordion-group>
+
     </uib-accordion>
+
 </div>

@@ -709,56 +709,32 @@ class ApiV1RESTController extends FOSRestController
         $data = [];
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->from("UbidElectricityBundle:Category", "c_")
-            ->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id')
-            ->select('c_');
+        $qb->from('UbidElectricityBundle:Category', 'c_');
+        $qb->andWhere('c_.status = :status')->setParameter('status', 'Online');
+        $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parentCategory', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parentCategory.id');
+        $qb->select('c_');
+        $qb->orderBy('c_.ordering', 'ASC');
         $results = $qb->getQuery()->getResult();
         if ($results) {
-            //$data['results'] = $results;
-            $data['results'] = $this->prepareDataToBeTree($results);
+            $data['results'] = $this->prepareCategoryTree($results);
         }
         return $data;
     }
 
-
-    private function prepareDataToBeTree($categories){
-        $new = [];
-        foreach ($categories as $cat){
-            if(!is_null($cat->getParentCategory())){
-                $new[$cat->getParentCategory()->getId()] = $cat->getParentCategory();
-            }
-            else{
-                $new[0][] = $cat;
+    private function prepareCategoryTree($categories, $parentId = null) {
+        $tree = array();
+        foreach ($categories as $category) {
+            if (
+                (is_null($parentId) && is_null($category->getParentCategory()))
+                ||
+                (!is_null($parentId) && !is_null($category->getParentCategory()) && $category->getParentCategory()->getId() == $parentId)
+            ) {
+                $tree[] = array(
+                    'node' => $category,
+                    'children' => $this->prepareCategoryTree($categories, $category->getId())
+                );
             }
         }
-        $tree = $this->treeBuilderCategories($categories, $new);
-        return $tree;
-    }
-
-    private function treeBuilderCategories($categories, $new){
-       $tree = [];
-        $i=0;
-        $j=0;
-        foreach ($new as $key => $val){
-            if($key != 0){
-                $tree[$i]['node'] = $val;
-                foreach ($categories as $cat){
-                    $parentId = !(is_null($cat->getParentCategory())) ? $cat->getParentCategory()->getId() : 0;
-                    if($parentId == $key){
-                        $tree[$i]['children'][] = $cat;
-                    }
-                }
-            }
-            else if($key == 0){
-                foreach($val as $node){
-                    $tree[$j+$i]['node'] = $node;
-                    $tree[$j+$i]['children'] = array();
-                    $j++;
-                }
-            }
-            $i++;
-        }
-
         return $tree;
     }
 

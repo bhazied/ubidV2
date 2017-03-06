@@ -2188,6 +2188,12 @@ body {
     height: 30px;
 }
 
+@media only screen and (max-width: 900px) {
+    #language-switcher {
+        margin: 14px 0 10px 10px;
+    }
+}
+
 .flag {
     height: 30px;
     width: 30px;
@@ -2661,6 +2667,29 @@ p.copyright {
     margin-bottom: 0;
 }
 
+.categories-checkbox li {
+    width: 2000%;
+}
+
+.categories-checkbox label {
+    display: inline!important;
+    text-wrap: none;
+}
+
+.categories-checkbox li ul {
+    padding: 0 0 0 30px;
+}
+
+.categories-checkbox input[type="text"], .countries-checkbox input[type="text"] {
+    width: 90%;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.checkedCategories {
+    height: 132px;
+}
+
 .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
     background-image: url('/front/img/check.svg');
 }
@@ -2847,54 +2876,64 @@ input.form-control {
     padding: 0;
     list-style: none;
     display: inline-block;
-    background-position: center center;
-    background-repeat: no-repeat;
     vertical-align: top;
     cursor: pointer;
     text-align: center;
 }
 
 .center-menu ul li a {
-    color: #616161;
-    font-weight: bold;
-    margin: 120px 0 0 0;
+    height: 230px;
+    width: 100%;
+    margin: 0 0 0 0;
     padding: 0;
-    display: none;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    text-align: center;
+    text-decoration: none;
 }
 
-.center-menu ul li:hover a {
+.center-menu ul li a span {
+    display: none;
+    color: #616161;
+    font-weight: bold;
+    vertical-align: bottom;
+    line-height: 230px;
+}
+
+.center-menu ul li:hover a span {
     display: block;
 }
 
-.center-menu ul li.publish {
+.center-menu ul li.publish a {
     background-image: url('/front/img/publish.png');
 }
 
-.center-menu ul li.publish:hover {
+.center-menu ul li.publish a:hover {
     background-image: url('/front/img/publish_large.png');
 }
 
-.center-menu ul li.tender {
+.center-menu ul li.tender a {
     background-image: url('/front/img/tender.png');
 }
 
-.center-menu ul li.tender:hover {
+.center-menu ul li.tender a:hover {
     background-image: url('/front/img/tender_large.png');
 }
 
-.center-menu ul li.proposal {
+.center-menu ul li.proposal a {
     background-image: url('/front/img/proposal.png');
 }
 
-.center-menu ul li.proposal:hover {
+.center-menu ul li.proposal a:hover {
     background-image: url('/front/img/proposal_large.png');
 }
 
-.center-menu ul li.advertiser {
+.center-menu ul li.advertiser a {
     background-image: url('/front/img/advertiser.png');
 }
 
-.center-menu ul li.advertiser:hover {
+.center-menu ul li.advertiser a:hover {
     background-image: url('/front/img/advertiser_large.png');
 }
 
@@ -3147,6 +3186,17 @@ fieldset h2 {
     color: #013486 !important;
 }
 
+.thumbnail {
+    margin: 10px 0;
+    text-align: center;
+    padding: 0;
+}
+
+.thumbnail img {
+    max-width: 80%;
+    margin: auto;
+}
+
 .error {
     color: red;
 }
@@ -3189,7 +3239,7 @@ fieldset h2 {
 
 #partial_profile_menu .panel-default > .panel-heading h4 a {
     display: block;
-    padding: 10px 15px;
+    padding: 10px;
     color: white;
     text-transform: uppercase;
     font-white: bold;
@@ -3349,20 +3399,24 @@ fieldset h2 {
     border-top-right-radius: 3px;
 }
 
-.add-remove{
-    color: #FFF;
-    font-weight: bold;
-    font-size: 21px;
+.add, .remove {
     border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
     cursor: pointer;
     display: inline-block;
-    padding: 4px 9px;
-    vertical-align: top;
-    line-height: 100%;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
 }
-.add{
+
+.add {
     background: #416ac7;
 }
+
 .remove{
     background: #C76868;
 }
@@ -3582,7 +3636,9 @@ fieldset h2 {
 
 #front-content .bg-blue {
     background-color: #E7F2FD!important;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: 800px!important;
 }
 
 #front-content .bg-blue .table-responsive {

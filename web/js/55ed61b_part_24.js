@@ -343,7 +343,9 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             if ($localStorage.access_token) {
                 delete $localStorage.access_token;
             }
-            delete  $localStorage.user;
+            if ($localStorage.user) {
+                delete  $localStorage.user;
+            }
             $scope.status = '';
             $scope.user = $rootScope.user = {};
             $rootScope.loggedIn = false;
@@ -351,7 +353,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         };
 
         $scope.submit = function () {
-            $scope.user = {email: $scope.email, password: $scope.password};
+            $scope.user = {
+                email: $scope.email,
+                password: $scope.password
+            };
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
@@ -390,11 +395,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         
         $scope.register = function (type) {
             $state.go('front.register', {type: type});
-        }
+        };
         
         $scope.goLogin = function () {
             $state.go('front.login');
-        }
+        };
 
         $scope.gotoUserMenu = function () {
             $state.go('front.usermenu');

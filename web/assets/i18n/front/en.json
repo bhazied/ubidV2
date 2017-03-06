@@ -956,8 +956,8 @@
         "alert":{
           "SELECTTOPIC": "Please select your preferred topic",
           "SELECTCATEGORIES": "Please select your preferred product or service categories",
-          "SELECTCOUNTRIES": "lease select your preferred region or country",
-          "SELECTPERIOD": "How often do you want to receive this emai"
+          "SELECTCOUNTRIES": "Please select your preferred countries",
+          "SELECTPERIOD": "How often do you want to receive this email"
         },
         "MESSAGE" : "Message",
         "CARDNUMBER" : "Card Number",

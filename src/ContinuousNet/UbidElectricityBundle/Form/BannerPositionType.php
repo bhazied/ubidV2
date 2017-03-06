@@ -51,7 +51,6 @@ class BannerPositionType extends AbstractType
             ->add('isFullScreen', CheckboxType::class)
             ->add('displayOneTime', CheckboxType::class)
             ->add('isPublished', CheckboxType::class)
-            ->add('banners', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Banner', 'choice_label' => 'name'))
         ;
     }
     

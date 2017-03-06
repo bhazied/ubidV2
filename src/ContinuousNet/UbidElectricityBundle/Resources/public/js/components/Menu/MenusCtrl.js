@@ -211,8 +211,10 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (!angular.isDefined($localStorage.menusParams)) {
            $localStorage.menusParams = {};
         }
-        if (angular.isDefined($stateParams[param]) && JSON.parse($stateParams[param]) != null) {
+        if (angular.isDefined($stateParams[param]) && typeof $stateParams[param] == 'string' && JSON.parse($stateParams[param]) != null) {
             return JSON.parse($stateParams[param]);
+        } else if (angular.isDefined($stateParams[param]) && $stateParams[param] != null) {
+            return $stateParams[param];
         } else if (angular.isDefined($location.search()[param]) && JSON.parse($location.search()[param]) != null) {
             return JSON.parse($location.search()[param]);
         } else if (angular.isDefined($localStorage.menusParams[param]) && $localStorage.menusParams[param] != null) {
@@ -243,9 +245,9 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'text_position', 'class': 'enum', title: $filter('translate')('content.list.fields.TEXTPOSITION'), sortable: 'menu.textPosition', filter: { 'menu.textPosition': 'select' }, show: $scope.getParamValue('text_position_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.textPositionsOptions, interpolateExpr: $interpolate('<span class="menuTextPosition" my-enum="[[ row.text_position ]]" my-enum-list=\'[[ textPositions ]]\'></span>') },
             { field: 'is_published', title: $filter('translate')('content.list.fields.ISPUBLISHED'), sortable: 'menu.isPublished', filter: { 'menu.isPublished': 'select' }, show: $scope.getParamValue('is_published_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.is_published ]]"></span>') },
             { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'menu.createdAt', filter: { 'menu.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'menu.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'menu.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'menu.modifiedAt', filter: { 'menu.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'menu.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_id_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'menu.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
