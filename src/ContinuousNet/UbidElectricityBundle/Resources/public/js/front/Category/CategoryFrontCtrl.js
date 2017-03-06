@@ -32,9 +32,10 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
         $scope.buyers = [];
 
         $scope.target = '';
-        if(angular.isDefined($stateParams.target)){
+        if (angular.isDefined($stateParams.target)) {
             $scope.target = $stateParams.target;
         }
+
         $scope.getCategory = function() {
             if (angular.isDefined($stateParams.slug)) {
                 $categoriesFrontDataFactory.category({
@@ -91,17 +92,29 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                     var end = (start + 1) * $scope.pageCount;
                     if ($scope.target == 'suppliers') {
                         $scope.suppliers = rows.slice(start, end);
+                        $rootScope.seo.meta_description = data.suppliers_meta_description;
+                        $rootScope.seo.meta_keywords = data.suppliers_meta_keywords;
+                        $rootScope.seo.meta_title = data.suppliers_meta_title;
                     } else if ($scope.target == 'buyers') {
                         $scope.buyers = rows.slice(start, end);
+                        $rootScope.seo.meta_description = data.buyers_meta_description;
+                        $rootScope.seo.meta_keywords = data.buyers_meta_keywords;
+                        $rootScope.seo.meta_title = data.buyers_meta_title;
                     } else if ($scope.target == 'tenders') {
                         $scope.tenders = rows.slice(start, end);
+                        $rootScope.seo.meta_description = data.tenders_meta_description;
+                        $rootScope.seo.meta_keywords = data.tenders_meta_keywords;
+                        $rootScope.seo.meta_title = data.tenders_meta_title;
                     } else if ($scope.target == 'consultations') {
                         $scope.tenders = rows.slice(start, end);
+                        $rootScope.seo.meta_description = data.consultations_meta_description;
+                        $rootScope.seo.meta_keywords = data.consultations_meta_keywords;
+                        $rootScope.seo.meta_title = data.consultations_meta_title;
+                    } else {
+                        $rootScope.seo.meta_description = data.meta_description;
+                        $rootScope.seo.meta_keywords = data.meta_keywords;
+                        $rootScope.seo.meta_title = data.meta_title;
                     }
-
-                    $rootScope.seo.meta_description = data.meta_description;
-                    $rootScope.seo.meta_keywords = data.meta_keywords;
-                    $rootScope.seo.meta_title = data.meta_title;
                 });
             }
         }
