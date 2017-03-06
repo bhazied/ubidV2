@@ -85,7 +85,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: log.creator_user.id})">[[ log.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: log.creator_user.id})" ng-bind="log.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="log.creator_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

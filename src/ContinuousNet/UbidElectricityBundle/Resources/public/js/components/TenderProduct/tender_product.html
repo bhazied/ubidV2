@@ -49,15 +49,24 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TENDER">Tender</span></td>
-                                <td><a ui-sref="app.marketplace.tendersdetails({id: tenderProduct.tender.id})">[[ tenderProduct.tender.title ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('tendersdetails')" ui-sref="app.marketplace.tendersdetails({id: tenderProduct.tender.id})" ng-bind="tenderProduct.tender.title"></a>
+                                    <span ng-if="!checkStatePermission('tendersdetails')" ng-bind="tenderProduct.tender.title"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORY">Category</span></td>
-                                <td><a ui-sref="app.lists.categoriesdetails({id: tenderProduct.category.id})">[[ tenderProduct.category.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('categoriesdetails')" ui-sref="app.lists.categoriesdetails({id: tenderProduct.category.id})" ng-bind="tenderProduct.category.name"></a>
+                                    <span ng-if="!checkStatePermission('categoriesdetails')" ng-bind="tenderProduct.category.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.PRODUCTTYPE">Product Type</span></td>
-                                <td><a ui-sref="app.lists.producttypesdetails({id: tenderProduct.product_type.id})">[[ tenderProduct.product_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('producttypesdetails')" ui-sref="app.lists.producttypesdetails({id: tenderProduct.product_type.id})" ng-bind="tenderProduct.product_type.name"></a>
+                                    <span ng-if="!checkStatePermission('producttypesdetails')" ng-bind="tenderProduct.product_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TITLE">Title</span></td>
@@ -115,7 +124,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tenderProduct.creator_user.id})">[[ tenderProduct.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tenderProduct.creator_user.id})" ng-bind="tenderProduct.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tenderProduct.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -125,7 +137,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tenderProduct.modifier_user.id})">[[ tenderProduct.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tenderProduct.modifier_user.id})" ng-bind="tenderProduct.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tenderProduct.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

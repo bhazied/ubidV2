@@ -49,11 +49,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.VISIT">Visit</span></td>
-                                <td><a ui-sref="app.statistics.visitsdetails({id: impression.visit.id})">[[ impression.visit.ip ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('visitsdetails')" ui-sref="app.statistics.visitsdetails({id: impression.visit.id})" ng-bind="impression.visit.ip"></a>
+                                    <span ng-if="!checkStatePermission('visitsdetails')" ng-bind="impression.visit.ip"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BANNER">Banner</span></td>
-                                <td><a ui-sref="app.adserving.bannersdetails({id: impression.banner.id})">[[ impression.banner.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('bannersdetails')" ui-sref="app.adserving.bannersdetails({id: impression.banner.id})" ng-bind="impression.banner.name"></a>
+                                    <span ng-if="!checkStatePermission('bannersdetails')" ng-bind="impression.banner.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
@@ -63,7 +69,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: impression.creator_user.id})">[[ impression.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: impression.creator_user.id})" ng-bind="impression.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="impression.creator_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

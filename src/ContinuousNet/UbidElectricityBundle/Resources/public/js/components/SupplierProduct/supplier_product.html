@@ -49,11 +49,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: supplierProduct.supplier.id})">[[ supplierProduct.supplier.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliersdetails')" ui-sref="app.marketplace.suppliersdetails({id: supplierProduct.supplier.id})" ng-bind="supplierProduct.supplier.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliersdetails')" ng-bind="supplierProduct.supplier.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORY">Category</span></td>
-                                <td><a ui-sref="app.lists.categoriesdetails({id: supplierProduct.category.id})">[[ supplierProduct.category.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('categoriesdetails')" ui-sref="app.lists.categoriesdetails({id: supplierProduct.category.id})" ng-bind="supplierProduct.category.name"></a>
+                                    <span ng-if="!checkStatePermission('categoriesdetails')" ng-bind="supplierProduct.category.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -121,7 +127,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplierProduct.creator_user.id})">[[ supplierProduct.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: supplierProduct.creator_user.id})" ng-bind="supplierProduct.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="supplierProduct.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -131,7 +140,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplierProduct.modifier_user.id})">[[ supplierProduct.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: supplierProduct.modifier_user.id})" ng-bind="supplierProduct.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="supplierProduct.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -49,27 +49,45 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FROMUSER">From User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: message.from_user.id})">[[ message.from_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: message.from_user.id})" ng-bind="message.from_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="message.from_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FROMBUYER">From Buyer</span></td>
-                                <td><a ui-sref="app.marketplace.buyersdetails({id: message.from_buyer.id})">[[ message.from_buyer.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('buyersdetails')" ui-sref="app.marketplace.buyersdetails({id: message.from_buyer.id})" ng-bind="message.from_buyer.name"></a>
+                                    <span ng-if="!checkStatePermission('buyersdetails')" ng-bind="message.from_buyer.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FROMSUPPLIER">From Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: message.from_supplier.id})">[[ message.from_supplier.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliersdetails')" ui-sref="app.marketplace.suppliersdetails({id: message.from_supplier.id})" ng-bind="message.from_supplier.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliersdetails')" ng-bind="message.from_supplier.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TOUSER">To User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: message.to_user.id})">[[ message.to_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: message.to_user.id})" ng-bind="message.to_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="message.to_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TOBUYER">To Buyer</span></td>
-                                <td><a ui-sref="app.marketplace.buyersdetails({id: message.to_buyer.id})">[[ message.to_buyer.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('buyersdetails')" ui-sref="app.marketplace.buyersdetails({id: message.to_buyer.id})" ng-bind="message.to_buyer.name"></a>
+                                    <span ng-if="!checkStatePermission('buyersdetails')" ng-bind="message.to_buyer.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TOSUPPLIER">To Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: message.to_supplier.id})">[[ message.to_supplier.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliersdetails')" ui-sref="app.marketplace.suppliersdetails({id: message.to_supplier.id})" ng-bind="message.to_supplier.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliersdetails')" ng-bind="message.to_supplier.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUBJECT">Subject</span></td>
@@ -115,7 +133,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: message.creator_user.id})">[[ message.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: message.creator_user.id})" ng-bind="message.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="message.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -125,7 +146,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: message.modifier_user.id})">[[ message.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: message.modifier_user.id})" ng-bind="message.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="message.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
