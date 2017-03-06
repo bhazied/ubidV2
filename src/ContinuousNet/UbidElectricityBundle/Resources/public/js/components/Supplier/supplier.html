@@ -46,7 +46,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIERTYPE">Supplier Type</span></td>
-                                <td><a ui-sref="app.lists.suppliertypesdetails({id: supplier.supplier_type.id})">[[ supplier.supplier_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliertypesdetails')" ui-sref="app.lists.suppliertypesdetails({id: supplier.supplier_type.id})" ng-bind="supplier.supplier_type.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliertypesdetails')" ng-bind="supplier.supplier_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -122,7 +125,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.COUNTRY">Country</span></td>
-                                <td><a ui-sref="app.settings.countriesdetails({id: supplier.country.id})">[[ supplier.country.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('countriesdetails')" ui-sref="app.settings.countriesdetails({id: supplier.country.id})" ng-bind="supplier.country.name"></a>
+                                    <span ng-if="!checkStatePermission('countriesdetails')" ng-bind="supplier.country.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FAX">Fax</span></td>
@@ -163,7 +169,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FIRSTMARKETREGION">First Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.first_market_region.id})">[[ supplier.first_market_region.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('regionsdetails')" ui-sref="app.settings.regionsdetails({id: supplier.first_market_region.id})" ng-bind="supplier.first_market_region.name"></a>
+                                    <span ng-if="!checkStatePermission('regionsdetails')" ng-bind="supplier.first_market_region.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.FIRSTMARKETRATE">First Market Rate</span></td>
@@ -173,7 +182,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECONDMARKETREGION">Second Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.second_market_region.id})">[[ supplier.second_market_region.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('regionsdetails')" ui-sref="app.settings.regionsdetails({id: supplier.second_market_region.id})" ng-bind="supplier.second_market_region.name"></a>
+                                    <span ng-if="!checkStatePermission('regionsdetails')" ng-bind="supplier.second_market_region.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECONDMARKETRATE">Second Market Rate</span></td>
@@ -183,7 +195,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.THIRDMARKETREGION">Third Market Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: supplier.third_market_region.id})">[[ supplier.third_market_region.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('regionsdetails')" ui-sref="app.settings.regionsdetails({id: supplier.third_market_region.id})" ng-bind="supplier.third_market_region.name"></a>
+                                    <span ng-if="!checkStatePermission('regionsdetails')" ng-bind="supplier.third_market_region.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.THIRDMARKETRATE">Third Market Rate</span></td>
@@ -199,7 +214,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.LANGUAGE">Language</span></td>
-                                <td><a ui-sref="app.settings.languagesdetails({id: supplier.language.id})">[[ supplier.language.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('languagesdetails')" ui-sref="app.settings.languagesdetails({id: supplier.language.id})" ng-bind="supplier.language.name"></a>
+                                    <span ng-if="!checkStatePermission('languagesdetails')" ng-bind="supplier.language.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.SUPPLIER.E"></h3></th>
@@ -231,7 +249,8 @@
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                                 <td>
-                                    <a ng-repeat="category in supplier.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                    <a ng-if="checkStatePermission('categoriesdetails')" ng-repeat="category in supplier.categories" ui-sref="app.lists.categoriesdetails({id: category.id})" ng-bind="category.name"></a>
+                                    <span ng-if="!checkStatePermission('categoriesdetails')" ng-repeat="category in supplier.categories" ng-bind="category.name"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -245,7 +264,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplier.creator_user.id})">[[ supplier.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: supplier.creator_user.id})" ng-bind="supplier.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="supplier.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -255,7 +277,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: supplier.modifier_user.id})">[[ supplier.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: supplier.modifier_user.id})" ng-bind="supplier.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="supplier.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

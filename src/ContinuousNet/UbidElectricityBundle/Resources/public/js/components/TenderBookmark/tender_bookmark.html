@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TENDER">Tender</span></td>
-                                <td><a ui-sref="app.marketplace.tendersdetails({id: tenderBookmark.tender.id})">[[ tenderBookmark.tender.title ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('tendersdetails')" ui-sref="app.marketplace.tendersdetails({id: tenderBookmark.tender.id})" ng-bind="tenderBookmark.tender.title"></a>
+                                    <span ng-if="!checkStatePermission('tendersdetails')" ng-bind="tenderBookmark.tender.title"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.STATUS">Status</span></td>
@@ -65,7 +68,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.creator_user.id})">[[ tenderBookmark.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tenderBookmark.creator_user.id})" ng-bind="tenderBookmark.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tenderBookmark.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -75,7 +81,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tenderBookmark.modifier_user.id})">[[ tenderBookmark.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tenderBookmark.modifier_user.id})" ng-bind="tenderBookmark.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tenderBookmark.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

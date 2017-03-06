@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.COUNTRY">Country</span></td>
-                                <td><a ui-sref="app.settings.countriesdetails({id: translationCountry.country.id})">[[ translationCountry.country.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('countriesdetails')" ui-sref="app.settings.countriesdetails({id: translationCountry.country.id})" ng-bind="translationCountry.country.name"></a>
+                                    <span ng-if="!checkStatePermission('countriesdetails')" ng-bind="translationCountry.country.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.LOCALE">Locale</span></td>
@@ -71,7 +74,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: translationCountry.creator_user.id})">[[ translationCountry.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: translationCountry.creator_user.id})" ng-bind="translationCountry.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="translationCountry.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
@@ -81,7 +87,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: translationCountry.modifier_user.id})">[[ translationCountry.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: translationCountry.modifier_user.id})" ng-bind="translationCountry.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="translationCountry.modifier_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>

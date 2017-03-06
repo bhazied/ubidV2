@@ -52,19 +52,31 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BUYER">Buyer</span></td>
-                                <td><a ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})">[[ tender.buyer.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('buyersdetails')" ui-sref="app.marketplace.buyersdetails({id: tender.buyer.id})" ng-bind="tender.buyer.name"></a>
+                                    <span ng-if="!checkStatePermission('buyersdetails')" ng-bind="tender.buyer.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: tender.supplier.id})">[[ tender.supplier.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliersdetails')" ui-sref="app.marketplace.suppliersdetails({id: tender.supplier.id})" ng-bind="tender.supplier.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliersdetails')" ng-bind="tender.supplier.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TENDERTYPE">Tender Type</span></td>
-                                <td><a ui-sref="app.lists.tendertypesdetails({id: tender.tender_type.id})">[[ tender.tender_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('tendertypesdetails')" ui-sref="app.lists.tendertypesdetails({id: tender.tender_type.id})" ng-bind="tender.tender_type.name"></a>
+                                    <span ng-if="!checkStatePermission('tendertypesdetails')" ng-bind="tender.tender_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BIDDINGTYPE">Bidding Type</span></td>
-                                <td><a ui-sref="app.lists.biddingtypesdetails({id: tender.bidding_type.id})">[[ tender.bidding_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('biddingtypesdetails')" ui-sref="app.lists.biddingtypesdetails({id: tender.bidding_type.id})" ng-bind="tender.bidding_type.name"></a>
+                                    <span ng-if="!checkStatePermission('biddingtypesdetails')" ng-bind="tender.bidding_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.REFERENCE">Reference</span></td>
@@ -107,7 +119,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SECTOR">Sector</span></td>
-                                <td><a ui-sref="app.lists.sectorsdetails({id: tender.sector.id})">[[ tender.sector.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('sectorsdetails')" ui-sref="app.lists.sectorsdetails({id: tender.sector.id})" ng-bind="tender.sector.name"></a>
+                                    <span ng-if="!checkStatePermission('sectorsdetails')" ng-bind="tender.sector.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.DEADLINE">Deadline</span></td>
@@ -132,11 +147,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.REGION">Region</span></td>
-                                <td><a ui-sref="app.settings.regionsdetails({id: tender.region.id})">[[ tender.region.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('regionsdetails')" ui-sref="app.settings.regionsdetails({id: tender.region.id})" ng-bind="tender.region.name"></a>
+                                    <span ng-if="!checkStatePermission('regionsdetails')" ng-bind="tender.region.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.COUNTRY">Country</span></td>
-                                <td><a ui-sref="app.settings.countriesdetails({id: tender.country.id})">[[ tender.country.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('countriesdetails')" ui-sref="app.settings.countriesdetails({id: tender.country.id})" ng-bind="tender.country.name"></a>
+                                    <span ng-if="!checkStatePermission('countriesdetails')" ng-bind="tender.country.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.TENDER.D"></h3></th>
@@ -158,7 +179,8 @@
                             <tr>
                                 <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                                 <td>
-                                    <a ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})">[[ category.name ]]</a>
+                                    <a ng-if="checkStatePermission('categoriesdetails')" ng-repeat="category in tender.categories" ui-sref="app.lists.categoriesdetails({id: category.id})" ng-bind="category.name"></a>
+                                    <span ng-if="!checkStatePermission('categoriesdetails')" ng-repeat="category in tender.categories" ng-bind="category.name"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -172,7 +194,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tender.creator_user.id})">[[ tender.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tender.creator_user.id})" ng-bind="tender.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tender.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -182,7 +207,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: tender.modifier_user.id})">[[ tender.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: tender.modifier_user.id})" ng-bind="tender.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="tender.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

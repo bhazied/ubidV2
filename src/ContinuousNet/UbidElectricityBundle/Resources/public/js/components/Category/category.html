@@ -77,11 +77,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.PARENTCATEGORY">Parent Category</span></td>
-                                <td><a ui-sref="app.lists.categoriesdetails({id: category.parent_category.id})">[[ category.parent_category.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('categoriesdetails')" ui-sref="app.lists.categoriesdetails({id: category.parent_category.id})" ng-bind="category.parent_category.name"></a>
+                                    <span ng-if="!checkStatePermission('categoriesdetails')" ng-bind="category.parent_category.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.PRODUCTTYPE">Product Type</span></td>
-                                <td><a ui-sref="app.lists.producttypesdetails({id: category.product_type.id})">[[ category.product_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('producttypesdetails')" ui-sref="app.lists.producttypesdetails({id: category.product_type.id})" ng-bind="category.product_type.name"></a>
+                                    <span ng-if="!checkStatePermission('producttypesdetails')" ng-bind="category.product_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.METATITLE">Meta Title</span></td>
@@ -99,6 +105,78 @@
                                 <td><span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span></td>
                                 <td>
                                     <div ng-bind-html="category.meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDERSMETATITLE">Tenders Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="category.tenders_meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDERSMETADESCRIPTION">Tenders Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="category.tenders_meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.TENDERSMETAKEYWORDS">Tenders Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="category.tenders_meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONSULTATIONSMETATITLE">Consultations Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="category.consultations_meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONSULTATIONSMETADESCRIPTION">Consultations Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="category.consultations_meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.CONSULTATIONSMETAKEYWORDS">Consultations Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="category.consultations_meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BUYERSMETATITLE">Buyers Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="category.buyers_meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BUYERSMETADESCRIPTION">Buyers Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="category.buyers_meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.BUYERSMETAKEYWORDS">Buyers Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="category.buyers_meta_keywords"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUPPLIERSMETATITLE">Suppliers Meta Title</span></td>
+                                <td>
+                                    <div ng-bind-html="category.suppliers_meta_title"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUPPLIERSMETADESCRIPTION">Suppliers Meta Description</span></td>
+                                <td>
+                                    <div ng-bind-html="category.suppliers_meta_description"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span translate="content.list.fields.SUPPLIERSMETAKEYWORDS">Suppliers Meta Keywords</span></td>
+                                <td>
+                                    <div ng-bind-html="category.suppliers_meta_keywords"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -121,7 +199,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: category.creator_user.id})">[[ category.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: category.creator_user.id})" ng-bind="category.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="category.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -131,7 +212,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: category.modifier_user.id})">[[ category.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: category.modifier_user.id})" ng-bind="category.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="category.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
