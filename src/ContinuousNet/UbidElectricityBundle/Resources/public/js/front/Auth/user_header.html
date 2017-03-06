@@ -1,13 +1,13 @@
 <div ng-if="user.email" ng-controller="LoginFrontCtrl">
     <!--span class="user-name pull-right">  logout </span-->
-    <span class="user-name pull-right">
+    <span class="user-name pull-right" ng-click="gotoUserMenu()">
         [[ user.name ]]
         <ul class="submenu">
             <li ng-click="myProfile()"><a><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
             <li ng-click="logout()"><a><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
         </ul>
     </span>
-    <a class="user-photo pull-right [[ user.gender ]]"></a>
+    <a class="user-photo pull-right [[ user.gender ]]" ui-sref="front.usermenu"></a>
     <a ui-sref="front.myAlerts.list" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
 </div>
 

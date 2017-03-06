@@ -396,6 +396,10 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $state.go('front.login');
         }
 
+        $scope.gotoUserMenu = function () {
+            $state.go('front.usermenu');
+        }
+
     }]);
 
 'use strict';
