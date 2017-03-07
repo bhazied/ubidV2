@@ -5,4 +5,7 @@
     {% autoescape false %}
         {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
     {% endautoescape %}
+
+    <p>&nbsp;</p>
+    {{ 'email.signature' | trans | raw }}
 {% endblock %}
