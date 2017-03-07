@@ -27,30 +27,33 @@
                     <input type="text" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" class="form-control" name="job" ng-model="user.job">
                 </div><!--/form-group-->
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error':userForm.address.$dirty && userForm.address.$invalid, 'has-success':userForm.address.$valid}">
                     <label for="userAddress" class="control-label">
                         <span translate="content.list.fields.ADDRESS">Address</span>
+                        <span class="symbol required"></span>
                     </label>
                     <input ng-required="true" id="userAddress" type="text" placeholder="Enter address" class="form-control" name="address" ng-model="user.address">
+                    <span class="error text-small block" ng-if="userForm.address.$dirty && userForm.address.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address required.</span>
                 </div><!--/form-group-->
 
                 <div class="form-group">
                     <label for="userCity" class="control-label">
                         <span translate="content.list.fields.CITY">City</span>
                     </label>
-                    <input ng-required="true" ng-model="user.city" type="text" name="city" id="userCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" />
+                    <input ng-model="user.city" type="text" name="city" id="userCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" />
                 </div><!--/form-group-->
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error':userForm.country.$dirty && userForm.country.$invalid, 'has-success':userForm.country.$valid}">
                     <label for="userCountry" class="control-label">
                         <span translate="content.list.fields.COUNTRY">Country</span>
                         <span class="symbol required"></span>
                     </label>
                     <div class="block" ng-if="countriesLoaded">
-                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control">
+                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="true">
                             <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
                         </select>
                     </div>
+                    <span class="error text-small block" ng-if="userForm.country.$dirty && userForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
                 </div> <!-- form-group -->
             </div><!--/col-md-6-->
 
@@ -93,7 +96,7 @@
                     <label class="control-label">
                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
                     </label>
-                    <input ng-required="true" class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
+                    <input class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
                 </div><!--/form-group-->
             <div class="form-group">
                 <label for="userPicture" class="control-label">

@@ -1307,6 +1307,8 @@
         "nothingSelected": "Nothing is selected"
       },
       "messages": {
+        "TYPESREQUIRED": "Types is required.",
+        "CATEGORIESREQUIRED": "Categories is required.",
         "ADVANCEDSEARCHPRICE": "search project with price between [[ price.minValue ]]  AND [[ price.maxValue ]]",
         "ADVANCEDSEARCHCURRENCY": "All price are '[[ currency ]]' Currency",
         "SELECTALL": "Select All",

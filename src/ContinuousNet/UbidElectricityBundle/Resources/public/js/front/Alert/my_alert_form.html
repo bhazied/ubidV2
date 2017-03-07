@@ -57,7 +57,7 @@
 
                             <div class="col-md-12">
 
-                                <div class="form-group" ng-class="{'has-error':alertForm.types.$dirty && alertForm.types.$invalid, 'has-success':alertForm.types.$valid}">
+                                <div class="form-group" ng-class="{'has-error':alertForm.typeLength.$dirty && alertForm.typeLength.$invalid, 'has-success':alertForm.typeLength.$valid}">
                                     <label for="alertTypes" class="control-label">
                                         <span translate="content.list.fields.alert.SELECTTOPIC">Please select your preferred topic </span>
                                         <span class="symbol required"></span>
@@ -65,13 +65,14 @@
                                     <div class="row">
                                         <div class="col-md-3" ng-repeat="types_ in types">
                                             <div class="checkbox continuous-check check-primary">
-                                                <input checklist-model="alert.types" checklist-value="types_.id" type="checkbox" name="types[]" id="alertTypes[[types_.id]]" />
+                                                <input checklist-model="alert.types" checklist-value="types_.id" type="checkbox" name="types[]" id="alertTypes[[types_.id]]"/>
                                                 <label for="alertTypes[[types_.id]]">[[ types_.title ]]</label>
                                             </div><!--/checkbox-->
                                         </div><!--/col-md-6-->
                                     </div>
-                                    <span class="error text-small block" ng-if="alertForm.types.$dirty && alertForm.types.$error.required" translate="content.form.messages.TYPESREQUIRED">Types is required.</span>
-                                    <span class="success text-small block" ng-if="alertForm.types.$valid" translate="content.form.messages.OK">Ok!</span>
+                                    <input type="hidden" name="typeLength" ng-model="typeLength" ng-required="alert.types.length == 0">
+                                    <span class="error text-small block" ng-if="alertForm.typeLength.$dirty && alertForm.typeLength.$error.required" translate="content.form.messages.TYPESREQUIRED">Types is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.typeLength.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
@@ -110,12 +111,21 @@
                             </div><!--/col-md-6-->
 
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{'has-error':alertForm.categoryLength.$dirty && alertForm.categoryLength.$invalid, 'has-success':alertForm.categoryLength.$valid}">
                                     <select multiple ng-options="item.id as item.name for item in checkedCategories" ng-model="alert.checkedCategories" class="form-control checkedCategories" name="checkedCategories[]" id="checkedCategories"></select>
                                 </div>
                             </div><!--/col-md-6-->
-
                         </div><!--/row-->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="hidden" ng-required="checkedCategoriesids.length == 0" name="categoryLength" ng-model="categoryLength">
+                                <!--<span class="error text-small block" ng-if="selectedCountriesIds.length == 0" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>-->
+                                <span class="error text-small block" ng-if="alertForm.categoryLength.$dirty && alertForm.categoryLength.$error.required" translate="content.form.messages.CATEGORIESREQUIRED">Categories is required.</span>
+                                <span class="success text-small block" ng-if="alertForm.countryLength.$valid" translate="content.form.messages.OK">Ok!</span>
+                            </div>
+                        </div>
+
 
                         <div class="row">
 
@@ -150,28 +160,40 @@
                             </label>
 
                             <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error':alertForm.countryLength.$dirty && alertForm.countryLength.$invalid, 'has-success':alertForm.countryLength.$valid}">
                                 <span class="input-icon">
                                     <input placeholder="[[ 'front.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSearchText" class="form-control pull-right input-sm underline" />
                                      <i class="ti-filter"></i>
                                  </span><!--/input-icon-->
-                                <select multiple ng-options="item.id as item.name for item in countries | filter:countriesSearchText " ng-model="alert.countries" name="country[]" id="alertCountry[[country.id]]" class="form-control" ng-required="true" ng-dblclick="addSelectedCountries()"></select>
+                                <select multiple ng-options="item.id as item.name for item in countries | filter:countriesSearchText " ng-model="alert.countries" name="country[]" id="alertCountry[[country.id]]" class="form-control" ng-dblclick="addSelectedCountries()" ng-required="selectedCountriesIds.length == 0"></select>
+                                </div>
                             </div><!--/col-md-6-->
 
                             <div class="col-md-6">
-                                 <span class="input-icon">
+                                <div class="form-group" ng-class="{'has-error':alertForm.countryLength.$dirty && alertForm.countryLength.$invalid, 'has-success':alertForm.countryLength.$valid}">
+                                 <span class="input-icon" >
                                     <input placeholder="[[ 'front.FILTERCOUNTRIES' | translate ]]" type="text" ng-model="countriesSelectedSearchText" class="form-control pull-right input-sm underline" />
                                      <i class="ti-filter"></i>
                                  </span><!--/input-icon-->
                                 <select multiple ng-options="item.id as item.name for item in selectedCountries | filter:countriesSelectedSearchText "  ng-model="alert.selectedCountries" name="countrySelected[]" id="alertCountrySelected" class="form-control"></select>
+                                </div>
                             </div><!--/col-md-6-->
 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="hidden" ng-required="selectedCountriesIds.length == 0" name="countryLength" ng-model="countryLength">
+                                    <span class="error text-small block" ng-if="alertForm.countryLength.$dirty && alertForm.countryLength.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                                    <span class="success text-small block" ng-if="alertForm.countryLength.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="alertCountries" type="checkbox" id="alertCountries" />
                                     <label class="all" for="alertCountries" translate="content.common.SELECTALL">Select All</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-3-->
-
+                            <div class="row">
                             <div class="col-md-3">
                                 <div class="continuous-check">
                                     <button class="add pull-right" ng-click="addSelectedCountries()">+</button>
@@ -187,7 +209,6 @@
                                     <button class="remove pull-right" ng-if="selectedCountries.length  > 0" ng-click="removeSelectedCountries()">-</button>
                                 </div>
                             </div><!--/col-md-3-->
-
                         </div><!--/row-->
 
                         <div class="row">
