@@ -63,11 +63,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TENDER">Tender</span></td>
-                                <td><a ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})">[[ bid.tender.title ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('tendersdetails')" ui-sref="app.marketplace.tendersdetails({id: bid.tender.id})" ng-bind="bid.tender.title"></a>
+                                    <span ng-if="!checkStatePermission('tendersdetails')" ng-bind="bid.tender.title"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.SUPPLIER">Supplier</span></td>
-                                <td><a ui-sref="app.marketplace.suppliersdetails({id: bid.supplier.id})">[[ bid.supplier.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('suppliersdetails')" ui-sref="app.marketplace.suppliersdetails({id: bid.supplier.id})" ng-bind="bid.supplier.name"></a>
+                                    <span ng-if="!checkStatePermission('suppliersdetails')" ng-bind="bid.supplier.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TITLE">Title</span></td>
@@ -137,7 +143,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: bid.creator_user.id})">[[ bid.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: bid.creator_user.id})" ng-bind="bid.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="bid.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -147,7 +156,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: bid.modifier_user.id})">[[ bid.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: bid.modifier_user.id})" ng-bind="bid.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="bid.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

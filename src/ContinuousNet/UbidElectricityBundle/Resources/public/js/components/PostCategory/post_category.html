@@ -77,11 +77,17 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.PARENTPOSTCATEGORY">Parent Post Category</span></td>
-                                <td><a ui-sref="app.news.postcategoriesdetails({id: postCategory.parent_post_category.id})">[[ postCategory.parent_post_category.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('postcategoriesdetails')" ui-sref="app.news.postcategoriesdetails({id: postCategory.parent_post_category.id})" ng-bind="postCategory.parent_post_category.name"></a>
+                                    <span ng-if="!checkStatePermission('postcategoriesdetails')" ng-bind="postCategory.parent_post_category.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.POSTTYPE">Post Type</span></td>
-                                <td><a ui-sref="app.news.posttypesdetails({id: postCategory.post_type.id})">[[ postCategory.post_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('posttypesdetails')" ui-sref="app.news.posttypesdetails({id: postCategory.post_type.id})" ng-bind="postCategory.post_type.name"></a>
+                                    <span ng-if="!checkStatePermission('posttypesdetails')" ng-bind="postCategory.post_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.ORDERING">Ordering</span></td>
@@ -103,7 +109,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: postCategory.creator_user.id})">[[ postCategory.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: postCategory.creator_user.id})" ng-bind="postCategory.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="postCategory.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -113,7 +122,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: postCategory.modifier_user.id})">[[ postCategory.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: postCategory.modifier_user.id})" ng-bind="postCategory.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="postCategory.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

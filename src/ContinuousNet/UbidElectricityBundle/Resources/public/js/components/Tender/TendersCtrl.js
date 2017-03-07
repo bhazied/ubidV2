@@ -277,7 +277,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
             var def = $q.defer();
             $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
@@ -341,12 +341,19 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
         var displayFields = this.displayField.split(' ');
+        var displayText = ''
         for (var i in displayFields) {
-            html += value[displayFields[i]] + ' ';
+            displayText += value[displayFields[i]] + ' ';
         }
-        html += '</a>';
+        var html = '';
+        if ($rootScope.checkStatePermission(this.state)) {
+            html += '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+            html += displayText.trim();
+            html += '</a>';
+        } else {
+            html += displayText.trim();
+        }
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -357,13 +364,18 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         }
         var links = [];
         for (var i in values) {
-            var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            var link = '';
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            }
             var displayFields = this.displayField.split(' ');
             for (var j in displayFields) {
                 link += values[i][displayFields[j]] + ' ';
             }
             link = link.trim();
-            link += '</a>';
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '</a>';
+            }
             links.push(link);
         }
         var html = links.join(', ');
@@ -421,32 +433,32 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
-            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'tender.id', filter: { 'tender.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'section', 'class': 'enum', title: $filter('translate')('content.list.fields.SECTION'), sortable: 'tender.section', filter: { 'tender.section': 'select' }, show: $scope.getParamValue('section_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.sectionsOptions, interpolateExpr: $interpolate('<span class="tenderSection" my-enum="[[ row.section ]]" my-enum-list=\'[[ sections ]]\'></span>') },
-            { field: 'buyer', 'class': 'has_one', title: $filter('translate')('content.list.fields.BUYER'), sortable: 'buyer.name', filter: { 'tender.buyer': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBuyers(), show: $scope.getParamValue('buyer_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.marketplace.buyersdetails' },
-            { field: 'supplier', 'class': 'has_one', title: $filter('translate')('content.list.fields.SUPPLIER'), sortable: 'supplier.name', filter: { 'tender.supplier': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSuppliers(), show: $scope.getParamValue('supplier_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.marketplace.suppliersdetails' },
-            { field: 'tender_type', 'class': 'has_one', title: $filter('translate')('content.list.fields.TENDERTYPE'), sortable: 'tender_type.name', filter: { 'tender.tenderType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderTypes(), show: $scope.getParamValue('tender_type_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.lists.tendertypesdetails' },
-            { field: 'bidding_type', 'class': 'has_one', title: $filter('translate')('content.list.fields.BIDDINGTYPE'), sortable: 'bidding_type.name', filter: { 'tender.biddingType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBiddingTypes(), show: $scope.getParamValue('bidding_type_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.lists.biddingtypesdetails' },
-            { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: $scope.getParamValue('reference_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tender.title', filter: { 'tender.title': 'text' }, show: $scope.getParamValue('title_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'tender.description', filter: { 'tender.description': 'text' }, show: $scope.getParamValue('description_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'fees', title: $filter('translate')('content.list.fields.FEES'), sortable: 'tender.fees', filter: { 'tender.fees': 'number' }, show: $scope.getParamValue('fees_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tender.slug', filter: { 'tender.slug': 'text' }, show: $scope.getParamValue('slug_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'estimated_cost', title: $filter('translate')('content.list.fields.ESTIMATEDCOST'), sortable: 'tender.estimatedCost', filter: { 'tender.estimatedCost': 'number' }, show: $scope.getParamValue('estimated_cost_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'sector', 'class': 'has_one', title: $filter('translate')('content.list.fields.SECTOR'), sortable: 'sector.name', filter: { 'tender.sector': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSectors(), show: $scope.getParamValue('sector_show_filed', false), displayInList: true, displayField: 'name', state: 'app.lists.sectorsdetails' },
-            { field: 'deadline', title: $filter('translate')('content.list.fields.DEADLINE'), sortable: 'tender.deadline', filter: { 'tender.deadline': 'number' }, show: $scope.getParamValue('deadline_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
-            { field: 'publish_date', title: $filter('translate')('content.list.fields.PUBLISHDATE'), sortable: 'tender.publishDate', filter: { 'tender.publishDate': 'number' }, show: $scope.getParamValue('publish_date_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
-            { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tender.status', filter: { 'tender.status': 'select' }, show: $scope.getParamValue('status_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="tenderStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
-            { field: 'region', 'class': 'has_one', title: $filter('translate')('content.list.fields.REGION'), sortable: 'region.name', filter: { 'tender.region': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: $scope.getParamValue('region_show_filed', false), displayInList: true, displayField: 'name', state: 'app.settings.regionsdetails' },
-            { field: 'country', 'class': 'has_one', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'tender.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_show_filed', false), displayInList: true, displayField: 'name', state: 'app.settings.countriesdetails' },
-            { field: 'attachment_files', title: $filter('translate')('content.list.fields.ATTACHMENTFILES'), sortable: 'tender.attachmentFiles', filter: { 'tender.attachmentFiles': 'text' }, show: $scope.getParamValue('attachment_files_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'validated', title: $filter('translate')('content.list.fields.VALIDATED'), sortable: 'tender.validated', filter: { 'tender.validated': 'select' }, show: $scope.getParamValue('validated_show_filed', false), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.validated ]]"></span>') },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'tender.createdAt', filter: { 'tender.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'tender.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'tender.modifiedAt', filter: { 'tender.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'tender.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'tender.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), show: $scope.getParamValue('categories_show_filed', false), displayInList: true, display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'tender.id', filter: { 'tender.id': 'number' }, show: ($scope.getParamValue('id_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'section', 'class': 'enum', title: $filter('translate')('content.list.fields.SECTION'), sortable: 'tender.section', filter: { 'tender.section': 'select' }, show: ($scope.getParamValue('section_show_filed', true) && true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.sectionsOptions, interpolateExpr: $interpolate('<span class="tenderSection" my-enum="[[ row.section ]]" my-enum-list=\'[[ sections ]]\'></span>') },
+            { field: 'buyer', 'class': 'has_one', title: $filter('translate')('content.list.fields.BUYER'), sortable: 'buyer.name', filter: { 'tender.buyer': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBuyers(), show: ($scope.getParamValue('buyer_id_show_filed', true) && true), displayInList: true, displayField: 'name', state: 'app.marketplace.buyersdetails' },
+            { field: 'supplier', 'class': 'has_one', title: $filter('translate')('content.list.fields.SUPPLIER'), sortable: 'supplier.name', filter: { 'tender.supplier': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSuppliers(), show: ($scope.getParamValue('supplier_id_show_filed', true) && true), displayInList: true, displayField: 'name', state: 'app.marketplace.suppliersdetails' },
+            { field: 'tender_type', 'class': 'has_one', title: $filter('translate')('content.list.fields.TENDERTYPE'), sortable: 'tender_type.name', filter: { 'tender.tenderType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderTypes(), show: ($scope.getParamValue('tender_type_id_show_filed', true) && true), displayInList: true, displayField: 'name', state: 'app.lists.tendertypesdetails' },
+            { field: 'bidding_type', 'class': 'has_one', title: $filter('translate')('content.list.fields.BIDDINGTYPE'), sortable: 'bidding_type.name', filter: { 'tender.biddingType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBiddingTypes(), show: ($scope.getParamValue('bidding_type_id_show_filed', true) && true), displayInList: true, displayField: 'name', state: 'app.lists.biddingtypesdetails' },
+            { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: ($scope.getParamValue('reference_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tender.title', filter: { 'tender.title': 'text' }, show: ($scope.getParamValue('title_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'description', title: $filter('translate')('content.list.fields.DESCRIPTION'), sortable: 'tender.description', filter: { 'tender.description': 'text' }, show: ($scope.getParamValue('description_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'fees', title: $filter('translate')('content.list.fields.FEES'), sortable: 'tender.fees', filter: { 'tender.fees': 'number' }, show: ($scope.getParamValue('fees_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'slug', title: $filter('translate')('content.list.fields.SLUG'), sortable: 'tender.slug', filter: { 'tender.slug': 'text' }, show: ($scope.getParamValue('slug_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'estimated_cost', title: $filter('translate')('content.list.fields.ESTIMATEDCOST'), sortable: 'tender.estimatedCost', filter: { 'tender.estimatedCost': 'number' }, show: ($scope.getParamValue('estimated_cost_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'sector', 'class': 'has_one', title: $filter('translate')('content.list.fields.SECTOR'), sortable: 'sector.name', filter: { 'tender.sector': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSectors(), show: ($scope.getParamValue('sector_show_filed', false) && true), displayInList: true, displayField: 'name', state: 'app.lists.sectorsdetails' },
+            { field: 'deadline', title: $filter('translate')('content.list.fields.DEADLINE'), sortable: 'tender.deadline', filter: { 'tender.deadline': 'number' }, show: ($scope.getParamValue('deadline_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
+            { field: 'publish_date', title: $filter('translate')('content.list.fields.PUBLISHDATE'), sortable: 'tender.publishDate', filter: { 'tender.publishDate': 'number' }, show: ($scope.getParamValue('publish_date_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATE')+'\''},
+            { field: 'status', 'class': 'enum', title: $filter('translate')('content.list.fields.STATUS'), sortable: 'tender.status', filter: { 'tender.status': 'select' }, show: ($scope.getParamValue('status_show_filed', false) && true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.statusesOptions, interpolateExpr: $interpolate('<span class="tenderStatus" my-enum="[[ row.status ]]" my-enum-list=\'[[ statuses ]]\'></span>') },
+            { field: 'region', 'class': 'has_one', title: $filter('translate')('content.list.fields.REGION'), sortable: 'region.name', filter: { 'tender.region': 'select' }, getValue: $scope.linkValue, filterData: $scope.getRegions(), show: ($scope.getParamValue('region_show_filed', false) && true), displayInList: true, displayField: 'name', state: 'app.settings.regionsdetails' },
+            { field: 'country', 'class': 'has_one', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'tender.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: ($scope.getParamValue('country_show_filed', false) && true), displayInList: true, displayField: 'name', state: 'app.settings.countriesdetails' },
+            { field: 'attachment_files', title: $filter('translate')('content.list.fields.ATTACHMENTFILES'), sortable: 'tender.attachmentFiles', filter: { 'tender.attachmentFiles': 'text' }, show: ($scope.getParamValue('attachment_files_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'validated', title: $filter('translate')('content.list.fields.VALIDATED'), sortable: 'tender.validated', filter: { 'tender.validated': 'select' }, show: ($scope.getParamValue('validated_show_filed', false) && ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1)), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.validated ]]"></span>') },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'tender.createdAt', filter: { 'tender.createdAt': 'text' }, show: ($scope.getParamValue('created_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'tender.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('creator_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'tender.modifiedAt', filter: { 'tender.modifiedAt': 'text' }, show: ($scope.getParamValue('modified_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'tender.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('modifier_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'tender.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), show: ($scope.getParamValue('categories_show_filed', false) && true), displayInList: true, display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'

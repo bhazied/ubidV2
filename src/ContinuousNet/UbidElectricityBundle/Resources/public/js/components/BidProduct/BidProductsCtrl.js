@@ -105,7 +105,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
             var def = $q.defer();
             $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
@@ -140,12 +140,19 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
         var displayFields = this.displayField.split(' ');
+        var displayText = ''
         for (var i in displayFields) {
-            html += value[displayFields[i]] + ' ';
+            displayText += value[displayFields[i]] + ' ';
         }
-        html += '</a>';
+        var html = '';
+        if ($rootScope.checkStatePermission(this.state)) {
+            html += '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+            html += displayText.trim();
+            html += '</a>';
+        } else {
+            html += displayText.trim();
+        }
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -198,19 +205,19 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
-            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'bidProduct.id', filter: { 'bidProduct.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'tender_product', 'class': 'has_one', title: $filter('translate')('content.list.fields.TENDERPRODUCT'), sortable: 'tender_product.title', filter: { 'bidProduct.tenderProduct': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderProducts(), show: $scope.getParamValue('tender_product_id_show_filed', true), displayInList: true, displayField: 'title', state: 'app.marketplace.tenderproductsdetails' },
-            { field: 'bid', 'class': 'has_one', title: $filter('translate')('content.list.fields.BID'), sortable: 'bid.title', filter: { 'bidProduct.bid': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBids(), show: $scope.getParamValue('bid_id_show_filed', true), displayInList: true, displayField: 'title', state: 'app.marketplace.bidsdetails' },
-            { field: 'supplier_product', 'class': 'has_one', title: $filter('translate')('content.list.fields.SUPPLIERPRODUCT'), sortable: 'supplier_product.name', filter: { 'bidProduct.supplierProduct': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSupplierProducts(), show: $scope.getParamValue('supplier_product_id_show_filed', true), displayInList: true, displayField: 'name', state: 'app.marketplace.supplierproductsdetails' },
-            { field: 'new_unit_cost', title: $filter('translate')('content.list.fields.NEWUNITCOST'), sortable: 'bidProduct.newUnitCost', filter: { 'bidProduct.newUnitCost': 'number' }, show: $scope.getParamValue('new_unit_cost_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'quantity', title: $filter('translate')('content.list.fields.QUANTITY'), sortable: 'bidProduct.quantity', filter: { 'bidProduct.quantity': 'number' }, show: $scope.getParamValue('quantity_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'duration', title: $filter('translate')('content.list.fields.DURATION'), sortable: 'bidProduct.duration', filter: { 'bidProduct.duration': 'number' }, show: $scope.getParamValue('duration_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'bidProduct.ordering', filter: { 'bidProduct.ordering': 'number' }, show: $scope.getParamValue('ordering_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'bidProduct.createdAt', filter: { 'bidProduct.createdAt': 'number' }, show: $scope.getParamValue('created_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'bidProduct.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'bidProduct.modifiedAt', filter: { 'bidProduct.modifiedAt': 'number' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'bidProduct.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'bidProduct.id', filter: { 'bidProduct.id': 'number' }, show: ($scope.getParamValue('id_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'tender_product', 'class': 'has_one', title: $filter('translate')('content.list.fields.TENDERPRODUCT'), sortable: 'tender_product.title', filter: { 'bidProduct.tenderProduct': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderProducts(), show: ($scope.getParamValue('tender_product_id_show_filed', true) && true), displayInList: true, displayField: 'title', state: 'app.marketplace.tenderproductsdetails' },
+            { field: 'bid', 'class': 'has_one', title: $filter('translate')('content.list.fields.BID'), sortable: 'bid.title', filter: { 'bidProduct.bid': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBids(), show: ($scope.getParamValue('bid_id_show_filed', true) && true), displayInList: true, displayField: 'title', state: 'app.marketplace.bidsdetails' },
+            { field: 'supplier_product', 'class': 'has_one', title: $filter('translate')('content.list.fields.SUPPLIERPRODUCT'), sortable: 'supplier_product.name', filter: { 'bidProduct.supplierProduct': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSupplierProducts(), show: ($scope.getParamValue('supplier_product_id_show_filed', true) && true), displayInList: true, displayField: 'name', state: 'app.marketplace.supplierproductsdetails' },
+            { field: 'new_unit_cost', title: $filter('translate')('content.list.fields.NEWUNITCOST'), sortable: 'bidProduct.newUnitCost', filter: { 'bidProduct.newUnitCost': 'number' }, show: ($scope.getParamValue('new_unit_cost_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'quantity', title: $filter('translate')('content.list.fields.QUANTITY'), sortable: 'bidProduct.quantity', filter: { 'bidProduct.quantity': 'number' }, show: ($scope.getParamValue('quantity_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'duration', title: $filter('translate')('content.list.fields.DURATION'), sortable: 'bidProduct.duration', filter: { 'bidProduct.duration': 'number' }, show: ($scope.getParamValue('duration_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'ordering', title: $filter('translate')('content.list.fields.ORDERING'), sortable: 'bidProduct.ordering', filter: { 'bidProduct.ordering': 'number' }, show: ($scope.getParamValue('ordering_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'bidProduct.createdAt', filter: { 'bidProduct.createdAt': 'number' }, show: ($scope.getParamValue('created_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'bidProduct.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('creator_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'bidProduct.modifiedAt', filter: { 'bidProduct.modifiedAt': 'number' }, show: ($scope.getParamValue('modified_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'bidProduct.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('modifier_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'

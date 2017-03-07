@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.POST">Post</span></td>
-                                <td><a ui-sref="app.news.postsdetails({id: translationPost.post.id})">[[ translationPost.post.title ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('postsdetails')" ui-sref="app.news.postsdetails({id: translationPost.post.id})" ng-bind="translationPost.post.title"></a>
+                                    <span ng-if="!checkStatePermission('postsdetails')" ng-bind="translationPost.post.title"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.LOCALE">Locale</span></td>
@@ -83,7 +86,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: translationPost.creator_user.id})">[[ translationPost.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: translationPost.creator_user.id})" ng-bind="translationPost.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="translationPost.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATEDAT">Created At</span></td>
@@ -93,7 +99,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: translationPost.modifier_user.id})">[[ translationPost.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: translationPost.modifier_user.id})" ng-bind="translationPost.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="translationPost.modifier_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>

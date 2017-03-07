@@ -18,7 +18,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
             var def = $q.defer();
             $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
@@ -53,12 +53,19 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
         var displayFields = this.displayField.split(' ');
+        var displayText = ''
         for (var i in displayFields) {
-            html += value[displayFields[i]] + ' ';
+            displayText += value[displayFields[i]] + ' ';
         }
-        html += '</a>';
+        var html = '';
+        if ($rootScope.checkStatePermission(this.state)) {
+            html += '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+            html += displayText.trim();
+            html += '</a>';
+        } else {
+            html += displayText.trim();
+        }
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -111,15 +118,15 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
-            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'log.id', filter: { 'log.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'entity', title: $filter('translate')('content.list.fields.ENTITY'), sortable: 'log.entity', filter: { 'log.entity': 'text' }, show: $scope.getParamValue('entity_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'foreign_key', title: $filter('translate')('content.list.fields.FOREIGNKEY'), sortable: 'log.foreignKey', filter: { 'log.foreignKey': 'number' }, show: $scope.getParamValue('foreign_key_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'action', title: $filter('translate')('content.list.fields.ACTION'), sortable: 'log.action', filter: { 'log.action': 'text' }, show: $scope.getParamValue('action_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'ip_address', title: $filter('translate')('content.list.fields.IPADDRESS'), sortable: 'log.ipAddress', filter: { 'log.ipAddress': 'text' }, show: $scope.getParamValue('ip_address_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'user_agent', title: $filter('translate')('content.list.fields.USERAGENT'), sortable: 'log.userAgent', filter: { 'log.userAgent': 'text' }, show: $scope.getParamValue('user_agent_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'log.createdAt', filter: { 'log.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'log.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'log.id', filter: { 'log.id': 'number' }, show: ($scope.getParamValue('id_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'entity', title: $filter('translate')('content.list.fields.ENTITY'), sortable: 'log.entity', filter: { 'log.entity': 'text' }, show: ($scope.getParamValue('entity_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'foreign_key', title: $filter('translate')('content.list.fields.FOREIGNKEY'), sortable: 'log.foreignKey', filter: { 'log.foreignKey': 'number' }, show: ($scope.getParamValue('foreign_key_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'action', title: $filter('translate')('content.list.fields.ACTION'), sortable: 'log.action', filter: { 'log.action': 'text' }, show: ($scope.getParamValue('action_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'ip_address', title: $filter('translate')('content.list.fields.IPADDRESS'), sortable: 'log.ipAddress', filter: { 'log.ipAddress': 'text' }, show: ($scope.getParamValue('ip_address_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'user_agent', title: $filter('translate')('content.list.fields.USERAGENT'), sortable: 'log.userAgent', filter: { 'log.userAgent': 'text' }, show: ($scope.getParamValue('user_agent_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'log.createdAt', filter: { 'log.createdAt': 'text' }, show: ($scope.getParamValue('created_at_show_filed', true) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'log.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('creator_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'

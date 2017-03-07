@@ -1,5 +1,9 @@
 {% extends 'UbidElectricityBundle::publicLayout.html.twig' %}
 
+{% block title %}{{ post.metaTitle }}{% endblock title %}
+{% block meta_description %}{{ post.metaDescription }}{% endblock meta_description %}
+{% block meta_keywords %}{{ post.metaKeywords }}{% endblock meta_keywords %}
+
 {% block body %}
 
     <div ui-view id="front_app">

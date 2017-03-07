@@ -174,7 +174,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers = function() {
         $scope.usersLoaded = true;
         if ($scope.users.length == 0) {
-            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTCREATORUSER')});
+            $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
             var def = $q.defer();
             $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
@@ -238,12 +238,19 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         if (value == null || typeof value == 'undefined') {
             return '';
         }
-        var html = '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
         var displayFields = this.displayField.split(' ');
+        var displayText = ''
         for (var i in displayFields) {
-            html += value[displayFields[i]] + ' ';
+            displayText += value[displayFields[i]] + ' ';
         }
-        html += '</a>';
+        var html = '';
+        if ($rootScope.checkStatePermission(this.state)) {
+            html += '<a ui-sref="'+this.state+'({id: ' + value.id + '})">';
+            html += displayText.trim();
+            html += '</a>';
+        } else {
+            html += displayText.trim();
+        }
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -254,13 +261,18 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         }
         var links = [];
         for (var i in values) {
-            var link = '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            var link = '';
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            }
             var displayFields = this.displayField.split(' ');
             for (var j in displayFields) {
                 link += values[i][displayFields[j]] + ' ';
             }
             link = link.trim();
-            link += '</a>';
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '</a>';
+            }
             links.push(link);
         }
         var html = links.join(', ');
@@ -319,35 +331,35 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.setCols = function() {
         $scope.cols = [
-            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'user.id', filter: { 'user.id': 'number' }, show: $scope.getParamValue('id_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'type', 'class': 'enum', title: $filter('translate')('content.list.fields.TYPE'), sortable: 'user.type', filter: { 'user.type': 'select' }, show: $scope.getParamValue('type_show_filed', true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.typesOptions, interpolateExpr: $interpolate('<span class="userType" my-enum="[[ row.type ]]" my-enum-list=\'[[ types ]]\'></span>') },
-            { field: 'username', title: $filter('translate')('content.list.fields.USERNAME'), sortable: 'user.username', filter: { 'user.username': 'text' }, show: $scope.getParamValue('username_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'password', title: $filter('translate')('content.list.fields.PASSWORD'), sortable: 'user.password', filter: { 'user.password': 'text' }, show: $scope.getParamValue('password_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'salt', title: $filter('translate')('content.list.fields.SALT'), sortable: 'user.salt', filter: { 'user.salt': 'text' }, show: $scope.getParamValue('salt_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'user.phone', filter: { 'user.phone': 'text' }, show: $scope.getParamValue('phone_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'user.email', filter: { 'user.email': 'text' }, show: $scope.getParamValue('email_show_filed', true), displayInList: true, getValue: $scope.textValue },
-            { field: 'gender', 'class': 'enum', title: $filter('translate')('content.list.fields.GENDER'), sortable: 'user.gender', filter: { 'user.gender': 'select' }, show: $scope.getParamValue('gender_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.gendersOptions, interpolateExpr: $interpolate('<span class="userGender" my-enum="[[ row.gender ]]" my-enum-list=\'[[ genders ]]\'></span>') },
-            { field: 'first_name', title: $filter('translate')('content.list.fields.FIRSTNAME'), sortable: 'user.firstName', filter: { 'user.firstName': 'text' }, show: $scope.getParamValue('first_name_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'last_name', title: $filter('translate')('content.list.fields.LASTNAME'), sortable: 'user.lastName', filter: { 'user.lastName': 'text' }, show: $scope.getParamValue('last_name_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'picture', title: $filter('translate')('content.list.fields.PICTURE'), sortable: 'user.picture', filter: { 'user.picture': 'text' }, show: $scope.getParamValue('picture_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<img ng-src="'+$rootScope.app.thumbURL+'[[ (row.picture)?row.picture:\'/assets/images/picturenotavailable.'+$scope.locale+'.png\' ]]" alt="" class="img-thumbnail" />') },
-            { field: 'address', title: $filter('translate')('content.list.fields.ADDRESS'), sortable: 'user.address', filter: { 'user.address': 'text' }, show: $scope.getParamValue('address_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'zip_code', title: $filter('translate')('content.list.fields.ZIPCODE'), sortable: 'user.zipCode', filter: { 'user.zipCode': 'text' }, show: $scope.getParamValue('zip_code_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'company_name', title: $filter('translate')('content.list.fields.COMPANYNAME'), sortable: 'user.companyName', filter: { 'user.companyName': 'text' }, show: $scope.getParamValue('company_name_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'job', title: $filter('translate')('content.list.fields.JOB'), sortable: 'user.job', filter: { 'user.job': 'text' }, show: $scope.getParamValue('job_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'country', 'class': 'has_one', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'user.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: $scope.getParamValue('country_show_filed', false), displayInList: true, displayField: 'name', state: 'app.settings.countriesdetails' },
-            { field: 'language', 'class': 'has_one', title: $filter('translate')('content.list.fields.LANGUAGE'), sortable: 'language.name', filter: { 'user.language': 'select' }, getValue: $scope.linkValue, filterData: $scope.getLanguages(), show: $scope.getParamValue('language_show_filed', false), displayInList: true, displayField: 'name', state: 'app.settings.languagesdetails' },
-            { field: 'profile', title: $filter('translate')('content.list.fields.PROFILE'), sortable: 'user.profile', filter: { 'user.profile': 'text' }, show: $scope.getParamValue('profile_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'roles', title: $filter('translate')('content.list.fields.ROLES'), sortable: 'user.roles', filter: { 'user.roles': 'text' }, show: $scope.getParamValue('roles_show_filed', false), displayInList: true, getValue: $scope.textValue },
-            { field: 'enabled', title: $filter('translate')('content.list.fields.ENABLED'), sortable: 'user.enabled', filter: { 'user.enabled': 'select' }, show: $scope.getParamValue('enabled_show_filed', false), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enabled ]]"></span>') },
-            { field: 'locked', title: $filter('translate')('content.list.fields.LOCKED'), sortable: 'user.locked', filter: { 'user.locked': 'select' }, show: $scope.getParamValue('locked_show_filed', false), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.locked ]]"></span>') },
-            { field: 'expired', title: $filter('translate')('content.list.fields.EXPIRED'), sortable: 'user.expired', filter: { 'user.expired': 'select' }, show: $scope.getParamValue('expired_show_filed', false), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.expired ]]"></span>') },
-            { field: 'credentials_expired', title: $filter('translate')('content.list.fields.CREDENTIALSEXPIRED'), sortable: 'user.credentialsExpired', filter: { 'user.credentialsExpired': 'select' }, show: $scope.getParamValue('credentials_expired_show_filed', false), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.credentials_expired ]]"></span>') },
-            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'user.createdAt', filter: { 'user.createdAt': 'text' }, show: $scope.getParamValue('created_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'user.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('creator_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'user.modifiedAt', filter: { 'user.modifiedAt': 'text' }, show: $scope.getParamValue('modified_at_show_filed', false), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
-            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'user.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: $scope.getParamValue('modifier_user_show_filed', false), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
-            { field: 'groups', 'class': 'has_nany', title: $filter('translate')('content.list.fields.GROUPS'), filter: { 'user.groups': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getGroups(), show: $scope.getParamValue('groups_show_filed', false), displayInList: true, display: false, displayField: 'name', state: 'app.access.groupsdetails' },
-            { title: $filter('translate')('content.common.ACTIONS'), show: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
+            { field: 'id', title: $filter('translate')('content.list.fields.ID'), sortable: 'user.id', filter: { 'user.id': 'number' }, show: ($scope.getParamValue('id_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'type', 'class': 'enum', title: $filter('translate')('content.list.fields.TYPE'), sortable: 'user.type', filter: { 'user.type': 'select' }, show: ($scope.getParamValue('type_show_filed', true) && true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.typesOptions, interpolateExpr: $interpolate('<span class="userType" my-enum="[[ row.type ]]" my-enum-list=\'[[ types ]]\'></span>') },
+            { field: 'username', title: $filter('translate')('content.list.fields.USERNAME'), sortable: 'user.username', filter: { 'user.username': 'text' }, show: ($scope.getParamValue('username_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'password', title: $filter('translate')('content.list.fields.PASSWORD'), sortable: 'user.password', filter: { 'user.password': 'text' }, show: ($scope.getParamValue('password_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'salt', title: $filter('translate')('content.list.fields.SALT'), sortable: 'user.salt', filter: { 'user.salt': 'text' }, show: ($scope.getParamValue('salt_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'phone', title: $filter('translate')('content.list.fields.PHONE'), sortable: 'user.phone', filter: { 'user.phone': 'text' }, show: ($scope.getParamValue('phone_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'email', title: $filter('translate')('content.list.fields.EMAIL'), sortable: 'user.email', filter: { 'user.email': 'text' }, show: ($scope.getParamValue('email_show_filed', true) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'gender', 'class': 'enum', title: $filter('translate')('content.list.fields.GENDER'), sortable: 'user.gender', filter: { 'user.gender': 'select' }, show: ($scope.getParamValue('gender_show_filed', false) && true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.gendersOptions, interpolateExpr: $interpolate('<span class="userGender" my-enum="[[ row.gender ]]" my-enum-list=\'[[ genders ]]\'></span>') },
+            { field: 'first_name', title: $filter('translate')('content.list.fields.FIRSTNAME'), sortable: 'user.firstName', filter: { 'user.firstName': 'text' }, show: ($scope.getParamValue('first_name_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'last_name', title: $filter('translate')('content.list.fields.LASTNAME'), sortable: 'user.lastName', filter: { 'user.lastName': 'text' }, show: ($scope.getParamValue('last_name_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'picture', title: $filter('translate')('content.list.fields.PICTURE'), sortable: 'user.picture', filter: { 'user.picture': 'text' }, show: ($scope.getParamValue('picture_show_filed', false) && true), displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate('<img ng-src="'+$rootScope.app.thumbURL+'[[ (row.picture)?row.picture:\'/assets/images/picturenotavailable.'+$scope.locale+'.png\' ]]" alt="" class="img-thumbnail" />') },
+            { field: 'address', title: $filter('translate')('content.list.fields.ADDRESS'), sortable: 'user.address', filter: { 'user.address': 'text' }, show: ($scope.getParamValue('address_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'zip_code', title: $filter('translate')('content.list.fields.ZIPCODE'), sortable: 'user.zipCode', filter: { 'user.zipCode': 'text' }, show: ($scope.getParamValue('zip_code_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'company_name', title: $filter('translate')('content.list.fields.COMPANYNAME'), sortable: 'user.companyName', filter: { 'user.companyName': 'text' }, show: ($scope.getParamValue('company_name_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'job', title: $filter('translate')('content.list.fields.JOB'), sortable: 'user.job', filter: { 'user.job': 'text' }, show: ($scope.getParamValue('job_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'country', 'class': 'has_one', title: $filter('translate')('content.list.fields.COUNTRY'), sortable: 'country.name', filter: { 'user.country': 'select' }, getValue: $scope.linkValue, filterData: $scope.getCountries(), show: ($scope.getParamValue('country_show_filed', false) && true), displayInList: true, displayField: 'name', state: 'app.settings.countriesdetails' },
+            { field: 'language', 'class': 'has_one', title: $filter('translate')('content.list.fields.LANGUAGE'), sortable: 'language.name', filter: { 'user.language': 'select' }, getValue: $scope.linkValue, filterData: $scope.getLanguages(), show: ($scope.getParamValue('language_show_filed', false) && true), displayInList: true, displayField: 'name', state: 'app.settings.languagesdetails' },
+            { field: 'profile', title: $filter('translate')('content.list.fields.PROFILE'), sortable: 'user.profile', filter: { 'user.profile': 'text' }, show: ($scope.getParamValue('profile_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'roles', title: $filter('translate')('content.list.fields.ROLES'), sortable: 'user.roles', filter: { 'user.roles': 'text' }, show: ($scope.getParamValue('roles_show_filed', false) && true), displayInList: true, getValue: $scope.textValue },
+            { field: 'enabled', title: $filter('translate')('content.list.fields.ENABLED'), sortable: 'user.enabled', filter: { 'user.enabled': 'select' }, show: ($scope.getParamValue('enabled_show_filed', false) && ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1)), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.enabled ]]"></span>') },
+            { field: 'locked', title: $filter('translate')('content.list.fields.LOCKED'), sortable: 'user.locked', filter: { 'user.locked': 'select' }, show: ($scope.getParamValue('locked_show_filed', false) && ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1)), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.locked ]]"></span>') },
+            { field: 'expired', title: $filter('translate')('content.list.fields.EXPIRED'), sortable: 'user.expired', filter: { 'user.expired': 'select' }, show: ($scope.getParamValue('expired_show_filed', false) && ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1)), displayInList: ($rootScope.currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1), getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.expired ]]"></span>') },
+            { field: 'credentials_expired', title: $filter('translate')('content.list.fields.CREDENTIALSEXPIRED'), sortable: 'user.credentialsExpired', filter: { 'user.credentialsExpired': 'select' }, show: ($scope.getParamValue('credentials_expired_show_filed', false) && true), displayInList: true, getValue: $scope.interpolatedValue, filterData : $scope.booleanOptions, interpolateExpr: $interpolate('<span my-boolean="[[ row.credentials_expired ]]"></span>') },
+            { field: 'created_at', title: $filter('translate')('content.list.fields.CREATEDAT'), sortable: 'user.createdAt', filter: { 'user.createdAt': 'text' }, show: ($scope.getParamValue('created_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'user.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('creator_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'user.modifiedAt', filter: { 'user.modifiedAt': 'text' }, show: ($scope.getParamValue('modified_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
+            { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'user.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('modifier_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'groups', 'class': 'has_nany', title: $filter('translate')('content.list.fields.GROUPS'), filter: { 'user.groups': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getGroups(), show: ($scope.getParamValue('groups_show_filed', false) && true), displayInList: true, display: false, displayField: 'name', state: 'app.access.groupsdetails' },
+            { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
             +'<button type="button" class="btn btn-warning" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.SHOWDETAILS')+'" ng-click="details(row)"><i class="ti-clipboard"></i></button>'

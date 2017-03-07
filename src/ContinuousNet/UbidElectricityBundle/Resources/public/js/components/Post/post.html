@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.POSTTYPE">Post Type</span></td>
-                                <td><a ui-sref="app.news.posttypesdetails({id: post.post_type.id})">[[ post.post_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('posttypesdetails')" ui-sref="app.news.posttypesdetails({id: post.post_type.id})" ng-bind="post.post_type.name"></a>
+                                    <span ng-if="!checkStatePermission('posttypesdetails')" ng-bind="post.post_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.TITLE">Title</span></td>
@@ -207,7 +210,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: post.creator_user.id})">[[ post.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: post.creator_user.id})" ng-bind="post.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="post.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -217,7 +223,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: post.modifier_user.id})">[[ post.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: post.modifier_user.id})" ng-bind="post.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="post.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -49,7 +49,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BANNERTYPE">Banner Type</span></td>
-                                <td><a ui-sref="app.adserving.bannertypesdetails({id: banner.banner_type.id})">[[ banner.banner_type.name ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('bannertypesdetails')" ui-sref="app.adserving.bannertypesdetails({id: banner.banner_type.id})" ng-bind="banner.banner_type.name"></a>
+                                    <span ng-if="!checkStatePermission('bannertypesdetails')" ng-bind="banner.banner_type.name"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.NAME">Name</span></td>
@@ -244,13 +247,13 @@
                             <tr>
                                 <td><span translate="content.list.fields.TEXTCOLOR">Text Color</span></td>
                                 <td>
-                                    <div ng-bind-html="banner.text_color"></div>
+                                    <b class="label label-sm label-default label-color" style="background-color: [[ banner.text_color ]];" ng-bind="banner.text_color"></b>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.BACKGROUNDCOLOR">Background Color</span></td>
                                 <td>
-                                    <div ng-bind-html="banner.background_color"></div>
+                                    <b class="label label-sm label-default label-color" style="background-color: [[ banner.background_color ]];" ng-bind="banner.background_color"></b>
                                 </td>
                             </tr>
                             <tr>
@@ -321,7 +324,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.CREATORUSER">Creator User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: banner.creator_user.id})">[[ banner.creator_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: banner.creator_user.id})" ng-bind="banner.creator_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="banner.creator_user.username"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIEDAT">Modified At</span></td>
@@ -331,7 +337,10 @@
                             </tr>
                             <tr>
                                 <td><span translate="content.list.fields.MODIFIERUSER">Modifier User</span></td>
-                                <td><a ui-sref="app.access.usersdetails({id: banner.modifier_user.id})">[[ banner.modifier_user.username ]]</a></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('usersdetails')" ui-sref="app.access.usersdetails({id: banner.modifier_user.id})" ng-bind="banner.modifier_user.username"></a>
+                                    <span ng-if="!checkStatePermission('usersdetails')" ng-bind="banner.modifier_user.username"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
