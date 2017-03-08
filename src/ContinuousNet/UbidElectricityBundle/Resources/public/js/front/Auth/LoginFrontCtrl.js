@@ -41,14 +41,16 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
                 }
-                toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
-                $scope.status = 'welcome';
-                $localStorage.access_token = data.token;
-                $scope.user = $localStorage.user = $rootScope.user = data.user;
-                $timeout(function() {
-                    $rootScope.loggedIn = true;
-                    $state.go('front.usermenu');
-                }, 1000);
+                else{
+                    toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
+                    $scope.status = 'welcome';
+                    $localStorage.access_token = data.token;
+                    $scope.user = $localStorage.user = $rootScope.user = data.user;
+                    $timeout(function() {
+                        $rootScope.loggedIn = true;
+                        $state.go('front.usermenu');
+                    }, 1000);
+                }
             }, function(error) {
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
