@@ -36,8 +36,8 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.postCategories.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTCATEGORY')});
                 var def = $q.defer();
                 $postCategoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[postCategory.name]': 'asc'}).$promise.then(function(data) {
+                    data.results = $rootScope.createTree(data.results, 'parent_post_category', 'name', null, 0);
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTPOSTCATEGORY')});
-                        data.results = $rootScope.createTree(data.results, 'parent_post_category', 'name', null, 0);
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
