@@ -737,7 +737,7 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
-    public function homeTenderAction(Tender $entity){
+    public function homeTenderAction(Tender $entity) {
         return $entity;
     }
 
@@ -746,7 +746,7 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
-    public function publicCategoryAction(Category $entity){
+    public function publicCategoryAction(Category $entity) {
         return $entity;
     }
 
@@ -755,7 +755,7 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param Request $request
      */
-    public function contactAction(Request $request){
+    public function contactAction(Request $request) {
         $response = array();
         try
         {
