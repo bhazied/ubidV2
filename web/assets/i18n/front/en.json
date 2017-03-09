@@ -1954,6 +1954,11 @@
       "BUYERMETATITLE": "Electrical buyer",
       "SUPPLIERMETATITLE": "Electric supplier"
     },
+<<<<<<< HEAD
     "EMPTYSEARCHALERT": "You must enter some words to search"
+=======
+    "NOTIFICATIONS" : "Notifications",
+    "MARKALLASREAD" : "Mark all as read"
+>>>>>>> ff3cb712f6b599aeee3b8924240e2605e1cda6a6
   }
 }
