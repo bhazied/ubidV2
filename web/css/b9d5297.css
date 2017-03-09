@@ -3082,7 +3082,7 @@ h3, h3 a {
 
 .tender-details table tr th {
     min-width: 150px;
-   border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 .tender-details table tr td {
@@ -3567,7 +3567,7 @@ fieldset h2 {
 }
 .detail-message table tr td span {
     border-left: 1px solid #000000;
-   padding-left: 0.75rem;
+    padding-left: 0.75rem;
     /*display: block;*/
 }
 .detail-message table tr td a {
@@ -4316,4 +4316,116 @@ body.underPage footer {
         font-size: 5em;
         color: #FFFFFF;
     }
+}
+
+
+.notification:hover .submenu {
+    /*display: none;*/
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #1D69AD;
+    position: absolute;
+    right: 0;
+    top: 36px;
+    z-index: 1000;
+    background: #fff;
+    color: #1D69AD;
+    font-weight: bold;
+    width: 280px;
+    line-height: 25px;
+    display: block !important;
+    #border-radius: 10px 10px 10px 10px;
+    overflow-y: scroll;
+    height: 300px;
+    overflow-x: hidden;
+}
+.notification:hover .header_list_notif{
+    display: block;
+}
+.notification:hover .li{
+    display: block;
+}
+.notification .submenu{
+    display: none;
+}
+
+
+.submenu::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+.submenu::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #FFF;
+    opacity: 0,7;
+    background-image: -webkit-linear-gradient(top,
+    #1D69AD 0%,
+    #1D69AD 50%,
+    #1D69AD 51%,
+    #1D69AD 100%);
+}
+
+
+
+/*.notification .submenu:before {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #1D69AD;
+    top: 0;
+    left: 90%;
+    margin-top: 10px;
+    bottom: 0;
+}*/
+
+.notification .submenu li {
+    margin: 0;
+    padding: 0;
+    margin: 5px 5px 5px 5px;
+    list-style: none;
+    background-color: #eee !important;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.notification .submenu li .time{
+    font-size: 8px;
+    font-style: italic;
+}
+.content_notification{
+    text-align: left;
+}
+
+.span_notification{
+    padding-left: 0px;
+
+}
+.header_list_notif{
+    color: #6D6D6D;
+    display: none;
+}
+
+.notification .submenu img{
+    border-radius: 5px 5px 5px 5px;
+}
+.margin-rigth-5{
+    margin-right: 5px;
+}
+.padding-left-0{
+    padding-left: 0px;
+}
+.padding-right-0{
+    padding-right: 0px;
 }

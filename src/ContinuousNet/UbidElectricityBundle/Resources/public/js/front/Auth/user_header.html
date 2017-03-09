@@ -7,7 +7,54 @@
         </ul>
     </span>
     <a class="user-photo pull-right [[ user.gender ]]" ui-sref="front.usermenu"></a>
-    <a ui-sref="front.myAlerts.list" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>
+   <!-- <a ui-sref="front.myAlerts.list" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>-->
+</div>
+
+<div ng-controller="MyNotification" ng-if="user.email">
+    <span class="notification pull-right" ng-click="openListNotifications()">
+            <span class="badge" ng-if="countAlert > 0">
+                [[ countAlert ]]
+                    <ul class="submenu">
+                        <div class="row header_list_notif">
+                            <div class="col-md-6 pull-left span_notification">
+                                <span translate="front.NOTIFICATIONS">Notification</span>
+                            </div>
+                            <div class="col-md-6 pull-right">
+                                <span translate="front.MARKALLASREAD" ng-click="markAsRead()">Mark all as read</span>
+                            </div>
+                        </div>
+
+                        <li class="row one-notif" style="background-color: white" ng-repeat="notification in notifications"  ng-if="!notification.read">
+                            <div class="row">
+                                <div class="col-md-12 pull-right margin-rigth-5" ng-click="closeNotification([[notification]])">
+                                    <button type="button" class="close" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row" ng-click="viewNotification([[notification]])">
+                                <div class="col-md-3 padding-right-0">
+                                    <span ng-if="notification.link.includes('front.supplier')" class="fa fa-handshake-o fa-3x"></span>
+                                    <span ng-if="notification.link.includes('front.buyer')" class=" fa fa-shopping-cart fa-3x"></span>
+                                    <span ng-if="notification.link.includes('front.tender')" class="fa fa-file-text-o fa-3x"></span>
+                                    <span ng-if="notification.link.includes('front.messages.detail')" class="fa fa-envelope-o fa-3x"></span>
+                                    <span ng-if="notification.link.includes('front.mybids.details')" class="fa fa-tags fa-3x"></span>
+                                    <span ng-if="notification.link.includes('front.projectbids.shortlist')" class="fa fa-thumbs-up fa-3x"></span>
+                                </div>
+                                <div class="col-md-9 content_notification padding-left-0">
+                                     <span>[[notification.content]]</span>
+                                </div>
+                            </div>
+                            <div class="row pull-right margin-rigth-5">
+                                <div class="col-md-12">
+                                    <span class="time"> [[ notification.created_at | date: "MM/dd/yyyy 'at' h:mma" ]]</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+            </span>
+
+    </span>
 </div>
 
 <div ng-if="!user.email" ng-controller="LoginFrontCtrl">
