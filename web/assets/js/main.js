@@ -51,6 +51,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     $rootScope.createTree = function (items, parentField, labelField, parentId, level) {
         var tree = [];
         for (var i in items) {
+            if ()
             var addToTree = false;
             if (parentId == null && items[i][parentField] == null) {
                 addToTree = true;
