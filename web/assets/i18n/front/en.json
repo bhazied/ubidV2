@@ -1956,6 +1956,8 @@
     },
     "EMPTYSEARCHALERT": "You must enter some words to search",
     "NOTIFICATIONS" : "Notifications",
-    "MARKALLASREAD" : "Mark all as read"
+    "MARKALLASREAD" : "Mark all as read",
+    "ALERTPARAMS": "parameters",
+    "NOTIFCATIONREADALLERROR": "An error occurred during the requested update"
   }
 }

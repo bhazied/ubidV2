@@ -1374,6 +1374,38 @@ class ApiV1RESTController extends FOSRestController
         }
     }
 
+    /**
+     *@Get("/readAllNotification")
+     * @param Request $request
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function readAllNotificationAction(Request $request){
+
+        try{
+
+            $user = $this->getUser();
+            $em = $this->getDoctrine()->getEntityManager();
+            $qb = $em->createQueryBuilder();
+            $qb->update('UbidElectricityBundle:Notification n_')
+                ->set('n_.read', true)
+                ->where('n_.creatorUser = :user')
+                ->setParameter('user', $user);
+            $result = $qb->getQuery()->execute();
+            if($result){
+                return array(
+                    'message' => 'updated success',
+                    'status' => true
+                );
+            }
+            return array(
+                'message' => $this->get('translator')->trans('notification.error.readAll'),
+                'status' => false
+            );
+        }
+        catch(\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 }

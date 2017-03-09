@@ -434,5 +434,8 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
-    }]
+    },{
+        name: 'notificationFrontService',
+            files: ['/bundles/ubidelectricity/js/front/Notification/NotificationService.js']
+        }]
 });
