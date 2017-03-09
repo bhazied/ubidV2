@@ -67612,6 +67612,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     $rootScope.app = {
         name: 'U bid electricity', // name of your project
         description: 'Electricity Tenders Marketplace', // brief description
+        keywords: 'Electricity, Tenders, Suppliers, Buyers, Consultations', // brief description
         author: 'ContinuousNet', // author's name or company name
         version: '2.0', // current version
         year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -72974,9 +72975,23 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 		// {inherit:false} + default options
 	});
 
-	$rootScope.pageTitle = function() {
-		return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
-	};
+    $rootScope.seo = {
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: ''
+    };
+
+    $rootScope.pageTitle = function() {
+        return ($rootScope.seo.meta_title || $rootScope.app.name);
+    };
+
+    $rootScope.pageDescription = function() {
+        return ($rootScope.seo.meta_description || $rootScope.app.description);
+    };
+
+    $rootScope.pageKeywords = function() {
+        return ($rootScope.seo.meta_keywords || $rootScope.app.keywords);
+    };
 
 	// save settings to local storage
 	if (angular.isDefined($localStorage.layout)) {
