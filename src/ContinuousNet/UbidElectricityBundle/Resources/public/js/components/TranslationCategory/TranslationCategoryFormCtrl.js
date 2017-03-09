@@ -37,6 +37,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 var def = $q.defer();
                 $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+                    data.results = $rootScope.createTree(data.results, 'parent_category_id', 'name', null, 0);
                     for (var i in data.results) {
                         data.results[i].hidden = false;
                     }
