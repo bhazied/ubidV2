@@ -37,6 +37,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
+                    data.results = $rootScope.createTree(data.results, 'parent_category_id', 'name', null, 0);
                         for (var i in data.results) {
                             $scope.categories.push({
                                 id: data.results[i].id,
