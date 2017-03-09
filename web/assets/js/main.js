@@ -49,6 +49,24 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
         }
     };
 
+    $rootScope.seo = {
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: ''
+    };
+
+    $rootScope.pageTitle = function() {
+        return ($rootScope.seo.meta_title || $rootScope.app.name);
+    };
+
+    $rootScope.pageDescription = function() {
+        return ($rootScope.seo.meta_description || $rootScope.app.description);
+    };
+
+    $rootScope.pageKeywords = function() {
+        return ($rootScope.seo.meta_keywords || $rootScope.app.keywords);
+    };
+
     $rootScope.createTree = function (items, parentField, labelField, parentId, level) {
         var tree = [];
         for (var i in items) {

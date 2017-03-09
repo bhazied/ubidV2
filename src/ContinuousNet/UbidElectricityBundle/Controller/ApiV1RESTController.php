@@ -747,7 +747,36 @@ class ApiV1RESTController extends FOSRestController
      * @param $entity
      */
     public function publicCategoryAction(Category $entity) {
-        return $entity;
+        $data = array();
+        $data['category'] = $entity;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Tender', 't_');
+        $qb->select('t_');
+        $qb->andWhere(":tender_category MEMBER OF t_.categories")
+            ->setParameter("tender_category", $entity->getId());
+        $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+        $data['tenders'] = $qb->getQuery()->getResult();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Buyer', 'b_');
+        $qb->select('b_');
+        $qb->andWhere(":buyer_category MEMBER OF b_.categories")
+            ->setParameter("buyer_category", $entity->getId());
+        $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+        $data['buyers'] = $qb->getQuery()->getResult();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Supplier', 's_');
+        $qb->select('s_');
+        $qb->andWhere(":supplier_category MEMBER OF s_.categories")
+            ->setParameter("supplier_category", $entity->getId());
+        $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+        $data['suppliers'] = $qb->getQuery()->getResult();
+
+        return $data;
     }
 
     /**
