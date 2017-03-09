@@ -82,10 +82,10 @@ class TranslationCountryRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TranslationCountry', 'tc_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.country = country.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tc_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:TranslationCountry', 'translationCountry');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationCountry.country = country.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationCountry.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationCountry.modifierUser = modifier_user.id');
             $textFields = array('translationCountry.locale', 'translationCountry.name');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class TranslationCountryRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('translationCountry.', 'tc_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class TranslationCountryRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(tc_.id)');
+            $qb->select('count(translationCountry.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('translationCountry.', 'tc_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('tc_');
+            $qbList->select('translationCountry');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('tc_.id');
+            $qbList->groupBy('translationCountry.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

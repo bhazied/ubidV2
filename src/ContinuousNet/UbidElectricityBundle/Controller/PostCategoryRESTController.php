@@ -83,11 +83,11 @@ class PostCategoryRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:PostCategory', 'pc_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostCategory', 'parent_post_category', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.parentPostCategory = parent_post_category.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostType', 'post_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.postType = post_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pc_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:PostCategory', 'postCategory');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostCategory', 'parent_post_category', \Doctrine\ORM\Query\Expr\Join::WITH, 'postCategory.parentPostCategory = parent_post_category.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostType', 'post_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'postCategory.postType = post_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'postCategory.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'postCategory.modifierUser = modifier_user.id');
             $textFields = array('postCategory.name', 'postCategory.slug', 'postCategory.picture', 'postCategory.description');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -105,7 +105,6 @@ class PostCategoryRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('postCategory.', 'pc_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -135,16 +134,15 @@ class PostCategoryRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(pc_.id)');
+            $qb->select('count(postCategory.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('postCategory.', 'pc_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('pc_');
+            $qbList->select('postCategory');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('pc_.id');
+            $qbList->groupBy('postCategory.id');
             $results = $qbList->getQuery()->getResult();
             $results = $this->translateEntities($results);
             if ($results) {

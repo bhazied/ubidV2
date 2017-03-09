@@ -82,15 +82,15 @@ class MessageRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Message', 'm_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'from_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.fromUser = from_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'from_buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.fromBuyer = from_buyer.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'from_supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.fromSupplier = from_supplier.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'to_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.toUser = to_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'to_buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.toBuyer = to_buyer.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'to_supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.toSupplier = to_supplier.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'm_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Message', 'message');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'from_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.fromUser = from_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'from_buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.fromBuyer = from_buyer.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'from_supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.fromSupplier = from_supplier.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'to_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.toUser = to_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'to_buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.toBuyer = to_buyer.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'to_supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.toSupplier = to_supplier.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'message.modifierUser = modifier_user.id');
             $textFields = array('message.subject', 'message.body');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -108,7 +108,6 @@ class MessageRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('message.', 'm_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -141,21 +140,20 @@ class MessageRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('m_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('message.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(m_.id)');
+            $qb->select('count(message.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('message.', 'm_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('m_');
+            $qbList->select('message');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('m_.id');
+            $qbList->groupBy('message.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

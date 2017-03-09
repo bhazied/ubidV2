@@ -82,9 +82,9 @@ class LanguageRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Language', 'l_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'l_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'l_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Language', 'language');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'language.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'language.modifierUser = modifier_user.id');
             $textFields = array('language.name', 'language.locale', 'language.code');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,7 +102,6 @@ class LanguageRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('language.', 'l_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -132,16 +131,15 @@ class LanguageRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(l_.id)');
+            $qb->select('count(language.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('language.', 'l_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('l_');
+            $qbList->select('language');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('l_.id');
+            $qbList->groupBy('language.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

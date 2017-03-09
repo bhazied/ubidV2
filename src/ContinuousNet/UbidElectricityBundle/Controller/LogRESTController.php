@@ -82,8 +82,8 @@ class LogRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Log', 'l_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'l_.creatorUser = creator_user.id');
+            $qb->from('UbidElectricityBundle:Log', 'log');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'log.creatorUser = creator_user.id');
             $textFields = array('log.entity', 'log.action', 'log.ipAddress', 'log.userAgent');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -101,7 +101,6 @@ class LogRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('log.', 'l_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -131,16 +130,15 @@ class LogRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(l_.id)');
+            $qb->select('count(log.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('log.', 'l_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('l_');
+            $qbList->select('log');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('l_.id');
+            $qbList->groupBy('log.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

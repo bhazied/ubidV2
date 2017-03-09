@@ -83,11 +83,11 @@ class CategoryRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Category', 'c_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parent_category', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.parentCategory = parent_category.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\ProductType', 'product_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.productType = product_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Category', 'category');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'parent_category', \Doctrine\ORM\Query\Expr\Join::WITH, 'category.parentCategory = parent_category.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\ProductType', 'product_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'category.productType = product_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'category.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'category.modifierUser = modifier_user.id');
             $textFields = array('category.name', 'category.slug', 'category.picture', 'category.description', 'category.metaTitle', 'category.metaDescription', 'category.metaKeywords', 'category.tendersMetaTitle', 'category.tendersMetaDescription', 'category.tendersMetaKeywords', 'category.consultationsMetaTitle', 'category.consultationsMetaDescription', 'category.consultationsMetaKeywords', 'category.buyersMetaTitle', 'category.buyersMetaDescription', 'category.buyersMetaKeywords', 'category.suppliersMetaTitle', 'category.suppliersMetaDescription', 'category.suppliersMetaKeywords');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -105,7 +105,6 @@ class CategoryRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('category.', 'c_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -135,16 +134,15 @@ class CategoryRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(c_.id)');
+            $qb->select('count(category.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('category.', 'c_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('c_');
+            $qbList->select('category');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('c_.id');
+            $qbList->groupBy('category.id');
             $results = $qbList->getQuery()->getResult();
             $results = $this->translateEntities($results);
             if ($results) {
