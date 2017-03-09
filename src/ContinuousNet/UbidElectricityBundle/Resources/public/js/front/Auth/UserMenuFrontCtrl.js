@@ -21,6 +21,28 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             isFirstOpen: true,
             isFirstDisabled: false,
         };
+
+
+        $scope.goPublication = function () {
+            $state.go('front.mytenders.new');
+        }
+
+        $scope.goTender = function () {
+            $state.go('front.tenders',{section:'Tender'});
+        }
+
+        $scope.goProposal = function () {
+            $state.go('front.tenders', {section:'Consultation'});
+        }
+
+        $scope.goSuppliers = function () {
+            $state.go('front.suppliers');
+        }
+
+        $scope.goBuyers = function () {
+            $state.go('front.buyers');
+        }
     }
+
 
 ]);

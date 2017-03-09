@@ -599,16 +599,22 @@ class ApiV1RESTController extends FOSRestController
                 'firstName', 'lastName', 'gender', 'country', 'language', 'phone'
             );
             foreach ($fields as $field) {
-                $value = $request->request->get($field);
-                if (!is_null($value)) {
-                    $method = 'set'.ucfirst($field);
-                    if ($field == 'country') {
+                $value =  !is_null($request->request->get($field))  ? $request->request->get($field) : null;
+                $method = 'set'.ucfirst($field);
+                if (!is_null($value) && !is_array($value)) {
+                    if ($field == 'country' ) {
                         $value = $em->getRepository('UbidElectricityBundle:Country')->findOneById($value);
                     } else if ($field == 'language') {
                         $value = $em->getRepository('UbidElectricityBundle:Language')->findOneByCode($value);
                     } else if ($field == 'birthDate') {
                         $value = new \DateTime($value);
                     }
+
+                }
+                else{
+                    $value = null;
+                }
+                if(method_exists($user, $method)){
                     $user->$method($value);
                 }
             }
