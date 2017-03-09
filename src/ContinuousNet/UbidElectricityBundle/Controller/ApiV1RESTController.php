@@ -747,7 +747,9 @@ class ApiV1RESTController extends FOSRestController
      * @param $entity
      */
     public function publicCategoryAction(Category $entity) {
+
         $data = array();
+
         $data['category'] = $entity;
 
         $em = $this->getDoctrine()->getManager();
