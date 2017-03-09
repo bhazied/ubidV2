@@ -82,10 +82,10 @@ class TranslationPostTypeRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TranslationPostType', 'tpt_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostType', 'post_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.postType = post_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:TranslationPostType', 'translationPostType');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\PostType', 'post_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationPostType.postType = post_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationPostType.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationPostType.modifierUser = modifier_user.id');
             $textFields = array('translationPostType.locale', 'translationPostType.name', 'translationPostType.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class TranslationPostTypeRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('translationPostType.', 'tpt_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class TranslationPostTypeRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(tpt_.id)');
+            $qb->select('count(translationPostType.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('translationPostType.', 'tpt_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('tpt_');
+            $qbList->select('translationPostType');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('tpt_.id');
+            $qbList->groupBy('translationPostType.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

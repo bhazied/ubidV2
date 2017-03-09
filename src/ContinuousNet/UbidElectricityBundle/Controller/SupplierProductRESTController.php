@@ -82,11 +82,11 @@ class SupplierProductRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.supplier = supplier.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'category', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.category = category.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:SupplierProduct', 'supplierProduct');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.supplier = supplier.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'category', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.category = category.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.modifierUser = modifier_user.id');
             $textFields = array('supplierProduct.name', 'supplierProduct.slug', 'supplierProduct.brand', 'supplierProduct.model', 'supplierProduct.description', 'supplierProduct.picture');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -104,7 +104,6 @@ class SupplierProductRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('supplierProduct.', 'sp_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -137,21 +136,20 @@ class SupplierProductRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('sp_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('supplierProduct.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(sp_.id)');
+            $qb->select('count(supplierProduct.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('supplierProduct.', 'sp_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('sp_');
+            $qbList->select('supplierProduct');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('sp_.id');
+            $qbList->groupBy('supplierProduct.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

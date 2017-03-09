@@ -82,10 +82,10 @@ class TranslationSectorRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TranslationSector', 'ts_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 'ts_.sector = sector.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'ts_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'ts_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:TranslationSector', 'translationSector');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationSector.sector = sector.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationSector.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationSector.modifierUser = modifier_user.id');
             $textFields = array('translationSector.locale', 'translationSector.name', 'translationSector.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class TranslationSectorRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('translationSector.', 'ts_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class TranslationSectorRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(ts_.id)');
+            $qb->select('count(translationSector.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('translationSector.', 'ts_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('ts_');
+            $qbList->select('translationSector');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('ts_.id');
+            $qbList->groupBy('translationSector.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

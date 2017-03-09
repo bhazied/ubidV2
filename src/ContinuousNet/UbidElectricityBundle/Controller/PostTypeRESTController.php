@@ -83,9 +83,9 @@ class PostTypeRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:PostType', 'pt_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:PostType', 'postType');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'postType.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'postType.modifierUser = modifier_user.id');
             $textFields = array('postType.name', 'postType.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class PostTypeRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('postType.', 'pt_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class PostTypeRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(pt_.id)');
+            $qb->select('count(postType.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('postType.', 'pt_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('pt_');
+            $qbList->select('postType');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('pt_.id');
+            $qbList->groupBy('postType.id');
             $results = $qbList->getQuery()->getResult();
             $results = $this->translateEntities($results);
             if ($results) {

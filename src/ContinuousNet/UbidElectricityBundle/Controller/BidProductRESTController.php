@@ -82,12 +82,12 @@ class BidProductRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:BidProduct', 'bp_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderProduct', 'tender_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.tenderProduct = tender_product.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Bid', 'bid', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.bid = bid.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct', 'supplier_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.supplierProduct = supplier_product.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:BidProduct', 'bidProduct');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderProduct', 'tender_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bidProduct.tenderProduct = tender_product.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Bid', 'bid', \Doctrine\ORM\Query\Expr\Join::WITH, 'bidProduct.bid = bid.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\SupplierProduct', 'supplier_product', \Doctrine\ORM\Query\Expr\Join::WITH, 'bidProduct.supplierProduct = supplier_product.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bidProduct.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bidProduct.modifierUser = modifier_user.id');
             $textFields = array('');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -105,7 +105,6 @@ class BidProductRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('bidProduct.', 'bp_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -138,21 +137,20 @@ class BidProductRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('bp_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('bidProduct.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(bp_.id)');
+            $qb->select('count(bidProduct.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('bidProduct.', 'bp_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('bp_');
+            $qbList->select('bidProduct');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('bp_.id');
+            $qbList->groupBy('bidProduct.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

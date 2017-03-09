@@ -67634,8 +67634,52 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
             logo: '/assets/images/logo.png' // relative path of the project logo
         }
     };
-    console.log( $rootScope.app)
-    
+
+    $rootScope.createTree = function (items, parentField, labelField, parentId, level) {
+        var tree = [];
+        for (var i in items) {
+            var addToTree = false;
+            if (parentId == null && items[i][parentField] == null) {
+                addToTree = true;
+            } else if (items[i][parentField] != null) {
+                if (items[i][parentField].id == parentId) {
+                    addToTree = true;
+                }
+            }
+            if (addToTree) {
+                if (level > 0) {
+                    var newLabel = '╚';
+                    newLabel += '═'.repeat(level);
+                    newLabel += ' '+items[i][labelField];
+                    items[i][labelField] = newLabel;
+                }
+                tree.push(items[i]);
+                var children = $rootScope.createTree(items, parentField, labelField, items[i].id, level+1);
+                for (var j in children) {
+                    tree.push(children[j]);
+                }
+            }
+        }
+        return tree;
+    };
+
+    $rootScope.checkStatePermission = function (state) {
+        if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
+            return true;
+        } else {
+            if (
+                state.indexOf('supplierproduct') > -1 ||
+                state.indexOf('supplier') > -1 ||
+                state.indexOf('buyer') > -1 ||
+                state.indexOf('tender') > -1
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+
     if (angular.isDefined($localStorage.user)) {
         $rootScope.user = $rootScope.currentUser = $localStorage.user;
     } else {

@@ -82,9 +82,9 @@ class HitRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Hit', 'h_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'h_.visit = visit.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'h_.creatorUser = creator_user.id');
+            $qb->from('UbidElectricityBundle:Hit', 'hit');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'hit.visit = visit.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'hit.creatorUser = creator_user.id');
             $textFields = array('hit.entity', 'hit.url');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,7 +102,6 @@ class HitRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('hit.', 'h_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -132,16 +131,15 @@ class HitRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(h_.id)');
+            $qb->select('count(hit.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('hit.', 'h_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('h_');
+            $qbList->select('hit');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('h_.id');
+            $qbList->groupBy('hit.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

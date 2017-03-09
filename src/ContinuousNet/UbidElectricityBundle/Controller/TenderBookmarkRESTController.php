@@ -82,10 +82,10 @@ class TenderBookmarkRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TenderBookmark', 'tb_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Tender', 'tender', \Doctrine\ORM\Query\Expr\Join::WITH, 'tb_.tender = tender.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tb_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tb_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:TenderBookmark', 'tenderBookmark');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Tender', 'tender', \Doctrine\ORM\Query\Expr\Join::WITH, 'tenderBookmark.tender = tender.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tenderBookmark.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tenderBookmark.modifierUser = modifier_user.id');
             $textFields = array('');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class TenderBookmarkRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('tenderBookmark.', 'tb_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -136,21 +135,20 @@ class TenderBookmarkRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('tb_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('tenderBookmark.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(tb_.id)');
+            $qb->select('count(tenderBookmark.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('tenderBookmark.', 'tb_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('tb_');
+            $qbList->select('tenderBookmark');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('tb_.id');
+            $qbList->groupBy('tenderBookmark.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;
