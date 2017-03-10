@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="tenderProduct.category" name="category" id="tenderProductCategory" class="form-control" ng-required="true">
+                                            <select  ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="tenderProduct.category" name="category" id="tenderProductCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->

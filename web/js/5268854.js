@@ -67690,7 +67690,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
                 state.indexOf('supplierproduct') > -1 ||
                 state.indexOf('supplier') > -1 ||
                 state.indexOf('buyer') > -1 ||
-                state.indexOf('tender') > -1
+                state.indexOf('tender') > -1 ||
+                state.indexOf('bid') > -1
             ) {
                 return true;
             } else {
