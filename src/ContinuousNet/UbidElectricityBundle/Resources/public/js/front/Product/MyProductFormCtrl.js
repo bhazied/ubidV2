@@ -21,7 +21,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.enableFormAlert = false;
 
     $scope.list = function() {
-        $state.go('front.mysuppliers.list');
+        $state.go('front.myproducts.list');
     };
 
 }]);

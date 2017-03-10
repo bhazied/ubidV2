@@ -134,7 +134,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
                 state.indexOf('supplierproduct') > -1 ||
                 state.indexOf('supplier') > -1 ||
                 state.indexOf('buyer') > -1 ||
-                state.indexOf('tender') > -1
+                state.indexOf('tender') > -1 ||
+                state.indexOf('bid') > -1
             ) {
                 return true;
             } else {
@@ -607,7 +608,8 @@ app.constant('APP_JS_REQUIRES', {
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
         'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
-        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js',
+        'ModalPostCtrl': '/bundles/ubidelectricity/js/front/Post/ModalPostCtrl.js'
     },
     modules: [{
         name: 'LoginService',
