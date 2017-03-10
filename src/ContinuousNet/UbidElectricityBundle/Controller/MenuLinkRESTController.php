@@ -83,10 +83,10 @@ class MenuLinkRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:MenuLink', 'ml_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Menu', 'menu', \Doctrine\ORM\Query\Expr\Join::WITH, 'ml_.menu = menu.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'ml_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'ml_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:MenuLink', 'menuLink');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Menu', 'menu', \Doctrine\ORM\Query\Expr\Join::WITH, 'menuLink.menu = menu.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'menuLink.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'menuLink.modifierUser = modifier_user.id');
             $textFields = array('menuLink.name', 'menuLink.slug', 'menuLink.controller', 'menuLink.action');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -104,7 +104,6 @@ class MenuLinkRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('menuLink.', 'ml_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -134,16 +133,15 @@ class MenuLinkRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(ml_.id)');
+            $qb->select('count(menuLink.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('menuLink.', 'ml_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('ml_');
+            $qbList->select('menuLink');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('ml_.id');
+            $qbList->groupBy('menuLink.id');
             $results = $qbList->getQuery()->getResult();
             $results = $this->translateEntities($results);
             if ($results) {

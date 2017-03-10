@@ -83,9 +83,9 @@ class ProductTypeRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:ProductType', 'pt_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'pt_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:ProductType', 'productType');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'productType.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'productType.modifierUser = modifier_user.id');
             $textFields = array('productType.name', 'productType.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class ProductTypeRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('productType.', 'pt_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class ProductTypeRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(pt_.id)');
+            $qb->select('count(productType.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('productType.', 'pt_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('pt_');
+            $qbList->select('productType');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('pt_.id');
+            $qbList->groupBy('productType.id');
             $results = $qbList->getQuery()->getResult();
             $results = $this->translateEntities($results);
             if ($results) {

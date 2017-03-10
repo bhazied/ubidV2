@@ -82,10 +82,10 @@ class ClickRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Click', 'c_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.visit = visit.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Banner', 'banner', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.banner = banner.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'c_.creatorUser = creator_user.id');
+            $qb->from('UbidElectricityBundle:Click', 'click');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'click.visit = visit.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Banner', 'banner', \Doctrine\ORM\Query\Expr\Join::WITH, 'click.banner = banner.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'click.creatorUser = creator_user.id');
             $textFields = array('');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class ClickRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('click.', 'c_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class ClickRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(c_.id)');
+            $qb->select('count(click.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('click.', 'c_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('c_');
+            $qbList->select('click');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('c_.id');
+            $qbList->groupBy('click.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

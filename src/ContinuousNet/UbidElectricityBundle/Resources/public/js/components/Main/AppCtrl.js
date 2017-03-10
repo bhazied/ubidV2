@@ -65,10 +65,6 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 		// {inherit:false} + default options
 	});
 
-	$rootScope.pageTitle = function() {
-		return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
-	};
-
 	// save settings to local storage
 	if (angular.isDefined($localStorage.layout)) {
 		$scope.app.layout = $localStorage.layout;

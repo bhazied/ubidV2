@@ -82,10 +82,10 @@ class BannerRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Banner', 'b_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BannerType', 'banner_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.bannerType = banner_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Banner', 'banner');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BannerType', 'banner_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'banner.bannerType = banner_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'banner.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'banner.modifierUser = modifier_user.id');
             $textFields = array('banner.name', 'banner.picture', 'banner.iphoneAction', 'banner.androidAction', 'banner.webAction', 'banner.webUrl', 'banner.phoneNumberToCall', 'banner.smsMobileNumber', 'banner.smsBody', 'banner.emailAdress', 'banner.emailSubject', 'banner.emailBody', 'banner.androidAppUrl', 'banner.iphoneAppUrl', 'banner.youtubeUrl', 'banner.screen', 'banner.screenParameters', 'banner.template', 'banner.adText', 'banner.textColor', 'banner.backgroundColor');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class BannerRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('banner.', 'b_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class BannerRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(b_.id)');
+            $qb->select('count(banner.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('banner.', 'b_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('b_');
+            $qbList->select('banner');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('b_.id');
+            $qbList->groupBy('banner.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

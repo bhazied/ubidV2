@@ -82,9 +82,9 @@ class AlertRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Alert', 'a_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'a_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'a_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Alert', 'alert');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'alert.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'alert.modifierUser = modifier_user.id');
             $textFields = array('alert.types', 'alert.name', 'alert.description');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,7 +102,6 @@ class AlertRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('alert.', 'a_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -135,21 +134,20 @@ class AlertRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('a_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('alert.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(a_.id)');
+            $qb->select('count(alert.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('alert.', 'a_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('a_');
+            $qbList->select('alert');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('a_.id');
+            $qbList->groupBy('alert.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

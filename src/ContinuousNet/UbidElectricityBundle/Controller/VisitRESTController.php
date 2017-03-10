@@ -82,9 +82,9 @@ class VisitRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Visit', 'v_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'v_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'v_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Visit', 'visit');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'visit.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'visit.modifierUser = modifier_user.id');
             $textFields = array('visit.ip', 'visit.userAgent');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,7 +102,6 @@ class VisitRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('visit.', 'v_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -132,16 +131,15 @@ class VisitRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(v_.id)');
+            $qb->select('count(visit.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('visit.', 'v_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('v_');
+            $qbList->select('visit');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('v_.id');
+            $qbList->groupBy('visit.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;
