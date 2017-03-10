@@ -4,8 +4,8 @@
  * Controller for Alert Form in FrontEnd
  */
 
-app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$categoriesDataFactory', '$countriesDataFactory', '$alertsDataFactory','$controller', '$tendersFrontDataFactory',
-    function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $categoriesDataFactory, $countriesDataFactory, $alertsDataFactory, $controller, $tendersFrontDataFactory) {
+app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$usersDataFactory', '$categoriesDataFactory', '$countriesDataFactory', '$alertsDataFactory','$controller', '$tendersFrontDataFactory',"$window",
+    function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $categoriesDataFactory, $countriesDataFactory, $alertsDataFactory, $controller, $tendersFrontDataFactory, $window) {
 
 
         $timeout(function() {
@@ -40,6 +40,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
         $scope.list = function() {
             $state.go('front.myAlerts.list');
         };
+
 
         $scope.selectedCountries = [];
         $scope.selectedCategories = [];
@@ -84,6 +85,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                     angular.forEach($scope.countries, function(val, k){
                         if(val.id == value){
                             $scope.selectedCountries.push(val);
+                            $scope.selectedCountriesIds.push(val.id);
                         }
                     });
                 });
@@ -178,15 +180,21 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                 var field = null, firstError = null;
                 for (field in form) {
                     if (field[0] != '$') {
-                        if (firstError === null && !form[field].$valid) {
-                            firstError = form[field].$name;
-                        }
-                        if (form[field].$pristine) {
-                            form[field].$dirty = true;
+                        if(form[field].$name != "country[]" && form[field].$name != "category[]" && form[field].$name != "types[]"){
+                            if (firstError === null && !form[field].$valid) {
+                                firstError = form[field].$name;
+                            }
+                            if (form[field].$pristine) {
+                                form[field].$dirty = true;
+                            }
                         }
                     }
                 }
                 angular.element('.ng-invalid[name=' + firstError + ']').focus();
+                $window.scrollTo(
+                    angular.element('.ng-invalid[name=' + firstError + ']').prop('offsetTop'),
+                    angular.element('.ng-invalid[name=' + firstError + ']').prop('offsetLeft')
+                );
                 if ($scope.enableFormAlert) {
                     SweetAlert.swal($filter('translate')('content.form.messages.FORMCANNOTBESUBMITTED'), $filter('translate')('content.form.messages.ERRORSAREMARKED'), "error");
                 }
@@ -223,6 +231,14 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                 return false;
             }
         };
+
+
+        $scope.$watch('alert', function () {
+            if(!angular.isDefined($scope.alert.types)){
+                $scope.alert.types = [];
+            }
+        }
+        );
 
     }]);
 

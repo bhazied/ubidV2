@@ -1267,7 +1267,7 @@
         },
         "CURRENTPASSWORD": "Current password",
         "NEWPASSWORD": "New password",
-        "RECESSPASSWORD":"retype password",
+        "RECESSPASSWORD":"Retype password",
         "GENERALCONDITION": "General condition",
         "TYPES": "Types",
         "typesoptions":{
@@ -1307,6 +1307,8 @@
         "nothingSelected": "Nothing is selected"
       },
       "messages": {
+        "TYPESREQUIRED": "Types is required.",
+        "CATEGORIESREQUIRED": "Categories is required.",
         "ADVANCEDSEARCHPRICE": "search project with price between [[ price.minValue ]]  AND [[ price.maxValue ]]",
         "ADVANCEDSEARCHCURRENCY": "All price are '[[ currency ]]' Currency",
         "SELECTALL": "Select All",
@@ -1728,7 +1730,7 @@
     "SUPPLIER" : "Supplier",
     "BUSINESSOPPORTUNITIES": "Business opportunities",
     "BUSINESSOPPORTUNITIESDESCRIPTION" : "Access to latest worldwide electrical tenders, consultations and products",
-    "SUPPLIERSDESCRIPTION" : "Find out largest company databse for services and products",
+    "SUPPLIERSDESCRIPTION" : "Find out largest company database for services and products",
     "PRODUCTSERVICEREQUESTER" : "Product / Service Requester",
     "PRODUCTSERVICEREQUESTERDESCRIPTION" : "Publish for FREE all your electrical products and services",
     "SERVICEPROVIDER" : "Service Provider",
@@ -1931,7 +1933,7 @@
     "MYMESSAGES" : "My messages",
     "SENTMESSAGE": "sent messages",
     "RECEIVEDMESSAGE":"Received messages",
-    "APPLAYTENDER" : "Applay tender",
+    "APPLAYTENDER" : "Apply tender",
     "DESCRIPTIONREQUIRED" : "Description is required",
     "CATEGORIES": "Categories",
     "ALLCATEGORIES": "All categories",
@@ -1951,6 +1953,9 @@
     "seo":{
       "BUYERMETATITLE": "Electrical buyer",
       "SUPPLIERMETATITLE": "Electric supplier"
-    }
+    },
+    "EMPTYSEARCHALERT": "You must enter some words to search",
+    "NOTIFICATIONS" : "Notifications",
+    "MARKALLASREAD" : "Mark all as read"
   }
 }

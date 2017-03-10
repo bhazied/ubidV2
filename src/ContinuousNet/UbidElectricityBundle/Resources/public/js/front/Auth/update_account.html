@@ -6,8 +6,7 @@
         </legend>
         <div class="row">
             <div class="col-md-6">
-
-                <div class="form-group">
+                 <div class="form-group">
                     <label class="control-label ">
                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
                     </label>
@@ -28,49 +27,37 @@
                     <input type="text" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" class="form-control" name="job" ng-model="user.job">
                 </div><!--/form-group-->
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error':userForm.address.$dirty && userForm.address.$invalid, 'has-success':userForm.address.$valid}">
                     <label for="userAddress" class="control-label">
                         <span translate="content.list.fields.ADDRESS">Address</span>
+                        <span class="symbol required"></span>
                     </label>
                     <input ng-required="true" id="userAddress" type="text" placeholder="Enter address" class="form-control" name="address" ng-model="user.address">
+                    <span class="error text-small block" ng-if="userForm.address.$dirty && userForm.address.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address required.</span>
                 </div><!--/form-group-->
 
                 <div class="form-group">
                     <label for="userCity" class="control-label">
                         <span translate="content.list.fields.CITY">City</span>
                     </label>
-                    <input ng-required="true" ng-model="user.city" type="text" name="city" id="userCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" />
+                    <input ng-model="user.city" type="text" name="city" id="userCity" class="form-control" placeholder="[[ 'content.form.messages.ENTERCITY' | translate ]]" />
                 </div><!--/form-group-->
 
-                <div class="form-group">
-                    <label for="userPicture" class="control-label">
-                        <span translate="content.list.fields.PICTURE">Picture</span>
+                <div class="form-group" ng-class="{'has-error':userForm.country.$dirty && userForm.country.$invalid, 'has-success':userForm.country.$valid}">
+                    <label for="userCountry" class="control-label">
+                        <span translate="content.list.fields.COUNTRY">Country</span>
+                        <span class="symbol required"></span>
                     </label>
-                    <div class="input-group">
-                        <span class="input-icon">
-                            <input ng-model="user.picture" type="text" name="picture" id="userPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" />
-                            <i class="ti-image"></i>
-                        </span><!--/input-icon-->
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
-                                <i class="ti-cloud"></i>
-                            </button>
-                        </span>
+                    <div class="block" ng-if="countriesLoaded">
+                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="true">
+                            <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
+                        </select>
                     </div>
-                    <div class="user-image margin-top-10" ng-if="user.picture != '' && user.picture != null">
-                        <div class="thumbnail">
-                            <img class="img-thumbnail" ng-src="[[ user.picture ]]" alt="" />
-                        </div>
-                        <div class="user-image-buttons">
-                            <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
-                            <span class="btn btn-danger" ng-click="user.picture = ''"> <i class="fa fa-times"></i></span>
-                        </div>
-                    </div>
-                </div><!--/form-group-->
-
+                    <span class="error text-small block" ng-if="userForm.country.$dirty && userForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                </div> <!-- form-group -->
             </div><!--/col-md-6-->
 
-            <div class="col-md-6">
+        <div class="col-md-6">
 
                 <div class="form-group">
                     <label class="control-label">
@@ -109,21 +96,33 @@
                     <label class="control-label">
                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
                     </label>
-                    <input ng-required="true" class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
+                    <input class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
                 </div><!--/form-group-->
-
-                <div class="form-group">
-                    <label for="userCountry" class="control-label">
-                        <span translate="content.list.fields.COUNTRY">Country</span>
-                        <span class="symbol required"></span>
-                    </label>
-                    <div class="block" ng-if="countriesLoaded">
-                        <select ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="true" ng-change="changeCountry()">
-                            <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
-                        </select>
+            <div class="form-group">
+                <label for="userPicture" class="control-label">
+                    <span translate="content.list.fields.PICTURE">Picture</span>
+                </label>
+                <div class="input-group">
+                    <span class="input-icon">
+                        <input ng-model="user.picture" type="text" name="picture" id="userPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" />
+                        <i class="ti-image"></i>
+                    </span><!--/input-icon-->
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" ng-click="showFileManager('picture')">
+                            <i class="ti-cloud"></i>
+                        </button>
+                    </span>
+                </div>
+                <div class="user-image margin-top-10" ng-if="user.picture != '' && user.picture != null">
+                    <div class="thumbnail">
+                        <img class="img-thumbnail" ng-src="[[ user.picture ]]" alt="" />
                     </div>
-                </div><!--/form-group-->
-
+                    <div class="user-image-buttons">
+                        <span class="btn btn-primary"  ng-click="showFileManager('picture')"><i class="fa fa-pencil"></i></span>
+                        <span class="btn btn-danger" ng-click="user.picture = ''"> <i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
             </div><!--/col-md-6-->
 
         </div>

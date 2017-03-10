@@ -68155,7 +68155,8 @@ app.constant('APP_JS_REQUIRES', {
         'MessageFrontCtrl': '/bundles/ubidelectricity/js/front/Message/MessageFrontCtrl.js',
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
-        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js'
+        'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68493,7 +68494,9 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
                 'languageService',
                 'countryService',
                 'tenderFrontService',
-                'checklist-model'
+                'checklist-model',
+                'MyNotification',
+                'notificationService'
             ),
             abstract: true
         }).state('error', {
@@ -68521,7 +68524,7 @@ app.config(['$stateProvider',
             url: '/',
             templateUrl : '/bundles/ubidelectricity/js/front/Home/home.html',
             title: 'front.HOME',
-            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService')
+            resolve: loadSequence('HomeCtrl' ,'homeService', 'UserMenuFrontCtrl', 'userMenuFrontService', 'postFrontService','notificationService')
         /*
          *  User Service routes
          */
@@ -72241,8 +72244,8 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 /**
  * Controller for user login
  */
-app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams) {
+app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -72279,14 +72282,16 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
                 }
-                toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
-                $scope.status = 'welcome';
-                $localStorage.access_token = data.token;
-                $scope.user = $localStorage.user = $rootScope.user = data.user;
-                $timeout(function() {
-                    $rootScope.loggedIn = true;
-                    $state.go('front.usermenu');
-                }, 1000);
+                else{
+                    toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
+                    $scope.status = 'welcome';
+                    $localStorage.access_token = data.token;
+                    $scope.user = $localStorage.user = $rootScope.user = data.user;
+                    $timeout(function() {
+                        $rootScope.loggedIn = true;
+                        $state.go('front.usermenu');
+                    }, 1000);
+                }
             }, function(error) {
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
@@ -72316,6 +72321,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.goLogin = function () {
             $state.go('front.login');
         };
+
+        $scope.gotoUserMenu = function () {
+            $state.go('front.usermenu');
+        }
+
 
     }]);
 
@@ -72831,7 +72841,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
             if(!angular.isDefined(searchText)){
-                toaster.pop('error', "You must enter some word to search", 'search info');
+                toaster.pop('error', 'You must enter some words to search', 'search info');
                 return false;
             }
             else {

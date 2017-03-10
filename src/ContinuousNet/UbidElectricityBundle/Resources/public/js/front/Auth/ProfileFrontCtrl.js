@@ -3,8 +3,8 @@
 /**
  * Controller for user profile
  */
-app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert) {
+app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert','$window',
+    function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert, $window) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -15,6 +15,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.contentOffset = 0;
         }, 1500);
 
+        $scope.myCountry = {};
         $scope.dateFormat = $filter('translate')('formats.DATE');
         $scope.dateTimeFormat = $filter('translate')('formats.DATETIME');
         $scope.timeFormat = $filter('translate')('formats.TIME');
@@ -87,11 +88,18 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
             });
         };
-
         $scope.getProfile = function(){
+            $timeout(function () {
             $profileDataFactory.getProfile({locale: $localStorage.language}).$promise.then(function (data) {
-                $timeout(function () {
                     $scope.user = data ;
+                if(data.country != null){
+                    $scope.myCountry =  $scope.user.country;
+                    $scope.user.country =  $scope.user.country.id;
+                    }
+                else{
+                    $scope.myCountry =  null;
+                    $scope.user.country =  null;
+                }
                 });
             });
         }
@@ -99,20 +107,38 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         $scope.getProfile();
 
         $scope.submit = function (form) {
-            $scope.user.locale = $localStorage.language;
-            $scope.disableSubmit = true;
-            $profileDataFactory.updateProfile($scope.user).$promise.then(function (data) {
-                $scope.disableSubmit = false;
-                if (data.status) {
-                    toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('profile.PROFILEUPDATED'));
-                } else {
-                    toaster.pop('warning', $filter('translate')('content.common.NOTIFICATION'), data.message);
+            var firstError = null;
+            if (form.$invalid) {
+                var field = null, firstError = null;
+                for (field in form) {
+                    if (field[0] != '$') {
+                        if (firstError === null && !form[field].$valid) {
+                            firstError = form[field].$name;
+                        }
+                        if (form[field].$pristine) {
+                            form[field].$dirty = true;
+                        }
+                    }
                 }
+                angular.element('.ng-invalid[name=' + firstError + ']').focus();
+                return false;
+            } else {
+                $scope.user.locale = $localStorage.language;
+                $scope.disableSubmit = true;
+                $profileDataFactory.updateProfile($scope.user).$promise.then(function (data) {
+                    $scope.disableSubmit = false;
+                    if (data.status) {
+                        toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('profile.PROFILEUPDATED'));
+                        $scope.getProfile();
+                    } else {
+                        toaster.pop('warning', $filter('translate')('content.common.NOTIFICATION'), data.message);
+                    }
 
-            }, function (error) {
-                $scope.disableSubmit = false;
-                console.warn(error);
-            });
+                }, function (error) {
+                    $scope.disableSubmit = false;
+                    console.warn(error);
+                });
+            }
         };
 
         $scope.changePassword = function (form) {
