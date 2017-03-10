@@ -4,17 +4,20 @@
  * Controller for Messages List
  */
 
-app.controller('MyNotification', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$interval', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$notificationsDataFactory',
-    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $interval, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $notificationsDataFactory) {
+app.controller('MyNotification', ['$scope','$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$interval', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$notificationsDataFactory','$NotificationFrontDataFactory',
+    function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $interval, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $notificationsDataFactory, $NotificationFrontDataFactory) {
 
-       /* $scope.notificationsInterval = $interval(function () {
+        $scope.notificationsInterval = $interval(function () {
             if ($localStorage.access_token) {
                 $scope.getNotifications();
             } else {
                 $interval.cancel($scope.notificationsInterval);
             }
         }, 5000);
-        */
+
+
+        $scope.dateFormat = $filter('translate')('formats.DATETIME');
+
         $scope.getNotifications = function(){
             $notificationsDataFactory.query({offset: 0, limit: 10000,'order_by[notification.createdAt]': 'desc'}).$promise.then(function(data) {
                 $scope.notifications = data.results;
@@ -27,36 +30,61 @@ app.controller('MyNotification', ['$scope','$controller', '$rootScope', '$stateP
                 $scope.countAlert = countAlert;
             });
         };
-        $scope.getNotifications();
 
-        $scope.viewNotification = function(notification){
+
+        $scope.viewNotification = function(jsonLink, id){
             //$('.notification .submenu').css('display',  'none');
             $scope.countAlert --;
-            var link = angular.fromJson(notification.link);
-            $state.go(link[0], link[1]);
-            $notificationsDataFactory.update({id:notification.id,read : true});
-            $scope.notifications.splice(notification,1);
+            var link = angular.fromJson(jsonLink);
+           $state.go(link[0], link[1]);
+            $notificationsDataFactory.update({id:id,read : true});
+            $scope.removeNotif(id);
 
         };
 
-        $scope.closeNotification = function(notification){
+        $scope.closeNotification = function(id){
             $scope.countAlert --;
-            $notificationsDataFactory.update({id:notification.id,read : true});
-            $scope.notifications.splice(notification,1);
+            $notificationsDataFactory.update({id:id,read : true});
+            $scope.removeNotif(id);
 
         };
 
 
 
-        $scope.markAsRead = function (){
-                angular.forEach($scope.notifications,function (notification) {
-                    $notificationsDataFactory.update({id:notification.id,read : true});
-                });
-            $scope.countAlert =0;
+        $scope.removeNotif = function (id) {
+            var index;
+            angular.forEach($scope.notifications, function (value, key) {
+               if(value.id == id){
+                   index = key;
+               }
+            });
+            $scope.notifications.splice(index,1);
         }
 
-        $scope.openListNotifications = function(){
-            $state.go('front.myAlerts.list');
+        $scope.markAsRead = function (){
+            $NotificationFrontDataFactory.readAll({locale: $localStorage.language}).$promise.then(function (data) {
+                if(data.status == true){
+                    $scope.countAlert =0;
+                    return false;
+                }
+                else{
+                    toaster.pop('error', $filter('translate')('common.ERROR'), data.message);
+                    return false;
+                }
+            },function (error) {
+                toaster.pop('error', $filter('translate')('common.ERROR'), $filter('translate')('front.NOTIFCATIONREADALLERROR'));
+                return false;
+            }
+            );
+        }
+
+        $scope.openListNotifications = function($event){
+            if($scope.notifications.length == 0){
+                $state.go('front.myAlerts.list');
+            }
+            else{
+                $event.stopPropagation();
+            }
         }
 
     }]);

@@ -122,7 +122,8 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$controlle
                 'tenderFrontService',
                 'checklist-model',
                 'MyNotification',
-                'notificationService'
+                'notificationService',
+                'notificationFrontService'
             ),
             abstract: true
         }).state('error', {

@@ -82,10 +82,10 @@ class TranslationProductTypeRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:TranslationProductType', 'tpt_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\ProductType', 'product_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.productType = product_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tpt_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:TranslationProductType', 'translationProductType');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\ProductType', 'product_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationProductType.productType = product_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationProductType.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'translationProductType.modifierUser = modifier_user.id');
             $textFields = array('translationProductType.locale', 'translationProductType.name', 'translationProductType.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -103,7 +103,6 @@ class TranslationProductTypeRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('translationProductType.', 'tpt_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -133,16 +132,15 @@ class TranslationProductTypeRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(tpt_.id)');
+            $qb->select('count(translationProductType.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('translationProductType.', 'tpt_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('tpt_');
+            $qbList->select('translationProductType');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('tpt_.id');
+            $qbList->groupBy('translationProductType.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

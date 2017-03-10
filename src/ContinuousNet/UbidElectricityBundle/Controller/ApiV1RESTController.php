@@ -743,7 +743,7 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
-    public function homeTenderAction(Tender $entity){
+    public function homeTenderAction(Tender $entity) {
         return $entity;
     }
 
@@ -752,8 +752,39 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
-    public function publicCategoryAction(Category $entity){
-        return $entity;
+    public function publicCategoryAction(Category $entity) {
+
+        $data = array();
+
+        $data['category'] = $entity;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Tender', 't_');
+        $qb->select('t_');
+        $qb->andWhere(":tender_category MEMBER OF t_.categories")
+            ->setParameter("tender_category", $entity->getId());
+        $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+        $data['tenders'] = $qb->getQuery()->getResult();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Buyer', 'b_');
+        $qb->select('b_');
+        $qb->andWhere(":buyer_category MEMBER OF b_.categories")
+            ->setParameter("buyer_category", $entity->getId());
+        $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+        $data['buyers'] = $qb->getQuery()->getResult();
+
+        $qb = $em->createQueryBuilder();
+        $qb->from('UbidElectricityBundle:Supplier', 's_');
+        $qb->select('s_');
+        $qb->andWhere(":supplier_category MEMBER OF s_.categories")
+            ->setParameter("supplier_category", $entity->getId());
+        $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+        $data['suppliers'] = $qb->getQuery()->getResult();
+
+        return $data;
     }
 
     /**
@@ -761,7 +792,7 @@ class ApiV1RESTController extends FOSRestController
      * @View(serializerEnableMaxDepthChecks=true)
      * @param Request $request
      */
-    public function contactAction(Request $request){
+    public function contactAction(Request $request) {
         $response = array();
         try
         {
@@ -1374,6 +1405,38 @@ class ApiV1RESTController extends FOSRestController
         }
     }
 
+    /**
+     *@Get("/readAllNotification")
+     * @param Request $request
+     * @View(serializerEnableMaxDepthChecks=true)
+     */
+    public function readAllNotificationAction(Request $request){
+
+        try{
+
+            $user = $this->getUser();
+            $em = $this->getDoctrine()->getEntityManager();
+            $qb = $em->createQueryBuilder();
+            $qb->update('UbidElectricityBundle:Notification n_')
+                ->set('n_.read', true)
+                ->where('n_.creatorUser = :user')
+                ->setParameter('user', $user);
+            $result = $qb->getQuery()->execute();
+            if($result){
+                return array(
+                    'message' => 'updated success',
+                    'status' => true
+                );
+            }
+            return array(
+                'message' => $this->get('translator')->trans('notification.error.readAll'),
+                'status' => false
+            );
+        }
+        catch(\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 }

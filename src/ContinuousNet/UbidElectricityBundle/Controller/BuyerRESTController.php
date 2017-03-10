@@ -82,15 +82,15 @@ class BuyerRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Buyer', 'b_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BuyerType', 'buyer_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.buyerType = buyer_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.country = country.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.language = language.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'first_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.firstMarketRegion = first_market_region.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'second_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.secondMarketRegion = second_market_region.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'third_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.thirdMarketRegion = third_market_region.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'b_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Buyer', 'buyer');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BuyerType', 'buyer_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.buyerType = buyer_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.country = country.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.language = language.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'first_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.firstMarketRegion = first_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'second_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.secondMarketRegion = second_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'third_market_region', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.thirdMarketRegion = third_market_region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'buyer.modifierUser = modifier_user.id');
             $textFields = array('buyer.name', 'buyer.description', 'buyer.mainProductsServices', 'buyer.referenceNumber', 'buyer.phone', 'buyer.fax', 'buyer.website', 'buyer.email', 'buyer.firstName', 'buyer.lastName', 'buyer.job', 'buyer.picture', 'buyer.address', 'buyer.zipCode', 'buyer.city', 'buyer.companyName', 'buyer.totalRevenu');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -108,7 +108,6 @@ class BuyerRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('buyer.', 'b_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
@@ -141,21 +140,20 @@ class BuyerRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('b_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('buyer.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(b_.id)');
+            $qb->select('count(buyer.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('buyer.', 'b_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('b_');
+            $qbList->select('buyer');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('b_.id');
+            $qbList->groupBy('buyer.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;
