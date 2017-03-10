@@ -508,21 +508,6 @@
                                     <label for="supplierCategory[[category.id]]">[[ category.name ]]</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-3-->
-                            <div class="form-group" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
-                                <label for="supplierCategory" class="control-label">
-                                    <span translate="content.list.fields.CATEGORY">Category</span>
-                                    <span class="symbol required"></span>
-                                </label>
-                                <div class="block select-list" ng-if="categoriesLoaded">
-                                        <span class="input-icon">
-                                            <select ng-readonly="tender_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.category" name="category" id="supplierCategory" class="form-control" ng-required="true">
-                                            </select>
-                                            <i class="fa fa-folder-o"></i>
-                                        </span><!--/input-icon-->
-                                </div>
-                                <span class="error text-small block" ng-if="supplierForm.category.$dirty && supplierForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
-                                <span class="success text-small block" ng-if="supplierForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
-                            </div><!--/form-group-->
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="supplierCategories" type="checkbox" id="supplierCategories" />
