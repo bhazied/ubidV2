@@ -2793,3 +2793,7 @@ body.underPage footer {
 .padding-right-0{
     padding-right: 0px;
 }
+
+.selectMultiple .select-list:after{
+    content : "" !important;
+}

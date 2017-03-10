@@ -1607,7 +1607,8 @@
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
         "LASTNAMEREQUIRED": "Last name is required",
-        "GCREQUIRED": "Please accept the general conditions"
+        "GCREQUIRED": "Please accept the general conditions",
+        "CATEGORYREQUIRED" : "Categories is required"
       }
     },
     "common": {

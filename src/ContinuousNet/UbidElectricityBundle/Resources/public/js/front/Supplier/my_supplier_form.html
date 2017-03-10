@@ -451,12 +451,12 @@
                                 <span class="symbol required"></span>
                             </label>
                             <div class="col-md-6">
-                                <div class="form-group" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
+                                <div class="form-group selectMultiple" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select multiple ng-readonly="tender_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.categories" name="category" id="supplierCategory" class="form-control" ng-required="true">
+                                            <select multiple  ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.categories" name="category" id="supplierCategory" class="form-control" ng-required="true">
                                             </select>
-
+                                            <i class="fa fa-folder-open"></i>
                                         </span><!--/input-icon-->
                                     </div>
                                     <span class="error text-small block" ng-if="supplierForm.category.$dirty && supplierForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
