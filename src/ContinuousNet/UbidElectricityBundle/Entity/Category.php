@@ -153,10 +153,10 @@ class Category
     private $tendersMetaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`tenders_meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`tenders_meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -186,10 +186,10 @@ class Category
     private $consultationsMetaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`consultations_meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`consultations_meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -219,10 +219,10 @@ class Category
     private $buyersMetaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`buyers_meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`buyers_meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -252,10 +252,10 @@ class Category
     private $suppliersMetaDescription;
 
     /**
-     * @var array
+     * @var string
      * @access private
      *
-     * @ORM\Column(name="`suppliers_meta_keywords`", type="array", nullable=true, unique=false)
+     * @ORM\Column(name="`suppliers_meta_keywords`", type="text", nullable=true, unique=false)
      * 
      * @Expose
      * 
@@ -547,7 +547,7 @@ class Category
      * Get metaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getMetaKeywords()
     {
@@ -606,10 +606,10 @@ class Category
      * Set tendersMetaKeywords
      *
      * @access public
-     * @param array $tendersMetaKeywords
+     * @param string $tendersMetaKeywords
      * @return Category
      */
-    public function setTendersMetaKeywords(array $tendersMetaKeywords = null)
+    public function setTendersMetaKeywords($tendersMetaKeywords = null)
     {
         $this->tendersMetaKeywords = $tendersMetaKeywords;
         return $this;
@@ -619,7 +619,7 @@ class Category
      * Get tendersMetaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getTendersMetaKeywords()
     {
@@ -678,10 +678,10 @@ class Category
      * Set consultationsMetaKeywords
      *
      * @access public
-     * @param array $consultationsMetaKeywords
+     * @param string $consultationsMetaKeywords
      * @return Category
      */
-    public function setConsultationsMetaKeywords(array $consultationsMetaKeywords = null)
+    public function setConsultationsMetaKeywords($consultationsMetaKeywords = null)
     {
         $this->consultationsMetaKeywords = $consultationsMetaKeywords;
         return $this;
@@ -691,7 +691,7 @@ class Category
      * Get consultationsMetaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getConsultationsMetaKeywords()
     {
@@ -750,10 +750,10 @@ class Category
      * Set buyersMetaKeywords
      *
      * @access public
-     * @param array $buyersMetaKeywords
+     * @param string $buyersMetaKeywords
      * @return Category
      */
-    public function setBuyersMetaKeywords(array $buyersMetaKeywords = null)
+    public function setBuyersMetaKeywords($buyersMetaKeywords = null)
     {
         $this->buyersMetaKeywords = $buyersMetaKeywords;
         return $this;
@@ -763,7 +763,7 @@ class Category
      * Get buyersMetaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getBuyersMetaKeywords()
     {
@@ -822,10 +822,10 @@ class Category
      * Set suppliersMetaKeywords
      *
      * @access public
-     * @param array $suppliersMetaKeywords
+     * @param string $suppliersMetaKeywords
      * @return Category
      */
-    public function setSuppliersMetaKeywords(array $suppliersMetaKeywords = null)
+    public function setSuppliersMetaKeywords($suppliersMetaKeywords = null)
     {
         $this->suppliersMetaKeywords = $suppliersMetaKeywords;
         return $this;
@@ -835,7 +835,7 @@ class Category
      * Get suppliersMetaKeywords
      *
      * @access public
-     * @return array 
+     * @return string
      */
     public function getSuppliersMetaKeywords()
     {
