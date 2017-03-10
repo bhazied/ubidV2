@@ -384,7 +384,7 @@
                                 </div> -->
                                 <div class="block select-list">
                                         <span class="input-icon">
-                                            <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="tender.categories" name="category[]" id="tenderCategory" class="form-control" ng-required="true">
+                                            <select multiple ng-options="item.id as item.title for item in categories | filter:categoriesSearchText " ng-model="tender.categories" name="category[]" id="tenderCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-sitemap"></i>
                                         </span><!--/input-icon-->

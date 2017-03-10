@@ -341,8 +341,18 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 $scope.categories.push({});
                 var def = $q.defer();
                 $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
-                    $scope.categories = data.results;
-                    def.resolve($scope.categories);
+                    $timeout(function(){
+                    if(data.results.length > 0){
+                        data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
+                        for (var i in data.results) {
+                            $scope.categories.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.categories);
+                    }
+                 });
                 });
                 return def;
             } else {

@@ -46,6 +46,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     $scope.details = function(row) {
         $state.go('front.myproducts.details', {id: row.id});
     };
+    
 
 }]);
 

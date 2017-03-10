@@ -123,6 +123,68 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
             meta_keywords: ''
         };
 
+
+
+        $rootScope.pageTitle = function() {
+            return ($rootScope.seo.meta_title || $rootScope.app.name);
+        };
+
+        $rootScope.pageDescription = function() {
+            return ($rootScope.seo.meta_description || $rootScope.app.description);
+        };
+
+        $rootScope.pageKeywords = function() {
+            return ($rootScope.seo.meta_keywords || $rootScope.app.keywords);
+        };
+
+        $rootScope.createTree = function (items, parentField, labelField, parentId, level) {
+            var tree = [];
+            for (var i in items) {
+                var addToTree = false;
+                if (parentId == null && items[i][parentField] == null) {
+                    addToTree = true;
+                } else if (items[i][parentField] != null) {
+                    if (items[i][parentField].id == parentId) {
+                        addToTree = true;
+                    }
+                }
+                if (addToTree) {
+                    if (level > 0) {
+                        var newLabel = '╚';
+                        newLabel += '═'.repeat(level);
+                        newLabel += ' '+items[i][labelField];
+                        items[i][labelField] = newLabel;
+                    }
+                    tree.push(items[i]);
+                    var children = $rootScope.createTree(items, parentField, labelField, items[i].id, level+1);
+                    for (var j in children) {
+                        tree.push(children[j]);
+                    }
+                }
+            }
+            return tree;
+        };
+
+        $rootScope.checkStatePermission = function (state) {
+            if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
+                return true;
+            } else {
+                if (
+                    state.indexOf('supplierproduct') > -1 ||
+                    state.indexOf('supplier') > -1 ||
+                    state.indexOf('buyer') > -1 ||
+                    state.indexOf('tender') > -1 ||
+                    state.indexOf('bid') > -1
+                ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        };
+
+
+
     }]);
 
 // translate config
@@ -585,7 +647,8 @@ app.constant('APP_JS_REQUIRES', {
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
         'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
-        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js',
+        'ModalPostCtrl': '/bundles/ubidelectricity/js/front/Post/ModalPostCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -975,7 +1038,7 @@ app.config(['$stateProvider',
             url: '/register/:type',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/register.html',
             title: 'front.REGISTER',
-            resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService', 'RegisterService')
+            resolve: loadSequence('sweet-alert', 'oitozero.ngSweetAlert', 'RegisterFrontCtrl', 'RegisterService', 'countryService', 'groupService', 'languageService', 'userService', 'RegisterService', 'postFrontService', 'ModalPostCtrl')
         }).state('front.resetpassword', {
             url: '/reset-password',
             templateUrl: '/bundles/ubidelectricity/js/front/Auth/reset_password.html',
@@ -1141,7 +1204,7 @@ app.config(['$stateProvider',
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.EDITPRODUCT',
-            resolve: loadSequence('MyProductFromCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+            resolve: loadSequence('MyProductFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         }).state('front.myproducts.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
