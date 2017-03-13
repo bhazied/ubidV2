@@ -4456,3 +4456,7 @@ body.underPage footer {
 .selectMultiple .select-list:after{
     content : "" !important;
 }
+
+.hiddenSlug{
+    display: none;
+}

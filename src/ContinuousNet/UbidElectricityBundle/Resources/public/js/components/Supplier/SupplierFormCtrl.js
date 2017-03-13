@@ -227,6 +227,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 }
             }
         }
+        console.log($scope.supplier.categories);
     });
 
     $scope.redirect = true;

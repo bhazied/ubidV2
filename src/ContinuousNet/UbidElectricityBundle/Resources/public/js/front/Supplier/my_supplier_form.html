@@ -445,23 +445,30 @@
                         </div><!--/row-->
 
                         <div class="row">
-
-                            <label for="supplierCategory" class="control-label col-md-12">
-                                <span translate="content.list.fields.CATEGORY">Category</span>
-                                <span class="symbol required"></span>
-                            </label>
-                            <div class="col-md-6">
-                                <div class="form-group selectMultiple" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
-                                    <div class="block select-list" ng-if="categoriesLoaded">
-                                        <span class="input-icon">
-                                            <select multiple  ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.categories" name="category" id="supplierCategory" class="form-control" ng-required="true">
-                                            </select>
-                                            <i class="fa fa-folder-open"></i>
-                                        </span><!--/input-icon-->
-                                    </div>
-                                    <span class="error text-small block" ng-if="supplierForm.category.$dirty && supplierForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
-                                    <span class="success text-small block" ng-if="supplierForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
+                            <div class="col-md-12">
+                                <label for="supplierCategories" class="control-label">
+                                    <span translate="content.list.fields.CATEGORIES">Categories</span>
+                                    <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
+                                </label>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="supplierCategories" class="control-label col-md-12">
+                                    <span translate="content.list.fields.CATEGORY">Category</span>
+                                    <span class="symbol required"></span>
+                                </label>
+                                <div class="col-md-6">
+                                    <div class="form-group selectMultiple" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
+                                        <div class="block select-list" ng-if="categoriesLoaded">
+                                            <span class="input-icon">
+                                                <select multiple  ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.categories" name="category" id="supplierCategory" class="form-control" ng-required="true">
+                                                </select>
+                                                <i class="fa fa-folder-open"></i>
+                                            </span><!--/input-icon-->
+                                        </div>
+                                        <span class="error text-small block" ng-if="supplierForm.category.$dirty && supplierForm.category.$error.required" translate="content.form.messages.CATEGORYREQUIRED">Category is required.</span>
+                                        <span class="success text-small block" ng-if="supplierForm.category.$valid" translate="content.form.messages.OK">Ok!</span>
+                                    </div><!--/form-group-->
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
