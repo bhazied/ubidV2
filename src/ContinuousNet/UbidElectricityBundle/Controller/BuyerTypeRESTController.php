@@ -106,9 +106,9 @@ class BuyerTypeRESTController extends BaseRESTController
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -117,14 +117,14 @@ class BuyerTypeRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'buyerType.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'buyerType.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
