@@ -221,7 +221,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
             if(!angular.isDefined(searchText)){
-                toaster.pop('error', 'You must enter some words to search', 'search info');
+                toaster.pop('error', 'search info', $filter('translate')('front.EMPTYSEARCHALERT'));
                 return false;
             }
             else {
