@@ -279,7 +279,7 @@ class ApiV1RESTController extends FOSRestController
             $jsonData['language'] = $language->getId();
             unset($jsonData['locale']);
             unset($jsonData['countryChoise']);
-            unset($jsonData['cg']);
+            unset($jsonData['gc']);
             $group = $this->getGroupByName('Subscriber');
             $jsonData['groups'] = array($group->getId());
 
