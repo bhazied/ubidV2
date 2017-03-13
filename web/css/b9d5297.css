@@ -2315,6 +2315,8 @@ body {
     padding: 0;
     list-style: none;
     height: 30px;
+    display: flex;
+    display: flex;
 }
 
 .footer-center ul li {
@@ -2387,6 +2389,12 @@ body {
     /*background-image: url('/front/img/yt.png');*/
     content: "\f166";
     color: #e02a20;
+}
+
+.footer-center ul li a.ins {
+    background-image: url('/front/img/ins.png');
+    /*content: "\f16d";
+    color: #e02a20;*/
 }
 
 p.keep-in-touch {
