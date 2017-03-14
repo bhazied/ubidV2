@@ -70,21 +70,21 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="hiddenSlug col-md-6">
+                            <div class="col-md-6">
 
-                                    <slug from="supplierProduct.name" to="supplierProduct.slug"></slug>
-                                <div class="form-group" ng-class="{'has-error':supplierProductForm.slug.$dirty && supplierProductForm.slug.$invalid, 'has-success':supplierProductForm.slug.$valid}">
-                                    <label for="supplierProductSlug" class="control-label">
+                                <!--<div class="form-group" ng-class="{'has-error':supplierProductForm.slug.$dirty && supplierProductForm.slug.$invalid, 'has-success':supplierProductForm.slug.$valid}">
+                                    <!--<label for="supplierProductSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
                                         <span class="symbol required"></span>
-                                    </label>
+                                    </label>-->
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.slug" type="text" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
-                                        <i class="ti-anchor"></i>
+                                        <slug from="supplierProduct.name" to="supplierProduct.slug"></slug>
+                                        <input ng-model="supplierProduct.slug" type="hidden" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <!--<i class="ti-anchor"></i>-->
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
-                                    <span class="success text-small block" ng-if="supplierProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
+                                    <!--<span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>--
+                                <!--</div><!--/form-group-->
 
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
