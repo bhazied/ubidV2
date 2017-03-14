@@ -382,8 +382,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
+                return;
             });
-            return false;
         };
 
         $scope.logout = function(){

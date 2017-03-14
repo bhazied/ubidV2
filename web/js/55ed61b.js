@@ -68960,7 +68960,7 @@ app.config(['$stateProvider',
             title : 'front.MYALERTS',
             resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
         }).state('front.myAlerts.details', {
-            url: '/details',
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
             title : 'front.MYALERTS',
             resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
@@ -72368,8 +72368,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
+                return;
             });
-            return false;
         };
 
         $scope.logout = function(){
