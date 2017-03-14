@@ -59,9 +59,13 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                 $scope.disableBookmark = false;
             });
         }
+
+
+        $scope.list= function (section) {
+            $state.go('front.tenders', {section: section});
+        }
         
     }]);
-
 
 app.directive("myTenderShow",['$rootScope','$localStorage', function($rootScope, $localStorage){
     return {
