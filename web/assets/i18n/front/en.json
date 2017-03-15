@@ -1573,7 +1573,7 @@
         "ENTERPASSWORD": "Enter the Password",
         "PASSWORDREQUIRED": "The Password is required",
         "REENTERPASSWORD": "Re-enter the Password",
-        "REPEATPASSWORDREQUIRED": "The Repeat Password is required",
+        "REPEATPASSWORDREQUIRED": "The Password is required",
         "ENTERSALT": "Enter the Salt",
         "SALTALREADYINUSE": "This Salt is already in use. Please choose another one.",
         "ENTERUSERNAMECANONICAL": "Enter the Username Canonical",
@@ -1611,7 +1611,10 @@
         "LASTNAMEREQUIRED": "Last name is required",
         "GCREQUIRED": "Please accept the general conditions",
         "CATEGORYREQUIRED" : "Categories is required",
-        "DESCRIPTIONREQUIRED" : "Description is required"
+        "DESCRIPTIONREQUIRED" : "Description is required",
+        "CURRENTPASSWORDERROR" : "Current password error!",
+        "CURRENTPASSWORDOK" : "Current OK!"
+
       }
     },
     "common": {

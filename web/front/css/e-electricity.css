@@ -2409,6 +2409,6 @@ body.underPage footer {
     content : "" !important;
 }
 
-.hiddenSlug{
-    display: none;
+.table .img-thumbnail {
+    max-height: 100px;
 }

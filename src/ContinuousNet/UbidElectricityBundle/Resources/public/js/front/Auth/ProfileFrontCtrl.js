@@ -211,7 +211,7 @@ app.directive('regexPhone', function(){
         link: function(scope, element, attrs, modelCtrl) {
 
             modelCtrl.$parsers.push(function (inputValue) {
-                var transformedInput =  inputValue ? inputValue.replace(/[^\+?\d]/g,'') : null;
+                var transformedInput = inputValue ? inputValue.replace(/[^\+?\d]/g,'') : null;
 
                 if (transformedInput!=inputValue) {
                     modelCtrl.$setViewValue(transformedInput);

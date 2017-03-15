@@ -460,7 +460,7 @@
                                     <div class="form-group selectMultiple" ng-class="{'has-error':supplierForm.category.$dirty && supplierForm.category.$invalid, 'has-success':supplierForm.category.$valid}">
                                         <div class="block select-list" ng-if="categoriesLoaded">
                                             <span class="input-icon">
-                                                <select multiple  ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplier.categories" name="category" id="supplierCategory" class="form-control" ng-required="true">
+                                                <select multiple  ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="supplier.categories" name="category[]" id="supplierCategorie" class="form-control" ng-required="true">
                                                 </select>
                                                 <i class="fa fa-folder-open"></i>
                                             </span><!--/input-icon-->
@@ -473,10 +473,40 @@
                             <div class="col-md-12">
                                 <div class="checkbox continuous-check check-primary">
                                     <input ng-model="supplierCategories" type="checkbox" id="supplierCategories" />
-                                    <label class="all" for="supplierCategories" translate="content.common.SELECTALL">Select All</label>
+                                    <label for="supplierCategories" translate="content.common.SELECTALL">Select All</label>
                                 </div><!--/checkbox-->
                             </div><!--/col-md-12-->
                         </div><!--/row-->
+
+                          <!--  <div class="row">
+                                <div class="col-md-12">
+                                    <label for="supplierCategories" class="control-label">
+                                        <span translate="content.list.fields.CATEGORIES">Categories</span>
+                                        <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
+                                    </label>
+                                </div><!--/col-md-12-->
+                                <!--<div class="col-md-6" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">-->
+                          <!--      <div class="col-md-12">
+                                    <!--<div class="checkbox continuous-check check-primary">
+                                        <input checklist-model="tender.categories" checklist-value="category.id" type="checkbox" name="category[]" id="tenderCategory[[category.id]]" />
+                                        <label for="tenderCategory[[category.id]]">[[ category.name ]]</label>
+                                    </div> -->
+                          <!--          <div class="block select-list">
+                                        <span class="input-icon">
+                                            <select multiple ng-options="item.id as item.title for item in categories | filter:categoriesSearchText " ng-model="supplier.categories" name="category[]" id="tenderCategory" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                           <!--         </div>
+                                </div><!--/col-md-3-->
+                           <!--     <div class="col-md-12">
+                                    <div class="checkbox continuous-check check-primary">
+                                        <input ng-model="supplierCategories" type="checkbox" id="supplierCategories" />
+                                        <label for="supplierCategories" translate="content.common.SELECTALL">Select All</label>
+                                    </div><!--/checkbox-->
+                          <!--      </div><!--/col-md-12-->
+                           <!-- </div><!--/row-->
+
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">

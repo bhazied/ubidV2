@@ -230,6 +230,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         console.log($scope.supplier.categories);
     });
 
+
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
         $scope.redirect = redirect;
