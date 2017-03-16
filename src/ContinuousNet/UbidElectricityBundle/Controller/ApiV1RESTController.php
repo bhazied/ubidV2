@@ -596,7 +596,7 @@ class ApiV1RESTController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $user = $em->getRepository('UbidElectricityBundle:User')->find($this->getUser()->getId());
             $fields = array(
-                'firstName', 'lastName', 'gender', 'country', 'language', 'phone'
+                'firstName', 'lastName', 'gender', 'country', 'language', 'phone', 'picture'
             );
             foreach ($fields as $field) {
                 $value =  !is_null($request->request->get($field))  ? $request->request->get($field) : null;

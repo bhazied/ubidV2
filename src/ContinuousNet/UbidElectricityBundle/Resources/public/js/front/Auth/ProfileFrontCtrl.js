@@ -92,6 +92,10 @@ app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localSt
             $timeout(function () {
             $profileDataFactory.getProfile({locale: $localStorage.language}).$promise.then(function (data) {
                     $scope.user = data ;
+                if(data.picture != null){
+                    $rootScope.user.picture = data.picture;
+                    $localStorage.user.picture = data.picture;
+                }
                 if(data.country != null){
                     $scope.myCountry =  $scope.user.country;
                     $scope.user.country =  $scope.user.country.id;
@@ -183,7 +187,7 @@ app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localSt
             { title: $filter('translate')('profile.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
             { title: $filter('translate')('profile.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' }
         ];
-        
+
     }]);
 
 
