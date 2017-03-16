@@ -784,6 +784,8 @@
       "VISITDELETED": "Visit Deleted",
       "VISITNOTDELETED": "Visit Not Deleted",
       "BACKVISITS": "Back To Visits List",
+      "TENDERBOOKMARKDETAILS" : "Tender Bookmark Details",
+      "BACKTENDERBOOKMARKS" : "Back To Tender Bookmark List",
       "fieldsets": {
         "ALERT" : {
           "DEFAULT" : "Default"
@@ -1571,7 +1573,7 @@
         "ENTERPASSWORD": "Enter the Password",
         "PASSWORDREQUIRED": "The Password is required",
         "REENTERPASSWORD": "Re-enter the Password",
-        "REPEATPASSWORDREQUIRED": "The Repeat Password is required",
+        "REPEATPASSWORDREQUIRED": "The Password is required",
         "ENTERSALT": "Enter the Salt",
         "SALTALREADYINUSE": "This Salt is already in use. Please choose another one.",
         "ENTERUSERNAMECANONICAL": "Enter the Username Canonical",
@@ -1607,7 +1609,12 @@
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
         "LASTNAMEREQUIRED": "Last name is required",
-        "GCREQUIRED": "Please accept the general conditions"
+        "GCREQUIRED": "Please accept the general conditions",
+        "CATEGORYREQUIRED" : "Categories is required",
+        "DESCRIPTIONREQUIRED" : "Description is required",
+        "CURRENTPASSWORDERROR" : "Current password error!",
+        "CURRENTPASSWORDOK" : "Current OK!"
+
       }
     },
     "common": {

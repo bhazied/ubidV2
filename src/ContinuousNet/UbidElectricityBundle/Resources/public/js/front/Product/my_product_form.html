@@ -72,23 +72,21 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                    <slug from="supplierProduct.name" to="supplierProduct.slug"></slug>
-                                <div class="form-group" ng-class="{'has-error':supplierProductForm.slug.$dirty && supplierProductForm.slug.$invalid, 'has-success':supplierProductForm.slug.$valid}">
-                                    <label for="supplierProductSlug" class="control-label">
+                                <!--<div class="form-group" ng-class="{'has-error':supplierProductForm.slug.$dirty && supplierProductForm.slug.$invalid, 'has-success':supplierProductForm.slug.$valid}">
+                                    <!--<label for="supplierProductSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
                                         <span class="symbol required"></span>
-                                    </label>
+                                    </label>-->
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.slug" type="text" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
-                                        <i class="ti-anchor"></i>
+                                        <slug from="supplierProduct.name" to="supplierProduct.slug"></slug>
+                                        <input ng-model="supplierProduct.slug" type="hidden" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <!--<i class="ti-anchor"></i>-->
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
-                                    <span class="success text-small block" ng-if="supplierProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
+                                    <!--<span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
+                                    <span class="success text-small block" ng-if="supplierProductForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>--
+                                <!--</div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -102,6 +100,9 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -115,8 +116,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -130,6 +129,9 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -159,6 +161,17 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="supplierProductUnitCost" class="control-label">
+                                        <span translate="content.list.fields.UNITCOST">Unit Cost</span>
+                                        <span>$</span>
+                                    </label>
+                                    <input ng-model="supplierProduct.unit_cost" type="text" name="unitCost" id="supplierProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
@@ -183,16 +196,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="supplierProductUnitCost" class="control-label">
-                                        <span translate="content.list.fields.UNITCOST">Unit Cost</span>
-                                    </label>
-                                        <input ng-model="supplierProduct.unit_cost" type="text" name="unitCost" id="supplierProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
@@ -203,7 +206,7 @@
                                 </div><!--/checkbox continuous-check check-primary-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
+                            <!--<div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':supplierProductForm.views.$dirty && supplierProductForm.views.$invalid, 'has-success':supplierProductForm.views.$valid}">
                                     <label for="supplierProductViews" class="control-label">
@@ -213,7 +216,7 @@
                                     <span class="input-icon">
                                         <input ng-model="supplierProduct.views" type="text" name="views" id="supplierProductViews" class="form-control" placeholder="[[ 'content.form.messages.ENTERVIEWS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
+                                    </span>
                                     <span class="error text-small block" ng-if="supplierProductForm.views.$dirty && supplierProductForm.views.$error.required" translate="content.form.messages.VIEWSREQUIRED">Views is required.</span>
                                     <span class="success text-small block" ng-if="supplierProductForm.views.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->

@@ -2315,6 +2315,8 @@ body {
     padding: 0;
     list-style: none;
     height: 30px;
+    display: flex;
+    display: flex;
 }
 
 .footer-center ul li {
@@ -2387,6 +2389,12 @@ body {
     /*background-image: url('/front/img/yt.png');*/
     content: "\f166";
     color: #e02a20;
+}
+
+.footer-center ul li a.ins {
+    background-image: url('/front/img/ins.png');
+    /*content: "\f16d";
+    color: #e02a20;*/
 }
 
 p.keep-in-touch {
@@ -3638,7 +3646,7 @@ fieldset h2 {
     background-color: #E7F2FD!important;
     padding-top: 15px;
     padding-bottom: 15px;
-    min-height: 800px!important;
+    min-height: 500px!important;
 }
 
 #front-content .bg-blue .table-responsive {
@@ -4443,4 +4451,12 @@ body.underPage footer {
 }
 .padding-right-0{
     padding-right: 0px;
+}
+
+.selectMultiple .select-list:after{
+    content : "" !important;
+}
+
+.table .img-thumbnail {
+    max-height: 100px;
 }
