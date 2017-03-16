@@ -3,8 +3,8 @@
 /**
  * Controller for user profile
  */
-app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert','$window',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert, $window) {
+app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert','$window',
+    function ($element,$scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert, $window) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -183,6 +183,7 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             { title: $filter('translate')('profile.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
             { title: $filter('translate')('profile.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' }
         ];
+        
     }]);
 
 
