@@ -2,6 +2,19 @@
     <div ng-if="!loaded" class="svg-loader">
     </div>
     <div class="tender-preview" ng-if="loaded">
+        <div class="row list-toolbox">
+            <div class="col-md-4 margin-bottom-10">
+                <button ng-click="list()" class="btn btn-primary pull-left">
+                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
+                </button>
+            </div>
+            <div class="col-md-4 margin-bottom-10 text-center">
+
+            </div>
+            <div class="col-md-4 margin-bottom-10">
+
+            </div>
+        </div><!--/list-toolbox-->
         <h1 class="name" ng-bind="buyer.name"></h1>
         <div class="pb-1 clearfix">
             <img ng-if="buyer.picture" src="[[ buyer.picture ]]" alt="[[ buyer.name ]]" class="pull-right img-thumbnail" />
@@ -137,7 +150,11 @@
             </div><!--/table-responsive-->
         </div>
         <div class="row">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <button ng-click="list()" class="btn btn-primary pull-left">
+                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKBUYERS">Back to Buyers list</span>
+                </button>
+            </div>
             <div class="col-md-6">
                 <!--<button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>-->
                 <button ui-sref="front.messages.send({id: buyer.id, to:'buyer'})" ng-if="user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message" ><i class="fa fa-envelope-o"></i></button>

@@ -65,6 +65,10 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         
         $scope.getSupplier();
         $scope.getSupplierProducts();
+
+        $scope.list = function () {
+            $state.go('front.suppliers');
+        }
         
 
     }]);

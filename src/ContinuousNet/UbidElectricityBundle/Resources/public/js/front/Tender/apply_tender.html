@@ -30,26 +30,6 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <!--<div class="col-md-6">-->
-                                <input type="hidden" value="[[bid.tender]]" ng-model="bid.tender" name="tender" id="bidTender">
-                            <div class="col-md-6">
-
-                                <div class="form-group" ng-class="{'has-error':bidForm.title.$dirty && bidForm.title.$invalid, 'has-success':bidForm.title.$valid}">
-                                    <label for="bidTitle" class="control-label">
-                                        <span translate="content.list.fields.TITLE">Title</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-model="bid.title" type="text" name="title" id="bidTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
-                                        <i class="fa fa-tags"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="bidForm.title.$dirty && bidForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
-                                    <span class="success text-small block" ng-if="bidForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
                             <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':bidForm.supplier.$dirty && bidForm.supplier.$invalid, 'has-success':bidForm.supplier.$valid}">
@@ -69,6 +49,27 @@
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <!--<div class="col-md-6">-->
+                                <input type="hidden" value="[[bid.tender]]" ng-model="bid.tender" name="tender" id="bidTender">
+                            <div class="col-md-12">
+
+                                <div class="form-group" ng-class="{'has-error':bidForm.title.$dirty && bidForm.title.$invalid, 'has-success':bidForm.title.$valid}">
+                                    <label for="bidTitle" class="control-label">
+                                        <span translate="content.list.fields.TITLE">Title</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-model="bid.title" type="text" name="title" id="bidTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-tags"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="bidForm.title.$dirty && bidForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
+                                    <span class="success text-small block" ng-if="bidForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+
                         </div><!--/row-->
                         <div class="row">
 
@@ -93,7 +94,7 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':bidForm.reference.$dirty && bidForm.reference.$invalid, 'has-success':bidForm.reference.$valid}">
+                                <!--<div class="form-group" ng-class="{'has-error':bidForm.reference.$dirty && bidForm.reference.$invalid, 'has-success':bidForm.reference.$valid}">
                                     <label for="bidReference" class="control-label">
                                         <span translate="content.list.fields.REFERENCE">Reference</span>
                                         <span class="symbol required"></span>
@@ -101,10 +102,10 @@
                                     <span class="input-icon">
                                         <input ng-model="bid.reference" type="text" name="reference" id="bidReference" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCE' | translate ]]" ng-required="true" />
                                         <i class="fa fa-hashtag"></i>
-                                    </span><!--/input-icon-->
+                                    </span>
                                     <span class="error text-small block" ng-if="bidForm.reference.$dirty && bidForm.reference.$error.required" translate="content.form.messages.REFERENCEREQUIRED">Reference is required.</span>
                                     <span class="success text-small block" ng-if="bidForm.reference.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
+                                </div>-->
 
                             </div><!--/col-md-6-->
                             <div class="col-md-12">
@@ -179,7 +180,7 @@
 
                             </div><!--/col-md-6-->
                         </div><!--/row-->
-                        <div class="row">
+                       <!-- <div class="row">
                             <div class="col-md-6">
 
                                 <div class="form-group">
@@ -189,11 +190,11 @@
                                     <span class="input-icon">
                                         <input ng-model="bid.note" type="text" name="note" id="bidNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
-                                </div><!--/form-group-->
+                                    </span>
+                                </div>
 
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
+                            </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">

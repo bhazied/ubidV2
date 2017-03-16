@@ -68960,7 +68960,7 @@ app.config(['$stateProvider',
             title : 'front.MYALERTS',
             resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
         }).state('front.myAlerts.details', {
-            url: '/details',
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
             title : 'front.MYALERTS',
             resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
@@ -72344,6 +72344,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 password: $scope.password
             };
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
+                if(data.code == 401){
+                    $scope.status = 'error';
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), data.message);
+                    return;
+                }
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
@@ -72364,8 +72369,8 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
+                return;
             });
-            return false;
         };
 
         $scope.logout = function(){
@@ -72909,7 +72914,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
             if(!angular.isDefined(searchText)){
-                toaster.pop('error', 'You must enter some words to search', 'search info');
+                toaster.pop('error', 'search info', $filter('translate')('front.EMPTYSEARCHALERT'));
                 return false;
             }
             else {

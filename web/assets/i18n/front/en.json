@@ -1847,14 +1847,14 @@
     "WEBSITE": "Website",
     "CONTACT": "Contact",
     "SORTBY": "Sort By",
-    "NAMEASC": "Name ASC",
-    "NAMEDESC": "Name DESC",
-    "VIEWSASC": "Views ASC",
-    "VIEWSDESC": "Views DESC",
-    "TITLEASC": "Title ASC",
-    "TITLEDESC": "Title DESC",
-    "DUEDATEASC": "Due date ASC",
-    "DUEDATEDESC": "Due date DESC",
+    "NAMEASC": "Name ↑",
+    "NAMEDESC": "Name ↓",
+    "VIEWSASC": "Views ↑",
+    "VIEWSDESC": "Views ↓",
+    "TITLEASC": "Title ↑",
+    "TITLEDESC": "Title ↓",
+    "DUEDATEASC": "Due date ↑",
+    "DUEDATEDESC": "Due date ↓",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",
@@ -1966,6 +1966,8 @@
     "NOTIFICATIONS" : "Notifications",
     "MARKALLASREAD" : "Mark all as read",
     "ALERTPARAMS": "parameters",
-    "NOTIFCATIONREADALLERROR": "An error occurred during the requested update"
+    "NOTIFCATIONREADALLERROR": "An error occurred during the requested update",
+    "ALERTSETTINGSHEADER": "Success",
+    "ALERTSETTINGSMESSAGE": "Your alert settings are updated"
   }
 }

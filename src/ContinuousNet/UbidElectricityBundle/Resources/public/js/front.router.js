@@ -380,7 +380,7 @@ app.config(['$stateProvider',
             title : 'front.MYALERTS',
             resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
         }).state('front.myAlerts.details', {
-            url: '/details',
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
             title : 'front.MYALERTS',
             resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
