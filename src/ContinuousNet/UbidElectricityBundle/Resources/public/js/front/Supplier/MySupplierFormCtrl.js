@@ -150,6 +150,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             value: "Over $1 billion"
         }
     ];
+
     /*$scope.$watch('countries', function () {
         if($scope.countries.length > 0){
             var defaultCountry = {id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')};
