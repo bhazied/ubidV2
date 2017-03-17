@@ -1285,7 +1285,8 @@
           "WEEKLY":"Weekly",
           "MONTHLY":"Monthly"
         },
-        "PERIOD": "Period"
+        "PERIOD": "Period",
+        "MUSTBEATLEAST8CHARACTERSLONG" : "(must be at least 8 characters long)"
       }
     },
     "form": {

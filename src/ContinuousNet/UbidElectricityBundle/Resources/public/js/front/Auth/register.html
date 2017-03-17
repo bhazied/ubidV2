@@ -32,6 +32,8 @@
                     <label class="control-label">
                         <span translate="content.list.fields.PASSWORD">Password</span>
                         <span class="symbol required"></span>
+                        <span class="text-indicatif" translate="content.list.fields.MUSTBEATLEAST8CHARACTERSLONG"> (must be at least 8 characters long)</span>
+
                     </label>
                         <span class="input-icon">
                             <input  ng-minlength="8" ng-maxlength="20" autocomplete="off" type="password" placeholder="[[ 'content.list.fields.PASSWORD' | translate ]]" class="form-control" name="password"  id="password" ng-model="user.plainPassword.first" ng-required="true"/>
