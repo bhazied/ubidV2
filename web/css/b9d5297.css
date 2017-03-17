@@ -3035,6 +3035,7 @@ h1 {
 
 h2 {
     font-size: 1rem;
+    border-bottom: 2px  solid #DFE6F0 !important;
 }
 
 h3, h3 a {
@@ -4460,6 +4461,7 @@ body.underPage footer {
 .table .img-thumbnail {
     max-height: 100px;
 }
+
 .text-indicatif{
-    font-size: 10px;
+    font-size: 11px;
 }

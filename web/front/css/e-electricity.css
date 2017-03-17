@@ -2412,6 +2412,11 @@ body.underPage footer {
 .table .img-thumbnail {
     max-height: 100px;
 }
+
 .text-indicatif{
-    font-size: 10px;
+    font-size: 11px;
+}
+
+#front-content h2{
+    border-bottom: 3px  solid #DFE6F0 !important;
 }
