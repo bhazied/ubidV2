@@ -179,8 +179,7 @@ app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localSt
                 });
             }
         }
-
-        $scope.phoneNumbr = /^\+?\d+$/;
+        
         
         $scope.tabs = [
             { title: $filter('translate')('profile.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },

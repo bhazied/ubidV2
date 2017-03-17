@@ -174,10 +174,11 @@
                         <span translate="content.list.fields.PHONE">Phone</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-required="true">
+                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-required="true" ng-pattern="phonePattern">
                         <i class="fa fa-phone"></i>
                     </span>
                     <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.PHONEREQUIRED">Phone is required.</span>
+                    <span class="error" ng-show="registerForm.userPhone.$error.pattern" translate="content.form.messages.INVALIDPHONENUMBER">Invalid phone number</span>
                 </div>
 
             </div>

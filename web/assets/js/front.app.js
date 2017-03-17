@@ -15,6 +15,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         $rootScope.languages = languages;
         $rootScope.countLanguages = Object.keys(languages).length;
 
+        $rootScope.phonePattern= /^\+?\d+$/;
+
         $rootScope.underPage = true;
         if (angular.isDefined($sessionStorage.underPage)) {
             $rootScope.underPage = false;
