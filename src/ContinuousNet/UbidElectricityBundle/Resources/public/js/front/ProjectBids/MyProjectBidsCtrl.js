@@ -16,7 +16,7 @@ app.controller('MyProjectBidsCtrl', ['$scope','$controller', '$rootScope', '$sta
             $rootScope.showUserMenu = true;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1500);
 
         $scope.setCols = function() {
             $scope.cols = [

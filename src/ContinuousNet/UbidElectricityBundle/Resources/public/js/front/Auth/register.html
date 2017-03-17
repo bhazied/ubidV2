@@ -189,7 +189,14 @@
                     <div class="input-icon checkbox continuous-check check-primary">
                         <input name="gc" id="gc" ng-model="user.gc" type="checkbox" class="form-control"  placeholder="[[ 'content.list.fields.GENERALCONDITION' | translate ]]" ng-required="true">
                         <label for="gc" class="control-label">
-                            <span translate="front.IHAVEREADANDACCEPTTHE">I Accept the</span> <a ui-sref="front.post({slug:'general-conditions'})" ng-click="showCg('general-conditions')"><u translate="front.GENERALCONDITIONS">general conditions</u></a>.
+                            <span translate="front.IHAVEREADANDACCEPTTHE">I Accept the</span>
+                            <a ui-sref="front.post({slug:'general-conditions'})" ng-click="showCg('general-conditions')">
+                                <u translate="front.GENERALCONDITIONS">general conditions</u>
+                            </a>
+                            &nbsp;
+                            <a ui-sref="front.post({slug:'privacy-policy'})" ng-click="showCg('privacy-policy')">
+                                <u translate="front.PRIVACYPOLICY">Privacy policy</u>
+                            </a>.
                         </label>
                     </div>
                     <span class="error text-small block" ng-if="registerForm.gc.$dirty && registerForm.gc.$error.required" translate="content.form.messages.GCREQUIRED">Please accept the general conditions.</span>
