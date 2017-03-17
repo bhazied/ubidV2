@@ -47,7 +47,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.getDefaultProfile = function () {
         var name = "";
         if($localStorage.user.type == "Buyer"){
-            name = "Buye";
+            name = "Buy";
         }
         else if($localStorage.user.type == "Supplier"){
             name = "Sell";
