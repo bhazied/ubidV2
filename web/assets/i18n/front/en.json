@@ -1613,7 +1613,8 @@
         "CATEGORYREQUIRED" : "Categories is required",
         "DESCRIPTIONREQUIRED" : "Description is required",
         "CURRENTPASSWORDERROR" : "Current password error!",
-        "CURRENTPASSWORDOK" : "Current OK!"
+        "CURRENTPASSWORDOK" : "Current OK!",
+        "INVALIDPHONENUMBER" : "Invalid phone number"
 
       }
     },

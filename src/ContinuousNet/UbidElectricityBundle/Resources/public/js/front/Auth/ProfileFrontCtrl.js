@@ -180,8 +180,8 @@ app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localSt
             }
         }
 
-        $scope.onlyNumbers = "^\+?\d+$";
-
+        $scope.phoneNumbr = /^\+?\d+$/;
+        
         $scope.tabs = [
             { title: $filter('translate')('profile.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
             { title: $filter('translate')('profile.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
@@ -207,24 +207,4 @@ app.directive('passwordCheck', function($profileDataFactory, $timeout, $localSto
             }
         }
     }
-});
-
-
-app.directive('regexPhone', function(){
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attrs, modelCtrl) {
-
-            modelCtrl.$parsers.push(function (inputValue) {
-                var transformedInput = inputValue ? inputValue.replace(/[^\+?\d]/g,'') : null;
-
-                if (transformedInput!=inputValue) {
-                    modelCtrl.$setViewValue(transformedInput);
-                    modelCtrl.$render();
-                }
-
-                return transformedInput;
-            });
-        }
-    };
 });
