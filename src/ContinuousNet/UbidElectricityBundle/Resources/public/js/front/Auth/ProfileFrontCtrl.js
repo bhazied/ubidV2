@@ -3,8 +3,8 @@
 /**
  * Controller for user profile
  */
-app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert','$window',
-    function ($scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert, $window) {
+app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$profileDataFactory','toaster','$filter','$countriesDataFactory','$uibModal','$q','SweetAlert','$window',
+    function ($element,$scope, $rootScope, $localStorage, $state, $timeout, $profileDataFactory, toaster, $filter, $countriesDataFactory, $uibModal, $q, SweetAlert, $window) {
 
         $timeout(function() {
             $rootScope.showSlogan = false;
@@ -92,6 +92,10 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $timeout(function () {
             $profileDataFactory.getProfile({locale: $localStorage.language}).$promise.then(function (data) {
                     $scope.user = data ;
+                if(data.picture != null){
+                    $rootScope.user.picture = data.picture;
+                    $localStorage.user.picture = data.picture;
+                }
                 if(data.country != null){
                     $scope.myCountry =  $scope.user.country;
                     $scope.user.country =  $scope.user.country.id;
@@ -176,13 +180,14 @@ app.controller('ProfileFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             }
         }
 
-        $scope.onlyNumbers = "^\+?\d+$";
-
+        $scope.phoneNumbr = /^\+?\d+$/;
+        
         $scope.tabs = [
             { title: $filter('translate')('profile.INFORMATIONS'), template:'/bundles/ubidelectricity/js/front/Auth/profile_informations.html' },
             { title: $filter('translate')('profile.UPDATEPROFILE'), template:'/bundles/ubidelectricity/js/front/Auth/update_account.html' },
             { title: $filter('translate')('profile.CHANGEPASSWORD'), template:'/bundles/ubidelectricity/js/front/Auth/change_password.html' }
         ];
+
     }]);
 
 
@@ -202,24 +207,4 @@ app.directive('passwordCheck', function($profileDataFactory, $timeout, $localSto
             }
         }
     }
-});
-
-
-app.directive('regexPhone', function(){
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attrs, modelCtrl) {
-
-            modelCtrl.$parsers.push(function (inputValue) {
-                var transformedInput = inputValue ? inputValue.replace(/[^\+?\d]/g,'') : null;
-
-                if (transformedInput!=inputValue) {
-                    modelCtrl.$setViewValue(transformedInput);
-                    modelCtrl.$render();
-                }
-
-                return transformedInput;
-            });
-        }
-    };
 });
