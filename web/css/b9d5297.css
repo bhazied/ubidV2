@@ -4460,21 +4460,6 @@ body.underPage footer {
     max-height: 100px;
 }
 
-<<<<<<< HEAD
-.text-indicatif{
-    font-size: 11px;
-}
-
-#front-content h2{
-    border-bottom: 3px  solid #DFE6F0 !important;
-}
-
-.msg_applayd{
-    text-align: center;
-    top: 20px;
-}
-=======
-
 .nav-tabs {
     height: 3rem;
     border-bottom: 2px solid #1D69AD;
@@ -4501,4 +4486,16 @@ body.underPage footer {
     color: #1D69AD!important;
     text-decoration: underline;
 }
->>>>>>> frontoffice
+
+.text-indicatif{
+    font-size: 11px;
+}
+
+#front-content h2{
+    border-bottom: 3px  solid #DFE6F0 !important;
+}
+
+.msg_applayd{
+    text-align: center;
+    top: 20px;
+}

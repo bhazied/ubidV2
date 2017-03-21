@@ -547,12 +547,19 @@
                                  </span><!--/input-icon-->
                                     </label>
                                 </div><!--/col-md-12-->
-                                <div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
+                                <!--<div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
                                     <div class="checkbox continuous-check check-primary">
                                         <input checklist-model="buyer.categories" checklist-value="category.id" type="checkbox" name="category[]" id="buyerCategory[[category.id]]" />
                                         <label for="buyerCategory[[category.id]]">[[ category.name ]]</label>
-                                    </div><!--/checkbox-->
-                                </div><!--/col-md-3-->
+                                    </div>
+                                </div>-->
+                                <div class="block select-list col-md-6">
+                                        <span class="input-icon">
+                                            <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-sitemap"></i>
+                                        </span><!--/input-icon-->
+                                </div>
                                 <div class="col-md-12">
                                     <div class="checkbox continuous-check check-primary">
                                         <input ng-model="buyerCategories" type="checkbox" id="buyerCategories" />
@@ -572,7 +579,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" ng-click="submitForm(buyerForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
+                                    <button type="button" ng-click="submitForm(buyerForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="buyerForm.$invalid" -->
                                         <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                     </button>
                                 </div>
