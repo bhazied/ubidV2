@@ -1673,11 +1673,10 @@ fieldset h2 {
 
 .img-thumbnail {
     margin-left: 0.5rem;
+    height: 100px;
+    width: 100px;
 }
 
-.img-thumbnail {
-    margin-left: 0.5rem;
-}
 
 @media only screen and (min-width : 768px) {
 
@@ -2419,4 +2418,9 @@ body.underPage footer {
 
 #front-content h2{
     border-bottom: 3px  solid #DFE6F0 !important;
+}
+
+.msg_applayd{
+    text-align: center;
+    top: 20px;
 }

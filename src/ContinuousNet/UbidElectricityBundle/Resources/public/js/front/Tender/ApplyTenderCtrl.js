@@ -12,14 +12,16 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
         $scope.enableFormAlert = false;
         $scope.tender = 0;
         $scope.bid = {};
-        if(angular.isDefined($stateParams.id)){
-            $scope.tender = $stateParams.id;
-            $scope.bid.tender = $stateParams.id;
+        if(angular.isDefined($stateParams.idTender)){
+            $scope.tender = $stateParams.idTender;
+            $scope.bid.tender = $stateParams.idTender;
         };
         $scope.bid.status = 'Online'
 
         $scope.list = function() {
             $state.go('front.tenders' ,{section:'Tender'});
         };
+        
+
 
     }]);

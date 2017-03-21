@@ -786,6 +786,8 @@
       "BACKVISITS": "Back To Visits List",
       "TENDERBOOKMARKDETAILS" : "Tender Bookmark Details",
       "BACKTENDERBOOKMARKS" : "Back To Tender Bookmark List",
+      "BACKTOTENDER" : "Back To Tender",
+      "YOUAREALREADYAPPLAYEDINTHISTENDER" : "You are already applayed in this tender",
       "fieldsets": {
         "ALERT" : {
           "DEFAULT" : "Default"

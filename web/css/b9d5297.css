@@ -3035,7 +3035,6 @@ h1 {
 
 h2 {
     font-size: 1rem;
-    border-bottom: 2px  solid #DFE6F0 !important;
 }
 
 h3, h3 a {
@@ -3722,11 +3721,10 @@ fieldset h2 {
 
 .img-thumbnail {
     margin-left: 0.5rem;
+    height: 100px;
+    width: 100px;
 }
 
-.img-thumbnail {
-    margin-left: 0.5rem;
-}
 
 @media only screen and (min-width : 768px) {
 
@@ -4464,4 +4462,13 @@ body.underPage footer {
 
 .text-indicatif{
     font-size: 11px;
+}
+
+#front-content h2{
+    border-bottom: 3px  solid #DFE6F0 !important;
+}
+
+.msg_applayd{
+    text-align: center;
+    top: 20px;
 }

@@ -63,7 +63,31 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
 
         $scope.list= function (section) {
             $state.go('front.tenders', {section: section});
-        }
+        };
+
+        $scope.checkBid = function () {
+            $tendersDataFactory.get({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
+                $scope.tender = data;
+                var params = {
+                    locale: $localStorage.language,
+                    user : $localStorage.user.id,
+                    tender: $scope.tender.id
+                };
+                $timeout(function () {
+                    $tendersFrontDataFactory.checkBid(params).$promise.then(function (data) {
+                        $scope.showButtonApplay = data.status;
+                    });
+                });
+            });
+
+        };
+
+        $scope.checkBid();
+        
+
+
+        
+        
         
     }]);
 

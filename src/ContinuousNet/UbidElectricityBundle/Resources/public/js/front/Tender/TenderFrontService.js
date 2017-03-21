@@ -22,7 +22,8 @@ function($resource, $rootScope) {
         categoriesTenders: { method: 'GET', url: '/:locale' + url + 'categoriesTenders', isArray: false},
         getTender : { method: 'GET', url:'/:locale' + url +  'homeTender/:id', isArray: false},
         bookmarkTender: { method: 'GET', url:'/:locale' + url +  'bookmarkTender/:id', isArray: false},
-        category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false}
+        category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false},
+        checkBid : {method: 'GET', url: '/:locale'+ url + 'checkbid/:user/:tender', isArray: false}
     });
    
 }]);

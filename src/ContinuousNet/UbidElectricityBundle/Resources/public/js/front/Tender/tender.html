@@ -8,12 +8,16 @@
                     <button ng-click="list(tender.section)" class="btn btn-primary pull-left">
                         <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
                     </button>
+
                 </div>
                 <div class="col-md-4 margin-bottom-10 text-center">
 
                 </div>
                 <div class="col-md-4 margin-bottom-10">
 
+                </div>
+                <div class="col-md-12 msg_applayd" ng-show="showButtonApplay">
+                        <p translate="content.list.YOUAREALREADYAPPLAYEDINTHISTENDER">You are already applayed in this tender</p>
                 </div>
             </div><!--/list-toolbox-->
         <h1 class="name">[[ tender.title ]]</h1>
@@ -70,7 +74,7 @@
                 <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER">Bookmark Tender</button>
             </div>
             <div class="col-md-4">
-                <button ng-if="user.email && user.id != tender.creator_user.id" ui-sref="front.apply_tender({id: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+                <button ng-if="user.email && user.id != tender.creator_user.id && !showButtonApplay" ui-sref="front.apply_tender({idTender: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
                 <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
             </div>
         </div>

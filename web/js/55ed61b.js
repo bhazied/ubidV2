@@ -68719,7 +68719,7 @@ app.config(['$stateProvider',
             title: 'Advanced Search',
             resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.apply_tender', {
-            url: '/apply_tender/:id',
+            url: '/apply_tender/:idTender',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/apply_tender.html',
             title: 'Advanced Search',
             resolve: loadSequence('ApplyTenderCtrl','BidFormCtrl', 'bidService', 'tenderService', 'supplierService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')

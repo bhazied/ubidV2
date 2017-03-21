@@ -1438,5 +1438,29 @@ class ApiV1RESTController extends FOSRestController
         }
     }
 
-
+    /**
+     * Get Bookmark tender
+     *
+     * @Get("/checkbid/{user}/{tender}")
+     * @View(serializerEnableMaxDepthChecks=true)
+     *
+     * @return Response
+     *
+     */
+    public function checkbidAction($user, $tender){
+        try{
+            $em = $this->getDoctrine()->getEntityManager();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Bid', 'b_')
+                ->where('b_.tender = :tender')->setParameter('tender', $tender)
+                ->andWhere('b_.creatorUser = :user')->setParameter('user', $user)
+                ->select('b_');
+            $count = $qb->getQuery()->getScalarResult();
+            if(count($count)>0) return [ 'status' => true ];
+            else return [ 'status' => false ];
+        }
+        catch (\Exception $e){
+            return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
