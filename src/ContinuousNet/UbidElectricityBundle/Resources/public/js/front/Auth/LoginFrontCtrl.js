@@ -13,7 +13,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1000);
+        }, 1500);
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 

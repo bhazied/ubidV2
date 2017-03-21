@@ -9,7 +9,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        }, 500);
+        }, 1500);
 
         $scope.loaded = false;
         $scope.supplier = {};

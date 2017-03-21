@@ -5,12 +5,14 @@
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
-        $rootScope.showSlogan = false;
-        $rootScope.showUserMenu = false;
-        $rootScope.showLeftSide = false;
-        $rootScope.showRightSide = false;
-        $rootScope.contentSize = 9;
-        $rootScope.contentOffset = 0;
+        $timeout(function () {
+            $rootScope.showSlogan = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.contentSize = 9;
+            $rootScope.contentOffset = 0;
+        }, 1000);
 
         //header searchForm show
         $rootScope.SearchFormHeader = false;

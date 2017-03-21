@@ -9,7 +9,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1500);
 
         $scope.sortingOptions = [{
             sortField: 'deadline',

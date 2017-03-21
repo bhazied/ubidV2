@@ -176,10 +176,11 @@
                         <span translate="content.list.fields.PHONE">Phone</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-required="true">
+                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-required="true" ng-pattern="phonePattern">
                         <i class="fa fa-phone"></i>
                     </span>
                     <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.PHONEREQUIRED">Phone is required.</span>
+                    <span class="error" ng-show="registerForm.userPhone.$error.pattern" translate="content.form.messages.INVALIDPHONENUMBER">Invalid phone number</span>
                 </div>
 
             </div>
@@ -190,7 +191,14 @@
                     <div class="input-icon checkbox continuous-check check-primary">
                         <input name="gc" id="gc" ng-model="user.gc" type="checkbox" class="form-control"  placeholder="[[ 'content.list.fields.GENERALCONDITION' | translate ]]" ng-required="true">
                         <label for="gc" class="control-label">
-                            <span translate="front.IHAVEREADANDACCEPTTHE">I Accept the</span> <a ui-sref="front.post({slug:'general-conditions'})" ng-click="showCg('general-conditions')"><u translate="front.GENERALCONDITIONS">general conditions</u></a>.
+                            <span translate="front.IHAVEREADANDACCEPTTHE">I Accept the</span>
+                            <a ui-sref="front.post({slug:'general-conditions'})" ng-click="showCg('general-conditions')">
+                                <u translate="front.GENERALCONDITIONS">general conditions</u>
+                            </a>
+                            &nbsp;
+                            <a ui-sref="front.post({slug:'privacy-policy'})" ng-click="showCg('privacy-policy')">
+                                <u translate="front.PRIVACYPOLICY">Privacy policy</u>
+                            </a>.
                         </label>
                     </div>
                     <span class="error text-small block" ng-if="registerForm.gc.$dirty && registerForm.gc.$error.required" translate="content.form.messages.GCREQUIRED">Please accept the general conditions.</span>

@@ -17,7 +17,7 @@
                     <label class="control-label">
                         <span translate="content.list.fields.PHONE">Phone:</span>
                     </label>
-                    <input type="tel" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" class="form-control" name="phone" ng-model="user.phone" ng-pattern="phoneNumbr">
+                    <input type="tel" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" class="form-control" name="phone" ng-model="user.phone" ng-pattern="phonePattern">
                     <span class="error" ng-show="userForm.phone.$error.pattern" translate="content.form.messages.INVALIDPHONENUMBER">Invalid phone number</span>
                 </div><!--/form-group-->
 
