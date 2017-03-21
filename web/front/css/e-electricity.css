@@ -2412,3 +2412,31 @@ body.underPage footer {
 .table .img-thumbnail {
     max-height: 100px;
 }
+
+
+.nav-tabs {
+    height: 3rem;
+    border-bottom: 2px solid #1D69AD;
+}
+
+.nav-tabs .nav-link {
+    color: #999999!important;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #eee;
+}
+
+.nav-tabs  li.active a{
+    background-color: #1D69AD;
+    color: #ffffff!important;
+}
+
+.nav-tabs li {
+    margin: 0 0.5rem 0 0;
+}
+
+.nav-tabs  li:hover a {
+    color: #1D69AD!important;
+    text-decoration: underline;
+}

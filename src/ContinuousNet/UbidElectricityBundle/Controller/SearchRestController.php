@@ -121,16 +121,30 @@ class SearchRestController extends FOSRestController {
             $qb_buyer = clone $qb;
             $qb_supplier = clone $qb;
             $qb_tender = clone $qb;
+            $qb_consultation = clone $qb;
             //get Tenders
             $qb_tender->from("UbidElectricityBundle:Tender", 't_')
                 ->where($qb_tender->expr()->like(
                     $qb_tender->expr()->upper( $qb_tender->expr()->concat('t_.title', 't_.slug', 't_.reference', 't_.description') ),
                     $qb_tender->expr()->upper( $qb_tender->expr()->literal('%'. $searchText .'%') )
                 ));
+            $qb_tender->andWhere('t_.section = :section')->setParameter('section','Tender');
             $qb_tender_count = clone $qb_tender;
             $tenders = $qb_tender->select('t_')->getQuery()->getResult();
 
             $tenderCount = $qb_tender_count->select('count(t_.id)')->getQuery()->getSingleScalarResult();
+
+            //get Consultation
+            $qb_consultation->from("UbidElectricityBundle:Tender", 't_')
+                ->where($qb_tender->expr()->like(
+                    $qb_consultation->expr()->upper( $qb_tender->expr()->concat('t_.title', 't_.slug', 't_.reference', 't_.description') ),
+                    $qb_consultation->expr()->upper( $qb_tender->expr()->literal('%'. $searchText .'%') )
+                ));
+            $qb_consultation->andWhere('t_.section = :section')->setParameter('section','Consultation');
+            $qb_consultation_count = clone $qb_consultation;
+            $consultations = $qb_consultation->select('t_')->getQuery()->getResult();
+
+            $consultationCount = $qb_consultation_count->select('count(t_.id)')->getQuery()->getSingleScalarResult();
 
             //get Suppliers
             $qb_supplier->from("UbidElectricityBundle:Supplier", 's_')
@@ -155,10 +169,14 @@ class SearchRestController extends FOSRestController {
             $buyerCount = $qb_buyer_count->select('count(b_.id)')->getQuery()->getSingleScalarResult();
 
             $data = [
-                'inlineCount' => ($buyerCount + $supplierCount + $tenderCount),
+                'inlineCount' => ($buyerCount + $supplierCount + $tenderCount + $consultationCount),
                 "tenders" => [
                     'inlineCount' => $tenderCount,
                     'data' => $tenders
+                ],
+                "consultations" => [
+                    'inlineCount' => $consultationCount,
+                    'data' => $consultations
                 ],
                 "suppliers" => [
                     'inlineCount' => $supplierCount,
@@ -170,11 +188,6 @@ class SearchRestController extends FOSRestController {
                 ]
             ];
 
-            /*$data = [
-                "tenders" => $qb_tender->getQuery()->getSql(),
-                "supplier" => $qb_supplier->getQuery()->getSql(),
-                "buyers" => $qb_buyer->getQuery()->getSql()
-            ];*/
             return $data;
         }
         catch(\Exception $e){
