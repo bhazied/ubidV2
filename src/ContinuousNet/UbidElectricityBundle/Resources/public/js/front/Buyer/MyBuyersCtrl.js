@@ -7,14 +7,14 @@
 app.controller('MyBuyersCtrl', ['$scope', '$controller', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$buyerTypesDataFactory', '$countriesDataFactory', '$languagesDataFactory', '$regionsDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$buyersDataFactory','$profileDataFactory',
 function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $buyerTypesDataFactory, $countriesDataFactory, $languagesDataFactory, $regionsDataFactory, $usersDataFactory, $categoriesDataFactory, $buyersDataFactory, $profileDataFactory) {
 
-    $timeout(function() {
+    /*$timeout(function() {
         $rootScope.showSlogan = false;
         $rootScope.showLeftSide = false;
         $rootScope.showRightSide = false;
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    });
+    }, 2000);*/
 
     angular.extend(this, $controller('BuyersCtrl', {$scope:$scope}));
 

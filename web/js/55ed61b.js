@@ -72316,14 +72316,14 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1500);
+        }, 1500);*/
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -72411,14 +72411,14 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
-        $timeout(function () {
+       /* $timeout(function () {
             $rootScope.showSlogan = false;
             $rootScope.showUserMenu = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        });*/
 
         //header searchForm show
         $rootScope.SearchFormHeader = false;
@@ -72533,6 +72533,38 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             // Save the route title
             $rootScope.currTitle = $filter('translate')($state.current.title);
+
+            if ($state.current.name == 'front.home') {
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                })
+            }
+            if( $state.current.name.indexOf('front.mybuyers') != -1 ){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = true;
+                    $rootScope.contentSize = 10;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
+            if($state.current.name == 'front.login'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 6;
+                    $rootScope.contentOffset = 3;
+                }, 1500);
+            }
+            
         });
 
         // State not found
@@ -72700,12 +72732,12 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
        /* $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = false;
+            $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 10;
+            $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
-        }, 1000);*/
+        });*/
 
         $scope.showForm = false;
         $scope.toggle = function() {

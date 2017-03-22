@@ -13,7 +13,7 @@ app.controller('ProfileFrontCtrl', ['$element','$scope', '$rootScope', '$localSt
             $rootScope.showRightSide = false;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        }, 1500);
+        }, 2000);
 
         $scope.myCountry = {};
         $scope.dateFormat = $filter('translate')('formats.DATE');

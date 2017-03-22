@@ -6,14 +6,14 @@
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1500);
+        }, 1500);*/
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
