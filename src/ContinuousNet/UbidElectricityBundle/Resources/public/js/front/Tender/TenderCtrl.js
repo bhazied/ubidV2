@@ -32,6 +32,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                             $rootScope.seo.meta_keywords = data.reference;
                             $rootScope.seo.meta_title = data.title;
                             $scope.loaded = true;
+                            $localStorage.selectedTender = data;
                         });
                     }
                     else {
@@ -41,9 +42,9 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                             $rootScope.seo.meta_keywords = data.reference;
                             $rootScope.seo.meta_title = data.title;
                             $scope.loaded = true;
+                            $localStorage.selectedTender = data;
                         });
                     }
-
                     def.resolve($scope.tender);
                     return def;
                 });
@@ -74,6 +75,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
             $state.go('front.tenders', {section: section});
         };
 
+        $scope.showButtonApplay = false;
         $scope.checkBid = function () {
             $tendersDataFactory.get({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
                 $scope.tender = data;

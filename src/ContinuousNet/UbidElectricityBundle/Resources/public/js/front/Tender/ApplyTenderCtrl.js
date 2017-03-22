@@ -7,6 +7,14 @@
 app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory',
     function($scope, $rootScope, $controller, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 9;
+            $rootScope.contentOffset = 0;
+        }, 2000);
 
         angular.extend(this, $controller('BidFormCtrl', {$scope:$scope}));
         $scope.enableFormAlert = false;
@@ -19,7 +27,12 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
         $scope.bid.status = 'Online'
 
         $scope.list = function() {
-            $state.go('front.tenders' ,{section:'Tender'});
+            if(angular.isDefined($localStorage.selectedTender)){
+                $state.go('front.tenders' ,{section:$localStorage.selectedTender.section});
+            }
+            else{
+                $state.go('front.tenders' ,{section:'Tender'});
+            }
         };
         
 

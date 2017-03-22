@@ -1558,6 +1558,7 @@ fieldset h2 {
 
 .custom-profile-style .nav-tabs {
     border-bottom: none;
+    height: 2.5rem !important;
 }
 
 .custom-profile-style .nav-tabs li a {
@@ -1585,7 +1586,7 @@ fieldset h2 {
 }
 
 .custom-profile-style .nav-tabs li.active a {
-    background-color: #F7F8F9;
+    #background-color: #F7F8F9;
     font-weight: bold;
 }
 
@@ -2435,7 +2436,7 @@ body.underPage footer {
 }
 
 .nav-tabs  li:hover a {
-    color: #1D69AD!important;
+    color: #1D69AD;
     text-decoration: underline;
 }
 

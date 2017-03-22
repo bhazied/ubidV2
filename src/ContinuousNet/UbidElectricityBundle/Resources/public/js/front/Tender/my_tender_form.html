@@ -11,7 +11,7 @@
                     <legend translate="content.list.EDITTENDER" ng-if="tender.id > 0">
                         Edit Tender
                     </legend>
-                    <form name="tenderForm" id="tenderForm" novalidate ng-submit="submitForm(tenderForm)">
+                    <form name="tenderForm" id="tenderForm" novalidate ng-submit="submitForm(tenderForm, true)">
                         <input type="hidden" name="id" id="tenderId" ng-model="tender.id" />
                         <div class="row">
                         </div><!--/row-->
@@ -424,7 +424,7 @@
                             <div class="col-md-4">
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(tenderForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(tenderForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="tenderForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>

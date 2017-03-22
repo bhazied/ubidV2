@@ -4,12 +4,23 @@
  * Controller for Bid Form
  */
 
-app.controller('MyBidFormCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory',
-function($scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory, $suppliersDataFactory, $usersDataFactory, $bidsDataFactory) {
+app.controller('MyBidFormCtrl', ['$rootScope', '$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$tendersDataFactory', '$suppliersDataFactory', '$usersDataFactory', '$bidsDataFactory',
+function($rootScope, $scope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $tendersDataFactory,  $suppliersDataFactory, $usersDataFactory, $bidsDataFactory) {
 
+    $timeout(function() {
+        $rootScope.showSlogan = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.showUserMenu = true;
+        $rootScope.contentSize = 10;
+        $rootScope.contentOffset = 0;
+    },1500);
+    
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
     $scope.disableSubmit = false;
+
+    $scope.redirect = true;
 
     // Editor options.
     $scope.editorOptions = {

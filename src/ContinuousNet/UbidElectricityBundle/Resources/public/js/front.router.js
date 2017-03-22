@@ -235,12 +235,12 @@ app.config(['$stateProvider',
             url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.EDITTENDER',
-            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('bidService', 'supplierService', 'MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.mybids.new', {
             url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.NEWBID',
-            resolve: loadSequence('MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+            resolve: loadSequence('bidService', 'supplierService', 'MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
             /*
              * My BookmarkProject Manager routes
              */
