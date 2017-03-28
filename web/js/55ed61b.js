@@ -71839,7 +71839,7 @@ function ($rootScope, ToggleHelper) {
                         }
                     }
                     if (list.length >= 10) {
-                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'"></span>');
+                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'">'+title+'</span>');
                     } else {
                         angular.element(elem).text(title);
                         angular.element(elem).attr('class', css + itemCss);
@@ -72563,6 +72563,16 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.contentSize = 6;
                     $rootScope.contentOffset = 3;
                 }, 1500);
+            }
+            if($state.current.name == 'front.generic_search'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
             }
             
         });

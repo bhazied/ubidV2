@@ -158,6 +158,16 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.contentOffset = 3;
                 }, 1500);
             }
+            if($state.current.name == 'front.generic_search'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
             
         });
 

@@ -1313,6 +1313,10 @@ fieldset h2 {
     display: inline;
     color: #E6674A;
 }
+.symbol.usd:before {
+    content: "$";
+    display: inline;
+}
 .panel {
     margin-bottom: 20px;
     background-color: #fff;
@@ -2444,7 +2448,7 @@ body.underPage footer {
     font-size: 11px;
 }
 
-#front-content h2{
+.content_entity{
     border-bottom: 3px  solid #DFE6F0 !important;
 }
 

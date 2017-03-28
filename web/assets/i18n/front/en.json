@@ -53,7 +53,7 @@
   "profile": {
     "PROFILEUPDATED": "Your profile has been updated.",
     "PROFILENOTUPDATED": "Your profile not updated",
-    "INFORMATIONS": "Informations",
+    "INFORMATIONS": "Information",
     "UPDATEPROFILE": "Update profile",
     "CHANGEPASSWORD" : "Change password",
     "SETTINGS": "Settings"
@@ -66,7 +66,7 @@
     "SUBMIT": "Submit",
     "EMAILINCORRECT": "Email address incorrect.",
     "EMAILSENT": "Reset password link sent to your email address.",
-    "INVALIDEMAIL": "Invalid email or email not exist!",
+    "INVALIDEMAIL": "Invalid email or email does not exist",
     "REQUESTPASSWORDRESETINPROGRESS": "Request password reset in progress...",
     "ANEMAILISSENT": "An email is sent to your inbox with reset link.",
     "ENTERNEWPASSWORD": "Entrer your new password",
@@ -74,7 +74,8 @@
     "RESETPASSWORDRESETINPROGRESS": "Reset password reset in progress...",
     "NEWPASSWORDNOTSET": "New password not set!",
     "PASSWORDCHANGED": "Password changed",
-    "ENTERCURRENTPASSWORD": "Entrer your current password"
+    "ENTERCURRENTPASSWORD": "Entrer your current password",
+    "REDIRECTAFTER" : "You will be redirected after [[seconds]] seconds"
   },
   "content": {
     "list": {
@@ -1787,7 +1788,7 @@
     "ELECTRICITYMAGAZINE": "Electricity magazine",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
-    "MYBUYERS":"Buyers",
+    "MYBUYERS":"My Buyers",
     "NEWBUYER":"New Buyer",
     "CONSULTBUYERS": "List of buyers",
     "MYTENDERS":"My Tenders",
@@ -1898,14 +1899,14 @@
       "NEWBUYER" : "Add new buyer",
       "MYTENDERS" : "Manage my tenders",
       "NEWTENDER" : "Add new tender",
-      "PROJECTBIDS" : "Project bids text info ...",
+      "PROJECTBIDS" : "Manage my project bids",
       "PROJECTBIDSSHORTLIST" : "Manage my short list",
-      "MYSUPPLIERS" : "My supplier text info ...",
-      "NEWSUPPLIER" : "New supplier text info ...",
+      "MYSUPPLIERS" : "Manage my company profils",
+      "NEWSUPPLIER" : "Add new supplier",
       "MYPRODUCTS" : "Manage my products",
       "MYBIDS" : "Manage my bids",
       "BOOKMARKPROJECT" : "Manage my bookmark projects",
-      "NEWPRODUCT" : "New product text info ...",
+      "NEWPRODUCT" : "Add a new product",
       "MYALERTS": "Manage my alerts",
       "NEWALERT": "Add new alert",
       "CHANGEPASSWORD": "Change my password",
