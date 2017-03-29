@@ -156,7 +156,7 @@ fos_user:
         email:
             from_email: # Use this node only if you don"t want the global email address for the resetting email
                 address:        resetting@continuousnet.com
-                sender_name:    E-electricity Resetting
+                sender_name:    e-electricity Plateform
             template:   UbidElectricityBundle:Emails:resetting.html.twig
         form:
             type:               FOS\UserBundle\Form\Type\ResettingFormType # or "fos_user_resetting" on Symfony < 2.8
