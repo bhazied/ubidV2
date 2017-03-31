@@ -168,7 +168,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $rootScope.checkStatePermission = function (state) {
-            console.log(state);
             if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
                 return true;
             } else {
