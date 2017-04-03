@@ -31,11 +31,14 @@ function($resource, $rootScope, $localStorage) {
                     http_params['filters['+fieldName+']'] = value;
                     resource.query(http_params).$promise.then(function(data) {
                         var count = data.inlineCount;
+                        console.log('currentId '+currentId);
                         if (count > 0) {
+                            console.log('myUniqueField '+data.results[0].id);
                             if (data.results[0].id == currentId) {
                                 count--;
                             }
                         }
+                        console.log('count '+count);
                         ctrl.$setValidity('myUniqueField', (count == 0));
                     });
                 }, 500);
