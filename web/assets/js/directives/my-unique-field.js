@@ -29,7 +29,7 @@ app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
                             limit: 1
                         };
                         http_params['filters['+fieldName+']'] = value;
-                        http_params['filter_operator'] = 'eq';
+                        http_params['filter_operators['+fieldName+']'] = 'eq';
                         resource.query(http_params).$promise.then(function(data) {
                             var count = data.inlineCount;
                             if (count > 0) {
