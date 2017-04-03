@@ -72512,10 +72512,10 @@ app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
                         });
                         var http_params = {
                             offset: 0,
-                            limit: 1
+                            limit: 2
                         };
                         http_params['filters['+fieldName+']'] = value;
-                        http_params['filter_operator'] = 'eq';
+                        http_params['filter_operators['+fieldName+']'] = 'eq';
                         resource.query(http_params).$promise.then(function(data) {
                             var count = data.inlineCount;
                             if (count > 0) {

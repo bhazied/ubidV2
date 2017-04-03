@@ -26,7 +26,7 @@ app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
                         });
                         var http_params = {
                             offset: 0,
-                            limit: 1
+                            limit: 2
                         };
                         http_params['filters['+fieldName+']'] = value;
                         http_params['filter_operators['+fieldName+']'] = 'eq';
