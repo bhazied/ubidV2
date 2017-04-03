@@ -65,6 +65,7 @@ class SupplierRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,7 +75,7 @@ class SupplierRESTController extends BaseRESTController
             $this->createSubDirectory(new Supplier());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
-            $filter_operator = $paramFetcher->get('filter_operator');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -112,7 +113,7 @@ class SupplierRESTController extends BaseRESTController
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       if ($filter_operator == 'eq') {
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
                            $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
                        } else {
                            $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
