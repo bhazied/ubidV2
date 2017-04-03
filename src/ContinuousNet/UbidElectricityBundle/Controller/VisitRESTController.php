@@ -74,6 +74,7 @@ class VisitRESTController extends BaseRESTController
             $this->createSubDirectory(new Visit());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operator = $paramFetcher->get('filter_operator');
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -105,7 +106,11 @@ class VisitRESTController extends BaseRESTController
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       if ($filter_operator ==  'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
                        $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
