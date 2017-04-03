@@ -67690,7 +67690,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
                 state.indexOf('supplierproduct') > -1 ||
                 state.indexOf('supplier') > -1 ||
                 state.indexOf('buyer') > -1 ||
-                state.indexOf('tender') > -1
+                state.indexOf('tender') > -1 ||
+                state.indexOf('bid') > -1
             ) {
                 return true;
             } else {
@@ -68163,7 +68164,8 @@ app.constant('APP_JS_REQUIRES', {
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
         'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
-        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js',
+        'ModalPostCtrl': '/bundles/ubidelectricity/js/front/Post/ModalPostCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68376,7 +68378,10 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
-    }]
+    },{
+        name: 'notificationFrontService',
+            files: ['/bundles/ubidelectricity/js/front/Notification/NotificationService.js']
+        }]
 });
 
 'use strict';
@@ -72473,7 +72478,7 @@ function ($rootScope, ToggleHelper) {
                         }
                     }
                     if (list.length >= 10) {
-                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'"></span>');
+                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'">'+title+'</span>');
                     } else {
                         angular.element(elem).text(title);
                         angular.element(elem).attr('class', css + itemCss);
