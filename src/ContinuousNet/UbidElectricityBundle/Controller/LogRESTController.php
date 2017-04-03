@@ -105,7 +105,7 @@ class LogRESTController extends BaseRESTController
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       if ($filter_operator ==  'eq') {
+                       if ($filter_operator == 'eq') {
                            $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
                        } else {
                            $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
