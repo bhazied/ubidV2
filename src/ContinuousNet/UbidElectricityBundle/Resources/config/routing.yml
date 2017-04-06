@@ -4,6 +4,15 @@ ubid_electricity_dev:
     defaults: { _controller: UbidElectricityBundle:Default:index }
     host: "ubid.com"
 
+ubid_electricity_local:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:index }
+    host: "admin.e-electricity.local"
+
+ubid_electricity_local_ip:
+    path:  /admin
+    defaults: { _controller: UbidElectricityBundle:Default:index }
+
 ubid_electricity_test:
     path:  /
     defaults: { _controller: UbidElectricityBundle:Default:index }
@@ -562,6 +571,15 @@ public_ubid_electricity_dev:
     path:  /
     defaults: { _controller: UbidElectricityBundle:Default:public }
     host: "public.ubid.com"
+
+public_ubid_electricity_local:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+    host: "e-electricity.local"
+
+public_ubid_electricity_local_ip:
+    path:  /
+    defaults: { _controller: UbidElectricityBundle:Default:public }
 
 public_ubid_electricity_chart:
     path:  /

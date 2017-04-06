@@ -48,4 +48,8 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $scope.getBuyer();
 
+        $scope.list = function () {
+            $state.go('front.buyers');
+        }
+
     }]);

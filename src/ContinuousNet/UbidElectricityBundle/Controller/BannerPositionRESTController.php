@@ -65,6 +65,7 @@ class BannerPositionRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,6 +75,7 @@ class BannerPositionRESTController extends BaseRESTController
             $this->createSubDirectory(new BannerPosition());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -82,9 +84,9 @@ class BannerPositionRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:BannerPosition', 'bp_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bp_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:BannerPosition', 'bannerPosition');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bannerPosition.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'bannerPosition.modifierUser = modifier_user.id');
             $textFields = array('bannerPosition.name', 'bannerPosition.slug');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,13 +104,16 @@ class BannerPositionRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('bannerPosition.', 'bp_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -117,14 +122,14 @@ class BannerPositionRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'bannerPosition.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'bannerPosition.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
@@ -132,16 +137,15 @@ class BannerPositionRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(bp_.id)');
+            $qb->select('count(bannerPosition.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('bannerPosition.', 'bp_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('bp_');
+            $qbList->select('bannerPosition');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('bp_.id');
+            $qbList->groupBy('bannerPosition.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

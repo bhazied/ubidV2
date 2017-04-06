@@ -65,6 +65,7 @@ class UserRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,6 +75,7 @@ class UserRESTController extends BaseRESTController
             $this->createSubDirectory(new User());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -82,11 +84,11 @@ class UserRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:User', 'u_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'u_.country = country.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 'u_.language = language.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'u_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'u_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:User', 'user');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'user.country = country.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Language', 'language', \Doctrine\ORM\Query\Expr\Join::WITH, 'user.language = language.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'user.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'user.modifierUser = modifier_user.id');
             $textFields = array('user.username', 'user.phone', 'user.email', 'user.usernameCanonical', 'user.emailCanonical', 'user.firstName', 'user.lastName', 'user.picture', 'user.address', 'user.zipCode', 'user.companyName', 'user.job', 'user.profile', 'user.phoneValidationCode', 'user.emailValidationCode', 'user.roles', 'user.confirmationToken');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -104,13 +106,16 @@ class UserRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('user.', 'u_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -119,14 +124,14 @@ class UserRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'user.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'user.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
@@ -134,16 +139,15 @@ class UserRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(u_.id)');
+            $qb->select('count(user.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('user.', 'u_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('u_');
+            $qbList->select('user');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('u_.id');
+            $qbList->groupBy('user.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

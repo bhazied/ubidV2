@@ -14,7 +14,7 @@ app.controller('ProductFrontCtrl', ['$scope', '$controller', '$rootScope', '$sta
             $rootScope.showUserMenu = true;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        });
+        }, 1500);
 
         $scope.supplierProduct = {};
         $scope.getSupplierProduct = function() {

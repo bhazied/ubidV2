@@ -4,8 +4,8 @@
  * Controller for User Form
  */
 
-app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory','$http','DIAL_COUNTRIES',
-    function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory, $http, DIAL_COUNTRIES) {
+app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$countriesDataFactory', '$languagesDataFactory', '$groupsDataFactory', '$usersDataFactory','$registerDataFactory','$http','DIAL_COUNTRIES','$postsDataFactory',
+    function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $countriesDataFactory, $languagesDataFactory, $groupsDataFactory, $usersDataFactory, $registerDataFactory, $http, DIAL_COUNTRIES, $postsDataFactory) {
         $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
         $timeout(function() {
@@ -291,5 +291,26 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
             }
         }
         $scope.getDialCountries();
+        
+        
+        $scope.showCg = function (slug) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: '/bundles/ubidelectricity/js/front/Post/modal_post.html',
+                controller: 'ModalPostCtrl',
+                size: 'lg',
+                resolve: {
+                    slug: function() {
+                        return slug;
+                    },
+                }
+            });
+
+            modalInstance.result.then(function () {
+
+            });
+
+        }
+
     }]);
 

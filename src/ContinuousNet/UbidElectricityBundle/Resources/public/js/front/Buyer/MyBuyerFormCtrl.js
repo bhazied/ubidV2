@@ -14,9 +14,40 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    },1500);
+    },2000);
 
     angular.extend(this, $controller('BuyerFormCtrl', {$scope:$scope}));
+
+    $scope.redirect = true;
+
+
+    $scope.categories = [];
+    $scope.getCategories = function() {
+        $timeout(function(){
+            //if ($scope.categories.length == 0) {
+                $scope.categories.push({});
+                var def = $q.defer();
+                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    //$scope.categories = data.results;
+                    data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.categories = data.results;
+                    def.resolve($scope.categories);
+                    if (angular.isDefined($scope.supplier)) {
+                        $scope.buyer.category = $scope.buyer.category || $scope.categories[0].id;
+                    }
+                });
+                return def;
+           /* } else {
+                return $scope.categories;
+            }*/
+        });
+    };
+
+    $scope.getCategories();
 
     $scope.steps = [
         {title : $filter('translate')('front.ADDBUYERSTEP1'), description: $filter('translate')('front.DESCRIPTIONSTEP1'),  id: 1},
@@ -137,15 +168,30 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         }
     ];
 
-   /* $scope.$watch('countries', function () {
-        if($scope.countries.length > 0){
-            var defaultCountry = {id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')};
-            $scope.countries.unshift(defaultCountry);
-            $scope.buyer.country = defaultCountry.id;
+    $scope.$watch('buyerCategories', function() {
+        if (angular.isDefined($scope.supplier)) {
+            var categories = $filter('filter')($scope.categories, $scope.categoriesSearchText);
+            if ($scope.supplierCategories) {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.buyer.categories.indexOf(id);
+                    if (index == -1) {
+                        $scope.buyer.categories.push(id);
+                    }
+                }
+            } else {
+                for (var i in categories) {
+                    var id = categories[i].id;
+                    var index = $scope.buyer.categories.indexOf(id);
+                    if (index > -1) {
+                        $scope.buyer.categories.splice(index, 1);
+                    }
+                }
+            }
         }
+        console.log($scope.buyer.categories);
+    });
 
-
-    });*/
 
 }]);
 

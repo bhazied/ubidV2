@@ -65,6 +65,7 @@ class HitRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,6 +75,7 @@ class HitRESTController extends BaseRESTController
             $this->createSubDirectory(new Hit());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -82,9 +84,9 @@ class HitRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Hit', 'h_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'h_.visit = visit.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'h_.creatorUser = creator_user.id');
+            $qb->from('UbidElectricityBundle:Hit', 'hit');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Visit', 'visit', \Doctrine\ORM\Query\Expr\Join::WITH, 'hit.visit = visit.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'hit.creatorUser = creator_user.id');
             $textFields = array('hit.entity', 'hit.url');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -102,13 +104,16 @@ class HitRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('hit.', 'h_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -117,14 +122,14 @@ class HitRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'hit.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'hit.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
@@ -132,16 +137,15 @@ class HitRESTController extends BaseRESTController
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(h_.id)');
+            $qb->select('count(hit.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('hit.', 'h_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('h_');
+            $qbList->select('hit');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('h_.id');
+            $qbList->groupBy('hit.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

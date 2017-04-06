@@ -11,7 +11,7 @@
                     <legend translate="content.list.EDITBID" ng-if="bid.id > 0">
                         Edit Bid
                     </legend>
-                    <form name="bidForm" id="bidForm" novalidate ng-submit="submitForm(bidForm)">
+                    <form name="bidForm" id="bidForm" novalidate ng-submit="submitForm(bidForm, true)">
                         <input type="hidden" name="id" id="bidId" ng-model="bid.id" />
                         <div class="row">
                             <div class="col-md-6">
@@ -89,7 +89,7 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                         <div class="row">
-                            <div class="col-md-6">
+                           <!-- <div class="col-md-6">
 
                                 <div class="form-group" ng-class="{'has-error':bidForm.reference.$dirty && bidForm.reference.$invalid, 'has-success':bidForm.reference.$valid}">
                                     <label for="bidReference" class="control-label">
@@ -99,12 +99,12 @@
                                     <span class="input-icon">
                                         <input ng-model="bid.reference" type="text" name="reference" id="bidReference" class="form-control" placeholder="[[ 'content.form.messages.ENTERREFERENCE' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
-                                    </span><!--/input-icon-->
+                                    </span>
                                     <span class="error text-small block" ng-if="bidForm.reference.$dirty && bidForm.reference.$error.required" translate="content.form.messages.REFERENCEREQUIRED">Reference is required.</span>
                                     <span class="success text-small block" ng-if="bidForm.reference.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
+                                </div>
 
-                            </div><!--/col-md-6-->
+                            </div> -->
                             <div class="col-md-12">
 
                                 <div class="form-group" ng-class="{'has-error':bidForm.description.$dirty && bidForm.description.$invalid, 'has-success':bidForm.description.$valid}">
@@ -249,7 +249,7 @@
                             <div class="col-md-4">
                             </div>
                             <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(bidForm)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidForm.$invalid" -->
+                                <button type="button" ng-click="submitForm(bidForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="bidForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>

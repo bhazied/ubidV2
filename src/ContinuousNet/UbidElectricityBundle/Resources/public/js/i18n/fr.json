@@ -274,6 +274,8 @@
             "CANCELLED": "Operation annulée!",
             "DELETED": "Supprimé!",
             "YESIHAVE": "Oui, je l'ai!",
+            "CANCEL": "Annuler",
+            "IFINISHED": "J'ai terminé",
             "CLEAR": "Effacer",
             "CLOSE": "Fermer",
             "DATE": "Date",

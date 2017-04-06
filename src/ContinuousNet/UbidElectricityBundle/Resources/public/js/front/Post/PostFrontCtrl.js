@@ -28,8 +28,6 @@ function($rootScope, $scope, $state, $stateParams, $sce, $timeout, $filter, $q, 
             $rootScope.seo.meta_description = data.meta_description;
             $rootScope.seo.meta_keywords = data.meta_keywords;
             $rootScope.seo.meta_title = data.meta_title;
-            console.log(data.meta_title);
-            console.log( $rootScope.seo);
         });
     }
 

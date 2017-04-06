@@ -6,14 +6,14 @@
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1000);
+        }, 1500);*/
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -36,6 +36,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 password: $scope.password
             };
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
+                if(data.code == 401){
+                    $scope.status = 'error';
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), data.message);
+                    return;
+                }
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
@@ -52,11 +57,12 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     }, 1000);
                 }
             }, function(error) {
+                $state.go('front.login');
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
+                return;
             });
-            return false;
         };
 
         $scope.logout = function(){

@@ -67612,6 +67612,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     $rootScope.app = {
         name: 'U bid electricity', // name of your project
         description: 'Electricity Tenders Marketplace', // brief description
+        keywords: 'Electricity, Tenders, Suppliers, Buyers, Consultations', // brief description
         author: 'ContinuousNet', // author's name or company name
         version: '2.0', // current version
         year: ((new Date()).getFullYear()), // automatic current year (for copyright information)
@@ -67634,8 +67635,71 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
             logo: '/assets/images/logo.png' // relative path of the project logo
         }
     };
-    console.log( $rootScope.app)
-    
+
+    $rootScope.seo = {
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: ''
+    };
+
+    $rootScope.pageTitle = function() {
+        return ($rootScope.seo.meta_title || $rootScope.app.name);
+    };
+
+    $rootScope.pageDescription = function() {
+        return ($rootScope.seo.meta_description || $rootScope.app.description);
+    };
+
+    $rootScope.pageKeywords = function() {
+        return ($rootScope.seo.meta_keywords || $rootScope.app.keywords);
+    };
+
+    $rootScope.createTree = function (items, parentField, labelField, parentId, level) {
+        var tree = [];
+        for (var i in items) {
+            var addToTree = false;
+            if (parentId == null && items[i][parentField] == null) {
+                addToTree = true;
+            } else if (items[i][parentField] != null) {
+                if (items[i][parentField].id == parentId) {
+                    addToTree = true;
+                }
+            }
+            if (addToTree) {
+                if (level > 0) {
+                    var newLabel = '╚';
+                    newLabel += '═'.repeat(level);
+                    newLabel += ' '+items[i][labelField];
+                    items[i][labelField] = newLabel;
+                }
+                tree.push(items[i]);
+                var children = $rootScope.createTree(items, parentField, labelField, items[i].id, level+1);
+                for (var j in children) {
+                    tree.push(children[j]);
+                }
+            }
+        }
+        return tree;
+    };
+
+    $rootScope.checkStatePermission = function (state) {
+        if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
+            return true;
+        } else {
+            if (
+                state.indexOf('supplierproduct') > -1 ||
+                state.indexOf('supplier') > -1 ||
+                state.indexOf('buyer') > -1 ||
+                state.indexOf('tender') > -1 ||
+                state.indexOf('bid') > -1
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+
     if (angular.isDefined($localStorage.user)) {
         $rootScope.user = $rootScope.currentUser = $localStorage.user;
     } else {
@@ -68100,7 +68164,8 @@ app.constant('APP_JS_REQUIRES', {
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
         'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
-        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js',
+        'ModalPostCtrl': '/bundles/ubidelectricity/js/front/Post/ModalPostCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -68313,7 +68378,10 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
-    }]
+    },{
+        name: 'notificationFrontService',
+            files: ['/bundles/ubidelectricity/js/front/Notification/NotificationService.js']
+        }]
 });
 
 'use strict';
@@ -72410,7 +72478,7 @@ function ($rootScope, ToggleHelper) {
                         }
                     }
                     if (list.length >= 10) {
-                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'"></span>');
+                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'">'+title+'</span>');
                     } else {
                         angular.element(elem).text(title);
                         angular.element(elem).attr('class', css + itemCss);
@@ -72425,49 +72493,47 @@ function ($rootScope, ToggleHelper) {
  * Check if field is unique or not
  */
 app.directive('myUniqueField', ['$resource', '$rootScope', '$localStorage',
-function($resource, $rootScope, $localStorage) {
-    var timeoutId;
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function(scope, elem, attrs, ctrl) {
-            //when the scope changes, check the email.
-            scope.$watch(attrs.ngModel, function(value) {
-                // if there was a previous attempt, stop it.
-                if (timeoutId) {
-                    clearTimeout(timeoutId);
-                }
-                // start a new attempt with a delay to keep it from
-                // getting too "chatty".
-                timeoutId = setTimeout(function() {
-                    var fieldName = attrs.myUniqueField;
-                    var resourceURL = attrs.myResourceUrl;
-                    var currentId = attrs.myCurrentId;
-                    var resource = $resource('/' + $localStorage.language + $rootScope.app.apiURL + resourceURL, {id: '@id'}, {
-                        query: { method: 'GET' }
-                    });
-                    var http_params = {
-                        offset: 0,
-                        limit: 1
-                    };
-                    http_params['filters['+fieldName+']'] = value;
-                    resource.query(http_params).$promise.then(function(data) {
-                        var count = data.inlineCount;
-                        console.log('currentId '+currentId);
-                        if (count > 0) {
-                            console.log('myUniqueField '+data.results[0].id);
-                            if (data.results[0].id == currentId) {
-                                count--;
+    function($resource, $rootScope, $localStorage) {
+        var timeoutId;
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function(scope, elem, attrs, ctrl) {
+                //when the scope changes, check the email.
+                scope.$watch(attrs.ngModel, function(value) {
+                    // if there was a previous attempt, stop it.
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                    }
+                    // start a new attempt with a delay to keep it from
+                    // getting too "chatty".
+                    timeoutId = setTimeout(function() {
+                        var fieldName = attrs.myUniqueField;
+                        var resourceURL = attrs.myResourceUrl;
+                        var currentId = attrs.myCurrentId;
+                        var resource = $resource('/' + $localStorage.language + $rootScope.app.apiURL + resourceURL, {id: '@id'}, {
+                            query: { method: 'GET' }
+                        });
+                        var http_params = {
+                            offset: 0,
+                            limit: 2
+                        };
+                        http_params['filters['+fieldName+']'] = value;
+                        http_params['filter_operators['+fieldName+']'] = 'eq';
+                        resource.query(http_params).$promise.then(function(data) {
+                            var count = data.inlineCount;
+                            if (count > 0) {
+                                if (data.results[0].id == currentId) {
+                                    count--;
+                                }
                             }
-                        }
-                        console.log('count '+count);
-                        ctrl.$setValidity('myUniqueField', (count == 0));
-                    });
-                }, 500);
-            });
+                            ctrl.$setValidity('myUniqueField', (count == 0));
+                        });
+                    }, 500);
+                });
+            }
         }
-    }
-}]);
+    }]);
 
 'use strict';
 
@@ -72933,10 +72999,6 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 		console.log(unfoundState.options);
 		// {inherit:false} + default options
 	});
-
-	$rootScope.pageTitle = function() {
-		return $rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
-	};
 
 	// save settings to local storage
 	if (angular.isDefined($localStorage.layout)) {

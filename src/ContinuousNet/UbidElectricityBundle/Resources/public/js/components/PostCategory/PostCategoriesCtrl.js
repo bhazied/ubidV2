@@ -52,6 +52,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             $postCategoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[postCategory.id]': 'desc'}).$promise.then(function(data) {
                 $timeout(function(){
                     if (data.results.length > 0) {
+                        data.results = $rootScope.createTree(data.results, 'parent_post_category', 'name', null, 0);
                         for (var i in data.results) {
                             $scope.postCategories.push({
                                 id: data.results[i].id,

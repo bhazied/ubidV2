@@ -53,7 +53,7 @@
   "profile": {
     "PROFILEUPDATED": "Your profile has been updated.",
     "PROFILENOTUPDATED": "Your profile not updated",
-    "INFORMATIONS": "Informations",
+    "INFORMATIONS": "Information",
     "UPDATEPROFILE": "Update profile",
     "CHANGEPASSWORD" : "Change password",
     "SETTINGS": "Settings"
@@ -66,7 +66,7 @@
     "SUBMIT": "Submit",
     "EMAILINCORRECT": "Email address incorrect.",
     "EMAILSENT": "Reset password link sent to your email address.",
-    "INVALIDEMAIL": "Invalid email or email not exist!",
+    "INVALIDEMAIL": "Invalid email or email does not exist",
     "REQUESTPASSWORDRESETINPROGRESS": "Request password reset in progress...",
     "ANEMAILISSENT": "An email is sent to your inbox with reset link.",
     "ENTERNEWPASSWORD": "Entrer your new password",
@@ -74,7 +74,8 @@
     "RESETPASSWORDRESETINPROGRESS": "Reset password reset in progress...",
     "NEWPASSWORDNOTSET": "New password not set!",
     "PASSWORDCHANGED": "Password changed",
-    "ENTERCURRENTPASSWORD": "Entrer your current password"
+    "ENTERCURRENTPASSWORD": "Entrer your current password",
+    "REDIRECTAFTER" : "You will be redirected after [[seconds]] seconds"
   },
   "content": {
     "list": {
@@ -784,6 +785,10 @@
       "VISITDELETED": "Visit Deleted",
       "VISITNOTDELETED": "Visit Not Deleted",
       "BACKVISITS": "Back To Visits List",
+      "TENDERBOOKMARKDETAILS" : "Tender Bookmark Details",
+      "BACKTENDERBOOKMARKS" : "Back To Tender Bookmark List",
+      "BACKTOTENDER" : "Back To Tender",
+      "YOUAREALREADYAPPLAYEDINTHISTENDER" : "You are already applayed in this tender",
       "fieldsets": {
         "ALERT" : {
           "DEFAULT" : "Default"
@@ -1283,7 +1288,8 @@
           "WEEKLY":"Weekly",
           "MONTHLY":"Monthly"
         },
-        "PERIOD": "Period"
+        "PERIOD": "Period",
+        "MUSTBEATLEAST8CHARACTERSLONG" : "(must be at least 8 characters long)"
       }
     },
     "form": {
@@ -1571,7 +1577,7 @@
         "ENTERPASSWORD": "Enter the Password",
         "PASSWORDREQUIRED": "The Password is required",
         "REENTERPASSWORD": "Re-enter the Password",
-        "REPEATPASSWORDREQUIRED": "The Repeat Password is required",
+        "REPEATPASSWORDREQUIRED": "The Password is required",
         "ENTERSALT": "Enter the Salt",
         "SALTALREADYINUSE": "This Salt is already in use. Please choose another one.",
         "ENTERUSERNAMECANONICAL": "Enter the Username Canonical",
@@ -1607,7 +1613,13 @@
         "PHONEREQUIRED": "Phone is required",
         "CURRENTPASSWORDREQUIRED": "Current password is required",
         "LASTNAMEREQUIRED": "Last name is required",
-        "GCREQUIRED": "Please accept the general conditions"
+        "GCREQUIRED": "Please accept the general conditions",
+        "CATEGORYREQUIRED" : "Categories is required",
+        "DESCRIPTIONREQUIRED" : "Description is required",
+        "CURRENTPASSWORDERROR" : "Current password error!",
+        "CURRENTPASSWORDOK" : "Current OK!",
+        "INVALIDPHONENUMBER" : "Invalid phone number"
+
       }
     },
     "common": {
@@ -1776,7 +1788,7 @@
     "ELECTRICITYMAGAZINE": "Electricity magazine",
     "TERMSOFUSE": "Terms of use",
     "PRIVACYPOLICY":"Privacy policy",
-    "MYBUYERS":"Buyers",
+    "MYBUYERS":"My Buyers",
     "NEWBUYER":"New Buyer",
     "CONSULTBUYERS": "List of buyers",
     "MYTENDERS":"My Tenders",
@@ -1839,19 +1851,20 @@
     "WEBSITE": "Website",
     "CONTACT": "Contact",
     "SORTBY": "Sort By",
-    "NAMEASC": "Name ASC",
-    "NAMEDESC": "Name DESC",
-    "VIEWSASC": "Views ASC",
-    "VIEWSDESC": "Views DESC",
-    "TITLEASC": "Title ASC",
-    "TITLEDESC": "Title DESC",
-    "DUEDATEASC": "Due date ASC",
-    "DUEDATEDESC": "Due date DESC",
+    "NAMEASC": "Name ↑",
+    "NAMEDESC": "Name ↓",
+    "VIEWSASC": "Views ↑",
+    "VIEWSDESC": "Views ↓",
+    "TITLEASC": "Title ↑",
+    "TITLEDESC": "Title ↓",
+    "DUEDATEASC": "Due date ↑",
+    "DUEDATEDESC": "Due date ↓",
     "READMORE": "Read More",
     "SHARE": "Share",
     "COMMENTS": "Comments",
     "NORESULTSFORSUPPLIERS": "No results for suppliers",
     "NORESULTSFORTENDERS": "No results for tenders",
+    "NORESULTSFORCONSULTATIONS": "No results for consultations",
     "NORESULTSFORBUYERS":"No results for buyers",
     "FILTERCOUNTRIES": "Search in countries...",
     "FILTERCATEGORIES": "Search in categories...",
@@ -1886,14 +1899,14 @@
       "NEWBUYER" : "Add new buyer",
       "MYTENDERS" : "Manage my tenders",
       "NEWTENDER" : "Add new tender",
-      "PROJECTBIDS" : "Project bids text info ...",
+      "PROJECTBIDS" : "Manage my project bids",
       "PROJECTBIDSSHORTLIST" : "Manage my short list",
-      "MYSUPPLIERS" : "My supplier text info ...",
-      "NEWSUPPLIER" : "New supplier text info ...",
+      "MYSUPPLIERS" : "Manage my company profils",
+      "NEWSUPPLIER" : "Add new supplier",
       "MYPRODUCTS" : "Manage my products",
       "MYBIDS" : "Manage my bids",
       "BOOKMARKPROJECT" : "Manage my bookmark projects",
-      "NEWPRODUCT" : "New product text info ...",
+      "NEWPRODUCT" : "Add a new product",
       "MYALERTS": "Manage my alerts",
       "NEWALERT": "Add new alert",
       "CHANGEPASSWORD": "Change my password",
@@ -1956,6 +1969,10 @@
     },
     "EMPTYSEARCHALERT": "You must enter some words to search",
     "NOTIFICATIONS" : "Notifications",
-    "MARKALLASREAD" : "Mark all as read"
+    "MARKALLASREAD" : "Mark all as read",
+    "ALERTPARAMS": "parameters",
+    "NOTIFCATIONREADALLERROR": "An error occurred during the requested update",
+    "ALERTSETTINGSHEADER": "Success",
+    "ALERTSETTINGSMESSAGE": "Your alert settings are updated"
   }
 }

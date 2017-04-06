@@ -2315,6 +2315,8 @@ body {
     padding: 0;
     list-style: none;
     height: 30px;
+    display: flex;
+    display: flex;
 }
 
 .footer-center ul li {
@@ -2387,6 +2389,12 @@ body {
     /*background-image: url('/front/img/yt.png');*/
     content: "\f166";
     color: #e02a20;
+}
+
+.footer-center ul li a.ins {
+    background-image: url('/front/img/ins.png');
+    /*content: "\f16d";
+    color: #e02a20;*/
 }
 
 p.keep-in-touch {
@@ -2898,7 +2906,7 @@ input.form-control {
     color: #616161;
     font-weight: bold;
     vertical-align: bottom;
-    line-height: 230px;
+    line-height: 260px;
 }
 
 .center-menu ul li:hover a span {
@@ -3021,12 +3029,12 @@ input.form-control {
 }
 
 h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     line-height: 1.5;
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 h3, h3 a {
@@ -3353,6 +3361,10 @@ fieldset h2 {
     display: inline;
     color: #E6674A;
 }
+.symbol.usd:before {
+    content: "$";
+    display: inline;
+}
 .panel {
     margin-bottom: 20px;
     background-color: #fff;
@@ -3598,6 +3610,7 @@ fieldset h2 {
 
 .custom-profile-style .nav-tabs {
     border-bottom: none;
+    height: 2.5rem !important;
 }
 
 .custom-profile-style .nav-tabs li a {
@@ -3625,7 +3638,7 @@ fieldset h2 {
 }
 
 .custom-profile-style .nav-tabs li.active a {
-    background-color: #F7F8F9;
+    #background-color: #F7F8F9;
     font-weight: bold;
 }
 
@@ -3638,7 +3651,7 @@ fieldset h2 {
     background-color: #E7F2FD!important;
     padding-top: 15px;
     padding-bottom: 15px;
-    min-height: 800px!important;
+    min-height: 500px!important;
 }
 
 #front-content .bg-blue .table-responsive {
@@ -3713,11 +3726,10 @@ fieldset h2 {
 
 .img-thumbnail {
     margin-left: 0.5rem;
+    height: 100px;
+    width: 100px;
 }
 
-.img-thumbnail {
-    margin-left: 0.5rem;
-}
 
 @media only screen and (min-width : 768px) {
 
@@ -4320,7 +4332,6 @@ body.underPage footer {
 
 
 .notification:hover .submenu {
-    /*display: none;*/
     margin: 0;
     padding: 0;
     list-style: none;
@@ -4332,19 +4343,20 @@ body.underPage footer {
     background: #fff;
     color: #1D69AD;
     font-weight: bold;
-    width: 280px;
+    width: 380px;
     line-height: 25px;
     display: block !important;
-    #border-radius: 10px 10px 10px 10px;
     overflow-y: scroll;
     height: 300px;
     overflow-x: hidden;
+    /*background-color: #E7F2FD!important;*/
 }
 .notification:hover .header_list_notif{
     display: block;
 }
 .notification:hover .li{
     display: block;
+    border-bottom: solid 1px #dddfe2;
 }
 .notification .submenu{
     display: none;
@@ -4367,7 +4379,7 @@ body.underPage footer {
 {
     border-radius: 10px;
     background-color: #FFF;
-    opacity: 0,7;
+    opacity: 0.7;
     background-image: -webkit-linear-gradient(top,
     #1D69AD 0%,
     #1D69AD 50%,
@@ -4395,8 +4407,9 @@ body.underPage footer {
     padding: 0;
     margin: 5px 5px 5px 5px;
     list-style: none;
-    background-color: #eee !important;
-    border-radius: 5px 5px 5px 5px;
+   /* background-color: #eee !important;
+    border-radius: 5px 5px 5px 5px;*/
+    border-bottom: solid 1px #dddfe2;
 }
 
 
@@ -4413,10 +4426,24 @@ body.underPage footer {
 
 }
 .header_list_notif{
-    color: #6D6D6D;
+    background-color: #FFF;
+    padding: 8px 12px 6px;
+    border-bottom: solid 1px #dddfe2;
     display: none;
 }
+.header_list_notif a {
+    color: #365899;
+    cursor: pointer;
+    text-decoration: none;
+}
 
+.span_notification h3{
+    color: #333;
+    font-size: 12px;
+    margin-top: 6px;
+    font-family: inherit;
+
+}
 .notification .submenu img{
     border-radius: 5px 5px 5px 5px;
 }
@@ -4428,4 +4455,52 @@ body.underPage footer {
 }
 .padding-right-0{
     padding-right: 0px;
+}
+
+.selectMultiple .select-list:after{
+    content : "" !important;
+}
+
+.table .img-thumbnail {
+    max-height: 100px;
+}
+
+.nav-tabs {
+    height: 3rem;
+    border-bottom: 2px solid #1D69AD;
+}
+
+.nav-tabs .nav-link {
+    color: #999999!important;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background-color: #eee;
+}
+
+.nav-tabs  li.active a{
+    background-color: #1D69AD;
+    color: #ffffff!important;
+}
+
+.nav-tabs li {
+    margin: 0 0.5rem 0 0;
+}
+
+.nav-tabs  li:hover a {
+    color: #1D69AD;
+    text-decoration: underline;
+}
+
+.text-indicatif{
+    font-size: 11px;
+}
+
+.content_entity{
+    border-bottom: 3px  solid #DFE6F0 !important;
+}
+
+.msg_applayd{
+    text-align: center;
+    top: 20px;
 }

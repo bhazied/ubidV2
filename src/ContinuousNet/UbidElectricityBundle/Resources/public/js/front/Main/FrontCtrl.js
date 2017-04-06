@@ -5,12 +5,14 @@
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
-        $rootScope.showSlogan = false;
-        $rootScope.showUserMenu = false;
-        $rootScope.showLeftSide = false;
-        $rootScope.showRightSide = false;
-        $rootScope.contentSize = 9;
-        $rootScope.contentOffset = 0;
+       /* $timeout(function () {
+            $rootScope.showSlogan = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.contentSize = 9;
+            $rootScope.contentOffset = 0;
+        });*/
 
         //header searchForm show
         $rootScope.SearchFormHeader = false;
@@ -125,6 +127,48 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             // Save the route title
             $rootScope.currTitle = $filter('translate')($state.current.title);
+
+            if ($state.current.name == 'front.home') {
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                })
+            }
+            if( $state.current.name.indexOf('front.mybuyers') != -1 ){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = true;
+                    $rootScope.contentSize = 10;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
+            if($state.current.name == 'front.login'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 6;
+                    $rootScope.contentOffset = 3;
+                }, 1500);
+            }
+            if($state.current.name == 'front.generic_search'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
+            
         });
 
         // State not found

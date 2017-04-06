@@ -65,6 +65,7 @@ class TenderRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,6 +75,7 @@ class TenderRESTController extends BaseRESTController
             $this->createSubDirectory(new Tender());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -82,16 +84,16 @@ class TenderRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:Tender', 't_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.buyer = buyer.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.supplier = supplier.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'region', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.region = region.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.country = country.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.sector = sector.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderType', 'tender_type', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.tenderType = tender_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BiddingType', 'bidding_type', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.biddingType = bidding_type.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 't_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:Tender', 'tender');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Buyer', 'buyer', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.buyer = buyer.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.supplier = supplier.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Region', 'region', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.region = region.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Country', 'country', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.country = country.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Sector', 'sector', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.sector = sector.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\TenderType', 'tender_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.tenderType = tender_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\BiddingType', 'bidding_type', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.biddingType = bidding_type.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'tender.modifierUser = modifier_user.id');
             $textFields = array('tender.title', 'tender.slug', 'tender.reference', 'tender.description', 'tender.attachmentFiles', 'tender.source');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -109,13 +111,16 @@ class TenderRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('tender.', 't_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -124,14 +129,14 @@ class TenderRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'tender.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'tender.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
@@ -142,21 +147,20 @@ class TenderRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('t_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('tender.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(t_.id)');
+            $qb->select('count(tender.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('tender.', 't_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('t_');
+            $qbList->select('tender');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('t_.id');
+            $qbList->groupBy('tender.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

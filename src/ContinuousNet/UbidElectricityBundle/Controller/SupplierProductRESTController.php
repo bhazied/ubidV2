@@ -65,6 +65,7 @@ class SupplierProductRESTController extends BaseRESTController
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
      * @QueryParam(name="limit", requirements="\d+", default="1000", description="How many notes to return.")
+     * @QueryParam(name="filter_operators", nullable=true, array=true, description="Filter fields operators.")
      * @QueryParam(name="order_by", nullable=true, array=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, array=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
@@ -74,6 +75,7 @@ class SupplierProductRESTController extends BaseRESTController
             $this->createSubDirectory(new SupplierProduct());
             $offset = $paramFetcher->get('offset');
             $limit = $paramFetcher->get('limit');
+            $filter_operators = $paramFetcher->get('filter_operators') ? $paramFetcher->get('filter_operators') : array();
             $order_by = $paramFetcher->get('order_by') ? $paramFetcher->get('order_by') : array();
             $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
             $data = array(
@@ -82,11 +84,11 @@ class SupplierProductRESTController extends BaseRESTController
             );
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
-            $qb->from('UbidElectricityBundle:SupplierProduct', 'sp_');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.supplier = supplier.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'category', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.category = category.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.creatorUser = creator_user.id');
-            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'sp_.modifierUser = modifier_user.id');
+            $qb->from('UbidElectricityBundle:SupplierProduct', 'supplierProduct');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Supplier', 'supplier', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.supplier = supplier.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\Category', 'category', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.category = category.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'creator_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.creatorUser = creator_user.id');
+            $qb->leftJoin('ContinuousNet\UbidElectricityBundle\Entity\User', 'modifier_user', \Doctrine\ORM\Query\Expr\Join::WITH, 'supplierProduct.modifierUser = modifier_user.id');
             $textFields = array('supplierProduct.name', 'supplierProduct.slug', 'supplierProduct.brand', 'supplierProduct.model', 'supplierProduct.description', 'supplierProduct.picture');
             $memberOfConditions = array();
             foreach ($filters as $field => $value) {
@@ -104,13 +106,16 @@ class SupplierProductRESTController extends BaseRESTController
                     }
                     continue;
                 }
-                $_field = str_replace('supplierProduct.', 'sp_.', $field);
                 $key = str_replace('.', '', $field);
                 if (!empty($value)) {
                    if (in_array($field, $textFields)) {
-                       $qb->andWhere($qb->expr()->like($_field, $qb->expr()->literal('%' . $value . '%')));
+                       if (isset($filter_operators[$field]) && $filter_operators[$field] == 'eq') {
+                           $qb->andWhere($qb->expr()->eq($field, $qb->expr()->literal($value)));
+                       } else {
+                           $qb->andWhere($qb->expr()->like($field, $qb->expr()->literal('%' . $value . '%')));
+                       }
                    } else {
-                       $qb->andWhere($_field.' = :'.$key.'')->setParameter($key, $value);
+                       $qb->andWhere($field.' = :'.$key.'')->setParameter($key, $value);
                    }
                 }
             }
@@ -119,14 +124,14 @@ class SupplierProductRESTController extends BaseRESTController
                     if ($memberOfCondition['operator'] == 'or') {
                         $orX = $qb->expr()->orX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $orX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'supplierProduct.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($orX);
                     } else if ($memberOfCondition['operator'] == 'and') {
                         $andX = $qb->expr()->andX();
                         foreach ($memberOfCondition['items'] as $i => $item) {
-                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'p_.'.$listName));
+                            $andX->add($qb->expr()->isMemberOf(':'.$listName.'_value_'.$i, 'supplierProduct.'.$listName));
                             $qb->setParameter($listName.'_value_'.$i, $item);
                         }
                         $qb->andWhere($andX);
@@ -137,21 +142,20 @@ class SupplierProductRESTController extends BaseRESTController
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                    if (substr_count($role, 'SUB') > 0) {
-                       $qb->andWhere('sp_.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
+                       $qb->andWhere('supplierProduct.creatorUser = :creatorUser')->setParameter('creatorUser', $this->getUser()->getId());
                    }
                 }
             }
             $qbList = clone $qb;
-            $qb->select('count(sp_.id)');
+            $qb->select('count(supplierProduct.id)');
             $data['inlineCount'] = $qb->getQuery()->getSingleScalarResult();
             foreach ($order_by as $field => $direction) {
-                $field = str_replace('supplierProduct.', 'sp_.', $field);
                 $qbList->addOrderBy($field, $direction);
             }
-            $qbList->select('sp_');
+            $qbList->select('supplierProduct');
             $qbList->setMaxResults($limit);
             $qbList->setFirstResult($offset);
-            $qbList->groupBy('sp_.id');
+            $qbList->groupBy('supplierProduct.id');
             $results = $qbList->getQuery()->getResult();
             if ($results) {
                 $data['results'] = $results;

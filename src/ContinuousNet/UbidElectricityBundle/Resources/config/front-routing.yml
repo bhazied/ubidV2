@@ -271,7 +271,7 @@ e_electricity_front_myAlerts_list:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_myAlerts_details:
-    path: /my-alerts/details
+    path: /my-alerts/details/{id}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_myAlerts_new:

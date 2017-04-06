@@ -20,7 +20,7 @@ function ($rootScope, ToggleHelper) {
                         }
                     }
                     if (list.length >= 10) {
-                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'"></span>');
+                        angular.element(elem).html('<span class="'+itemCss+'" title="'+title+'">'+title+'</span>');
                     } else {
                         angular.element(elem).text(title);
                         angular.element(elem).attr('class', css + itemCss);
