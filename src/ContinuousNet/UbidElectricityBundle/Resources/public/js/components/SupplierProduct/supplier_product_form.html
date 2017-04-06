@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="suppliersLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="supplier_product_supplier_readonly" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="supplierProduct.supplier" name="supplier" id="supplierProductSupplier" class="form-control" ng-required="true">
+                                            <select ng-readonly="supplier_product_supplier_readonly || false" ng-options="item.id as item.name for item in suppliers | filter:{ hidden : false }" ng-model="supplierProduct.supplier" name="supplier" id="supplierProductSupplier" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="supplier_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplierProduct.category" name="category" id="supplierProductCategory" class="form-control" ng-required="true">
+                                            <select ng-readonly="supplier_product_category_readonly || false" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="supplierProduct.category" name="category" id="supplierProductCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -74,7 +74,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.name" type="text" name="name" id="supplierProductName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.name" type="text" name="name" id="supplierProductName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="supplierProductForm.name.$dirty && supplierProductForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -91,7 +91,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.slug" type="text" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.slug" type="text" name="slug" id="supplierProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="supplierProductForm.slug.$dirty && supplierProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -108,7 +108,7 @@
                                         <span translate="content.list.fields.BRAND">Brand</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.brand" type="text" name="brand" id="supplierProductBrand" class="form-control" placeholder="[[ 'content.form.messages.ENTERBRAND' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.brand" type="text" name="brand" id="supplierProductBrand" class="form-control" placeholder="[[ 'content.form.messages.ENTERBRAND' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -121,7 +121,7 @@
                                         <span translate="content.list.fields.MODEL">Model</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.model" type="text" name="model" id="supplierProductModel" class="form-control" placeholder="[[ 'content.form.messages.ENTERMODEL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.model" type="text" name="model" id="supplierProductModel" class="form-control" placeholder="[[ 'content.form.messages.ENTERMODEL' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -136,7 +136,7 @@
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.description" type="text" name="description" id="supplierProductDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.description" type="text" name="description" id="supplierProductDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -150,7 +150,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.picture" type="text" name="picture" id="supplierProductPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="supplierProduct.picture" type="text" name="picture" id="supplierProductPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -204,7 +204,7 @@
                                         <span translate="content.list.fields.UNITCOST">Unit Cost</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="supplierProduct.unit_cost" type="text" name="unitCost" id="supplierProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="supplierProduct.unit_cost" type="text" name="unitCost" id="supplierProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-money"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -215,7 +215,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="supplierProduct.is_public" type="checkbox" name="isPublic" id="supplierProductIsPublic" />
+                                    <input ng-readonly="false" ng-model="supplierProduct.is_public" type="checkbox" name="isPublic" id="supplierProductIsPublic" />
                                     <label for="supplierProductIsPublic" translate="content.list.fields.ISPUBLIC">Is Public</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

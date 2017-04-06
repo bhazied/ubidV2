@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="bannerTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="banner_banner_type_readonly" ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
+                                            <select ng-readonly="banner_banner_type_readonly || false" ng-options="item.id as item.name for item in bannerTypes | filter:{ hidden : false }" ng-model="banner.banner_type" name="bannerType" id="bannerBannerType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
@@ -53,7 +53,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.name" type="text" name="name" id="bannerName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="banner.name" type="text" name="name" id="bannerName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerForm.name.$dirty && bannerForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -71,7 +71,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="banner.picture" type="text" name="picture" id="bannerPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.picture" type="text" name="picture" id="bannerPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -95,7 +95,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="banner.closable" type="checkbox" name="closable" id="bannerClosable" />
+                                    <input ng-readonly="false" ng-model="banner.closable" type="checkbox" name="closable" id="bannerClosable" />
                                     <label for="bannerClosable" translate="content.list.fields.CLOSABLE">Closable</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -109,7 +109,7 @@
                                         <span translate="content.list.fields.COUNTDOWN">Count Down</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.count_down" type="text" name="countDown" id="bannerCountDown" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOUNTDOWN' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.count_down" type="text" name="countDown" id="bannerCountDown" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOUNTDOWN' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-arrow-down"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -123,7 +123,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.iphone_action" type="text" name="iphoneAction" id="bannerIphoneAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPHONEACTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="banner.iphone_action" type="text" name="iphoneAction" id="bannerIphoneAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPHONEACTION' | translate ]]" ng-required="true" />
                                         <i class="ti-apple"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerForm.iphoneAction.$dirty && bannerForm.iphoneAction.$error.required" translate="content.form.messages.IPHONEACTIONREQUIRED">Iphone Action is required.</span>
@@ -141,7 +141,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.android_action" type="text" name="androidAction" id="bannerAndroidAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERANDROIDACTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="banner.android_action" type="text" name="androidAction" id="bannerAndroidAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERANDROIDACTION' | translate ]]" ng-required="true" />
                                         <i class="ti-android"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerForm.androidAction.$dirty && bannerForm.androidAction.$error.required" translate="content.form.messages.ANDROIDACTIONREQUIRED">Android Action is required.</span>
@@ -157,7 +157,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.web_action" type="text" name="webAction" id="bannerWebAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBACTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="banner.web_action" type="text" name="webAction" id="bannerWebAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBACTION' | translate ]]" ng-required="true" />
                                         <i class="ti-world"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerForm.webAction.$dirty && bannerForm.webAction.$error.required" translate="content.form.messages.WEBACTIONREQUIRED">Web Action is required.</span>
@@ -195,7 +195,7 @@
                                         <span translate="content.list.fields.MINAGE">Min Age</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.min_age" type="text" name="minAge" id="bannerMinAge" class="form-control" placeholder="[[ 'content.form.messages.ENTERMINAGE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.min_age" type="text" name="minAge" id="bannerMinAge" class="form-control" placeholder="[[ 'content.form.messages.ENTERMINAGE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-birthday-cake"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -210,7 +210,7 @@
                                         <span translate="content.list.fields.MAXAGE">Max Age</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.max_age" type="text" name="maxAge" id="bannerMaxAge" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXAGE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.max_age" type="text" name="maxAge" id="bannerMaxAge" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXAGE' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-birthday-cake"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -223,7 +223,7 @@
                                         <span translate="content.list.fields.PRIORITY">Priority</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.priority" type="text" name="priority" id="bannerPriority" class="form-control" placeholder="[[ 'content.form.messages.ENTERPRIORITY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.priority" type="text" name="priority" id="bannerPriority" class="form-control" placeholder="[[ 'content.form.messages.ENTERPRIORITY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-exclamation"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -238,7 +238,7 @@
                                         <span translate="content.list.fields.WEBURL">Web Url</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.web_url" type="text" name="webUrl" id="bannerWebUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBURL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.web_url" type="text" name="webUrl" id="bannerWebUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERWEBURL' | translate ]]" ng-required="false" />
                                         <i class="ti-link"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -251,7 +251,7 @@
                                         <span translate="content.list.fields.PHONENUMBERTOCALL">Phone Number To Call</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.phone_number_to_call" type="text" name="phoneNumberToCall" id="bannerPhoneNumberToCall" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONENUMBERTOCALL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.phone_number_to_call" type="text" name="phoneNumberToCall" id="bannerPhoneNumberToCall" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONENUMBERTOCALL' | translate ]]" ng-required="false" />
                                         <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -266,7 +266,7 @@
                                         <span translate="content.list.fields.SMSMOBILENUMBER">Sms Mobile Number</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.sms_mobile_number" type="text" name="smsMobileNumber" id="bannerSmsMobileNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERSMSMOBILENUMBER' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.sms_mobile_number" type="text" name="smsMobileNumber" id="bannerSmsMobileNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERSMSMOBILENUMBER' | translate ]]" ng-required="false" />
                                         <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -279,7 +279,7 @@
                                         <span translate="content.list.fields.SMSBODY">Sms Body</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.sms_body" type="text" name="smsBody" id="bannerSmsBody" class="form-control" placeholder="[[ 'content.form.messages.ENTERSMSBODY' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.sms_body" type="text" name="smsBody" id="bannerSmsBody" class="form-control" placeholder="[[ 'content.form.messages.ENTERSMSBODY' | translate ]]" ng-required="false" />
                                         <i class="fa fa-calculator"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -294,7 +294,7 @@
                                         <span translate="content.list.fields.EMAILADRESS">Email Adress</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.email_adress" type="text" name="emailAdress" id="bannerEmailAdress" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILADRESS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.email_adress" type="text" name="emailAdress" id="bannerEmailAdress" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILADRESS' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -307,7 +307,7 @@
                                         <span translate="content.list.fields.EMAILSUBJECT">Email Subject</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.email_subject" type="text" name="emailSubject" id="bannerEmailSubject" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILSUBJECT' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.email_subject" type="text" name="emailSubject" id="bannerEmailSubject" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILSUBJECT' | translate ]]" ng-required="false" />
                                         <i class="fa fa-file-text-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -322,7 +322,7 @@
                                         <span translate="content.list.fields.EMAILBODY">Email Body</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.email_body" type="text" name="emailBody" id="bannerEmailBody" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILBODY' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.email_body" type="text" name="emailBody" id="bannerEmailBody" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAILBODY' | translate ]]" ng-required="false" />
                                         <i class="fa fa-calculator"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -335,7 +335,7 @@
                                         <span translate="content.list.fields.ANDROIDAPPURL">Android App Url</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.android_app_url" type="text" name="androidAppUrl" id="bannerAndroidAppUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERANDROIDAPPURL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.android_app_url" type="text" name="androidAppUrl" id="bannerAndroidAppUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERANDROIDAPPURL' | translate ]]" ng-required="false" />
                                         <i class="ti-android"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -350,7 +350,7 @@
                                         <span translate="content.list.fields.IPHONEAPPURL">Iphone App Url</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.iphone_app_url" type="text" name="iphoneAppUrl" id="bannerIphoneAppUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPHONEAPPURL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.iphone_app_url" type="text" name="iphoneAppUrl" id="bannerIphoneAppUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPHONEAPPURL' | translate ]]" ng-required="false" />
                                         <i class="ti-apple"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -363,7 +363,7 @@
                                         <span translate="content.list.fields.YOUTUBEURL">Youtube Url</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.youtube_url" type="text" name="youtubeUrl" id="bannerYoutubeUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERYOUTUBEURL' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.youtube_url" type="text" name="youtubeUrl" id="bannerYoutubeUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERYOUTUBEURL' | translate ]]" ng-required="false" />
                                         <i class="ti-youtube"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -378,7 +378,7 @@
                                         <span translate="content.list.fields.MAPLATITUDE">Map Latitude</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.map_latitude" type="text" name="mapLatitude" id="bannerMapLatitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLATITUDE' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.map_latitude" type="text" name="mapLatitude" id="bannerMapLatitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLATITUDE' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-map-marker"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -391,7 +391,7 @@
                                         <span translate="content.list.fields.MAPLONGITUDE">Map Longitude</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.map_longitude" type="text" name="mapLongitude" id="bannerMapLongitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLONGITUDE' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.map_longitude" type="text" name="mapLongitude" id="bannerMapLongitude" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAPLONGITUDE' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-map-marker"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -406,7 +406,7 @@
                                         <span translate="content.list.fields.SCREEN">Screen</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.screen" type="text" name="screen" id="bannerScreen" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCREEN' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.screen" type="text" name="screen" id="bannerScreen" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCREEN' | translate ]]" ng-required="false" />
                                         <i class="fa fa-tv"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -419,7 +419,7 @@
                                         <span translate="content.list.fields.SCREENPARAMETERS">Screen Parameters</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.screen_parameters" type="text" name="screenParameters" id="bannerScreenParameters" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCREENPARAMETERS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.screen_parameters" type="text" name="screenParameters" id="bannerScreenParameters" class="form-control" placeholder="[[ 'content.form.messages.ENTERSCREENPARAMETERS' | translate ]]" ng-required="false" />
                                         <i class="fa fa-cogs"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -434,7 +434,7 @@
                                         <span translate="content.list.fields.TOTALHITS">Total Hits</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.total_hits" type="text" name="totalHits" id="bannerTotalHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.total_hits" type="text" name="totalHits" id="bannerTotalHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-eye"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -447,7 +447,7 @@
                                         <span translate="content.list.fields.TODAYHITS">Today Hits</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.today_hits" type="text" name="todayHits" id="bannerTodayHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERTODAYHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.today_hits" type="text" name="todayHits" id="bannerTodayHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERTODAYHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-calendar-check-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -462,7 +462,7 @@
                                         <span translate="content.list.fields.TOTALCLICKS">Total Clicks</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.total_clicks" type="text" name="totalClicks" id="bannerTotalClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.total_clicks" type="text" name="totalClicks" id="bannerTotalClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERTOTALCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -475,7 +475,7 @@
                                         <span translate="content.list.fields.TODAYCLICKS">Today Clicks</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.today_clicks" type="text" name="todayClicks" id="bannerTodayClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERTODAYCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.today_clicks" type="text" name="todayClicks" id="bannerTodayClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERTODAYCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-calendar-check-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -490,7 +490,7 @@
                                         <span translate="content.list.fields.TEMPLATE">Template</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.template" type="text" name="template" id="bannerTemplate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEMPLATE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.template" type="text" name="template" id="bannerTemplate" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEMPLATE' | translate ]]" ng-required="false" />
                                         <i class="ti-layout"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -503,7 +503,7 @@
                                         <span translate="content.list.fields.ADTEXT">Ad Text</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.ad_text" type="text" name="adText" id="bannerAdText" class="form-control" placeholder="[[ 'content.form.messages.ENTERADTEXT' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="banner.ad_text" type="text" name="adText" id="bannerAdText" class="form-control" placeholder="[[ 'content.form.messages.ENTERADTEXT' | translate ]]" ng-required="false" />
                                         <i class="ti-text"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -518,7 +518,7 @@
                                         <span translate="content.list.fields.TEXTCOLOR">Text Color</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.text_color" type="text" name="textColor" id="bannerTextColor" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEXTCOLOR' | translate ]]" ng-required="false" colorpicker="hex" />
+                                        <input ng-readonly="false" ng-model="banner.text_color" type="text" name="textColor" id="bannerTextColor" class="form-control" placeholder="[[ 'content.form.messages.ENTERTEXTCOLOR' | translate ]]" ng-required="false" colorpicker="hex" />
                                         <i class="ti-palette"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -531,7 +531,7 @@
                                         <span translate="content.list.fields.BACKGROUNDCOLOR">Background Color</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.background_color" type="text" name="backgroundColor" id="bannerBackgroundColor" class="form-control" placeholder="[[ 'content.form.messages.ENTERBACKGROUNDCOLOR' | translate ]]" ng-required="false" colorpicker="hex" />
+                                        <input ng-readonly="false" ng-model="banner.background_color" type="text" name="backgroundColor" id="bannerBackgroundColor" class="form-control" placeholder="[[ 'content.form.messages.ENTERBACKGROUNDCOLOR' | translate ]]" ng-required="false" colorpicker="hex" />
                                         <i class="ti-palette"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -542,7 +542,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="banner.auto_publishing" type="checkbox" name="autoPublishing" id="bannerAutoPublishing" />
+                                    <input ng-readonly="false" ng-model="banner.auto_publishing" type="checkbox" name="autoPublishing" id="bannerAutoPublishing" />
                                     <label for="bannerAutoPublishing" translate="content.list.fields.AUTOPUBLISHING">Auto Publishing</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -555,7 +555,7 @@
                                     </label>
                                     <div class="input-group">
                                         <span class="input-icon">
-                                            <input ng-model="banner.start_publishing" type="text" name="startPublishing" id="bannerStartPublishing" class="form-control" placeholder="[[ 'content.form.messages.SELECTSTARTPUBLISHING' | translate ]]" is-open="startPublishingOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
+                                            <input ng-readonly="false" ng-model="banner.start_publishing" type="text" name="startPublishing" id="bannerStartPublishing" class="form-control" placeholder="[[ 'content.form.messages.SELECTSTARTPUBLISHING' | translate ]]" is-open="startPublishingOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
                                             <i class="ti-control-skip-forward"></i>
                                         </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -577,7 +577,7 @@
                                     </label>
                                     <div class="input-group">
                                         <span class="input-icon">
-                                            <input ng-model="banner.end_publishing" type="text" name="endPublishing" id="bannerEndPublishing" class="form-control" placeholder="[[ 'content.form.messages.SELECTENDPUBLISHING' | translate ]]" is-open="endPublishingOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
+                                            <input ng-readonly="false" ng-model="banner.end_publishing" type="text" name="endPublishing" id="bannerEndPublishing" class="form-control" placeholder="[[ 'content.form.messages.SELECTENDPUBLISHING' | translate ]]" is-open="endPublishingOpened" uib-datepicker-popup="[[dateTimeFormat]]" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="[[ 'content.common.CLOSE' | translate ]]" current-text="[[ 'content.common.CURRENT' | translate ]]" clear-text="[[ 'content.common.CLEAR' | translate ]]" time-text="[[ 'content.common.TIME' | translate ]]" date-text="[[ 'content.common.DATE' | translate ]]" ng-required="false" />
                                             <i class="ti-control-skip-backward"></i>
                                         </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -596,7 +596,7 @@
                                         <span translate="content.list.fields.STARTPUBLISHINGTIME">Start Publishing Time</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.start_publishing_time" type="text" name="startPublishingTime" id="bannerStartPublishingTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERSTARTPUBLISHINGTIME' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.start_publishing_time" type="text" name="startPublishingTime" id="bannerStartPublishingTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERSTARTPUBLISHINGTIME' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-alarm-clock"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -611,7 +611,7 @@
                                         <span translate="content.list.fields.ENDPUBLISHINGTIME">End Publishing Time</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.end_publishing_time" type="text" name="endPublishingTime" id="bannerEndPublishingTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERENDPUBLISHINGTIME' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.end_publishing_time" type="text" name="endPublishingTime" id="bannerEndPublishingTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERENDPUBLISHINGTIME' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-alarm-clock"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -624,7 +624,7 @@
                                         <span translate="content.list.fields.MAXCLICKSPERDAY">Max Clicks Per Day</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.max_clicks_per_day" type="text" name="maxClicksPerDay" id="bannerMaxClicksPerDay" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXCLICKSPERDAY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.max_clicks_per_day" type="text" name="maxClicksPerDay" id="bannerMaxClicksPerDay" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXCLICKSPERDAY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-calendar-check-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -639,7 +639,7 @@
                                         <span translate="content.list.fields.MAXTOTALCLICKS">Max Total Clicks</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.max_total_clicks" type="text" name="maxTotalClicks" id="bannerMaxTotalClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXTOTALCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.max_total_clicks" type="text" name="maxTotalClicks" id="bannerMaxTotalClicks" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXTOTALCLICKS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-bar-chart"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -652,7 +652,7 @@
                                         <span translate="content.list.fields.MAXHITSPERDAY">Max Hits Per Day</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.max_hits_per_day" type="text" name="maxHitsPerDay" id="bannerMaxHitsPerDay" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXHITSPERDAY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.max_hits_per_day" type="text" name="maxHitsPerDay" id="bannerMaxHitsPerDay" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXHITSPERDAY' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-calendar-check-o"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -667,7 +667,7 @@
                                         <span translate="content.list.fields.MAXTOTALHITS">Max Total Hits</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="banner.max_total_hits" type="text" name="maxTotalHits" id="bannerMaxTotalHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXTOTALHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="banner.max_total_hits" type="text" name="maxTotalHits" id="bannerMaxTotalHits" class="form-control" placeholder="[[ 'content.form.messages.ENTERMAXTOTALHITS' | translate ]]" touchspin data-min="-10000000" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-eye"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->

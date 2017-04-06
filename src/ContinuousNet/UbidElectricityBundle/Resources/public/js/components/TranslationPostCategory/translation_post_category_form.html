@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="postCategoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_post_category_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="translationPostCategory.post_category" name="postCategory" id="translationPostCategoryPostCategory" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_post_category_post_category_readonly || false" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="translationPostCategory.post_category" name="postCategory" id="translationPostCategoryPostCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPostCategory.locale" name="locale" id="translationPostCategoryLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPostCategory.locale" name="locale" id="translationPostCategoryLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationPostCategory.name" type="text" name="name" id="translationPostCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationPostCategory.name" type="text" name="name" id="translationPostCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationPostCategoryForm.name.$dirty && translationPostCategoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationPostCategory.slug" type="text" name="slug" id="translationPostCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationPostCategory.slug" type="text" name="slug" id="translationPostCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationPostCategoryForm.slug.$dirty && translationPostCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -107,7 +107,7 @@
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationPostCategory.description" type="text" name="description" id="translationPostCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="translationPostCategory.description" type="text" name="description" id="translationPostCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -116,7 +116,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationPostCategory.validated" type="checkbox" name="validated" id="translationPostCategoryValidated" />
+                                    <input ng-readonly="false" ng-model="translationPostCategory.validated" type="checkbox" name="validated" id="translationPostCategoryValidated" />
                                     <label for="translationPostCategoryValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

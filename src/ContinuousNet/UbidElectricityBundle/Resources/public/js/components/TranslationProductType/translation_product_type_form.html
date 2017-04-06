@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="productTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_product_type_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="translationProductType.product_type" name="productType" id="translationProductTypeProductType" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_product_type_product_type_readonly || false" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="translationProductType.product_type" name="productType" id="translationProductTypeProductType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationProductType.locale" name="locale" id="translationProductTypeLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationProductType.locale" name="locale" id="translationProductTypeLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationProductType.name" type="text" name="name" id="translationProductTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationProductType.name" type="text" name="name" id="translationProductTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationProductTypeForm.name.$dirty && translationProductTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationProductType.slug" type="text" name="slug" id="translationProductTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationProductType.slug" type="text" name="slug" id="translationProductTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationProductTypeForm.slug.$dirty && translationProductTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -103,7 +103,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationProductType.validated" type="checkbox" name="validated" id="translationProductTypeValidated" />
+                                    <input ng-readonly="false" ng-model="translationProductType.validated" type="checkbox" name="validated" id="translationProductTypeValidated" />
                                     <label for="translationProductTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

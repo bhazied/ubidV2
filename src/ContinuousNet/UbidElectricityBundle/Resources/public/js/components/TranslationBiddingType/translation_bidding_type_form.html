@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="biddingTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_bidding_type_bidding_type_readonly" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_bidding_type_bidding_type_readonly || false" ng-options="item.id as item.name for item in biddingTypes | filter:{ hidden : false }" ng-model="translationBiddingType.bidding_type" name="biddingType" id="translationBiddingTypeBiddingType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationBiddingType.locale" name="locale" id="translationBiddingTypeLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationBiddingType.locale" name="locale" id="translationBiddingTypeLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationBiddingType.name" type="text" name="name" id="translationBiddingTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationBiddingType.name" type="text" name="name" id="translationBiddingTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationBiddingTypeForm.name.$dirty && translationBiddingTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationBiddingType.slug" type="text" name="slug" id="translationBiddingTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationBiddingType.slug" type="text" name="slug" id="translationBiddingTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationBiddingTypeForm.slug.$dirty && translationBiddingTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -103,7 +103,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationBiddingType.validated" type="checkbox" name="validated" id="translationBiddingTypeValidated" />
+                                    <input ng-readonly="false" ng-model="translationBiddingType.validated" type="checkbox" name="validated" id="translationBiddingTypeValidated" />
                                     <label for="translationBiddingTypeValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

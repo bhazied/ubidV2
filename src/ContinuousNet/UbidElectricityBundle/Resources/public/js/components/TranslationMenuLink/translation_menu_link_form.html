@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="menuLinksLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_menu_link_menu_link_readonly" ng-options="item.id as item.name for item in menuLinks | filter:{ hidden : false }" ng-model="translationMenuLink.menu_link" name="menuLink" id="translationMenuLinkMenuLink" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_menu_link_menu_link_readonly || false" ng-options="item.id as item.name for item in menuLinks | filter:{ hidden : false }" ng-model="translationMenuLink.menu_link" name="menuLink" id="translationMenuLinkMenuLink" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-link"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationMenuLink.locale" name="locale" id="translationMenuLinkLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationMenuLink.locale" name="locale" id="translationMenuLinkLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationMenuLink.name" type="text" name="name" id="translationMenuLinkName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationMenuLink.name" type="text" name="name" id="translationMenuLinkName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationMenuLinkForm.name.$dirty && translationMenuLinkForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationMenuLink.slug" type="text" name="slug" id="translationMenuLinkSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationMenuLink.slug" type="text" name="slug" id="translationMenuLinkSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationMenuLinkForm.slug.$dirty && translationMenuLinkForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -103,7 +103,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationMenuLink.validated" type="checkbox" name="validated" id="translationMenuLinkValidated" />
+                                    <input ng-readonly="false" ng-model="translationMenuLink.validated" type="checkbox" name="validated" id="translationMenuLinkValidated" />
                                     <label for="translationMenuLinkValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

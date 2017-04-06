@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="sector.name" type="text" name="name" id="sectorName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="sector.name" my-resource-url="sectors" my-current-id="[[ sector.id ]]" />
+                                        <input ng-readonly="false" ng-model="sector.name" type="text" name="name" id="sectorName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="sector.name" my-resource-url="sectors" my-current-id="[[ sector.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="sectorForm.name.$dirty && sectorForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="sector.slug" type="text" name="slug" id="sectorSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="sector.slug" type="text" name="slug" id="sectorSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="sectorForm.slug.$dirty && sectorForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="sector.published" type="checkbox" name="published" id="sectorPublished" />
+                                    <input ng-readonly="false" ng-model="sector.published" type="checkbox" name="published" id="sectorPublished" />
                                     <label for="sectorPublished" translate="content.list.fields.PUBLISHED">Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
