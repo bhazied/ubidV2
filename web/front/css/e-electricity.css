@@ -834,23 +834,26 @@ input.form-control {
 }
 
 .center-menu ul li a {
-    height: 230px;
+    height: 150px;
     width: 100%;
     margin: 0 0 0 0;
     padding: 0;
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat;
     display: block;
     text-align: center;
     text-decoration: none;
+    vertical-align: bottom;
+    position: relative;
 }
 
 .center-menu ul li a span {
     display: none;
     color: #616161;
     font-weight: bold;
-    vertical-align: bottom;
-    line-height: 230px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .center-menu ul li:hover a span {
