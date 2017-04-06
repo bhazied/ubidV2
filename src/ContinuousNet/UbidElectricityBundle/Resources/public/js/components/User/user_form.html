@@ -55,7 +55,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.username" type="text" name="username" id="userUsername" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERNAME' | translate ]]" ng-required="true" my-unique-field="user.username" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <input ng-readonly="false" ng-model="user.username" type="text" name="username" id="userUsername" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERNAME' | translate ]]" ng-required="true" my-unique-field="user.username" my-resource-url="users" my-current-id="[[ user.id ]]" />
                                         <i class="ti-user"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="userForm.username.$dirty && userForm.username.$error.required" translate="content.form.messages.USERNAMEREQUIRED">Username is required.</span>
@@ -74,7 +74,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.password" type="password" name="password" id="userPassword" class="form-control" placeholder="[[ 'content.form.messages.ENTERPASSWORD' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="user.password" type="password" name="password" id="userPassword" class="form-control" placeholder="[[ 'content.form.messages.ENTERPASSWORD' | translate ]]" ng-required="true" />
                                         <i class="ti-lock"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="userForm.password.$dirty && userForm.password.$error.required" translate="content.form.messages.PASSWORDREQUIRED">Password is required.</span>
@@ -89,7 +89,7 @@
                                         <span translate="content.list.fields.SALT">Salt</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.salt" type="text" name="salt" id="userSalt" class="form-control" placeholder="[[ 'content.form.messages.ENTERSALT' | translate ]]" ng-required="false" my-unique-field="user.salt" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <input ng-readonly="false" ng-model="user.salt" type="text" name="salt" id="userSalt" class="form-control" placeholder="[[ 'content.form.messages.ENTERSALT' | translate ]]" ng-required="false" my-unique-field="user.salt" my-resource-url="users" my-current-id="[[ user.id ]]" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -104,7 +104,7 @@
                                         <span translate="content.list.fields.PHONE">Phone</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.phone" type="text" name="phone" id="userPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" my-unique-field="user.phone" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <input ng-readonly="false" ng-model="user.phone" type="text" name="phone" id="userPhone" class="form-control" placeholder="[[ 'content.form.messages.ENTERPHONE' | translate ]]" ng-required="false" my-unique-field="user.phone" my-resource-url="users" my-current-id="[[ user.id ]]" />
                                         <i class="fa fa-phone"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -118,7 +118,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.email" type="email" name="email" id="userEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="true" my-unique-field="user.email" my-resource-url="users" my-current-id="[[ user.id ]]" />
+                                        <input ng-readonly="false" ng-model="user.email" type="email" name="email" id="userEmail" class="form-control" placeholder="[[ 'content.form.messages.ENTEREMAIL' | translate ]]" ng-required="true" my-unique-field="user.email" my-resource-url="users" my-current-id="[[ user.id ]]" />
                                         <i class="ti-email"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="userForm.email.$dirty && userForm.email.$error.required" translate="content.form.messages.EMAILREQUIRED">Email is required.</span>
@@ -157,7 +157,7 @@
                                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.first_name" type="text" name="firstName" id="userFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.first_name" type="text" name="firstName" id="userFirstName" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTNAME' | translate ]]" ng-required="false" />
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -172,7 +172,7 @@
                                         <span translate="content.list.fields.LASTNAME">Last Name</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.last_name" type="text" name="lastName" id="userLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.last_name" type="text" name="lastName" id="userLastName" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTNAME' | translate ]]" ng-required="false" />
                                         <i class="ti-id-badge"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -186,7 +186,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="user.picture" type="text" name="picture" id="userPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.picture" type="text" name="picture" id="userPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -216,7 +216,7 @@
                                         <span translate="content.list.fields.ADDRESS">Address</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.address" type="text" name="address" id="userAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.address" type="text" name="address" id="userAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
                                         <i class="ti-home"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -229,7 +229,7 @@
                                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.zip_code" type="text" name="zipCode" id="userZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.zip_code" type="text" name="zipCode" id="userZipCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" ng-required="false" />
                                         <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -244,7 +244,7 @@
                                         <span translate="content.list.fields.COMPANYNAME">Company Name</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.company_name" type="text" name="companyName" id="userCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.company_name" type="text" name="companyName" id="userCompanyName" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOMPANYNAME' | translate ]]" ng-required="false" />
                                         <i class="ti-briefcase"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -257,7 +257,7 @@
                                         <span translate="content.list.fields.JOB">Job</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.job" type="text" name="job" id="userJob" class="form-control" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.job" type="text" name="job" id="userJob" class="form-control" placeholder="[[ 'content.form.messages.ENTERJOB' | translate ]]" ng-required="false" />
                                         <i class="ti-rocket"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -273,7 +273,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="countriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="user_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
+                                            <select ng-readonly="user_country_readonly || false" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="user.country" name="country" id="userCountry" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-flag"></i>
                                         </span><!--/input-icon-->
@@ -289,7 +289,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="languagesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="user_language_readonly" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
+                                            <select ng-readonly="user_language_readonly || false" ng-options="item.id as item.name for item in languages | filter:{ hidden : false }" ng-model="user.language" name="language" id="userLanguage" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-language"></i>
                                         </span><!--/input-icon-->
@@ -306,7 +306,7 @@
                                         <span translate="content.list.fields.PROFILE">Profile</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="user.profile" type="text" name="profile" id="userProfile" class="form-control" placeholder="[[ 'content.form.messages.ENTERPROFILE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="user.profile" type="text" name="profile" id="userProfile" class="form-control" placeholder="[[ 'content.form.messages.ENTERPROFILE' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -337,7 +337,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
-                                    <input ng-model="user.enabled" type="checkbox" name="enabled" id="userEnabled" />
+                                    <input ng-readonly="false" ng-model="user.enabled" type="checkbox" name="enabled" id="userEnabled" />
                                     <label for="userEnabled" translate="content.list.fields.ENABLED">Enabled</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -345,7 +345,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
-                                    <input ng-model="user.locked" type="checkbox" name="locked" id="userLocked" />
+                                    <input ng-readonly="false" ng-model="user.locked" type="checkbox" name="locked" id="userLocked" />
                                     <label for="userLocked" translate="content.list.fields.LOCKED">Locked</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -355,7 +355,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary" ng-if="currentUser.roles.join('').indexOf('ROLE_SUPER_ADMIN') > -1" >
-                                    <input ng-model="user.expired" type="checkbox" name="expired" id="userExpired" />
+                                    <input ng-readonly="false" ng-model="user.expired" type="checkbox" name="expired" id="userExpired" />
                                     <label for="userExpired" translate="content.list.fields.EXPIRED">Expired</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -363,7 +363,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="user.credentials_expired" type="checkbox" name="credentialsExpired" id="userCredentialsExpired" />
+                                    <input ng-readonly="false" ng-model="user.credentials_expired" type="checkbox" name="credentialsExpired" id="userCredentialsExpired" />
                                     <label for="userCredentialsExpired" translate="content.list.fields.CREDENTIALSEXPIRED">Credentials Expired</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

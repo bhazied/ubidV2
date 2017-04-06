@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="userSetting.key" type="text" name="key" id="userSettingKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERKEY' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="userSetting.key" type="text" name="key" id="userSettingKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERKEY' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="userSettingForm.key.$dirty && userSettingForm.key.$error.required" translate="content.form.messages.KEYREQUIRED">Key is required.</span>

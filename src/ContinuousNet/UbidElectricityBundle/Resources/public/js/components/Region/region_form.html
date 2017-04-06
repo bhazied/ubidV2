@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="region.name" type="text" name="name" id="regionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="region.name" my-resource-url="regions" my-current-id="[[ region.id ]]" />
+                                        <input ng-readonly="false" ng-model="region.name" type="text" name="name" id="regionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="region.name" my-resource-url="regions" my-current-id="[[ region.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="regionForm.name.$dirty && regionForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -46,7 +46,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="region.published" type="checkbox" name="published" id="regionPublished" />
+                                    <input ng-readonly="false" ng-model="region.published" type="checkbox" name="published" id="regionPublished" />
                                     <label for="regionPublished" translate="content.list.fields.PUBLISHED">Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_category_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="translationCategory.category" name="category" id="translationCategoryCategory" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_category_category_readonly || false" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="translationCategory.category" name="category" id="translationCategoryCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationCategory.locale" name="locale" id="translationCategoryLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationCategory.locale" name="locale" id="translationCategoryLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationCategory.name" type="text" name="name" id="translationCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationCategory.name" type="text" name="name" id="translationCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationCategoryForm.name.$dirty && translationCategoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationCategory.slug" type="text" name="slug" id="translationCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationCategory.slug" type="text" name="slug" id="translationCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationCategoryForm.slug.$dirty && translationCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -107,7 +107,7 @@
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationCategory.description" type="text" name="description" id="translationCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="translationCategory.description" type="text" name="description" id="translationCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -116,7 +116,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationCategory.validated" type="checkbox" name="validated" id="translationCategoryValidated" />
+                                    <input ng-readonly="false" ng-model="translationCategory.validated" type="checkbox" name="validated" id="translationCategoryValidated" />
                                     <label for="translationCategoryValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

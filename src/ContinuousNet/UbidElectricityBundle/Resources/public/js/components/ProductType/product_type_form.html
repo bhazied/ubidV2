@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="productType.name" type="text" name="name" id="productTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="productType.name" my-resource-url="producttypes" my-current-id="[[ productType.id ]]" />
+                                        <input ng-readonly="false" ng-model="productType.name" type="text" name="name" id="productTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="productType.name" my-resource-url="producttypes" my-current-id="[[ productType.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="productTypeForm.name.$dirty && productTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="productType.slug" type="text" name="slug" id="productTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="productType.slug" type="text" name="slug" id="productTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="productTypeForm.slug.$dirty && productTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="productType.is_published" type="checkbox" name="isPublished" id="productTypeIsPublished" />
+                                    <input ng-readonly="false" ng-model="productType.is_published" type="checkbox" name="isPublished" id="productTypeIsPublished" />
                                     <label for="productTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

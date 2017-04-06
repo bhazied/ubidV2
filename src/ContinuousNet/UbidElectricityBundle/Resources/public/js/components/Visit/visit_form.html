@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="visit.ip" type="text" name="ip" id="visitIp" class="form-control" placeholder="[[ 'content.form.messages.ENTERIP' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="visit.ip" type="text" name="ip" id="visitIp" class="form-control" placeholder="[[ 'content.form.messages.ENTERIP' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="visitForm.ip.$dirty && visitForm.ip.$error.required" translate="content.form.messages.IPREQUIRED">Ip is required.</span>
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="visit.is_valid" type="checkbox" name="isValid" id="visitIsValid" />
+                                    <input ng-readonly="false" ng-model="visit.is_valid" type="checkbox" name="isValid" id="visitIsValid" />
                                     <label for="visitIsValid" translate="content.list.fields.ISVALID">Is Valid</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -61,7 +61,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="visit.user_agent" name="userAgent" id="visitUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></textarea>
+                                            <textarea ng-readonly="false" ng-model="visit.user_agent" name="userAgent" id="visitUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="true"></textarea>
                                             <i class="fa fa-birthday-cake"></i>
                                         </span>
                                     </div>

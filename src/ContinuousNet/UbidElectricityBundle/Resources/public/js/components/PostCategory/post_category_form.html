@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="postCategory.name" type="text" name="name" id="postCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="postCategory.name" my-resource-url="postcategories" my-current-id="[[ postCategory.id ]]" />
+                                        <input ng-readonly="false" ng-model="postCategory.name" type="text" name="name" id="postCategoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="postCategory.name" my-resource-url="postcategories" my-current-id="[[ postCategory.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postCategoryForm.name.$dirty && postCategoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="postCategory.slug" type="text" name="slug" id="postCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="postCategory.slug" type="text" name="slug" id="postCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postCategoryForm.slug.$dirty && postCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -70,7 +70,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="postCategory.picture" type="text" name="picture" id="postCategoryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="postCategory.picture" type="text" name="picture" id="postCategoryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -99,7 +99,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="postCategory.description" type="text" name="description" id="postCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="postCategory.description" type="text" name="description" id="postCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="true" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="postCategoryForm.description.$dirty && postCategoryForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
@@ -117,7 +117,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="postCategoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="post_category_parent_post_category_readonly" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="postCategory.parent_post_category" name="parentPostCategory" id="postCategoryParentPostCategory" class="form-control" ng-required="false">
+                                            <select ng-readonly="post_category_parent_post_category_readonly || false" ng-options="item.id as item.name for item in postCategories | filter:{ hidden : false }" ng-model="postCategory.parent_post_category" name="parentPostCategory" id="postCategoryParentPostCategory" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -134,7 +134,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="postTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="post_category_post_type_readonly" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
+                                            <select ng-readonly="post_category_post_type_readonly || false" ng-options="item.id as item.name for item in postTypes | filter:{ hidden : false }" ng-model="postCategory.post_type" name="postType" id="postCategoryPostType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-newspaper-o"></i>
                                         </span><!--/input-icon-->
@@ -153,7 +153,7 @@
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="postCategory.ordering" type="text" name="ordering" id="postCategoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="postCategory.ordering" type="text" name="ordering" id="postCategoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->

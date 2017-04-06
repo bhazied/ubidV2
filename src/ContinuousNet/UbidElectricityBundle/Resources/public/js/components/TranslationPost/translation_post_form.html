@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="postsLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_post_post_readonly" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_post_post_readonly || false" ng-options="item.id as item.title for item in posts | filter:{ hidden : false }" ng-model="translationPost.post" name="post" id="translationPostPost" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-newspaper-o"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPost.locale" name="locale" id="translationPostLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPost.locale" name="locale" id="translationPostLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationPost.name" type="text" name="name" id="translationPostName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationPost.name" type="text" name="name" id="translationPostName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationPostForm.name.$dirty && translationPostForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -90,7 +90,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationPost.slug" type="text" name="slug" id="translationPostSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationPost.slug" type="text" name="slug" id="translationPostSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationPostForm.slug.$dirty && translationPostForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -117,7 +117,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationPost.validated" type="checkbox" name="validated" id="translationPostValidated" />
+                                    <input ng-readonly="false" ng-model="translationPost.validated" type="checkbox" name="validated" id="translationPostValidated" />
                                     <label for="translationPostValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderType.name" type="text" name="name" id="tenderTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="tenderType.name" my-resource-url="tendertypes" my-current-id="[[ tenderType.id ]]" />
+                                        <input ng-readonly="false" ng-model="tenderType.name" type="text" name="name" id="tenderTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="tenderType.name" my-resource-url="tendertypes" my-current-id="[[ tenderType.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="tenderTypeForm.name.$dirty && tenderTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderType.slug" type="text" name="slug" id="tenderTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="tenderType.slug" type="text" name="slug" id="tenderTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="tenderTypeForm.slug.$dirty && tenderTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="tenderType.is_published" type="checkbox" name="isPublished" id="tenderTypeIsPublished" />
+                                    <input ng-readonly="false" ng-model="tenderType.is_published" type="checkbox" name="isPublished" id="tenderTypeIsPublished" />
                                     <label for="tenderTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

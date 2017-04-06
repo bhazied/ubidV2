@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="tendersLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_product_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="tenderProduct.tender" name="tender" id="tenderProductTender" class="form-control" ng-required="true">
+                                            <select ng-readonly="tender_product_tender_readonly || false" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="tenderProduct.tender" name="tender" id="tenderProductTender" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-control-skip-backward"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_product_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="tenderProduct.category" name="category" id="tenderProductCategory" class="form-control" ng-required="true">
+                                            <select ng-readonly="tender_product_category_readonly || false" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="tenderProduct.category" name="category" id="tenderProductCategory" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -75,7 +75,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="productTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_product_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="tenderProduct.product_type" name="productType" id="tenderProductProductType" class="form-control" ng-required="true">
+                                            <select ng-readonly="tender_product_product_type_readonly || false" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="tenderProduct.product_type" name="productType" id="tenderProductProductType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
@@ -93,7 +93,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.title" type="text" name="title" id="tenderProductTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="tenderProduct.title" type="text" name="title" id="tenderProductTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
                                         <i class="fa fa-tags"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="tenderProductForm.title.$dirty && tenderProductForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
@@ -112,7 +112,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.slug" type="text" name="slug" id="tenderProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="tenderProduct.slug" type="text" name="slug" id="tenderProductSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="tenderProductForm.slug.$dirty && tenderProductForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -168,7 +168,7 @@
                                         <span translate="content.list.fields.UNITCOST">Unit Cost</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.unit_cost" type="text" name="unitCost" id="tenderProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="tenderProduct.unit_cost" type="text" name="unitCost" id="tenderProductUnitCost" class="form-control" placeholder="[[ 'content.form.messages.ENTERUNITCOST' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-money"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -183,7 +183,7 @@
                                         <span translate="content.list.fields.QUANTITY">Quantity</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.quantity" type="text" name="quantity" id="tenderProductQuantity" class="form-control" placeholder="[[ 'content.form.messages.ENTERQUANTITY' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="tenderProduct.quantity" type="text" name="quantity" id="tenderProductQuantity" class="form-control" placeholder="[[ 'content.form.messages.ENTERQUANTITY' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -196,7 +196,7 @@
                                         <span translate="content.list.fields.DURATION">Duration</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.duration" type="text" name="duration" id="tenderProductDuration" class="form-control" placeholder="[[ 'content.form.messages.ENTERDURATION' | translate ]]" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="tenderProduct.duration" type="text" name="duration" id="tenderProductDuration" class="form-control" placeholder="[[ 'content.form.messages.ENTERDURATION' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-timer"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -211,7 +211,7 @@
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="tenderProduct.ordering" type="text" name="ordering" id="tenderProductOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="tenderProduct.ordering" type="text" name="ordering" id="tenderProductOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
