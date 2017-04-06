@@ -34,7 +34,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="tendersLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="tender_bookmark_tender_readonly" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="tenderBookmark.tender" name="tender" id="tenderBookmarkTender" class="form-control" ng-required="false">
+                                            <select ng-readonly="tender_bookmark_tender_readonly || false" ng-options="item.id as item.title for item in tenders | filter:{ hidden : false }" ng-model="tenderBookmark.tender" name="tender" id="tenderBookmarkTender" class="form-control" ng-required="false">
                                             </select>
                                             <i class="ti-control-skip-backward"></i>
                                         </span><!--/input-icon-->

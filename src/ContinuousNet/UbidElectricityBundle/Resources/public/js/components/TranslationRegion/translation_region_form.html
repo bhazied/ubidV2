@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="regionsLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="translation_region_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="translationRegion.region" name="region" id="translationRegionRegion" class="form-control" ng-required="true">
+                                            <select ng-readonly="translation_region_region_readonly || false" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="translationRegion.region" name="region" id="translationRegionRegion" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
@@ -54,7 +54,7 @@
                                     </label>
                                     <div class="block select-list">
                                         <span class="input-icon">
-                                            <select ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationRegion.locale" name="locale" id="translationRegionLocale" class="form-control" ng-required="true">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationRegion.locale" name="locale" id="translationRegionLocale" class="form-control" ng-required="true">
                                             </select>
                                         </span>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="translationRegion.name" type="text" name="name" id="translationRegionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="translationRegion.name" type="text" name="name" id="translationRegionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="translationRegionForm.name.$dirty && translationRegionForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -84,7 +84,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="translationRegion.validated" type="checkbox" name="validated" id="translationRegionValidated" />
+                                    <input ng-readonly="false" ng-model="translationRegion.validated" type="checkbox" name="validated" id="translationRegionValidated" />
                                     <label for="translationRegionValidated" translate="content.list.fields.VALIDATED">Validated</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

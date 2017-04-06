@@ -169,7 +169,9 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         var displayFields = this.displayField.split(' ');
         var displayText = ''
         for (var i in displayFields) {
-            displayText += value[displayFields[i]] + ' ';
+            if (angular.isDefined(value[displayFields[i]])) {
+                displayText += value[displayFields[i]] + ' ';
+            }
         }
         var html = '';
         if ($rootScope.checkStatePermission(this.state)) {

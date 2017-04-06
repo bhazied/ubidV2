@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="biddingType.name" type="text" name="name" id="biddingTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="biddingType.name" my-resource-url="biddingtypes" my-current-id="[[ biddingType.id ]]" />
+                                        <input ng-readonly="false" ng-model="biddingType.name" type="text" name="name" id="biddingTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="biddingType.name" my-resource-url="biddingtypes" my-current-id="[[ biddingType.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="biddingTypeForm.name.$dirty && biddingTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="biddingType.slug" type="text" name="slug" id="biddingTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="biddingType.slug" type="text" name="slug" id="biddingTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="biddingTypeForm.slug.$dirty && biddingTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="biddingType.is_published" type="checkbox" name="isPublished" id="biddingTypeIsPublished" />
+                                    <input ng-readonly="false" ng-model="biddingType.is_published" type="checkbox" name="isPublished" id="biddingTypeIsPublished" />
                                     <label for="biddingTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

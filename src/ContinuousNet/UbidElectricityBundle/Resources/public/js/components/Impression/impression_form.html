@@ -34,7 +34,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="visitsLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="impression_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="impression.visit" name="visit" id="impressionVisit" class="form-control" ng-required="false">
+                                            <select ng-readonly="impression_visit_readonly || false" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="impression.visit" name="visit" id="impressionVisit" class="form-control" ng-required="false">
                                             </select>
                                             <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->
@@ -51,7 +51,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="bannersLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="impression_banner_readonly" ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="impression.banner" name="banner" id="impressionBanner" class="form-control" ng-required="true">
+                                            <select ng-readonly="impression_banner_readonly || false" ng-options="item.id as item.name for item in banners | filter:{ hidden : false }" ng-model="impression.banner" name="banner" id="impressionBanner" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->

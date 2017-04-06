@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="category.name" type="text" name="name" id="categoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="category.name" my-resource-url="categories" my-current-id="[[ category.id ]]" />
+                                        <input ng-readonly="false" ng-model="category.name" type="text" name="name" id="categoryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="category.name" my-resource-url="categories" my-current-id="[[ category.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="categoryForm.name.$dirty && categoryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="category.slug" type="text" name="slug" id="categorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="category.slug" type="text" name="slug" id="categorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="categoryForm.slug.$dirty && categoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -70,7 +70,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="category.picture" type="text" name="picture" id="categoryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="category.picture" type="text" name="picture" id="categoryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -99,7 +99,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="category.description" type="text" name="description" id="categoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="category.description" type="text" name="description" id="categoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="true" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="categoryForm.description.$dirty && categoryForm.description.$error.required" translate="content.form.messages.DESCRIPTIONREQUIRED">Description is required.</span>
@@ -117,7 +117,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="categoriesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="category_parent_category_readonly" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
+                                            <select ng-readonly="category_parent_category_readonly || false" ng-options="item.id as item.name for item in categories | filter:{ hidden : false }" ng-model="category.parent_category" name="parentCategory" id="categoryParentCategory" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-folder-o"></i>
                                         </span><!--/input-icon-->
@@ -134,7 +134,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="productTypesLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="category_product_type_readonly" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="category.product_type" name="productType" id="categoryProductType" class="form-control" ng-required="true">
+                                            <select ng-readonly="category_product_type_readonly || false" ng-options="item.id as item.name for item in productTypes | filter:{ hidden : false }" ng-model="category.product_type" name="productType" id="categoryProductType" class="form-control" ng-required="true">
                                             </select>
                                             <i class="fa fa-cog"></i>
                                         </span><!--/input-icon-->
@@ -154,7 +154,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.meta_title" name="metaTitle" id="categoryMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.meta_title" name="metaTitle" id="categoryMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="fa fa-code"></i>
                                         </span>
                                     </div>
@@ -169,7 +169,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.meta_description" name="metaDescription" id="categoryMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.meta_description" name="metaDescription" id="categoryMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="fa fa-code"></i>
                                         </span>
                                     </div>
@@ -186,7 +186,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.meta_keywords" name="metaKeywords" id="categoryMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.meta_keywords" name="metaKeywords" id="categoryMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="fa fa-code"></i>
                                         </span>
                                     </div>
@@ -201,7 +201,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.tenders_meta_title" name="tendersMetaTitle" id="categoryTendersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.tenders_meta_title" name="tendersMetaTitle" id="categoryTendersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-control-skip-backward"></i>
                                         </span>
                                     </div>
@@ -218,7 +218,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.tenders_meta_description" name="tendersMetaDescription" id="categoryTendersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.tenders_meta_description" name="tendersMetaDescription" id="categoryTendersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-align-justify"></i>
                                         </span>
                                     </div>
@@ -233,7 +233,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.tenders_meta_keywords" name="tendersMetaKeywords" id="categoryTendersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.tenders_meta_keywords" name="tendersMetaKeywords" id="categoryTendersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-control-skip-backward"></i>
                                         </span>
                                     </div>
@@ -250,7 +250,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.consultations_meta_title" name="consultationsMetaTitle" id="categoryConsultationsMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.consultations_meta_title" name="consultationsMetaTitle" id="categoryConsultationsMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -265,7 +265,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.consultations_meta_description" name="consultationsMetaDescription" id="categoryConsultationsMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.consultations_meta_description" name="consultationsMetaDescription" id="categoryConsultationsMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-align-justify"></i>
                                         </span>
                                     </div>
@@ -282,7 +282,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.consultations_meta_keywords" name="consultationsMetaKeywords" id="categoryConsultationsMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.consultations_meta_keywords" name="consultationsMetaKeywords" id="categoryConsultationsMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -297,7 +297,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.buyers_meta_title" name="buyersMetaTitle" id="categoryBuyersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.buyers_meta_title" name="buyersMetaTitle" id="categoryBuyersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -314,7 +314,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.buyers_meta_description" name="buyersMetaDescription" id="categoryBuyersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.buyers_meta_description" name="buyersMetaDescription" id="categoryBuyersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-align-justify"></i>
                                         </span>
                                     </div>
@@ -329,7 +329,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.buyers_meta_keywords" name="buyersMetaKeywords" id="categoryBuyersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.buyers_meta_keywords" name="buyersMetaKeywords" id="categoryBuyersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -346,7 +346,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.suppliers_meta_title" name="suppliersMetaTitle" id="categorySuppliersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.suppliers_meta_title" name="suppliersMetaTitle" id="categorySuppliersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -361,7 +361,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.suppliers_meta_description" name="suppliersMetaDescription" id="categorySuppliersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.suppliers_meta_description" name="suppliersMetaDescription" id="categorySuppliersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-align-justify"></i>
                                         </span>
                                     </div>
@@ -378,7 +378,7 @@
                                     </label>
                                     <div class="note-editor">
                                         <span class="input-icon">
-                                            <textarea ng-model="category.suppliers_meta_keywords" name="suppliersMetaKeywords" id="categorySuppliersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <textarea ng-readonly="false" ng-model="category.suppliers_meta_keywords" name="suppliersMetaKeywords" id="categorySuppliersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
                                             <i class="ti-marker-alt"></i>
                                         </span>
                                     </div>
@@ -392,7 +392,7 @@
                                         <span translate="content.list.fields.ORDERING">Ordering</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="category.ordering" type="text" name="ordering" id="categoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="category.ordering" type="text" name="ordering" id="categoryOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
