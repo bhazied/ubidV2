@@ -185,7 +185,9 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             }
             var displayFields = this.displayField.split(' ');
             for (var j in displayFields) {
-                link += values[i][displayFields[j]] + ' ';
+                if (angular.isDefined(values[i][displayFields[j]])) {
+                    link += values[i][displayFields[j]] + ' ';
+                }
             }
             link = link.trim();
             if ($rootScope.checkStatePermission(this.state)) {
