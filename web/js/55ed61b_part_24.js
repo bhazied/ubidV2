@@ -328,14 +328,14 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
-        $timeout(function() {
+        /*$timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1000);
+        }, 1500);*/
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -358,6 +358,11 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 password: $scope.password
             };
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
+                if(data.code == 401){
+                    $scope.status = 'error';
+                    toaster.pop('error', $filter('translate')('content.common.ERROR'), data.message);
+                    return;
+                }
                 if (data.user.roles.indexOf('ROLE_SUBSCRIBER') == -1) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
@@ -374,11 +379,12 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     }, 1000);
                 }
             }, function(error) {
+                $state.go('front.login');
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
+                return;
             });
-            return false;
         };
 
         $scope.logout = function(){
@@ -417,12 +423,14 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
-        $rootScope.showSlogan = false;
-        $rootScope.showUserMenu = false;
-        $rootScope.showLeftSide = false;
-        $rootScope.showRightSide = false;
-        $rootScope.contentSize = 9;
-        $rootScope.contentOffset = 0;
+       /* $timeout(function () {
+            $rootScope.showSlogan = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.showLeftSide = false;
+            $rootScope.showRightSide = false;
+            $rootScope.contentSize = 9;
+            $rootScope.contentOffset = 0;
+        });*/
 
         //header searchForm show
         $rootScope.SearchFormHeader = false;
@@ -537,6 +545,48 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             // Save the route title
             $rootScope.currTitle = $filter('translate')($state.current.title);
+
+            if ($state.current.name == 'front.home') {
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                })
+            }
+            if( $state.current.name.indexOf('front.mybuyers') != -1 ){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = true;
+                    $rootScope.contentSize = 10;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
+            if($state.current.name == 'front.login'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 6;
+                    $rootScope.contentOffset = 3;
+                }, 1500);
+            }
+            if($state.current.name == 'front.generic_search'){
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = true;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                }, 2000);
+            }
+            
         });
 
         // State not found
@@ -704,12 +754,12 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
        /* $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = false;
+            $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 10;
+            $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
-        }, 1000);*/
+        });*/
 
         $scope.showForm = false;
         $scope.toggle = function() {
@@ -734,6 +784,8 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.totalCount = $localStorage.genericSearchResults.inlineCount ? $localStorage.genericSearchResults.inlineCount : 0;
             $scope.tenders = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.tenders.data : [];
             $scope.tenderCount = $localStorage.genericSearchResults.tenders.inlineCount ? $localStorage.genericSearchResults.tenders.inlineCount : 0;
+            $scope.consultations = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.consultations.data : [];
+            $scope.consultationCount = $localStorage.genericSearchResults.tenders.inlineCount ? $localStorage.genericSearchResults.consultations.inlineCount : 0;
             $scope.suppliers = $localStorage.genericSearchResults.suppliers.data ? $localStorage.genericSearchResults.suppliers.data : [];
             $scope.supplierCount = $localStorage.genericSearchResults.suppliers.inlineCount ? $localStorage.genericSearchResults.suppliers.inlineCount : 0;
             $scope.buyers = $localStorage.genericSearchResults.buyers.data ? $localStorage.genericSearchResults.buyers.data : 0;
@@ -744,6 +796,11 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     title: $filter('translate')('front.TENDERS'),
                     template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
                     inlineCount: $scope.tenderCount
+                },
+                {
+                    title: $filter('translate')('front.CONSULTATIONS'),
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/consultations.html',
+                    inlineCount: $scope.consultationCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
@@ -922,7 +979,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
             if(!angular.isDefined(searchText)){
-                toaster.pop('error', 'You must enter some words to search', 'search info');
+                toaster.pop('error', 'search info', $filter('translate')('front.EMPTYSEARCHALERT'));
                 return false;
             }
             else {

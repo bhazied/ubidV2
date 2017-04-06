@@ -52,7 +52,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
         $scope.frontCategories = [];
         $scope.frontCategoriesLoaded = [];
 
-        $scope.getCategories = function() {
+        /*$scope.getCategories = function() {
             $timeout(function () {
                 $scope.frontCategoriesLoaded = true;
                 if($scope.frontCategories.length == 0){
@@ -64,6 +64,24 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                     return def;
                 }
                 else {
+                    return $scope.frontCategories;
+                }
+            });
+        };*/
+
+        $scope.getCategories = function() {
+            $timeout(function(){
+                if ($scope.frontCategories.length == 0) {
+                    $scope.frontCategories.push({});
+                    var def = $q.defer();
+                    $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                        data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
+                        console.log(data.results);
+                        $scope.frontCategories = data.results;
+                        def.resolve($scope.frontCategories);
+                    });
+                    return def;
+                } else {
                     return $scope.frontCategories;
                 }
             });

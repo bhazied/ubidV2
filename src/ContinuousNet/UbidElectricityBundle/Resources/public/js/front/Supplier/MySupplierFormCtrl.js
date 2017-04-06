@@ -14,11 +14,13 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    },1500);
+    },2000);
 
     angular.extend(this, $controller('SupplierFormCtrl', {$scope:$scope}));
+
     $scope.enableFormAlert = false;
-    
+    $scope.redirect = true;
+
     $scope.list = function() {
         $state.go('front.mysuppliers.list');
     };
@@ -150,15 +152,5 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             value: "Over $1 billion"
         }
     ];
-    /*$scope.$watch('countries', function () {
-        if($scope.countries.length > 0){
-            var defaultCountry = {id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')};
-            $scope.countries.unshift(defaultCountry);
-            $scope.supplier.country = defaultCountry.id;
-        }
-        console.log($scope.countries);
-        console.log($scope.supplier);
-    });*/
-
 }]);
 

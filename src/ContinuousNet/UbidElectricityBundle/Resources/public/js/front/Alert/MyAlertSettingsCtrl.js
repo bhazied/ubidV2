@@ -54,6 +54,7 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
         $scope.settings = [];
         $scope.alertSettings = [];
         $scope.settingsLoaded = false;
+        $scope.disableSubmit = false;
 
         $scope.getSettings = function(){
             if($scope.alertSettings.length  == 0){
@@ -111,31 +112,38 @@ app.controller('MyAlertSettingsCtrl', ['$scope', '$rootScope', '$stateParams', '
         $scope.submitForm = function (form) {
             $scope.disableSubmit = true;
             var setting = {};
+            var i =0;
             angular.forEach($scope.settings, function (value, key) {
-                if( angular.isDefined($scope.userAlertSettings[value.key])){
-                    var val = ($scope.userAlertSettings[value.key] == true) ? "ON" : "OFF";
-                    if(value.id == 0){
-                        setting = {
-                            key : value.key,
-                            value: val
-                        };
-                        $userSettingsDataFactory.create(setting).$promise.then(function(data) {
-                            value.id = data.id;
-                        });
+                $timeout(function () {
+                    if( angular.isDefined($scope.userAlertSettings[value.key])){
+                        var val = ($scope.userAlertSettings[value.key] == true) ? "ON" : "OFF";
+                        if(value.id == 0){
+                            setting = {
+                                key : value.key,
+                                value: val
+                            };
+                            $userSettingsDataFactory.create(setting).$promise.then(function(data) {
+                                value.id = data.id;
+                            });
+                        }
+                        else if(value.id >  0){
+                            setting = {
+                                key : value.key,
+                                value: val,
+                                id: value.id
+                            };
+                            $userSettingsDataFactory.update(setting).$promise.then(function(data) {
+                                value.id = data.id;
+                            });
+                        }
                     }
-                    else if(value.id >  0){
-                        setting = {
-                            key : value.key,
-                            value: val,
-                            id: value.id
-                        };
-                        $userSettingsDataFactory.update(setting).$promise.then(function(data) {
-                            value.id = data.id;
-                        });
-                    }
-                }
+                    $scope.disableSubmit = false;
+                });
+                i++;
             });
-            $scope.disableSubmit = false;
+            if(i == $scope.settings.length){
+                toaster.pop('success', $filter('translate')('front.ALERTSETTINGSMESSAGE'), $filter('translate')('front.ALERTSETTINGSHEADER'));toaster.pop('success', $filter('translate')('front.ALERTSETTINGSMESSAGE'), $filter('translate')('front.ALERTSETTINGSHEADER'));
+            }
         }
     }]);
 

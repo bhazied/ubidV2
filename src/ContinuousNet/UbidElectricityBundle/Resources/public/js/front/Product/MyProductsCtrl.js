@@ -14,7 +14,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
         $rootScope.showUserMenu = true;
         $rootScope.contentSize = 10;
         $rootScope.contentOffset = 0;
-    });
+    }, 1500);
 
     angular.extend(this, $controller('SupplierProductsCtrl', {$scope:$scope}));
 
@@ -46,6 +46,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     $scope.details = function(row) {
         $state.go('front.myproducts.details', {id: row.id});
     };
+    
 
 }]);
 

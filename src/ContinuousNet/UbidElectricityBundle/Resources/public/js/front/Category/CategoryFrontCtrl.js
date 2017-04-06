@@ -14,7 +14,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        },1500);
+        },2000);
 
         $scope.pageCounts = [5, 10, 20, 50, 100];
 

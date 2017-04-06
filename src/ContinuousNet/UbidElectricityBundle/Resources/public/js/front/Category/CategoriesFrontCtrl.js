@@ -14,7 +14,7 @@ app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        },1500);
+        },2000);
 
         $postsDataFactory.getBySlug({slug: 'categories', locale: $localStorage.language}).$promise.then(function(data) {
             $scope.postLoaded = true;

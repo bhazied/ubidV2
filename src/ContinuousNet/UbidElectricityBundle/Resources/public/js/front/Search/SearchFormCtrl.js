@@ -3,12 +3,12 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
        /* $timeout(function() {
             $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = false;
+            $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 10;
+            $rootScope.contentSize = 8;
             $rootScope.contentOffset = 0;
-        }, 1000);*/
+        });*/
 
         $scope.showForm = false;
         $scope.toggle = function() {
@@ -33,6 +33,8 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.totalCount = $localStorage.genericSearchResults.inlineCount ? $localStorage.genericSearchResults.inlineCount : 0;
             $scope.tenders = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.tenders.data : [];
             $scope.tenderCount = $localStorage.genericSearchResults.tenders.inlineCount ? $localStorage.genericSearchResults.tenders.inlineCount : 0;
+            $scope.consultations = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.consultations.data : [];
+            $scope.consultationCount = $localStorage.genericSearchResults.tenders.inlineCount ? $localStorage.genericSearchResults.consultations.inlineCount : 0;
             $scope.suppliers = $localStorage.genericSearchResults.suppliers.data ? $localStorage.genericSearchResults.suppliers.data : [];
             $scope.supplierCount = $localStorage.genericSearchResults.suppliers.inlineCount ? $localStorage.genericSearchResults.suppliers.inlineCount : 0;
             $scope.buyers = $localStorage.genericSearchResults.buyers.data ? $localStorage.genericSearchResults.buyers.data : 0;
@@ -43,6 +45,11 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     title: $filter('translate')('front.TENDERS'),
                     template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/tenders.html',
                     inlineCount: $scope.tenderCount
+                },
+                {
+                    title: $filter('translate')('front.CONSULTATIONS'),
+                    template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/consultations.html',
+                    inlineCount: $scope.consultationCount
                 },
                 {
                     title: $filter('translate')('front.SUPPLIERS'),
@@ -221,7 +228,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
             if(!angular.isDefined(searchText)){
-                toaster.pop('error', 'You must enter some words to search', 'search info');
+                toaster.pop('error', 'search info', $filter('translate')('front.EMPTYSEARCHALERT'));
                 return false;
             }
             else {

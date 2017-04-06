@@ -15,7 +15,7 @@ app.controller('MessagesFrontCtrl', ['$scope','$controller', '$rootScope', '$sta
             $rootScope.showUserMenu = true;
             $rootScope.contentSize = 10;
             $rootScope.contentOffset = 0;
-        });
+        }, 2000);
 
         angular.extend(this, $controller('MessagesCtrl', {$scope:$scope}));
 

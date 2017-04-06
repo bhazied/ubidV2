@@ -2,6 +2,21 @@
     <div ng-if="!loaded" class="svg-loader">
     </div>
     <div ng-if="loaded" class="tender-details">
+        <div>
+            <div class="row list-toolbox">
+                <div class="col-md-4 margin-bottom-10">
+                    <button ng-click="list(tender.section)" class="btn btn-primary pull-left">
+                        <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
+                    </button>
+
+                </div>
+                <div class="col-md-4 margin-bottom-10 text-center">
+
+                </div>
+                <div class="col-md-4 margin-bottom-10">
+                    <div ng-if="showButtonApplay" class="alert alert-info">[[ "content.list.YOUAREALREADYAPPLAYEDINTHISTENDER" | translate ]]</div>
+                </div>
+            </div><!--/list-toolbox-->
         <h1 class="name">[[ tender.title ]]</h1>
         <h2 ng-bind-html="tender.description"></h2>
         <table class="table table-striped">
@@ -45,13 +60,18 @@
             </div>
         </div>
         <div class="row mb-1">
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <button ng-click="list(tender.section)" class="btn btn-primary pull-left">
+                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKTENDERS">Back to Tenders list</span>
+                </button>
+            </div>
+            <div class="col-md-4">
                 <button ng-if="user.email && user.type=='Supplier'" ng-click="addBookmark()" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER" ng-disabled="disableBookmark">
                     <i class="fa fa-spinner fa-spin" ng-if="disableBookmark"></i>Bookmark Tender</button>
                 <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER">Bookmark Tender</button>
             </div>
-            <div class="col-md-6">
-                <button ng-if="user.email && user.id != tender.creator_user.id" ui-sref="front.apply_tender({id: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
+            <div class="col-md-4">
+                <button ng-if="user.email && user.id != tender.creator_user.id && !showButtonApplay" ui-sref="front.apply_tender({idTender: tender.id})" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
                 <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-right" translate="front.APPLYNOW">Apply Now</button>
             </div>
         </div>
