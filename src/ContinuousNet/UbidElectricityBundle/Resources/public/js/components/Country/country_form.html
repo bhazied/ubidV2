@@ -34,7 +34,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="regionsLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="country_region_readonly" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
+                                            <select ng-readonly="country_region_readonly || false" ng-options="item.id as item.name for item in regions | filter:{ hidden : false }" ng-model="country.region" name="region" id="countryRegion" class="form-control" ng-required="false">
                                             </select>
                                             <i class="fa fa-globe"></i>
                                         </span><!--/input-icon-->
@@ -50,7 +50,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="country.name" type="text" name="name" id="countryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="country.name" my-resource-url="countries" my-current-id="[[ country.id ]]" />
+                                        <input ng-readonly="false" ng-model="country.name" type="text" name="name" id="countryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="country.name" my-resource-url="countries" my-current-id="[[ country.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="countryForm.name.$dirty && countryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -69,7 +69,7 @@
                                     </label>
                                     <div class="input-group">
                                     <span class="input-icon">
-                                        <input ng-model="country.picture" type="text" name="picture" id="countryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="country.picture" type="text" name="picture" id="countryPicture" class="form-control" placeholder="[[ 'content.form.messages.ENTERPICTURE' | translate ]]" ng-required="false" />
                                         <i class="ti-image"></i>
                                     </span><!--/input-icon-->
                                         <span class="input-group-btn">
@@ -98,7 +98,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="country.code" type="text" name="code" id="countryCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERCODE' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="country.code" type="text" name="code" id="countryCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERCODE' | translate ]]" ng-required="true" />
                                         <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="countryForm.code.$dirty && countryForm.code.$error.required" translate="content.form.messages.CODEREQUIRED">Code is required.</span>
@@ -116,7 +116,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="country.long_code" type="text" name="longCode" id="countryLongCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERLONGCODE' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="country.long_code" type="text" name="longCode" id="countryLongCode" class="form-control" placeholder="[[ 'content.form.messages.ENTERLONGCODE' | translate ]]" ng-required="true" />
                                         <i class="ti-shortcode"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="countryForm.longCode.$dirty && countryForm.longCode.$error.required" translate="content.form.messages.LONGCODEREQUIRED">Long Code is required.</span>
@@ -131,7 +131,7 @@
                                         <span translate="content.list.fields.PREFIX">Prefix</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="country.prefix" type="text" name="prefix" id="countryPrefix" class="form-control" placeholder="[[ 'content.form.messages.ENTERPREFIX' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="country.prefix" type="text" name="prefix" id="countryPrefix" class="form-control" placeholder="[[ 'content.form.messages.ENTERPREFIX' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -142,7 +142,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="country.published" type="checkbox" name="published" id="countryPublished" />
+                                    <input ng-readonly="false" ng-model="country.published" type="checkbox" name="published" id="countryPublished" />
                                     <label for="countryPublished" translate="content.list.fields.PUBLISHED">Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

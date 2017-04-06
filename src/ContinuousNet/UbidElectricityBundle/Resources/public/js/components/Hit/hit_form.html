@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="visitsLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="hit_visit_readonly" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="hit.visit" name="visit" id="hitVisit" class="form-control" ng-required="true">
+                                            <select ng-readonly="hit_visit_readonly || false" ng-options="item.id as item.ip for item in visits | filter:{ hidden : false }" ng-model="hit.visit" name="visit" id="hitVisit" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->
@@ -53,7 +53,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="hit.entity" type="text" name="entity" id="hitEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="hit.entity" type="text" name="entity" id="hitEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="hitForm.entity.$dirty && hitForm.entity.$error.required" translate="content.form.messages.ENTITYREQUIRED">Entity is required.</span>
@@ -71,7 +71,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="hit.foreign_key" type="text" name="foreignKey" id="hitForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="hit.foreign_key" type="text" name="foreignKey" id="hitForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="hitForm.foreignKey.$dirty && hitForm.foreignKey.$error.required" translate="content.form.messages.FOREIGNKEYREQUIRED">Foreign Key is required.</span>
@@ -87,7 +87,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="hit.url" type="text" name="url" id="hitUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERURL' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="hit.url" type="text" name="url" id="hitUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERURL' | translate ]]" ng-required="true" />
                                         <i class="ti-link"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="hitForm.url.$dirty && hitForm.url.$error.required" translate="content.form.messages.URLREQUIRED">Url is required.</span>

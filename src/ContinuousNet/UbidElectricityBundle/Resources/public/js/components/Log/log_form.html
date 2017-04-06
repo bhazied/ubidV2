@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="log.entity" type="text" name="entity" id="logEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="log.entity" type="text" name="entity" id="logEntity" class="form-control" placeholder="[[ 'content.form.messages.ENTERENTITY' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="logForm.entity.$dirty && logForm.entity.$error.required" translate="content.form.messages.ENTITYREQUIRED">Entity is required.</span>
@@ -50,7 +50,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="log.foreign_key" type="text" name="foreignKey" id="logForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="log.foreign_key" type="text" name="foreignKey" id="logForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="logForm.foreignKey.$dirty && logForm.foreignKey.$error.required" translate="content.form.messages.FOREIGNKEYREQUIRED">Foreign Key is required.</span>
@@ -68,7 +68,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="log.action" type="text" name="action" id="logAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="log.action" type="text" name="action" id="logAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTION' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="logForm.action.$dirty && logForm.action.$error.required" translate="content.form.messages.ACTIONREQUIRED">Action is required.</span>
@@ -83,7 +83,7 @@
                                         <span translate="content.list.fields.IPADDRESS">Ip Address</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="log.ip_address" type="text" name="ipAddress" id="logIpAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPADDRESS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="log.ip_address" type="text" name="ipAddress" id="logIpAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPADDRESS' | translate ]]" ng-required="false" />
                                         <i class="ti-apple"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -98,7 +98,7 @@
                                         <span translate="content.list.fields.USERAGENT">User Agent</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="log.user_agent" type="text" name="userAgent" id="logUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="log.user_agent" type="text" name="userAgent" id="logUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" ng-required="false" />
                                         <i class="fa fa-birthday-cake"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->

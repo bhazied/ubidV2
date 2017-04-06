@@ -84,11 +84,10 @@
                                 <span translate="content.list.fields.alert.SELECTCATEGORIES">Please select your preferred product or service categories</span>
                                 <span class="symbol required"></span>
                             </label>
-
+                            <!--
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <ul class="categories-checkbox">
-                                        <!--input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]"-->
                                         <li ng-repeat="category in frontCategories | filter:filterCategories">
                                             <div class="form-group">
                                                 <label class="custom-control custom-checkbox">
@@ -109,11 +108,26 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div><!--/col-md-6-->
+                            </div>
+                            -->
 
                             <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error':alertForm.categoryLength.$dirty && alertForm.categoryLength.$invalid, 'has-success':alertForm.categoryLength.$valid}">
-                                    <select multiple ng-options="item.id as item.name for item in checkedCategories" ng-model="alert.checkedCategories" class="form-control checkedCategories" name="checkedCategories[]" id="checkedCategories"></select>
+                                <span class="input-icon">
+                                    <input placeholder="[[ 'front.FILTERCATEGORIES' | translate ]]" type="text" ng-model="filterCategories" class="form-control pull-right input-sm underline" />
+                                     <i class="ti-filter"></i>
+                                 </span><!--/input-icon-->
+                                    <select multiple ng-options="item.id as item.name for item in frontCategories | filter:filterCategories " ng-model="alert.categories" name="category[]" id="alertCategory[[category.id]]" class="form-control checkedCategories" ng-dblclick="addCheckedCategoried()" ng-required="checkedCategoriesids.length == 0"></select>
+                                </div>
+                            </div><!--/col-md-6-->
+
+                            <div class="col-md-6">
+                                <span class="input-icon">
+                                    <input placeholder="[[ 'front.FILTERCATEGORIES' | translate ]]" type="text" ng-model="filterCategoriesSelected" class="form-control pull-right input-sm underline" />
+                                     <i class="ti-filter"></i>
+                                 </span><!--/input-icon-->
+                                <div class="form-group" ng-class="{'has-error':alertForm.categoryLength.$dirty && alertForm.categoryLength.$invalid, 'has-success':alertForm.categoryLength.$valid}">
+                                    <select multiple ng-options="item.id as item.name for item in checkedCategories | filter:filterCategoriesSelected" ng-model="alert.checkedCategories" class="form-control checkedCategories" name="checkedCategories[]" id="checkedCategories"></select>
                                 </div>
                             </div><!--/col-md-6-->
                         </div><!--/row-->
@@ -123,7 +137,7 @@
                                 <input type="hidden" ng-required="checkedCategoriesids.length == 0" name="categoryLength" ng-model="categoryLength">
                                 <!--<span class="error text-small block" ng-if="selectedCountriesIds.length == 0" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>-->
                                 <span class="error text-small block" ng-if="alertForm.categoryLength.$dirty && alertForm.categoryLength.$error.required" translate="content.form.messages.CATEGORIESREQUIRED">Categories is required.</span>
-                                <span class="success text-small block" ng-if="alertForm.countryLength.$valid" translate="content.form.messages.OK">Ok!</span>
+                                <span class="success text-small block" ng-if="alertForm.categoryLength.$valid" translate="content.form.messages.OK">Ok!</span>
                             </div>
                         </div>
 

@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerPosition.name" type="text" name="name" id="bannerPositionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerPosition.name" type="text" name="name" id="bannerPositionName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerPositionForm.name.$dirty && bannerPositionForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -51,7 +51,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerPosition.slug" type="text" name="slug" id="bannerPositionSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerPosition.slug" type="text" name="slug" id="bannerPositionSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerPositionForm.slug.$dirty && bannerPositionForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -69,7 +69,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerPosition.items_number" type="text" name="itemsNumber" id="bannerPositionItemsNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERITEMSNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="bannerPosition.items_number" type="text" name="itemsNumber" id="bannerPositionItemsNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERITEMSNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerPositionForm.itemsNumber.$dirty && bannerPositionForm.itemsNumber.$error.required" translate="content.form.messages.ITEMSNUMBERREQUIRED">Items Number is required.</span>
@@ -85,7 +85,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerPosition.display_time" type="text" name="displayTime" id="bannerPositionDisplayTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERDISPLAYTIME' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="bannerPosition.display_time" type="text" name="displayTime" id="bannerPositionDisplayTime" class="form-control" placeholder="[[ 'content.form.messages.ENTERDISPLAYTIME' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="ti-alarm-clock"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerPositionForm.displayTime.$dirty && bannerPositionForm.displayTime.$error.required" translate="content.form.messages.DISPLAYTIMEREQUIRED">Display Time is required.</span>
@@ -98,7 +98,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="bannerPosition.is_full_screen" type="checkbox" name="isFullScreen" id="bannerPositionIsFullScreen" />
+                                    <input ng-readonly="false" ng-model="bannerPosition.is_full_screen" type="checkbox" name="isFullScreen" id="bannerPositionIsFullScreen" />
                                     <label for="bannerPositionIsFullScreen" translate="content.list.fields.ISFULLSCREEN">Is Full Screen</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -106,7 +106,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="bannerPosition.display_one_time" type="checkbox" name="displayOneTime" id="bannerPositionDisplayOneTime" />
+                                    <input ng-readonly="false" ng-model="bannerPosition.display_one_time" type="checkbox" name="displayOneTime" id="bannerPositionDisplayOneTime" />
                                     <label for="bannerPositionDisplayOneTime" translate="content.list.fields.DISPLAYONETIME">Display One Time</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -116,7 +116,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="bannerPosition.is_published" type="checkbox" name="isPublished" id="bannerPositionIsPublished" />
+                                    <input ng-readonly="false" ng-model="bannerPosition.is_published" type="checkbox" name="isPublished" id="bannerPositionIsPublished" />
                                     <label for="bannerPositionIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

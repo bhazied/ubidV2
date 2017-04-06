@@ -608,7 +608,8 @@ app.constant('APP_JS_REQUIRES', {
         'ApplyTenderCtrl': '/bundles/ubidelectricity/js/front/Tender/ApplyTenderCtrl.js',
         'CategoriesFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoriesFrontCtrl.js',
         'CategoryFrontCtrl':  '/bundles/ubidelectricity/js/front/Category/CategoryFrontCtrl.js',
-        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js'
+        'MyNotification':  '/bundles/ubidelectricity/js/front/Notification/MyNotification.js',
+        'ModalPostCtrl': '/bundles/ubidelectricity/js/front/Post/ModalPostCtrl.js'
     },
     modules: [{
         name: 'LoginService',
@@ -821,7 +822,10 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name : 'projectBidsFrontService',
         files : ['/bundles/ubidelectricity/js/front/ProjectBids/BidsFrontService.js']
-    }]
+    },{
+        name: 'notificationFrontService',
+            files: ['/bundles/ubidelectricity/js/front/Notification/NotificationService.js']
+        }]
 });
 
 'use strict';

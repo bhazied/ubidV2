@@ -35,7 +35,7 @@
                                     </label>
                                     <div class="block select-list" ng-if="menusLoaded">
                                         <span class="input-icon">
-                                            <select ng-readonly="menu_link_menu_readonly" ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="menuLink.menu" name="menu" id="menuLinkMenu" class="form-control" ng-required="true">
+                                            <select ng-readonly="menu_link_menu_readonly || false" ng-options="item.id as item.name for item in menus | filter:{ hidden : false }" ng-model="menuLink.menu" name="menu" id="menuLinkMenu" class="form-control" ng-required="true">
                                             </select>
                                             <i class="ti-marker-alt"></i>
                                         </span><!--/input-icon-->
@@ -53,7 +53,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.name" type="text" name="name" id="menuLinkName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="menuLink.name" my-resource-url="menulinks" my-current-id="[[ menuLink.id ]]" />
+                                        <input ng-readonly="false" ng-model="menuLink.name" type="text" name="name" id="menuLinkName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="menuLink.name" my-resource-url="menulinks" my-current-id="[[ menuLink.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuLinkForm.name.$dirty && menuLinkForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -73,7 +73,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.slug" type="text" name="slug" id="menuLinkSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="menuLink.slug" type="text" name="slug" id="menuLinkSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuLinkForm.slug.$dirty && menuLinkForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -84,7 +84,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="menuLink.is_published" type="checkbox" name="isPublished" id="menuLinkIsPublished" />
+                                    <input ng-readonly="false" ng-model="menuLink.is_published" type="checkbox" name="isPublished" id="menuLinkIsPublished" />
                                     <label for="menuLinkIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 
@@ -99,7 +99,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.controller" type="text" name="controller" id="menuLinkController" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTROLLER' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="menuLink.controller" type="text" name="controller" id="menuLinkController" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONTROLLER' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuLinkForm.controller.$dirty && menuLinkForm.controller.$error.required" translate="content.form.messages.CONTROLLERREQUIRED">Controller is required.</span>
@@ -115,7 +115,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.action" type="text" name="action" id="menuLinkAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTION' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="menuLink.action" type="text" name="action" id="menuLinkAction" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTION' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuLinkForm.action.$dirty && menuLinkForm.action.$error.required" translate="content.form.messages.ACTIONREQUIRED">Action is required.</span>
@@ -132,7 +132,7 @@
                                         <span translate="content.list.fields.FOREIGNKEY">Foreign Key</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.foreign_key" type="text" name="foreignKey" id="menuLinkForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="menuLink.foreign_key" type="text" name="foreignKey" id="menuLinkForeignKey" class="form-control" placeholder="[[ 'content.form.messages.ENTERFOREIGNKEY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -146,7 +146,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menuLink.ordering" type="text" name="ordering" id="menuLinkOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="menuLink.ordering" type="text" name="ordering" id="menuLinkOrdering" class="form-control" placeholder="[[ 'content.form.messages.ENTERORDERING' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
                                         <i class="fa fa-list-ol"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuLinkForm.ordering.$dirty && menuLinkForm.ordering.$error.required" translate="content.form.messages.ORDERINGREQUIRED">Ordering is required.</span>

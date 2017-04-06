@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.name" type="text" name="name" id="menuName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="menu.name" my-resource-url="menus" my-current-id="[[ menu.id ]]" />
+                                        <input ng-readonly="false" ng-model="menu.name" type="text" name="name" id="menuName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" my-unique-field="menu.name" my-resource-url="menus" my-current-id="[[ menu.id ]]" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuForm.name.$dirty && menuForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -52,7 +52,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.slug" type="text" name="slug" id="menuSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="menu.slug" type="text" name="slug" id="menuSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="menuForm.slug.$dirty && menuForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -90,7 +90,7 @@
                                         <span translate="content.list.fields.MENUCSS">Menu Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.menu_css" type="text" name="menuCss" id="menuMenuCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERMENUCSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.menu_css" type="text" name="menuCss" id="menuMenuCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERMENUCSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -105,7 +105,7 @@
                                         <span translate="content.list.fields.ITEMCSS">Item Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.item_css" type="text" name="itemCss" id="menuItemCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERITEMCSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.item_css" type="text" name="itemCss" id="menuItemCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERITEMCSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -118,7 +118,7 @@
                                         <span translate="content.list.fields.ACTIVECSS">Active Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.active_css" type="text" name="activeCss" id="menuActiveCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTIVECSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.active_css" type="text" name="activeCss" id="menuActiveCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERACTIVECSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -133,7 +133,7 @@
                                         <span translate="content.list.fields.NOTACTIVECSS">Not Active Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.not_active_css" type="text" name="notActiveCss" id="menuNotActiveCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTACTIVECSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.not_active_css" type="text" name="notActiveCss" id="menuNotActiveCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTACTIVECSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -146,7 +146,7 @@
                                         <span translate="content.list.fields.FIRSTCSS">First Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.first_css" type="text" name="firstCss" id="menuFirstCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTCSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.first_css" type="text" name="firstCss" id="menuFirstCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERFIRSTCSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -161,7 +161,7 @@
                                         <span translate="content.list.fields.LASTCSS">Last Css</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.last_css" type="text" name="lastCss" id="menuLastCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTCSS' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.last_css" type="text" name="lastCss" id="menuLastCss" class="form-control" placeholder="[[ 'content.form.messages.ENTERLASTCSS' | translate ]]" ng-required="false" />
                                         <i class="ti-css3"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -174,7 +174,7 @@
                                         <span translate="content.list.fields.BEFORETXT">Before Txt</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.before_txt" type="text" name="beforeTxt" id="menuBeforeTxt" class="form-control" placeholder="[[ 'content.form.messages.ENTERBEFORETXT' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.before_txt" type="text" name="beforeTxt" id="menuBeforeTxt" class="form-control" placeholder="[[ 'content.form.messages.ENTERBEFORETXT' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -189,7 +189,7 @@
                                         <span translate="content.list.fields.AFTERTXT">After Txt</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.after_txt" type="text" name="afterTxt" id="menuAfterTxt" class="form-control" placeholder="[[ 'content.form.messages.ENTERAFTERTXT' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.after_txt" type="text" name="afterTxt" id="menuAfterTxt" class="form-control" placeholder="[[ 'content.form.messages.ENTERAFTERTXT' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -202,7 +202,7 @@
                                         <span translate="content.list.fields.SEPARATOR">Separator</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.separator" type="text" name="separator" id="menuSeparator" class="form-control" placeholder="[[ 'content.form.messages.ENTERSEPARATOR' | translate ]]" ng-required="false" />
+                                        <input ng-readonly="false" ng-model="menu.separator" type="text" name="separator" id="menuSeparator" class="form-control" placeholder="[[ 'content.form.messages.ENTERSEPARATOR' | translate ]]" ng-required="false" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -217,7 +217,7 @@
                                         <span translate="content.list.fields.COLUMNSNUMBER">Columns Number</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="menu.columns_number" type="text" name="columnsNumber" id="menuColumnsNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOLUMNSNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="menu.columns_number" type="text" name="columnsNumber" id="menuColumnsNumber" class="form-control" placeholder="[[ 'content.form.messages.ENTERCOLUMNSNUMBER' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
                                         <i class="fa fa-sort-numeric-asc "></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
@@ -276,7 +276,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="menu.is_published" type="checkbox" name="isPublished" id="menuIsPublished" />
+                                    <input ng-readonly="false" ng-model="menu.is_published" type="checkbox" name="isPublished" id="menuIsPublished" />
                                     <label for="menuIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

@@ -176,12 +176,21 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
 
     $scope.getCategories = function() {
         $timeout(function(){
+            $scope.categoriesLoaded = true;
             if ($scope.categories.length == 0) {
-                $scope.categories.push({});
+                $scope.categories.push({id: '', title: $filter('translate')('content.form.messages.SELECTCATEGORY')});
                 var def = $q.defer();
                 $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
+                    data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCATEGORY')});
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
                     $scope.categories = data.results;
                     def.resolve($scope.categories);
+                    if (angular.isDefined($scope.supplier)) {
+                        $scope.supplier.category = $scope.supplier.category || $scope.categories[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -191,6 +200,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
 
     $scope.getCategories();
+
+
+
 
     $scope.categoriesSearchText = '';
     $scope.supplierCategories = false;
@@ -215,7 +227,9 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                 }
             }
         }
+        console.log($scope.supplier.categories);
     });
+
 
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {

@@ -2,6 +2,19 @@
     <div ng-if="!loaded" class="svg-loader">
     </div>
     <div ng-if="loaded" class="tender-preview">
+        <div class="row list-toolbox">
+            <div class="col-md-4 margin-bottom-10">
+                <button ng-click="list()" class="btn btn-primary pull-left">
+                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span>
+                </button>
+            </div>
+            <div class="col-md-4 margin-bottom-10 text-center">
+
+            </div>
+            <div class="col-md-4 margin-bottom-10">
+
+            </div>
+        </div><!--/list-toolbox-->
         <h1 class="name" ng-bind="supplier.name"></h1>
         <div class="pb-1 clearfix">
             <img ng-if="supplier.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
@@ -161,7 +174,11 @@
             <span class="name" translate="front.SUPPLIERNOPRODUCT">This supplier has not yet added any product</span>
         </div>
         <div class="row">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <button ng-click="list()" class="btn btn-primary pull-left">
+                    <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span>
+                </button>
+            </div>
             <div class="col-md-6">
                 <!--<button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
                 <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>

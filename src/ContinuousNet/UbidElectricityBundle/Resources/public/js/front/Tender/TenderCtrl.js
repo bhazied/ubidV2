@@ -2,6 +2,15 @@
 app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$stateParams', '$timeout', '$q','$filter','$tendersFrontDataFactory','toaster','$tendersDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $stateParams, $timeout, $q, $filter, $tendersFrontDataFactory, toaster, $tendersDataFactory) {
 
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 9;
+            $rootScope.contentOffset = 0;
+        }, 2000);
+
         $scope.currentDate = new Date();
 
         $scope.dateFormat = $filter('translate')('formats.DATE');
@@ -23,6 +32,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                             $rootScope.seo.meta_keywords = data.reference;
                             $rootScope.seo.meta_title = data.title;
                             $scope.loaded = true;
+                            $localStorage.selectedTender = data;
                         });
                     }
                     else {
@@ -32,9 +42,9 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                             $rootScope.seo.meta_keywords = data.reference;
                             $rootScope.seo.meta_title = data.title;
                             $scope.loaded = true;
+                            $localStorage.selectedTender = data;
                         });
                     }
-
                     def.resolve($scope.tender);
                     return def;
                 });
@@ -59,9 +69,38 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
                 $scope.disableBookmark = false;
             });
         }
+
+
+        $scope.list= function (section) {
+            $state.go('front.tenders', {section: section});
+        };
+
+        $scope.showButtonApplay = false;
+        $scope.checkBid = function () {
+            $tendersDataFactory.get({id: $stateParams.id, locale: $localStorage.language}).$promise.then(function (data) {
+                $scope.tender = data;
+                var params = {
+                    locale: $localStorage.language,
+                    user : $localStorage.user.id,
+                    tender: $scope.tender.id
+                };
+                $timeout(function () {
+                    $tendersFrontDataFactory.checkBid(params).$promise.then(function (data) {
+                        $scope.showButtonApplay = data.status;
+                    });
+                });
+            });
+
+        };
+
+        $scope.checkBid();
+        
+
+
+        
+        
         
     }]);
-
 
 app.directive("myTenderShow",['$rootScope','$localStorage', function($rootScope, $localStorage){
     return {

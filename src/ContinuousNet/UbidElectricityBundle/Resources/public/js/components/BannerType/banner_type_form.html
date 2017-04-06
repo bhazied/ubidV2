@@ -34,7 +34,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerType.name" type="text" name="name" id="bannerTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerType.name" type="text" name="name" id="bannerTypeName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
                                         <i class="ti-tag"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerTypeForm.name.$dirty && bannerTypeForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
@@ -51,7 +51,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerType.slug" type="text" name="slug" id="bannerTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerType.slug" type="text" name="slug" id="bannerTypeSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
                                         <i class="ti-anchor"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerTypeForm.slug.$dirty && bannerTypeForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
@@ -69,7 +69,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerType.extensions" type="text" name="extensions" id="bannerTypeExtensions" class="form-control" placeholder="[[ 'content.form.messages.ENTEREXTENSIONS' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerType.extensions" type="text" name="extensions" id="bannerTypeExtensions" class="form-control" placeholder="[[ 'content.form.messages.ENTEREXTENSIONS' | translate ]]" ng-required="true" />
                                         <i class="ti-marker-alt"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerTypeForm.extensions.$dirty && bannerTypeForm.extensions.$error.required" translate="content.form.messages.EXTENSIONSREQUIRED">Extensions is required.</span>
@@ -85,7 +85,7 @@
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="bannerType.mime_types" type="text" name="mimeTypes" id="bannerTypeMimeTypes" class="form-control" placeholder="[[ 'content.form.messages.ENTERMIMETYPES' | translate ]]" ng-required="true" />
+                                        <input ng-readonly="false" ng-model="bannerType.mime_types" type="text" name="mimeTypes" id="bannerTypeMimeTypes" class="form-control" placeholder="[[ 'content.form.messages.ENTERMIMETYPES' | translate ]]" ng-required="true" />
                                         <i class="fa fa-cog"></i>
                                     </span><!--/input-icon-->
                                     <span class="error text-small block" ng-if="bannerTypeForm.mimeTypes.$dirty && bannerTypeForm.mimeTypes.$error.required" translate="content.form.messages.MIMETYPESREQUIRED">Mime Types is required.</span>
@@ -98,7 +98,7 @@
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">
-                                    <input ng-model="bannerType.is_published" type="checkbox" name="isPublished" id="bannerTypeIsPublished" />
+                                    <input ng-readonly="false" ng-model="bannerType.is_published" type="checkbox" name="isPublished" id="bannerTypeIsPublished" />
                                     <label for="bannerTypeIsPublished" translate="content.list.fields.ISPUBLISHED">Is Published</label>
                                 </div><!--/checkbox continuous-check check-primary-->
 

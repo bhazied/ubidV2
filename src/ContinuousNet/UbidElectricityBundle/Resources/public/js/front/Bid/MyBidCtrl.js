@@ -7,6 +7,15 @@
 app.controller('MyBidCtrl', ['$scope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$q', '$interpolate', '$localStorage', '$bidsDataFactory',
 function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate, $localStorage, $bidsDataFactory) {
 
+    $timeout(function() {
+        $rootScope.showSlogan = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.showUserMenu = true;
+        $rootScope.contentSize = 10;
+        $rootScope.contentOffset = 0;
+    }, 2000);
+
     $scope.statuses = [{
         id: 'Draft',
         title: $filter('translate')('content.list.fields.statuses.DRAFT'),
@@ -65,11 +74,20 @@ function($scope, $state, $stateParams, $sce, $timeout, $filter, $q, $interpolate
         $state.go('front.mybids.edit', {id: row.id});
     };
 
+    $scope.status_class = '';
+
     if (angular.isDefined($stateParams.id)) {
         $bidsDataFactory.get({id: $stateParams.id}).$promise.then(function(data) {
             $scope.bid = data;
+            angular.forEach($scope.statuses, function (value, key) {
+                if($scope.bid.status == value.id){
+                    $scope.status_class = value.css;
+                }
+            });
         });
     }
+
+
 
 }]);
 

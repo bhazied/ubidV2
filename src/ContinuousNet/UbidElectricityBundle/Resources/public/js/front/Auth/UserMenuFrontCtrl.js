@@ -13,7 +13,7 @@ app.controller('UserMenuFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
             $rootScope.showRightSide = false;
             $rootScope.contentSize = 12;
             $rootScope.contentOffset = 0;
-        }, 1000);
+        }, 1500);
 
        
         $scope.oneAtATime = true;
