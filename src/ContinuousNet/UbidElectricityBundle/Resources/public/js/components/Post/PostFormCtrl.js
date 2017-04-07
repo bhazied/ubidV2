@@ -293,7 +293,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     return 'default';
                 },
                 folder: function() {
-                    return '../default';
+                    return 'posts';
                 }
             }
         });
