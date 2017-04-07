@@ -43,13 +43,17 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                     locale: $localStorage.language
                 }).$promise.then(function (data) {
                     $scope.category = data.category;
+                    $scope.category.tenders_desciption = $sce.trustAsHtml(data.tenders_desciption);
+                    $scope.category.consultations_desciption = $sce.trustAsHtml(data.consultations_desciption);
+                    $scope.category.buyers_desciption = $sce.trustAsHtml(data.buyers_desciption);
+                    $scope.category.suppliers_desciption = $sce.trustAsHtml(data.suppliers_desciption);
                     //paging
                     var rows = [];
                     if ($scope.target == 'suppliers') {
                         rows = data.suppliers;
                     } else if ($scope.target == 'buyers') {
                         rows = data.buyers;
-                    } else if ($scope.target == 'tenders') {
+                    } else if ($scope.target == 'buyers') {
                         for (var i = 0 ; i < data.tenders.length ; i++ ) {
                             if (data.tenders[i].section == 'Tender') {
                                 rows.push(data.tenders[i]);

@@ -701,49 +701,52 @@ body {
     /*background-position: center center;
     background-repeat: no-repeat;*/
     font-family: 'FontAwesome';
-    font-size: 28px;
+    font-size: 20px;
     line-height: 30px;
     padding: 0;
+    color: #ffffff;
+    border-radius: 5px;
 }
 
 .footer-center ul li a:before:hover {
     font-size: 32px;
+
 }
 
 .footer-center ul li a.fb:before {
     /*background-image: url('/front/img/fb.png');*/
-    content: "\f082";
-    color: #3e5b98;
+    content: "\f09a";
+    background-color: #3b5998;
 }
 
 .footer-center ul li a.tw:before {
     /*background-image: url('/front/img/tw.png');*/
-    content: "\f081";
-    color: #4da7de;
+    content: "\f099";
+    background-color: #55acee;
 }
 
 .footer-center ul li a.gp:before {
     /*background-image: url('/front/img/gp.png');*/
-    content: "\f0d4";
-    color: #dd4b39;
+    content: "\f0d5";
+    background-color: #dd4b39;
 }
 
 .footer-center ul li a.li:before {
     /*background-image: url('/front/img/li.png');*/
-    content: "\f08c";
-    color: #3371b7;
+    content: "\f0e1";
+    background-color: #007bb5;
 }
 
 .footer-center ul li a.yt:before {
     /*background-image: url('/front/img/yt.png');*/
-    content: "\f166";
-    color: #e02a20;
+    content: "\f167";
+    background-color: #bb0000;
 }
 
-.footer-center ul li a.ins {
-    background-image: url('/front/img/ins.png');
-    /*content: "\f16d";
-    color: #e02a20;*/
+.footer-center ul li a.ins:before {
+    /*background-image: url('/front/img/ins.png');*/
+    content: "\f16d";
+    background-color: #8a3ab9;
 }
 
 p.keep-in-touch {
@@ -2118,7 +2121,7 @@ fieldset h2 {
 }
 
 #loading-bar-spinner .spinner-icon {
-    background-color: white;
+    background-color: transparent;
     width: 28px!important;
     height: 28px!important;
     border: solid 4px transparent;
