@@ -1724,7 +1724,7 @@ fieldset h2 {
 }
 
 #loading-bar-spinner .spinner-icon {
-    background-color: white;
+    background-color: transparent;
     width: 28px!important;
     height: 28px!important;
     border: solid 4px transparent;
