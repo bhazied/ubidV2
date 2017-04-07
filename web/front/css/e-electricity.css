@@ -319,13 +319,13 @@ body {
 .footer-center ul li a.fb:before {
     /*background-image: url('/front/img/fb.png');*/
     content: "\f09a";
-    background-color: #3e5b98;
+    background-color: #3b5998;
 }
 
 .footer-center ul li a.tw:before {
     /*background-image: url('/front/img/tw.png');*/
     content: "\f099";
-    background-color: #4da7de;
+    background-color: #55acee;
 }
 
 .footer-center ul li a.gp:before {
@@ -337,19 +337,19 @@ body {
 .footer-center ul li a.li:before {
     /*background-image: url('/front/img/li.png');*/
     content: "\f0e1";
-    background-color: #3371b7;
+    background-color: #007bb5;
 }
 
 .footer-center ul li a.yt:before {
     /*background-image: url('/front/img/yt.png');*/
     content: "\f167";
-    background-color: #e02a20;
+    background-color: #bb0000;
 }
 
 .footer-center ul li a.ins:before {
     /*background-image: url('/front/img/ins.png');*/
     content: "\f16d";
-    background-color: #000000;
+    background-color: #8a3ab9;
 }
 
 p.keep-in-touch {
