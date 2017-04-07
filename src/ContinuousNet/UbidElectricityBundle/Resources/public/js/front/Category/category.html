@@ -10,7 +10,10 @@
 
     <div class="pb-1 clearfix">
         <img ng-if="category.picture" src="[[ category.picture ]]" alt="[[ category.name ]]" class="pull-right img-thumbnail" />
-        <h2 ng-bind-html="category.description"></h2>
+        <h2 ng-bind-html="category.tenders_description" ng-if="target == 'tenders'"></h2>
+        <h2 ng-bind-html="category.consultations_description" ng-if="target == 'consultations'"></h2>
+        <h2 ng-bind-html="category.suppliers_description" ng-if="target == 'suppliers'"></h2>
+        <h2 ng-bind-html="category.buyers_description" ng-if="target == 'buyers'"></h2>
     </div>
 
     <div ng-if="target == 'tenders' || target == 'consultations'">
