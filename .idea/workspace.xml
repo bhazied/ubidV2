@@ -17,17 +17,93 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PostFormCtrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PostFormCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Post/PostFormCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="40" />
-              <folding />
+              <caret line="20" column="40" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="40" />
+              <folding>
+                <marker date="1491571795700" expanded="true" signature="589:12108" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="806:1166" ph="{&quot;language&quot;: $scope.locale...}" />
+                <marker date="1491571795700" expanded="true" signature="995:1103" ph="{&quot;instance&quot;: 'default'...}" />
+                <marker date="1491571795700" expanded="true" signature="1373:1517" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="1610:1750" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="1839:1975" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="1999:2791" ph="[...]" />
+                <marker date="1491571795700" expanded="true" signature="2000:2126" ph="{&quot;id&quot;: 'Draft'...}" />
+                <marker date="1491571795700" expanded="true" signature="2128:2256" ph="{&quot;id&quot;: 'Online'...}" />
+                <marker date="1491571795700" expanded="true" signature="2258:2396" ph="{&quot;id&quot;: 'Deactivated'...}" />
+                <marker date="1491571795700" expanded="true" signature="2398:2527" ph="{&quot;id&quot;: 'Offline'...}" />
+                <marker date="1491571795700" expanded="true" signature="2529:2659" ph="{&quot;id&quot;: 'Deleted'...}" />
+                <marker date="1491571795700" expanded="true" signature="2661:2790" ph="{&quot;id&quot;: 'Archived'...}" />
+                <marker date="1491571795700" expanded="true" signature="3101:3157" ph="{&quot;formatYear&quot;: 'yy'...}" />
+                <marker date="1491571795700" expanded="true" signature="3203:3269" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="3372:4490" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="3401:4482" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="3492:4410" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="3816:4366" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="3988:4067" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="4228:4348" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="4416:4472" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="4610:5733" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="4639:5725" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="4722:5657" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5073:5613" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5241:5320" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5473:5595" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5663:5715" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5873:6480" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5902:6472" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="5955:6395" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="6401:6462" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="6648:7537" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="6694:7531" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="6848:7178" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="6897:7164" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7061:7146" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7184:7521" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7233:7507" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7396:7489" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7618:10030" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7714:8482" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7797:8139" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7836:8125" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="7906:7985" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8033:8107" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8257:8446" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8488:10024" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8526:9254" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8656:8969" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8889:8951" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="8987:9238" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="9260:9988" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="9390:9703" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="9623:9685" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="9721:9972" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10062:10106" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10201:10919" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10317:10911" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10350:10899" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10455:10565" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10622:10728" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10783:10885" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="10925:11267" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11134:11261" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11314:12104" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11364:11951" ph="{&quot;templateUrl&quot;: '/bundles/ubidelectricity/js/common/FileManager/modal_content.html'...}" />
+                <marker date="1491571795700" expanded="true" signature="11548:11941" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11584:11637" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11673:11739" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11778:11835" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="11872:11927" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="12004:12053" ph="{...}" />
+                <marker date="1491571795700" expanded="true" signature="12067:12091" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_updates_20170406.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db_updates_20170406.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/db_updates_20170406.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -41,6 +117,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/database/db_updates_20170406.sql" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -386,12 +469,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491571377062</updated>
-      <workItem from="1491571378320" duration="331000" />
+      <workItem from="1491571378320" duration="458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331000" />
+    <option name="totallyTimeSpent" value="458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
@@ -435,19 +518,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Post/PostFormCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/db_updates_20170406.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="24" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="91" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Post/PostFormCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="40" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <marker date="1491571795700" expanded="true" signature="589:12108" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="806:1166" ph="{&quot;language&quot;: $scope.locale...}" />
+            <marker date="1491571795700" expanded="true" signature="995:1103" ph="{&quot;instance&quot;: 'default'...}" />
+            <marker date="1491571795700" expanded="true" signature="1373:1517" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="1610:1750" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="1839:1975" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="1999:2791" ph="[...]" />
+            <marker date="1491571795700" expanded="true" signature="2000:2126" ph="{&quot;id&quot;: 'Draft'...}" />
+            <marker date="1491571795700" expanded="true" signature="2128:2256" ph="{&quot;id&quot;: 'Online'...}" />
+            <marker date="1491571795700" expanded="true" signature="2258:2396" ph="{&quot;id&quot;: 'Deactivated'...}" />
+            <marker date="1491571795700" expanded="true" signature="2398:2527" ph="{&quot;id&quot;: 'Offline'...}" />
+            <marker date="1491571795700" expanded="true" signature="2529:2659" ph="{&quot;id&quot;: 'Deleted'...}" />
+            <marker date="1491571795700" expanded="true" signature="2661:2790" ph="{&quot;id&quot;: 'Archived'...}" />
+            <marker date="1491571795700" expanded="true" signature="3101:3157" ph="{&quot;formatYear&quot;: 'yy'...}" />
+            <marker date="1491571795700" expanded="true" signature="3203:3269" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="3372:4490" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="3401:4482" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="3492:4410" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="3816:4366" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="3988:4067" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="4228:4348" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="4416:4472" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="4610:5733" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="4639:5725" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="4722:5657" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5073:5613" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5241:5320" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5473:5595" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5663:5715" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5873:6480" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5902:6472" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="5955:6395" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="6401:6462" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="6648:7537" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="6694:7531" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="6848:7178" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="6897:7164" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7061:7146" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7184:7521" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7233:7507" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7396:7489" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7618:10030" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7714:8482" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7797:8139" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7836:8125" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="7906:7985" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8033:8107" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8257:8446" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8488:10024" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8526:9254" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8656:8969" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8889:8951" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="8987:9238" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="9260:9988" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="9390:9703" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="9623:9685" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="9721:9972" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10062:10106" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10201:10919" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10317:10911" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10350:10899" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10455:10565" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10622:10728" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10783:10885" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="10925:11267" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11134:11261" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11314:12104" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11364:11951" ph="{&quot;templateUrl&quot;: '/bundles/ubidelectricity/js/common/FileManager/modal_content.html'...}" />
+            <marker date="1491571795700" expanded="true" signature="11548:11941" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11584:11637" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11673:11739" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11778:11835" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="11872:11927" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="12004:12053" ph="{...}" />
+            <marker date="1491571795700" expanded="true" signature="12067:12091" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
