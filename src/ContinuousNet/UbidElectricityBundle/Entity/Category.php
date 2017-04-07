@@ -134,6 +134,17 @@ class Category
      * @var string
      * @access private
      *
+     * @ORM\Column(name="`tenders_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $tendersDescription;
+
+    /**
+     * @var string
+     * @access private
+     *
      * @ORM\Column(name="`tenders_meta_title`", type="text", nullable=true, unique=false)
      * 
      * @Expose
@@ -162,6 +173,17 @@ class Category
      * 
      */
     private $tendersMetaKeywords;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`consultations_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $consultationsDescription;
 
     /**
      * @var string
@@ -200,6 +222,17 @@ class Category
      * @var string
      * @access private
      *
+     * @ORM\Column(name="`buyers_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $buyersDescription;
+
+    /**
+     * @var string
+     * @access private
+     *
      * @ORM\Column(name="`buyers_meta_title`", type="text", nullable=true, unique=false)
      * 
      * @Expose
@@ -228,6 +261,17 @@ class Category
      * 
      */
     private $buyersMetaKeywords;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`suppliers_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $suppliersDescription;
 
     /**
      * @var string
@@ -555,6 +599,30 @@ class Category
     }
 
     /**
+     * Set tendersDescription
+     *
+     * @access public
+     * @param string $tendersDescription
+     * @return Category
+     */
+    public function setTendersDescription($tendersDescription = null)
+    {
+        $this->tendersDescription = $tendersDescription;
+        return $this;
+    }
+
+    /**
+     * Get tendersDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getTendersDescription()
+    {
+        return $this->tendersDescription;
+    }
+
+    /**
      * Set tendersMetaTitle
      *
      * @access public
@@ -624,6 +692,30 @@ class Category
     public function getTendersMetaKeywords()
     {
         return $this->tendersMetaKeywords;
+    }
+
+    /**
+     * Set consultationsDescription
+     *
+     * @access public
+     * @param string $consultationsDescription
+     * @return Category
+     */
+    public function setConsultationsDescription($consultationsDescription = null)
+    {
+        $this->consultationsDescription = $consultationsDescription;
+        return $this;
+    }
+
+    /**
+     * Get consultationsDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getConsultationsDescription()
+    {
+        return $this->consultationsDescription;
     }
 
     /**
@@ -699,6 +791,30 @@ class Category
     }
 
     /**
+     * Set buyersDescription
+     *
+     * @access public
+     * @param string $buyersDescription
+     * @return Category
+     */
+    public function setBuyersDescription($buyersDescription = null)
+    {
+        $this->buyersDescription = $buyersDescription;
+        return $this;
+    }
+
+    /**
+     * Get buyersDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getBuyersDescription()
+    {
+        return $this->buyersDescription;
+    }
+
+    /**
      * Set buyersMetaTitle
      *
      * @access public
@@ -768,6 +884,30 @@ class Category
     public function getBuyersMetaKeywords()
     {
         return $this->buyersMetaKeywords;
+    }
+
+    /**
+     * Set suppliersDescription
+     *
+     * @access public
+     * @param string $suppliersDescription
+     * @return Category
+     */
+    public function setSuppliersDescription($suppliersDescription = null)
+    {
+        $this->suppliersDescription = $suppliersDescription;
+        return $this;
+    }
+
+    /**
+     * Get suppliersDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getSuppliersDescription()
+    {
+        return $this->suppliersDescription;
     }
 
     /**

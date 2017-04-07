@@ -1,20 +1,24 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear {{ user.username }},</p>
-    <p>&nbsp;</p>
-    <h1 style="color: #013486;font-family: 'CenturyGothic'; font-size: 14px ">{{ 'email.resetpassword.title' | trans }}</h1>
-    <p>&nbsp;</p>
-    {{ 'email.resetpassword.textinfo' | trans({'%username%': user.username}) }}
-    <p>&nbsp;</p>
-    {{ 'email.resetpassword.textaction' | trans }}
-    <p>&nbsp;</p>
-    <a href="{{ confirmationUrl }}" style="background-color: #013486;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">
-        {{ 'email.resetpassword.title' | trans }}
-    </a>
-
-    <p>&nbsp;</p>
-    {{ 'email.resetpassword.texteend' | trans }}
-
-    <p>&nbsp;</p>
-    {{ 'email.signature' | trans | raw }}
+    <p style="padding-bottom: 20px;">Dear {{ user.username }},</p>
+    <p>
+        <h3 style="color: #013486;font-family: 'CenturyGothic'; font-size: 14px;">{{ 'email.resetpassword.title' | trans }}</h3>
+    <p>
+    <p style="padding-bottom: 20px;">
+        {{ 'email.resetpassword.textinfo' | trans({'%username%': user.username}) }}
+    </p>
+    <p style="padding-bottom: 20px;">
+        {{ 'email.resetpassword.textaction' | trans }}
+    </p>
+    <p style="padding-bottom: 20px;">&nbsp;
+        <a href="{{ confirmationUrl }}" style="background-color: #013486;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">
+            {{ 'email.resetpassword.title' | trans }}
+        </a>
+    </p>
+    <p style="padding-bottom: 20px;">
+        {{ 'email.resetpassword.texteend' | trans }}
+    </p>
+    <p style="padding-bottom: 20px;">
+        {{ 'email.signature' | trans | raw }}
+    </p>
 {% endblock %}
