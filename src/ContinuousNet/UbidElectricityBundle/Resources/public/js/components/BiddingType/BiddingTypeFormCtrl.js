@@ -17,6 +17,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         language: $scope.locale,
         allowedContent: true,
         entities: false,
+        filebrowserBrowseUrl: '/elfinder/default/biddingtypes',
+        filebrowserBrowseRouteParameters: {
+            instance: 'default',
+            homeFolder: 'biddingtypes',
+            editor: 'ckeditor'
+        },
         extraPlugins: 'colorbutton,colordialog,justify'
     };
 

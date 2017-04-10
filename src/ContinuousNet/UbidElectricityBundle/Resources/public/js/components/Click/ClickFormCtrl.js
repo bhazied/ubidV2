@@ -17,6 +17,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         language: $scope.locale,
         allowedContent: true,
         entities: false,
+        filebrowserBrowseUrl: '/elfinder/default/clicks',
+        filebrowserBrowseRouteParameters: {
+            instance: 'default',
+            homeFolder: 'clicks',
+            editor: 'ckeditor'
+        },
         extraPlugins: 'colorbutton,colordialog,justify'
     };
 

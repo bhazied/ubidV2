@@ -257,8 +257,8 @@ fm_elfinder:
         default:
             locale: %locale% # defaults to current request locale
             cors_support: true # allows cross domain responses handling (default false)
-            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce,  form, simple, custom
-            #editor_template: set custom template for your editor # default null
+            editor: custom # other options are tinymce, tinymce4, fm_tinymce,  form, simple, custom
+            editor_template: ckeditor.html.twig # default null
             #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
             #fullscreen: true|false # defaults true, applies to simple and ckeditor editors
             theme: "base" # jquery theme, default is "smoothness"

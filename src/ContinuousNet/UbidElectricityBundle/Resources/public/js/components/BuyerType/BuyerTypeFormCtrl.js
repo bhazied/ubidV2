@@ -17,6 +17,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         language: $scope.locale,
         allowedContent: true,
         entities: false,
+        filebrowserBrowseUrl: '/elfinder/default/buyertypes',
+        filebrowserBrowseRouteParameters: {
+            instance: 'default',
+            homeFolder: 'buyertypes',
+            editor: 'ckeditor'
+        },
         extraPlugins: 'colorbutton,colordialog,justify'
     };
 

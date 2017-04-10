@@ -17,6 +17,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         language: $scope.locale,
         allowedContent: true,
         entities: false,
+        filebrowserBrowseUrl: '/elfinder/default/tenderbookmarks',
+        filebrowserBrowseRouteParameters: {
+            instance: 'default',
+            homeFolder: 'tenderbookmarks',
+            editor: 'ckeditor'
+        },
         extraPlugins: 'colorbutton,colordialog,justify'
     };
 

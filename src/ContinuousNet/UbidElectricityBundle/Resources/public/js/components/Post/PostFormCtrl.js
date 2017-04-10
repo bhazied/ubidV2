@@ -17,11 +17,12 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         language: $scope.locale,
         allowedContent: true,
         entities: false,
-        /*filebrowserBrowseUrl: '/elfinder/default',
+        filebrowserBrowseUrl: '/elfinder/default/posts',
         filebrowserBrowseRouteParameters: {
             instance: 'default',
-            homeFolder: '../default'
-        },*/
+            homeFolder: 'posts',
+            editor: 'ckeditor'
+        },
         extraPlugins: 'colorbutton,colordialog,justify'
     };
 
@@ -29,7 +30,6 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
     $scope.onReadyEditor = function () {
         
     };
-
 
     $scope.startPublishingOpened = false;
     $scope.startPublishingToggle = function($event) {
@@ -292,7 +292,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
                     return 'default';
                 },
                 folder: function() {
-                    return '../default';
+                    return 'posts';
                 }
             }
         });
