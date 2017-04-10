@@ -341,7 +341,7 @@
                                     </label>
 
                                     <span class="input-icon form-group nice-select">
-                                            <select class="form-control select" ng-model="supplier.total_revenu" ng-options="item as item.label for item in totalRevenuRange track by item.value" name="totalRevenu" id="supplierTotalRevenu" ng-required="false"></select>
+                                            <select class="form-control select" ng-model="supplier.total_revenu" ng-options="item.value as item.label for item in totalRevenuRange track by item.value" name="totalRevenu" id="supplierTotalRevenu" ng-required="false"></select>
                                             <i class="fa fa-money"></i>
                                         </span><!--/input-icon-->
                                 </div><!--/form-group-->

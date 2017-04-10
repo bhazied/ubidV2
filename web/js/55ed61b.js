@@ -67735,7 +67735,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $timeout(function(){
-            console.log(window.location.href)
+
             if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
 
                 $rootScope.underPage = true;
