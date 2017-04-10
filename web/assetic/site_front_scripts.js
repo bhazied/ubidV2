@@ -164,7 +164,12 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $timeout(function(){
+<<<<<<< HEAD
             if ($state.current.name != 'front.reset' && $state.current.name != 'front.emailconfirm') {
+=======
+            console.log(window.location.href)
+            if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
+>>>>>>> sahbi
 
                 $rootScope.underPage = true;
                 if (angular.isDefined($sessionStorage.underPage)) {

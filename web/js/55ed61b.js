@@ -67619,26 +67619,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
 
         $rootScope.phonePattern= /^\+?\d+$/;
 
-        $rootScope.underPage = true;
-        if (angular.isDefined($sessionStorage.underPage)) {
-            $rootScope.underPage = false;
-        } else {
-            $rootScope.initialTime = $rootScope.timer = 6;
-            $rootScope.circleRadius = 66;
-            $sessionStorage.underPage = true;
-            $rootScope.interval = $interval(function() {
-                $rootScope.timer--;
-                if ($rootScope.timer < 0) {
-                    $rootScope.timer = 0;
-                    $interval.cancel($rootScope.interval);
-                    $rootScope.underPage = false;
-                }
-                var angle = Math.PI*($rootScope.circleRadius*2);
-                var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
-                $('.circle_animation').css({strokeDashoffset: percent});
-            }, 1000);
-        }
-
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
 
@@ -67695,8 +67675,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
             meta_description: '',
             meta_keywords: ''
         };
-
-
 
         $rootScope.pageTitle = function() {
             return ($rootScope.seo.meta_title || $rootScope.app.name);
@@ -67756,7 +67734,35 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
             }
         };
 
+        $timeout(function(){
+            console.log(window.location.href)
+            if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
 
+                $rootScope.underPage = true;
+                if (angular.isDefined($sessionStorage.underPage)) {
+                    $rootScope.underPage = false;
+                } else {
+                    $rootScope.initialTime = $rootScope.timer = 6;
+                    $rootScope.circleRadius = 66;
+                    $sessionStorage.underPage = true;
+                    $rootScope.interval = $interval(function() {
+                        $rootScope.timer--;
+                        if ($rootScope.timer < 0) {
+                            $rootScope.timer = 0;
+                            $interval.cancel($rootScope.interval);
+                            $rootScope.underPage = false;
+                        }
+                        var angle = Math.PI*($rootScope.circleRadius*2);
+                        var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
+                        $('.circle_animation').css({strokeDashoffset: percent});
+                    }, 1000);
+                }
+
+            } else {
+                $rootScope.underPage = false;
+                $sessionStorage.underPage = true;
+            }
+        });
 
     }]);
 
@@ -72433,8 +72439,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.login',
             'front.register',
             'front.reset',
+            'front.emailconfirm',
             'auth.lockscreen',
-            'auth.emailconfirm',
             'front.home',
             'front.tenders',
             'front.tenders.category',
