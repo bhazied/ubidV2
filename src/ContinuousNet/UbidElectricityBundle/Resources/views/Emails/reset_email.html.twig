@@ -1,9 +1,6 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p style="padding-bottom: 20px;">Dear {{ user.username }},</p>
-    <p>
-        <h3 style="color: #013486;font-family: 'CenturyGothic'; font-size: 14px;">{{ 'email.resetpassword.title' | trans }}</h3>
-    <p>
+    <p style="padding-bottom: 20px;">Dear {{ user.firstName }},</p>
     <p style="padding-bottom: 20px;">
         {{ 'email.resetpassword.textinfo' | trans({'%username%': user.username}) }}
     </p>
