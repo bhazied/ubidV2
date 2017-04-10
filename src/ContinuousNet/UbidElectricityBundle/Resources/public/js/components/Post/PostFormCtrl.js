@@ -31,7 +31,6 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         
     };
 
-
     $scope.startPublishingOpened = false;
     $scope.startPublishingToggle = function($event) {
         $event.preventDefault();

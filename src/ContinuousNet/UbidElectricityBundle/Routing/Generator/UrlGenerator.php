@@ -10,6 +10,7 @@ class UrlGenerator extends BaseUrlGenerator
     {
         $url = parent::doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, $requiredSchemes);
         $newUrl = str_replace('%23', '#', $url);
+        $newUrl = str_replace('#/', '', $newUrl);
         return $newUrl;
     }
 }
