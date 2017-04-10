@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="433604f5-7a90-4a5d-b35a-9ba988435d87" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" afterPath="$PROJECT_DIR$/web/assetic/site_front_scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/js/front.app.js" afterPath="$PROJECT_DIR$/web/assets/js/front.app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b.js" afterPath="$PROJECT_DIR$/web/js/55ed61b.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" afterPath="$PROJECT_DIR$/web/js/55ed61b_part_21.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/55ed61b_part_24.js" afterPath="$PROJECT_DIR$/web/js/55ed61b_part_24.js" />
-    </list>
+    <list default="true" id="433604f5-7a90-4a5d-b35a-9ba988435d87" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -754,12 +745,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491571377062</updated>
       <workItem from="1491571378320" duration="644000" />
-      <workItem from="1491812206221" duration="6116000" />
+      <workItem from="1491812206221" duration="6232000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6760000" />
+    <option name="totallyTimeSpent" value="6876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
