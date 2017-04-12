@@ -540,28 +540,23 @@
 
                                 </div><!--/col-md-6-->
                             </div><!--/row-->
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="buyerCategories" class="control-label">
                                         <span translate="content.list.fields.CATEGORIES">Categories</span>
-                                <span class="input-icon">
-                                    <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
-                                     <i class="ti-filter"></i>
-                                 </span><!--/input-icon-->
+                                        <span class="input-icon">
+                                            <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
+                                             <i class="ti-filter"></i>
+                                         </span><!--/input-icon-->
                                     </label>
                                 </div><!--/col-md-12-->
-                                <!--<div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
-                                    <div class="checkbox continuous-check check-primary">
-                                        <input checklist-model="buyer.categories" checklist-value="category.id" type="checkbox" name="category[]" id="buyerCategory[[category.id]]" />
-                                        <label for="buyerCategory[[category.id]]">[[ category.name ]]</label>
-                                    </div>
-                                </div>-->
                                 <div class="block select-list col-md-6">
-                                        <span class="input-icon">
-                                            <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
-                                            </select>
-                                            <i class="fa fa-sitemap"></i>
-                                        </span><!--/input-icon-->
+                                    <span class="input-icon">
+                                        <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkbox continuous-check check-primary">
@@ -570,6 +565,7 @@
                                     </div><!--/checkbox-->
                                 </div><!--/col-md-12-->
                             </div><!--/row-->
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <a ng-click="list()" class="btn btn-primary pull-left">

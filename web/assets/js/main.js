@@ -1,11 +1,11 @@
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
 
 var languages = {
-    'en' : 'English',
+    'en' : 'English'/*,
     'fr' : 'Français',
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
@@ -23,7 +23,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     // GLOBAL APP SCOPE
     // set below basic information
     $rootScope.app = {
-        name: 'U bid electricity', // name of your project
+        name: 'E-electricity', // name of your project
         description: 'Electricity Tenders Marketplace', // brief description
         keywords: 'Electricity, Tenders, Suppliers, Buyers, Consultations', // brief description
         author: 'ContinuousNet', // author's name or company name

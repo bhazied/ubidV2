@@ -1,14 +1,16 @@
 app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-       /* $timeout(function() {
+        /*
+        $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = true;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
+            $rootScope.contentSize = 9;
             $rootScope.contentOffset = 0;
-        });*/
+        }, 1500);
+        */
 
         $scope.showForm = false;
         $scope.toggle = function() {
@@ -21,14 +23,14 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
           }
         };
 
-        if(angular.isDefined($localStorage.searchResult)){
-                $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
-                $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
-                $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
-                $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
+        if (angular.isDefined($localStorage.searchResult)) {
+            $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
+            $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
+            $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
+            $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
         }
 
-        if(angular.isDefined($localStorage.genericSearchResults)){
+        if (angular.isDefined($localStorage.genericSearchResults)) {
             //$state.reload();
             $scope.totalCount = $localStorage.genericSearchResults.inlineCount ? $localStorage.genericSearchResults.inlineCount : 0;
             $scope.tenders = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.tenders.data : [];
@@ -146,27 +148,27 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     return $scope.countries;
                 }
             });
-        }
+        };
 
-        $scope.tenderCategoriesLoaded = false;
-        $scope.tenderCategories = [];
+        $scope.categoriesLoaded = false;
+        $scope.categories = [];
 
-        $scope.getTenderCategories = function () {
+        $scope.getCategoriesList = function () {
             $timeout(function () {
-                $scope.tenderCategoriesLoaded = true;
-                if($scope.tenderCategories.length == 0){
+                $scope.categoriesLoaded = true;
+                if($scope.categories.length == 0){
                     var def = $q.defer();
-                    $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                    $tendersFrontDataFactory.categoriesList({locale: $localStorage.language}).$promise.then(function (data) {
                         for (var i in data.results) {
                             data.results[i].expand = false;
                         }
-                        $scope.tenderCategories = data.results;
-                        def.resolve($scope.tenderCategories);
+                        $scope.categories = data.results;
+                        def.resolve($scope.categories);
                     });
                     return def;
                 }
                 else {
-                    return $scope.tenderCategories;
+                    return $scope.categories;
                 }
             });
         };
@@ -175,12 +177,13 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.maxEstimatedCost = 0;
 
         $scope.getCountries();
-        $scope.getTenderCategories();
+        $scope.getCategoriesList();
+
         $scope.search = {
             tender_categories: [],
             countries: [],
             total_cost_operator: '',
-            total_cos_value: 0,
+            total_cost_value: 0,
             publish_date: '',
             publish_date_from: '',
             publish_date_to: '',
@@ -223,7 +226,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     $scope.disableSubmit = false;
                 });
             });
-        }
+        };
 
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
@@ -238,7 +241,6 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     var $params = {};
                     $params.locale = $localStorage.language;
                     $params.searchText = searchText;
-                    console.log($params);
                     $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
@@ -250,7 +252,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     });
                 });
             }
-        }
+        };
 
         $scope.dueDateIsShowen = false;
         $scope.publishDateIsShowen = false;
@@ -261,7 +263,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }else{
                 $scope.dueDateIsShowen = false;
             }
-        }
+        };
 
         $scope.togglePublishDate = function () {
             if($scope.search.publish_date.value == 'customdate'){
@@ -269,7 +271,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }else{
                 $scope.publishDateIsShowen = false;
             }
-        }
+        };
 
         $scope.operators = [
             {
@@ -320,18 +322,18 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.changeParentStatus = function(tcid){
             var selectedVariable = tcid + '_checked';
             $scope[selectedVariable] = !$scope[selectedVariable];
-        }
+        };
 
         $scope.parentChecked = function (tcid, tsc) {
-                var selectedVariable = tcid + '_checked';
-                if (angular.isUndefined($scope[selectedVariable])) {
-                    $scope[selectedVariable] = false;
-                    return $scope[selectedVariable];
-                }
-                if (tcid == tsc.parent_category.id) {
-                    return $scope[selectedVariable];
-                }
-                return false;
+            var selectedVariable = tcid + '_checked';
+            if (angular.isUndefined($scope[selectedVariable])) {
+                $scope[selectedVariable] = false;
+                return $scope[selectedVariable];
             }
+            if (tcid == tsc.parent_category.id) {
+                return $scope[selectedVariable];
+            }
+            return false;
+        };
 
     }]);

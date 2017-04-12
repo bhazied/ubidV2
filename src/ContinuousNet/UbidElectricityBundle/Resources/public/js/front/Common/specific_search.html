@@ -6,23 +6,23 @@
         <label class="sidebar-label" translate="front.CATEGORIES">Categories</label>
         <ul class="categories-checkbox">
             <input type="text" ng-model="filterCategories" placeholder="[['front.FILTERCATEGORIES' | translate]]">
-            <li ng-repeat="tenderCategory in tenderCategories | filter:filterCategories" ng-if="tenderCategory.node.id">
+            <li ng-repeat="category in categories | filter:filterCategories" ng-if="category.node.id">
                 <div class="form-group">
-                    <i ng-if="tenderCategory.children.length > 0 && tenderCategory.expand" ng-click="tenderCategory.expand = false" class="fa fa-minus-square-o"></i>
-                    <i ng-if="tenderCategory.children.length > 0 && !tenderCategory.expand" ng-click="tenderCategory.expand = true" class="fa fa-plus-square-o"></i>
-                    <i ng-if="tenderCategory.children.length == 0" class="fa fa-square-o"></i>
-                    <label class="custom-control custom-checkbox" title="[[ tenderCategory.node.name ]]">
-                        <input ng-click="changeParentStatus(tenderCategory.node.id)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.node.id]]">
+                    <i ng-if="category.children.length > 0 && category.expand" ng-click="category.expand = false" class="fa fa-minus-square-o"></i>
+                    <i ng-if="category.children.length > 0 && !category.expand" ng-click="category.expand = true" class="fa fa-plus-square-o"></i>
+                    <i ng-if="category.children.length == 0" class="fa fa-square-o"></i>
+                    <label class="custom-control custom-checkbox" title="[[ category.node.name ]]">
+                        <input ng-click="changeParentStatus(category.node.id)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="category.node.id" name="category[]" id="searchcategory[[category.node.id]]">
                         <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">[[ tenderCategory.node.name ]]</span>
+                        <span class="custom-control-description">[[ category.node.name ]]</span>
                     </label>
                 </div>
-                <ul ng-show="tenderCategory.expand" ng-if="tenderCategory.children.length > 0" ng-repeat="tenderSubCategory in tenderCategory.children">
+                <ul ng-show="category.expand" ng-if="category.children.length > 0" ng-repeat="subCategory in category.children">
                     <div class="form-group">
-                        <label class="custom-control custom-checkbox" title="[[ tenderSubCategory.node.name ]]">
-                            <input ng-checked="parentChecked(tenderCategory.node.id, tenderSubCategory.node)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="tenderSubCategory.node.id" name="tenderCategory[]" id="searchTenderCategory[[tenderSubCategory.node.id]]">
+                        <label class="custom-control custom-checkbox" title="[[ subCategory.node.name ]]">
+                            <input ng-checked="parentChecked(category.node.id, subCategory.node)" type="checkbox" class="custom-control-input" checklist-model="search.tender_categories" checklist-value="subCategory.node.id" name="category[]" id="searchcategory[[subCategory.node.id]]">
                             <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description">[[ tenderSubCategory.node.name ]]</span>
+                            <span class="custom-control-description">[[ subCategory.node.name ]]</span>
                         </label>
                     </div>
                 </ul>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-md-6 mb-1">
                 <div class="input-group">
-                    <input ng-model="search.total_cos_value" type="text" class="form-control" placeholder=""/>
+                    <input ng-model="search.total_cost_value" type="text" class="form-control" placeholder=""/>
                     <div class="input-group-addon"><i class="fa fa-usd"></i></div>
                 </div>
             </div>

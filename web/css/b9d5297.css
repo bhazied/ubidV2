@@ -2397,7 +2397,7 @@ body {
 .footer-center ul li a.ins:before {
     /*background-image: url('/front/img/ins.png');*/
     content: "\f16d";
-    background-color: #125688;
+    background: radial-gradient(circle farthest-corner at 35% 90% , #fec564, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(circle farthest-corner at 0 140% , #fec564, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(ellipse farthest-corner at 0 -25% , #5258cf, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(ellipse farthest-corner at 20% -50% , #5258cf, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(ellipse farthest-corner at 100% 0 , #893dc2, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(ellipse farthest-corner at 60% -20% , #893dc2, rgba(0, 0, 0, 0) 50%) repeat scroll 0 0%, radial-gradient(ellipse farthest-corner at 100% 100% , #d9317a, rgba(0, 0, 0, 0)) repeat scroll 0 0%, rgba(0, 0, 0, 0) linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%) repeat scroll 0 0;
 }
 
 p.keep-in-touch {

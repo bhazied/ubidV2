@@ -52,12 +52,13 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
         $scope.frontCategories = [];
         $scope.frontCategoriesLoaded = [];
 
-        /*$scope.getCategories = function() {
+        /*
+        $scope.getCategories = function() {
             $timeout(function () {
                 $scope.frontCategoriesLoaded = true;
                 if($scope.frontCategories.length == 0){
                     var def = $q.defer();
-                    $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+                    $tendersFrontDataFactory.categoriesList({locale: $localStorage.language}).$promise.then(function (data) {
                         $scope.frontCategories = data.results;
                         def.resolve($scope.frontCategories);
                     });
@@ -67,7 +68,8 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
                     return $scope.frontCategories;
                 }
             });
-        };*/
+        };
+        */
 
         $scope.getCategories = function() {
             $timeout(function(){

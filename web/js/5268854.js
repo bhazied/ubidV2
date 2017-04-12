@@ -67588,11 +67588,11 @@ angular.module('ubid-electricity', [
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
 
 var languages = {
-    'en' : 'English',
+    'en' : 'English'/*,
     'fr' : 'Français',
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
@@ -67610,7 +67610,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     // GLOBAL APP SCOPE
     // set below basic information
     $rootScope.app = {
-        name: 'U bid electricity', // name of your project
+        name: 'E-electricity', // name of your project
         description: 'Electricity Tenders Marketplace', // brief description
         keywords: 'Electricity, Tenders, Suppliers, Buyers, Consultations', // brief description
         author: 'ContinuousNet', // author's name or company name
@@ -72934,8 +72934,9 @@ app.controller('ModalInstanceCtrl', ["$scope", "$uibModalInstance", "items", fun
     };
 }]);
 'use strict';
+
 /**
- * Sport-Club Main Controller
+ * E-Electricity Back Office Main Controller
  */
 app.controller('AppCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams',
 function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams) {
@@ -73025,10 +73026,7 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 		// Handles language dropdown
 		listIsOpen : false,
 		// list of available languages
-		available : {
-			'en' : 'English',
-			'fr' : 'Français'
-		},
+		available : $rootScope.languages,
 		// display always the current ui language
 		init : function() {
 			if (angular.isDefined($stateParams.language)) {
@@ -73055,8 +73053,9 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 			$rootScope.$broadcast('languageChange', [localeId]);
 		}
 	};
+    console.warn($scope.language);
 
-	$scope.language.init();$localStorage.language
+	$scope.language.init();
 
 	// Function that find the exact height and width of the viewport in a cross-browser way
 	var viewport = function() {

@@ -54,7 +54,7 @@ security:
             anonymous: true
 
         advanced_search:
-            pattern: ^/(en|fr|ar)/api/sr
+            pattern: ^/(en|fr|ar)/api/search
             stateless: true
             anonymous: true
 
@@ -68,8 +68,8 @@ security:
             stateless: true
             anonymous: true
 
-        categoriesTenders:
-            pattern: ^/(en|fr|ar)/api/v1/categoriesTenders
+        categoriesList:
+            pattern: ^/(en|fr|ar)/api/v1/categoriesList
             stateless: true
             anonymous: true
 

@@ -63,10 +63,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div ng-repeat="tenderCategory in tenderCategories" ng-if="tenderCategory.id">
+                    <div ng-repeat="category in categories" ng-if="category.id">
                         <div class="checkbox continuous-check check-primary">
-                            <input checklist-model="search.tender_categories" checklist-value="tenderCategory.id" type="checkbox" name="tenderCategory[]" id="searchTenderCategory[[tenderCategory.id]]" />
-                            <label for="searchTenderCategory[[tenderCategory.id]]">[[ tenderCategory.name ]]</label>
+                            <input checklist-model="search.tender_categories" checklist-value="category.id" type="checkbox" name="category[]" id="searchcategory[[category.id]]" />
+                            <label for="searchcategory[[category.id]]">[[ category.name ]]</label>
                         </div><!--/checkbox-->
                     </div><!--/col-md-8-->
                 </div>

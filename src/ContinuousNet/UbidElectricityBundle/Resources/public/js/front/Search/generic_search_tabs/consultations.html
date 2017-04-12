@@ -2,7 +2,7 @@
     <h1 translate="front.CONSULTATIONS">Consultations</h1>
     <a class="name">[[ tender.title ]]</a>
     <p class="reference"><span translate="front.REFNUMBER">Ref number</span> : [[ tender.reference ]]</p>
-    <p class="description" ng-bind-html="tender.description | limitTo: 250 "></p> ...
+    <p class="description" ng-bind-html="tender.description | htmlToPlaintext | limitTo: 250 "></p>...
     <div class="dates row">
         <p class="col-md-6"><span translate="front.STARTDATE">Start Date</span> : [[ tender.publish_date | date : formats.DATE  | translate  ]]</p>
         <p class="col-md-6"><span translate="front.DUEDATE">Due Date</span> : [[ tender.deadline | date : formats.DATE  | translate  ]]</p>

@@ -701,7 +701,7 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/categoriesTenders")
+     * @GET("/categoriesList")
      * @View(serializerEnableMaxDepthChecks=true)
      */
     public function categoriesTendersAction(Request $request){

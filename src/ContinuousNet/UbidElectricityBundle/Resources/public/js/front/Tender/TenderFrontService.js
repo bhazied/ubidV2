@@ -19,7 +19,7 @@ function($resource, $rootScope) {
         //buyers: { method: 'GET', url: '/:locale' + url + 'tenders/:page/:pageCount/:sortField/:sortDirection', isArray: false},
         //buyer : { methof: 'GET', url:'/:locale' + url +  'tenders/:id', isArray: false},
         homeTenders: {method: 'GET', url:'/:locale' + url +  'homeTenders/:section/:page/:pageCount/:sortField/:sortDirection', isArray: false},
-        categoriesTenders: { method: 'GET', url: '/:locale' + url + 'categoriesTenders', isArray: false},
+        categoriesList: { method: 'GET', url: '/:locale' + url + 'categoriesList', isArray: false},
         getTender : { method: 'GET', url:'/:locale' + url +  'homeTender/:id', isArray: false},
         bookmarkTender: { method: 'GET', url:'/:locale' + url +  'bookmarkTender/:id', isArray: false},
         category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false},

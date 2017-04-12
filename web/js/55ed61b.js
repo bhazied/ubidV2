@@ -72767,14 +72767,14 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
           }
         };
 
-        if(angular.isDefined($localStorage.searchResult)){
+        if (angular.isDefined($localStorage.searchResult)) {
                 $scope.tenders = $localStorage.searchResult.tenders ? $localStorage.searchResult.tenders : [];
                 $scope.pageSize = $localStorage.searchResult.pageSize ?  $localStorage.searchResult.pageSize : 10;
                 $scope.total = $localStorage.searchResult.total ? $localStorage.searchResult.total : 0;
                 $scope.page = $localStorage.searchResult.page ? $localStorage.searchResult.page : 1;
         }
 
-        if(angular.isDefined($localStorage.genericSearchResults)){
+        if (angular.isDefined($localStorage.genericSearchResults)) {
             //$state.reload();
             $scope.totalCount = $localStorage.genericSearchResults.inlineCount ? $localStorage.genericSearchResults.inlineCount : 0;
             $scope.tenders = $localStorage.genericSearchResults.tenders.data ? $localStorage.genericSearchResults.tenders.data : [];
@@ -72926,7 +72926,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             tender_categories: [],
             countries: [],
             total_cost_operator: '',
-            total_cos_value: 0,
+            total_cost_value: 0,
             publish_date: '',
             publish_date_from: '',
             publish_date_to: '',
@@ -72984,7 +72984,6 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     var $params = {};
                     $params.locale = $localStorage.language;
                     $params.searchText = searchText;
-                    console.log($params);
                     $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
@@ -73089,13 +73088,12 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
  */
 app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
     function($resource, $rootScope) {
-        var url = $rootScope.app.apiURL ;
-        var urlGen = '/en' + url ;
+        var url = $rootScope.app.apiURL;
         return $resource(url, {
             locale: '@locale'
         }, {
-            getResults: { method: 'POST', url: '/:locale' + url + 'sr' , isArray: false},
-            genericSearch: {method: 'POST', url: urlGen + 'genericSearch', isArray : false }
+            getResults: { method: 'POST', url: '/:locale' + url + 'search' , isArray: false},
+            genericSearch: {method: 'POST', url: '/:locale' + url + 'genericSearch', isArray : false }
         });
 
     }]);

@@ -3,7 +3,7 @@
     <h1 translate="front.ALLCATEGORIES">All Categories</h1>
     <div class="row">
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="category in tenderCategories">
+            <li class="list-group-item" ng-repeat="category in categories">
                 <span>[[ category.node.name ]]</span>
                 -
                 <a ui-sref="front.tenderscategory({section: 'Tender', slug: category.node.slug})" translate="front.TENDERS">Tenders</a>
