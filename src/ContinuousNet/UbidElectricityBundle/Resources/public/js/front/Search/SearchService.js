@@ -9,8 +9,7 @@ app.factory('$advancedSearchDataFactory', ['$resource', '$rootScope',
         return $resource(url, {
             locale: '@locale'
         }, {
-            getResults: { method: 'POST', url: '/:locale' + url + 'search' , isArray: false},
-            genericSearch: {method: 'POST', url: '/:locale' + url + 'genericSearch', isArray : false }
+            getResults: { method: 'POST', url: '/:locale' + url + 'search' , isArray: false}
         });
 
     }]);

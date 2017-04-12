@@ -1,17 +1,6 @@
 app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
-        /*
-        $timeout(function() {
-            $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 9;
-            $rootScope.contentOffset = 0;
-        }, 1500);
-        */
-
         $scope.showForm = false;
         $scope.toggle = function() {
           if ($scope.showForm) {
@@ -62,7 +51,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     title: $filter('translate')('front.BUYER'),
                     template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
                     inlineCount: $scope.buyerCount
-                },
+                }
             ];
         }
 
@@ -74,7 +63,6 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             selectAll       : $filter('translate')("content.form.country_picker.selectAll"),
             selectNone      : $filter('translate')("content.form.country_picker.selectNone"),
             reset           : $filter('translate')("content.form.country_picker.reset"),
-            search          : $filter('translate')("content.form.country_picker.search"),
             search          : $filter('translate')("content.form.country_picker.search"),
             nothingSelected : $filter('translate')("content.form.country_picker.nothingSelected")
         };
@@ -93,18 +81,18 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             $scope.toPublishDateOpened = !$scope.toPublishDateOpened;
         };
 
-        $scope.deadline1Opened = false;
-        $scope.deadline1Toggle = function($event) {
+        $scope.fromDeadlineOpened = false;
+        $scope.fromDeadlineToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.deadline1Opened = !$scope.deadline1Opened;
+            $scope.fromDeadlineOpened = !$scope.fromDeadlineOpened;
         };
 
-        $scope.deadline2Opened = false;
-        $scope.deadline2Toggle = function($event) {
+        $scope.toDeadlineOpened = false;
+        $scope.toDeadlineToggle = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-            $scope.deadline2Opened = !$scope.deadline2Opened;
+            $scope.toDeadlineOpened = !$scope.toDeadlineOpened;
         };
         
         $scope.dateFormat = $filter('translate')('formats.DATE');
@@ -124,8 +112,8 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.countriesLoaded = false;
         $scope.countries = [];
 
-        $scope.getCountries = function(){
-            $timeout(function(){
+        $scope.getCountries = function() {
+            $timeout(function() {
                 $scope.countriesLoaded = true;
                 if ($scope.countries.length == 0) {
                     $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
@@ -150,25 +138,25 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             });
         };
 
-        $scope.categoriesLoaded = false;
-        $scope.categories = [];
+        $scope.allCategoriesLoaded = false;
+        $scope.allCategories = [];
 
         $scope.getCategoriesList = function () {
             $timeout(function () {
-                $scope.categoriesLoaded = true;
-                if($scope.categories.length == 0){
+                $scope.allCategoriesLoaded = true;
+                if ($scope.allCategories.length == 0) {
                     var def = $q.defer();
                     $tendersFrontDataFactory.categoriesList({locale: $localStorage.language}).$promise.then(function (data) {
                         for (var i in data.results) {
                             data.results[i].expand = false;
                         }
-                        $scope.categories = data.results;
-                        def.resolve($scope.categories);
+                        $scope.allCategories = data.results;
+                        def.resolve($scope.allCategories);
                     });
                     return def;
                 }
                 else {
-                    return $scope.categories;
+                    return $scope.allCategories;
                 }
             });
         };
@@ -180,7 +168,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.getCategoriesList();
 
         $scope.search = {
-            tender_categories: [],
+            categories: [],
             countries: [],
             total_cost_operator: '',
             total_cost_value: 0,
@@ -188,24 +176,25 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             publish_date_from: '',
             publish_date_to: '',
             deadline: '',
-            deadline1: '',
-            deadline2: ''
+            deadline_from: '',
+            deadline_to: ''
         };
 
-        $scope.searchResults = [];
+        //$scope.searchResults = [];
         $scope.submitForm = function (form, page) {
             page = page-1;
             $scope.disableSubmit = true;
             $scope.search.deadline = $scope.search.deadline ? $scope.search.deadline.value : '';
             $scope.search.publish_date = $scope.search.publish_date ? $scope.search.publish_date.value : '';
             $scope.search.total_cost_operator = $scope.search.total_cost_operator ? $scope.search.total_cost_operator.value : '';
-            $scope.search.page = page;
+            //$scope.search.page = page;
             $scope.search.locale = $localStorage.language;
             var $params = $scope.search;
             delete $localStorage.searchResult;
             $timeout(function () {
                 $advancedSearchDataFactory.getResults($params).$promise.then(function (data) {
-                    if(data.inlineCount > 0){
+                    if (data.inlineCount > 0) {
+                        /*
                         $scope.searchResults = data.results;
                         $scope.pageSize = 10;
                         $scope.total = data.inlineCount;
@@ -218,8 +207,10 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                         };
                         $localStorage.searchResult = searchResult;
                         $state.transitionTo('front.advanced_search', {}, {reload:false, notify:true});
-                    }
-                    else {
+                        */
+                        $localStorage.genericSearchResults = data;
+                        $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
+                    } else {
                         $rootScope.searchLoaded = true;
                         SweetAlert.swal($filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTHEADER'), $filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTTEXT'), "info");
                     }
@@ -230,23 +221,22 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 
         $scope.genericSearchResults = [];
         $scope.submitSearch = function (searchText) {
-            if(!angular.isDefined(searchText)){
-                toaster.pop('error', 'search info', $filter('translate')('front.EMPTYSEARCHALERT'));
+            if (!angular.isDefined(searchText)) {
+                toaster.pop('warning', $filter('translate')('content.common.WARNING'), $filter('translate')('front.EMPTYSEARCHALERT'));
                 return false;
-            }
-            else {
+            } else {
                 delete $localStorage.genericSearchResults;
                 $timeout(function () {
                     //var def = $q.defer();
                     var $params = {};
                     $params.locale = $localStorage.language;
                     $params.searchText = searchText;
-                    $advancedSearchDataFactory.genericSearch($params).$promise.then(function (data) {
+                    $advancedSearchDataFactory.getResults($params).$promise.then(function (data) {
                         if (data.inlineCount > 0) {
                             $localStorage.genericSearchResults = data;
                             $state.transitionTo('front.generic_search', {}, {reload:true, notify:true});
                         } else {
-                            toaster.pop('error', "no result for this search", 'search info');
+                            toaster.pop('info', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('content.form.messages.ADVANCEDRESEARCHNORESULTTEXT'));
                             return false;
                         }
                     });
@@ -257,18 +247,18 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.dueDateIsShowen = false;
         $scope.publishDateIsShowen = false;
 
-        $scope.toggleDueDate = function(){
-            if($scope.search.deadline.value == 'customdate') {
+        $scope.toggleDueDate = function() {
+            if ($scope.search.deadline.value == 'customdate') {
                 $scope.dueDateIsShowen = !$scope.dueDateIsShowen;
-            }else{
+            } else {
                 $scope.dueDateIsShowen = false;
             }
         };
 
         $scope.togglePublishDate = function () {
-            if($scope.search.publish_date.value == 'customdate'){
+            if ($scope.search.publish_date.value == 'customdate') {
                 $scope.publishDateIsShowen = !$scope.publishDateIsShowen;
-            }else{
+            } else {
                 $scope.publishDateIsShowen = false;
             }
         };
@@ -319,7 +309,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             }
         ];
 
-        $scope.changeParentStatus = function(tcid){
+        $scope.changeParentStatus = function(tcid) {
             var selectedVariable = tcid + '_checked';
             $scope[selectedVariable] = !$scope[selectedVariable];
         };
@@ -336,4 +326,5 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             return false;
         };
 
-    }]);
+    }
+]);

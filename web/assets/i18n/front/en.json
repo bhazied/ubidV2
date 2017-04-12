@@ -1322,7 +1322,7 @@
         "SELECTDATE": "Select date",
         "SELECTCOUNTRY": "Select countries",
         "ADVANCEDRESEARCHNORESULTHEADER": "No results",
-        "ADVANCEDRESEARCHNORESULTTEXT": "No tender found with the input parameters",
+        "ADVANCEDRESEARCHNORESULTTEXT": "No result found with the input parameters",
         "SUBJECTREQUIRED": "Subject required",
         "CONTACTMESSAGEREQUIRED": "Contact message required",
         "ENTERNAME": "Enter Name",
