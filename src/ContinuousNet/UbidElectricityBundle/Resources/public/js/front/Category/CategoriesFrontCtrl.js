@@ -38,12 +38,16 @@ app.controller('CategoriesFrontCtrl', ['$scope', '$controller', '$rootScope', '$
                     $tendersFrontDataFactory.categoriesList({locale: $localStorage.language}).$promise.then(function (data) {
                         $scope.categories = data.results;
                         angular.forEach(data.results, function(value, key){
-                            if(key == 0){ $scope.selectedFirst = value.node.name; }
-                            var item = {label: value.node.name, id: value.node.id , slug: value.node.slug, tenderCount: value.node.tenders.length, children: []}
-                            if(angular.isDefined(value.children)){
-                                if($scope.expandFirst == 0){ $scope.expandFirst = key; }
+                            if (key == 0) {
+                                $scope.selectedFirst = value.node.name;
+                            }
+                            var item = {label: value.node.name, id: value.node.id , slug: value.node.slug, children: []}
+                            if (angular.isDefined(value.children)){
+                                if ($scope.expandFirst == 0) {
+                                    $scope.expandFirst = key;
+                                }
                                 angular.forEach(value.children, function (child) {
-                                    var childItem = {label: child.name, id: child.id, slug: child.slug, tenderCount: child.tenders.length};
+                                    var childItem = {label: child.name, id: child.id, slug: child.slug};
                                     item.children.push(childItem);
                                 });
                             }
