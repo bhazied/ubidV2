@@ -154,7 +154,7 @@
                     <tr>
                         <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                         <td>
-                            <a ng-repeat="category in supplier.categories" ui-sref="front.supplierscategory({slug: category.slug})">[[ category.name ]]</a>
+                            <a ng-repeat="category in supplier.categories" ui-sref="front.category({slug: category.slug, target: 'suppliers'})">[[ category.name ]]</a>
                         </td>
                     </tr>
                     </tbody>
