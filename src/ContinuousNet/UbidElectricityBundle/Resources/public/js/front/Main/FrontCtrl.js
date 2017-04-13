@@ -47,11 +47,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $timeout(function() {
-            if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
+            if ($state.current.name != '' && $scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
                     console.warn('no access token for ('+$state.current.name+') > redirection');
                     $state.go('front.home');
                 });
+            } else {
+                console.warn('access to ('+$state.current.name+')');
             }
         }, 2000);
 

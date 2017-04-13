@@ -164,7 +164,7 @@
         <div class="row" ng-if="supplierProducts.count > 0">
             <h3 class="sidebar-title" translate="front.SUPPLIERPRODUCTS">Supplier products</h3>
             <div class="pb-1 clearfix" ng-repeat="product in supplierProducts.results">
-                <h4><a class="name" ng-bind="product.name" ui-sref="front.product({slug: product.slug, categorySlug: product.category.slug, id: product.id})"></a></h4>
+                <h4 class="name" ng-bind="product.name"></h4>
                 <div ng-bind-html="product.brand"></div>
                 <img ng-if="product.picture" src="[[ product.picture ]]" alt="[[ product.name ]]" title="[[ product.name ]]" class="pull-right img-thumbnail" />
                 <div ng-bind-html="product.description"></div>
