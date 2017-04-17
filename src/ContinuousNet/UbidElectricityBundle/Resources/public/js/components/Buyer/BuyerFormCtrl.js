@@ -185,7 +185,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             if ($scope.categories.length == 0) {
                 $scope.categories.push({});
                 var def = $q.defer();
-                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[category.status]': 'Online', 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                     $scope.categories = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
                     def.resolve($scope.categories);
                 });
