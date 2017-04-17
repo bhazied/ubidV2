@@ -72447,7 +72447,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.buyers',
             'front.buyer',
             'front.suppliers',
-            'front.supplierscategory',
             'front.supplier',
             'front.post',
             'front.contact',
@@ -72456,11 +72455,13 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         ];
 
         $timeout(function() {
-            if ($scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
+            if ($state.current.name != '' && $scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
                     console.warn('no access token for ('+$state.current.name+') > redirection');
                     $state.go('front.home');
                 });
+            } else {
+                console.warn('access to ('+$state.current.name+')');
             }
         }, 2000);
 
@@ -72546,17 +72547,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.contentOffset = 0;
                 })
             }
-            if( $state.current.name.indexOf('front.mybuyers') != -1 ){
-                $timeout(function() {
-                    $rootScope.showSlogan = false;
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRightSide = false;
-                    $rootScope.showUserMenu = true;
-                    $rootScope.contentSize = 10;
-                    $rootScope.contentOffset = 0;
-                }, 2000);
-            }
-            if($state.current.name == 'front.login'){
+            if ($state.current.name == 'front.login') {
                 $timeout(function() {
                     $rootScope.showSlogan = false;
                     $rootScope.showLeftSide = false;
@@ -72566,7 +72557,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.contentOffset = 3;
                 }, 1500);
             }
-            if($state.current.name == 'front.generic_search'){
+            if ($state.current.name == 'front.generic_search') {
                 $timeout(function() {
                     $rootScope.showSlogan = false;
                     $rootScope.showLeftSide = true;
@@ -72729,15 +72720,9 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
         });
 
-        $scope.add_tender = function () {
-            $state.go('front.tender.add');
-        }
-
-        $scope.show_tender = function (id) {
-            $state.go('front.tender', {id: id})
-        }
         
-    }]);
+    }
+]);
 
 app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
@@ -72792,7 +72777,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     title: $filter('translate')('front.BUYER'),
                     template: '/bundles/ubidelectricity/js/front/Search/generic_search_tabs/buyers.html',
                     inlineCount: $scope.buyerCount
-                },
+                }
             ];
         }
 
@@ -73067,7 +73052,8 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             return false;
         };
 
-    }]);
+    }
+]);
 
 'use strict';
 

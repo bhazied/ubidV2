@@ -502,7 +502,7 @@
                                      </span><!--/input-icon-->
                                 </label>
                             </div><!--/col-md-12-->
-                            <div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
+                            <div class="col-md-12" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
                                 <div class="checkbox continuous-check check-primary">
                                     <input checklist-model="buyer.categories" checklist-value="category.id" type="checkbox" name="category[]" id="buyerCategory[[category.id]]" />
                                     <label for="buyerCategory[[category.id]]">[[ category.name ]]</label>

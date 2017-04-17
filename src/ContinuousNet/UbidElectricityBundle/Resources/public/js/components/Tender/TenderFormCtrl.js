@@ -346,16 +346,10 @@ app.controller('TenderFormCtrl', ['$scope', '$rootScope', '$state', '$stateParam
                 if ($scope.categories.length == 0) {
                     $scope.categories.push({});
                     var def = $q.defer();
-                    $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
+                    $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[category.status]': 'Online', 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
                         $timeout(function(){
                             if(data.results.length > 0){
-                                data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
-                                for (var i in data.results) {
-                                    $scope.categories.push({
-                                        id: data.results[i].id,
-                                        title: data.results[i].name
-                                    });
-                                }
+                                $scope.categories = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
                                 def.resolve($scope.categories);
                             }
                         });

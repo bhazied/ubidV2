@@ -31,7 +31,7 @@
                                 <h2 translate="content.list.fieldsets.SUPPLIER.A"></h2>
                             </div><!--/col-md-12-->
                         </div><!--/row-->
-                        <div id="step1" ng-if="currentStep == 1">
+                        <div id="step1" ng-show="currentStep == 1">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -150,7 +150,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-if="currentStep > 1">
+                                    <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-show="currentStep > 1">
                                         <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
                                     </a>
                                 </div>
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="step2" ng-if="currentStep == 2">
+                        <div id="step2" ng-show="currentStep == 2">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2 translate="content.list.fieldsets.SUPPLIER.C"></h2>
@@ -243,7 +243,7 @@
                                     <label for="supplierCountry" class="control-label">
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                    <div class="block select-list" ng-if="countriesLoaded">
+                                    <div class="block select-list" ng-show="countriesLoaded">
                                         <span class="input-icon">
                                             <select ng-readonly="supplier_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="supplier.country" name="country" id="supplierCountry" class="form-control" ng-required="false">
                                                 <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
@@ -479,7 +479,7 @@
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-if="currentStep > 1">
+                                <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-show="currentStep > 1">
                                     <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
                                 </a>
                             </div>
