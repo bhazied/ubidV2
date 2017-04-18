@@ -202,7 +202,9 @@ app.controller('RegisterCtrl', ['$scope','$rootScope', '$state', '$stateParams',
                 return false;
             } else {
                 $scope.disableSubmit = true;
-                $scope.user.country = $scope.user.countryChoise.id;
+                if (angular.isDefined($scope.user.countryChoise)) {
+                    $scope.user.country = $scope.user.countryChoise.id;
+                }
                 $scope.user.locale = $localStorage.language;
                 $scope.current_type = $stateParams.type;
                 $registerDataFactory.register($scope.user).$promise.then(function(data){

@@ -84,10 +84,10 @@
                         <span translate="content.list.fields.FIRSTNAME">First Name</span>
                     </label>
                     <span class="input-icon">
-                        <input name="firstName" id= "firstName" ng-model="user.firstName" type="text" class="form-control" name="firstName" placeholder="[[ 'content.list.fields.FIRSTNAME' | translate ]]" ng-required="true">
+                        <input name="firstName" id= "firstName" ng-model="user.firstName" type="text" class="form-control" name="firstName" placeholder="[[ 'content.list.fields.FIRSTNAME' | translate ]]">
                         <i class="fa fa-user"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.firstName.$dirty && registerForm.firstName.$error.required" translate="content.form.messages.FIRSTNAMEREQUIRED">FirstName is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.firstName.$dirty && registerForm.firstName.$error.required" translate="content.form.messages.FIRSTNAMEREQUIRED">FirstName is required.</span-->
                 </div>
 
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.lastName.$dirty && registerForm.lastName.$invalid, 'has-success':registerForm.lastName.$valid}">
@@ -95,10 +95,10 @@
                         <span translate="content.list.fields.LASTNAME">First Name</span>
                     </label>
                     <span class="input-icon">
-                        <input name="lastName" id= "lastName" ng-model="user.lastName" type="text" class="form-control" name="lastName" placeholder="[[ 'content.list.fields.LASTNAME' | translate ]]" ng-required="true">
+                        <input name="lastName" id= "lastName" ng-model="user.lastName" type="text" class="form-control" name="lastName" placeholder="[[ 'content.list.fields.LASTNAME' | translate ]]">
                         <i class="fa fa-user-o"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.lastName.$dirty && registerForm.lastName.$error.required" translate="content.form.messages.LASTNAMEREQUIRED">LastName is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.lastName.$dirty && registerForm.lastName.$error.required" translate="content.form.messages.LASTNAMEREQUIRED">LastName is required.</span-->
                 </div>
 
             </div>
@@ -110,10 +110,10 @@
                         <span translate="content.list.fields.COMPANYNAME">Company Name</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userCampany" id= "userCampany" ng-model="user.companyName" type="text" class="form-control"  placeholder="[[ 'content.list.fields.COMPANYNAME' | translate ]]" ng-required="true">
+                        <input name="userCampany" id= "userCampany" ng-model="user.companyName" type="text" class="form-control"  placeholder="[[ 'content.list.fields.COMPANYNAME' | translate ]]">
                         <i class="fa fa-building-o"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.userCampany.$dirty && registerForm.userCampany.$error.required" translate="content.form.messages.COMPANYREQUIRED">Company name is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userCampany.$dirty && registerForm.userCampany.$error.required" translate="content.form.messages.COMPANYREQUIRED">Company name is required.</span-->
                 </div>
 
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.userJob.$dirty && registerForm.userJob.$invalid, 'has-success':registerForm.userJob.$valid}">
@@ -121,10 +121,10 @@
                         <span translate="content.list.fields.JOB">Job</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userJob" id= "userJob" ng-model="user.job" type="text" class="form-control"  placeholder="[[ 'content.list.fields.JOB' | translate ]]" ng-required="true">
+                        <input name="userJob" id= "userJob" ng-model="user.job" type="text" class="form-control"  placeholder="[[ 'content.list.fields.JOB' | translate ]]">
                         <i class="ti-briefcase"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.userJob.$dirty && registerForm.userJob.$error.required" translate="content.form.messages.JOBREQUIRED">Job is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userJob.$dirty && registerForm.userJob.$error.required" translate="content.form.messages.JOBREQUIRED">Job is required.</span-->
                 </div>
 
             </div>
@@ -136,10 +136,10 @@
                         <span translate="content.list.fields.ADDRESS">Address</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userAddress" id= "userAddress" ng-model="user.address" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ADDRESS' | translate ]]" ng-required="true">
+                        <input name="userAddress" id= "userAddress" ng-model="user.address" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ADDRESS' | translate ]]">
                         <i class="fa fa-home"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.userAddress.$dirty && registerForm.userAddress.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userAddress.$dirty && registerForm.userAddress.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address required.</span-->
                 </div>
 
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.userZipCode.$dirty && registerForm.userZipCode.$invalid, 'has-success':registerForm.userZipCode.$valid}">
@@ -147,10 +147,10 @@
                         <span translate="content.list.fields.ZIPCODE">Zip code</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userZipCode" id= "userZipCode" ng-model="user.zipCode" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ZIPCODE' | translate ]]" ng-required="true">
+                        <input name="userZipCode" id= "userZipCode" ng-model="user.zipCode" type="text" class="form-control"  placeholder="[[ 'content.list.fields.ZIPCODE' | translate ]]">
                         <i class="fa fa-map-marker"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.userZipCode.$dirty && registerForm.userZipCode.$error.required" translate="content.form.messages.ZIPCODEREQUIRED">Zip code is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userZipCode.$dirty && registerForm.userZipCode.$error.required" translate="content.form.messages.ZIPCODEREQUIRED">Zip code is required.</span-->
                 </div>
 
             </div>
@@ -163,12 +163,12 @@
                     </label>
                     <div class="block select-list" ng-if="countriesLoaded">
                     <span class="input-icon">
-                        <select ng-options="item as item.name for item in countries | filter:{ hidden : false }" ng-model="user.countryChoise" name="userCountry" id="userCountry" class="form-control" ng-required="true" ng-change="changeCountry()">
+                        <select ng-options="item as item.name for item in countries | filter:{ hidden : false }" ng-model="user.countryChoise" name="userCountry" id="userCountry" class="form-control" ng-change="changeCountry()">
                         </select>
                         <i class="fa fa-globe"></i>
                     </span>
                     </div>
-                    <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span-->
                 </div>
 
                 <div class="form-group col-md-6" ng-class="{'has-error':registerForm.userPhone.$dirty && registerForm.userPhone.$invalid, 'has-success':registerForm.userPhone.$valid}">
@@ -176,10 +176,10 @@
                         <span translate="content.list.fields.PHONE">Phone</span>
                     </label>
                     <span class="input-icon">
-                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-required="true" ng-pattern="phonePattern">
+                        <input name="userPhone" id= "userPhone" ng-model="user.phone" type="text" class="form-control"  placeholder="[[ 'content.list.fields.PHONE' | translate ]]" ng-pattern="phonePattern">
                         <i class="fa fa-phone"></i>
                     </span>
-                    <span class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.PHONEREQUIRED">Phone is required.</span>
+                    <!--span ng-required="true" class="error text-small block" ng-if="registerForm.userPhone.$dirty && registerForm.userPhone.$error.required" translate="content.form.messages.PHONEREQUIRED">Phone is required.</span-->
                     <span class="error" ng-show="registerForm.userPhone.$error.pattern" translate="content.form.messages.INVALIDPHONENUMBER">Invalid phone number</span>
                 </div>
 

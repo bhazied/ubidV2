@@ -48,26 +48,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
 
         $rootScope.phonePattern= /^\+?\d+$/;
 
-        $rootScope.underPage = true;
-        if (angular.isDefined($sessionStorage.underPage)) {
-            $rootScope.underPage = false;
-        } else {
-            $rootScope.initialTime = $rootScope.timer = 6;
-            $rootScope.circleRadius = 66;
-            $sessionStorage.underPage = true;
-            $rootScope.interval = $interval(function() {
-                $rootScope.timer--;
-                if ($rootScope.timer < 0) {
-                    $rootScope.timer = 0;
-                    $interval.cancel($rootScope.interval);
-                    $rootScope.underPage = false;
-                }
-                var angle = Math.PI*($rootScope.circleRadius*2);
-                var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
-                $('.circle_animation').css({strokeDashoffset: percent});
-            }, 1000);
-        }
-
         // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
         FastClick.attach(document.body);
 
@@ -124,8 +104,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
             meta_description: '',
             meta_keywords: ''
         };
-
-
 
         $rootScope.pageTitle = function() {
             return ($rootScope.seo.meta_title || $rootScope.app.name);
@@ -185,7 +163,35 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
             }
         };
 
+        $timeout(function(){
 
+            if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
+
+                $rootScope.underPage = true;
+                if (angular.isDefined($sessionStorage.underPage)) {
+                    $rootScope.underPage = false;
+                } else {
+                    $rootScope.initialTime = $rootScope.timer = 6;
+                    $rootScope.circleRadius = 66;
+                    $sessionStorage.underPage = true;
+                    $rootScope.interval = $interval(function() {
+                        $rootScope.timer--;
+                        if ($rootScope.timer < 0) {
+                            $rootScope.timer = 0;
+                            $interval.cancel($rootScope.interval);
+                            $rootScope.underPage = false;
+                        }
+                        var angle = Math.PI*($rootScope.circleRadius*2);
+                        var percent = (($rootScope.initialTime-$rootScope.timer)/$rootScope.initialTime)*angle;
+                        $('.circle_animation').css({strokeDashoffset: percent});
+                    }, 1000);
+                }
+
+            } else {
+                $rootScope.underPage = false;
+                $sessionStorage.underPage = true;
+            }
+        });
 
     }]);
 
@@ -1139,11 +1145,6 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/country.html',
             title: 'front.TENDERSBYCOUNTRY',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.advanced_search', {
-            url: '/advanced-search-results',
-            templateUrl: '/bundles/ubidelectricity/js/front/Search/search_results.html',
-            title: 'Advanced Search',
-            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.generic_search', {
             url: '/generic-search-results',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',

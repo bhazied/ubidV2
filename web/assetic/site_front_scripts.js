@@ -164,7 +164,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $timeout(function(){
-            if ($state.current.name != 'front.reset' && $state.current.name != 'front.emailconfirm') {
+
+            if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
 
                 $rootScope.underPage = true;
                 if (angular.isDefined($sessionStorage.underPage)) {
@@ -1144,11 +1145,6 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/country.html',
             title: 'front.TENDERSBYCOUNTRY',
             resolve: loadSequence('TendersFrontCtrl', 'homeService', 'tenderFrontService')
-        }).state('front.advanced_search', {
-            url: '/advanced-search-results',
-            templateUrl: '/bundles/ubidelectricity/js/front/Search/search_results.html',
-            title: 'Advanced Search',
-            resolve: loadSequence('SearchFormCtrl', 'searchService', 'languageService', 'countryService', 'tenderFrontService', 'checklist-model', 'angular-slider')
         }).state('front.generic_search', {
             url: '/generic-search-results',
             templateUrl: '/bundles/ubidelectricity/js/front/Search/generic_search_result.html',

@@ -38,28 +38,27 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.tenderTypeMinified = [];
 
     $scope.getTenderTypeMinified = function () {
-        if($scope.tenderTypesLoaded == true){
-            angular.forEach($scope.tenderTypes, function(value, key){
+        if ($scope.tenderTypesLoaded == true){
+            angular.forEach($scope.tenderTypes, function(value, key) {
                 $scope.tenderTypeMinified[key] = {id : value.id, name: value.name};
             });
         }
-    }
+    };
 
     $scope.getDefaultProfile = function () {
-        var name = "";
-        if($localStorage.user.type == "Buyer"){
-            name = "Buy";
+        var name = '';
+        if ($localStorage.user.type == 'Buyer') {
+            name = 'Buy';
+        } else if($localStorage.user.type == 'Supplier'){
+            name = 'Sell';
         }
-        else if($localStorage.user.type == "Supplier"){
-            name = "Sell";
-        }
-        angular.forEach($scope.tenderTypeMinified, function(value, key){
-            if($filter('uppercase')(value.name) == $filter('uppercase')(name)){
+        angular.forEach($scope.tenderTypeMinified, function(value, key) {
+            if ($filter('uppercase')(value.name) == $filter('uppercase')(name)) {
                 $scope.tender.tender_type = $scope.tenderTypes[key].id;
                 $scope.disableTenderType = true;
             }
         });
-    }
+    };
 
     $scope.$watch('tenderTypes', function () {
         $scope.getTenderTypeMinified();
@@ -68,33 +67,30 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     }, true);
 
     $scope.showList = function () {
-        if($localStorage.user.type == "Supplier"){
+        if ($localStorage.user.type == 'Supplier') {
             $scope.showSupplier = true;
-        }
-        else if($localStorage.user.type == "Buyer"){
+        } else if($localStorage.user.type == 'Buyer') {
             $scope.showBuyer = true;
-        }else{
+        } else {
             $scope.showBuyer = true;
         }
-    }
+    };
 
     $scope.showList();
 
-
     $scope.loadProfile = function () {
-        angular.forEach($scope.tenderTypeMinified, function(value, key){
-            if($scope.tender.tender_type == value.id){
-                if($filter('uppercase')(value.name) == "BUYE"){
+        angular.forEach($scope.tenderTypeMinified, function(value, key) {
+            if ($scope.tender.tender_type == value.id) {
+                if ($filter('uppercase')(value.name) == 'BUYE') {
                     $scope.showBuyer = true;
                     $scope.showSupplier = false;
-                }
-                else if($filter('uppercase')(value.name) == "SELL"){
+                } else if ($filter('uppercase')(value.name) == 'SELL') {
                     $scope.showBuyer = false;
                     $scope.showSupplier = true;
                 }
             }
         });
-    }
+    };
 
 }]);
 

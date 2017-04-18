@@ -136,10 +136,10 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
 
         /*$scope.categoriesLoaded = false;
         $scope.categoriesList = [];
-        $scope.getcategories = function () {
+        $scope.getCategories = function () {
             $scope.categoriesLoaded = true;
             var def = $q.defer();
-            $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
+            $tendersFrontDataFactory.categoriesList({locale: $localStorage.language}).$promise.then(function (data) {
                 $timeout(function (){
                     if(data.results.length > 0){
                         for(var i in data.results){
@@ -155,8 +155,10 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             });
             def.resolve($scope.categoriesList);
             return def;
-        }
+        };
 
-        $scope.getcategories();*/
+        $scope.getCategories();
+        */
         
-}]);
+    }
+]);
