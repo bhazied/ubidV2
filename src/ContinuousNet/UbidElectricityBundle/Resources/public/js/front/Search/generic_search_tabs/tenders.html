@@ -1,5 +1,6 @@
+
+<h1 translate="front.TENDERS">Tenders</h1>
 <div ng-if="tenderCount > 0" class="tender-preview" ng-repeat="tender in tenders">
-    <h1 translate="front.TENDERS">Tenders</h1>
     <a ui-sref="front.tender({id: tender.id})" ng-if="user.email" class="name" ng-bind="tender.title"></a>
     <a ui-sref="front.login" ng-if="!user.email" class="name" ng-bind="tender.title"></a>
     <p class="reference"><span translate="front.REFNUMBER">Ref number</span> : [[ tender.reference ]]</p>

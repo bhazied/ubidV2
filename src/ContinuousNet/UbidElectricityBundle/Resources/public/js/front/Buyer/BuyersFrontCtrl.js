@@ -50,6 +50,7 @@ app.controller('BuyersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
         $scope.buyers = [];
 
         $scope.getBuyers = function() {
+            $(window).scrollTop(0);
             var $params = {};
             $params.locale = $localStorage.language;
             $params.page = $scope.page;

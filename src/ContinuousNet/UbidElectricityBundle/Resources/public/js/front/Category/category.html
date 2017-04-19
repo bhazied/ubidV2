@@ -1,6 +1,6 @@
 <div ng-controller="CategoryFrontCtrl">
 
-    <h1>
+    <h1 ng-if="category.name">
         <span translate="front.TENDERSIN" ng-if="target == 'tenders'">Tenders in</span>
         <span translate="front.CONSULTATIONSIN" ng-if="target == 'consultations'">Consultations in</span>
         <span translate="front.SUPPLIERSIN" ng-if="target == 'suppliers'">Suppliers in</span>
@@ -16,7 +16,7 @@
         <h2 ng-bind-html="category.buyers_description" ng-if="target == 'buyers'"></h2>
     </div>
 
-    <div ng-if="target == 'tenders' || target == 'consultations'">
+    <div ng-if="category.name && (target == 'tenders' || target == 'consultations')">
         <div class="mt-3 mb-3" ng-if="tenders.length == 0">
             <h3 class="text-center text-info" translate="front.NOTENDERS" ng-if="target == 'tenders'">This category has no tender</h3>
             <h3 class="text-center text-info" translate="front.NOCONSULTATIONS" ng-if="target == 'consultations'">This category has no consultation</h3>
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div ng-if="target == 'suppliers'">
+    <div ng-if="category.name && target == 'suppliers'">
         <div class="mt-3 mb-3" ng-if="suppliers.length == 0">
             <h3 class="text-center text-info" translate="front.NOSUPPLIERS">This category has no supplier</h3>
         </div>
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div ng-if="target == 'buyers'">
+    <div ng-if="category.name && target == 'buyers'">
         <div class="mt-3 mb-3" ng-if="buyers.length == 0">
             <h3 class="text-center text-info" translate="front.NOBUYERS">This category has no buyer</h3>
         </div>

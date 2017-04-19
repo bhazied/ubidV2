@@ -33,6 +33,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         };
 
         $scope.getSupplier = function() {
+            $(window).scrollTop(0);
             var $params = {
                 locale: $localStorage.language,
                 id: $stateParams.id

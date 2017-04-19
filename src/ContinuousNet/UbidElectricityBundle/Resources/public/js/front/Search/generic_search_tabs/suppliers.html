@@ -1,5 +1,6 @@
+
+<h1 translate="front.SUPPLIERS">Suppliers</h1>
 <div  ng-if="supplierCount > 0" ng-repeat="supplier in suppliers" class="tender-preview">
-    <h1 translate="front.SUPPLIERS">Suppliers</h1>
     <a ui-sref="front.supplier({id: supplier.id})" ng-if="user.email" class="name" ng-bind="supplier.name"></a>
     <a ui-sref="front.login" ng-if="!user.email" class="name" ng-bind="supplier.name"></a>
     <div class="pb-1 clearfix">

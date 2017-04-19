@@ -37,6 +37,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
         }
 
         $scope.getCategory = function() {
+            $(window).scrollTop(0);
             if (angular.isDefined($stateParams.slug)) {
                 $categoriesFrontDataFactory.category({
                     slug: $stateParams.slug,
