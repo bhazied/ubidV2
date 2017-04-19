@@ -641,13 +641,11 @@ class ApiV1RESTController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->from('UbidElectricityBundle:Tender', 't_');
-
-        $qb->andwhere('t_.status = :status')
-            ->setParameters(array('status' => 'Online'));
+        $qb->andwhere('t_.status = :status')->setParameters(array('status' => 'Online'));
         $qb->andWhere('t_.section = :section') ->setParameter('section', $section);
         $today = new \DateTime();
-        $qb->andWhere('t_.publishDate <= :today')->setParameter('today', $today);
-        $qb->andWhere('t_.deadline > :today')->setParameter('today', $today);
+        $qb->andWhere('t_.publishDate is NULL OR t_.publishDate <= :today')->setParameter('today', $today);
+        $qb->andWhere('t_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
         $qb->select('t_');
         $qbList = clone $qb;
         $qb->select('count(t_.id)');
@@ -770,8 +768,8 @@ class ApiV1RESTController extends FOSRestController
             $qb->andWhere(':tender_category MEMBER OF t_.categories')->setParameter('tender_category', $entity->getId());
             $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
             $today = new \DateTime();
-            $qb->andWhere('t_.publishDate <= :today')->setParameter('today', $today);
-            $qb->andWhere('t_.deadline > :today')->setParameter('today', $today);
+            $qb->andWhere('t_.publishDate is NULL OR t_.publishDate <= :today')->setParameter('today', $today);
+            $qb->andWhere('t_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
             $qb->andWhere('t_.section = :section') ->setParameter('section', 'Tender');
             $data['tenders'] = $qb->getQuery()->getResult();
 
@@ -779,12 +777,12 @@ class ApiV1RESTController extends FOSRestController
 
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Tender', 'c_');
-            $qb->select('t_');
+            $qb->select('c_');
             $qb->andWhere(':tender_category MEMBER OF c_.categories')->setParameter('tender_category', $entity->getId());
             $qb->andWhere('c_.status = :status')->setParameter('status', 'Online');
             $today = new \DateTime();
-            $qb->andWhere('c_.publishDate <= :today')->setParameter('today', $today);
-            $qb->andWhere('c_.deadline > :today')->setParameter('today', $today);
+            $qb->andWhere('c_.publishDate is NULL OR c_.publishDate <= :today')->setParameter('today', $today);
+            $qb->andWhere('c_.deadline is NULL OR c_.deadline > :today')->setParameter('today', $today);
             $qb->andWhere('c_.section = :section') ->setParameter('section', 'Consultation');
             $data['consultations'] = $qb->getQuery()->getResult();
 

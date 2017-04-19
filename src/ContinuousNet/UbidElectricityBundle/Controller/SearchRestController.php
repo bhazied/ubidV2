@@ -100,12 +100,12 @@ class SearchRestController extends FOSRestController {
             if (!is_null($publishDate)) {
                 $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 't_.publishDate', $qb_tender);
             } else {
-                $qb_tender->andWhere('c_.publishDate <= :today')->setParameter('today', $today);
+                $qb_tender->andWhere('t_.publishDate is NULL OR t_.publishDate <= :today')->setParameter('today', $today);
             }
             if (!is_null($deadline)) {
                 $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 't_.deadline', $qb_tender);
             } else {
-                $qb_tender->andWhere('t_.deadline > :today')->setParameter('today', $today);
+                $qb_tender->andWhere('t_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
             }
             $qb_tender_count = clone $qb_tender;
             $tenders = $qb_tender->select('t_')->getQuery()->getResult();
@@ -139,12 +139,12 @@ class SearchRestController extends FOSRestController {
             if (!is_null($publishDate)) {
                 $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 'c_.publishDate', $qb_consultation);
             } else {
-                $qb_consultation->andWhere('c_.publishDate <= :today')->setParameter('today', $today);
+                $qb_consultation->andWhere('c_.publishDate is NULL OR c_.publishDate <= :today')->setParameter('today', $today);
             }
             if (!is_null($deadline)) {
                 $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 'c_.deadline', $qb_consultation);
             } else {
-                $qb_consultation->andWhere('t_.deadline > :today')->setParameter('today', $today);
+                $qb_consultation->andWhere('c_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
             }
             $qb_consultation_count = clone $qb_consultation;
             $consultations = $qb_consultation->select('c_')->getQuery()->getResult();
