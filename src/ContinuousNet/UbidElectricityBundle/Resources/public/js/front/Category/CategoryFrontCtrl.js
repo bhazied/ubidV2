@@ -36,13 +36,16 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
             $scope.target = $stateParams.target;
         }
 
+        $scope.loaded = false;
         $scope.getCategory = function() {
             $(window).scrollTop(0);
+            $scope.loaded = false;
             if (angular.isDefined($stateParams.slug)) {
                 $categoriesFrontDataFactory.category({
                     slug: $stateParams.slug,
                     locale: $localStorage.language
                 }).$promise.then(function (data) {
+                    $scope.loaded = true;
                     $scope.category = data.category;
                     $scope.category.tenders_desciption = $sce.trustAsHtml(data.tenders_desciption);
                     $scope.category.consultations_desciption = $sce.trustAsHtml(data.consultations_desciption);

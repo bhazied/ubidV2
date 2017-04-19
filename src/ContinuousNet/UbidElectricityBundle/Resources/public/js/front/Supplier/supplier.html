@@ -1,6 +1,5 @@
 <div ng-controller="SupplierFrontCtrl">
-    <div ng-if="!loaded" class="svg-loader">
-    </div>
+    <div ng-if="!loaded" class="svg-loader"></div>
     <div ng-if="loaded" class="tender-preview">
         <div class="row list-toolbox">
             <div class="col-md-4 margin-bottom-10">
@@ -155,7 +154,7 @@
                         <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                         <td>
                             <a ng-repeat-start="(i, category) in supplier.categories" ui-sref="front.category({slug: category.slug, target: 'suppliers'})">[[ category.name ]]</a>
-                            <span ng-repeat-end ng-if="i < (supplier.categorie.length-1)">-</span>
+                            <span ng-repeat-end ng-if="i < (supplier.categories.length-1)">-</span>
                         </td>
                     </tr>
                     </tbody>
