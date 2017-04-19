@@ -66,7 +66,7 @@
     "SUBMIT": "Submit",
     "EMAILINCORRECT": "Email address incorrect.",
     "EMAILSENT": "Reset password link sent to your email address.",
-    "INVALIDEMAIL": "Invalid email or email does not exist",
+    "INVALIDEMAIL": "Invalid email or password reset already requested",
     "REQUESTPASSWORDRESETINPROGRESS": "Request password reset in progress...",
     "ANEMAILISSENT": "An email is sent to your inbox with reset link.",
     "ENTERNEWPASSWORD": "Entrer your new password",

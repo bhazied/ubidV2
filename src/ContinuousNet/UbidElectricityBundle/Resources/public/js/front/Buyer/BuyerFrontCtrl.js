@@ -20,8 +20,16 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             };
             $timeout(function () {
                 var def = $q.defer();
-                if(angular.isDefined($localStorage.user)){
-                    $buyersDataFactory.get($params).$promise.then(function (data) {
+                if (angular.isDefined($localStorage.user)) {
+                    $buyersDataFactory.get($params).$promise.then(function(data) {
+                        $scope.buyer = data;
+                        $rootScope.seo.meta_description = data.description;
+                        $rootScope.seo.meta_keywords = data.main_products_services;
+                        $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
+                        $scope.loaded = true;
+                    });
+                } else {
+                    $buyersFrontDataFactory.buyer($params).$promise.then(function(data) {
                         $scope.buyer = data;
                         $rootScope.seo.meta_description = data.description;
                         $rootScope.seo.meta_keywords = data.main_products_services;
@@ -29,17 +37,6 @@ app.controller('BuyerFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                         $scope.loaded = true;
                     });
                 }
-                else
-                {
-                    $buyersFrontDataFactory.buyer($params).$promise.then(function(data){
-                        $scope.buyer = data;
-                        $rootScope.seo.meta_description = data.description;
-                        $rootScope.seo.meta_keywords = data.main_products_services;
-                        $rootScope.seo.meta_title = data.name + ' - '+ $filter('translate')('front.seo.BUYERMETATITLE');
-                        $scope.loaded = true;
-                    });
-                }
-
                 def.resolve($scope.buyer);
                 return def;
             });
