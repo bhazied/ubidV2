@@ -19,8 +19,8 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.redirect = true;
 
     $scope.steps = [
-        {title : $filter('translate')('front.ADDBUYERSTEP1'), description: $filter('translate')('front.DESCRIPTIONSTEP1'),  id: 1},
-        {title : $filter('translate')('front.ADDBUYERSTEP2'), description: $filter('translate')('front.DESCRIPTIONSTEP2'), id: 2}
+        {title : $filter('translate')('front.BUYERFORMTITLESTEP1'), description: $filter('translate')('front.BUYERFORMDESCRIPTIONSTEP1'), id: 1},
+        {title : $filter('translate')('front.BUYERFORMTITLESTEP2'), description: $filter('translate')('front.BUYERFORMDESCRIPTIONSTEP2'), id: 2}
     ];
 
     $scope.currentStep = 1;

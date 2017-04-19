@@ -17,7 +17,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             label: $filter('translate')('front.DUEDATEASC')
         },{
             sortField: 'deadline',
-            sortDirection: 'ASC',
+            sortDirection: 'DESC',
             label: $filter('translate')('front.DUEDATEDESC')
         },{
             sortField: 'title',
@@ -32,7 +32,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             sortDirection: 'DESC',
             label: $filter('translate')('front.VIEWSDESC')
         }, {
-            sortField: 'name',
+            sortField: 'views',
             sortDirection: 'ASC',
             label: $filter('translate')('front.VIEWSASC')
         }];

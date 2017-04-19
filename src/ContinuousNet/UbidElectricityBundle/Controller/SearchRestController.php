@@ -74,6 +74,8 @@ class SearchRestController extends FOSRestController {
             $qb_buyer = clone $qb;
             $qb_supplier = clone $qb;
 
+            $today = new \DateTime();
+
             //get Tenders
             $qb_tender->from('UbidElectricityBundle:Tender', 't_');
             if (!is_null($searchText)) {
@@ -95,8 +97,16 @@ class SearchRestController extends FOSRestController {
                 $qb_tender->andWhere('t_.estimatedCost '.$totalCostOperator.' :totalCostValue')
                     ->setParameter('totalCostValue', $totalCostValue);
             }
-            $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 'publishDate', $qb_tender, 't_.');
-            $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 'deadline', $qb_tender, 't_.');
+            if (!is_null($publishDate)) {
+                $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 't_.publishDate', $qb_tender);
+            } else {
+                $qb_tender->andWhere('c_.publishDate <= :today')->setParameter('today', $today);
+            }
+            if (!is_null($deadline)) {
+                $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 't_.deadline', $qb_tender);
+            } else {
+                $qb_tender->andWhere('t_.deadline > :today')->setParameter('today', $today);
+            }
             $qb_tender_count = clone $qb_tender;
             $tenders = $qb_tender->select('t_')->getQuery()->getResult();
             $tendersCount = $qb_tender_count->select('count(t_.id)')->getQuery()->getSingleScalarResult();
@@ -126,8 +136,16 @@ class SearchRestController extends FOSRestController {
                 $qb_consultation->andWhere('c_.estimatedCost '.$totalCostOperator.' :totalCostValue')
                     ->setParameter('totalCostValue', $totalCostValue);
             }
-            $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 'publishDate', $qb_consultation, 'c_.');
-            $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 'deadline', $qb_consultation, 'c_.');
+            if (!is_null($publishDate)) {
+                $this->getWhereDateClause($publishDate, $publishDateFrom, $publishDateTo, 'c_.publishDate', $qb_consultation);
+            } else {
+                $qb_consultation->andWhere('c_.publishDate <= :today')->setParameter('today', $today);
+            }
+            if (!is_null($deadline)) {
+                $this->getWhereDateClause($deadline, $deadlineFrom, $deadlineTo, 'c_.deadline', $qb_consultation);
+            } else {
+                $qb_consultation->andWhere('t_.deadline > :today')->setParameter('today', $today);
+            }
             $qb_consultation_count = clone $qb_consultation;
             $consultations = $qb_consultation->select('c_')->getQuery()->getResult();
             $consultationsCount = $qb_consultation_count->select('count(c_.id)')->getQuery()->getSingleScalarResult();
@@ -210,43 +228,43 @@ class SearchRestController extends FOSRestController {
         }
     }
 
-    private function getWhereDateClause($interval, $date1, $date2, $field, QueryBuilder $qb, $prefix) {
+    private function getWhereDateClause($interval, $date1, $date2, $field, QueryBuilder $qb) {
         if (!is_null($interval)) {
             if ($interval == 'today') {
                 $date = new \DateTime();
                 $start = $date->setTime(0,0,0);
                 $end = $date->setTime(23, 59, 59);
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'yesterday') {
                 $start = new \DateTime();
                 $end = clone  $start;
                 $end->modify('-1 days');
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'last7days') {
                 $start = new \DateTime();
                 $end = clone  $start;
                 $end->modify('-7 days');
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'last30days') {
                 $start = new \DateTime();
                 $end = clone  $start;
                 $end->modify('-30 days');
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'thismonth') {
                 $start = new \DateTime();
                 $end = clone  $start;
                 $end->modify('first day of');
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'lastmonth') {
                 $start = new \DateTime();
                 $end = clone  $start;
                 $end->modify('-1 months');
-                $qb->andWhere($prefix.$field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
+                $qb->andWhere($field .' BETWEEN :start AND :end')->setParameter('start', $start)->setParameter('end', $end);
             } else if ($interval == 'customdate') {
                 if (!is_null($date1)) {
-                    $qb->andWhere($prefix.$field.' >= :'.$field)->setParameter($field, $date1);
+                    $qb->andWhere($field.' >= :'.$field)->setParameter($field, $date1);
                 } else if (!is_null($date2)) {
-                    $qb->andWhere($prefix.$field.' <= :'.$field)->setParameter($field, $date2);
+                    $qb->andWhere($field.' <= :'.$field)->setParameter($field, $date2);
                 }
             }
         }

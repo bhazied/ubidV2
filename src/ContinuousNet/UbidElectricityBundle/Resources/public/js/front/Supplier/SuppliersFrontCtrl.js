@@ -32,7 +32,7 @@ app.controller('SuppliersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '
             sortDirection: 'DESC',
             label: $filter('translate')('front.VIEWSDESC')
         }, {
-            sortField: 'name',
+            sortField: 'views',
             sortDirection: 'ASC',
             label: $filter('translate')('front.VIEWSASC')
         }];

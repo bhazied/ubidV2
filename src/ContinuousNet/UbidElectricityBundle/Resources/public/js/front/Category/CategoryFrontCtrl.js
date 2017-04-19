@@ -43,6 +43,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
             if (angular.isDefined($stateParams.slug)) {
                 $categoriesFrontDataFactory.category({
                     slug: $stateParams.slug,
+                    target: $stateParams.target,
                     locale: $localStorage.language
                 }).$promise.then(function (data) {
                     $scope.loaded = true;
@@ -58,17 +59,9 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                     } else if ($scope.target == 'buyers') {
                         rows = data.buyers;
                     } else if ($scope.target == 'tenders') {
-                        for (var i = 0 ; i < data.tenders.length ; i++ ) {
-                            if (data.tenders[i].section == 'Tender') {
-                                rows.push(data.tenders[i]);
-                            }
-                        }
+                        rows = data.tenders;
                     } else if ($scope.target == 'consultations') {
-                        for (var i = 0 ; i < data.tenders.length ; i++ ) {
-                            if (data.tenders[i].section == 'Consultation') {
-                                rows.push(data.tenders[i]);
-                            }
-                        }
+                        rows = data.consultations;
                     }
                     $scope.total = rows.length;
                     $scope.maxPage = Math.ceil($scope.total / $scope.pageCount);
