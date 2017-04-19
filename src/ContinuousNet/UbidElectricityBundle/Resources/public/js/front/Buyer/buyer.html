@@ -149,7 +149,7 @@
                         <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                         <td>
                             <a ng-repeat-start="(i, category) in buyer.categories" ui-sref="front.category({slug: category.slug, target: 'buyers'})">[[ category.name ]]</a>
-                            <span ng-repeat-end ng-if="i < (buyer.categories.length-1)">-</span>
+                            <span ng-repeat-end ng-if="i < (buyer.categories.length-1)"> - </span>
                         </td>
                     </tr>
                     </tbody>

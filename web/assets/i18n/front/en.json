@@ -70,6 +70,7 @@
     "REQUESTPASSWORDRESETINPROGRESS": "Request password reset in progress...",
     "ANEMAILISSENT": "An email is sent to your inbox with reset link.",
     "ENTERNEWPASSWORD": "Entrer your new password",
+    "RETYPENEWPASSWORD": "Retype your new password",
     "INVALIDTOKEN": "Invalid token",
     "RESETPASSWORDRESETINPROGRESS": "Reset password reset in progress...",
     "NEWPASSWORDNOTSET": "New password not set!",
