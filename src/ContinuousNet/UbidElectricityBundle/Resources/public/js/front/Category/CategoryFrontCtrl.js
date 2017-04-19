@@ -20,7 +20,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
         $scope.total = 0;
         $scope.pages = [1];
-        $scope.page = 1;
+        $scope.page = 0;
         $scope.maxPage = 1;
         $scope.showNextPage = false;
         $scope.showPrevPage = false;
@@ -54,7 +54,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                         rows = data.suppliers;
                     } else if ($scope.target == 'buyers') {
                         rows = data.buyers;
-                    } else if ($scope.target == 'buyers') {
+                    } else if ($scope.target == 'tenders') {
                         for (var i = 0 ; i < data.tenders.length ; i++ ) {
                             if (data.tenders[i].section == 'Tender') {
                                 rows.push(data.tenders[i]);
@@ -94,7 +94,8 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
                     //end paging
                     var start = $scope.page;
-                    var end = (start + 1) * $scope.pageCount;
+                    $scope.itemByPage = ($scope.total > $scope.pageCount) ? $scope.pageCount : $scope.total;
+                    var end = (start + 1) * $scope.itemByPage;
                     if ($scope.target == 'suppliers') {
                         $scope.suppliers = rows.slice(start, end);
                         $rootScope.seo.meta_description = $scope.category.suppliers_meta_description;
