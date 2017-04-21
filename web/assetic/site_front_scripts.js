@@ -88,10 +88,10 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
 
         if (angular.isDefined($localStorage.user)) {
             $rootScope.user = $rootScope.currentUser = $localStorage.user;
-
         } else {
             $rootScope.user = $rootScope.currentUser = {
                 //firstName: 'Guest',
+                //lastName: 'Guest',
                 //job: 'Visitor',
                 //picture: 'app/img/user/02.jpg',
                 //roles: []
@@ -146,6 +146,9 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $rootScope.checkStatePermission = function (state) {
+            if (angular.isDefined($localStorage.user)) {
+                $rootScope.user = $rootScope.currentUser = $localStorage.user;
+            }
             if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
                 return true;
             } else {

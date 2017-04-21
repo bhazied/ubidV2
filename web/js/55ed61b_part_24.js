@@ -593,10 +593,10 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
         $rootScope.pageTitle = function() {
             var title = $rootScope.app.name;
-            if ($rootScope.currTitle) {
-                title = $rootScope.currTitle;
-            }else if ($rootScope.seo.meta_title) {
+            if ($rootScope.seo.meta_title) {
                 title = $rootScope.seo.meta_title;
+            } else if ($rootScope.currTitle) {
+                title = $rootScope.currTitle;
             }
             return title;
         };

@@ -51,10 +51,10 @@ class ApiV1RESTController extends FOSRestController
 
     private $locales = array(
         'en' => 'en_US',
-        'fr' => 'fr_FR',
-        'es' => 'es_ES',
-        'de' => 'de_DE',
+        'fr' => 'fr_FR'/*,
         'it' => 'it_IT',
+        'es' => 'es_ES',
+        'de' => 'de_DE',*/
     );
 
     private function setTranslator($code) {

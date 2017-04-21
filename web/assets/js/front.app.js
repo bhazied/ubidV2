@@ -2,8 +2,8 @@
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English'/*,
-    'fr' : 'Français',
+    'en' : 'English',
+    'fr' : 'Français'/*,
     'es' : 'Español',
     'it' : 'Italiano',
     'de' : 'Deutsch'*/
