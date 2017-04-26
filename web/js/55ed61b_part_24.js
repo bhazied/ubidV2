@@ -487,11 +487,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             'front.profile',
             'front.contact'
         ];
-
-        $scope.changeLanguage = function (lang) {
-            $translate.use(lang);
-            $rootScope.currentLanguage = lang
-        }
         
         // Loading bar transition
         // -----------------------------------
@@ -545,7 +540,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             }
 
             // Save the route title
-            $rootScope.currTitle = $filter('translate')($state.current.title);
 
             if ($state.current.name == 'front.home') {
                 $timeout(function() {
@@ -663,10 +657,11 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 }
             },
             set : function(localeId) {
+                console.warn('set '+localeId)
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;
-                $localStorage.language = localeId;
+                $rootScope.currentLanguage = $localStorage.language = localeId;
                 $rootScope.$broadcast('languageChange', [localeId]);
             }
         };

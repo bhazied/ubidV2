@@ -202,9 +202,9 @@ app.config(['$translateProvider',
     $translateProvider.useLocalStorage();
     
     // Enable sanitize
-    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    $translateProvider.useSanitizeValueStrategy(null); //escape
 
-    }]);
+}]);
 
 // Angular-Loading-Bar
 // configuration

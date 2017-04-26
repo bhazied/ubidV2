@@ -45,9 +45,9 @@
                 <li><a href="https://www.youtube.com/" target="_blank" class="yt"></a></li>
                 <li><a href="https://www.instagram.com/" target="_blank" class="ins"></a></li>
             </ul>
-            <p class="keep-in-touch"><a ui-sref="front.contact" ng-bind-html-unsafe="'front.KEEPINTOUCH' | translate">Keep <b>IN TOUCH</b></a></p>
+            <p class="keep-in-touch"><a ui-sref="front.contact">[['front.KEEP' | translate]] <b>[['front.INTOUCH' | translate]]</b></a></a></p>
         </div>
-        <p class="copyright" ng-bind-html-unsafe="'front.COPYRIGHT' | translate:'{year: app.year}'">Copyright &copy; e-electricity [[app.year]]. All rights reserved.</p>
+        <p class="copyright" ng-bind-html="'front.COPYRIGHT' | translate:'{year: '+app.year+'}'">Copyright &copy; e-electricity [[app.year]]. All rights reserved.</p>
     </div>
 
     <div class="col-md-4 col-xs-6 mb-1 pad-left-0">

@@ -33,8 +33,8 @@ angular.module('ubid-electricity', [
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English'/*,
-    'fr' : 'Français',
+    'en' : 'English',
+    'fr' : 'Français'/*,
     'es' : 'Español',
     'it' : 'Italiano',
     'de' : 'Deutsch'*/
@@ -233,9 +233,9 @@ app.config(['$translateProvider',
     $translateProvider.useLocalStorage();
     
     // Enable sanitize
-    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    $translateProvider.useSanitizeValueStrategy(null); //escape
 
-    }]);
+}]);
 
 // Angular-Loading-Bar
 // configuration

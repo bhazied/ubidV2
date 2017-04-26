@@ -32,8 +32,8 @@ angular.module('ubid-electricity', [
 var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
 
 var languages = {
-    'en' : 'English'/*,
-    'fr' : 'Français',
+    'en' : 'English',
+    'fr' : 'Français'/*,
     'es' : 'Español',
     'it' : 'Italiano',
     'de' : 'Deutsch'*/

@@ -24,7 +24,7 @@
                         <a class="dropdown-item" ui-sref="front.suppliers"><i class="fa fa-handshake-o"></i><span translate="front.SUPPLIERS">Suppliers</span></a>
                     </div>
                 </div>
-                <input class="form-control" translate-attr-placeholder="front.ELECTRICITYBOOKSEARCH" placeholder="Electricity Book Search..." type="text" id="searchText" name="searchText" ng-model="searchText"/>
+                <input class="form-control" placeholder="[['front.ELECTRICITYBOOKSEARCH' | translate]]" type="text" id="searchText" name="searchText" ng-model="searchText"/>
                 <button type="submit" ng-submit="submitSearch(searchText)"></button>
             </div>
         </form>
@@ -32,7 +32,7 @@
         <div class="float-xs-right" id="language-switcher">
             <span class="current-language flag [[currentLanguage]]" title="[[ languages[currentLanguage] ]]">
                 <ul ng-if="countLanguages > 1" class="languages">
-                    <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]" ng-click="changeLanguage('[[langCode]]')"></li>
+                    <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]" ng-click="language.set('[[langCode]]')"></li>
                 </ul>
             </span>
             <a ng-if="countLanguages > 1" class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
@@ -40,16 +40,16 @@
 
         <ul class="nav navbar-nav float-xs-right">
             <li class="nav-item" ng-if="!user.email">
-                <a class="nav-link" ui-sref="front.login({type: 'Buyer'})" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>buyer</b></a>
+                <a class="nav-link" ui-sref="front.login({type: 'Buyer'})">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="user.type == 'Buyer' || user.type == 'Both'">
-                <a class="nav-link" ui-sref="front.usermenu" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>buyer</b></a>
+                <a class="nav-link" ui-sref="front.usermenu">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="!user.email">
-                <a class="nav-link" ui-sref="front.login({type: 'Supplier'})" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>supplier</b></a>
+                <a class="nav-link" ui-sref="front.login({type: 'Supplier'})">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="user.type == 'Supplier' || user.type == 'Both'">
-                <a class="nav-link" ui-sref="front.usermenu" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>supplier</b></a>
+                <a class="nav-link" ui-sref="front.usermenu">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
             </li>
         </ul>
 
