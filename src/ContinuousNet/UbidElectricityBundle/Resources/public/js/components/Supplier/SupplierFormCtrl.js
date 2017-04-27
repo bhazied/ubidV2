@@ -235,6 +235,51 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         }
         console.log($scope.supplier.categories);
     });
+    $scope.languages = [];
+    $scope.languagesLoaded = [];
+
+    $scope.getLanguages = function() {
+        $timeout(function(){
+            if ($scope.languages.length == 0) {
+                $scope.languages.push({});
+                var def = $q.defer();
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.languages = data.results;
+                    def.resolve($scope.languages);
+                });
+                return def;
+            } else {
+                return $scope.languages;
+            }
+        });
+    };
+
+    $scope.getLanguages();
+
+    $scope.languagesSearchText = '';
+    $scope.supplierLanguages = false;
+    $scope.$watch('supplierLanguages', function() {
+        if (angular.isDefined($scope.supplier)) {
+            var languages = $filter('filter')($scope.languages, $scope.languagesSearchText);
+            if ($scope.supplierLanguages) {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.supplier.languages.indexOf(id);
+                    if (index == -1) {
+                        $scope.supplier.languages.push(id);
+                    }
+                }
+            } else {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.supplier.languages.indexOf(id);
+                    if (index > -1) {
+                        $scope.supplier.languages.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
 
 
     $scope.redirect = true;
@@ -307,7 +352,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.supplier = {id: 0, categories: []};
+        $scope.supplier = {id: 0, categories: [], languages: []};
 
         if (angular.isDefined($stateParams.supplier_supplier_type) && JSON.parse($stateParams.supplier_supplier_type) != null) {
             $scope.supplier.supplier_type = $stateParams.supplier_supplier_type;

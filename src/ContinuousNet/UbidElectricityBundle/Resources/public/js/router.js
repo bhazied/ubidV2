@@ -1183,7 +1183,7 @@ function ($stateProvider) {
             'suppliersSorting': null,
             'suppliersFilter': null
         },
-        resolve: loadSequence('SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        resolve: loadSequence('SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService')
     }).state('app.marketplace.suppliersnew', {
         url: '/suppliers/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
@@ -1199,7 +1199,7 @@ function ($stateProvider) {
             'supplier_second_market_region': null,
             'supplier_third_market_region': null
         },
-        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.suppliersedit', {
         url: '/suppliers/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier_form.html',
@@ -1207,7 +1207,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITSUPPLIER'
         },
-        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.suppliersdetails', {
         url: '/suppliers/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Supplier/supplier.html',
@@ -1229,7 +1229,7 @@ function ($stateProvider) {
             'supplierProductsSorting': null,
             'supplierProductsFilter': null
         },
-        resolve: loadSequence('SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
+        resolve: loadSequence('SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService', 'languageService')
     }).state('app.marketplace.supplierproductsnew', {
         url: '/supplier-products/new',
         templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product_form.html',
@@ -1241,7 +1241,7 @@ function ($stateProvider) {
             'supplier_product_supplier': null,
             'supplier_product_category': null
         },
-        resolve: loadSequence('SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.supplierproductsedit', {
         url: '/supplier-products/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product_form.html',
@@ -1249,7 +1249,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITSUPPLIERPRODUCT'
         },
-        resolve: loadSequence('SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.supplierproductsdetails', {
         url: '/supplier-products/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/SupplierProduct/supplier_product.html',
@@ -1271,7 +1271,7 @@ function ($stateProvider) {
             'buyersSorting': null,
             'buyersFilter': null
         },
-        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
+        resolve: loadSequence('BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService')
     }).state('app.marketplace.buyersnew', {
         url: '/buyers/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
@@ -1287,7 +1287,7 @@ function ($stateProvider) {
             'buyer_second_market_region': null,
             'buyer_third_market_region': null
         },
-        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.buyersedit', {
         url: '/buyers/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer_form.html',
@@ -1295,7 +1295,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITBUYER'
         },
-        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.buyersdetails', {
         url: '/buyers/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Buyer/buyer.html',
@@ -1445,7 +1445,7 @@ function ($stateProvider) {
             'tendersSorting': null,
             'tendersFilter': null
         },
-        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
+        resolve: loadSequence('TendersCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'languageService')
     }).state('app.marketplace.tendersnew', {
         url: '/tenders/new',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -1462,7 +1462,7 @@ function ($stateProvider) {
             'tender_tender_type': null,
             'tender_bidding_type': null
         },
-        resolve: loadSequence('TenderFormCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('TenderFormCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.tendersedit', {
         url: '/tenders/edit/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender_form.html',
@@ -1470,7 +1470,7 @@ function ($stateProvider) {
         ncyBreadcrumb: {
             label: 'content.list.EDITTENDER'
         },
-        resolve: loadSequence('TenderFormCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
+        resolve: loadSequence('TenderFormCtrl', 'tenderService', 'buyerService', 'supplierService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'languageService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
     }).state('app.marketplace.tendersdetails', {
         url: '/tenders/details/:id',
         templateUrl: '/bundles/ubidelectricity/js/components/Tender/tender.html',

@@ -172,6 +172,9 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.sorting = {'language.name': 'asc'};
     $scope.sorting = $scope.getParamValue('languagesSorting', $scope.sorting);
     $scope.filter = {
+        supplier_products: [],
+        suppliers: [],
+        tenders: []
     };
     $scope.filter = $scope.getParamValue('languagesFilter', $scope.filter);
     $scope.setParamValue('languagesPage', $scope.page);

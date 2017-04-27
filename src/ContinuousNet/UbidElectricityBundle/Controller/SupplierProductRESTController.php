@@ -218,6 +218,10 @@ class SupplierProductRESTController extends BaseRESTController
         try {
             $em = $this->getDoctrine()->getManager();
             $request->setMethod('PATCH'); //Treat all PUTs as PATCH
+            $previousLanguages = $entity->getLanguages()->toArray();
+            foreach ($previousLanguages as $previousLanguage) {
+                $entity->removeLanguage($previousLanguage);
+            }
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {

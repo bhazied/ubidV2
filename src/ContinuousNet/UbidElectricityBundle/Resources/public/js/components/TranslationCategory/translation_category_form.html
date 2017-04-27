@@ -83,25 +83,6 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                    <slug from="translationCategory.locale" to="translationCategory.slug"></slug>
-                                <div class="form-group" ng-class="{'has-error':translationCategoryForm.slug.$dirty && translationCategoryForm.slug.$invalid, 'has-success':translationCategoryForm.slug.$valid}">
-                                    <label for="translationCategorySlug" class="control-label">
-                                        <span translate="content.list.fields.SLUG">Slug</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-readonly="false" ng-model="translationCategory.slug" type="text" name="slug" id="translationCategorySlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="translationCategoryForm.slug.$dirty && translationCategoryForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
-                                    <span class="success text-small block" ng-if="translationCategoryForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-
                                 <div class="form-group">
                                     <label for="translationCategoryDescription" class="control-label">
                                         <span translate="content.list.fields.DESCRIPTION">Description</span>
@@ -110,6 +91,299 @@
                                         <input ng-readonly="false" ng-model="translationCategory.description" type="text" name="description" id="translationCategoryDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
                                         <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.METATITLE">Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.meta_title" name="metaTitle" id="translationCategoryMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.METADESCRIPTION">Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.meta_description" name="metaDescription" id="translationCategoryMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.meta_keywords" name="metaKeywords" id="translationCategoryMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryTendersDescription" class="control-label">
+                                        <span translate="content.list.fields.TENDERSDESCRIPTION">Tenders Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="translationCategory.tenders_description" name="tendersDescription" id="translationCategoryTendersDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryTendersMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.TENDERSMETATITLE">Tenders Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.tenders_meta_title" name="tendersMetaTitle" id="translationCategoryTendersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-control-skip-backward"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryTendersMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.TENDERSMETADESCRIPTION">Tenders Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.tenders_meta_description" name="tendersMetaDescription" id="translationCategoryTendersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-align-justify"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryTendersMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.TENDERSMETAKEYWORDS">Tenders Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.tenders_meta_keywords" name="tendersMetaKeywords" id="translationCategoryTendersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERTENDERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-control-skip-backward"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryConsultationsDescription" class="control-label">
+                                        <span translate="content.list.fields.CONSULTATIONSDESCRIPTION">Consultations Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="translationCategory.consultations_description" name="consultationsDescription" id="translationCategoryConsultationsDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryConsultationsMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.CONSULTATIONSMETATITLE">Consultations Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.consultations_meta_title" name="consultationsMetaTitle" id="translationCategoryConsultationsMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryConsultationsMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.CONSULTATIONSMETADESCRIPTION">Consultations Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.consultations_meta_description" name="consultationsMetaDescription" id="translationCategoryConsultationsMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-align-justify"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryConsultationsMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.CONSULTATIONSMETAKEYWORDS">Consultations Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.consultations_meta_keywords" name="consultationsMetaKeywords" id="translationCategoryConsultationsMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERCONSULTATIONSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryBuyersDescription" class="control-label">
+                                        <span translate="content.list.fields.BUYERSDESCRIPTION">Buyers Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="translationCategory.buyers_description" name="buyersDescription" id="translationCategoryBuyersDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryBuyersMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.BUYERSMETATITLE">Buyers Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.buyers_meta_title" name="buyersMetaTitle" id="translationCategoryBuyersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryBuyersMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.BUYERSMETADESCRIPTION">Buyers Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.buyers_meta_description" name="buyersMetaDescription" id="translationCategoryBuyersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-align-justify"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategoryBuyersMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.BUYERSMETAKEYWORDS">Buyers Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.buyers_meta_keywords" name="buyersMetaKeywords" id="translationCategoryBuyersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERBUYERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="translationCategorySuppliersDescription" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIERSDESCRIPTION">Suppliers Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="translationCategory.suppliers_description" name="suppliersDescription" id="translationCategorySuppliersDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSDESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategorySuppliersMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIERSMETATITLE">Suppliers Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.suppliers_meta_title" name="suppliersMetaTitle" id="translationCategorySuppliersMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategorySuppliersMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIERSMETADESCRIPTION">Suppliers Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.suppliers_meta_description" name="suppliersMetaDescription" id="translationCategorySuppliersMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-align-justify"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationCategorySuppliersMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.SUPPLIERSMETAKEYWORDS">Suppliers Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationCategory.suppliers_meta_keywords" name="suppliersMetaKeywords" id="translationCategorySuppliersMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERSUPPLIERSMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->

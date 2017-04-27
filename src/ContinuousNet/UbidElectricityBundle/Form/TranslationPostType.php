@@ -46,9 +46,11 @@ class TranslationPostType extends AbstractType
         $builder
             ->add('post', EntityType::class, array('expanded' => false, 'multiple' => false, 'class' => 'UbidElectricityBundle:Post', 'choice_label' => 'title'))
             ->add('locale', TextType::class)
-            ->add('name', TextType::class)
-            ->add('slug', TextType::class)
+            ->add('title', TextType::class)
             ->add('content', TextareaType::class)
+            ->add('metaTitle', TextareaType::class)
+            ->add('metaDescription', TextareaType::class)
+            ->add('metaKeywords', TextareaType::class)
             ->add('validated', CheckboxType::class)
         ;
     }

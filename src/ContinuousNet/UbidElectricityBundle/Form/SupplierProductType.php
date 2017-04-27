@@ -56,6 +56,7 @@ class SupplierProductType extends AbstractType
             ->add('unitCost', TextType::class)
             ->add('isPublic', CheckboxType::class)
             ->add('views', IntegerType::class)
+            ->add('languages', EntityType::class, array('expanded' => true, 'multiple' => true, 'class' => 'UbidElectricityBundle:Language', 'choice_label' => 'name'))
         ;
     }
     

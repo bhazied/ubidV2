@@ -516,6 +516,29 @@
                             </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
+                            <div class="col-md-12">
+                                <label for="supplierLanguages" class="control-label">
+                                    <span translate="content.list.fields.LANGUAGES">Languages</span>
+                                    <span class="input-icon">
+                                        <input placeholder="[[ 'content.form.messages.FILTERLANGUAGES' | translate ]]" type="text" ng-model="languagesSearchText" class="form-control pull-right input-sm underline" />
+                                         <i class="ti-filter"></i>
+                                     </span><!--/input-icon-->
+                                </label>
+                            </div><!--/col-md-12-->
+                            <div class="col-md-3" ng-repeat="language in languages | filter:languagesSearchText" ng-if="language.id">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input checklist-model="supplier.languages" checklist-value="language.id" type="checkbox" name="language[]" id="supplierLanguage[[language.id]]" />
+                                    <label for="supplierLanguage[[language.id]]">[[ language.name ]]</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-3-->
+                            <div class="col-md-12">
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-model="supplierLanguages" type="checkbox" id="supplierLanguages" />
+                                    <label class="all" for="supplierLanguages" translate="content.common.SELECTALL">Select All</label>
+                                </div><!--/checkbox-->
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
                             <div class="col-md-4">
                                 <a ng-click="list()" class="btn btn-primary pull-left">
                                     <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>

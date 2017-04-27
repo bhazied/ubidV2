@@ -4,8 +4,8 @@
  * Controller for Supplier Products List
  */
 
-app.controller('SupplierProductsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$suppliersDataFactory', '$categoriesDataFactory', '$usersDataFactory', '$supplierProductsDataFactory',
-function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $suppliersDataFactory, $categoriesDataFactory, $usersDataFactory, $supplierProductsDataFactory) {
+app.controller('SupplierProductsCtrl', ['$scope', '$rootScope', '$stateParams', '$location', '$sce', '$timeout', '$filter', 'ngTableParams', '$state', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', '$suppliersDataFactory', '$categoriesDataFactory', '$usersDataFactory', '$languagesDataFactory', '$supplierProductsDataFactory',
+function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $suppliersDataFactory, $categoriesDataFactory, $usersDataFactory, $languagesDataFactory, $supplierProductsDataFactory) {
 
     $scope.statusesOptions = [{
         id: '',
@@ -144,6 +144,35 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.getUsers();
 
 
+    $scope.languages = [];
+    $scope.languagesLoaded = [];
+
+    $scope.getLanguages = function() {
+        if ($scope.languages.length == 0) {
+            $scope.languages.push({});
+            var def = $q.defer();
+            $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.languages.length = 0;
+                        for (var i in data.results) {
+                            $scope.languages.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.languages);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.languages;
+        }
+    };
+
+    $scope.getLanguages();
+
     $scope.textValue = function($scope, row) {
         return $scope.$eval('row.' + this.field);
     };
@@ -170,6 +199,33 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
         } else {
             html += displayText.trim();
         }
+        return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
+    };
+
+    $scope.linksValue = function($scope, row) {
+        var values = row[this.field];
+        if (values.length == 0) {
+            return '';
+        }
+        var links = [];
+        for (var i in values) {
+            var link = '';
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '<a ui-sref="'+this.state+'({id: ' + values[i].id + '})">';
+            }
+            var displayFields = this.displayField.split(' ');
+            for (var j in displayFields) {
+                if (angular.isDefined(values[i][displayFields[j]])) {
+                    link += values[i][displayFields[j]] + ' ';
+                }
+            }
+            link = link.trim();
+            if ($rootScope.checkStatePermission(this.state)) {
+                link += '</a>';
+            }
+            links.push(link);
+        }
+        var html = links.join(', ');
         return $scope.trusted[html] || ($scope.trusted[html] = $sce.trustAsHtml(html));
     };
 
@@ -239,6 +295,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'creator_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.CREATORUSER'), sortable: 'creator_user.username', filter: { 'supplierProduct.creatorUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('creator_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'supplierProduct.modifiedAt', filter: { 'supplierProduct.modifiedAt': 'number' }, show: ($scope.getParamValue('modified_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'supplierProduct.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('modifier_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
+            { field: 'languages', 'class': 'has_nany', title: $filter('translate')('content.list.fields.LANGUAGES'), filter: { 'supplierProduct.languages': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getLanguages(), show: ($scope.getParamValue('languages_show_filed', false) && true), displayInList: true, display: false, displayField: 'name', state: 'app.settings.languagesdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
@@ -268,6 +325,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.sorting = {'supplierProduct.createdAt': 'desc'};
     $scope.sorting = $scope.getParamValue('supplierProductsSorting', $scope.sorting);
     $scope.filter = {
+        languages: []
     };
     $scope.filter = $scope.getParamValue('supplierProductsFilter', $scope.filter);
     $scope.setParamValue('supplierProductsPage', $scope.page);

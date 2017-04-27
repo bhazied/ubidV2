@@ -384,6 +384,26 @@ class Tender
     private $categories;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Language")
+     * @ORM\JoinTable(name="tenders_languages",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="tender_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="language_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $languages;
+
+    /**
      * Constructor
      * 
      * @access public
@@ -391,6 +411,7 @@ class Tender
     public function __construct()
     {
         $this->categories = new DoctrineCollection();
+        $this->languages = new DoctrineCollection();
     }
 
     /**
@@ -1058,6 +1079,62 @@ class Tender
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add language
+     *
+     * @access public
+     * @param Language $language
+     * @return Tender
+     */
+    public function addLanguage(Language $language)
+    {
+        if (!$this->languages->contains($language))
+        {
+            $this->languages->add($language);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove language
+     *
+     * @access public
+     * @param Language $language
+     * @return Tender
+     */
+    public function removeLanguage(Language $language)
+    {
+        if ($this->languages->contains($language))
+        {
+            $this->languages->removeElement($language);
+        }
+        return $this;
+    }
+
+    /**
+     * Set language
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Tender
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
     }
 
     /**

@@ -67,23 +67,12 @@ class TranslationPost
      * @var string
      * @access private
      *
-     * @ORM\Column(name="`name`", type="string", length=320, nullable=false, unique=false)
+     * @ORM\Column(name="`title`", type="string", length=320, nullable=false, unique=false)
      * 
      * @Expose
      * 
      */
-    private $name;
-
-    /**
-     * @var string
-     * @access private
-     *
-     * @ORM\Column(name="`slug`", type="string", length=320, nullable=false, unique=false)
-     * 
-     * @Expose
-     * 
-     */
-    private $slug;
+    private $title;
 
     /**
      * @var string
@@ -95,6 +84,39 @@ class TranslationPost
      * 
      */
     private $content;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_title`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     * @access private
+     *
+     * @ORM\Column(name="`meta_description`", type="text", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaDescription;
+
+    /**
+     * @var array
+     * @access private
+     *
+     * @ORM\Column(name="`meta_keywords`", type="array", nullable=true, unique=false)
+     * 
+     * @Expose
+     * 
+     */
+    private $metaKeywords;
 
     /**
      * @var boolean
@@ -219,51 +241,27 @@ class TranslationPost
     }
 
     /**
-     * Set name
+     * Set title
      *
      * @access public
-     * @param string $name
+     * @param string $title
      * @return TranslationPost
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @access public
      * @return string 
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
-    }
-
-    /**
-     * Set slug
-     *
-     * @access public
-     * @param string $slug
-     * @return TranslationPost
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @access public
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
+        return $this->title;
     }
 
     /**
@@ -288,6 +286,78 @@ class TranslationPost
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @access public
+     * @param string $metaTitle
+     * @return TranslationPost
+     */
+    public function setMetaTitle($metaTitle = null)
+    {
+        $this->metaTitle = $metaTitle;
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @access public
+     * @param string $metaDescription
+     * @return TranslationPost
+     */
+    public function setMetaDescription($metaDescription = null)
+    {
+        $this->metaDescription = $metaDescription;
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @access public
+     * @return string 
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @access public
+     * @param array $metaKeywords
+     * @return TranslationPost
+     */
+    public function setMetaKeywords(array $metaKeywords = null)
+    {
+        $this->metaKeywords = $metaKeywords;
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @access public
+     * @return array 
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
     }
 
     /**

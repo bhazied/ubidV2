@@ -239,6 +239,10 @@ class TenderRESTController extends BaseRESTController
             foreach ($previousCategories as $previousCategory) {
                 $entity->removeCategory($previousCategory);
             }
+            $previousLanguages = $entity->getLanguages()->toArray();
+            foreach ($previousLanguages as $previousLanguage) {
+                $entity->removeLanguage($previousLanguage);
+            }
             $roles = $this->getUser()->getRoles();
             if (!empty($roles)) {
                 foreach ($roles as $role) {

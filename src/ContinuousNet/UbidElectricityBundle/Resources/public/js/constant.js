@@ -47,6 +47,9 @@ app.constant('APP_JS_REQUIRES', {
         'BuyerTypesCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypesCtrl.js',
         'BuyerTypeFormCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeFormCtrl.js',
         'BuyerTypeCtrl': '/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeCtrl.js',
+        'LanguagesCtrl': '/bundles/ubidelectricity/js/components/Language/LanguagesCtrl.js',
+        'LanguageFormCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageFormCtrl.js',
+        'LanguageCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageCtrl.js',
         'ClicksCtrl': '/bundles/ubidelectricity/js/components/Click/ClicksCtrl.js',
         'ClickFormCtrl': '/bundles/ubidelectricity/js/components/Click/ClickFormCtrl.js',
         'ClickCtrl': '/bundles/ubidelectricity/js/components/Click/ClickCtrl.js',
@@ -59,9 +62,6 @@ app.constant('APP_JS_REQUIRES', {
         'ImpressionsCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionsCtrl.js',
         'ImpressionFormCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionFormCtrl.js',
         'ImpressionCtrl': '/bundles/ubidelectricity/js/components/Impression/ImpressionCtrl.js',
-        'LanguagesCtrl': '/bundles/ubidelectricity/js/components/Language/LanguagesCtrl.js',
-        'LanguageFormCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageFormCtrl.js',
-        'LanguageCtrl': '/bundles/ubidelectricity/js/components/Language/LanguageCtrl.js',
         'LogsCtrl': '/bundles/ubidelectricity/js/components/Log/LogsCtrl.js',
         'LogFormCtrl': '/bundles/ubidelectricity/js/components/Log/LogFormCtrl.js',
         'LogCtrl': '/bundles/ubidelectricity/js/components/Log/LogCtrl.js',
@@ -276,6 +276,9 @@ app.constant('APP_JS_REQUIRES', {
         name: 'buyerTypeService',
         files: ['/bundles/ubidelectricity/js/components/BuyerType/BuyerTypeService.js']
     },{
+        name: 'languageService',
+        files: ['/bundles/ubidelectricity/js/components/Language/LanguageService.js']
+    },{
         name: 'clickService',
         files: ['/bundles/ubidelectricity/js/components/Click/ClickService.js']
     },{
@@ -287,9 +290,6 @@ app.constant('APP_JS_REQUIRES', {
     },{
         name: 'impressionService',
         files: ['/bundles/ubidelectricity/js/components/Impression/ImpressionService.js']
-    },{
-        name: 'languageService',
-        files: ['/bundles/ubidelectricity/js/components/Language/LanguageService.js']
     },{
         name: 'logService',
         files: ['/bundles/ubidelectricity/js/components/Log/LogService.js']

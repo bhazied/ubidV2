@@ -1,7 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="433604f5-7a90-4a5d-b35a-9ba988435d87" name="Default" comment="" />
+    <list default="true" id="433604f5-7a90-4a5d-b35a-9ba988435d87" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/CountriesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/CountryCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/CountryFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/CountryService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/countries.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/country.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Country/country_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/GroupCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/GroupFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/GroupService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/GroupsCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/group.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/group_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Group/groups.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/LanguageCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/LanguageFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/LanguageService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/LanguagesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/language.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/language_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Language/languages.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/LogCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/LogFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/LogService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/LogsCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/log.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/log_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Log/logs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/MeasurementCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/MeasurementFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/MeasurementService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/MeasurementsCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/measurement.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/measurement_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Measurement/measurements.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/PathologiesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/PathologyCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/PathologyFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/PathologyService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/pathologies.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/pathology.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Pathology/pathology_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/PhysicalActivitiesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/PhysicalActivityCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/PhysicalActivityFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/PhysicalActivityService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/physical_activities.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/physical_activity.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/PhysicalActivity/physical_activity_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/SessionCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/SessionFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/SessionService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/SessionsCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/session.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/session_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Session/sessions.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/TemplateCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/TemplateFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/TemplateService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/TemplatesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/template.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/template_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/Template/templates.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/TranslationCountriesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/TranslationCountryCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/TranslationCountryFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/TranslationCountryService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/translation_countries.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/translation_country.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationCountry/translation_country_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/TranslationPathologiesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/TranslationPathologyCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/TranslationPathologyFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/TranslationPathologyService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/translation_pathologies.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/translation_pathology.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPathology/translation_pathology_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/TranslationPhysicalActivitiesCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/TranslationPhysicalActivityCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/TranslationPhysicalActivityFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/TranslationPhysicalActivityService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/translation_physical_activities.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/translation_physical_activity.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/TranslationPhysicalActivity/translation_physical_activity_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/UserCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/UserFormCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/UserService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/UsersCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/user.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/user_form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/components/User/users.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/constant.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/i18n/en.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/i18n/fr.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/links.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContinuousNet/LivnYouBundle/Resources/public/js/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BuyerRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/BuyerRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/SupplierProductRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/SupplierProductRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/SupplierRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/SupplierRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TenderRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TranslationCategoryRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TranslationCategoryRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TranslationPostRESTController.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Controller/TranslationPostRESTController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Buyer.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Buyer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Supplier.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Supplier.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/SupplierProduct.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/SupplierProduct.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Tender.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/Tender.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/TranslationCategory.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/TranslationCategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/TranslationPost.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Entity/TranslationPost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/BuyerType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/BuyerType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/SupplierProductType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/SupplierProductType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/SupplierType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/SupplierType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TenderType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TenderType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TranslationCategoryType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TranslationCategoryType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TranslationPostType.php" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Form/TranslationPostType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/config/security.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/BuyerFormCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/BuyerFormCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/BuyersCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/BuyersCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/buyer.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/buyer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/buyer_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Buyer/buyer_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Language/LanguagesCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Language/LanguagesCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/SupplierFormCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/SupplierFormCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/SuppliersCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/SuppliersCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/supplier.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/supplier.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/supplier_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Supplier/supplier_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/SupplierProductFormCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/SupplierProductFormCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/SupplierProductsCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/SupplierProductsCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/supplier_product_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/SupplierProduct/supplier_product_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TenderFormCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TenderFormCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/TendersCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tender.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tender.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tender_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Tender/tender_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/TranslationCategoriesCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/TranslationCategoriesCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/translation_category.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/translation_category.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/translation_category_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationCategory/translation_category_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/TranslationPostsCtrl.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/TranslationPostsCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/translation_post.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/translation_post.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/translation_post_form.html" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/TranslationPost/translation_post_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/en.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/i18n/fr.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" afterPath="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/router.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,113 +158,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="front.app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="135" column="44" lean-forward="false" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Main/AppCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1215">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrontCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="email_confirm.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="90" lean-forward="false" selection-start-line="2" selection-start-column="90" selection-end-line="2" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reset_password.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/reset_password.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="front.router.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailConfirmCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/EmailConfirmCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/RegisterCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reset_email.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-              <folding>
-                <element signature="e#163#192#0#HTML" expanded="true" />
-                <element signature="e#294#323#0#HTML" expanded="true" />
-                <element signature="e#396#425#0#HTML" expanded="true" />
-                <element signature="e#473#631#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -146,9 +184,9 @@
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Routing/Generator/UrlGenerator.php" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/reset_password.html" />
-        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" />
         <option value="$PROJECT_DIR$/web/assets/js/front.app.js" />
         <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html" />
+        <option value="$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js" />
       </list>
     </option>
   </component>
@@ -180,6 +218,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -668,7 +707,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -746,17 +784,18 @@
       <updated>1491571377062</updated>
       <workItem from="1491571378320" duration="644000" />
       <workItem from="1491812206221" duration="6232000" />
+      <workItem from="1493291540124" duration="1228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6876000" />
+    <option name="totallyTimeSpent" value="8104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31206763" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.311299" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -786,7 +825,32 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Post/PostFormCtrl.js">
+    <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="135" column="10" lean-forward="false" selection-start-line="135" selection-start-column="10" selection-end-line="135" selection-end-column="10" />
+          <folding>
+            <marker date="1493291592245" expanded="true" signature="8231:8232" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8231:8233" ph="[...]" />
+            <marker date="1493291592245" expanded="true" signature="8237:8276" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8288:8462" ph="[...]" />
+            <marker date="1493291592245" expanded="true" signature="8351:8461" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8572:8661" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8665:8703" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8745:8855" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8782:8851" ph="{&quot;templateUrl&quot;: '/assets/views/partials/breadcrumb.html'...}" />
+            <marker date="1493291592245" expanded="true" signature="8859:8887" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8927:9021" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8961:9017" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9025:9059" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="9109:9264" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9154:9259" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9175:9253" ph="{&quot;checkboxes&quot;: '/assets/views/partials/checkboxes.html'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Main/AppCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -794,11 +858,148 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/email_confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="90" lean-forward="false" selection-start-line="2" selection-start-column="90" selection-end-line="2" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/reset_password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="51" />
+          <folding>
+            <marker date="1493292737825" expanded="true" signature="6541:6803" ph="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="7216:7570" ph="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1493292737825" expanded="true" signature="7600:8089" ph="{&quot;url&quot;: '/apply_tender/:idTender'...}" />
+            <marker date="1493292737825" expanded="true" signature="8020:8079" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="8116:8261" ph="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1493292737825" expanded="true" signature="8296:8566" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="8598:9125" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="9156:9677" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="9709:10185" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="10120:10175" ph="/** Product Manage route ...*/" />
+            <marker date="1493292737825" expanded="true" signature="10210:10551" ph="{&quot;url&quot;: '/product/:categorySlug/:slug/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="10481:10541" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="10579:10826" ph="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1493292737825" expanded="true" signature="10862:11039" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="11072:11510" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="11542:11974" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="12007:12382" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="12324:12372" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="12406:12581" ph="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1493292737825" expanded="true" signature="12610:13110" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="12772:12974" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="13142:13378" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="13407:13939" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="13967:14570" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="14493:14560" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="14603:14796" ph="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1493292737825" expanded="true" signature="14834:15426" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="15019:15276" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="15467:15819" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="15751:15809" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="15845:15988" ph="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1493292737825" expanded="true" signature="16022:16267" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="16298:16763" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="16793:17252" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="17283:17713" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="17650:17703" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="17742:17891" ph="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1493292737825" expanded="true" signature="17928:18191" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="18225:18711" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="18744:19224" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="19258:19699" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="19646:19689" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="19724:19980" ph="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1493292737825" expanded="true" signature="20002:20298" ph="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1493292737825" expanded="true" signature="20229:20288" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="20327:20512" ph="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1493292737825" expanded="true" signature="20546:20997" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="21031:21382" ph="{&quot;url&quot;: '/bids-by-project/:projectId'...}" />
+            <marker date="1493292737825" expanded="true" signature="21415:21702" ph="{&quot;url&quot;: '/details/:slug/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="21741:22325" ph="{&quot;url&quot;: '/short-list'...}" />
+            <marker date="1493292737825" expanded="true" signature="21941:22157" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="22351:22531" ph="{&quot;url&quot;: '/my-alerts'...}" />
+            <marker date="1493292737825" expanded="true" signature="22562:22852" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="22886:23129" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="23159:23587" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="23618:24051" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="24086:24713" ph="{&quot;url&quot;: '/settings'...}" />
+            <marker date="1493292737825" expanded="true" signature="24274:24516" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="24644:24703" ph="/** Categories routes manage ...*/" />
+            <marker date="1493292737825" expanded="true" signature="24741:25174" ph="{&quot;url&quot;: '/categories'...}" />
+            <marker date="1493292737825" expanded="true" signature="25200:25490" ph="{&quot;url&quot;: '/category/:slug/:target'...}" />
+            <marker date="1493292737825" expanded="true" signature="25423:25480" ph="/** Messages routes manage ...*/" />
+            <marker date="1493292737825" expanded="true" signature="25516:25643" ph="{&quot;url&quot;: '/messages'...}" />
+            <marker date="1493292737825" expanded="true" signature="25674:26086" ph="{&quot;url&quot;: '/send/:id/:to'...}" />
+            <marker date="1493292737825" expanded="true" signature="26117:26558" ph="{&quot;url&quot;: '/list/:type'...}" />
+            <marker date="1493292737825" expanded="true" signature="26591:26988" ph="{&quot;url&quot;: '/detail/:id'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Auth/EmailConfirmCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Auth/RegisterCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/views/Emails/reset_email.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Post/PostFormCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/db_updates_20170406.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="24" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="91" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -813,7 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,7 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="24" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="91" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,7 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="55" column="21" lean-forward="true" selection-start-line="50" selection-start-column="12" selection-end-line="55" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -837,9 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#43#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,7 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="57" lean-forward="false" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,9 +1049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding>
-            <element signature="e#187#237#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -865,9 +1056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="e#485#538#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,14 +1063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="37" lean-forward="false" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-          <folding>
-            <element signature="e#95#124#0#HTML" expanded="true" />
-            <element signature="e#166#195#0#HTML" expanded="true" />
-            <element signature="e#255#284#0#HTML" expanded="true" />
-            <element signature="e#380#409#0#HTML" expanded="true" />
-            <element signature="e#451#609#0#HTML" expanded="true" />
-            <marker date="1491814037247" expanded="true" signature="64:723" ph="{% block mailContent ...%}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,7 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-796">
           <caret line="311" column="20" lean-forward="false" selection-start-line="311" selection-start-column="13" selection-end-line="311" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,7 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -906,7 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="25" column="15" lean-forward="false" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,7 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +1098,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +1105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,12 +1112,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <element signature="e#163#192#0#HTML" expanded="true" />
-            <element signature="e#294#323#0#HTML" expanded="true" />
-            <element signature="e#396#425#0#HTML" expanded="true" />
-            <element signature="e#473#631#0#HTML" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -973,15 +1142,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front.router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
+        <state relative-caret-position="615">
           <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="51" />
-          <folding />
+          <folding>
+            <marker date="1493292737825" expanded="true" signature="6541:6803" ph="{&quot;url&quot;: '/country/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="7216:7570" ph="{&quot;url&quot;: '/generic-search-results'...}" />
+            <marker date="1493292737825" expanded="true" signature="7600:8089" ph="{&quot;url&quot;: '/apply_tender/:idTender'...}" />
+            <marker date="1493292737825" expanded="true" signature="8020:8079" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="8116:8261" ph="{&quot;url&quot;: '/my-tenders'...}" />
+            <marker date="1493292737825" expanded="true" signature="8296:8566" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="8598:9125" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="9156:9677" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="9709:10185" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="10120:10175" ph="/** Product Manage route ...*/" />
+            <marker date="1493292737825" expanded="true" signature="10210:10551" ph="{&quot;url&quot;: '/product/:categorySlug/:slug/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="10481:10541" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="10579:10826" ph="{&quot;url&quot;: '/my-products'...}" />
+            <marker date="1493292737825" expanded="true" signature="10862:11039" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="11072:11510" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="11542:11974" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="12007:12382" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="12324:12372" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="12406:12581" ph="{&quot;url&quot;: '/my-bids'...}" />
+            <marker date="1493292737825" expanded="true" signature="12610:13110" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="12772:12974" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="13142:13378" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="13407:13939" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="13967:14570" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="14493:14560" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="14603:14796" ph="{&quot;url&quot;: '/bookmark-project'...}" />
+            <marker date="1493292737825" expanded="true" signature="14834:15426" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="15019:15276" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="15467:15819" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="15751:15809" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="15845:15988" ph="{&quot;url&quot;: '/my-buyers'...}" />
+            <marker date="1493292737825" expanded="true" signature="16022:16267" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="16298:16763" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="16793:17252" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="17283:17713" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="17650:17703" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="17742:17891" ph="{&quot;url&quot;: '/my-suppliers'...}" />
+            <marker date="1493292737825" expanded="true" signature="17928:18191" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="18225:18711" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="18744:19224" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="19258:19699" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="19646:19689" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="19724:19980" ph="{&quot;url&quot;: '/contact'...}" />
+            <marker date="1493292737825" expanded="true" signature="20002:20298" ph="{&quot;url&quot;: '/post/:slug'...}" />
+            <marker date="1493292737825" expanded="true" signature="20229:20288" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="20327:20512" ph="{&quot;url&quot;: '/project-bids'...}" />
+            <marker date="1493292737825" expanded="true" signature="20546:20997" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="21031:21382" ph="{&quot;url&quot;: '/bids-by-project/:projectId'...}" />
+            <marker date="1493292737825" expanded="true" signature="21415:21702" ph="{&quot;url&quot;: '/details/:slug/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="21741:22325" ph="{&quot;url&quot;: '/short-list'...}" />
+            <marker date="1493292737825" expanded="true" signature="21941:22157" ph="/*...*/" />
+            <marker date="1493292737825" expanded="true" signature="22351:22531" ph="{&quot;url&quot;: '/my-alerts'...}" />
+            <marker date="1493292737825" expanded="true" signature="22562:22852" ph="{&quot;url&quot;: '/list'...}" />
+            <marker date="1493292737825" expanded="true" signature="22886:23129" ph="{&quot;url&quot;: '/details/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="23159:23587" ph="{&quot;url&quot;: '/new'...}" />
+            <marker date="1493292737825" expanded="true" signature="23618:24051" ph="{&quot;url&quot;: '/edit/:id'...}" />
+            <marker date="1493292737825" expanded="true" signature="24086:24713" ph="{&quot;url&quot;: '/settings'...}" />
+            <marker date="1493292737825" expanded="true" signature="24274:24516" ph="{...}" />
+            <marker date="1493292737825" expanded="true" signature="24644:24703" ph="/** Categories routes manage ...*/" />
+            <marker date="1493292737825" expanded="true" signature="24741:25174" ph="{&quot;url&quot;: '/categories'...}" />
+            <marker date="1493292737825" expanded="true" signature="25200:25490" ph="{&quot;url&quot;: '/category/:slug/:target'...}" />
+            <marker date="1493292737825" expanded="true" signature="25423:25480" ph="/** Messages routes manage ...*/" />
+            <marker date="1493292737825" expanded="true" signature="25516:25643" ph="{&quot;url&quot;: '/messages'...}" />
+            <marker date="1493292737825" expanded="true" signature="25674:26086" ph="{&quot;url&quot;: '/send/:id/:to'...}" />
+            <marker date="1493292737825" expanded="true" signature="26117:26558" ph="{&quot;url&quot;: '/list/:type'...}" />
+            <marker date="1493292737825" expanded="true" signature="26591:26988" ph="{&quot;url&quot;: '/detail/:id'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/components/Main/AppCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1215">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -989,9 +1225,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/js/front.app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="135" column="44" lean-forward="false" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="1980">
+          <caret line="132" column="10" lean-forward="false" selection-start-line="132" selection-start-column="10" selection-end-line="132" selection-end-column="10" />
+          <folding>
+            <marker date="1493291592245" expanded="true" signature="8231:8232" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8231:8233" ph="[...]" />
+            <marker date="1493291592245" expanded="true" signature="8237:8276" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8288:8462" ph="[...]" />
+            <marker date="1493291592245" expanded="true" signature="8351:8461" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8572:8661" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8665:8703" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8745:8855" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8782:8851" ph="{&quot;templateUrl&quot;: '/assets/views/partials/breadcrumb.html'...}" />
+            <marker date="1493291592245" expanded="true" signature="8859:8887" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="8927:9021" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="8961:9017" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9025:9059" ph="//..." />
+            <marker date="1493291592245" expanded="true" signature="9109:9264" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9154:9259" ph="{...}" />
+            <marker date="1493291592245" expanded="true" signature="9175:9253" ph="{&quot;checkboxes&quot;: '/assets/views/partials/checkboxes.html'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,8 +1266,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContinuousNet/UbidElectricityBundle/Resources/public/js/front/Main/FrontCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        <state relative-caret-position="105">
+          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding />
         </state>
       </provider>
