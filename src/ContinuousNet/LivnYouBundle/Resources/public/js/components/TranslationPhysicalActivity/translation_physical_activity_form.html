@@ -1,0 +1,142 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONPHYSICALACTIVITIES">Translation Physical Activities</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationPhysicalActivityFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONPHYSICALACTIVITY" ng-if="translationPhysicalActivity.id == 0">
+                        New Translation Physical Activity
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONPHYSICALACTIVITY" ng-if="translationPhysicalActivity.id > 0">
+                        Edit Translation Physical Activity
+                    </legend>
+                    <form name="translationPhysicalActivityForm" id="translationPhysicalActivityForm" novalidate ng-submit="submitForm(translationPhysicalActivityForm, true)">
+                        <input type="hidden" name="id" id="translationPhysicalActivityId" ng-model="translationPhysicalActivity.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPhysicalActivityForm.physicalActivity.$dirty && translationPhysicalActivityForm.physicalActivity.$invalid, 'has-success':translationPhysicalActivityForm.physicalActivity.$valid}">
+                                    <label for="translationPhysicalActivityPhysicalActivity" class="control-label">
+                                        <span translate="content.list.fields.PHYSICALACTIVITY">Physical Activity</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list" ng-if="physicalActivitiesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_physical_activity_physical_activity_readonly || false" ng-options="item.id as item.name for item in physicalActivities | filter:{ hidden : false }" ng-model="translationPhysicalActivity.physical_activity" name="physicalActivity" id="translationPhysicalActivityPhysicalActivity" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-pulse"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationPhysicalActivityForm.physicalActivity.$dirty && translationPhysicalActivityForm.physicalActivity.$error.required" translate="content.form.messages.PHYSICALACTIVITYREQUIRED">Physical Activity is required.</span>
+                                    <span class="success text-small block" ng-if="translationPhysicalActivityForm.physicalActivity.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPhysicalActivityForm.locale.$dirty && translationPhysicalActivityForm.locale.$invalid, 'has-success':translationPhysicalActivityForm.locale.$valid}">
+                                    <label for="translationPhysicalActivityLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <span class="input-icon">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationPhysicalActivity.locale" name="locale" id="translationPhysicalActivityLocale" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationPhysicalActivityForm.locale.$dirty && translationPhysicalActivityForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationPhysicalActivityForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationPhysicalActivityForm.name.$dirty && translationPhysicalActivityForm.name.$invalid, 'has-success':translationPhysicalActivityForm.name.$valid}">
+                                    <label for="translationPhysicalActivityName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="translationPhysicalActivity.name" type="text" name="name" id="translationPhysicalActivityName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationPhysicalActivityForm.name.$dirty && translationPhysicalActivityForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationPhysicalActivityForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationPhysicalActivityAthleticName" class="control-label">
+                                        <span translate="content.list.fields.ATHLETICNAME">Athletic Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="translationPhysicalActivity.athletic_name" type="text" name="athleticName" id="translationPhysicalActivityAthleticName" class="form-control" placeholder="[[ 'content.form.messages.ENTERATHLETICNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-readonly="false" ng-model="translationPhysicalActivity.validated" type="checkbox" name="validated" id="translationPhysicalActivityValidated" />
+                                    <label for="translationPhysicalActivityValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTRANSLATIONPHYSICALACTIVITIES">Back to Translation Physical Activities list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="translationPhysicalActivity.id > 0" type="button" ng-click="submitForm(translationPhysicalActivityForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPhysicalActivityForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationPhysicalActivityForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationPhysicalActivityForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationPhysicalActivities.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

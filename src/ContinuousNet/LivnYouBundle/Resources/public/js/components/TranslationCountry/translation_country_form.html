@@ -1,0 +1,127 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TRANSLATIONCOUNTRIES">Translation Countries</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TranslationCountryFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTRANSLATIONCOUNTRY" ng-if="translationCountry.id == 0">
+                        New Translation Country
+                    </legend>
+                    <legend translate="content.list.EDITTRANSLATIONCOUNTRY" ng-if="translationCountry.id > 0">
+                        Edit Translation Country
+                    </legend>
+                    <form name="translationCountryForm" id="translationCountryForm" novalidate ng-submit="submitForm(translationCountryForm, true)">
+                        <input type="hidden" name="id" id="translationCountryId" ng-model="translationCountry.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCountryForm.country.$dirty && translationCountryForm.country.$invalid, 'has-success':translationCountryForm.country.$valid}">
+                                    <label for="translationCountryCountry" class="control-label">
+                                        <span translate="content.list.fields.COUNTRY">Country</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list" ng-if="countriesLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="translation_country_country_readonly || false" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="translationCountry.country" name="country" id="translationCountryCountry" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="fa fa-flag"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationCountryForm.country.$dirty && translationCountryForm.country.$error.required" translate="content.form.messages.COUNTRYREQUIRED">Country is required.</span>
+                                    <span class="success text-small block" ng-if="translationCountryForm.country.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCountryForm.locale.$dirty && translationCountryForm.locale.$invalid, 'has-success':translationCountryForm.locale.$valid}">
+                                    <label for="translationCountryLocale" class="control-label">
+                                        <span translate="content.list.fields.LOCALE">Locale</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list">
+                                        <span class="input-icon">
+                                            <select ng-readonly="false" ng-options="langKey as langName for (langKey, langName) in languages" ng-model="translationCountry.locale" name="locale" id="translationCountryLocale" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="translationCountryForm.locale.$dirty && translationCountryForm.locale.$error.required" translate="content.form.messages.LOCALEREQUIRED">Locale is required.</span>
+                                    <span class="success text-small block" ng-if="translationCountryForm.locale.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':translationCountryForm.name.$dirty && translationCountryForm.name.$invalid, 'has-success':translationCountryForm.name.$valid}">
+                                    <label for="translationCountryName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="translationCountry.name" type="text" name="name" id="translationCountryName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="translationCountryForm.name.$dirty && translationCountryForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="translationCountryForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-readonly="false" ng-model="translationCountry.validated" type="checkbox" name="validated" id="translationCountryValidated" />
+                                    <label for="translationCountryValidated" translate="content.list.fields.VALIDATED">Validated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTRANSLATIONCOUNTRIES">Back to Translation Countries list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="translationCountry.id > 0" type="button" ng-click="submitForm(translationCountryForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="translationCountryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(translationCountryForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="translationCountryForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="translationCountries.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

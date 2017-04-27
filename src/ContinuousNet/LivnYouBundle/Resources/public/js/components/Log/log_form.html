@@ -1,0 +1,210 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.LOGS">Logs</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="LogFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWLOG" ng-if="log.id == 0">
+                        New Log
+                    </legend>
+                    <legend translate="content.list.EDITLOG" ng-if="log.id > 0">
+                        Edit Log
+                    </legend>
+                    <form name="logForm" id="logForm" novalidate ng-submit="submitForm(logForm, true)">
+                        <input type="hidden" name="id" id="logId" ng-model="log.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.session.$dirty && logForm.session.$invalid, 'has-success':logForm.session.$valid}">
+                                    <label for="logSession" class="control-label">
+                                        <span translate="content.list.fields.SESSION">Session</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="block select-list" ng-if="sessionsLoaded">
+                                        <span class="input-icon">
+                                            <select ng-readonly="log_session_readonly || false" ng-options="item.id as item.ip for item in sessions | filter:{ hidden : false }" ng-model="log.session" name="session" id="logSession" class="form-control" ng-required="true">
+                                            </select>
+                                            <i class="ti-marker-alt"></i>
+                                        </span><!--/input-icon-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="logForm.session.$dirty && logForm.session.$error.required" translate="content.form.messages.SESSIONREQUIRED">Session is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.session.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.url.$dirty && logForm.url.$invalid, 'has-success':logForm.url.$valid}">
+                                    <label for="logUrl" class="control-label">
+                                        <span translate="content.list.fields.URL">Url</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="log.url" type="text" name="url" id="logUrl" class="form-control" placeholder="[[ 'content.form.messages.ENTERURL' | translate ]]" ng-required="true" />
+                                        <i class="ti-link"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="logForm.url.$dirty && logForm.url.$error.required" translate="content.form.messages.URLREQUIRED">Url is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.url.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.method.$dirty && logForm.method.$invalid, 'has-success':logForm.method.$valid}">
+                                    <label for="logMethod" class="control-label">
+                                        <span translate="content.list.fields.METHOD">Method</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="log.method" type="text" name="method" id="logMethod" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETHOD' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="logForm.method.$dirty && logForm.method.$error.required" translate="content.form.messages.METHODREQUIRED">Method is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.method.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="logDetailsBefore" class="control-label">
+                                        <span translate="content.list.fields.DETAILSBEFORE">Details Before</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="log.details_before" name="detailsBefore" id="logDetailsBefore" class="form-control" placeholder="[[ 'content.form.messages.ENTERDETAILSBEFORE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="logDetailsAfter" class="control-label">
+                                        <span translate="content.list.fields.DETAILSAFTER">Details After</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <div ckeditor="editorOptions" ready="onReadyEditor()"ng-model="log.details_after" name="detailsAfter" id="logDetailsAfter" class="form-control" placeholder="[[ 'content.form.messages.ENTERDETAILSAFTER' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></div>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-12-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="logNote" class="control-label">
+                                        <span translate="content.list.fields.NOTE">Note</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="log.note" name="note" id="logNote" class="form-control" placeholder="[[ 'content.form.messages.ENTERNOTE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="ti-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.ipAddress.$dirty && logForm.ipAddress.$invalid, 'has-success':logForm.ipAddress.$valid}">
+                                    <label for="logIpAddress" class="control-label">
+                                        <span translate="content.list.fields.IPADDRESS">Ip Address</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="log.ip_address" type="text" name="ipAddress" id="logIpAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERIPADDRESS' | translate ]]" ng-required="true" />
+                                        <i class="ti-apple"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="logForm.ipAddress.$dirty && logForm.ipAddress.$error.required" translate="content.form.messages.IPADDRESSREQUIRED">Ip Address is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.ipAddress.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.userAgent.$dirty && logForm.userAgent.$invalid, 'has-success':logForm.userAgent.$valid}">
+                                    <label for="logUserAgent" class="control-label">
+                                        <span translate="content.list.fields.USERAGENT">User Agent</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="log.user_agent" type="text" name="userAgent" id="logUserAgent" class="form-control" placeholder="[[ 'content.form.messages.ENTERUSERAGENT' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-birthday-cake"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="logForm.userAgent.$dirty && logForm.userAgent.$error.required" translate="content.form.messages.USERAGENTREQUIRED">User Agent is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.userAgent.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':logForm.application.$dirty && logForm.application.$invalid, 'has-success':logForm.application.$valid}">
+                                    <label for="logApplication" class="control-label">
+                                        <span translate="content.list.fields.APPLICATION">Application</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="log.application" type="text" name="application" id="logApplication" class="form-control" placeholder="[[ 'content.form.messages.ENTERAPPLICATION' | translate ]]" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="logForm.application.$dirty && logForm.application.$error.required" translate="content.form.messages.APPLICATIONREQUIRED">Application is required.</span>
+                                    <span class="success text-small block" ng-if="logForm.application.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKLOGS">Back to Logs list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="log.id > 0" type="button" ng-click="submitForm(logForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="logForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(logForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="logForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="logs.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

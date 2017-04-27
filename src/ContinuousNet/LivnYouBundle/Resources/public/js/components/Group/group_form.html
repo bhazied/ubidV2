@@ -1,0 +1,100 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.GROUPS">Groups</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="GroupFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWGROUP" ng-if="group.id == 0">
+                        New Group
+                    </legend>
+                    <legend translate="content.list.EDITGROUP" ng-if="group.id > 0">
+                        Edit Group
+                    </legend>
+                    <form name="groupForm" id="groupForm" novalidate ng-submit="submitForm(groupForm, true)">
+                        <input type="hidden" name="id" id="groupId" ng-model="group.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':groupForm.name.$dirty && groupForm.name.$invalid, 'has-success':groupForm.name.$valid}">
+                                    <label for="groupName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="group.name" type="text" name="name" id="groupName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="groupForm.name.$dirty && groupForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="groupForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':groupForm.roles.$dirty && groupForm.roles.$invalid, 'has-success':groupForm.roles.$valid}">
+                                    <label for="groupRoles" class="control-label">
+                                        <span translate="content.list.fields.ROLES">Roles</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-md-6" ng-repeat="roles_ in roles">
+                                            <div class="checkbox continuous-check check-primary">
+                                                <input checklist-model="group.roles" checklist-value="roles_.id" type="checkbox" name="roles[]" id="groupRoles[[roles_.id]]" />
+                                                <label for="groupRoles[[roles_.id]]">[[ roles_.title ]]</label>
+                                            </div><!--/checkbox-->
+                                        </div><!--/col-md-6-->
+                                    </div>
+                                    <span class="error text-small block" ng-if="groupForm.roles.$dirty && groupForm.roles.$error.required" translate="content.form.messages.ROLESREQUIRED">Roles is required.</span>
+                                    <span class="success text-small block" ng-if="groupForm.roles.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKGROUPS">Back to Groups list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="group.id > 0" type="button" ng-click="submitForm(groupForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="groupForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(groupForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="groupForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="groups.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

@@ -1,0 +1,127 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.PHYSICALACTIVITIES">Physical Activities</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="PhysicalActivityFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWPHYSICALACTIVITY" ng-if="physicalActivity.id == 0">
+                        New Physical Activity
+                    </legend>
+                    <legend translate="content.list.EDITPHYSICALACTIVITY" ng-if="physicalActivity.id > 0">
+                        Edit Physical Activity
+                    </legend>
+                    <form name="physicalActivityForm" id="physicalActivityForm" novalidate ng-submit="submitForm(physicalActivityForm, true)">
+                        <input type="hidden" name="id" id="physicalActivityId" ng-model="physicalActivity.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':physicalActivityForm.name.$dirty && physicalActivityForm.name.$invalid, 'has-success':physicalActivityForm.name.$valid}">
+                                    <label for="physicalActivityName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="physicalActivity.name" type="text" name="name" id="physicalActivityName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="physicalActivityForm.name.$dirty && physicalActivityForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="physicalActivityForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="physicalActivityAthleticName" class="control-label">
+                                        <span translate="content.list.fields.ATHLETICNAME">Athletic Name</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="physicalActivity.athletic_name" type="text" name="athleticName" id="physicalActivityAthleticName" class="form-control" placeholder="[[ 'content.form.messages.ENTERATHLETICNAME' | translate ]]" ng-required="false" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':physicalActivityForm.value.$dirty && physicalActivityForm.value.$invalid, 'has-success':physicalActivityForm.value.$valid}">
+                                    <label for="physicalActivityValue" class="control-label">
+                                        <span translate="content.list.fields.VALUE">Value</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="physicalActivity.value" type="text" name="value" id="physicalActivityValue" class="form-control" placeholder="[[ 'content.form.messages.ENTERVALUE' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="ti-marker-alt"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="physicalActivityForm.value.$dirty && physicalActivityForm.value.$error.required" translate="content.form.messages.VALUEREQUIRED">Value is required.</span>
+                                    <span class="success text-small block" ng-if="physicalActivityForm.value.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':physicalActivityForm.energyNeedsRate.$dirty && physicalActivityForm.energyNeedsRate.$invalid, 'has-success':physicalActivityForm.energyNeedsRate.$valid}">
+                                    <label for="physicalActivityEnergyNeedsRate" class="control-label">
+                                        <span translate="content.list.fields.ENERGYNEEDSRATE">Energy Needs Rate</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="physicalActivity.energy_needs_rate" type="text" name="energyNeedsRate" id="physicalActivityEnergyNeedsRate" class="form-control" placeholder="[[ 'content.form.messages.ENTERENERGYNEEDSRATE' | translate ]]" ng-disabled="false" touchspin data-min="0" data-max="10000000" data-step="0.1" data-decimals="2" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="true" />
+                                        <i class="fa fa-percent"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="physicalActivityForm.energyNeedsRate.$dirty && physicalActivityForm.energyNeedsRate.$error.required" translate="content.form.messages.ENERGYNEEDSRATEREQUIRED">Energy Needs Rate is required.</span>
+                                    <span class="success text-small block" ng-if="physicalActivityForm.energyNeedsRate.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKPHYSICALACTIVITIES">Back to Physical Activities list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="physicalActivity.id > 0" type="button" ng-click="submitForm(physicalActivityForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="physicalActivityForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(physicalActivityForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="physicalActivityForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="physicalActivities.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

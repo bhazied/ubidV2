@@ -1,0 +1,137 @@
+
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="mainTitle" translate="content.list.TEMPLATES">Templates</h1>
+            <span class="mainDescription"></span>
+        </div>
+        <div ncy-breadcrumb></div>
+    </div>
+</section>
+<!-- end: PAGE TITLE -->
+
+<!-- start: FORM -->
+<div class="container-fluid container-fullw bg-white">
+    <div class="row">
+        <div class="col-md-12" ng-controller="TemplateFormCtrl">
+            <div>
+                <fieldset>
+                    <legend translate="content.list.NEWTEMPLATE" ng-if="template.id == 0">
+                        New Template
+                    </legend>
+                    <legend translate="content.list.EDITTEMPLATE" ng-if="template.id > 0">
+                        Edit Template
+                    </legend>
+                    <form name="templateForm" id="templateForm" novalidate ng-submit="submitForm(templateForm, true)">
+                        <input type="hidden" name="id" id="templateId" ng-model="template.id" />
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-class="{'has-error':templateForm.name.$dirty && templateForm.name.$invalid, 'has-success':templateForm.name.$valid}">
+                                    <label for="templateName" class="control-label">
+                                        <span translate="content.list.fields.NAME">Name</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-model="template.name" type="text" name="name" id="templateName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
+                                        <i class="ti-tag"></i>
+                                    </span><!--/input-icon-->
+                                    <span class="error text-small block" ng-if="templateForm.name.$dirty && templateForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
+                                    <span class="success text-small block" ng-if="templateForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-readonly="false" ng-model="template.activated" type="checkbox" name="activated" id="templateActivated" />
+                                    <label for="templateActivated" translate="content.list.fields.ACTIVATED">Activated</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="templatePriority" class="control-label">
+                                        <span translate="content.list.fields.PRIORITY">Priority</span>
+                                    </label>
+                                    <span class="input-icon">
+                                        <input ng-readonly="false" ng-disabled="false" ng-model="template.priority" type="text" name="priority" id="templatePriority" class="form-control" placeholder="[[ 'content.form.messages.ENTERPRIORITY' | translate ]]" touchspin data-min="0" data-max="10000000" data-verticalbuttons="true" data-verticalupclass="ti-angle-up" data-verticaldownclass="ti-angle-down" ng-required="false" />
+                                        <i class="fa fa-exclamation"></i>
+                                    </span><!--/input-icon-->
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="checkbox continuous-check check-primary">
+                                    <input ng-readonly="false" ng-model="template.is_default" type="checkbox" name="isDefault" id="templateIsDefault" />
+                                    <label for="templateIsDefault" translate="content.list.fields.ISDEFAULT">Is Default</label>
+                                </div><!--/checkbox continuous-check check-primary-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group" ng-if="currentUser.roles.join('').indexOf('ADM') > -1"  ng-class="{'has-error':templateForm.shareLevel.$dirty && templateForm.shareLevel.$invalid, 'has-success':templateForm.shareLevel.$valid}">
+                                    <label for="templateShareLevel" class="control-label">
+                                        <span translate="content.list.fields.SHARELEVEL">Share Level</span>
+                                        <span class="symbol required"></span>
+                                    </label>
+                                    <div class="continuous-radio radio-primary" ng-if="shareLevels.length < 10">
+                                        <input ng-disabled="(currentUser.roles.join('').indexOf('ADM') == -1)" ng-repeat-start="shareLevel in shareLevels" ng-model="template.share_level" type="radio" id="share_level[[ shareLevel.id ]]" value="[[ shareLevel.id ]]" name="shareLevel" ng-required="true" />
+                                        <label ng-repeat-end for="share_level[[ shareLevel.id ]]">
+                                            [[ shareLevel.title ]]
+                                        </label>
+                                    </div>
+                                    <div class="block select-list" ng-if="shareLevels.length >= 10">
+                                        <span class="input-icon">
+                                            <select ng-disabled="(currentUser.roles.join('').indexOf('ADM') == -1)" ng-options="item.id as item.title for item in shareLevels" ng-model="template.share_level" name="share_level" id="templateShareLevel" class="form-control" ng-required="true">
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <span class="error text-small block" ng-if="templateForm.shareLevel.$dirty && templateForm.shareLevel.$error.required" translate="content.form.messages.SHARELEVELREQUIRED">Share Level is required.</span>
+                                    <span class="success text-small block" ng-if="templateForm.shareLevel.$valid" translate="content.form.messages.OK">Ok!</span>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a ng-click="list()" class="btn btn-primary pull-left">
+                                    <i class="ti-layout-list-thumb"></i> <span class="hidden-xs hidden-sm" translate="content.list.BACKTEMPLATES">Back to Templates list</span> <span class="hidden-md hidden-lg" translate="content.common.BACK">Back</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button ng-if="template.id > 0" type="button" ng-click="submitForm(templateForm, false)" class="btn btn-primary" ng-disabled="disableSubmit"> <!--  ng-disabled="templateForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && !redirect"></i><i class="fa fa-check-circle" ng-if="!(disableSubmit && !redirect)"></i> <span translate="content.common.APPLY">Apply</span>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" ng-click="submitForm(templateForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="templateForm.$invalid" -->
+                                    <i class="fa fa-spinner fa-spin" ng-if="disableSubmit && redirect"></i><i class="ti-save" ng-if="!(disableSubmit && redirect)"></i> <span translate="content.common.SAVE">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" ng-if="templates.length > 0">
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10 text-center">
+                    </div>
+                    <div class="col-sm-12 col-md-4 margin-bottom-10">
+                    </div>
+                </div>
+            </div>
+        </div><!--/col-md-12-->
+    </div><!--/row-->
+</div><!--/container-fluid container-fullw-->
+<!-- end: FORM -->
+

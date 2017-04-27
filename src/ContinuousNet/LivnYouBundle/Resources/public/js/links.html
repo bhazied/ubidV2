@@ -1,0 +1,137 @@
+<ul>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active open':$state.includes('app.systemsettings')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="systemsettings"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.systemsettings.MAIN">SystemSettings</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active':$state.includes('app.systemsettings.pathologies')}">
+                <a ui-sref="app.systemsettings.pathologies">
+                    <span class="title" translate="content.list.PATHOLOGIES">Pathologies</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.systemsettings.physicalactivities')}">
+                <a ui-sref="app.systemsettings.physicalactivities">
+                    <span class="title" translate="content.list.PHYSICALACTIVITIES">Physical Activities</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.systemsettings.countries')}">
+                <a ui-sref="app.systemsettings.countries">
+                    <span class="title" translate="content.list.COUNTRIES">Countries</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('SUP') > -1 || user.roles.join('').indexOf('ADM') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active open':$state.includes('app.accesscontrol')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="accesscontrol"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.accesscontrol.MAIN">AccessControl</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('SUP') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active':$state.includes('app.accesscontrol.users')}">
+                <a ui-sref="app.accesscontrol.users">
+                    <span class="title" translate="content.list.USERS">Users</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('SUP') > -1" ng-class="{'active':$state.includes('app.accesscontrol.groups')}">
+                <a ui-sref="app.accesscontrol.groups">
+                    <span class="title" translate="content.list.GROUPS">Groups</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.accesscontrol.sessions')}">
+                <a ui-sref="app.accesscontrol.sessions">
+                    <span class="title" translate="content.list.SESSIONS">Sessions</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.accesscontrol.logs')}">
+                <a ui-sref="app.accesscontrol.logs">
+                    <span class="title" translate="content.list.LOGS">Logs</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active open':$state.includes('app.translation')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="translation"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.translation.MAIN">Translation</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.languages')}">
+                <a ui-sref="app.translation.languages">
+                    <span class="title" translate="content.list.LANGUAGES">Languages</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationphysicalactivities')}">
+                <a ui-sref="app.translation.translationphysicalactivities">
+                    <span class="title" translate="content.list.TRANSLATIONPHYSICALACTIVITIES">Translation Physical Activities</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationpathologies')}">
+                <a ui-sref="app.translation.translationpathologies">
+                    <span class="title" translate="content.list.TRANSLATIONPATHOLOGIES">Translation Pathologies</span>
+                </a>
+            </li>
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1" ng-class="{'active':$state.includes('app.translation.translationcountries')}">
+                <a ui-sref="app.translation.translationcountries">
+                    <span class="title" translate="content.list.TRANSLATIONCOUNTRIES">Translation Countries</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ACC') > -1" ng-class="{'active open':$state.includes('app.measurementmanager')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="measurementmanager"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.measurementmanager.MAIN">MeasurementManager</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ACC') > -1" ng-class="{'active':$state.includes('app.measurementmanager.measurements')}">
+                <a ui-sref="app.measurementmanager.measurements">
+                    <span class="title" translate="content.list.MEASUREMENTS">Measurements</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-if="user.roles.join('').indexOf('ADM') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active open':$state.includes('app.templatemanager')}">
+        <a href="javascript:void(0)">
+            <div class="item-content">
+                <div class="item-media">
+                    <i class="templatemanager"></i>
+                </div>
+                <div class="item-inner">
+                    <span class="title" translate="sidebar.nav.templatemanager.MAIN">TemplateManager</span>
+                </div>
+            </div>
+        </a>
+        <ul class="sub-menu">
+            <li ng-if="user.roles.join('').indexOf('ADM') > -1 || user.roles.join('').indexOf('MAN') > -1" ng-class="{'active':$state.includes('app.templatemanager.templates')}">
+                <a ui-sref="app.templatemanager.templates">
+                    <span class="title" translate="content.list.TEMPLATES">Templates</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
