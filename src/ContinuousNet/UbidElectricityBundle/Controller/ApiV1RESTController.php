@@ -51,10 +51,10 @@ class ApiV1RESTController extends FOSRestController
 
     private $locales = array(
         'en' => 'en_US',
-        'fr' => 'fr_FR',
-        'es' => 'es_ES',
-        'de' => 'de_DE',
+        'fr' => 'fr_FR'/*,
         'it' => 'it_IT',
+        'es' => 'es_ES',
+        'de' => 'de_DE',*/
     );
 
     private function setTranslator($code) {
@@ -244,20 +244,14 @@ class ApiV1RESTController extends FOSRestController
     {
         try {
             $locale = $request->request->get('locale');
-            $select = array('c_.id', 'c_.name', 'c_.nameAr', 'c_.nameFr');
+            $select = array('c_.id', 'c_.name');
             $em = $this->getDoctrine()->getManager();
             $qb = $em->createQueryBuilder();
             $qb->from('UbidElectricityBundle:Country', 'c_');
             $qb->select($select);
-            if ($locale == 'ar') {
-                $qb->addOrderBy('c_.nameAr', 'ASC');
-            } else if ($locale == 'fr') {
-                $qb->addOrderBy('c_.nameFr', 'ASC');
-            } else {
-                $qb->addOrderBy('c_.name', 'ASC');
-            }
             $qb->andWhere('c_.published = :published')->setParameter('published', true);
             $results = $qb->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             return $results;
         } catch (\Exception $e) {
             return FOSView::create($e->getMessage(), Codes::HTTP_INTERNAL_SERVER_ERROR);
@@ -641,12 +635,11 @@ class ApiV1RESTController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->from('UbidElectricityBundle:Tender', 't_');
-
-        $qb->andwhere('t_.status = :status')
-            ->setParameters(array('status' => 'Online'));
+        $qb->andwhere('t_.status = :status')->setParameters(array('status' => 'Online'));
         $qb->andWhere('t_.section = :section') ->setParameter('section', $section);
-        $toDay = new \DateTime();
-        $qb->andWhere('t_.publishDate < :today')->setParameter('today', $toDay);
+        $today = new \DateTime();
+        $qb->andWhere('t_.publishDate is NULL OR t_.publishDate <= :today')->setParameter('today', $today);
+        $qb->andWhere('t_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
         $qb->select('t_');
         $qbList = clone $qb;
         $qb->select('count(t_.id)');
@@ -701,7 +694,7 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/categoriesTenders")
+     * @GET("/categoriesList")
      * @View(serializerEnableMaxDepthChecks=true)
      */
     public function categoriesTendersAction(Request $request){
@@ -716,6 +709,7 @@ class ApiV1RESTController extends FOSRestController
         $qb->orderBy('c_.ordering', 'ASC');
         $results = $qb->getQuery()->getResult();
         if ($results) {
+            $results = $this->translateEntities($results);
             $data['results'] = $this->prepareCategoryTree($results);
         }
         return $data;
@@ -748,11 +742,12 @@ class ApiV1RESTController extends FOSRestController
     }
 
     /**
-     * @GET("/publicCategory/{slug}")
+     * @GET("/publicCategory/{slug}/{target}")
      * @View(serializerEnableMaxDepthChecks=true)
      * @param $entity
      */
-    public function publicCategoryAction(Category $entity) {
+    public function publicCategoryAction(Category $entity, $target)
+    {
 
         $data = array();
 
@@ -760,29 +755,51 @@ class ApiV1RESTController extends FOSRestController
 
         $em = $this->getDoctrine()->getManager();
 
-        $qb = $em->createQueryBuilder();
-        $qb->from('UbidElectricityBundle:Tender', 't_');
-        $qb->select('t_');
-        $qb->andWhere(":tender_category MEMBER OF t_.categories")
-            ->setParameter("tender_category", $entity->getId());
-        $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
-        $data['tenders'] = $qb->getQuery()->getResult();
+        if ($target == 'tenders') {
 
-        $qb = $em->createQueryBuilder();
-        $qb->from('UbidElectricityBundle:Buyer', 'b_');
-        $qb->select('b_');
-        $qb->andWhere(":buyer_category MEMBER OF b_.categories")
-            ->setParameter("buyer_category", $entity->getId());
-        $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
-        $data['buyers'] = $qb->getQuery()->getResult();
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 't_');
+            $qb->select('t_');
+            $qb->andWhere(':tender_category MEMBER OF t_.categories')->setParameter('tender_category', $entity->getId());
+            $qb->andWhere('t_.status = :status')->setParameter('status', 'Online');
+            $today = new \DateTime();
+            $qb->andWhere('t_.publishDate is NULL OR t_.publishDate <= :today')->setParameter('today', $today);
+            $qb->andWhere('t_.deadline is NULL OR t_.deadline > :today')->setParameter('today', $today);
+            $qb->andWhere('t_.section = :section') ->setParameter('section', 'Tender');
+            $data['tenders'] = $qb->getQuery()->getResult();
 
-        $qb = $em->createQueryBuilder();
-        $qb->from('UbidElectricityBundle:Supplier', 's_');
-        $qb->select('s_');
-        $qb->andWhere(":supplier_category MEMBER OF s_.categories")
-            ->setParameter("supplier_category", $entity->getId());
-        $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
-        $data['suppliers'] = $qb->getQuery()->getResult();
+        } else if ($target == 'consultations') {
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Tender', 'c_');
+            $qb->select('c_');
+            $qb->andWhere(':tender_category MEMBER OF c_.categories')->setParameter('tender_category', $entity->getId());
+            $qb->andWhere('c_.status = :status')->setParameter('status', 'Online');
+            $today = new \DateTime();
+            $qb->andWhere('c_.publishDate is NULL OR c_.publishDate <= :today')->setParameter('today', $today);
+            $qb->andWhere('c_.deadline is NULL OR c_.deadline > :today')->setParameter('today', $today);
+            $qb->andWhere('c_.section = :section') ->setParameter('section', 'Consultation');
+            $data['consultations'] = $qb->getQuery()->getResult();
+
+        } else if ($target == 'buyers') {
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Buyer', 'b_');
+            $qb->select('b_');
+            $qb->andWhere(':buyer_category MEMBER OF b_.categories')->setParameter('buyer_category', $entity->getId());
+            $qb->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $data['buyers'] = $qb->getQuery()->getResult();
+
+        } else if ($target == 'suppliers') {
+
+            $qb = $em->createQueryBuilder();
+            $qb->from('UbidElectricityBundle:Supplier', 's_');
+            $qb->select('s_');
+            $qb->andWhere(':supplier_category MEMBER OF s_.categories')->setParameter('supplier_category', $entity->getId());
+            $qb->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $data['suppliers'] = $qb->getQuery()->getResult();
+
+        }
 
         return $data;
     }

@@ -2,10 +2,10 @@ var app = angular.module('ubidElectricityApp', ['ubid-electricity']);
 
 var languages = {
     'en' : 'English',
-    'fr' : 'Français',
+    'fr' : 'Français'/*,
     'es' : 'Español',
     'it' : 'Italiano',
-    'de' : 'Deutsch'
+    'de' : 'Deutsch'*/
 };
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
@@ -23,7 +23,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
     // GLOBAL APP SCOPE
     // set below basic information
     $rootScope.app = {
-        name: 'U bid electricity', // name of your project
+        name: 'E-electricity', // name of your project
         description: 'Electricity Tenders Marketplace', // brief description
         keywords: 'Electricity, Tenders, Suppliers, Buyers, Consultations', // brief description
         author: 'ContinuousNet', // author's name or company name
@@ -130,7 +130,6 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$timeout',
 app.config(['$translateProvider',
 function ($translateProvider) {
 
-
     // prefix and suffix information  is required to specify a pattern
     // You can simply use the static-files loader with this pattern:
     $translateProvider.useStaticFilesLoader({
@@ -143,13 +142,15 @@ function ($translateProvider) {
         currentLanguage = JSON.parse(localStorage['ngStorage-language']);
     }
     for (var languageKey in languages) {
-        if (currentLanguage == null) {
+        if (window.location.hash.startsWith('/' + languageKey)) {
             currentLanguage = languageKey;
-        }
-        if (window.location.hash.endsWith('/' + languageKey)) {
+        } else if (window.location.hash.endsWith('/' + languageKey)) {
+            currentLanguage = languageKey;
+        } else if (currentLanguage == null) {
             currentLanguage = languageKey;
         }
     }
+    console.warn(currentLanguage);
     localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
     localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
 
@@ -211,4 +212,11 @@ if (!String.prototype.endsWith) {
         return lastIndex !== -1 && lastIndex === position;
     };
 
+}
+
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position){
+        position = position || 0;
+        return this.substr(position, searchString.length) === searchString;
+    };
 }

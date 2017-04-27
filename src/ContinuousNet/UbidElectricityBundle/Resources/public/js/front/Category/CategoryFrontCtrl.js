@@ -20,7 +20,7 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
         $scope.total = 0;
         $scope.pages = [1];
-        $scope.page = 1;
+        $scope.page = 0;
         $scope.maxPage = 1;
         $scope.showNextPage = false;
         $scope.showPrevPage = false;
@@ -36,12 +36,17 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
             $scope.target = $stateParams.target;
         }
 
+        $scope.loaded = false;
         $scope.getCategory = function() {
+            $(window).scrollTop(0);
+            $scope.loaded = false;
             if (angular.isDefined($stateParams.slug)) {
                 $categoriesFrontDataFactory.category({
                     slug: $stateParams.slug,
+                    target: $stateParams.target,
                     locale: $localStorage.language
                 }).$promise.then(function (data) {
+                    $scope.loaded = true;
                     $scope.category = data.category;
                     $scope.category.tenders_desciption = $sce.trustAsHtml(data.tenders_desciption);
                     $scope.category.consultations_desciption = $sce.trustAsHtml(data.consultations_desciption);
@@ -53,18 +58,10 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
                         rows = data.suppliers;
                     } else if ($scope.target == 'buyers') {
                         rows = data.buyers;
-                    } else if ($scope.target == 'buyers') {
-                        for (var i = 0 ; i < data.tenders.length ; i++ ) {
-                            if (data.tenders[i].section == 'Tender') {
-                                rows.push(data.tenders[i]);
-                            }
-                        }
+                    } else if ($scope.target == 'tenders') {
+                        rows = data.tenders;
                     } else if ($scope.target == 'consultations') {
-                        for (var i = 0 ; i < data.tenders.length ; i++ ) {
-                            if (data.tenders[i].section == 'Consultation') {
-                                rows.push(data.tenders[i]);
-                            }
-                        }
+                        rows = data.consultations;
                     }
                     $scope.total = rows.length;
                     $scope.maxPage = Math.ceil($scope.total / $scope.pageCount);
@@ -93,7 +90,8 @@ app.controller('CategoryFrontCtrl', ['$scope', '$controller', '$rootScope', '$st
 
                     //end paging
                     var start = $scope.page;
-                    var end = (start + 1) * $scope.pageCount;
+                    $scope.itemByPage = ($scope.total > $scope.pageCount) ? $scope.pageCount : $scope.total;
+                    var end = (start + 1) * $scope.itemByPage;
                     if ($scope.target == 'suppliers') {
                         $scope.suppliers = rows.slice(start, end);
                         $rootScope.seo.meta_description = $scope.category.suppliers_meta_description;

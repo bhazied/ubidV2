@@ -26,22 +26,20 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     };
 
     $scope.steps = [
-        {title : $filter('translate')('front.ADDBUYERSTEP1'), description: $filter('translate')('front.SUPPLIERDESCRIPTIONSTEP1'),  id: 1},
-        {title : $filter('translate')('front.ADDBUYERSTEP2'), description: $filter('translate')('front.SUPPLIERDESCRIPTIONSTEP2'), id: 2}
+        {title : $filter('translate')('front.SUPPLIERFORMTITLESTEP1'), description: $filter('translate')('front.SUPPLIERFORMDESCRIPTIONSTEP1'), id: 1},
+        {title : $filter('translate')('front.SUPPLIERFORMTITLESTEP2'), description: $filter('translate')('front.SUPPLIERFORMDESCRIPTIONSTEP2'), id: 2}
     ];
 
     $scope.currentStep = 1;
     $scope.isNext = false;
     $scope.enableFormAlert = false;
-    
 
     $scope.goNext = function (form) {
         $scope.toTheTop();
-        if(form.$valid){
+        if (form.name.$valid) {
             form.$setPristine();
             $scope.currentStep++;
-        }
-        else{
+        } else {
             var field = null, firstError = null;
             for (field in form) {
                 if (field[0] != '$') {
@@ -54,24 +52,23 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
                     }
                 }
             }
-
             angular.element('.ng-invalid[name=' + firstError + ']').focus();
             $scope.isNext = true;
         }
-    }
+    };
 
     $scope.goPrevious = function () {
         $scope.toTheTop();
         $scope.currentStep--;
-    }
+    };
 
     $scope.goto = function (step, form) {
-        if(step == 1){
+        if (step == 1) {
             $scope.goNext(form);
-        }else{
+        } else {
             $scope.goPrevious();
         }
-    }
+    };
 
     $scope.currentLanguageId = 0;
     $scope.$watch('languages', function () {
@@ -83,7 +80,6 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         });
         console.log($scope.supplier);
     }, true);
-
 
     //market region dynamic filed
     $scope.marketRegionShowed = 1;
@@ -100,20 +96,20 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $scope.marketRegions.push($scope.marketRegionsInformations[index]);
         $scope.marketRegionShowed++;
         return false;
-    }
+    };
 
     $scope.removeMarketregion = function (order) {
         var index = order-1;
         $scope.marketRegions.splice(index);
         $scope.marketRegionShowed--;
         return false;
-    }
+    };
 
     // market rate dynamic field
     $scope.marketRateShowed = 1;
     $scope.marketRates = [
         {order: 1, model: "first_market_rate", name:"firstMarketRate", id:"supplierFirstMarketRate", title: $filter('translate')('content.list.fields.FIRSTMARKETRATE'), placeholder:$filter('translate')('ENTERFIRSTMARKETRATE')},
-    ]
+    ];
     $scope.marketRateInformations = [
         {order: 2, model: "second_market_rate", name:"secondMarketRate", id:"supplierSecondMarketRate", title: $filter('translate')('content.list.fields.SECONDMARKETRATE'),placeholder:$filter('translate')('ENTERSECONDMARKETRATE')},
         {order: 3, model: "third_market_rate", name:"thirdMarketRate", id:"supplierThirdMarketRate", title: $filter('translate')('content.list.fields.THIRDMARKETRATE'), placeholder:$filter('translate')('ENTERTHIRDMARKETRATE')}
@@ -124,33 +120,34 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $scope.marketRates.push($scope.marketRateInformations[index]);
         $scope.marketRateShowed++;
         return false;
-    }
+    };
 
     $scope.removeMarketrate = function (order) {
         var index = order-1;
         $scope.marketRates.splice(index);
         $scope.marketRateShowed--;
         return false;
-    }
+    };
 
-
+    // totale Revenu range
     $scope.totalRevenuRange = [
         {
             label: $filter('translate')('front.UNDER5M'),
-            value: "Under $5 million",
+            value: "Under 5 million USD",
         },
         {
             label: $filter('translate')('front.BETWEEN5AND10M'),
-            value: "$5-$10 million"
+            value: "5-10 million USD"
         },
         {
             label: $filter('translate')('front.BETWEEN10ANDBELION'),
-            value: "$10 million- $1 billion"
+            value: "10 million USD - 1 billion USD"
         },
         {
             label: $filter('translate')('front.OVER1BILLION'),
-            value: "Over $1 billion"
+            value: "Over 1 billion USD"
         }
     ];
+
 }]);
 

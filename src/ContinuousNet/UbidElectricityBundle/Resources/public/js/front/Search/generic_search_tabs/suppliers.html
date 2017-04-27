@@ -1,13 +1,17 @@
+
+<h1 translate="front.SUPPLIERS">Suppliers</h1>
 <div  ng-if="supplierCount > 0" ng-repeat="supplier in suppliers" class="tender-preview">
-    <h1 translate="front.SUPPLIERS">Suppliers</h1>
-    <a ui-sref="front.supplier({id: supplier.id})" class="name" ng-bind="supplier.name"></a>
+    <a ui-sref="front.supplier({id: supplier.id})" ng-if="user.email" class="name" ng-bind="supplier.name"></a>
+    <a ui-sref="front.login" ng-if="!user.email" class="name" ng-bind="supplier.name"></a>
     <div class="pb-1 clearfix">
         <img ng-if="buyer.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
         <div ng-bind-html="buyer.description"></div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <button ui-sref="front.supplier({id: supplier.id})" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button></div>
+            <button ui-sref="front.supplier({id: supplier.id})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+            <button ui-sref="front.login" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+        </div>
         <div class="col-md-6">
             <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
             <!-- <button class="btn btn-sm pull-right mr-1" translate-attr-title="front.COMMENTS" title="Comments"><i class="fa fa-commenting"></i></button> -->

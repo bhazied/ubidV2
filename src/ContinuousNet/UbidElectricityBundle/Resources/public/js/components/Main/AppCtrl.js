@@ -1,6 +1,7 @@
 'use strict';
+
 /**
- * Sport-Club Main Controller
+ * E-Electricity Back Office Main Controller
  */
 app.controller('AppCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams',
 function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams) {
@@ -90,10 +91,7 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 		// Handles language dropdown
 		listIsOpen : false,
 		// list of available languages
-		available : {
-			'en' : 'English',
-			'fr' : 'Français'
-		},
+		available : $rootScope.languages,
 		// display always the current ui language
 		init : function() {
 			if (angular.isDefined($stateParams.language)) {
@@ -120,8 +118,9 @@ function($rootScope, $scope, $state, $translate, $localStorage, $window, $docume
 			$rootScope.$broadcast('languageChange', [localeId]);
 		}
 	};
+    console.warn($scope.language);
 
-	$scope.language.init();$localStorage.language
+	$scope.language.init();
 
 	// Function that find the exact height and width of the viewport in a cross-browser way
 	var viewport = function() {

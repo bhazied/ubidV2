@@ -28,7 +28,7 @@
                                 <h2 translate="content.list.fieldsets.BUYER.A"></h2>
                             </div><!--/col-md-12-->
                         </div><!--/row-->
-                      <div id="step1" ng-if="currentStep == 1">
+                      <div id="step1" ng-show="currentStep == 1">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -148,7 +148,7 @@
                                   </a>
                               </div>
                               <div class="col-md-4">
-                                  <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-if="currentStep > 1">
+                                  <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-show="currentStep > 1">
                                       <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
                                   </a>
                               </div>
@@ -161,7 +161,7 @@
                       </div>
                         <!-- END Buyer information -- Step 1 -->
                         <!-- Start Step 2 Company information -->
-                        <div id="step2" ng-if="currentStep == 2">
+                        <div id="step2" ng-show="currentStep == 2">
                         <div class="row">
                             <div class="col-md-6">
 
@@ -179,12 +179,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerAddress" class="control-label">
-                                        <span translate="content.list.fields.ADDRESS">Address</span>
+                                    <label for="buyerDescription" class="control-label">
+                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.address" type="text" name="address" id="buyerAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
-                                        <i class="ti-home"></i>
+                                        <input ng-model="buyer.description" type="text" name="description" id="buyerDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
+                                        <i class="ti-info-alt"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -194,12 +194,12 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="buyerDescription" class="control-label">
-                                        <span translate="content.list.fields.DESCRIPTION">Description</span>
+                                    <label for="buyerAddress" class="control-label">
+                                        <span translate="content.list.fields.ADDRESS">Address</span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-model="buyer.description" type="text" name="description" id="buyerDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERDESCRIPTION' | translate ]]" ng-required="false" />
-                                        <i class="ti-info-alt"></i>
+                                        <input ng-model="buyer.address" type="text" name="address" id="buyerAddress" class="form-control" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" ng-required="false" />
+                                        <i class="ti-home"></i>
                                     </span><!--/input-icon-->
                                 </div><!--/form-group-->
 
@@ -238,7 +238,7 @@
                                     <label for="buyerCountry" class="control-label">
                                         <span translate="content.list.fields.COUNTRY">Country</span>
                                     </label>
-                                    <div class="block select-list" ng-if="countriesLoaded">
+                                    <div class="block select-list" ng-show="countriesLoaded">
                                         <span class="input-icon">
                                             <select ng-readonly="buyer_country_readonly" ng-options="item.id as item.name for item in countries | filter:{ hidden : false }" ng-model="buyer.country" name="country" id="buyerCountry" class="form-control" ng-required="false">
                                                 <option translate="content.form.messages.SELECTCOUNTRY" value="">Select Country</option>
@@ -531,45 +531,33 @@
                                     </div><!--/checkbox continuous-check check-primary-->
 
                                 </div><!--/col-md-6-->
-                                <div class="col-md-6">
-
-                                    <div class="checkbox continuous-check check-primary">
-                                        <input ng-model="buyer.enable_share" type="checkbox" name="enableShare" id="buyerEnableShare" />
-                                        <label for="buyerEnableShare" translate="content.list.fields.ENABLESHARE">Enable Share</label>
-                                    </div><!--/checkbox continuous-check check-primary-->
-
-                                </div><!--/col-md-6-->
                             </div><!--/row-->
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="buyerCategories" class="control-label">
                                         <span translate="content.list.fields.CATEGORIES">Categories</span>
-                                <span class="input-icon">
-                                    <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
-                                     <i class="ti-filter"></i>
-                                 </span><!--/input-icon-->
+                                        <span class="input-icon">
+                                            <input placeholder="[[ 'content.form.messages.FILTERCATEGORIES' | translate ]]" type="text" ng-model="categoriesSearchText" class="form-control pull-right input-sm underline" />
+                                             <i class="ti-filter"></i>
+                                         </span><!--/input-icon-->
                                     </label>
                                 </div><!--/col-md-12-->
-                                <!--<div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
-                                    <div class="checkbox continuous-check check-primary">
-                                        <input checklist-model="buyer.categories" checklist-value="category.id" type="checkbox" name="category[]" id="buyerCategory[[category.id]]" />
-                                        <label for="buyerCategory[[category.id]]">[[ category.name ]]</label>
-                                    </div>
-                                </div>-->
                                 <div class="block select-list col-md-6">
-                                        <span class="input-icon">
-                                            <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
-                                            </select>
-                                            <i class="fa fa-sitemap"></i>
-                                        </span><!--/input-icon-->
+                                    <span class="input-icon">
+                                        <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
+                                        </select>
+                                        <i class="fa fa-sitemap"></i>
+                                    </span><!--/input-icon-->
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkbox continuous-check check-primary">
-                                        <input ng-model="buyerCategories" type="checkbox" id="buyerCategories" />
+                                        <input ng-model="buyerCategories" type="checkbox" id="buyerCategories"  />
                                         <label class="all" for="buyerCategories" translate="content.common.SELECTALL">Select All</label>
                                     </div><!--/checkbox-->
                                 </div><!--/col-md-12-->
                             </div><!--/row-->
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <a ng-click="list()" class="btn btn-primary pull-left">

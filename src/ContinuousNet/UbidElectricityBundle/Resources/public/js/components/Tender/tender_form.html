@@ -202,7 +202,7 @@
                             </div><!--/col-md-6-->
                             <div class="col-md-6">
 
-                                    <slug from="tender.title" to="tender.slug"></slug>
+                                <slug from="tender.title" to="tender.slug"></slug>
                                 <div class="form-group">
                                     <label for="tenderSlug" class="control-label">
                                         <span translate="content.list.fields.SLUG">Slug</span>
@@ -411,7 +411,7 @@
                                      </span><!--/input-icon-->
                                 </label>
                             </div><!--/col-md-12-->
-                            <div class="col-md-3" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
+                            <div class="col-md-12" ng-repeat="category in categories | filter:categoriesSearchText" ng-if="category.id">
                                 <div class="checkbox continuous-check check-primary">
                                     <input checklist-model="tender.categories" checklist-value="category.id" type="checkbox" name="category[]" id="tenderCategory[[category.id]]" />
                                     <label for="tenderCategory[[category.id]]">[[ category.name ]]</label>
@@ -481,4 +481,3 @@
     </div><!--/row-->
 </div><!--/container-fluid container-fullw-->
 <!-- end: FORM -->
-

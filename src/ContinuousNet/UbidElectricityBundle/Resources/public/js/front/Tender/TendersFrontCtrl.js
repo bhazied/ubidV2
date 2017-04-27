@@ -17,7 +17,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             label: $filter('translate')('front.DUEDATEASC')
         },{
             sortField: 'deadline',
-            sortDirection: 'ASC',
+            sortDirection: 'DESC',
             label: $filter('translate')('front.DUEDATEDESC')
         },{
             sortField: 'title',
@@ -32,7 +32,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             sortDirection: 'DESC',
             label: $filter('translate')('front.VIEWSDESC')
         }, {
-            sortField: 'name',
+            sortField: 'views',
             sortDirection: 'ASC',
             label: $filter('translate')('front.VIEWSASC')
         }];
@@ -68,6 +68,7 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
         });
 
         $scope.getTenders = function () {
+            $(window).scrollTop(0);
             var $params = {};
             $params.locale = $localStorage.language;
             $params.page = $scope.page;
@@ -134,29 +135,5 @@ app.controller('tendersFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$s
             $scope.getTenders();
         };
 
-        /*$scope.categoriesLoaded = false;
-        $scope.categoriesList = [];
-        $scope.getcategories = function () {
-            $scope.categoriesLoaded = true;
-            var def = $q.defer();
-            $tendersFrontDataFactory.categoriesTenders({locale: $localStorage.language}).$promise.then(function (data) {
-                $timeout(function (){
-                    if(data.results.length > 0){
-                        for(var i in data.results){
-                            $scope.categoriesList.push({
-                                id: data.results[i].id,
-                                tender_count: data.results[i].tenders.length,
-                                name: eval("data.results[i].name_"+$localStorage.language)
-                                //id: $scope.results[i].id,
-                            });
-                        }
-                    }
-                });
-            });
-            def.resolve($scope.categoriesList);
-            return def;
-        }
-
-        $scope.getcategories();*/
-        
-}]);
+    }
+]);

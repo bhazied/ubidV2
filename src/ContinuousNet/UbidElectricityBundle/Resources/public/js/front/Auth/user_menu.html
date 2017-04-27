@@ -1,8 +1,8 @@
 <div ng-controller="UserMenuFrontCtrl">
     <div class="center-menu">
-        <h1 ng-if="user.type == 'Buyer'" ui-sref="front.profile" ng-bind-html-unsafe="'front.IMABUYER' | translate">I'm a <b>buyer</b></h1>
-        <h1 ng-if="user.type == 'Supplier'" ui-sref="front.profile" ng-bind-html-unsafe="'front.IMASUPPLIER' | translate">I'm a <b>supplier</b></h1>
-        <h1 ng-if="user.type == 'Both'" ui-sref="front.profile" ng-bind-html-unsafe="'front.IMABOTH' | translate">I'm a <b>buyer & supplier</b></h1>
+        <h1 ng-if="user.type == 'Buyer'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></h1>
+        <h1 ng-if="user.type == 'Supplier'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></h1>
+        <h1 ng-if="user.type == 'Both'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.BOTH' | translate]]</b></h1>
         <p class="usd"><span>$</span></p>
         <ul>
             <li class="publish" ng-if="user.type == 'Supplier'"><a ui-sref="front.mytenders.new"><span translate="front.PUBLICATION">Publication</span></a></li>

@@ -4,6 +4,12 @@ ubid_electricity:
 front_ubid_electricity:
     resource: "@UbidElectricityBundle/Resources/config/front-routing.yml"
 
+front_ubid_electricity_locale:
+    resource: "@UbidElectricityBundle/Resources/config/front-routing-locale.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|ar
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

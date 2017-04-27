@@ -101,14 +101,6 @@ security:
         # Detlete existing Buyer Type
         - { path: ^/(en|fr|ar)/api/buyertypes$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Languages ACL
-        # Language data
-        - { path: ^/(en|fr|ar)/api/languages$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        # Create new Language
-        - { path: ^/(en|fr|ar)/api/languages$, methods: [POST], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        # Update existing Language
-        - { path: ^/(en|fr|ar)/api/languages$, methods: [PUT, PATCH], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        # Detlete existing Language
-        - { path: ^/(en|fr|ar)/api/languages$, methods: [DELETE], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         # Clicks ACL
         # Click data
         - { path: ^/(en|fr|ar)/api/clicks$, methods: [GET], roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }

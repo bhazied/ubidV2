@@ -102,7 +102,7 @@
                     <tr>
                         <td><span translate="content.list.fields.WEBSITE">Website</span></td>
                         <td>
-                            <div ng-bind-html="buyer.website"></div>
+                            <div><a target="_blank" href="http://[[ buyer.website ]]" rel="nofollow" ng-bind-html="buyer.website"></a></div>
                         </td>
                     </tr>
                     <tr>
@@ -143,6 +143,13 @@
                         <td><span translate="content.list.fields.REFERENCENUMBER">Reference Number</span></td>
                         <td>
                             <div ng-bind-html="buyer.reference_number"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
+                        <td>
+                            <a ng-repeat-start="(i, category) in buyer.categories" ui-sref="front.category({slug: category.slug, target: 'buyers'})">[[ category.name ]]</a>
+                            <span ng-repeat-end ng-if="i < (buyer.categories.length-1)"> - </span>
                         </td>
                     </tr>
                     </tbody>

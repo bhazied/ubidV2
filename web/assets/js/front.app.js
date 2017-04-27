@@ -2,11 +2,8 @@
 var app = angular.module('UbidElectricityFront', ['ubid-electricity', 'bw.paging', 'isteven-multi-select', 'angularFileUpload']);
 
 var languages = {
-    'en' : 'English'/*,
-    'fr' : 'Français',
-    'es' : 'Español',
-    'it' : 'Italiano',
-    'de' : 'Deutsch'*/
+    'en' : 'English',
+    'fr' : 'Français'
 };
 
 app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStorage', '$timeout', '$interval',
@@ -57,13 +54,9 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
 
         if (angular.isDefined($localStorage.user)) {
             $rootScope.user = $rootScope.currentUser = $localStorage.user;
-
         } else {
             $rootScope.user = $rootScope.currentUser = {
-                //firstName: 'Guest',
-                //job: 'Visitor',
-                //picture: 'app/img/user/02.jpg',
-                //roles: []
+
             };
         }
         $rootScope.loggedIn = angular.isDefined($localStorage.access_token);
@@ -115,6 +108,9 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $rootScope.checkStatePermission = function (state) {
+            if (angular.isDefined($localStorage.user)) {
+                $rootScope.user = $rootScope.currentUser = $localStorage.user;
+            }
             if ($rootScope.currentUser.roles.join('').indexOf('ADM') > -1) {
                 return true;
             } else {
@@ -133,7 +129,7 @@ app.run(['$rootScope', '$state', '$stateParams', '$localStorage', '$sessionStora
         };
 
         $timeout(function(){
-            console.log(window.location.href)
+
             if (window.location.href.indexOf('reset') == -1 && window.location.href.indexOf('email-confirm') == -1) {
 
                 $rootScope.underPage = true;
@@ -180,13 +176,17 @@ app.config(['$translateProvider',
         currentLanguage = JSON.parse(localStorage['ngStorage-language']);
     }
     for (var languageKey in languages) {
-        if (currentLanguage == null) {
+        var location = getLocation();
+        console.warn(location.pathname);
+        if (location.pathname.startsWith('/' + languageKey)) {
             currentLanguage = languageKey;
-        }
-        if (window.location.hash.endsWith('/' + languageKey)) {
+        } else if (location.pathname.endsWith('/' + languageKey)) {
             currentLanguage = languageKey;
+        } else {
+            currentLanguage = 'en';
         }
     }
+    console.warn(currentLanguage);
 
     localStorage['NG_TRANSLATE_LANG_KEY'] = currentLanguage;
     localStorage['ngStorage-language'] = '"'+currentLanguage+'"';
@@ -199,9 +199,9 @@ app.config(['$translateProvider',
     $translateProvider.useLocalStorage();
     
     // Enable sanitize
-    $translateProvider.useSanitizeValueStrategy('escape'); // sanitize
+    $translateProvider.useSanitizeValueStrategy(null); //escape
 
-    }]);
+}]);
 
 // Angular-Loading-Bar
 // configuration
@@ -247,7 +247,6 @@ app.config(function(ngTableFilterConfigProvider) {
 });
 
 if (!String.prototype.endsWith) {
-
     String.prototype.endsWith = function(searchString, position) {
         var subjectString = this.toString();
         if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
@@ -257,5 +256,20 @@ if (!String.prototype.endsWith) {
         var lastIndex = subjectString.indexOf(searchString, position);
         return lastIndex !== -1 && lastIndex === position;
     };
-
 }
+
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position){
+        position = position || 0;
+        return this.substr(position, searchString.length) === searchString;
+    };
+}
+
+var getLocation = function(href) {
+    if (typeof href == 'undefined') {
+        href = document.location.href;
+    }
+    var l = document.createElement('a');
+    l.href = href;
+    return l;
+};

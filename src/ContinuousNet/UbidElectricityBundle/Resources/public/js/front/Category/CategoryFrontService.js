@@ -10,7 +10,7 @@ app.factory('$categoriesFrontDataFactory', ['$resource', '$rootScope',
         return $resource(url, {
             locale: '@locale'
         }, {
-            category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug', isArray: false}
+            category: { method: 'GET', url:'/:locale' + url +  'publicCategory/:slug/:target', isArray: false}
         });
 
     }]);
