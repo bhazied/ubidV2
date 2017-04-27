@@ -254,6 +254,13 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><span translate="content.list.fields.LANGUAGES">Languages</span></td>
+                                <td>
+                                    <a ng-if="checkStatePermission('languagesdetails')" ng-repeat="language in buyer.languages" ui-sref="app.settings.languagesdetails({id: language.id})" ng-bind="language.name"></a>
+                                    <span ng-if="!checkStatePermission('languagesdetails')" ng-repeat="language in buyer.languages" ng-bind="language.name"></span>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th colspan="2"><h3 translate="content.list.fieldsets.BUYER.Z"></h3></th>
                             </tr>
                             <tr>

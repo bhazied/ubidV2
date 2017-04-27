@@ -4,8 +4,8 @@
  * Controller for Tender Form
  */
 
-app.controller('TenderFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyersDataFactory', '$suppliersDataFactory', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$tendersDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyersDataFactory, $suppliersDataFactory, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $categoriesDataFactory, $tendersDataFactory) {
+app.controller('TenderFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$buyersDataFactory', '$suppliersDataFactory', '$regionsDataFactory', '$countriesDataFactory', '$sectorsDataFactory', '$tenderTypesDataFactory', '$biddingTypesDataFactory', '$usersDataFactory', '$categoriesDataFactory', '$languagesDataFactory', '$tendersDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $buyersDataFactory, $suppliersDataFactory, $regionsDataFactory, $countriesDataFactory, $sectorsDataFactory, $tenderTypesDataFactory, $biddingTypesDataFactory, $usersDataFactory, $categoriesDataFactory, $languagesDataFactory, $tendersDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -383,6 +383,51 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             }
         }
     });
+    $scope.languages = [];
+    $scope.languagesLoaded = [];
+
+    $scope.getLanguages = function() {
+        $timeout(function(){
+            if ($scope.languages.length == 0) {
+                $scope.languages.push({});
+                var def = $q.defer();
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.languages = data.results;
+                    def.resolve($scope.languages);
+                });
+                return def;
+            } else {
+                return $scope.languages;
+            }
+        });
+    };
+
+    $scope.getLanguages();
+
+    $scope.languagesSearchText = '';
+    $scope.tenderLanguages = false;
+    $scope.$watch('tenderLanguages', function() {
+        if (angular.isDefined($scope.tender)) {
+            var languages = $filter('filter')($scope.languages, $scope.languagesSearchText);
+            if ($scope.tenderLanguages) {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.tender.languages.indexOf(id);
+                    if (index == -1) {
+                        $scope.tender.languages.push(id);
+                    }
+                }
+            } else {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.tender.languages.indexOf(id);
+                    if (index > -1) {
+                        $scope.tender.languages.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
 
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
@@ -461,7 +506,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.tender = {id: 0, section: 'Consultation', status: 'Draft', categories: []};
+        $scope.tender = {id: 0, section: 'Consultation', status: 'Draft', categories: [], languages: []};
 
         if (angular.isDefined($stateParams.tender_buyer) && JSON.parse($stateParams.tender_buyer) != null) {
             $scope.tender.buyer = $stateParams.tender_buyer;

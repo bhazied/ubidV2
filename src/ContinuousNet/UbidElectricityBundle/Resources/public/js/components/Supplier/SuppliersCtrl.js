@@ -201,6 +201,35 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
 
     $scope.getCategories();
 
+    $scope.languages = [];
+    $scope.languagesLoaded = [];
+
+    $scope.getLanguages = function() {
+        if ($scope.languages.length == 0) {
+            $scope.languages.push({});
+            var def = $q.defer();
+            $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.id]': 'desc'}).$promise.then(function(data) {
+                $timeout(function(){
+                    if (data.results.length > 0) {
+                        $scope.languages.length = 0;
+                        for (var i in data.results) {
+                            $scope.languages.push({
+                                id: data.results[i].id,
+                                title: data.results[i].name
+                            });
+                        }
+                        def.resolve($scope.languages);
+                    }
+                });
+            });
+            return def;
+        } else {
+            return $scope.languages;
+        }
+    };
+
+    $scope.getLanguages();
+
     $scope.textValue = function($scope, row) {
         return $scope.$eval('row.' + this.field);
     };
@@ -342,6 +371,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
             { field: 'modified_at', title: $filter('translate')('content.list.fields.MODIFIEDAT'), sortable: 'supplier.modifiedAt', filter: { 'supplier.modifiedAt': 'text' }, show: ($scope.getParamValue('modified_at_show_filed', false) && true), displayInList: true, getValue: $scope.evaluatedValue, valueFormatter: 'date:\''+$filter('translate')('formats.DATETIME')+'\''},
             { field: 'modifier_user', 'class': 'has_one', title: $filter('translate')('content.list.fields.MODIFIERUSER'), sortable: 'modifier_user.username', filter: { 'supplier.modifierUser': 'select' }, getValue: $scope.linkValue, filterData: $scope.getUsers(), show: ($scope.getParamValue('modifier_user_show_filed', false) && true), displayInList: true, displayField: 'username', state: 'app.access.usersdetails' },
             { field: 'categories', 'class': 'has_nany', title: $filter('translate')('content.list.fields.CATEGORIES'), filter: { 'supplier.categories': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getCategories(), show: ($scope.getParamValue('categories_show_filed', false) && true), displayInList: true, display: false, displayField: 'name', state: 'app.lists.categoriesdetails' },
+            { field: 'languages', 'class': 'has_nany', title: $filter('translate')('content.list.fields.LANGUAGES'), filter: { 'supplier.languages': 'checkboxes' }, getValue: $scope.linksValue, filterData: $scope.getLanguages(), show: ($scope.getParamValue('languages_show_filed', false) && true), displayInList: true, display: false, displayField: 'name', state: 'app.settings.languagesdetails' },
             { title: $filter('translate')('content.common.ACTIONS'), show: true, displayInList: true, getValue: $scope.interpolatedValue, interpolateExpr: $interpolate(''
             +'<div class="btn-group pull-right">'
             +'<button type="button" class="btn btn-success" tooltip-placement="top" uib-tooltip="'+$filter('translate')('content.common.EDIT')+'" ng-click="edit(row)"><i class="ti-pencil-alt"></i></button>'
@@ -371,7 +401,8 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     $scope.sorting = {'supplier.id': 'asc'};
     $scope.sorting = $scope.getParamValue('suppliersSorting', $scope.sorting);
     $scope.filter = {
-        categories: []
+        categories: [],
+        languages: []
     };
     $scope.filter = $scope.getParamValue('suppliersFilter', $scope.filter);
     $scope.setParamValue('suppliersPage', $scope.page);

@@ -67,39 +67,20 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group" ng-class="{'has-error':translationPostForm.name.$dirty && translationPostForm.name.$invalid, 'has-success':translationPostForm.name.$valid}">
-                                    <label for="translationPostName" class="control-label">
-                                        <span translate="content.list.fields.NAME">Name</span>
+                                <div class="form-group" ng-class="{'has-error':translationPostForm.title.$dirty && translationPostForm.title.$invalid, 'has-success':translationPostForm.title.$valid}">
+                                    <label for="translationPostTitle" class="control-label">
+                                        <span translate="content.list.fields.TITLE">Title</span>
                                         <span class="symbol required"></span>
                                     </label>
                                     <span class="input-icon">
-                                        <input ng-readonly="false" ng-model="translationPost.name" type="text" name="name" id="translationPostName" class="form-control" placeholder="[[ 'content.form.messages.ENTERNAME' | translate ]]" ng-required="true" />
-                                        <i class="ti-tag"></i>
+                                        <input ng-readonly="false" ng-model="translationPost.title" type="text" name="title" id="translationPostTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERTITLE' | translate ]]" ng-required="true" />
+                                        <i class="fa fa-tags"></i>
                                     </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="translationPostForm.name.$dirty && translationPostForm.name.$error.required" translate="content.form.messages.NAMEREQUIRED">Name is required.</span>
-                                    <span class="success text-small block" ng-if="translationPostForm.name.$valid" translate="content.form.messages.OK">Ok!</span>
+                                    <span class="error text-small block" ng-if="translationPostForm.title.$dirty && translationPostForm.title.$error.required" translate="content.form.messages.TITLEREQUIRED">Title is required.</span>
+                                    <span class="success text-small block" ng-if="translationPostForm.title.$valid" translate="content.form.messages.OK">Ok!</span>
                                 </div><!--/form-group-->
 
                             </div><!--/col-md-6-->
-                            <div class="col-md-6">
-
-                                    <slug from="translationPost.locale" to="translationPost.slug"></slug>
-                                <div class="form-group" ng-class="{'has-error':translationPostForm.slug.$dirty && translationPostForm.slug.$invalid, 'has-success':translationPostForm.slug.$valid}">
-                                    <label for="translationPostSlug" class="control-label">
-                                        <span translate="content.list.fields.SLUG">Slug</span>
-                                        <span class="symbol required"></span>
-                                    </label>
-                                    <span class="input-icon">
-                                        <input ng-readonly="false" ng-model="translationPost.slug" type="text" name="slug" id="translationPostSlug" class="form-control" placeholder="[[ 'content.form.messages.ENTERSLUG' | translate ]]" ng-required="true" />
-                                        <i class="ti-anchor"></i>
-                                    </span><!--/input-icon-->
-                                    <span class="error text-small block" ng-if="translationPostForm.slug.$dirty && translationPostForm.slug.$error.required" translate="content.form.messages.SLUGREQUIRED">Slug is required.</span>
-                                    <span class="success text-small block" ng-if="translationPostForm.slug.$valid" translate="content.form.messages.OK">Ok!</span>
-                                </div><!--/form-group-->
-
-                            </div><!--/col-md-6-->
-                        </div><!--/row-->
-                        <div class="row">
                             <div class="col-md-12">
 
                                 <div class="form-group">
@@ -114,6 +95,53 @@
                             </div><!--/col-md-12-->
                         </div><!--/row-->
                         <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationPostMetaTitle" class="control-label">
+                                        <span translate="content.list.fields.METATITLE">Meta Title</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationPost.meta_title" name="metaTitle" id="translationPostMetaTitle" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETATITLE' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationPostMetaDescription" class="control-label">
+                                        <span translate="content.list.fields.METADESCRIPTION">Meta Description</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationPost.meta_description" name="metaDescription" id="translationPostMetaDescription" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETADESCRIPTION' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="translationPostMetaKeywords" class="control-label">
+                                        <span translate="content.list.fields.METAKEYWORDS">Meta Keywords</span>
+                                    </label>
+                                    <div class="note-editor">
+                                        <span class="input-icon">
+                                            <textarea ng-readonly="false" ng-model="translationPost.meta_keywords" name="metaKeywords" id="translationPostMetaKeywords" class="form-control" placeholder="[[ 'content.form.messages.ENTERMETAKEYWORDS' | translate ]]" class="form-control autosize area-animated msd-elastic: \n;" ng-required="false"></textarea>
+                                            <i class="fa fa-code"></i>
+                                        </span>
+                                    </div>
+                                </div><!--/form-group-->
+
+                            </div><!--/col-md-6-->
                             <div class="col-md-6">
 
                                 <div class="checkbox continuous-check check-primary">

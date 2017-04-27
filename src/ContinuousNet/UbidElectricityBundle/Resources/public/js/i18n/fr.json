@@ -498,6 +498,10 @@
                 "SELECTTHIRDMARKETREGION": "Sélectionner une valeur pour Troisième région du marché",
                 "ENTERTHIRDMARKETRATE": "Entrer une valeur pour Troisième taux du marché",
                 "ENTERVIEWS": "Entrer une valeur pour Views",
+                "FILTERLANGUAGES": "Filter Langues",
+                "ENTERLOCALE": "Entrer une valeur pour Paramètres régionaux",
+                "LOCALEREQUIRED": "Le champs Paramètres régionaux est obligatoire",
+                "FILTERSUPPLIERPRODUCTS": "Filter Produits de fournisseurs",
                 "SELECTVISIT": "Sélectionner une valeur pour Visite",
                 "SELECTBANNER": "Sélectionner une valeur pour Bannière",
                 "BANNERREQUIRED": "Le champs Bannière est obligatoire",
@@ -510,8 +514,6 @@
                 "FOREIGNKEYREQUIRED": "Le champs Référence de l'entité est obligatoire",
                 "ENTERURL": "Entrer une valeur pour Url",
                 "URLREQUIRED": "Le champs Url est obligatoire",
-                "ENTERLOCALE": "Entrer une valeur pour Paramètres régionaux",
-                "LOCALEREQUIRED": "Le champs Paramètres régionaux est obligatoire",
                 "ENTERACTION": "Entrer une valeur pour Action",
                 "ACTIONREQUIRED": "Le champs Action est obligatoire",
                 "ENTERIPADDRESS": "Entrer une valeur pour Adresse IP",
@@ -781,6 +783,20 @@
             "BUYERTYPEDELETED": "Type d'acheteurs supprimé(e)",
             "BUYERTYPENOTDELETED": "Type d'acheteurs non supprimé(e)",
             "BACKBUYERTYPES": "Retour à la liste des Types d'acheteurs",
+            "LANGUAGES": "Langues",
+            "LANGUAGE": "Langue",
+            "ADDLANGUAGE": "Ajouter un(e) Langue",
+            "NEWLANGUAGE": "Nouveau(lle) Langue",
+            "LANGUAGEDETAILS": "Détails Langue",
+            "EDITLANGUAGE": "Modifier ce(tte) Langue",
+            "LANGUAGEUPDATED": "Langue mis(e) à jour",
+            "LANGUAGENOTUPDATED": "Langue non mis(e) à jour",
+            "LANGUAGECREATED": "Langue cré(e)",
+            "LANGUAGENOTCREATED": "Langue non cré(e)",
+            "YOUWILLNOTBEABLETORECOVERLANGUAGE": "Vous ne serez pas en mesure de récupérer ce(tte) Langue!",
+            "LANGUAGEDELETED": "Langue supprimé(e)",
+            "LANGUAGENOTDELETED": "Langue non supprimé(e)",
+            "BACKLANGUAGES": "Retour à la liste des Langues",
             "CLICKS": "Clics",
             "CLICK": "Clic",
             "ADDCLICK": "Ajouter un(e) Clic",
@@ -837,20 +853,6 @@
             "IMPRESSIONDELETED": "Affichage supprimé(e)",
             "IMPRESSIONNOTDELETED": "Affichage non supprimé(e)",
             "BACKIMPRESSIONS": "Retour à la liste des Affichages",
-            "LANGUAGES": "Langues",
-            "LANGUAGE": "Langue",
-            "ADDLANGUAGE": "Ajouter un(e) Langue",
-            "NEWLANGUAGE": "Nouveau(lle) Langue",
-            "LANGUAGEDETAILS": "Détails Langue",
-            "EDITLANGUAGE": "Modifier ce(tte) Langue",
-            "LANGUAGEUPDATED": "Langue mis(e) à jour",
-            "LANGUAGENOTUPDATED": "Langue non mis(e) à jour",
-            "LANGUAGECREATED": "Langue cré(e)",
-            "LANGUAGENOTCREATED": "Langue non cré(e)",
-            "YOUWILLNOTBEABLETORECOVERLANGUAGE": "Vous ne serez pas en mesure de récupérer ce(tte) Langue!",
-            "LANGUAGEDELETED": "Langue supprimé(e)",
-            "LANGUAGENOTDELETED": "Langue non supprimé(e)",
-            "BACKLANGUAGES": "Retour à la liste des Langues",
             "LOGS": "Journaux",
             "LOG": "Journal",
             "ADDLOG": "Ajouter un(e) Journal",
@@ -1381,6 +1383,9 @@
                 "BUYERTYPE" : {
                     "Z" : "Z"
                 },
+                "LANGUAGE" : {
+                    "Z" : "Z"
+                },
                 "CLICK" : {
                     "Z" : "Z"
                 },
@@ -1391,9 +1396,6 @@
                     "Z" : "Z"
                 },
                 "IMPRESSION" : {
-                    "Z" : "Z"
-                },
-                "LANGUAGE" : {
                     "Z" : "Z"
                 },
                 "LOG" : {
@@ -1655,6 +1657,10 @@
                 "ENABLECOMMENT": "Enable Commentaire",
                 "ENABLEPRIVATEMESSAGE": "Enable Privé Message",
                 "ENABLESHARE": "Enable Share",
+                "LANGUAGES": "Langues",
+                "LOCALE": "Paramètres régionaux",
+                "PREFERRED": "Préféré",
+                "SUPPLIERPRODUCTS": "Produits de fournisseurs",
                 "VISIT": "Visite",
                 "BANNER": "Bannière",
                 "ROLES": "Rôles",
@@ -1662,8 +1668,6 @@
                 "ENTITY": "Entité",
                 "FOREIGNKEY": "Référence de l'entité",
                 "URL": "Url",
-                "LOCALE": "Paramètres régionaux",
-                "PREFERRED": "Préféré",
                 "ACTION": "Action",
                 "IPADDRESS": "Adresse IP",
                 "USERAGENT": "Âgent utilisateur",

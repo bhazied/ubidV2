@@ -245,12 +245,33 @@ class SupplierProduct
     private $modifierUser;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     * @access private
+     *
+     * @ORM\ManyToMany(targetEntity="Language")
+     * @ORM\JoinTable(name="supplier_products_languages",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="supplier_product_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="language_id", referencedColumnName="id")
+     *     }
+     * )
+     * 
+     * @Expose
+     * @MaxDepth(2)
+     * 
+     */
+    private $languages;
+
+    /**
      * Constructor
      * 
      * @access public
      */
     public function __construct()
     {
+        $this->languages = new DoctrineCollection();
     }
 
     /**
@@ -646,6 +667,62 @@ class SupplierProduct
     public function getModifierUser()
     {
         return $this->modifierUser;
+    }
+
+    /**
+     * Add language
+     *
+     * @access public
+     * @param Language $language
+     * @return SupplierProduct
+     */
+    public function addLanguage(Language $language)
+    {
+        if (!$this->languages->contains($language))
+        {
+            $this->languages->add($language);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove language
+     *
+     * @access public
+     * @param Language $language
+     * @return SupplierProduct
+     */
+    public function removeLanguage(Language $language)
+    {
+        if ($this->languages->contains($language))
+        {
+            $this->languages->removeElement($language);
+        }
+        return $this;
+    }
+
+    /**
+     * Set language
+     *
+     * @access public
+     * @param \Doctrine\Common\Collections\Collection
+     * @return SupplierProduct
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @access public
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
     }
 
     /**

@@ -4,8 +4,8 @@
  * Controller for Supplier Product Form
  */
 
-app.controller('SupplierProductFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$suppliersDataFactory', '$categoriesDataFactory', '$usersDataFactory', '$supplierProductsDataFactory',
-function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $suppliersDataFactory, $categoriesDataFactory, $usersDataFactory, $supplierProductsDataFactory) {
+app.controller('SupplierProductFormCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$sce', '$timeout', '$filter', '$uibModal', '$q', '$interpolate', '$localStorage', 'toaster', 'SweetAlert', 'savable', '$suppliersDataFactory', '$categoriesDataFactory', '$usersDataFactory', '$languagesDataFactory', '$supplierProductsDataFactory',
+function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uibModal, $q, $interpolate, $localStorage, toaster, SweetAlert, savable, $suppliersDataFactory, $categoriesDataFactory, $usersDataFactory, $languagesDataFactory, $supplierProductsDataFactory) {
 
     $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';
 
@@ -145,6 +145,51 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
 
     $scope.getUsers();
 
+    $scope.languages = [];
+    $scope.languagesLoaded = [];
+
+    $scope.getLanguages = function() {
+        $timeout(function(){
+            if ($scope.languages.length == 0) {
+                $scope.languages.push({});
+                var def = $q.defer();
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                    $scope.languages = data.results;
+                    def.resolve($scope.languages);
+                });
+                return def;
+            } else {
+                return $scope.languages;
+            }
+        });
+    };
+
+    $scope.getLanguages();
+
+    $scope.languagesSearchText = '';
+    $scope.supplierProductLanguages = false;
+    $scope.$watch('supplierProductLanguages', function() {
+        if (angular.isDefined($scope.supplierProduct)) {
+            var languages = $filter('filter')($scope.languages, $scope.languagesSearchText);
+            if ($scope.supplierProductLanguages) {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.supplierProduct.languages.indexOf(id);
+                    if (index == -1) {
+                        $scope.supplierProduct.languages.push(id);
+                    }
+                }
+            } else {
+                for (var i in languages) {
+                    var id = languages[i].id;
+                    var index = $scope.supplierProduct.languages.indexOf(id);
+                    if (index > -1) {
+                        $scope.supplierProduct.languages.splice(index, 1);
+                    }
+                }
+            }
+        }
+    });
 
     $scope.redirect = true;
     $scope.submitForm = function(form, redirect) {
@@ -212,7 +257,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             });
         });
     } else {
-        $scope.supplierProduct = {id: 0, status: 'Draft'};
+        $scope.supplierProduct = {id: 0, status: 'Draft', languages: []};
 
         if (angular.isDefined($stateParams.supplier_product_supplier) && JSON.parse($stateParams.supplier_product_supplier) != null) {
             $scope.supplierProduct.supplier = $stateParams.supplier_product_supplier;

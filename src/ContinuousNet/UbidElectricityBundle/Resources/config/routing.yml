@@ -104,6 +104,12 @@ ubid_electricity_buyer_type_api:
     prefix:   /{_locale}/api
     requirements:
         _locale: en|fr|ar
+ubid_electricity_language_api:
+    resource: "@UbidElectricityBundle/Controller/LanguageRESTController.php"
+    type:   rest
+    prefix:   /{_locale}/api
+    requirements:
+        _locale: en|fr|ar
 ubid_electricity_click_api:
     resource: "@UbidElectricityBundle/Controller/ClickRESTController.php"
     type:   rest
@@ -124,12 +130,6 @@ ubid_electricity_hit_api:
         _locale: en|fr|ar
 ubid_electricity_impression_api:
     resource: "@UbidElectricityBundle/Controller/ImpressionRESTController.php"
-    type:   rest
-    prefix:   /{_locale}/api
-    requirements:
-        _locale: en|fr|ar
-ubid_electricity_language_api:
-    resource: "@UbidElectricityBundle/Controller/LanguageRESTController.php"
     type:   rest
     prefix:   /{_locale}/api
     requirements:
@@ -388,6 +388,10 @@ ubid_electricity_buyer_type:
     resource: "@UbidElectricityBundle/Resources/config/routing/buyer_type.yml"
     prefix:   /buyer-type
 
+ubid_electricity_language:
+    resource: "@UbidElectricityBundle/Resources/config/routing/language.yml"
+    prefix:   /language
+
 ubid_electricity_click:
     resource: "@UbidElectricityBundle/Resources/config/routing/click.yml"
     prefix:   /click
@@ -403,10 +407,6 @@ ubid_electricity_hit:
 ubid_electricity_impression:
     resource: "@UbidElectricityBundle/Resources/config/routing/impression.yml"
     prefix:   /impression
-
-ubid_electricity_language:
-    resource: "@UbidElectricityBundle/Resources/config/routing/language.yml"
-    prefix:   /language
 
 ubid_electricity_log:
     resource: "@UbidElectricityBundle/Resources/config/routing/log.yml"
