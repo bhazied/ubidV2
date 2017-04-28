@@ -68836,7 +68836,7 @@ app.config(['$stateProvider',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('TenderFrontCtrl', 'homeService', 'tenderFrontService', 'tenderService')
         }).state('front.tenders.sector', {
-            url: '/{locale:(?:en|fr|ar)}/sector/:id',
+            url: '/sector/:id',
             params: {
                 locale : {
                     squash : false,
@@ -68857,7 +68857,7 @@ app.config(['$stateProvider',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/category.html',
             resolve: loadSequence('TendersCategoryFrontCtrl' , 'tenderFrontService')
         }).state('front.tenders.country', {
-            url: '/{locale:(?:en|fr|ar)}/country/:id',
+            url: '/country/:id',
             params: {
                 locale : {
                     squash : false,
@@ -68903,46 +68903,22 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYTENDERS',
         }).state('front.mytenders.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('MyTenderCtrl', 'TenderCtrl', 'tenderService', 'supplierService')
         }).state('front.mytenders.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.EDITTENDER',
             resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tender_form.html',
             title: 'front.NEWTENDER',
             resolve: loadSequence('MyTenderFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
         }).state('front.mytenders.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/my_tenders.html',
             title: 'front.MYTENDERS',
             resolve: loadSequence('MyTendersCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'supplierService')
@@ -68976,45 +68952,21 @@ app.config(['$stateProvider',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductCtrl', 'SupplierProductCtrl', 'supplierProductService')
         }).state('front.myproducts.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product.html',
             title: 'front.PRODUCTDETAILS',
         }).state('front.myproducts.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.EDITPRODUCT',
             resolve: loadSequence('MyProductFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         }).state('front.myproducts.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_product_form.html',
             title: 'front.NEWPRODUCT',
             resolve: loadSequence('MyProductFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierProductFormCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
         }).state('front.myproducts.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Product/my_products.html',
             title: 'front.MYPRODUCTS',
             resolve: loadSequence('MyProductsCtrl', 'SupplierProductsCtrl', 'supplierProductService', 'supplierService', 'categoryService', 'userService')
@@ -69033,12 +68985,8 @@ app.config(['$stateProvider',
             title: 'front.MYBIDS',
             resolve: loadSequence()
         }).state('front.mybids.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
+            url: '/list',
             params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                },
                 'bidsIsFiltersVisible': null,
                 'bidsPage': null,
                 'bidsCount': null,
@@ -69049,35 +68997,17 @@ app.config(['$stateProvider',
             title: 'front.MYBIDS',
             resolve: loadSequence('MyBidsCtrl', 'BidsCtrl', 'bidService', 'tenderService', 'supplierService', 'userService')
         }).state('front.mybids.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid.html',
             title: 'front.TENDERDETAILS',
             resolve: loadSequence('MyBidCtrl', 'BidCtrl', 'bidService')
         }).state('front.mybids.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.EDITTENDER',
             resolve: loadSequence('bidService', 'supplierService', 'MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
         }).state('front.mybids.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Bid/my_bid_form.html',
             title: 'front.NEWBID',
             resolve: loadSequence('bidService', 'supplierService', 'MyBidFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'TenderFormCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService')
@@ -69096,12 +69026,8 @@ app.config(['$stateProvider',
             title: 'front.BOOKMARKPROJECT',
             resolve: loadSequence()
         }).state('front.bookmarkproject.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
+            url: '/list',
             params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                },
                 'tenderBookmarksIsFiltersVisible': null,
                 'tenderBookmarksPage': null,
                 'tenderBookmarksCount': null,
@@ -69112,13 +69038,7 @@ app.config(['$stateProvider',
             title: 'front.BOOKMARKPROJECT',
             resolve: loadSequence('MyTenderBookmarkedCtrl','TenderBookmarksCtrl', 'tenderBookmarkService', 'tenderService', 'userService')
         }).state('front.bookmarkproject.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Tender/tender_bookmarked.html',
             title: 'front.TENDERBOOKMARKEDDETAILS',
             resolve: loadSequence('MyTenderBookmarkedDetailsCtrl',  'tenderBookmarkService')
@@ -69136,40 +69056,22 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYBUYERS',
         }).state('front.mybuyers.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer.html',
             title: 'front.BUYERDETAILS',
             resolve: loadSequence('MyBuyerCtrl', 'BuyerCtrl', 'buyerService')
         }).state('front.mybuyers.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
             title: 'front.EDITBUYER',
             resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
         }).state('front.mybuyers.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyer_form.html',
             title: 'front.NEWBUYER',
             resolve: loadSequence('MyBuyerFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'BuyerFormCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
         }).state('front.mybuyers.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Buyer/my_buyers.html',
             title: 'front.MYBUYERS',
             resolve: loadSequence('MyBuyersCtrl', 'BuyersCtrl', 'buyerService', 'buyerTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'profileFrontService')
@@ -69187,46 +69089,22 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: 'front.MYSUPPLIERS',
         }).state('front.mysuppliers.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier.html',
             title: 'front.SUPPLIERDETAILS',
             resolve: loadSequence('MySupplierCtrl', 'SupplierCtrl', 'supplierService')
         }).state('front.mysuppliers.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.EDITSUPPLIER',
             resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
         }).state('front.mysuppliers.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_supplier_form.html',
             title: 'front.NEWSUPPLIER',
             resolve: loadSequence('MySupplierFormCtrl', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'SupplierFormCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService')
         }).state('front.mysuppliers.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Supplier/my_suppliers.html',
             title: 'front.MYSUPPLIERS',
             resolve: loadSequence('MySuppliersCtrl', 'SuppliersCtrl', 'supplierService', 'supplierTypeService', 'countryService', 'languageService', 'regionService', 'userService', 'categoryService', 'profileFrontService')
@@ -69270,45 +69148,23 @@ app.config(['$stateProvider',
             title: 'front.PROJECTBIDS',
             resolve: loadSequence()
         }).state('front.projectbids.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/my_project_bids.html',
             title: 'front.PROJECTBIDS',
             resolve: loadSequence('MyProjectBidsCtrl' ,'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService', 'supplierService')
         }).state('front.projectbids.bids', {
-            url: '/{locale:(?:en|fr|ar)}/bids-by-project/:projectId',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/bids-by-project/:projectId',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
             title: 'front.BIDSBYPROJECT',
             resolve: loadSequence('BidsByProjectCtrl', 'tenderService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')
         }).state('front.projectbids.bid', {
-            url: '/{locale:(?:en|fr|ar)}/details/:slug/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:slug/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bid_details.html',
             title: 'front.BIDSBYPROJECT',
             resolve: loadSequence('BidDetailsCtrl', 'BidCtrl', 'bidService', 'projectBidsFrontService')
         }).state('front.projectbids.shortlist', {
-            url: '/{locale:(?:en|fr|ar)}/short-list',
+            url: '/short-list',
             params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
                 /*
                  'bidsIsFiltersVisible': null,
                  'bidsPage': null,
@@ -69332,57 +69188,27 @@ app.config(['$stateProvider',
             title : 'front.MYALERTS',
             resolve: loadSequence()
         }).state('front.myAlerts.list', {
-            url: '/{locale:(?:en|fr|ar)}/list',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alerts.html',
             title : 'front.MYALERTS',
             resolve: loadSequence('MyAlertsCtrl', 'AlertsCtrl', 'alertService', 'userService', 'categoryService', 'countryService')
         }).state('front.myAlerts.details', {
-            url: '/{locale:(?:en|fr|ar)}/details/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/details/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert.html',
             title : 'front.MYALERTS',
             resolve:  loadSequence('MyAlertCtrl', 'AlertCtrl', 'alertService')
         }).state('front.myAlerts.new', {
-            url: '/{locale:(?:en|fr|ar)}/new',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/new',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
             title : 'front.MYALERTADD',
             resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
         }).state('front.myAlerts.edit', {
-            url: '/{locale:(?:en|fr|ar)}/edit/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/edit/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_form.html',
             title : 'front.MYALERTADD',
             resolve: loadSequence('MyAlertFormCtrl', 'AlertFormCtrl', 'alertService', 'userService', 'categoryService', 'countryService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor', 'tenderFrontService')
         }).state('front.myAlerts.settings', {
-            url: '/{locale:(?:en|fr|ar)}/settings',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/settings',
             templateUrl: '/bundles/ubidelectricity/js/front/Alert/my_alert_settings.html',
             title : 'front.MYALERTSETTINGS',
             params: {
@@ -69430,35 +69256,17 @@ app.config(['$stateProvider',
             template: '<div ui-view class="fade-in-up"></div>',
             title: ''
         }).state('front.messages.send', {
-            url: '/{locale:(?:en|fr|ar)}/send/:id/:to',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/send/:id/:to',
             templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front_form.html',
             title: '',
             resolve: loadSequence('MessageFrontFormCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         }).state('front.messages.list', {
-            url: '/{locale:(?:en|fr|ar)}/list/:type',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/list/:type',
             templateUrl : '/bundles/ubidelectricity/js/front/Message/messages_front.html',
             title: '',
             resolve: loadSequence('MessagesFrontCtrl','MessageFrontFormCtrl','MessagesCtrl','MessageFormCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')
         }).state('front.messages.detail', {
-            url: '/{locale:(?:en|fr|ar)}/detail/:id',
-            params: {
-                locale : {
-                    squash : false,
-                    value: getCurrentLocale()
-                }
-            },
+            url: '/detail/:id',
             templateUrl : '/bundles/ubidelectricity/js/front/Message/message_front.html',
             title: '',
             resolve: loadSequence('MessageFrontCtrl','MessageCtrl', 'messageService', 'userService', 'buyerService', 'supplierService', 'ui.select', 'monospaced.elastic', 'touchspin-plugin', 'checklist-model', 'ckeditor-plugin', 'ckeditor')

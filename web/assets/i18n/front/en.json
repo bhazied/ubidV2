@@ -977,6 +977,7 @@
         "CAPTCHA": "Security check",
         "ID": "Id",
         "TYPE": "Type",
+        "USERTYPE": "Account Type",
         "CATEGORY": "Category",
         "NAME": "Name",
         "DESCRIPTION": "Description",
@@ -1221,6 +1222,11 @@
           "SHORTLISTED": "Shortlisted",
           "QUALIFIED": "Qualified",
           "SENT": "Sent"
+        },
+        "periods": {
+          "DAILY": "Daily",
+          "WEEKLY": "Weekly",
+          "MONTHLY": "Monthly"
         },
         "genders": {
           "ALL": "All",

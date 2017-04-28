@@ -21,7 +21,7 @@
     "PLEASESIGNIN": "Saisissez votre email et votre mot de passe pour vous connecter",
     "FORGOTPASSWORD": "Mot de passe oublié",
     "KEEPMESIGNEDIN": "Rester connecté",
-    "LOGIN": "Nom d’utilisateur",
+    "LOGIN": "Connexion",
     "DONTHAVEACCOUNT": "Vous n’avez pas encore de compte ?",
     "CREATEACCOUNT": "Créez un compte",
     "ERROR": "E-mail ou mot de passe erroné",
@@ -977,6 +977,7 @@
         "CAPTCHA": "Vérification de la sécurité",
         "ID": "Id",
         "TYPE": "Type",
+        "USERTYPE": "Type de compte",
         "CATEGORY": "Catégorie",
         "NAME": "Nom",
         "DESCRIPTION": "Déscription",
@@ -1222,8 +1223,13 @@
           "QUALIFIED": "Qualifié",
           "SENT": "Envoyé"
         },
+        "periods": {
+          "DAILY": "Quotidienne",
+          "WEEKLY": "Hebdomadaire",
+          "MONTHLY": "Mensuelle"
+        },
         "genders": {
-          "ALL": "Tous",
+          "ALL": "Tout",
           "MALE": "Homme",
           "FEMALE": "Femme"
         },

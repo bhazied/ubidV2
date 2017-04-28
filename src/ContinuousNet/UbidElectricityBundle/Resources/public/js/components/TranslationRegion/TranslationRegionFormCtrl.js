@@ -39,7 +39,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.regionsLoaded = true;
             if ($scope.regions.length == 0) {
-                $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTREGION')});
+                $scope.regions.push({id: '', name: $filter('translate')('content.form.messages.SELECTREGION')});
                 var def = $q.defer();
                 $regionsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTREGION')});
@@ -68,7 +68,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
+                $scope.users.push({id: '', username: $filter('translate')('content.form.messages.SELECTUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTUSER')});

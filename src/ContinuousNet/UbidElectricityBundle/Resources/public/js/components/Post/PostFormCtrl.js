@@ -96,7 +96,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.postTypesLoaded = true;
             if ($scope.postTypes.length == 0) {
-                $scope.postTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
+                $scope.postTypes.push({id: '', name: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
                 var def = $q.defer();
                 $postTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[postType.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTPOSTTYPE')});
@@ -125,7 +125,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
+                $scope.users.push({id: '', username: $filter('translate')('content.form.messages.SELECTUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTUSER')});

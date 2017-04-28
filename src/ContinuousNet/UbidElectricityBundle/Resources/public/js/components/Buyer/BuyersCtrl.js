@@ -83,7 +83,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.getCountries();
-
+    /*
     $scope.languages = [];
     $scope.languagesLoaded = false;
 
@@ -112,7 +112,7 @@ function($scope, $rootScope, $stateParams, $location, $sce, $timeout, $filter, n
     };
 
     $scope.getLanguages();
-
+    */
     $scope.regions = [];
     $scope.regionsLoaded = false;
 

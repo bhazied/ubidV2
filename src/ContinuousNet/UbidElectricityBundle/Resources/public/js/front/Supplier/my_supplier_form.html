@@ -3,12 +3,10 @@
 <div class="container-fluid container-fullw bg-blue" ng-controller="MySupplierFormCtrl">
     <div class="container">
         <div class="row">
-            <div class="col-xd-8">
-                <div class="col-md-4" ng-repeat="step in steps">
-                    <a ng-click="goto(currentStep, supplierForm)" class="btn btn-primary pull-left" ng-class="{'disabled': currentStep == step.id}">
-                        <i ng-class="{'ti-user': step.id == 1, 'ti-briefcase': step.id == 2}"></i> <span>[[ step.description ]]</span>
-                    </a>
-                </div>
+            <div class="col-lg-6 col-md-12 mt-1" ng-repeat="step in steps">
+                <a ng-click="goto(currentStep, supplierForm)" class="btn btn-primary btn-sm" ng-class="{'disabled': currentStep == step.id}">
+                    <i ng-class="{'ti-user': step.id == 1, 'ti-briefcase': step.id == 2}"></i> <span>[[ step.description ]]</span>
+                </a>
             </div>
         </div>
     </div>
@@ -144,18 +142,16 @@
                             </div><!--/col-md-6-->
                         </div><!--/row-->
                             <div class="row">
-                                <div class="col-md-4">
-                                    <a ng-click="list()" class="btn btn-primary pull-left">
+                                <div class="col-lg-6 col-md-12 mt-1">
+                                    <a ng-click="list()" class="btn btn-primary btn-sm">
                                         <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span>
                                     </a>
                                 </div>
-                                <div class="col-md-4">
-                                    <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-show="currentStep > 1">
+                                <div class="col-lg-6 col-md-12 mt-1">
+                                    <a ng-click="goPrevious()" class="btn btn-primary btn-sm" ng-show="currentStep > 1">
                                         <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
                                     </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a ng-click="goNext(supplierForm)" class="btn btn-primary pull-left" ng-disabled="isNext">
+                                    <a ng-click="goNext(supplierForm)" class="btn btn-primary btn-sm" ng-disabled="isNext">
                                         <i class="ti-layout-list-thumb"></i> <span translate="front.NEXT">Next</span>
                                     </a>
                                 </div>
@@ -473,18 +469,18 @@
                         </div><!--/row-->
 
                         <div class="row">
-                            <div class="col-md-4">
-                                <a ng-click="list()" class="btn btn-primary pull-left">
+                            <div class="col-lg-4 col-md-12 mb-1">
+                                <a ng-click="list()" class="btn btn-primary btn-sm">
                                     <i class="ti-layout-list-thumb"></i> <span translate="content.list.BACKSUPPLIERS">Back to Suppliers list</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
-                                <a ng-click="goPrevious()" class="btn btn-primary pull-left" ng-show="currentStep > 1">
+                            <div class="col-lg-4 col-md-12 mb-1">
+                                <a ng-click="goPrevious()" class="btn btn-primary btn-sm">
                                     <i class="ti-layout-list-thumb"></i> <span translate="front.PREVIOUS">Previous</span>
                                 </a>
                             </div>
-                            <div class="col-md-4">
-                                <button type="button" ng-click="submitForm(supplierForm, true)" class="btn btn-primary pull-right" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierForm.$invalid" -->
+                            <div class="col-lg-4 col-md-12 mb-1">
+                                <button type="button" ng-click="submitForm(supplierForm, true)" class="btn btn-primary btn-sm" ng-disabled="disableSubmit"> <!--  ng-disabled="supplierForm.$invalid" -->
                                     <i class="fa fa-spinner fa-spin" ng-if="disableSubmit"></i><i class="ti-save" ng-if="!disableSubmit"></i> <span translate="content.common.SAVE">Save</span>
                                 </button>
                             </div>

@@ -511,7 +511,7 @@ app.controller('TenderFormCtrl', ['$scope', '$rootScope', '$state', '$stateParam
                 });
             });
         } else {
-            $scope.tender = {id: 0, section: 'Consultation', status: 'Draft', categories: [], languages: []};
+            $scope.tender = {id: 0, section: 'Consultation', status: 'Draft', categories: []};
 
             if (angular.isDefined($stateParams.tender_buyer) && JSON.parse($stateParams.tender_buyer) != null) {
                 $scope.tender.buyer = $stateParams.tender_buyer;

@@ -1,3 +1,7 @@
+e_electricity_front_locale_home:
+    path: /
+    defaults: { _controller: UbidElectricityBundle:Default:public }
+
 e_electricity_front_locale_login:
     path: /login/
     defaults: { _controller: UbidElectricityBundle:Default:public }

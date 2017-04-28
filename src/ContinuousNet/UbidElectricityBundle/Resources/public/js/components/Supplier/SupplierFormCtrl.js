@@ -38,7 +38,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.supplierTypesLoaded = true;
             if ($scope.supplierTypes.length == 0) {
-                $scope.supplierTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIERTYPE')});
+                $scope.supplierTypes.push({id: '', name: $filter('translate')('content.form.messages.SELECTSUPPLIERTYPE')});
                 var def = $q.defer();
                 $supplierTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplierType.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTSUPPLIERTYPE')});
@@ -67,7 +67,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.countriesLoaded = true;
             if ($scope.countries.length == 0) {
-                $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
+                $scope.countries.push({id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
                 var def = $q.defer();
                 $countriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
@@ -96,22 +96,18 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.languagesLoaded = true;
             if ($scope.languages.length == 0) {
-                $scope.languages.push({id: '', title: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
+                //$scope.languages.push({id: '', name: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
                 var def = $q.defer();
-                $categoriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[category.status]': 'Online', 'order_by[category.name]': 'asc'}).$promise.then(function(data) {
-                    $timeout(function(){
-                        if(data.results.length > 0){
-                            data.results = $rootScope.createTree(data.results, 'parent_category', 'name', null, 0);
-                            $scope.categories = [];
-                            for (var i in data.results) {
-                                $scope.categories.push({
-                                    id: data.results[i].id,
-                                    title: data.results[i].name
-                                });
-                            }
-                            def.resolve($scope.categories);
-                        }
-                    });
+                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
+                    //data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTLANGUAGE')});
+                    for (var i in data.results) {
+                        data.results[i].hidden = false;
+                    }
+                    $scope.languages = data.results;
+                    def.resolve($scope.languages);
+                    if (angular.isDefined($scope.buyer)) {
+                        $scope.buyer.language = $scope.buyer.language || $scope.languages[0].id;
+                    }
                 });
                 return def;
             } else {
@@ -129,7 +125,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.regionsLoaded = true;
             if ($scope.regions.length == 0) {
-                $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTREGION')});
+                $scope.regions.push({id: '', name: $filter('translate')('content.form.messages.SELECTREGION')});
                 var def = $q.defer();
                 $regionsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTREGION')});
@@ -158,7 +154,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
+                $scope.users.push({id: '', username: $filter('translate')('content.form.messages.SELECTUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTUSER')});
@@ -225,26 +221,6 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
             }
         }
     });
-    $scope.languages = [];
-    $scope.languagesLoaded = [];
-
-    $scope.getLanguages = function() {
-        $timeout(function(){
-            if ($scope.languages.length == 0) {
-                $scope.languages.push({});
-                var def = $q.defer();
-                $languagesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[language.name]': 'asc'}).$promise.then(function(data) {
-                    $scope.languages = data.results;
-                    def.resolve($scope.languages);
-                });
-                return def;
-            } else {
-                return $scope.languages;
-            }
-        });
-    };
-
-    $scope.getLanguages();
 
     $scope.languagesSearchText = '';
     $scope.supplierLanguages = false;
