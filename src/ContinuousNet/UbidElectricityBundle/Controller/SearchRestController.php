@@ -163,7 +163,7 @@ class SearchRestController extends FOSRestController {
 
             //get Buyers
             $qb_buyer->from('UbidElectricityBundle:Buyer', 'b_');
-            $qb_buyer->andWhere('b_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb_buyer->andWhere('b_.isPublic = 1');
             if (!is_null($searchText)) {
                 $qb_buyer->where($qb_buyer->expr()->like(
                     $qb_buyer->expr()->upper($qb_buyer->expr()->concat('b_.name', $qb_buyer->expr()->concat('b_.firstName', $qb_buyer->expr()->concat('b_.lastName', $qb_buyer->expr()->concat('b_.job', 'b_.companyName'))))),
@@ -188,7 +188,7 @@ class SearchRestController extends FOSRestController {
 
             //get Suppliers
             $qb_supplier->from('UbidElectricityBundle:Supplier', 's_');
-            $qb_supplier->andWhere('s_.isPublic = :isPublic')->setParameter('isPublic', true);
+            $qb_supplier->andWhere('s_.isPublic = 1');
             if (!is_null($searchText)) {
                 $qb_supplier->where($qb_supplier->expr()->like(
                     $qb_supplier->expr()->upper($qb_supplier->expr()->concat('s_.name', $qb_supplier->expr()->concat('s_.firstName', $qb_supplier->expr()->concat('s_.lastName', $qb_supplier->expr()->concat('s_.job', 's_.companyName'))))),
@@ -211,7 +211,7 @@ class SearchRestController extends FOSRestController {
                 'data' => $suppliers
             ];
 
-            $data['inlineCount'] = $buyersCount + $suppliersCount + $tendersCount + $consultationsCount;
+            $data['inlineCount'] = $tendersCount + $consultationsCount + $buyersCount + $suppliersCount;
 
             return $data;
 
