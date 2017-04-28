@@ -99,7 +99,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.buyersLoaded = true;
             if ($scope.buyers.length == 0) {
-                $scope.buyers.push({id: '', title: $filter('translate')('content.form.messages.SELECTBUYER')});
+                $scope.buyers.push({id: '', name: $filter('translate')('content.form.messages.SELECTBUYER')});
                 var def = $q.defer();
                 $buyersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[buyer.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTBUYER')});
@@ -128,7 +128,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.suppliersLoaded = true;
             if ($scope.suppliers.length == 0) {
-                $scope.suppliers.push({id: '', title: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
+                $scope.suppliers.push({id: '', name: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
                 var def = $q.defer();
                 $suppliersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[supplier.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTSUPPLIER')});
@@ -157,7 +157,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.regionsLoaded = true;
             if ($scope.regions.length == 0) {
-                $scope.regions.push({id: '', title: $filter('translate')('content.form.messages.SELECTREGION')});
+                $scope.regions.push({id: '', name: $filter('translate')('content.form.messages.SELECTREGION')});
                 var def = $q.defer();
                 $regionsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[region.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTREGION')});
@@ -200,7 +200,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.countriesLoaded = true;
             if ($scope.countries.length == 0) {
-                $scope.countries.push({id: '', title: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
+                $scope.countries.push({id: '', name: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
                 var def = $q.defer();
                 $countriesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[country.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTCOUNTRY')});
@@ -229,7 +229,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.sectorsLoaded = true;
             if ($scope.sectors.length == 0) {
-                $scope.sectors.push({id: '', title: $filter('translate')('content.form.messages.SELECTSECTOR')});
+                $scope.sectors.push({id: '', name: $filter('translate')('content.form.messages.SELECTSECTOR')});
                 var def = $q.defer();
                 $sectorsDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[sector.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTSECTOR')});
@@ -258,7 +258,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.tenderTypesLoaded = true;
             if ($scope.tenderTypes.length == 0) {
-                $scope.tenderTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTTENDERTYPE')});
+                $scope.tenderTypes.push({id: '', name: $filter('translate')('content.form.messages.SELECTTENDERTYPE')});
                 var def = $q.defer();
                 $tenderTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[tenderType.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTTENDERTYPE')});
@@ -287,7 +287,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.biddingTypesLoaded = true;
             if ($scope.biddingTypes.length == 0) {
-                $scope.biddingTypes.push({id: '', title: $filter('translate')('content.form.messages.SELECTBIDDINGTYPE')});
+                $scope.biddingTypes.push({id: '', name: $filter('translate')('content.form.messages.SELECTBIDDINGTYPE')});
                 var def = $q.defer();
                 $biddingTypesDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'order_by[biddingType.name]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTBIDDINGTYPE')});
@@ -316,7 +316,7 @@ function($scope, $rootScope, $state, $stateParams, $sce, $timeout, $filter, $uib
         $timeout(function(){
             $scope.usersLoaded = true;
             if ($scope.users.length == 0) {
-                $scope.users.push({id: '', title: $filter('translate')('content.form.messages.SELECTUSER')});
+                $scope.users.push({id: '', username: $filter('translate')('content.form.messages.SELECTUSER')});
                 var def = $q.defer();
                 $usersDataFactory.query({locale: $localStorage.language, offset: 0, limit: 10000, 'filters[user.type]': 'Administrator', 'order_by[user.username]': 'asc'}).$promise.then(function(data) {
                     data.results.unshift({id: null, name: $filter('translate')('content.form.messages.SELECTUSER')});
