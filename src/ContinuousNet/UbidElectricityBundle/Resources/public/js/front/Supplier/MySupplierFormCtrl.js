@@ -81,7 +81,6 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         console.log($scope.supplier);
     }, true);
 
-    //market region dynamic filed
     $scope.marketRegionShowed = 1;
     $scope.marketRegions = [
         {order: 1, model: "first_market_region", name:"firstMarketRegion", id:"supplierFirstMarketRegion", title: $filter('translate')('content.list.fields.FIRSTMARKETREGION')},

@@ -67,7 +67,8 @@
             </div>
             <div class="col-lg-4 col-md-12 text-center mt-1">
                 <button ng-if="user.email && user.type=='Supplier'" ng-click="addBookmark()" class="btn btn-sm center-block" translate="front.BOOKMARKTENDER" ng-disabled="disableBookmark">
-                    <i class="fa fa-spinner fa-spin" ng-if="disableBookmark"></i>Bookmark Tender</button>
+                    <i class="fa fa-spinner fa-spin" ng-if="disableBookmark"></i><span translate="front.BOOKMARKTENDER">Bookmark Tender</span>
+                </button>
                 <button ng-if="!user.email"  ui-sref="front.login" class="btn btn-sm pull-left" translate="front.BOOKMARKTENDER">Bookmark Tender</button>
             </div>
             <div class="col-lg-4 col-md-12 text-center mt-1">

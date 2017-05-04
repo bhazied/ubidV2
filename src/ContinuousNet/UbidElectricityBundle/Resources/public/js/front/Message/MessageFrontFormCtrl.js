@@ -8,7 +8,10 @@ app.controller('MessageFrontFormCtrl', ['$scope','$controller', '$rootScope', '$
     function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeout, $filter, ngTableParams, $state, $q, $interpolate, $localStorage, toaster, SweetAlert, $usersDataFactory, $buyersDataFactory, $suppliersDataFactory,$messagesDataFactory) {
 
 
-    
+
+        $scope.list = function() {
+            $state.go('front.messages.list');
+        };
 
 
        $scope.locale = (angular.isDefined($localStorage.language))?$localStorage.language:'en';

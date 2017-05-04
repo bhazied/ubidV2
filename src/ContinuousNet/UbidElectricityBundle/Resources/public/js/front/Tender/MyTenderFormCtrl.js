@@ -46,14 +46,14 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     };
 
     $scope.getDefaultProfile = function () {
-        var name = '';
+        var id = 0;
         if ($localStorage.user.type == 'Buyer') {
-            name = 'Buy';
+            id = 10;
         } else if($localStorage.user.type == 'Supplier'){
-            name = 'Sell';
+            id = 11;
         }
         angular.forEach($scope.tenderTypeMinified, function(value, key) {
-            if ($filter('uppercase')(value.name) == $filter('uppercase')(name)) {
+            if (value.id == id && id > 0) {
                 $scope.tender.tender_type = $scope.tenderTypes[key].id;
                 $scope.disableTenderType = true;
             }
@@ -81,10 +81,10 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.loadProfile = function () {
         angular.forEach($scope.tenderTypeMinified, function(value, key) {
             if ($scope.tender.tender_type == value.id) {
-                if ($filter('uppercase')(value.name) == 'BUYE') {
+                if (value.id == 10) {
                     $scope.showBuyer = true;
                     $scope.showSupplier = false;
-                } else if ($filter('uppercase')(value.name) == 'SELL') {
+                } else if (value.id == 11) {
                     $scope.showBuyer = false;
                     $scope.showSupplier = true;
                 }

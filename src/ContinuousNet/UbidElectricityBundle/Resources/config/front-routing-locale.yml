@@ -27,11 +27,11 @@ e_electricity_front_locale_resetpassword:
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_locale_emailconfirm:
-    path: /auth/email-confirm/{token}/{language}
+    path: /auth/email-confirm/{token}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_locale_reset:
-    path: /auth/reset/{token}/{language}
+    path: /auth/reset/{token}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_locale_lockscreen:

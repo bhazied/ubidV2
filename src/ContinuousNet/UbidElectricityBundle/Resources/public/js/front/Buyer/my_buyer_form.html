@@ -512,16 +512,6 @@
                                 <div class="col-md-6">
 
                                     <div class="checkbox continuous-check check-primary">
-                                        <input ng-model="buyer.enable_comment" type="checkbox" name="enableComment" id="buyerEnableComment" />
-                                        <label for="buyerEnableComment" translate="content.list.fields.ENABLECOMMENT">Enable Comment</label>
-                                    </div><!--/checkbox continuous-check check-primary-->
-
-                                </div><!--/col-md-6-->
-                            </div><!--/row-->
-                            <div class="row">
-                                <div class="col-md-6">
-
-                                    <div class="checkbox continuous-check check-primary">
                                         <input ng-model="buyer.enable_private_message" type="checkbox" name="enablePrivateMessage" id="buyerEnablePrivateMessage" />
                                         <label for="buyerEnablePrivateMessage" translate="content.list.fields.ENABLEPRIVATEMESSAGE">Enable Private Message</label>
                                     </div><!--/checkbox continuous-check check-primary-->
@@ -541,7 +531,7 @@
                                 </div><!--/col-md-12-->
                                 <div class="block select-list col-md-6">
                                     <span class="input-icon">
-                                        <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" name="category[]" id="buyerCategory" class="form-control" ng-required="true">
+                                        <select multiple ng-options="item.id as item.name for item in categories | filter:categoriesSearchText " ng-model="buyer.categories" id="buyerCategory" class="form-control" ng-required="false">
                                         </select>
                                         <i class="fa fa-sitemap"></i>
                                     </span><!--/input-icon-->

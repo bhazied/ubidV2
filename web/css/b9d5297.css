@@ -2267,10 +2267,13 @@ body {
 #language-switcher .fa {
     color: #ffffff;
     cursor: pointer;
-    height: 32px;
-    line-height: 32px;
+    height: 28px;
+    line-height: 28px;
     display: inline-block;
     vertical-align: top;
+    margin-left: 28px;
+    text-align: right;
+    width: 16px;
 }
 
 #container {

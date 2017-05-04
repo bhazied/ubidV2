@@ -16,7 +16,14 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $rootScope.contentOffset = 0;
     },2000);
 
+    angular.extend(this, $controller('BuyerFormCtrl', {$scope:$scope}));
+
+    $scope.enableFormAlert = false;
     $scope.redirect = true;
+
+    $scope.list = function() {
+        $state.go('front.mybuyers.list');
+    };
 
     $scope.steps = [
         {title : $filter('translate')('front.BUYERFORMTITLESTEP1'), description: $filter('translate')('front.BUYERFORMDESCRIPTIONSTEP1'), id: 1},
@@ -26,10 +33,6 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.currentStep = 1;
     $scope.isNext = false;
     $scope.enableFormAlert = false;
-
-    $scope.list = function() {
-        $state.go('front.mybuyers.list');
-    };
     
     $scope.goNext = function (form) {
         $scope.toTheTop();
@@ -49,7 +52,6 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
                     }
                 }
             }
-
             angular.element('.ng-invalid[name=' + firstError + ']').focus();
             $scope.isNext = true;
         }
@@ -67,8 +69,18 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             $scope.goPrevious();
         }
     };
-    
-    //market region dynamic filed
+
+    $scope.currentLanguageId = 0;
+    $scope.$watch('languages', function () {
+        angular.forEach($scope.languages, function (value, key) {
+            if(value.code == $localStorage.language){
+                $scope.currentLanguageId = value.id;
+                $scope.buyer.language = value.id;
+            }
+        });
+        console.log($scope.supplier);
+    }, true);
+
     $scope.marketRegionShowed = 1;
     $scope.marketRegions = [
         {order: 1, model: "first_market_region", name:"firstMarketRegion", id:"buyerFirstMarketRegion", title: $filter('translate')('content.list.fields.FIRSTMARKETREGION')},
@@ -83,7 +95,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
         $scope.marketRegions.push($scope.marketRegionsInformations[index]);
         $scope.marketRegionShowed++;
         return false;
-    }
+    };
 
     $scope.removeMarketregion = function (order) {
         var index = order-1;
@@ -135,8 +147,6 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
             value: "Over 1 billion USD"
         }
     ];
-
-    angular.extend(this, $controller('BuyerFormCtrl', {$scope: $scope}));
 
 }]);
 

@@ -34,8 +34,8 @@
                 <ul ng-if="countLanguages > 1" class="languages">
                     <li ng-repeat="(langCode, langName) in languages" ng-if="langCode != currentLanguage" class="flag [[langCode]]" title="[[langName]]" ng-click="language.set('[[langCode]]')"></li>
                 </ul>
+                <a ng-if="countLanguages > 1" class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
             </span>
-            <a ng-if="countLanguages > 1" class="fa fa-caret-down" translate-attr-title="front.SWITCHLANGUAGE" title="Switch language"></a>
         </div>
 
         <ul class="nav navbar-nav float-xs-right">
