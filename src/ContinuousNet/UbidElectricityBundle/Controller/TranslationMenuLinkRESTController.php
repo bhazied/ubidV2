@@ -50,7 +50,6 @@ class TranslationMenuLinkRESTController extends BaseRESTController
      */
     public function getAction(TranslationMenuLink $entity)
     {
-        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -149,7 +148,6 @@ class TranslationMenuLinkRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationMenuLink.id');
             $results = $qbList->getQuery()->getResult();
-            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

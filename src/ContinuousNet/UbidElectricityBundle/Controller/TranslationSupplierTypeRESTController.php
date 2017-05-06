@@ -50,7 +50,6 @@ class TranslationSupplierTypeRESTController extends BaseRESTController
      */
     public function getAction(TranslationSupplierType $entity)
     {
-        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -149,7 +148,6 @@ class TranslationSupplierTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationSupplierType.id');
             $results = $qbList->getQuery()->getResult();
-            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

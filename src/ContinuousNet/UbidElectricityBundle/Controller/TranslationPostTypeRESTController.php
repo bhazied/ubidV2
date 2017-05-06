@@ -50,7 +50,6 @@ class TranslationPostTypeRESTController extends BaseRESTController
      */
     public function getAction(TranslationPostType $entity)
     {
-        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -149,7 +148,6 @@ class TranslationPostTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationPostType.id');
             $results = $qbList->getQuery()->getResult();
-            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
