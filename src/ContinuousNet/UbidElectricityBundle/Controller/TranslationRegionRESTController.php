@@ -50,7 +50,6 @@ class TranslationRegionRESTController extends BaseRESTController
      */
     public function getAction(TranslationRegion $entity)
     {
-        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -149,7 +148,6 @@ class TranslationRegionRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationRegion.id');
             $results = $qbList->getQuery()->getResult();
-            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
