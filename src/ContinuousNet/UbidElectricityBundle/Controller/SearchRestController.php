@@ -166,7 +166,7 @@ class SearchRestController extends FOSRestController {
             $qb_buyer->andWhere('b_.isPublic = 1');
             if (!is_null($searchText)) {
                 $qb_buyer->where($qb_buyer->expr()->like(
-                    $qb_buyer->expr()->upper($qb_buyer->expr()->concat('b_.name', $qb_buyer->expr()->concat('b_.firstName', $qb_buyer->expr()->concat('b_.lastName', $qb_buyer->expr()->concat('b_.job', 'b_.companyName'))))),
+                    $qb_buyer->expr()->upper('b_.name'),
                     $qb_buyer->expr()->upper($qb_buyer->expr()->literal('%' . $searchText . '%'))
                 ));
             }

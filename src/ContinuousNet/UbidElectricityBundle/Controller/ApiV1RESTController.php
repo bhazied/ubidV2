@@ -72,7 +72,8 @@ class ApiV1RESTController extends FOSRestController
             return array();
         }
         $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
-        $entityName = str_replace($ns, '', get_class($entity));
+        $prx = 'Proxies\\__CG__\\';
+        $entityName = str_replace($prx, '', str_replace($ns, '', get_class($entity)));
         $translationEntityName = 'Translation' . $entityName;
         $translationEntityFullName = $ns . $translationEntityName;
         if (class_exists($translationEntityFullName)) {
