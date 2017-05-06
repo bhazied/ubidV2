@@ -83,6 +83,11 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             //reset the search loaded result
             $rootScope.searchLoaded = false;
+
+            if (toState.name == 'front.login') {
+                $localStorage.toState = fromState;
+                $localStorage.toParams = fromParams;
+            }
             
             //stop loading bar on stateChangeSuccess
             event.targetScope.$watch('$viewContentLoaded', function() {
@@ -141,7 +146,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.showUserMenu = false;
                     $rootScope.contentSize = 6;
                     $rootScope.contentOffset = 3;
-                }, 1500);
+                });
             }
             if ($state.current.name == 'front.generic_search') {
                 $timeout(function() {
@@ -151,7 +156,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.showUserMenu = false;
                     $rootScope.contentSize = 8;
                     $rootScope.contentOffset = 0;
-                }, 2000);
+                });
             }
             
         });

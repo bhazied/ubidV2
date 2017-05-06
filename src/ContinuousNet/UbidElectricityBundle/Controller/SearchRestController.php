@@ -86,7 +86,7 @@ class SearchRestController extends FOSRestController {
             $qb_tender->andwhere('t_.status = :status')->setParameters(array('status' => 'Online'));
             if (!is_null($searchText)) {
                 $qb_tender->andWhere($qb_tender->expr()->like(
-                    $qb_tender->expr()->upper($qb_tender->expr()->concat('t_.title', $qb_tender->expr()->concat('t_.slug', $qb_tender->expr()->concat('t_.reference', 't_.description')))),
+                    $qb_tender->expr()->upper($qb_tender->expr()->concat('COALESCE(t_.title, \'\')', $qb_tender->expr()->concat('COALESCE(t_.slug, \'\')', $qb_tender->expr()->concat('COALESCE(t_.reference, \'\')', 'COALESCE(t_.description, \'\')')))),
                     $qb_tender->expr()->upper($qb_tender->expr()->literal('%' . $searchText . '%'))
                 ));
             }
@@ -126,7 +126,7 @@ class SearchRestController extends FOSRestController {
             $qb_consultation->andwhere('c_.status = :status')->setParameters(array('status' => 'Online'));
             if (!is_null($searchText)) {
                 $qb_consultation->andWhere($qb_consultation->expr()->like(
-                    $qb_consultation->expr()->upper($qb_consultation->expr()->concat('c_.title', $qb_consultation->expr()->concat('c_.slug', $qb_consultation->expr()->concat('c_.reference', 'c_.description')))),
+                    $qb_consultation->expr()->upper($qb_consultation->expr()->concat('COALESCE(c_.title, \'\')', $qb_consultation->expr()->concat('COALESCE(c_.slug, \'\')', $qb_consultation->expr()->concat('COALESCE(c_.reference, \'\')', 'COALESCE(c_.description, \'\')')))),
                     $qb_consultation->expr()->upper($qb_consultation->expr()->literal('%' . $searchText . '%'))
                 ));
             }
@@ -166,6 +166,7 @@ class SearchRestController extends FOSRestController {
             $qb_buyer->andWhere('b_.isPublic = 1');
             if (!is_null($searchText)) {
                 $qb_buyer->where($qb_buyer->expr()->like(
+                    $qb_buyer->expr()->upper($qb_buyer->expr()->concat('COALESCE(b_.name, \'\')', $qb_buyer->expr()->concat('COALESCE(b_.firstName, \'\')', $qb_buyer->expr()->concat('COALESCE(b_.lastName, \'\')', $qb_buyer->expr()->concat('COALESCE(b_.job, \'\')', 'COALESCE(b_.companyName, \'\')'))))),
                     $qb_buyer->expr()->upper('b_.name'),
                     $qb_buyer->expr()->upper($qb_buyer->expr()->literal('%' . $searchText . '%'))
                 ));
@@ -191,7 +192,7 @@ class SearchRestController extends FOSRestController {
             $qb_supplier->andWhere('s_.isPublic = 1');
             if (!is_null($searchText)) {
                 $qb_supplier->where($qb_supplier->expr()->like(
-                    $qb_supplier->expr()->upper($qb_supplier->expr()->concat('s_.name', $qb_supplier->expr()->concat('s_.firstName', $qb_supplier->expr()->concat('s_.lastName', $qb_supplier->expr()->concat('s_.job', 's_.companyName'))))),
+                    $qb_supplier->expr()->upper($qb_supplier->expr()->concat('COALESCE(s_.name, \'\')', $qb_supplier->expr()->concat('COALESCE(s_.firstName, \'\')', $qb_supplier->expr()->concat('COALESCE(s_.lastName, \'\')', $qb_supplier->expr()->concat('COALESCE(s_.job, \'\')', 'COALESCE(s_.companyName, \'\')'))))),
                     $qb_supplier->expr()->upper($qb_supplier->expr()->literal('%' . $searchText . '%'))
                 ));
             }

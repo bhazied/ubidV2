@@ -358,7 +358,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 password: $scope.password
             };
             $loginDataFactory.check($scope.user).$promise.then(function(data) {
-                if(data.code == 401){
+                if (data.code == 401) {
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), data.message);
                     return;
@@ -367,15 +367,18 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     $scope.status = 'error';
                     toaster.pop('error', $filter('translate')('content.common.ERROR'), $filter('translate')('login.ERROR'));
                     return;
-                }
-                else{
+                } else {
                     toaster.pop('success', $filter('translate')('content.common.NOTIFICATION'), $filter('translate')('login.WELCOME'));
                     $scope.status = 'welcome';
                     $localStorage.access_token = data.token;
                     $scope.user = $localStorage.user = $rootScope.user = data.user;
                     $timeout(function() {
                         $rootScope.loggedIn = true;
-                        $state.go('front.usermenu');
+                        if (angular.isDefined($localStorage.toState) && angular.isDefined($localStorage.toParams)) {
+                            $state.go($localStorage.toState.name, $localStorage.toParams);
+                        } else {
+                            $state.go('front.usermenu');
+                        }
                     }, 1000);
                 }
             }, function(error) {
@@ -387,7 +390,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
             });
         };
 
-        $scope.logout = function(){
+        $scope.logout = function() {
             $scope.resetAccess();
             $timeout(function() {
 
@@ -501,6 +504,11 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
             //reset the search loaded result
             $rootScope.searchLoaded = false;
+
+            if (toState.name == 'front.login') {
+                $localStorage.toState = fromState;
+                $localStorage.toParams = fromParams;
+            }
             
             //stop loading bar on stateChangeSuccess
             event.targetScope.$watch('$viewContentLoaded', function() {
@@ -559,7 +567,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.showUserMenu = false;
                     $rootScope.contentSize = 6;
                     $rootScope.contentOffset = 3;
-                }, 1500);
+                });
             }
             if ($state.current.name == 'front.generic_search') {
                 $timeout(function() {
@@ -569,7 +577,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                     $rootScope.showUserMenu = false;
                     $rootScope.contentSize = 8;
                     $rootScope.contentOffset = 0;
-                }, 2000);
+                });
             }
             
         });

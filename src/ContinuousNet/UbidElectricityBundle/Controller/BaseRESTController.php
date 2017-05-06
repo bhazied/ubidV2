@@ -42,7 +42,8 @@ class BaseRESTController extends VoryxController
     public function translateEntity($entity, $level = 0)
     {
         $ns = 'ContinuousNet\UbidElectricityBundle\Entity\\';
-        $entityName = str_replace($ns, '', get_class($entity));
+        $prx = 'Proxies\\__CG__\\';
+        $entityName = str_replace($ns, '', str_replace($prx, '', get_class($entity)));
         $translationEntityName = 'Translation' . $entityName;
         $translationEntityFullName = $ns . $translationEntityName;
         if (class_exists($translationEntityFullName)) {
@@ -84,8 +85,12 @@ class BaseRESTController extends VoryxController
                     $setMethod = 'set' . $field;
                     $fieldValue = $entity->$method();
                     if (is_object($fieldValue)) {
-                        if (substr(get_class($fieldValue), 0, strlen($ns)) == $ns) {
+                        if (substr(str_replace($prx, '', get_class($fieldValue)), 0, strlen($ns)) == $ns) {
                             $entity->$setMethod($this->translateEntity($fieldValue, $level + 1));
+                        } else if (get_class($fieldValue) == 'Doctrine\\ORM\\PersistentCollection') {
+                            foreach ($fieldValue as $key => $item) {
+                                $fieldValue->set($key, $this->translateEntity($item, $level + 1));
+                            }
                         }
                     }
                 }

@@ -19,11 +19,11 @@ fos_user_profile:
 
 fos_user_register:
     resource: "@UbidElectricityBundle/Resources/config/routing/registration.xml"
-    prefix: '#/auth'
+    prefix: '/{_locale}/auth'
 
 fos_user_resetting:
     resource: "@UbidElectricityBundle/Resources/config/routing/resetting.xml"
-    prefix: '#/auth'
+    prefix: '/{_locale}/auth'
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
