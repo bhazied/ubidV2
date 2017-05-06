@@ -50,6 +50,7 @@ class MessageRESTController extends BaseRESTController
      */
     public function getAction(Message $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -161,6 +162,7 @@ class MessageRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('message.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

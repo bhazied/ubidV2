@@ -50,6 +50,7 @@ class BidProductRESTController extends BaseRESTController
      */
     public function getAction(BidProduct $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -158,6 +159,7 @@ class BidProductRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('bidProduct.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

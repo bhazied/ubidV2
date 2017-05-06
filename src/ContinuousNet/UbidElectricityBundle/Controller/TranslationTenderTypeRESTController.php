@@ -50,6 +50,7 @@ class TranslationTenderTypeRESTController extends BaseRESTController
      */
     public function getAction(TranslationTenderType $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -148,6 +149,7 @@ class TranslationTenderTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationTenderType.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

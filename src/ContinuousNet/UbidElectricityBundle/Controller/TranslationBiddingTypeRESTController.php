@@ -50,6 +50,7 @@ class TranslationBiddingTypeRESTController extends BaseRESTController
      */
     public function getAction(TranslationBiddingType $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -148,6 +149,7 @@ class TranslationBiddingTypeRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationBiddingType.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

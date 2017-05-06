@@ -50,6 +50,7 @@ class TranslationCategoryRESTController extends BaseRESTController
      */
     public function getAction(TranslationCategory $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -148,6 +149,7 @@ class TranslationCategoryRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('translationCategory.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
