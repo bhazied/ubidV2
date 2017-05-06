@@ -50,6 +50,7 @@ class NotificationRESTController extends BaseRESTController
      */
     public function getAction(Notification $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -155,6 +156,7 @@ class NotificationRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('notification.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

@@ -50,6 +50,7 @@ class UserSettingRESTController extends BaseRESTController
      */
     public function getAction(UserSetting $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -147,6 +148,7 @@ class UserSettingRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('userSetting.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

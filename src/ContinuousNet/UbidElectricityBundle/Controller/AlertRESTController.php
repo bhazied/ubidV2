@@ -50,6 +50,7 @@ class AlertRESTController extends BaseRESTController
      */
     public function getAction(Alert $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -155,6 +156,7 @@ class AlertRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('alert.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

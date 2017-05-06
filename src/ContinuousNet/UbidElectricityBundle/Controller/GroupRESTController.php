@@ -50,6 +50,7 @@ class GroupRESTController extends BaseRESTController
      */
     public function getAction(Group $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -147,6 +148,7 @@ class GroupRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('group.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

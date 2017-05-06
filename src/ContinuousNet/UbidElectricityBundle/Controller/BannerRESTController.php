@@ -50,6 +50,7 @@ class BannerRESTController extends BaseRESTController
      */
     public function getAction(Banner $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -148,6 +149,7 @@ class BannerRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('banner.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }

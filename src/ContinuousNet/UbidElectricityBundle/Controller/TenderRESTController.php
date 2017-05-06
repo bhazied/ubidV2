@@ -50,6 +50,7 @@ class TenderRESTController extends BaseRESTController
      */
     public function getAction(Tender $entity)
     {
+        $entity = $this->translateEntity($entity);
         $this->createSubDirectory($entity);
         return $entity;
     }
@@ -162,6 +163,7 @@ class TenderRESTController extends BaseRESTController
             $qbList->setFirstResult($offset);
             $qbList->groupBy('tender.id');
             $results = $qbList->getQuery()->getResult();
+            $results = $this->translateEntities($results);
             if ($results) {
                 $data['results'] = $results;
             }
