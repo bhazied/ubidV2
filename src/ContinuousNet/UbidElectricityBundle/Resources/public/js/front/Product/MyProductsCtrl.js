@@ -36,15 +36,15 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     $scope.setCols();
 
     $scope.add = function() {
-        $state.go('front.myproducts.new');
+        $state.go('front.myproducts.new', {locale: $rootScope.locale});
     };
 
     $scope.edit = function(row) {
-        $state.go('front.myproducts.edit', {id: row.id});
+        $state.go('front.myproducts.edit', {id: row.id, locale: $rootScope.locale});
     };
 
     $scope.details = function(row) {
-        $state.go('front.myproducts.details', {id: row.id});
+        $state.go('front.myproducts.details', {id: row.id, locale: $rootScope.locale});
     };
     
 

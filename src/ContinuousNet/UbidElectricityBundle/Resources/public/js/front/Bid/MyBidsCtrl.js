@@ -53,19 +53,19 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
 
 
     $scope.list = function() {
-        $state.go('front.mybids.list');
+        $state.go('front.mybids.list', {locale: $rootScope.locale});
     };
 
     $scope.add = function() {
-        $state.go('front.mybids.new');
+        $state.go('front.mybids.new', {locale: $rootScope.locale});
     };
 
     $scope.edit = function(row) {
-        $state.go('front.mybids.edit', {id: row.id});
+        $state.go('front.mybids.edit', {id: row.id, locale: $rootScope.locale});
     };
 
     $scope.details = function(row) {
-        $state.go('front.mybids.details', {id: row.id});
+        $state.go('front.mybids.details', {id: row.id, locale: $rootScope.locale});
     };
 }]);
 

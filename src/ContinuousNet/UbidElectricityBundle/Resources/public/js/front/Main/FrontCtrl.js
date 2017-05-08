@@ -51,7 +51,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             if ($state.current.name != '' && $scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
                     console.warn('no access token for ('+$state.current.name+') > redirection');
-                    $state.go('front.home');
+                    $state.go('front.home', {locale: $rootScope.locale});
                 });
             } else {
                 console.warn('access to ('+$state.current.name+')');
@@ -230,19 +230,19 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             init : function() {
                 if (angular.isDefined($stateParams.language)) {
                     $scope.language.selected = $scope.language.available[$stateParams.language];
-                    $rootScope.currentLanguage = $localStorage.language = $stateParams.language;
+                    $scope.locale = $rootScope.locale = $rootScope.currentLanguage = $localStorage.language = $stateParams.language;
                 } else {
                     var proposedLanguage = $translate.proposedLanguage() || $translate.use();
                     var preferredLanguage = $translate.preferredLanguage();
                     $scope.language.selected = $scope.language.available[(proposedLanguage || preferredLanguage)];
-                    $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
+                    $scope.locale = $rootScope.locale = $rootScope.currentLanguage = $localStorage.language = (proposedLanguage || preferredLanguage);
                 }
             },
             set : function(localeId) {
                 $translate.use(localeId);
                 $scope.language.selected = $scope.language.available[localeId];
                 $scope.language.listIsOpen = !$scope.language.listIsOpen;
-                $rootScope.currentLanguage = $localStorage.language = localeId;
+                $scope.locale = $rootScope.locale = $rootScope.currentLanguage = $localStorage.language = localeId;
                 $rootScope.$broadcast('languageChange', [localeId]);
                 var reloadState = $state.current.name;
                 if (reloadState == 'front.main') {

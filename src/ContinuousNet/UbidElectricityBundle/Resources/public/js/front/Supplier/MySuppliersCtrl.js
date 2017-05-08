@@ -53,15 +53,15 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     $scope.getDefaultSupplier();
     
     $scope.add = function() {
-        $state.go('front.mysuppliers.new');
+        $state.go('front.mysuppliers.new', {locale: $rootScope.locale});
     };
 
     $scope.edit = function(row) {
-        $state.go('front.mysuppliers.edit', {id: row.id});
+        $state.go('front.mysuppliers.edit', {id: row.id, locale: $rootScope.locale});
     };
 
     $scope.details = function(row) {
-        $state.go('front.mysuppliers.details', {id: row.id});
+        $state.go('front.mysuppliers.details', {id: row.id, locale: $rootScope.locale});
     };
     
 }]);

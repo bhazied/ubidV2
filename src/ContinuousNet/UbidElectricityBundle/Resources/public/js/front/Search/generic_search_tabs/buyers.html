@@ -1,16 +1,16 @@
 
 <h1 translate="front.BUYERS">Buyers</h1>
 <div  ng-if="buyerCount > 0" ng-repeat="buyer in buyers" class="tender-preview">
-    <a ui-sref="front.buyer({id: buyer.id})" ng-if="user.email" class="name" ng-bind="buyer.name"></a>
-    <a ui-sref="front.login" ng-if="!user.email" class="name" ng-bind="buyer.name"></a>
+    <a ui-sref="front.buyer({id: buyer.id, locale: locale})" ng-if="user.email" class="name" ng-bind="buyer.name"></a>
+    <a ui-sref="front.login({locale: locale})" ng-if="!user.email" class="name" ng-bind="buyer.name"></a>
     <div class="pb-1 clearfix">
         <img ng-if="buyer.picture" src="[[ buyer.picture ]]" alt="[[ buyer.name ]]" class="pull-right img-thumbnail" />
         <div ng-bind-html="buyer.description"></div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <button ui-sref="front.buyer({id: buyer.id})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
-            <button ui-sref="front.login" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+            <button ui-sref="front.buyer({id: buyer.id, locale: locale})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+            <button ui-sref="front.login({locale: locale})" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
         </div>
         <div class="col-md-6">
             <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->

@@ -19,15 +19,15 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     angular.extend(this, $controller('SupplierProductCtrl', {$scope:$scope}));
 
     $scope.list = function() {
-        $state.go('front.myproducts.list');
+        $state.go('front.myproducts.list', {locale: $rootScope.locale});
     };
 
     $scope.add = function() {
-        $state.go('front.myproducts.new');
+        $state.go('front.myproducts.new', {locale: $rootScope.locale});
     };
 
     $scope.edit = function(row) {
-        $state.go('front.myproducts.edit', {id: row.id});
+        $state.go('front.myproducts.edit', {id: row.id, locale: $rootScope.locale});
     };
 
 }]);

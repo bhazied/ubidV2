@@ -52,13 +52,13 @@ app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$sta
             $params.pageCount = $scope.pageCount;
             $params.sortField = $scope.sortingOption.sortField;
             $params.sortDirection = $scope.sortingOption.sortDirection;
-            if(angular.isDefined($stateParams.projectId)){
-                $params.projectId = $stateParams.projectId;
+            if (angular.isDefined($stateParams.id)) {
+                $params.id = $stateParams.id;
                 $timeout(function () {
                     var def = $q.defer();
                     $scope.bidsLoaded = true;
-                    if($scope.bids.length == 0){
-                    console.log($params);
+                    if ($scope.bids.length == 0) {
+                        console.log($params);
                         $bidsFrontDataFactory.bidsByProject($params).$promise.then(function (data) {
                             $scope.bids = data.results;
                             $scope.total = data.inlineCount;
@@ -96,6 +96,7 @@ app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$sta
             }
         }
         $scope.getBidsByProject();
+
         $scope.setPage = function(page) {
             $scope.page = page;
             $scope.getBidsByProject();
@@ -117,6 +118,6 @@ app.controller('BidsByProjectCtrl', ['$scope','$controller', '$rootScope', '$sta
         };
 
         $scope.list = function(){
-            $state.go('front.projectbids.list');
+            $state.go('front.projectbids.list', {locale: $rootScope.locale});
         }
     }]);

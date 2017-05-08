@@ -20,7 +20,7 @@ app.controller('MessageFrontCtrl', ['$scope','$controller', '$rootScope', '$stat
         angular.extend(this, $controller('MessageCtrl', {$scope:$scope}));
 
         $scope.list = function() {
-            $state.go('front.messages.list');
+            $state.go('front.messages.list', {locale: $rootScope.locale});
         };
         
     }]);

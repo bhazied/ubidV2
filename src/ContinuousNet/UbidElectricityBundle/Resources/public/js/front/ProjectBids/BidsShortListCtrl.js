@@ -91,11 +91,11 @@ app.controller('BidsShortListCtrl', ['$scope','$controller', '$rootScope', '$sta
         });
 
         $scope.list = function () {
-            $state.go('front.projectbids.shortlist');
+            $state.go('front.projectbids.shortlist', {locale: $rootScope.locale});
         }
         
         $scope.details = function(row) {
-            $state.go('front.projectbids.bid', {slug: row.tender.slug,id: row.id});
+            $state.go('front.projectbids.bid', {slug: row.tender.slug, id: row.id, locale: $rootScope.locale});
         };
     }]);
 

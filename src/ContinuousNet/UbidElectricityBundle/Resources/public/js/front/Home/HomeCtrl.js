@@ -15,23 +15,23 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
         }, 2000);
 
         $scope.goPublication = function () {
-            $state.go('front.mytenders.new');
+            $state.go('front.mytenders.new', {locale: $rootScope.locale});
         };
 
         $scope.goTender = function () {
-            $state.go('front.tenders', {section: 'Tender'});;
+            $state.go('front.tenders', {section: 'Tender', locale: $rootScope.locale});;
         };
 
         $scope.goProposal = function () {
-            $state.go('front.tenders', {section: 'Consultation'});
+            $state.go('front.tenders', {section: 'Consultation', locale: $rootScope.locale});
         };
 
         $scope.goSuppliers = function () {
-            $state.go('front.suppliers');
+            $state.go('front.suppliers', {locale: $rootScope.locale});
         };
 
         $scope.goBuyers = function () {
-            $state.go('front.buyers');
+            $state.go('front.buyers', {locale: $rootScope.locale});
         };
 
         $postsDataFactory.getBySlug({slug: 'home', locale: $localStorage.language}).$promise.then(function(data) {

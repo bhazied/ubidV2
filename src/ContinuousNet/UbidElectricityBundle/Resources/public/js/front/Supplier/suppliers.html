@@ -4,10 +4,10 @@
     <div class="row nav-menu">
         <div id="main_tabs" class="col-md-9 col-sm-12 pl-0 pr-0">
             <ul class="pull-left">
-                <li><a ui-sref="front.tenders({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
-                <li><a ui-sref="front.tenders({section:'Tender'})" translate="front.TENDERS">Tenders </a></li>
-                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
-                <li class="active"><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+                <li><a ui-sref="front.tenders({section:'Consultation', locale: locale})" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li><a ui-sref="front.tenders({section:'Tender', locale: locale})" translate="front.TENDERS">Tenders </a></li>
+                <li><a ui-sref="front.buyers({locale: locale})" translate="front.BUYERS">Buyers</a></li>
+                <li class="active"><a ui-sref="front.suppliers({locale: locale})" translate="front.SUPPLIERS">Suppliers</a></li>
             </ul>
         </div>
         <div id="sort_by" class="col-md-3 col-sm-12 pl-0">
@@ -27,8 +27,8 @@
     <h2 ng-bind-html="post.content"  class="content_entity"></h2>
     <div ng-repeat="supplier in suppliers" class="tender-preview">
         <h3>
-            <a ui-sref="front.supplier({id: supplier.id})" ng-if="user.email" class="name" ng-bind="supplier.name"></a>
-            <a ui-sref="front.login" ng-if="!user.email" class="name" ng-bind="supplier.name"></a>
+            <a ui-sref="front.supplier({id: supplier.id, locale: locale})" ng-if="user.email" class="name" ng-bind="supplier.name"></a>
+            <a ui-sref="front.login({locale: locale})" ng-if="!user.email" class="name" ng-bind="supplier.name"></a>
         </h3>
         <div class="pb-1 clearfix">
             <img ng-if="supplier.picture" src="[[ supplier.picture ]]" alt="[[ supplier.name ]]" class="pull-right img-thumbnail" />
@@ -36,13 +36,13 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <button ui-sref="front.supplier({id: supplier.id})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
-                <button ui-sref="front.login" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+                <button ui-sref="front.supplier({id: supplier.id, locale: locale})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+                <button ui-sref="front.login({locale: locale})" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
             </div>
             <div class="col-md-6">
                 <!-- <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
-                <button ui-sref="front.messages.send({id: supplier.id, to:'supplier'})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
-                <!-- <button ui-sref="front.login" ng-if="!user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button> -->
+                <button ui-sref="front.messages.send({id: supplier.id, to:'supplier', locale: locale})" ng-if="user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                <!-- <button ui-sref="front.login({locale: locale})" ng-if="!user.email && supplier.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button> -->
             </div>
             </div>
         </div>

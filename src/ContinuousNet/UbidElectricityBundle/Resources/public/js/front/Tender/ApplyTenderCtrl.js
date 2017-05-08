@@ -24,17 +24,15 @@ app.controller('ApplyTenderCtrl', ['$scope', '$rootScope','$controller', '$state
             $scope.tender = $stateParams.idTender;
             $scope.bid.tender = $stateParams.idTender;
         };
-        $scope.bid.status = 'Online'
+        $scope.bid.status = 'Online';
 
         $scope.list = function() {
-            if(angular.isDefined($localStorage.selectedTender)){
-                $state.go('front.tenders' ,{section:$localStorage.selectedTender.section});
-            }
-            else{
-                $state.go('front.tenders' ,{section:'Tender'});
+            if (angular.isDefined($localStorage.selectedTender)) {
+                $state.go('front.tenders', {section: $localStorage.selectedTender.section, locale: $rootScope.locale});
+            } else {
+                $state.go('front.tenders', {section: 'Tender', locale: $rootScope.locale});
             }
         };
-        
 
 
     }]);

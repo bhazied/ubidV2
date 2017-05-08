@@ -1,18 +1,18 @@
 <div ng-controller="UserMenuFrontCtrl">
     <div class="center-menu">
-        <h1 ng-if="user.type == 'Buyer'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></h1>
-        <h1 ng-if="user.type == 'Supplier'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></h1>
-        <h1 ng-if="user.type == 'Both'" ui-sref="front.profile">[['front.IMA' | translate]] <b>[['front.BOTH' | translate]]</b></h1>
+        <h1 ng-if="user.type == 'Buyer'" ui-sref="front.profile({locale: locale})">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></h1>
+        <h1 ng-if="user.type == 'Supplier'" ui-sref="front.profile({locale: locale})">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></h1>
+        <h1 ng-if="user.type == 'Both'" ui-sref="front.profile({locale: locale})">[['front.IMA' | translate]] <b>[['front.BOTH' | translate]]</b></h1>
         <p class="usd"><span>$</span></p>
         <ul>
-            <li class="publish" ng-if="user.type == 'Supplier'"><a ui-sref="front.mytenders.new"><span translate="front.PUBLICATION">Publication</span></a></li>
-            <li class="publish" ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mytenders.new"><span translate="front.PUBLICATION">Publication</span></a></li>
+            <li class="publish" ng-if="user.type == 'Supplier'"><a ui-sref="front.mytenders.new({locale: locale})"><span translate="front.PUBLICATION">Publication</span></a></li>
+            <li class="publish" ng-if="user.type == 'Buyer' || user.type == 'Both'"><a ui-sref="front.mytenders.new({locale: locale})"><span translate="front.PUBLICATION">Publication</span></a></li>
 
-            <li class="tender"><a ui-sref="front.tenders({section:'Tender'})"><span translate="front.CONSULTTENDER">List of TENDER</span></a></li>
-            <li class="proposal"><a ui-sref="front.tenders({section:'Consultation'})"><span translate="front.CONSULTPROPOSAL">List of  consultation</span></a></li>
+            <li class="tender"><a ui-sref="front.tenders({section:'Tender', locale: locale})"><span translate="front.CONSULTTENDER">List of TENDER</span></a></li>
+            <li class="proposal"><a ui-sref="front.tenders({section:'Consultation', locale: locale})"><span translate="front.CONSULTPROPOSAL">List of  consultation</span></a></li>
 
-            <li class="advertiser" ng-if="user.type == 'Buyer'"><a ui-sref="front.suppliers"><span translate="front.CONSULTSUPPLIERS">List of suppliers</span></a></li>
-            <li class="advertiser" ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.buyers"><span translate="front.CONSULTBUYERS">List of buyers</span></a></li>
+            <li class="advertiser" ng-if="user.type == 'Buyer'"><a ui-sref="front.suppliers({locale: locale})"><span translate="front.CONSULTSUPPLIERS">List of suppliers</span></a></li>
+            <li class="advertiser" ng-if="user.type == 'Supplier' || user.type == 'Both'"><a ui-sref="front.buyers({locale: locale})"><span translate="front.CONSULTBUYERS">List of buyers</span></a></li>
         </ul>
     </div>
 </div>

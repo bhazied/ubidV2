@@ -11,7 +11,7 @@
                 <span translate="emailconfirm.EMAILCONFIRMED">Email confrimed, your can access to your dashboard.</span>
             </h2>
             <div class="logo text-center">
-                <a ng-if="authenticated" class="btn btn-primary btn-o " ui-sref="front.home" translate="content.form.messages.GOTODASHBOARD" ng-if="authenticated">
+                <a ng-if="authenticated" class="btn btn-primary btn-o " ui-sref="front.home({locale: locale})" translate="content.form.messages.GOTODASHBOARD" ng-if="authenticated">
                     Go to Dashboard
                 </a>
             </div>

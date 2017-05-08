@@ -53,14 +53,24 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                     $timeout(function() {
                         $rootScope.loggedIn = true;
                         if (angular.isDefined($localStorage.toState) && angular.isDefined($localStorage.toParams)) {
-                            $state.go($localStorage.toState.name, $localStorage.toParams);
+                            if (
+                                $localStorage.toState.name == 'front.login' ||
+                                $localStorage.toState.name == 'front.logout' ||
+                                $localStorage.toState.name == 'front.register' ||
+                                $localStorage.toState.name == 'front.resetpassword'
+                            ) {
+                                $state.go('front.usermenu', {locale: $rootScope.locale});
+                            } else {
+                                $localStorage.toParams.locale = $rootScope.locale;
+                                $state.go($localStorage.toState.name, $localStorage.toParams);
+                            }
                         } else {
-                            $state.go('front.usermenu');
+                            $state.go('front.usermenu', {locale: $rootScope.locale});
                         }
                     }, 1000);
                 }
             }, function(error) {
-                $state.go('front.login');
+                $state.go('front.login', {locale: $rootScope.locale});
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
@@ -71,28 +81,26 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.logout = function() {
             $scope.resetAccess();
             $timeout(function() {
-
                 $rootScope.loggedIn = false;
-
-                $state.go('front.home');
+                $state.go('front.home', {locale: $rootScope.locale});
             }, 1000);
         };
 
         $scope.myProfile = function () {
-            $state.go('front.profile');
+            $state.go('front.profile', {locale: $rootScope.locale});
         };
         
         $scope.register = function (type) {
-            $state.go('front.register', {type: type});
+            $state.go('front.register', {type: type, locale: $rootScope.locale});
         };
         
         $scope.goLogin = function () {
-            $state.go('front.login');
+            $state.go('front.login', {locale: $rootScope.locale});
         };
 
         $scope.gotoUserMenu = function () {
-            $state.go('front.usermenu');
-        }
+            $state.go('front.usermenu', {locale: $rootScope.locale});
+        };
 
 
     }]);

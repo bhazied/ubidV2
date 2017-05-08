@@ -53,15 +53,15 @@ app.controller('MyBuyersCtrl', ['$scope', '$controller', '$rootScope', '$statePa
         $scope.getDefaultBuyer();
 
         $scope.add = function() {
-            $state.go('front.mybuyers.new');
+            $state.go('front.mybuyers.new', {locale: $rootScope.locale});
         };
 
         $scope.edit = function(row) {
-            $state.go('front.mybuyers.edit', {id: row.id});
+            $state.go('front.mybuyers.edit', {id: row.id, locale: $rootScope.locale});
         };
 
         $scope.details = function(row) {
-            $state.go('front.mybuyers.details', {id: row.id});
+            $state.go('front.mybuyers.details', {id: row.id, locale: $rootScope.locale});
         };
 
     }]);

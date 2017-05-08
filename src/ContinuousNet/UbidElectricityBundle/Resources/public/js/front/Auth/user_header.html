@@ -2,13 +2,13 @@
     <span class="user-name pull-right" ng-click="gotoUserMenu()">
         [[ user.name ]]
         <ul class="submenu">
-            <li><a ui-sref="front.profile"><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
-            <li><a ui-sref="front.logout"><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
+            <li><a ui-sref="front.profile({locale: locale})"><i class="fa fa-user"></i> <span translate="front.MYPROFILE">My profile</span></a></li>
+            <li><a ui-sref="front.logout({locale: locale})"><i class="fa fa-sign-out"></i> <span translate="front.SIGNOUT">Sign out</span></a></li>
         </ul>
     </span>
-    <a class="user-photo pull-right [[ user.gender ]]" ui-sref="front.usermenu" ng-if="!user.picture"></a>
-    <a class="user-photo pull-right" ui-sref="front.usermenu" ng-if="user.picture" style="background-image: url([[user.picture]])"></a>
-   <!-- <a ui-sref="front.myAlerts.list" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>-->
+    <a class="user-photo pull-right [[ user.gender ]]" ui-sref="front.usermenu({locale: locale})" ng-if="!user.picture"></a>
+    <a class="user-photo pull-right" ui-sref="front.usermenu({locale: locale})" ng-if="user.picture" style="background-image: url([[user.picture]])"></a>
+   <!-- <a ui-sref="front.myAlerts.list({locale: locale})" class="notification pull-right"><span class="badge" ng-if="user.notificationsCount > 0">[[ user.notificationsCount ]]</span></a>-->
 </div>
 
 <div ng-controller="MyNotification" ng-if="user.email">
@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-md-6 pull-right">
                                 <a translate="front.MARKALLASREAD" ng-click="markAsRead()">Mark all as read</a> -
-                                <a ui-sref="front.myAlerts.settings" translate="front.ALERTPARAMS"></a>
+                                <a ui-sref="front.myAlerts.settings({locale: locale})" translate="front.ALERTPARAMS"></a>
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@
 </div>
 
 <div ng-if="!user.email" ng-controller="LoginFrontCtrl">
-    <button type="button" class="btn btn-primary pull-right" ui-sref="front.login">
+    <button type="button" class="btn btn-primary pull-right" ui-sref="front.login({locale: locale})">
         <i class="ti-user"></i> <span translate="front.SIGNIN">Sign in</span>
     </button>
 </div>

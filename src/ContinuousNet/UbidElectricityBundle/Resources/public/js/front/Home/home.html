@@ -2,32 +2,32 @@
     <h1 ng-if="homeLoaded" translate="front.THEPROFESSIONAL">The professional network for electrical business opportunities</h1>
     <ul ng-if="homeLoaded"><li>
             <div>
-                <a ui-sref="front.tenders({section: 'Tender'})"><i class="buniness_opportunity"></i></a>
-                <h2><a translate="front.BUSINESSOPPORTUNITIES" ui-sref="front.tenders({section: 'Tender'})">Business opportunities</a></h2>
+                <a ui-sref="front.tenders({section: 'Tender', locale: locale})"><i class="buniness_opportunity"></i></a>
+                <h2><a translate="front.BUSINESSOPPORTUNITIES" ui-sref="front.tenders({section: 'Tender', locale: locale})">Business opportunities</a></h2>
                 <p translate="front.BUSINESSOPPORTUNITIESDESCRIPTION">anyone looks for broadcasting business apportunities all over the world an compare bids</p>
             </div>
         </li><li>
             <div>
-                <a ui-sref="front.suppliers"><i class="supplier"></i></a>
-                <h2><a translate="front.SUPPLIERS" ui-sref="front.suppliers">Suppliers</a></h2>
+                <a ui-sref="front.suppliers({locale: locale})"><i class="supplier"></i></a>
+                <h2><a translate="front.SUPPLIERS" ui-sref="front.suppliers({locale: locale})">Suppliers</a></h2>
                 <p translate="front.SUPPLIERSDESCRIPTION">anyone looks for business apportunities to expand affair</p>
             </div>
         </li><li>
             <div>
-                <a ui-sref="front.buyers"><i class="service_requester"></i></a>
-                <h2><a translate="front.PRODUCTSERVICEREQUESTER" ui-sref="front.buyers">Product / Service requester</a></h2>
+                <a ui-sref="front.buyers({locale: locale})"><i class="service_requester"></i></a>
+                <h2><a translate="front.PRODUCTSERVICEREQUESTER" ui-sref="front.buyers({locale: locale})">Product / Service requester</a></h2>
                 <p translate="front.PRODUCTSERVICEREQUESTERDESCRIPTION">anyone requests services within the electrical business industry</p>
             </div>
         </li><li>
             <div>
-                <a ui-sref="front.category({slug: 'services', target:'suppliers'})"><i class="service_provider"></i></a>
-                <h2><a translate="front.SERVICEPROVIDER" ui-sref="front.category({slug: 'services', target:'suppliers'})">Service Provider</a></h2>
+                <a ui-sref="front.category({slug: 'services', target:'suppliers', locale: locale})"><i class="service_provider"></i></a>
+                <h2><a translate="front.SERVICEPROVIDER" ui-sref="front.category({slug: 'services', target:'suppliers', locale: locale})">Service Provider</a></h2>
                 <p translate="front.SERVICEPROVIDERDESCRIPTION">a business responds to all your electrical service needs</p>
             </div>
         </li><li>
             <div>
-                <a ui-sref="front.category({slug: 'logistics', target:'suppliers'})"><i class="logistic_agent"></i></a>
-                <h2><a translate="front.LOGISTICS" ui-sref="front.category({slug: 'logistics-services', target:'suppliers'})">Logistics</a></h2>
+                <a ui-sref="front.category({slug: 'logistics', target:'suppliers', locale: locale})"><i class="logistic_agent"></i></a>
+                <h2><a translate="front.LOGISTICS" ui-sref="front.category({slug: 'logistics-services', target:'suppliers', locale: locale})">Logistics</a></h2>
                 <p translate="front.LOGISTICSDESCRIPTION">a business responds to all your carrer service needs</p>
             </div>
     </li></ul>

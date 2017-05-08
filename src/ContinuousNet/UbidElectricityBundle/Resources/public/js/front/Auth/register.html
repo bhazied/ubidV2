@@ -5,7 +5,7 @@
         <legend ng-if="user.type == 'Buyer'" translate="front.REGISTERASBUYER">Register as Buyer</legend>
         <legend ng-if="user.type == 'Supplier'" translate="front.REGISTERASSUPPLIER">Register as Supplier</legend>
 
-        <p><span translate="front.ALREADYHAVEANACCOUNT">Already have an account?</span> <a ui-sref="front.login({type: user.type})" translate="front.SIGNIN">Sign in</a>.</p>
+        <p><span translate="front.ALREADYHAVEANACCOUNT">Already have an account?</span> <a ui-sref="front.login({type: user.type, locale: locale})" translate="front.SIGNIN">Sign in</a>.</p>
 
         <form  name="registerForm" id="registerForm" class="form" data-ng-submit="submitForm(registerForm)">
             <input type="hidden" ng-model="user.roles" name="roles" id="roles" value="[[ roles.id ]]">
@@ -192,11 +192,11 @@
                         <input name="gc" id="gc" ng-model="user.gc" type="checkbox" class="form-control"  placeholder="[[ 'content.list.fields.GENERALCONDITION' | translate ]]" ng-required="true">
                         <label for="gc" class="control-label">
                             <span translate="front.IHAVEREADANDACCEPTTHE">I Accept the</span>
-                            <a ui-sref="front.post({slug:'terms-of-use'})" ng-click="showCg('terms-of-use')">
+                            <a ui-sref="front.post({slug:'terms-of-use', locale: locale})" ng-click="showCg('terms-of-use')">
                                 <u translate="front.TERMSOFUSE">Term of use</u>
                             </a>
                             &nbsp;
-                            <a ui-sref="front.post({slug:'privacy-policy'})" ng-click="showCg('privacy-policy')">
+                            <a ui-sref="front.post({slug:'privacy-policy', locale: locale})" ng-click="showCg('privacy-policy')">
                                 <u translate="front.PRIVACYPOLICY">Privacy policy</u>
                             </a>.
                         </label>

@@ -657,7 +657,7 @@ app.config(['$stateProvider',
             title: 'front.PROJECTBIDS',
             resolve: loadSequence('MyProjectBidsCtrl', 'TendersCtrl', 'tenderService', 'buyerService', 'regionService', 'countryService', 'sectorService', 'tenderTypeService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService', 'supplierService')
         }).state('front.projectbids.bids', {
-            url: '/bids-by-project/:projectId',
+            url: '/bids-by-project/:id',
             templateUrl: '/bundles/ubidelectricity/js/front/ProjectBids/bids-by-project.html',
             title: 'front.BIDSBYPROJECT',
             resolve: loadSequence('BidsByProjectCtrl', 'tenderService', 'biddingTypeService', 'userService', 'categoryService', 'projectBidsFrontService')

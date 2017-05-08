@@ -19,15 +19,15 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     angular.extend(this, $controller('TenderCtrl', {$scope:$scope}));
 
     $scope.list = function() {
-        $state.go('front.mytenders.list');
+        $state.go('front.mytenders.list', {locale: $rootScope.locale});
     };
 
     $scope.add = function() {
-        $state.go('front.mytenders.new');
+        $state.go('front.mytenders.new', {locale: $rootScope.locale});
     };
 
     $scope.edit = function(row) {
-        $state.go('front.mytenders.edit', {id: row.id});
+        $state.go('front.mytenders.edit', {id: row.id, locale: $rootScope.locale});
     };
 
 }]);

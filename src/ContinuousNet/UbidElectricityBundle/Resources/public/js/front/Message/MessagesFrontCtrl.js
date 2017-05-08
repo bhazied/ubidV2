@@ -87,7 +87,7 @@ app.controller('MessagesFrontCtrl', ['$scope','$controller', '$rootScope', '$sta
         $scope.setCols();
 
         $scope.details = function(row) {
-            $state.go('front.messages.detail', {id: row.id});
+            $state.go('front.messages.detail', {id: row.id, locale: $rootScope.locale});
         };
     }]);
 

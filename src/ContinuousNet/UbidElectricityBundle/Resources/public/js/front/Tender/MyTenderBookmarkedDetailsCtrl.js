@@ -22,7 +22,7 @@ app.controller('MyTenderBookmarkedDetailsCtrl', ['$scope', '$state', '$statePara
         $scope.timeFormat = $filter('translate')('formats.TIME');
 
         $scope.list = function() {
-            $state.go('front.bookmarkproject.list');
+            $state.go('front.bookmarkproject.list', {locale: $rootScope.locale});
         };
 
 

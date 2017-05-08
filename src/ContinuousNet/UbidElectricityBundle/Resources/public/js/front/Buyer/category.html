@@ -17,8 +17,8 @@
         <div class="row" ng-if="buyers.length > 0">
             <div ng-repeat="buyer in buyers" class="tender-preview">
                 <h3>
-                    <a ui-sref="front.buyer({id: buyer.id})" ng-if="user.email" class="name" ng-bind="buyer.name"></a>
-                    <a ui-sref="front.login"  ng-if="!user.email" class="name" ng-bind="buyer.name"></a>
+                    <a ui-sref="front.buyer({id: buyer.id, locale: locale})" ng-if="user.email" class="name" ng-bind="buyer.name"></a>
+                    <a ui-sref="front.login({locale: locale})"  ng-if="!user.email" class="name" ng-bind="buyer.name"></a>
                 </h3>
                 <div class="pb-1 clearfix">
                     <img ng-if="buyer.picture" src="[[ buyer.picture ]]" alt="[[ buyer.name ]]" class="pull-right img-thumbnail" />
@@ -26,13 +26,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button ui-sref="front.buyer({id: buyer.id})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
-                        <button ui-sref="front.login" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+                        <button ui-sref="front.buyer({id: buyer.id, locale: locale})" ng-if="user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
+                        <button ui-sref="front.login({locale: locale})" ng-if="!user.email" class="btn btn-sm"><i class="fa fa-chevron-circle-down"></i> <span translate="front.READMORE">Read more</span></button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-sm pull-right" translate-attr-title="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button>
-                        <button ui-sref="front.messages.send({id: buyer.id, to:'buyer'})" ng-if="user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
-                        <button ui-sref="front.login" ng-if="!user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                        <button ui-sref="front.messages.send({id: buyer.id, to:'buyer', locale: locale})" ng-if="user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
+                        <button ui-sref="front.login({locale: locale})" ng-if="!user.email && buyer.enable_private_message" class="btn btn-sm pull-right mr-1" translate-attr-title="front.MESSAGE" title="Message"><i class="fa fa-envelope-o"></i></button>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="row mb-1">
-            <div class="col-md-6"><a ui-sref="front.categories"><i class="ti-arrow-left"></i> <span translate="front.CATEGORIESLIST">Categories list</span></a></div>
+            <div class="col-md-6"><a ui-sref="front.categories({locale: locale})"><i class="ti-arrow-left"></i> <span translate="front.CATEGORIESLIST">Categories list</span></a></div>
         </div>
     </div>
 </div>

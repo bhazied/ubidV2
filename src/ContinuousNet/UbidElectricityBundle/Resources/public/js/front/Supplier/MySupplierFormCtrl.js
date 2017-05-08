@@ -22,7 +22,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     $scope.redirect = true;
 
     $scope.list = function() {
-        $state.go('front.mysuppliers.list');
+        $state.go('front.mysuppliers.list', {locale: $rootScope.locale});
     };
 
     $scope.steps = [

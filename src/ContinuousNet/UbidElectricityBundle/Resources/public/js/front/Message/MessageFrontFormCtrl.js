@@ -10,7 +10,7 @@ app.controller('MessageFrontFormCtrl', ['$scope','$controller', '$rootScope', '$
 
 
         $scope.list = function() {
-            $state.go('front.messages.list');
+            $state.go('front.messages.list', {locale: $rootScope.locale});
         };
 
 
@@ -186,10 +186,10 @@ app.controller('MessageFrontFormCtrl', ['$scope','$controller', '$rootScope', '$
         };
 
         $scope.listBuyers = function() {
-            $state.go('front.buyers');
+            $state.go('front.buyers', {locale: $rootScope.locale});
         };
         $scope.listSuppliers = function() {
-            $state.go('front.suppliers');
+            $state.go('front.suppliers', {locale: $rootScope.locale});
         };
 
         $scope.message_from_buyer_readonly = false;

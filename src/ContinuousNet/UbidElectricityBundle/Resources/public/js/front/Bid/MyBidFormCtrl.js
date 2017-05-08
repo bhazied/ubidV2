@@ -198,7 +198,7 @@ function($rootScope, $scope, $state, $stateParams, $sce, $timeout, $filter, $uib
     };
 
     $scope.list = function() {
-        $state.go('front.mybids.list');
+        $state.go('front.mybids.list', {locale: $rootScope.locale});
     };
     
     $scope.bid_tender_readonly = false;

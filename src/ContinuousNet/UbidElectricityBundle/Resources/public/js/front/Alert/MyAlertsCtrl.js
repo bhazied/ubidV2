@@ -43,15 +43,15 @@ app.controller('MyAlertsCtrl', ['$scope', '$rootScope', '$state', '$stateParams'
         $scope.setCols();
 
         $scope.add = function() {
-            $state.go('front.myAlerts.new');
+            $state.go('front.myAlerts.new', {locale: $rootScope.locale});
         };
 
         $scope.edit = function(row) {
-            $state.go('front.myAlerts.edit', {id: row.id});
+            $state.go('front.myAlerts.edit', {id: row.id, locale: $rootScope.locale});
         };
 
         $scope.details = function(row) {
-            $state.go('front.myAlerts.details', {id: row.id});
+            $state.go('front.myAlerts.details', {id: row.id, locale: $rootScope.locale});
         };
 
     }]);

@@ -178,7 +178,7 @@
                         <tr>
                             <td><span translate="content.list.fields.CATEGORIES">Categories</span></td>
                             <td>
-                                <a ng-repeat="category in tender.categories" ui-sref="front.category({slug: category.slug})">[[ category.name ]]</a>
+                                <a ng-repeat="category in tender.categories" ui-sref="front.category({slug: category.slug, locale: locale})">[[ category.name ]]</a>
                             </td>
                         </tr>
                         </tbody>

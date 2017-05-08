@@ -72,7 +72,7 @@ app.controller('tenderCtrl', ['$scope', '$rootScope', '$localStorage', '$state',
 
 
         $scope.list= function (section) {
-            $state.go('front.tenders', {section: section});
+            $state.go('front.tenders', {section: section, locale: $rootScope.locale});
         };
 
         $scope.showButtonApplay = false;

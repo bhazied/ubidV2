@@ -30,7 +30,7 @@ function($scope, $controller, $rootScope, $state, $stateParams, $sce, $timeout, 
     };
 
     $scope.list = function() {
-        $state.go('front.mytenders.list');
+        $state.go('front.mytenders.list', {locale: $rootScope.locale});
     };
 
     $scope.showSupplier = false;

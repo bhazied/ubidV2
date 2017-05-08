@@ -41,7 +41,7 @@ app.controller('MyTenderBookmarkedCtrl', ['$scope','$controller', '$rootScope', 
 
 
     $scope.details = function(row) {
-        $state.go('front.bookmarkproject.details', {id: row.id});
+        $state.go('front.bookmarkproject.details', {id: row.id, locale: $rootScope.locale});
     };
 
 }]);

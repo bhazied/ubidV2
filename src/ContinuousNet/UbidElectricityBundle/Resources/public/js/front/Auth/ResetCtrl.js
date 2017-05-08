@@ -35,17 +35,8 @@ app.controller('ResetCtrl', ['$interval', '$scope', '$rootScope', '$localStorage
                     $scope.status = 'success';
                     $scope.showForm = false;
                     if (data.user.roles.indexOf('ROLE_SUBSCRIBER') > -1) {
-                        /*$scope.interval =  $interval(function () {
-                            console.log($scope.seconds);
-                            $scope.seconds--;
-                            if($scope.seconds < 0){
-                                $scope.seconds = 0;
-                                $interval.cancel($scope.interval);
-                                $state.go('front.login');
-                            }
-                        }, 1000);*/
                         $timeout(function () {
-                            $state.go('front.login');
+                            $state.go('front.login', {locale: $rootScope.locale});
                         }, 5000);
                     }
                 } else {

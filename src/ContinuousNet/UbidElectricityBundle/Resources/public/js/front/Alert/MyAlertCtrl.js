@@ -19,15 +19,15 @@ app.controller('MyAlertCtrl', ['$scope', '$rootScope', '$state', '$stateParams',
         angular.extend(this, $controller('AlertCtrl', {$scope:$scope}));
 
         $scope.list = function() {
-            $state.go('front.myAlerts.list');
+            $state.go('front.myAlerts.list', {locale: $rootScope.locale});
         };
 
         $scope.add = function() {
-            $state.go('front.myAlerts.new');
+            $state.go('front.myAlerts.new', {locale: $rootScope.locale});
         };
 
         $scope.edit = function(row) {
-            $state.go('front.myAlerts.edit', {id: row.id});
+            $state.go('front.myAlerts.edit', {id: row.id, locale: $rootScope.locale});
         };
         
 

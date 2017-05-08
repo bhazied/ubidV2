@@ -38,7 +38,7 @@ app.controller('MyAlertFormCtrl', ['$scope', '$rootScope', '$stateParams', '$loc
             css: 'danger'
         }];
         $scope.list = function() {
-            $state.go('front.myAlerts.list');
+            $state.go('front.myAlerts.list', {locale: $rootScope.locale});
         };
 
 

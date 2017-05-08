@@ -29,7 +29,7 @@ app.controller('LogoutFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$st
 
         $timeout(function() {
             toaster.pop('success',$filter('translate')('content.common.NOTIFICATION'), $filter('translate')('front.YOUHAVEBEENLOGGEDOUT'));
-            $state.go('front.home');
+            $state.go('front.home', {locale: $rootScope.locale});
         });
 
     }]);

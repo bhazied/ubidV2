@@ -2,9 +2,9 @@
 
     <div class="col-lg-10 offset-lg-1 col-md-12 offset-md-0 col-sm-12 offset-sm-0">
 
-        <!--a ng-if="showLogo" class="navbar-logo-icon" ui-sref="front.home"></a-->
+        <!--a ng-if="showLogo" class="navbar-logo-icon" ui-sref="front.home({locale: locale})"></a-->
 
-        <a class="navbar-logo-text" ui-sref="front.home"></a><!-- ng-if="showBrandName" -->
+        <a class="navbar-logo-text" ui-sref="front.home({locale: locale})"></a><!-- ng-if="showBrandName" -->
 
         <form ng-if="SearchFormHeader" ng-controller="SearchFormCtrl" class="float-xs-left" name="searchForm" id="searchForm" ng-submit="submitSearch(searchText)">
             <div class="input-group">
@@ -13,15 +13,15 @@
                         <i class="fa fa-list-ul"></i>
                     </a>
                     <div class="dropdown-menu" uib-dropdown-menu>
-                        <a class="dropdown-item" ui-sref="front.tenders({section: 'Tender'})"><i class="fa fa-file-text-o"></i><span translate="front.TENDERS">Tenders</span></a>
+                        <a class="dropdown-item" ui-sref="front.tenders({section: 'Tender', locale: locale})"><i class="fa fa-file-text-o"></i><span translate="front.TENDERS">Tenders</span></a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item"  ui-sref="front.tenders({section: 'Consultation'})"><i class="fa fa-user-secret"></i><span translate="front.CONSULTATIONS">Consultations</span></a>
+                        <a class="dropdown-item"  ui-sref="front.tenders({section: 'Consultation', locale: locale})"><i class="fa fa-user-secret"></i><span translate="front.CONSULTATIONS">Consultations</span></a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" ui-sref="front.categories"><i class="fa fa-folder-open-o"></i><span translate="front.CATEGORIES">Categories</span></a>
+                        <a class="dropdown-item" ui-sref="front.categories({locale: locale})"><i class="fa fa-folder-open-o"></i><span translate="front.CATEGORIES">Categories</span></a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" ui-sref="front.buyers"><i class="fa fa-shopping-cart"></i><span translate="front.BUYERS">Buyers</span></a>
+                        <a class="dropdown-item" ui-sref="front.buyers({locale: locale})"><i class="fa fa-shopping-cart"></i><span translate="front.BUYERS">Buyers</span></a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" ui-sref="front.suppliers"><i class="fa fa-handshake-o"></i><span translate="front.SUPPLIERS">Suppliers</span></a>
+                        <a class="dropdown-item" ui-sref="front.suppliers({locale: locale})"><i class="fa fa-handshake-o"></i><span translate="front.SUPPLIERS">Suppliers</span></a>
                     </div>
                 </div>
                 <input class="form-control" placeholder="[['front.ELECTRICITYBOOKSEARCH' | translate]]" type="text" id="searchText" name="searchText" ng-model="searchText"/>
@@ -40,16 +40,16 @@
 
         <ul class="nav navbar-nav float-xs-right">
             <li class="nav-item" ng-if="!user.email">
-                <a class="nav-link" ui-sref="front.login({type: 'Buyer'})">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
+                <a class="nav-link" ui-sref="front.login({type: 'Buyer', locale: locale})">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="user.type == 'Buyer' || user.type == 'Both'">
-                <a class="nav-link" ui-sref="front.usermenu">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
+                <a class="nav-link" ui-sref="front.usermenu({locale: locale})">[['front.IMA' | translate]] <b>[['front.BUYER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="!user.email">
-                <a class="nav-link" ui-sref="front.login({type: 'Supplier'})">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
+                <a class="nav-link" ui-sref="front.login({type: 'Supplier', locale: locale})">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
             </li>
             <li class="nav-item" ng-if="user.type == 'Supplier' || user.type == 'Both'">
-                <a class="nav-link" ui-sref="front.usermenu">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
+                <a class="nav-link" ui-sref="front.usermenu({locale: locale})">[['front.IMA' | translate]] <b>[['front.SUPPLIER' | translate]]</b></a>
             </li>
         </ul>
 

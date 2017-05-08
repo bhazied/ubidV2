@@ -26,18 +26,17 @@ app.controller('BidDetailsCtrl', ['$scope', '$rootScope','$controller', '$state'
                 id: $scope.bid.id
             };
             $bidsFrontDataFactory.bookmarkBid($params).$promise.then(function (data) {
-                if(data.status == true) {
+                if (data.status == true) {
                     toaster.pop('success', $filter('translate')('content.common.SHORLISTBIDNOTIFICATION'), data.message);
-                }
-                else{
+                } else {
                     toaster.pop('error', $filter('translate')('content.common.SHORLISTBIDNOTIFICATION'), data.message);
                 }
                 $scope.disableAdd = false;
             });
-        }
+        };
         
         $scope.list = function () {
-            $state.go('front.projectbids.bids', {projectId: $scope.bid.tender.id});
-        }
+            $state.go('front.projectbids.bids', {projectId: $scope.bid.tender.id, locale: $rootScope.locale});
+        };
 
     }]);

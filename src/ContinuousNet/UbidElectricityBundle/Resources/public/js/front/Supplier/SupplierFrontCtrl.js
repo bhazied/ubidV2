@@ -68,7 +68,7 @@ app.controller('SupplierFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$
         $scope.getSupplierProducts();
 
         $scope.list = function () {
-            $state.go('front.suppliers');
+            $state.go('front.suppliers', {locale: $rootScope.locale});
         }
         
 

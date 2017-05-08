@@ -3,10 +3,10 @@
     <div class="row nav-menu">
         <div id="main_tabs" class="col-md-9 col-sm-12 pl-0 pr-0">
             <ul class="pull-left">
-                <li ng-class="{active: section == 'Consultation'}"><a ui-sref="front.tenders({section:'Consultation'})" translate="front.CONSULTATIONS">Consultations</a></li>
-                <li ng-class="{active: section == 'Tender'}"><a ui-sref="front.tenders({section:'Tender'})" translate="front.TENDERS">Tenders </a></li>
-                <li><a ui-sref="front.buyers" translate="front.BUYERS">Buyers</a></li>
-                <li><a ui-sref="front.suppliers" translate="front.SUPPLIERS">Suppliers</a></li>
+                <li ng-class="{active: section == 'Consultation'}"><a ui-sref="front.tenders({section:'Consultation', locale: locale})" translate="front.CONSULTATIONS">Consultations</a></li>
+                <li ng-class="{active: section == 'Tender'}"><a ui-sref="front.tenders({section:'Tender', locale: locale})" translate="front.TENDERS">Tenders </a></li>
+                <li><a ui-sref="front.buyers({locale: locale})" translate="front.BUYERS">Buyers</a></li>
+                <li><a ui-sref="front.suppliers({locale: locale})" translate="front.SUPPLIERS">Suppliers</a></li>
             </ul>
         </div>
         <div id="sort_by" class="col-md-3 col-sm-12 pl-0">
@@ -27,8 +27,8 @@
     <h2 ng-bind-html="post.content" class="content_entity"></h2>
     <div class="tender-preview"  ng-repeat="tender in tendersList">
         <h3>
-            <a class="name" ui-sref="front.tender({id: tender.id})" ng-if="user.email" ng-bind="tender.title"></a>
-            <a class="name" ui-sref="front.login" ng-if="!user.email" ng-bind="tender.title"></a>
+            <a class="name" ui-sref="front.tender({id: tender.id, locale: locale})" ng-if="user.email" ng-bind="tender.title"></a>
+            <a class="name" ui-sref="front.login({locale: locale})" ng-if="!user.email" ng-bind="tender.title"></a>
         </h3>
         <p class="reference"><span translate="front.REFNUMBER">Ref number</span> :  [[ tender.reference ]]</p>
         <p class="description" ng-bind-html="tender.description | htmlToPlaintext | limitTo: 250"></p> ...
@@ -38,8 +38,8 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <button class="btn btn-sm" ng-if="user.email" translate="front.READMORE" ui-sref="front.tender({id: tender.id})">Read more</button>
-                <button class="btn btn-sm" ng-if="!user.email" translate="front.READMORE"  ui-sref="front.login">Read more</button>
+                <button class="btn btn-sm" ng-if="user.email" translate="front.READMORE" ui-sref="front.tender({id: tender.id, locale: locale})">Read more</button>
+                <button class="btn btn-sm" ng-if="!user.email" translate="front.READMORE"  ui-sref="front.login({locale: locale})">Read more</button>
             </div>
             <div class="col-md-6">
                 <!--<button class="btn btn-sm pull-right" translate="front.SHARE" title="Share"><i class="fa fa-share-alt"></i></button> -->
