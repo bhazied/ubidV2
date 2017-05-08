@@ -12,10 +12,8 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
         $rootScope.contentSize = 12;
         $rootScope.contentOffset = 0;
         $rootScope.SearchFormHeader = false;
-
         $rootScope.showLogo = false;
         $rootScope.showBrandName = false;
-
         $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
@@ -121,6 +119,25 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 angular.element('.email-reader').animate({
                     scrollTop : 0
                 }, 0);
+            }
+
+            // Save the route title
+
+            if ($state.current.name == 'front.home') {
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                });
+            }
+            if ($state.current.name == 'front.login') {
+
+            }
+            if ($state.current.name == 'front.generic_search') {
+
             }
             
         });

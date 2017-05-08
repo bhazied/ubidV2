@@ -7,13 +7,15 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
         $timeout(function() {
-            $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = false;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
-            $rootScope.contentOffset = 3;
-        }, 1500);
+            if ($state.current.name == 'front.login') {
+                $rootScope.showSlogan = false;
+                $rootScope.showLeftSide = false;
+                $rootScope.showRightSide = false;
+                $rootScope.showUserMenu = false;
+                $rootScope.contentSize = 6;
+                $rootScope.contentOffset = 3;
+            }
+        }, 1000);
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 

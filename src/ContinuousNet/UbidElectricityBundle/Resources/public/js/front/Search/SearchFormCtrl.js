@@ -2,13 +2,15 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
         $timeout(function() {
-            $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
-            $rootScope.contentOffset = 0;
-        }, 1500);
+            if ($state.current.name == 'front.search') {
+                $rootScope.showSlogan = false;
+                $rootScope.showLeftSide = true;
+                $rootScope.showRightSide = false;
+                $rootScope.showUserMenu = false;
+                $rootScope.contentSize = 8;
+                $rootScope.contentOffset = 0;
+            }
+        }, 1000);
 
         $scope.showForm = false;
         $scope.toggle = function() {

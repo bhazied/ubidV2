@@ -12,14 +12,14 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
             $rootScope.contentSize = 12;
             $rootScope.contentOffset = 0;
             $scope.homeLoaded = true;
-        }, 1500);
+        }, 1000);
 
         $scope.goPublication = function () {
             $state.go('front.mytenders.new', {locale: $rootScope.locale});
         };
 
         $scope.goTender = function () {
-            $state.go('front.tenders', {section: 'Tender', locale: $rootScope.locale});;
+            $state.go('front.tenders', {section: 'Tender', locale: $rootScope.locale});
         };
 
         $scope.goProposal = function () {

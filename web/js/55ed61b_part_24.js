@@ -329,13 +329,15 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
         $timeout(function() {
-            $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = false;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 6;
-            $rootScope.contentOffset = 3;
-        }, 1000);
+            if ($state.current.name == 'front.login') {
+                $rootScope.showSlogan = false;
+                $rootScope.showLeftSide = false;
+                $rootScope.showRightSide = false;
+                $rootScope.showUserMenu = false;
+                $rootScope.contentSize = 6;
+                $rootScope.contentOffset = 3;
+            }
+        }, 1500);
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -434,12 +436,15 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
 
-        //header searchForm show
+        $rootScope.showSlogan = false;
+        $rootScope.showUserMenu = false;
+        $rootScope.showLeftSide = false;
+        $rootScope.showRightSide = false;
+        $rootScope.contentSize = 12;
+        $rootScope.contentOffset = 0;
         $rootScope.SearchFormHeader = false;
-
         $rootScope.showLogo = false;
         $rootScope.showBrandName = false;
-
         $rootScope.searchLoaded = false;
 
         $scope.anonymousStates = [
@@ -545,6 +550,25 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 angular.element('.email-reader').animate({
                     scrollTop : 0
                 }, 0);
+            }
+
+            // Save the route title
+
+            if ($state.current.name == 'front.home') {
+                $timeout(function() {
+                    $rootScope.showSlogan = false;
+                    $rootScope.showLeftSide = false;
+                    $rootScope.showRightSide = false;
+                    $rootScope.showUserMenu = false;
+                    $rootScope.contentSize = 8;
+                    $rootScope.contentOffset = 0;
+                });
+            }
+            if ($state.current.name == 'front.login') {
+
+            }
+            if ($state.current.name == 'front.generic_search') {
+
             }
             
         });
@@ -707,13 +731,15 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
 
         $timeout(function() {
-            $rootScope.showSlogan = false;
-            $rootScope.showLeftSide = true;
-            $rootScope.showRightSide = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.contentSize = 8;
-            $rootScope.contentOffset = 0;
-        }, 1000);
+            if ($state.current.name == 'front.search') {
+                $rootScope.showSlogan = false;
+                $rootScope.showLeftSide = true;
+                $rootScope.showRightSide = false;
+                $rootScope.showUserMenu = false;
+                $rootScope.contentSize = 8;
+                $rootScope.contentOffset = 0;
+            }
+        }, 1500);
 
         $scope.showForm = false;
         $scope.toggle = function() {
