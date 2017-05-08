@@ -1,6 +1,6 @@
 
 User-agent: *
-Disallow: /en/generic-search-results/
+Disallow: /en/search-results/
 Disallow: /en/user-menu/
 Disallow: /en/profile/
 Disallow: /en/change-password/
@@ -13,7 +13,7 @@ Disallow: /en/bookmark-project/*
 Disallow: /en/my-bids/*
 Disallow: /en/my-alerts/*
 Disallow: /en/my-messages/*
-Disallow: /fr/generic-search-results/
+Disallow: /fr/search-results/
 Disallow: /fr/user-menu/
 Disallow: /fr/profile/
 Disallow: /fr/change-password/

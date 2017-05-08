@@ -12,7 +12,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '
             $rootScope.contentSize = 12;
             $rootScope.contentOffset = 0;
             $scope.homeLoaded = true;
-        }, 1000);
+        }, 1500);
 
         $scope.goPublication = function () {
             $state.go('front.mytenders.new', {locale: $rootScope.locale});

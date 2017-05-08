@@ -94,12 +94,8 @@ e_electricity_front_tenders_country:
     path: /tenders/country/{id}
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
-e_electricity_front_advanced_search:
-    path: /advanced-search-results
-    defaults: { _controller: UbidElectricityBundle:Default:public }
-
-e_electricity_front_generic_search:
-    path: /generic-search-results
+e_electricity_front_search_results:
+    path: /search-results
     defaults: { _controller: UbidElectricityBundle:Default:public }
 
 e_electricity_front_apply_tender:
