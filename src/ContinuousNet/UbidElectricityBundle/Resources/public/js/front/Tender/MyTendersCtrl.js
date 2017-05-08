@@ -21,6 +21,7 @@ function($scope, $controller, $rootScope, $stateParams, $location, $sce, $timeou
     $scope.setCols = function() {
         $scope.cols = [
             { field: 'buyer', title: $filter('translate')('content.list.fields.BUYER'), sortable: 'buyer.name', filter: { 'tender.buyer': 'select' }, getValue: $scope.linkValue, filterData: $scope.getBuyers(), show: true, displayField: 'name', state: 'app.marketplace.buyersdetails' },
+            { field: 'supplier', title: $filter('translate')('content.list.fields.SUPPLIER'), sortable: 'supplier.name', filter: { 'tender.supplier': 'select' }, getValue: $scope.linkValue, filterData: $scope.getSuppliers(), show: true, displayField: 'name', state: 'app.marketplace.suppliersdetails' },
             { field: 'reference', title: $filter('translate')('content.list.fields.REFERENCE'), sortable: 'tender.reference', filter: { 'tender.reference': 'text' }, show: true, getValue: $scope.textValue },
             { field: 'tender_type', title: $filter('translate')('content.list.fields.TENDERTYPE'), sortable: 'tender_type.name', filter: { 'tender.tenderType': 'select' }, getValue: $scope.linkValue, filterData: $scope.getTenderTypes(), show: true, displayField: 'name', state: 'app.lists.tendertypesdetails' },
             { field: 'title', title: $filter('translate')('content.list.fields.TITLE'), sortable: 'tender.title', filter: { 'tender.title': 'text' }, show: true, getValue: $scope.textValue },
