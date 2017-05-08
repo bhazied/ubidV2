@@ -1,0 +1,63 @@
+{% extends 'UbidElectricityBundle::email_template.html.twig' %}
+{% block mailContent %}
+    <p style="padding-bottom: 20px;">{{ 'email.alert.dear' | trans({'%fistname%': fistName}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.alert.new_content_published' }}</p>
+    <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
+        {% if Tenders %}
+            <tr>
+                <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                    {{ 'email.alert.tenders' | trans }}
+                </th>
+            </tr>
+            <tr>
+                <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                    {% for id,tender in tenders %}
+                        <p><a href="{{ baseUrl }}/{{ 'email.locale' | trans }}/tender/{{ id }}" style="text-decoration:none;color: #1D69AD;"  target="_blank">{{ tender }}</a></p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if Tenders %}
+            <tr>
+                <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                    {{ 'email.alert.consultations' | trans }}
+                </th>
+            </tr>
+            <tr>
+                <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                    {% for id,consultation in consultations %}
+                        <p><a href="{{ baseUrl }}/{{ 'email.locale' | trans }}/tender/{{ id }}" style="text-decoration:none;color: #1D69AD;"  target="_blank">{{ consultation }}</a></p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if Buyers %}
+            <tr>
+                <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                    {{ 'email.alert.buyers' | trans }}
+                </th>
+            </tr>
+            <tr>
+                <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                    {% for id,buyer in buyers %}
+                        <p><a href="{{ baseUrl }}/{{ 'email.locale' | trans }}/buyer/{{ id }}" style="text-decoration:none;color: #1D69AD;"  target="_blank">{{ buyer }}</a></p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if Suppliers %}
+            <tr>
+                <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                    {{ 'email.alert.suppliers' | trans }}
+                </th>
+            </tr>
+            <tr>
+                <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                    {% for id,supplier in suppliers %}
+                        <p><a href="{{ baseUrl }}/{{ 'email.locale' | trans }}/supplier/{{ id }}" style="text-decoration:none;color: #1D69AD;"  target="_blank">{{ supplier }}</a></p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

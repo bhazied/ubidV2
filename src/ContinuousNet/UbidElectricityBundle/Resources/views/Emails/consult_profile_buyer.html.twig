@@ -1,22 +1,17 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear {{buyer.getCreatorUser().getFirstName() }},</p>
-    <p>&nbsp;</p>
-    <p>
-
-        Your {{ buyer.getName() }}  has been consulted
-    </p>
-    <p>&nbsp;</p>
+    <p style="padding-bottom: 20px;">{{ 'email.consult_profile_buyer.dear' | trans({'%fistname%': buyer.getCreatorUser().getFirstName()}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.consult_profile_buyer.buyer_consulted' | trans({'%buyername%': buyer.getName()}) }}</p>
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
         <tr>
             <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
-                buyer informations
+                {{ 'email.consult_profile_buyer.buyer_informations' | trans }}
             </th>
         </tr>
         <tr>
             <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
-                <p><span style="color: #1D69AD;">Name</span> : {{ buyer.getName() }}</p>
-                <p><span style="color: #1D69AD;">Description</span> : {{ buyer.getDescription() | striptags}}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.consult_profile_buyer.name' | trans }}</span> : {{ buyer.getName() }}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.consult_profile_buyer.description' | trans }}</span> : {{ buyer.getDescription() | striptags}}</p>
             </td>
         </tr>
     </table>

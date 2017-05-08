@@ -83,6 +83,7 @@ class SearchRestController extends FOSRestController {
 
             //get Tenders
             $qb_tender->from('UbidElectricityBundle:Tender', 't_');
+            $qb_tender->andWhere('t.validated = 1');
             $qb_tender->andwhere('t_.status = :status')->setParameters(array('status' => 'Online'));
             if (!is_null($searchText)) {
                 $qb_tender->andWhere($qb_tender->expr()->like(

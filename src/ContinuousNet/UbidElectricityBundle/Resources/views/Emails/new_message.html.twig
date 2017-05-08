@@ -1,15 +1,26 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-
-    <p>Dear {{ message.getToUser().getFirstName() }},</p>
-    <p>&nbsp;</p>
-    <p>
-        You have received a new Message from {{ message.getFromUser().getFirstName() }}
-    </p>
-    <p>&nbsp;</p>
-    {% if message.getBody()|length > 100 %}
-        {{ message.getBody()|striptags | slice(0, 100) }} ..
-    {% else %}
-        {{ message.getBody()|striptags }}
-    {% endif %}
+    <p style="padding-bottom: 20px;">{{ 'email.new_message.dear' | trans({'%fistname%': message.getToUser().getFirstName() }) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.new_message.message_received' | trans({'%fistname%': message.getFromUser().getFirstName() }) }}</p>
+    <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
+        <tr>
+            <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                {{ 'email.new_message.subject_value' | trans({'%subject%': subject}) }}
+            </th>
+        </tr>
+        <tr>
+            <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                {{ 'email.new_message.message' | trans }}
+            </th>
+        </tr>
+        <tr>
+            <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+            {% if message.getBody()|length > 100 %}
+                {{ message.getBody()|striptags | slice(0, 100) }} ..
+            {% else %}
+                {{ message.getBody()|striptags }}
+            {% endif %}
+            </td>
+        </tr>
+    </table>
 {% endblock %}

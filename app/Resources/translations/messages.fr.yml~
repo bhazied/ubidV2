@@ -1,4 +1,4 @@
-login.bad_credentials: 'Invalid username or password'
+'login.bad_credentials''': 'Invalid username or password'
 register.enter_voucher_code: 'Please enter your voucher code.'
 register.phone_already_used: 'Email invalid or already used by another user!'
 group.edit.submit: 'Update group'

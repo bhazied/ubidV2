@@ -1,12 +1,8 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear ,</p>
-    <p>&nbsp;</p>
-    <p>
-
-        You have just received a new mail from {{ firstName }}  {{ lastName }}
-    </p>
-    <p>with subject : {{ subject }}</p>
-    <p>{{ message }}</p>
-    <p>&nbsp;</p>
+    <p style="padding-bottom: 20px;">{{ 'email.contact.dear' | trans({'%username%': user.username}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.contact.email_received' | trans({'%firstname%': firstName, '%lastname%': lastName }) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.contact.subject_value' | trans({'%subject%': subject}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.contact.message' | trans }}</p>
+    <p style="padding-bottom: 20px;">{{ message }}</p>
 {% endblock %}

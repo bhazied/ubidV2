@@ -1,24 +1,19 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear {{ bid.getTender().getCreatorUser().getFirstName() }},</p>
-    <p>&nbsp;</p>
-    <p>
-
-        Your Bid {{ bid.getTitle() }} : {{ bid.getReference() }} on the tender {{ bid.getTender().getTitle() }} / {{ bid.getTender().getReference() }} has been accepted
-    </p>
-    <p>&nbsp;</p>
+    <p style="padding-bottom: 20px;">{{ 'email.bid_short_listed.dear' | trans({'%fistname%': bid.getTender().getCreatorUser().getFirstName()}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.bid_short_listed.bid_accepted' | trans({'%bidtitle%': bid.getTitle(), '%bidreference%': bid.getReference(), '%tendertitle%': bid.getTender().getTitle(), '%tenderreference%': bid.getTender().getReference()}) }}</p>
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
-    <tr>
-        <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
-            Bid informations
-        </th>
-    </tr>
-    <tr>
-        <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
-            <p><span style="color: #1D69AD;">Reference</span> : {{ bid.getReference() }}</p>
-            <p><span style="color: #1D69AD;">Title</span> : {{ bid.getTitle() }}</p>
-            <p><span style="color: #1D69AD;">Description</span> : {{ bid.getDescription() | striptags}}</p>
-        </td>
-    </tr>
+        <tr>
+            <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
+                {{ 'email.bid_short_listed.bid_informations' | trans }}
+            </th>
+        </tr>
+        <tr>
+            <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
+                <p><span style="color: #1D69AD;">{{ 'email.bid_short_listed.reference' | trans }}</span> : {{ bid.getReference() }}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.bid_short_listed.title' | trans }}</span> : {{ bid.getTitle() }}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.bid_short_listed.description' | trans }}</span> : {{ bid.getDescription() | striptags}}</p>
+            </td>
+        </tr>
     </table>
 {% endblock %}

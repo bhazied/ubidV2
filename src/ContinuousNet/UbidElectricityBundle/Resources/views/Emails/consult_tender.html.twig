@@ -1,23 +1,18 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p>Dear {{tender.getCreatorUser().getFirstName() }},</p>
-    <p>&nbsp;</p>
-    <p>
-
-        Your {{ tender.getSection() }} {{ tender.getTitle() }} : {{ tender.getReference() }}  has been consulted
-    </p>
-    <p>&nbsp;</p>
+    <p style="padding-bottom: 20px;">{{ 'email.consult_tender.dear' | trans({'%fistname%': tender.getCreatorUser().getFirstName()}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.consult_tender.tender_consulted' | trans({'%section%': tender.getSection(), '%tendertitle%': tender.getTitle(), '%tenderreference%': tender.getReference()}) }}</p>
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
         <tr>
             <th style="background-color: #1D69AD; color: white; padding: 5px 10px; text-align: left">
-                Bid informations
+                {{ 'email.consult_tender.tender_informations' | trans }}
             </th>
         </tr>
         <tr>
             <td style="background-color: white; color: #1D69AD; padding: 15px 10px;">
-                <p><span style="color: #1D69AD;">Reference</span> : {{ tender.getReference() }}</p>
-                <p><span style="color: #1D69AD;">Title</span> : {{ tender.getTitle() }}</p>
-                <p><span style="color: #1D69AD;">Description</span> : {{ tender.getDescription() | striptags}}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.consult_tender.reference' | trans }}</span> : {{ tender.getReference() }}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.consult_tender.title' | trans }}</span> : {{ tender.getTitle() }}</p>
+                <p><span style="color: #1D69AD;">{{ 'email.consult_tender.description' | trans }}</span> : {{ tender.getDescription() | striptags}}</p>
             </td>
         </tr>
     </table>

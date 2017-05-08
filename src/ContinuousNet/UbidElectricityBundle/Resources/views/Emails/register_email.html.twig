@@ -1,12 +1,7 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p style="padding-bottom: 20px;">Welcome {{ user.firstName }},</p>
-    <p style="padding-bottom: 20px;">Thanks for creating your e-electricity account.</p>
-    <p style="padding-bottom: 20px;">To finish activating your account, please click on the Verify email address button.</p>
-    <p style="padding-bottom: 20px;">
-        <a href="{{ confirmationUrl }}" style="background-color: #013486;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">Verify email address</a>
-    </p>
-    <p>&nbsp;
-    {{ 'email.signature' | trans | raw }}
-    </p>
+    <p style="padding-bottom: 20px;">{{ 'email.register.welcome' | trans({'%username%': user.username}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.register.thanks' | trans }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.register.activation' | trans }}</p>
+    <p style="padding-bottom: 20px;"><a href="{{ confirmationUrl }}" style="background-color: #013486;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">{{ 'email.register.verify' | trans }}</a></p>
 {% endblock %}

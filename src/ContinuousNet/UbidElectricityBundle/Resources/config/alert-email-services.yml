@@ -6,7 +6,6 @@ parameters:
 services:
     ubid_electricity.alert_mailer:
         class: %ubid_electricity.event.alert_mailer.class%
-        #arguments: [@templating, @mailer, @router]
         arguments: [@service_container]
     ubid_electricity.event.alert_email_listner:
         class: %ubid_electricity.event.alert_email_listner.class%
@@ -14,7 +13,6 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist, connection: default }
             - { name: doctrine.event_listener, event: postUpdate, connection: default}
-            #- { name: doctrine.event_listener, event: postLoad, connection: default}
     ubid_electricity.event.email_response_listener:
         class: %ubid_electricity.event.email_response.listener.class%
         arguments: [@ubid_electricity.alert_mailer, @router, @doctrine.orm.entity_manager, @translator, @security.token_storage]
