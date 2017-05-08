@@ -328,14 +328,14 @@ app.factory('$loginDataFactory', ['$resource', '$rootScope',
 app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout', '$loginDataFactory', 'toaster', '$filter', '$stateParams','$notificationsDataFactory',
     function ($scope, $rootScope, $localStorage, $state, $timeout, $loginDataFactory, toaster, $filter, $stateParams, $notificationsDataFactory) {
 
-        /*$timeout(function() {
+        $timeout(function() {
             $rootScope.showSlogan = false;
             $rootScope.showLeftSide = false;
             $rootScope.showRightSide = false;
             $rootScope.showUserMenu = false;
             $rootScope.contentSize = 6;
             $rootScope.contentOffset = 3;
-        }, 1500);*/
+        });
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -381,17 +381,18 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                                 $localStorage.toState.name == 'front.register' ||
                                 $localStorage.toState.name == 'front.resetpassword'
                             ) {
-                                $state.go('front.usermenu');
+                                $state.go('front.usermenu', {locale: $rootScope.locale});
                             } else {
+                                $localStorage.toParams.locale = $rootScope.locale;
                                 $state.go($localStorage.toState.name, $localStorage.toParams);
                             }
                         } else {
-                            $state.go('front.usermenu');
+                            $state.go('front.usermenu', {locale: $rootScope.locale});
                         }
                     }, 1000);
                 }
             }, function(error) {
-                $state.go('front.login');
+                $state.go('front.login', {locale: $rootScope.locale});
                 $scope.status = 'error';
                 toaster.pop('error', $filter('translate')('content.common.WARNING'), $filter('translate')('login.ERROR'));
                 $rootScope.loggedIn = false;
@@ -402,28 +403,26 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
         $scope.logout = function() {
             $scope.resetAccess();
             $timeout(function() {
-
                 $rootScope.loggedIn = false;
-
-                $state.go('front.home');
+                $state.go('front.home', {locale: $rootScope.locale});
             }, 1000);
         };
 
         $scope.myProfile = function () {
-            $state.go('front.profile');
+            $state.go('front.profile', {locale: $rootScope.locale});
         };
         
         $scope.register = function (type) {
-            $state.go('front.register', {type: type});
+            $state.go('front.register', {type: type, locale: $rootScope.locale});
         };
         
         $scope.goLogin = function () {
-            $state.go('front.login');
+            $state.go('front.login', {locale: $rootScope.locale});
         };
 
         $scope.gotoUserMenu = function () {
-            $state.go('front.usermenu');
-        }
+            $state.go('front.usermenu', {locale: $rootScope.locale});
+        };
 
 
     }]);
@@ -434,15 +433,6 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
  */
 app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$localStorage', '$window', '$document', '$timeout', 'cfpLoadingBar', '$filter', '$stateParams', '$loginDataFactory','toaster','$advancedSearchDataFactory','$q',
     function($rootScope, $scope, $state, $translate, $localStorage, $window, $document, $timeout, cfpLoadingBar, $filter, $stateParams, $loginDataFactory, toaster, $advancedSearchDataFactory, $q) {
-
-       /* $timeout(function () {
-            $rootScope.showSlogan = false;
-            $rootScope.showUserMenu = false;
-            $rootScope.showLeftSide = false;
-            $rootScope.showRightSide = false;
-            $rootScope.contentSize = 9;
-            $rootScope.contentOffset = 0;
-        });*/
 
         //header searchForm show
         $rootScope.SearchFormHeader = false;
@@ -481,7 +471,7 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
             if ($state.current.name != '' && $scope.anonymousStates.indexOf($state.current.name) == -1 && !angular.isDefined($localStorage.access_token)) {
                 $timeout(function() {
                     console.warn('no access token for ('+$state.current.name+') > redirection');
-                    $state.go('front.home');
+                    $state.go('front.home', {locale: $rootScope.locale});
                 });
             } else {
                 console.warn('access to ('+$state.current.name+')');
@@ -555,39 +545,6 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
                 angular.element('.email-reader').animate({
                     scrollTop : 0
                 }, 0);
-            }
-
-            // Save the route title
-
-            if ($state.current.name == 'front.home') {
-                $timeout(function() {
-                    $rootScope.showSlogan = false;
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRightSide = false;
-                    $rootScope.showUserMenu = false;
-                    $rootScope.contentSize = 8;
-                    $rootScope.contentOffset = 0;
-                })
-            }
-            if ($state.current.name == 'front.login') {
-                $timeout(function() {
-                    $rootScope.showSlogan = false;
-                    $rootScope.showLeftSide = false;
-                    $rootScope.showRightSide = false;
-                    $rootScope.showUserMenu = false;
-                    $rootScope.contentSize = 6;
-                    $rootScope.contentOffset = 3;
-                });
-            }
-            if ($state.current.name == 'front.generic_search') {
-                $timeout(function() {
-                    $rootScope.showSlogan = false;
-                    $rootScope.showLeftSide = true;
-                    $rootScope.showRightSide = false;
-                    $rootScope.showUserMenu = false;
-                    $rootScope.contentSize = 8;
-                    $rootScope.contentOffset = 0;
-                });
             }
             
         });
@@ -748,6 +705,15 @@ app.controller('FrontCtrl', ['$rootScope', '$scope', '$state', '$translate', '$l
 
 app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$state', '$timeout','toaster','$filter','$countriesDataFactory','$languagesDataFactory','$tendersFrontDataFactory','$q','$advancedSearchDataFactory','SweetAlert',
     function ($scope, $rootScope, $localStorage, $state, $timeout, toaster, $filter, $countriesDataFactory, $languagesDataFactory, $tendersFrontDataFactory, $q, $advancedSearchDataFactory, SweetAlert) {
+
+        $timeout(function() {
+            $rootScope.showSlogan = false;
+            $rootScope.showLeftSide = true;
+            $rootScope.showRightSide = false;
+            $rootScope.showUserMenu = false;
+            $rootScope.contentSize = 8;
+            $rootScope.contentOffset = 0;
+        });
 
         $scope.showForm = false;
         $scope.toggle = function() {

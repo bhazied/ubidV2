@@ -83,7 +83,7 @@ class SearchRestController extends FOSRestController {
 
             //get Tenders
             $qb_tender->from('UbidElectricityBundle:Tender', 't_');
-            $qb_tender->andWhere('t.validated = 1');
+            $qb_tender->andWhere('t_.validated = 1');
             $qb_tender->andwhere('t_.status = :status')->setParameters(array('status' => 'Online'));
             if (!is_null($searchText)) {
                 $qb_tender->andWhere($qb_tender->expr()->like(
@@ -124,6 +124,7 @@ class SearchRestController extends FOSRestController {
 
             //get Consultations
             $qb_consultation->from('UbidElectricityBundle:Tender', 'c_');
+            $qb_tender->andWhere('c_.validated = 1');
             $qb_consultation->andwhere('c_.status = :status')->setParameters(array('status' => 'Online'));
             if (!is_null($searchText)) {
                 $qb_consultation->andWhere($qb_consultation->expr()->like(
