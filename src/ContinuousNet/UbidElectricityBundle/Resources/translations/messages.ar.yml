@@ -75,7 +75,7 @@ email.contact.message: 'Message:'
 
 email.new_bid_received.subject: 'New bid received'
 email.new_bid_received.dear: 'Dear %firstname%,'
-email.new_bid_received.bid_from: 'You have received a new bid from %fistname%.'
+email.new_bid_received.bid_from: 'You have received a new bid from %firstname%.'
 email.new_bid_received.bid_informations: 'Bid Informations'
 email.new_bid_received.reference: 'Reference'
 email.new_bid_received.title: 'Title'
@@ -83,7 +83,7 @@ email.new_bid_received.description: 'Description'
 
 email.new_message.subject: 'New message received'
 email.new_message.dear: 'Dear %firstname%,'
-email.new_message.message_received: 'You have received a new message from %fistname%.'
+email.new_message.message_received: 'You have received a new message from %firstname%.'
 email.new_message.subject_value: 'Subject: %subject%'
 email.new_message.message: 'Message:'
 

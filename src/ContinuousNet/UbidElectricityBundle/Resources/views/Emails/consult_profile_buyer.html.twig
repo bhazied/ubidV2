@@ -1,6 +1,6 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p style="padding-bottom: 20px;">{{ 'email.consult_profile_buyer.dear' | trans({'%fistname%': buyer.getCreatorUser().getFirstName()}) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.consult_profile_buyer.dear' | trans({'%firstname%': buyer.getCreatorUser().getFirstName()}) }}</p>
     <p style="padding-bottom: 20px;">{{ 'email.consult_profile_buyer.buyer_consulted' | trans({'%buyername%': buyer.getName()}) }}</p>
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
         <tr>

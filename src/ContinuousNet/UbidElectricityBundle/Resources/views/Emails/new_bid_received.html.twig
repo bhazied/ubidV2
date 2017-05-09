@@ -1,7 +1,7 @@
 {% extends 'UbidElectricityBundle::email_template.html.twig' %}
 {% block mailContent %}
-    <p style="padding-bottom: 20px;">{{ 'email.new_bid_received.dear' | trans({'%fistname%': bid.getTender().getCreatorUser().getFirstName() }) }}</p>
-    <p style="padding-bottom: 20px;">{{ 'email.new_bid_received.bid_from' | trans({'%fistname%': bid.getCreatorUser().getFirstName() }) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.new_bid_received.dear' | trans({'%firstname%': bid.getTender().getCreatorUser().getFirstName() }) }}</p>
+    <p style="padding-bottom: 20px;">{{ 'email.new_bid_received.bid_from' | trans({'%firstname%': bid.getCreatorUser().getFirstName() }) }}</p>
 
     <table style="border: 1px solid #ccc; border-spacing: 0; width: 100%;">
         <tr>

@@ -337,7 +337,7 @@ app.controller('LoginFrontCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $rootScope.contentSize = 6;
                 $rootScope.contentOffset = 3;
             }
-        }, 1500);
+        }, 1000);
 
         $scope.type = angular.isDefined($stateParams.type) ? $stateParams.type : 'Both';
 
@@ -739,7 +739,7 @@ app.controller('SearchFormCtrl', ['$scope', '$rootScope', '$localStorage', '$sta
                 $rootScope.contentSize = 8;
                 $rootScope.contentOffset = 0;
             }
-        }, 1500);
+        }, 1000);
 
         $scope.showForm = false;
         $scope.toggle = function() {
