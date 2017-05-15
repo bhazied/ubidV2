@@ -54,8 +54,9 @@
     "PROFILEUPDATED": "Votre profil a été mis à jour",
     "PROFILENOTUPDATED": "Votre profil n'a pas été mis à jour",
     "INFORMATIONS": "Informations",
-    "UPDATEPROFILE": "Profil mis à jour",
-    "CHANGEPASSWORD" : "Changez votre mot de passe",
+    "UPDATEPROFILE": "Mise à jour du profil",
+    "ACCOUNTINFORMATIONS": "Informations du compte",
+    "CHANGEPASSWORD" : "Changement de mot de passe",
     "SETTINGS": "Paramètres"
   },
   "resetpassword": {

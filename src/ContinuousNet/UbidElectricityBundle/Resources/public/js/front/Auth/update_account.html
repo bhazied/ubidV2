@@ -1,8 +1,8 @@
 
 <form name="userForm" id="userForm" novalidate ng-submit="submitForm(userForm)">
     <fieldset>
-        <legend>
-            Account Info
+        <legend translate="profile.ACCOUNTINFORMATIONS">
+            Account informations
         </legend>
         <div class="row">
             <div class="col-md-6">
@@ -33,7 +33,7 @@
                         <span translate="content.list.fields.ADDRESS">Address</span>
                         <span class="symbol required"></span>
                     </label>
-                    <input ng-required="true" id="userAddress" type="text" placeholder="Enter address" class="form-control" name="address" ng-model="user.address">
+                    <input ng-required="true" id="userAddress" type="text" placeholder="[[ 'content.form.messages.ENTERADDRESS' | translate ]]" class="form-control" name="address" ng-model="user.address">
                     <span class="error text-small block" ng-if="userForm.address.$dirty && userForm.address.$error.required" translate="content.form.messages.ADDRESSREQUIRED">Address required.</span>
                 </div><!--/form-group-->
 
@@ -97,7 +97,7 @@
                     <label class="control-label">
                         <span translate="content.list.fields.ZIPCODE">Zip Code</span>
                     </label>
-                    <input class="form-control" placeholder="enter a zip code" type="text" name="zipcode" ng-model="user.zipCode">
+                    <input class="form-control" placeholder="[[ 'content.form.messages.ENTERZIPCODE' | translate ]]" type="text" name="zipcode" ng-model="user.zipCode">
                 </div><!--/form-group-->
             <div class="form-group">
                 <label for="userPicture" class="control-label">
