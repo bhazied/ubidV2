@@ -753,7 +753,7 @@ class ApiV1RESTController extends FOSRestController
 
         $data = array();
 
-        $data['category'] = $entity;
+        $data['category'] = $this->translateEntity($entity);
 
         $em = $this->getDoctrine()->getManager();
 
